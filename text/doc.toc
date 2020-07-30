@@ -1,0 +1,90 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {american}{}
+\contentsline {part}{\numberline {I}Introduction}{5}{part.1}
+\contentsline {chapter}{\numberline {1}Motivation}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}State of the art and aims}{9}{chapter.2}
+\contentsline {chapter}{\numberline {3}Own contributions}{11}{chapter.3}
+\contentsline {chapter}{\numberline {4}Overview}{13}{chapter.4}
+\contentsline {part}{\numberline {II}Digital human}{15}{part.2}
+\contentsline {chapter}{\numberline {5}Comparative Study: Modeling Upper Arm Movement}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{18}{section.2.1}
+\contentsline {subsection}{\numberline {5.1.1}Related Works}{19}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Contribution Statement}{21}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Structure of this Chapter}{22}{subsection.2.1.3}
+\contentsline {section}{\numberline {5.2}Experimental Study}{22}{section.2.2}
+\contentsline {subsection}{\numberline {5.2.1}Experimental Trials}{22}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Data Processing}{23}{subsection.2.2.2}
+\contentsline {section}{\numberline {5.3}Models}{25}{section.2.3}
+\contentsline {subsection}{\numberline {5.3.1}Data-driven Model A}{25}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Biophysical Model B}{27}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Parameter Identification for Model B}{29}{subsection.2.3.3}
+\contentsline {section}{\numberline {5.4}Results and Discussion}{32}{section.2.4}
+\contentsline {subsection}{\numberline {5.4.1}Feature Selection}{32}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Training of the Models}{32}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Validation}{35}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Simplified Model A}{36}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {5.4.5}Insights of Model B}{38}{subsection.2.4.5}
+\contentsline {section}{\numberline {5.5}Conclusion}{40}{section.2.5}
+\contentsline {chapter}{\numberline {6}Formulation of electrophysiology and muscle contraction}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}State of the art}{43}{section.2.1}
+\contentsline {section}{\numberline {6.2}discretization}{43}{section.2.2}
+\contentsline {section}{\numberline {6.3}Standard for formulation of models}{43}{section.2.3}
+\contentsline {section}{\numberline {6.4}Bidomain}{43}{section.2.4}
+\contentsline {section}{\numberline {6.5}Multidomain}{43}{section.2.5}
+\contentsline {section}{\numberline {6.6}Formulation of solid mechanics}{44}{section.2.6}
+\contentsline {section}{\numberline {6.7}Simulation workflow}{44}{section.2.7}
+\contentsline {chapter}{\numberline {7}Numeric}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}Fundamentals of the discretization}{45}{section.2.1}
+\contentsline {section}{\numberline {7.2}Finite element method}{45}{section.2.2}
+\contentsline {section}{\numberline {7.3}Incompressible nonlinear solid mechanics}{45}{section.2.3}
+\contentsline {section}{\numberline {7.4}Numerical schemes}{45}{section.2.4}
+\contentsline {section}{\numberline {7.5}time stepping schemes}{45}{section.2.5}
+\contentsline {section}{\numberline {7.6}linear system solvers}{45}{section.2.6}
+\contentsline {section}{\numberline {7.7}newton algorithm}{45}{section.2.7}
+\contentsline {chapter}{\numberline {8}Simulation software}{47}{chapter.8}
+\contentsline {section}{\numberline {8.1}General aspects}{47}{section.2.1}
+\contentsline {section}{\numberline {8.2}Detail}{47}{section.2.2}
+\contentsline {chapter}{\numberline {9}Simulation software}{49}{chapter.9}
+\contentsline {section}{\numberline {9.1}State of the art}{49}{section.2.1}
+\contentsline {section}{\numberline {9.2}OpenCMISS}{49}{section.2.2}
+\contentsline {section}{\numberline {9.3}The simulation framework \textit {opendihu}\/}{49}{section.2.3}
+\contentsline {section}{\numberline {9.4}Overview of discretization features}{49}{section.2.4}
+\contentsline {section}{\numberline {9.5}Input and output}{50}{section.2.5}
+\contentsline {section}{\numberline {9.6}In-situ visualization}{50}{section.2.6}
+\contentsline {section}{\numberline {9.7}Details on the implementation}{50}{section.2.7}
+\contentsline {section}{\numberline {9.8}Representation of structured meshes}{50}{section.2.8}
+\contentsline {section}{\numberline {9.9}Parallel data handling}{50}{section.2.9}
+\contentsline {section}{\numberline {9.10}Implementation of boundary conditions}{50}{section.2.10}
+\contentsline {section}{\numberline {9.11}Implementation of material formulation and automatic derivation of derivatives}{50}{section.2.11}
+\contentsline {section}{\numberline {9.12}efficient and configurable data transfer}{50}{section.2.12}
+\contentsline {section}{\numberline {9.13}Mapping between meshes}{51}{section.2.13}
+\contentsline {section}{\numberline {9.14}An efficient solver to the Monodomain equation}{51}{section.2.14}
+\contentsline {section}{\numberline {9.15}Details on the partitioning}{51}{section.2.15}
+\contentsline {section}{\numberline {9.16}Parallelization of the multidomain system}{51}{section.2.16}
+\contentsline {section}{\numberline {9.17}load balancing}{51}{section.2.17}
+\contentsline {chapter}{\numberline {10}External coupling}{53}{chapter.10}
+\contentsline {section}{\numberline {10.1}coupling with FEBio}{53}{section.2.1}
+\contentsline {section}{\numberline {10.2}coupling with AceFEM}{53}{section.2.2}
+\contentsline {chapter}{\numberline {11}An algorithm for mesh generation}{55}{chapter.11}
+\contentsline {section}{\numberline {11.1}State of the art}{55}{section.2.1}
+\contentsline {section}{\numberline {11.2}Data preprocessing}{55}{section.2.2}
+\contentsline {section}{\numberline {11.3}Outline of the algorithm}{55}{section.2.3}
+\contentsline {section}{\numberline {11.4}Plane mesh smoothing}{55}{section.2.4}
+\contentsline {section}{\numberline {11.5}Parallelization}{55}{section.2.5}
+\contentsline {section}{\numberline {11.6}Generation of fiber meshes}{55}{section.2.6}
+\contentsline {chapter}{\numberline {12}Simulation scenarios}{57}{chapter.12}
+\contentsline {section}{\numberline {12.1}Simulation of electromyography with fiber-based formulation}{57}{section.2.1}
+\contentsline {section}{\numberline {12.2}Simulation of electromyography with multidomain formulation}{57}{section.2.2}
+\contentsline {section}{\numberline {12.3}Muscle contraction with fiber-based formulation}{57}{section.2.3}
+\contentsline {section}{\numberline {12.4}Muscle contraction with multidomain formulation}{57}{section.2.4}
+\contentsline {chapter}{\numberline {13}Technical simulation results}{59}{chapter.13}
+\contentsline {section}{\numberline {13.1}Runtime evaluation}{59}{section.2.1}
+\contentsline {section}{\numberline {13.2}parallel partitioning}{59}{section.2.2}
+\contentsline {section}{\numberline {13.3}memory consumption}{59}{section.2.3}
+\contentsline {chapter}{\numberline {14}biomechanical simulation results}{61}{chapter.14}
+\contentsline {section}{\numberline {14.1}Simulation of fatigue}{61}{section.2.1}
+\contentsline {section}{\numberline {14.2}Simulation of EMG}{61}{section.2.2}
+\contentsline {part}{\numberline {III}Soft tissue robotics}{63}{part.3}
+\contentsline {chapter}{\numberline {15}...}{65}{chapter.15}
+\contentsline {part}{\numberline {IV}Conclusion}{67}{part.4}

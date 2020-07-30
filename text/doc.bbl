@@ -1,0 +1,1401 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{Bayer2017}{article}{}
+      \name{author}{4}{}{%
+        {{hash=d42e351b3c29297e70ae5d5692e32033}{%
+           family={Bayer},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9f35e5efb22c13598dfa56b90b7aabe6}{%
+           family={Schmitt},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=beba667b194f8fb5130ebb8fba2587e9}{%
+           family={Günther},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=77b78fbce842f14e29a442d74bc3280d}{%
+           family={Haeufle},
+           familyi={H\bibinitperiod},
+           given={D.\bibnamedelimi F.\bibnamedelimi B.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor & Francis}%
+      }
+      \strng{namehash}{592918a28d5613c9fdc4eadb6883cf0d}
+      \strng{fullhash}{ff8dc23c29e27cc58a5f7cef0fbcdcd2}
+      \strng{bibnamehash}{592918a28d5613c9fdc4eadb6883cf0d}
+      \strng{authorbibnamehash}{592918a28d5613c9fdc4eadb6883cf0d}
+      \strng{authornamehash}{592918a28d5613c9fdc4eadb6883cf0d}
+      \strng{authorfullhash}{ff8dc23c29e27cc58a5f7cef0fbcdcd2}
+      \field{labelalpha}{Bay17}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Methods in Biomechanics and Biomedical Engineering}
+      \field{note}{PMID: 28387534}
+      \field{number}{8}
+      \field{title}{The influence of biophysical muscle properties on simulating fast human arm movements}
+      \field{volume}{20}
+      \field{year}{2017}
+      \field{pages}{803\bibrangedash 821}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1080/10255842.2017.1293663
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1080/10255842.2017.1293663
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/10255842.2017.1293663
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/10255842.2017.1293663
+      \endverb
+    \endentry
+    \entry{Cavallaro2005}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=06bab09d256757d928a0df40b0bdd526}{%
+           family={{Cavallaro}},
+           familyi={C\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=46c8507498dbf4e60e8651109605f866}{%
+           family={{Rosen}},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=07d334d7b1a801c7e04d454b175d3365}{%
+           family={{Perry}},
+           familyi={P\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=812be23995ad30db7d65d1b47dee6a1c}{%
+           family={{Burns}},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=709848c4195504aec174a77ce49af419}{%
+           family={{Hannaford}},
+           familyi={H\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{782e6989f35d9982e01ee96ad001feba}
+      \strng{fullhash}{5430c907f8c7f8282f451e3407e7aae3}
+      \strng{bibnamehash}{782e6989f35d9982e01ee96ad001feba}
+      \strng{authorbibnamehash}{782e6989f35d9982e01ee96ad001feba}
+      \strng{authornamehash}{782e6989f35d9982e01ee96ad001feba}
+      \strng{authorfullhash}{5430c907f8c7f8282f451e3407e7aae3}
+      \field{labelalpha}{Cav05}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2005 IEEE International Conference on Robotics and Automation}
+      \field{title}{Hill-Based Model as a Myoprocessor for a Neural Controlled Powered Exoskeleton Arm - Parameters Optimization}
+      \field{year}{2005}
+      \field{pages}{4514\bibrangedash 4519}
+      \range{pages}{6}
+    \endentry
+    \entry{Cavallaro2006}{article}{}
+      \name{author}{4}{}{%
+        {{hash=352af3adbe85488647d6589e69309aca}{%
+           family={{Cavallaro}},
+           familyi={C\bibinitperiod},
+           given={E.\bibnamedelimi E.},
+           giveni={E\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=46c8507498dbf4e60e8651109605f866}{%
+           family={{Rosen}},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=07d334d7b1a801c7e04d454b175d3365}{%
+           family={{Perry}},
+           familyi={P\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=812be23995ad30db7d65d1b47dee6a1c}{%
+           family={{Burns}},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{80608c936c7b502ce08165dbd85173ff}
+      \strng{fullhash}{1e83fa8cd0d6d3bdee799d59c6af400a}
+      \strng{bibnamehash}{80608c936c7b502ce08165dbd85173ff}
+      \strng{authorbibnamehash}{80608c936c7b502ce08165dbd85173ff}
+      \strng{authornamehash}{80608c936c7b502ce08165dbd85173ff}
+      \strng{authorfullhash}{1e83fa8cd0d6d3bdee799d59c6af400a}
+      \field{labelalpha}{Cav06}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Biomedical Engineering}
+      \field{number}{11}
+      \field{title}{Real-Time Myoprocessors for a Neural Controlled Powered Exoskeleton Arm}
+      \field{volume}{53}
+      \field{year}{2006}
+      \field{pages}{2387\bibrangedash 2396}
+      \range{pages}{10}
+    \endentry
+    \entry{OpenSim2007}{article}{}
+      \name{author}{8}{}{%
+        {{hash=a7c05bbe3cd4d293ada06626290b0ba4}{%
+           family={{Delp}},
+           familyi={D\bibinitperiod},
+           given={S.\bibnamedelimi L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=8918812bda9ccefdaee2392f0b9ee84d}{%
+           family={{Anderson}},
+           familyi={A\bibinitperiod},
+           given={F.\bibnamedelimi C.},
+           giveni={F\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=fee0c5f3c9a5834476f8ed0e7a45f562}{%
+           family={{Arnold}},
+           familyi={A\bibinitperiod},
+           given={A.\bibnamedelimi S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=c57bae568aefbc22fad8aeb3e9580681}{%
+           family={{Loan}},
+           familyi={L\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=cf8504dd96f3e39b25b65a1b19563a71}{%
+           family={{Habib}},
+           familyi={H\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=24981a2ad7dcb0ee5505ebec3d3fdee8}{%
+           family={{John}},
+           familyi={J\bibinitperiod},
+           given={C.\bibnamedelimi T.},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=c02a7db9beda0291df9af57045c4bfde}{%
+           family={{Guendelman}},
+           familyi={G\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=d908031e2142435c204f43ee78b2803c}{%
+           family={{Thelen}},
+           familyi={T\bibinitperiod},
+           given={D.\bibnamedelimi G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{da15f2724a8b72b5422535d9e7f1247c}
+      \strng{fullhash}{63b5d2567f54a16c1bfc53258d9b7a84}
+      \strng{bibnamehash}{da15f2724a8b72b5422535d9e7f1247c}
+      \strng{authorbibnamehash}{da15f2724a8b72b5422535d9e7f1247c}
+      \strng{authornamehash}{da15f2724a8b72b5422535d9e7f1247c}
+      \strng{authorfullhash}{63b5d2567f54a16c1bfc53258d9b7a84}
+      \field{labelalpha}{Del07}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Biomedical Engineering}
+      \field{number}{11}
+      \field{title}{OpenSim: Open-Source Software to Create and Analyze Dynamic Simulations of Movement}
+      \field{volume}{54}
+      \field{year}{2007}
+      \field{pages}{1940\bibrangedash 1950}
+      \range{pages}{11}
+    \endentry
+    \entry{Falisse2016}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8f413cd47337fb0ccaa403b588ee17a3}{%
+           family={Falisse},
+           familyi={F\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+        {{hash=67b7e620b5aada54f2b2a61258789289}{%
+           family={Van\bibnamedelima Rossom},
+           familyi={V\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=dee59e4a4ddc7d93dff1033f75fb1bd4}{%
+           family={Jonkers},
+           familyi={J\bibinitperiod},
+           given={Ilse},
+           giveni={I\bibinitperiod}}}%
+        {{hash=171addd085809fc5b5caf6cf5d5cd007}{%
+           family={De\bibnamedelima Groote},
+           familyi={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={Friedl},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{f0f1ced7c036cbfae241e853c1ecdaab}
+      \strng{fullhash}{c6dafa394c58559db1ae7b8f9fad4323}
+      \strng{bibnamehash}{f0f1ced7c036cbfae241e853c1ecdaab}
+      \strng{authorbibnamehash}{f0f1ced7c036cbfae241e853c1ecdaab}
+      \strng{authornamehash}{f0f1ced7c036cbfae241e853c1ecdaab}
+      \strng{authorfullhash}{c6dafa394c58559db1ae7b8f9fad4323}
+      \field{labelalpha}{Fal16}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Biomedical Engineering}
+      \field{month}{11}
+      \field{title}{EMG-Driven Optimal Estimation of Subject-SPECIFIC Hill Model Muscle-Tendon Parameters of the Knee Joint Actuators}
+      \field{volume}{PP}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 1}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1109/TBME.2016.2630009
+      \endverb
+    \endentry
+    \entry{Garner2003}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6776526018f6c547f76cdf4f185c8895}{%
+           family={Garner},
+           familyi={G\bibinitperiod},
+           given={Brian\bibnamedelima A.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=ab93fef3fc100f0996371c9f7d9b55a1}{%
+           family={Pandy},
+           familyi={P\bibinitperiod},
+           given={Marcus\bibnamedelima G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \strng{fullhash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \strng{bibnamehash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \strng{authorbibnamehash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \strng{authornamehash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \strng{authorfullhash}{6f7e148219dbceb9356e4b4ac4b72c33}
+      \field{labelalpha}{Gar03}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The purpose of this study was to develop and apply a general method for estimating the architectural properties of human muscles in vivo. The method consists of a two-phase, nested optimization procedure in which the values of peak isometric force, optimal muscle-fiber length, and tendon slack length are calculated for each musculotendon actuator, knowing muscle volume and the minimum and maximum physiological lengths of the actuator. In phase I, the positions of the bones and the activation levels of the muscles are found by maximizing the isometric torque developed for each degree of freedom at each joint. In phase II, the architectural properties of each musculotendon actuator are found by matching the strength profile of the model to that measured for subjects. The method is used to estimate the architectural properties of 26 major muscle groups crossing the shoulder, elbow, and wrist. Wherever possible, the model calculations are compared against measurements obtained from anatomical studies reported in the literature. Architectural data obtained from our work should be useful to researchers interested in developing musculoskeletal models of the upper limb. {©} 2003 Biomedical Engineering Society.}
+      \field{issn}{1573-9686}
+      \field{journaltitle}{Annals of Biomedical Engineering}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Estimation of Musculotendon Properties in the Human Upper Limb}
+      \field{volume}{31}
+      \field{year}{2003}
+      \field{pages}{207\bibrangedash 220}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1114/1.1540105
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1114/1.1540105
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1114/1.1540105
+      \endverb
+    \endentry
+    \entry{Gunther2007}{article}{}
+      \name{author}{3}{}{%
+        {{hash=9a530e7b822a537b080bf907b436eee0}{%
+           family={G{ü}nther},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f0c28d2c4b22bef01294423ab63395f7}{%
+           family={Schmitt},
+           familyi={S\bibinitperiod},
+           given={Syn},
+           giveni={S\bibinitperiod}}}%
+        {{hash=aef1524cbdc89174f067847c5360b6e3}{%
+           family={Wank},
+           familyi={W\bibinitperiod},
+           given={Veit},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \strng{fullhash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \strng{bibnamehash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \strng{authorbibnamehash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \strng{authornamehash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \strng{authorfullhash}{7d8cb9476b03759de648e7ff1d82bbd6}
+      \field{labelalpha}{Gün07}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{High-frequency vibrations e.g., induced by legs impacting with the ground during terrestrial locomotion can provoke damage within tendons even leading to ruptures. So far, macroscopic Hill-type muscle models do not account for the observed high-frequency damping at low-amplitudes. Therefore, former studies proposed that protective damping might be explained by modelling the contractile machinery of the muscles in more detail, i.e., taking the microscopic processes of the actin--myosin coupling into account. In contrast, this study formulates an alternative hypothesis: low but significant damping of the passive material in series to the contractile machinery---e.g., tendons, aponeuroses, titin---may well suffice to damp these hazardous vibrations. Thereto, we measured the contraction dynamics of a piglet muscle--tendon complex (MTC) in three contraction modes at varying loads and muscle--tendon lengths. We simulated all three respective load situations on a computer: a Hill-type muscle model including a contractile element (CE) and each an elastic element in parallel (PEE) and in series (SEE) to the CE pulled on a loading mass. By comparing the model to the measured output of the MTC, we extracted a consistent set of muscle parameters. We varied the model by introducing either linear damping in parallel or in series to the CE leading to accordant re-formulations of the contraction dynamics of the CE. The comparison of the three cases (no additional damping, parallel damping, serial damping) revealed that serial damping at a physiological magnitude suffices to explain damping of high-frequency vibrations of low amplitudes. The simulation demonstrates that any undamped serial structure within the MTC enforces SEE-load eigenoscillations. Consequently, damping must be spread all over the MTC, i.e., rather has to be de-localised than localised within just the active muscle material. Additionally, due to suppressed eigenoscillations Hill-type muscle models taking into account serial damping are numerically more efficient when used in macroscopic biomechanical neuro-musculo-skeletal models.}
+      \field{issn}{1432-0770}
+      \field{journaltitle}{Biological Cybernetics}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{High-frequency oscillations as a consequence of neglected serial damping in Hill-type muscle models}
+      \field{volume}{97}
+      \field{year}{2007}
+      \field{pages}{63\bibrangedash 79}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/s00422-007-0160-6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s00422-007-0160-6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s00422-007-0160-6
+      \endverb
+    \endentry
+    \entry{Hilltype2014}{article}{}
+      \name{author}{4}{}{%
+        {{hash=369673b5ed9c551f4307a4147090e851}{%
+           family={Haeufle},
+           familyi={H\bibinitperiod},
+           given={D.F.B.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=beba667b194f8fb5130ebb8fba2587e9}{%
+           family={Günther},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d42e351b3c29297e70ae5d5692e32033}{%
+           family={Bayer},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9f35e5efb22c13598dfa56b90b7aabe6}{%
+           family={Schmitt},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{11708d4d12efb662ad774d0993be1bed}
+      \strng{fullhash}{954d5fd5ecec24cd636d9be43dcfbe10}
+      \strng{bibnamehash}{11708d4d12efb662ad774d0993be1bed}
+      \strng{authorbibnamehash}{11708d4d12efb662ad774d0993be1bed}
+      \strng{authornamehash}{11708d4d12efb662ad774d0993be1bed}
+      \strng{authorfullhash}{954d5fd5ecec24cd636d9be43dcfbe10}
+      \field{labelalpha}{Hae14}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Hill-type muscle models are commonly used in biomechanical simulations to predict passive and active muscle forces. Here, a model is presented which consists of four elements: a contractile element with force–length and force–velocity relations for concentric and eccentric contractions, a parallel elastic element, a series elastic element, and a serial damping element. With this, it combines previously published effects relevant for muscular contraction, i.e. serial damping and eccentric force–velocity relation. The model is exemplarily applied to arm movements. The more realistic representation of the eccentric force–velocity relation results in human-like elbow-joint flexion. The model is provided as ready to use Matlab ® and Simulink ® code.}
+      \field{issn}{0021-9290}
+      \field{journaltitle}{Journal of Biomechanics}
+      \field{number}{6}
+      \field{title}{Hill-type muscle model with serial damping and eccentric force–velocity relation}
+      \field{volume}{47}
+      \field{year}{2014}
+      \field{pages}{1531\bibrangedash 1536}
+      \range{pages}{6}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jbiomech.2014.02.009
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0021929014001018
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0021929014001018
+      \endverb
+      \keyw{Muscle,Model,Serial damping,Eccentric contraction,Force–velocity relation,Multi-body simulation}
+    \endentry
+    \entry{Hatze1977}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9a358fd39c51be30705773f852947d72}{%
+           family={Hatze},
+           familyi={H\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9a358fd39c51be30705773f852947d72}
+      \strng{fullhash}{9a358fd39c51be30705773f852947d72}
+      \strng{bibnamehash}{9a358fd39c51be30705773f852947d72}
+      \strng{authorbibnamehash}{9a358fd39c51be30705773f852947d72}
+      \strng{authornamehash}{9a358fd39c51be30705773f852947d72}
+      \strng{authorfullhash}{9a358fd39c51be30705773f852947d72}
+      \field{labelalpha}{Hat77}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biological cybernetics}
+      \field{number}{2}
+      \field{title}{A myocybernetic control model of skeletal muscle}
+      \field{volume}{25}
+      \field{year}{1977}
+      \field{pages}{103\bibrangedash 119}
+      \range{pages}{17}
+    \endentry
+    \entry{Heine2003}{article}{}
+      \name{author}{3}{}{%
+        {{hash=42f087e97c2a36e0519d21cfa9fb9e2e}{%
+           family={Heine},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2e4eda46f9e6782bd923bb6d825a3074}{%
+           family={Manal},
+           familyi={M\bibinitperiod},
+           given={Kurt},
+           giveni={K\bibinitperiod}}}%
+        {{hash=51328c4856eff73773d05866f70f44ed}{%
+           family={Buchanan},
+           familyi={B\bibinitperiod},
+           given={Thomas\bibnamedelima S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \strng{fullhash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \strng{bibnamehash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \strng{authorbibnamehash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \strng{authornamehash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \strng{authorfullhash}{e0bc109d54989b5376ed23f5c0ec960c}
+      \field{labelalpha}{Hei03}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mechanics in Medicine and Biology}
+      \field{number}{02}
+      \field{title}{Using Hill-Type Muscle Models and EMG Data in a Forward Dynamic Analysis of Joint Moment}
+      \field{volume}{03}
+      \field{year}{2003}
+      \field{pages}{169\bibrangedash 186}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1142/S0219519403000727
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1142/S0219519403000727
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1142/S0219519403000727
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1142/S0219519403000727
+      \endverb
+    \endentry
+    \entry{Hill1938}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b579ee185d2ccf6c71471c36b124ba0a}{%
+           family={Hill},
+           familyi={H\bibinitperiod},
+           given={Archibald\bibnamedelima Vivian},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \strng{fullhash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \strng{bibnamehash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \strng{authorbibnamehash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \strng{authornamehash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \strng{authorfullhash}{b579ee185d2ccf6c71471c36b124ba0a}
+      \field{labelalpha}{Hil38}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Royal Society of London. Series B - Biological Sciences}
+      \field{number}{843}
+      \field{title}{The heat of shortening and the dynamic constants of muscle}
+      \field{volume}{126}
+      \field{year}{1938}
+      \field{pages}{136\bibrangedash 195}
+      \range{pages}{60}
+      \verb{doi}
+      \verb 10.1098/rspb.1938.0050
+      \endverb
+      \verb{eprint}
+      \verb https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.1938.0050
+      \endverb
+      \verb{urlraw}
+      \verb https://royalsocietypublishing.org/doi/abs/10.1098/rspb.1938.0050
+      \endverb
+      \verb{url}
+      \verb https://royalsocietypublishing.org/doi/abs/10.1098/rspb.1938.0050
+      \endverb
+    \endentry
+    \entry{kuss2006gaussian}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=a9a021adf74ddda71f70b0cd106db173}{%
+           family={Kuss},
+           familyi={K\bibinitperiod},
+           given={Malte},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {echnische Universit{ä}t Darmstadt Darmstadt, Germany}%
+      }
+      \strng{namehash}{a9a021adf74ddda71f70b0cd106db173}
+      \strng{fullhash}{a9a021adf74ddda71f70b0cd106db173}
+      \strng{bibnamehash}{a9a021adf74ddda71f70b0cd106db173}
+      \strng{authorbibnamehash}{a9a021adf74ddda71f70b0cd106db173}
+      \strng{authornamehash}{a9a021adf74ddda71f70b0cd106db173}
+      \strng{authorfullhash}{a9a021adf74ddda71f70b0cd106db173}
+      \field{labelalpha}{Kus06}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Gaussian process models for robust regression, classification, and reinforcement learning}
+      \field{type}{phdthesis}
+      \field{year}{2006}
+    \endentry
+    \entry{Wang2002}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9a3fa3472e998b5fa1b0b1886b7791e0}{%
+           family={{Lin Wang}},
+           familyi={L\bibinitperiod}}}%
+        {{hash=f7c2c9b4f175684e73050872ed2f933f}{%
+           family={{Buchanan}},
+           familyi={B\bibinitperiod},
+           given={T.\bibnamedelimi S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{50a66ac4376bd5a8338782802f8f9e47}
+      \strng{fullhash}{50a66ac4376bd5a8338782802f8f9e47}
+      \strng{bibnamehash}{50a66ac4376bd5a8338782802f8f9e47}
+      \strng{authorbibnamehash}{50a66ac4376bd5a8338782802f8f9e47}
+      \strng{authornamehash}{50a66ac4376bd5a8338782802f8f9e47}
+      \strng{authorfullhash}{50a66ac4376bd5a8338782802f8f9e47}
+      \field{labelalpha}{Lin02}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Neural Systems and Rehabilitation Engineering}
+      \field{number}{1}
+      \field{title}{Prediction of joint moments using a neural network model of muscle activations from EMG signals}
+      \field{volume}{10}
+      \field{year}{2002}
+      \field{pages}{30\bibrangedash 37}
+      \range{pages}{8}
+    \endentry
+    \entry{Lloyd2003}{article}{}
+      \name{author}{2}{}{%
+        {{hash=47336a0ab4d1faa95a4aeb59d39ecfe8}{%
+           family={Lloyd},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima G},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=6d5d2b03c5b62ee34d5decc375b9d910}{%
+           family={Besier},
+           familyi={B\bibinitperiod},
+           given={Thor\bibnamedelima F},
+           giveni={T\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f293cf69d209cc290a79d20dacdc129}
+      \strng{fullhash}{3f293cf69d209cc290a79d20dacdc129}
+      \strng{bibnamehash}{3f293cf69d209cc290a79d20dacdc129}
+      \strng{authorbibnamehash}{3f293cf69d209cc290a79d20dacdc129}
+      \strng{authornamehash}{3f293cf69d209cc290a79d20dacdc129}
+      \strng{authorfullhash}{3f293cf69d209cc290a79d20dacdc129}
+      \field{labelalpha}{Llo03}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper examined if an electromyography (EMG) driven musculoskeletal model of the human knee could be used to predict knee moments, calculated using inverse dynamics, across a varied range of dynamic contractile conditions. Muscle–tendon lengths and moment arms of 13 muscles crossing the knee joint were determined from joint kinematics using a three-dimensional anatomical model of the lower limb. Muscle activation was determined using a second-order discrete non-linear model using rectified and low-pass filtered EMG as input. A modified Hill-type muscle model was used to calculate individual muscle forces using activation and muscle tendon lengths as inputs. The model was calibrated to six individuals by altering a set of physiologically based parameters using mathematical optimisation to match the net flexion/extension (FE) muscle moment with those measured by inverse dynamics. The model was calibrated for each subject using 5 different tasks, including passive and active FE in an isokinetic dynamometer, running, and cutting manoeuvres recorded using three-dimensional motion analysis. Once calibrated, the model was used to predict the FE moments, estimated via inverse dynamics, from over 200 isokinetic dynamometer, running and sidestepping tasks. The inverse dynamics joint moments were predicted with an average R2 of 0.91 and mean residual error of ∼12Nm. A re-calibration of only the EMG-to-activation parameters revealed FE moments prediction across weeks of similar accuracy. Changing the muscle model to one that is more physiologically correct produced better predictions. The modelling method presented represents a good way to estimate in vivo muscle forces during movement tasks.}
+      \field{issn}{0021-9290}
+      \field{journaltitle}{Journal of Biomechanics}
+      \field{number}{6}
+      \field{title}{An EMG-driven musculoskeletal model to estimate muscle forces and knee joint moments in vivo}
+      \field{volume}{36}
+      \field{year}{2003}
+      \field{pages}{765\bibrangedash 776}
+      \range{pages}{12}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0021-9290(03)00010-1
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0021929003000101
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0021929003000101
+      \endverb
+      \keyw{EMG-driven model,Musculoskeletal model,Knee biomechanics}
+    \endentry
+    \entry{Maier2021}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d94a4e531c626bc3d5b67f710b993249}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5d17e15e5b30ce41484890214301da6d}{%
+           family={Stach},
+           familyi={S\bibinitperiod},
+           given={Marius},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
+           family={Mehl},
+           familyi={M\bibinitperiod},
+           given={Miriam},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \strng{fullhash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \strng{bibnamehash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \strng{authorbibnamehash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \strng{authornamehash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \strng{authorfullhash}{7387fd801ee60ac0f29f3700ef896c0b}
+      \field{labelalpha}{Mai21}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mechatronics and Machine Vision in Practice}
+      \field{title}{Real-Time, Dynamic Simulation of Deformable Linear Objects with Friction on a 2D Surface}
+      \field{volume}{4}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.1007/978-3-030-43703-9
+      \endverb
+    \endentry
+    \entry{Morl2012}{article}{}
+      \name{author}{5}{}{%
+        {{hash=e7bca66c7561e44ad3bec4b6876b45fc}{%
+           family={Mörl},
+           familyi={M\bibinitperiod},
+           given={Falk},
+           giveni={F\bibinitperiod}}}%
+        {{hash=3d73fca1844be34db908684a4ae3a984}{%
+           family={Siebert},
+           familyi={S\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+        {{hash=f0c28d2c4b22bef01294423ab63395f7}{%
+           family={Schmitt},
+           familyi={S\bibinitperiod},
+           given={Syn},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8b136c399b9f9b6737278da98ce2fde9}{%
+           family={Blickhan},
+           familyi={B\bibinitperiod},
+           given={Reinhard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=36e06ec0bef21ce0f1cb5421ff73bacc}{%
+           family={Günther},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f57328239373ee0719eee23b4bfd3c43}
+      \strng{fullhash}{741b19711647ca05ff942067c9a1c5e0}
+      \strng{bibnamehash}{f57328239373ee0719eee23b4bfd3c43}
+      \strng{authorbibnamehash}{f57328239373ee0719eee23b4bfd3c43}
+      \strng{authornamehash}{f57328239373ee0719eee23b4bfd3c43}
+      \strng{authorfullhash}{741b19711647ca05ff942067c9a1c5e0}
+      \field{labelalpha}{Mör12}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mechanics in Medicine and Biology}
+      \field{number}{05}
+      \field{title}{ELECTRO-MECHANICAL DELAY IN HILL-TYPE MUSCLE MODELS}
+      \field{volume}{12}
+      \field{year}{2012}
+      \field{pages}{1250085}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1142/S0219519412500856
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1142/S0219519412500856
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1142/S0219519412500856
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1142/S0219519412500856
+      \endverb
+    \endentry
+    \entry{Perry2007}{article}{}
+      \name{author}{3}{}{%
+        {{hash=07d334d7b1a801c7e04d454b175d3365}{%
+           family={{Perry}},
+           familyi={P\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=46c8507498dbf4e60e8651109605f866}{%
+           family={{Rosen}},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=812be23995ad30db7d65d1b47dee6a1c}{%
+           family={{Burns}},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \strng{fullhash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \strng{bibnamehash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \strng{authorbibnamehash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \strng{authornamehash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \strng{authorfullhash}{2f2412e08162655ac7ac99b824dc6a5f}
+      \field{labelalpha}{Per07}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE/ASME Transactions on Mechatronics}
+      \field{number}{4}
+      \field{title}{Upper-Limb Powered Exoskeleton Design}
+      \field{volume}{12}
+      \field{year}{2007}
+      \field{pages}{408\bibrangedash 417}
+      \range{pages}{10}
+    \endentry
+    \entry{Pontonnier2009}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3b5d2bd0771409c3c4c42988f391596d}{%
+           family={Pontonnier},
+           familyi={P\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2fc44929bddf3e072deec9b4063bb274}{%
+           family={Dumont},
+           familyi={D\bibinitperiod},
+           given={Georges},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{1256b82dffe9568a2cb50b765ed76606}
+      \strng{fullhash}{1256b82dffe9568a2cb50b765ed76606}
+      \strng{bibnamehash}{1256b82dffe9568a2cb50b765ed76606}
+      \strng{authorbibnamehash}{1256b82dffe9568a2cb50b765ed76606}
+      \strng{authornamehash}{1256b82dffe9568a2cb50b765ed76606}
+      \strng{authorfullhash}{1256b82dffe9568a2cb50b765ed76606}
+      \field{labelalpha}{Pon09}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The goal of this study is the proposition of an inverse dynamics method using an optimization technique in order to obtain muscles from motion capture data. First, we apply an inverse kinematics algorithm to obtain joint angles from markers positions; next we compute an inverse dynamics algorithm to obtain joint torques with a generic dynamical model of human arm designed by using Matlab-Simulink Simmechanics. Those torques are used in an optimization algorithm under non-linear constraints in order to compute muscle forces. The main part of the article presents the contributions of these constraints to build an adequate cost function. We propose to improve the method with the addition of a unilateral constraint that deals with the co-contraction of the muscle. We discuss results that emphasize the interest of taking the co-contraction into account by presenting a compared analysis for an extension of the elbow. Then we focus on a solution based on interpolation into a pre-computed database. This proposition aims at improving the model to meet the real-time constraint imposed for use in virtual reality applications.}
+      \field{issn}{1955-2505}
+      \field{journaltitle}{International Journal on Interactive Design and Manufacturing (IJIDeM)}
+      \field{month}{9}
+      \field{number}{4}
+      \field{title}{Inverse dynamics method using optimization techniques for the estimation of muscles forces involved in the elbow motion}
+      \field{volume}{3}
+      \field{year}{2009}
+      \field{pages}{227}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/s12008-009-0078-4
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s12008-009-0078-4
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s12008-009-0078-4
+      \endverb
+    \endentry
+    \entry{Rasmussen2005}{book}{}
+      \name{author}{2}{}{%
+        {{hash=d4a4e699c24e75fc39a3a354584c6dbf}{%
+           family={Rasmussen},
+           familyi={R\bibinitperiod},
+           given={Carl\bibnamedelima Edward},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=18d5a61e673f86e548c1ea8a7f124c00}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Christopher\bibnamedelimb K.\bibnamedelimi I.},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{580284ca6658c9a6ec11bab830a19345}
+      \strng{fullhash}{580284ca6658c9a6ec11bab830a19345}
+      \strng{bibnamehash}{580284ca6658c9a6ec11bab830a19345}
+      \strng{authorbibnamehash}{580284ca6658c9a6ec11bab830a19345}
+      \strng{authornamehash}{580284ca6658c9a6ec11bab830a19345}
+      \strng{authorfullhash}{580284ca6658c9a6ec11bab830a19345}
+      \field{labelalpha}{Ras05}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{026218253X}
+      \field{title}{Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)}
+      \field{year}{2005}
+    \endentry
+    \entry{Rosen2001}{article}{}
+      \name{author}{4}{}{%
+        {{hash=46c8507498dbf4e60e8651109605f866}{%
+           family={{Rosen}},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=159231a4542d0f43c8f365d4e9e8709c}{%
+           family={{Brand}},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7021e85efc6e807bf49632a9280bee5f}{%
+           family={{Fuchs}},
+           familyi={F\bibinitperiod},
+           given={M.\bibnamedelimi B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=4296ed76fbef449e3ff559f843e25f85}{%
+           family={{Arcan}},
+           familyi={A\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0274c25d9176b5ba50771fba84fa5592}
+      \strng{fullhash}{3c2927f1888e55c52523df5dc9bff3da}
+      \strng{bibnamehash}{0274c25d9176b5ba50771fba84fa5592}
+      \strng{authorbibnamehash}{0274c25d9176b5ba50771fba84fa5592}
+      \strng{authornamehash}{0274c25d9176b5ba50771fba84fa5592}
+      \strng{authorfullhash}{3c2927f1888e55c52523df5dc9bff3da}
+      \field{labelalpha}{Ros01}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans}
+      \field{number}{3}
+      \field{title}{A myosignal-based powered exoskeleton system}
+      \field{volume}{31}
+      \field{year}{2001}
+      \field{pages}{210\bibrangedash 222}
+      \range{pages}{13}
+    \endentry
+    \entry{Rosen1999}{article}{}
+      \name{author}{3}{}{%
+        {{hash=e00223fa16bcfecc7ce4b1ad16296102}{%
+           family={Rosen},
+           familyi={R\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3e3f857c5fc04150d6fa633cda8fbe78}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Moshe\bibnamedelima B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=9df0659c20ee5247cd73619976886422}{%
+           family={Arcan},
+           familyi={A\bibinitperiod},
+           given={Mircea},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e571f89a17e5df16a5347e65f8c8251d}
+      \strng{fullhash}{e571f89a17e5df16a5347e65f8c8251d}
+      \strng{bibnamehash}{e571f89a17e5df16a5347e65f8c8251d}
+      \strng{authorbibnamehash}{e571f89a17e5df16a5347e65f8c8251d}
+      \strng{authornamehash}{e571f89a17e5df16a5347e65f8c8251d}
+      \strng{authorfullhash}{e571f89a17e5df16a5347e65f8c8251d}
+      \field{labelalpha}{Ros99}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Muscle models are the essential components of any musculoskeletal simulation. In addition, muscle models which are incorporated in neural-based prosthetic and orthotic devices may significantly improve their performance. The aim of the study was to compare the performances of two types of muscle models in terms of predicting the moments developed at the human elbow joint complex based on joint kinematics and neuromuscular activity. The performance evaluation of the muscle models was required to implement them in a powered myosignal-driven exoskeleton (orthotic device). The experimental setup included a passive exoskeleton capable of measuring the joint kinematics and dynamics in addition to the muscle myosignal activity (EMG). Two types of models were developed and analyzed: (i) a Hill-based model and (ii) a neural network. The task, which was selected for evaluating the muscle models performance, was the flexion–extension movement of the forearm with a hand-held weight. For this task the muscle model inputs were the normalized neural activation levels of the four main flexor–extensor muscles of the elbow joint, and the elbow joint angle and angular velocity. Using this inputs, the muscle model predicted the moment applied on the elbow joint during the movement. Results indicated a good performance of the Hill model, although the neural network predictions appeared to be superior. Relative advantages and shortcomings of both approaches were presented and discussed.}
+      \field{issn}{0010-4809}
+      \field{journaltitle}{Computers and Biomedical Research}
+      \field{number}{5}
+      \field{title}{Performances of Hill-Type and Neural Network Muscle Models—Toward a Myosignal-Based Exoskeleton}
+      \field{volume}{32}
+      \field{year}{1999}
+      \field{pages}{415\bibrangedash 439}
+      \range{pages}{25}
+      \verb{doi}
+      \verb https://doi.org/10.1006/cbmr.1999.1524
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0010480999915240
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0010480999915240
+      \endverb
+    \endentry
+    \entry{Sartori2012}{article}{}
+      \name{author}{4}{}{%
+        {{hash=f60aac065f9d55f44872fb3ce54ad456}{%
+           family={Sartori},
+           familyi={S\bibinitperiod},
+           given={Massimo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ee506bf96e81dd1cd67bf98a1bd6fca0}{%
+           family={Reggiani},
+           familyi={R\bibinitperiod},
+           given={Monica},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6d54cc7049c27dd477c5b429e76778ea}{%
+           family={Farina},
+           familyi={F\bibinitperiod},
+           given={Dario},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5aba0090d065d0a6a0e574ae1cebfbb5}{%
+           family={Lloyd},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{d8bae14c712a99c8fb33e2780fc20dc9}
+      \strng{fullhash}{2225e567bd3e96e88487fa7cccf3cee6}
+      \strng{bibnamehash}{d8bae14c712a99c8fb33e2780fc20dc9}
+      \strng{authorbibnamehash}{d8bae14c712a99c8fb33e2780fc20dc9}
+      \strng{authornamehash}{d8bae14c712a99c8fb33e2780fc20dc9}
+      \strng{authorfullhash}{2225e567bd3e96e88487fa7cccf3cee6}
+      \field{labelalpha}{Sar12}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This work examined if currently available electromyography (EMG) driven models, that are calibrated to satisfy joint moments about one single degree of freedom (DOF), could provide the same musculotendon unit (MTU) force solution, when driven by the same input data, but calibrated about a different DOF. We then developed a novel and comprehensive EMG-driven model of the human lower extremity that used EMG signals from 16 muscle groups to drive 34 MTUs and satisfy the resulting joint moments simultaneously produced about four DOFs during different motor tasks. This also led to the development of a calibration procedure that allowed identifying a set of subject-specific parameters that ensured physiological behavior for the 34 MTUs. Results showed that currently available single-DOF models did not provide the same unique MTU force solution for the same input data. On the other hand, the MTU force solution predicted by our proposed multi-DOF model satisfied joint moments about multiple DOFs without loss of accuracy compared to single-DOF models corresponding to each of the four DOFs. The predicted MTU force solution was (1) a function of experimentally measured EMGs, (2) the result of physiological MTU excitation, (3) reflected different MTU contraction strategies associated to different motor tasks, (4) coordinated a greater number of MTUs with respect to currently available single-DOF models, and (5) was not specific to an individual DOF dynamics. Therefore, our proposed methodology has the potential of producing a more dynamically consistent and generalizable MTU force solution than was possible using single-DOF EMG-driven models. This will help better address the important scientific questions previously approached using single-DOF EMG-driven modeling. Furthermore, it might have applications in the development of human-machine interfaces for assistive devices.}
+      \field{journaltitle}{PLOS ONE}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{EMG-Driven Forward-Dynamic Estimation of Muscle Force and Joint Moment about Multiple Degrees of Freedom in the Human Lower Extremity}
+      \field{volume}{7}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 11}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0052618
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0052618
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0052618
+      \endverb
+    \endentry
+    \entry{Siebert2008}{article}{}
+      \name{author}{5}{}{%
+        {{hash=3d73fca1844be34db908684a4ae3a984}{%
+           family={Siebert},
+           familyi={S\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7f4984c0bd2c55b0979014f131fc2dfc}{%
+           family={Rode},
+           familyi={R\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9c3d7e6b20124394ebb1215dff070bd0}{%
+           family={Herzog},
+           familyi={H\bibinitperiod},
+           given={Walter},
+           giveni={W\bibinitperiod}}}%
+        {{hash=f87c7c21edd2d41fb67189c5272d0b33}{%
+           family={Till},
+           familyi={T\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod}}}%
+        {{hash=8b136c399b9f9b6737278da98ce2fde9}{%
+           family={Blickhan},
+           familyi={B\bibinitperiod},
+           given={Reinhard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{a45c7a20243ba85548c949340668568a}
+      \strng{fullhash}{d3f0c822c9834a746bce260e0f0ebea8}
+      \strng{bibnamehash}{a45c7a20243ba85548c949340668568a}
+      \strng{authorbibnamehash}{a45c7a20243ba85548c949340668568a}
+      \strng{authornamehash}{a45c7a20243ba85548c949340668568a}
+      \strng{authorfullhash}{d3f0c822c9834a746bce260e0f0ebea8}
+      \field{labelalpha}{Sie08}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Compared to complex structural Huxley-type models, Hill-type models phenomenologically describe muscle contraction using only few state variables. The Hill-type models dominate in the ever expanding field of musculoskeletal simulations for simplicity and low computational cost. Reasonable parameters are required to gain insight into mechanics of movement. The two most common Hill-type muscle models used contain three components. The series elastic component is connected in series to the contractile component. A parallel elastic component is either connected in parallel to both the contractile and the series elastic component (model [CC+SEC]), or is connected in parallel only with the contractile component (model [CC]). As soon as at least one of the components exhibits substantial nonlinearities, as, e.g., the contractile component by the ability to turn on and off, the two models are mechanically different. We tested which model ([CC+SEC] or [CC]) represents the cat soleus better. Ramp experiments consisting of an isometric and an isokinetic part were performed with an in situ cat soleus preparation using supramaximal nerve stimulation. Hill-type models containing force--length and force--velocity relationship, excitation--contraction coupling and series and parallel elastic force--elongation relations were fitted to the data. To test which model might represent the muscle better, the obtained parameters were compared with experimentally determined parameters. Determined in situations with negligible passive force, the force--velocity relation and the series elastic component relation are independent of the chosen model. In contrast to model [CC+SEC], these relations predicted by model [CC] were in accordance with experimental relations. In conclusion model [CC] seemed to better represent the cat soleus contraction dynamics and should be preferred in the nonlinear regression of muscle parameters and in musculoskeletal modeling.}
+      \field{issn}{1432-0770}
+      \field{journaltitle}{Biological Cybernetics}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Nonlinearities make a difference: comparison of two common Hill-type models with real muscle}
+      \field{volume}{98}
+      \field{year}{2008}
+      \field{pages}{133\bibrangedash 143}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1007/s00422-007-0197-6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s00422-007-0197-6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s00422-007-0197-6
+      \endverb
+    \endentry
+    \entry{Song2005}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8b7c35eeb36a917f138e337e3d32b927}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9bf554e3e6253a0d6b616d9c14ef576f}{%
+           family={Tong},
+           familyi={T\bibinitperiod},
+           given={K.\bibnamedelimi Y.},
+           giveni={K\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{47143aeac75c639f07c4c78c464d7d5d}
+      \strng{fullhash}{47143aeac75c639f07c4c78c464d7d5d}
+      \strng{bibnamehash}{47143aeac75c639f07c4c78c464d7d5d}
+      \strng{authorbibnamehash}{47143aeac75c639f07c4c78c464d7d5d}
+      \strng{authornamehash}{47143aeac75c639f07c4c78c464d7d5d}
+      \strng{authorfullhash}{47143aeac75c639f07c4c78c464d7d5d}
+      \field{labelalpha}{Son05}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Muscle modelling is an important component of body segmental motion analysis. Although many studies had focused on static conditions the relationship between electromyographic (EMG) signals and joint torque under voluntary dynamic situations has not been well investigated. The aim of this study was to investigate the performance of a recurrent artificial neural network (RANN) under voluntary dynamic situations for torque estimation of the elbow complex. EMG signals together with kinematic data, which included angle and angular velocity, were used as the inputs to estimate the expected torque during movement. Moreover, the roles of angle and angular velocity in the accuracy of prediction were investigated, and two models were compared. One model used EMG and joint kinematic inputs and the other model used only EMG inputs without kinematic data. Six healthy subjects were recruited, and two average angular velocities (60o s−1 and 90o s−1) with three different loads (0 kg, 1 kg, 2 kg) in the hand position were selected to train and test the RANN between 90o elbow flexion and full elbow extension (0o). After training, the root mean squared error (RMSE) between expected torque and predicted torque of the model, with EMG and joint kinematic inputs in the training data set and the test data set were 0.17{\textpm}0.03 Nm and 0.35{\textpm}0.06 Nm, respectively. The RMSE values between expected torque and predicted torque of the model, with only EMG inputs in the training data set and the test set, were 0.57{\textpm}0.07 Nm and 0.73{\textpm}0.11 Nm, respectively. The results showed that EMG signals together with kinematic data gave significantly better performance in the joint torque prediction; joint angle and angular velocity provided important information in the estimation of joint torque in voluntary dynamic movement.}
+      \field{issn}{1741-0444}
+      \field{journaltitle}{Medical and Biological Engineering and Computing}
+      \field{month}{8}
+      \field{number}{4}
+      \field{title}{Using recurrent artificial neural network model to estimate voluntary elbow torque in dynamic situations}
+      \field{volume}{43}
+      \field{year}{2005}
+      \field{pages}{473\bibrangedash 480}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/BF02344728
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF02344728
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF02344728
+      \endverb
+    \endentry
+    \entry{Till2008}{article}{}
+      \name{author}{4}{}{%
+        {{hash=f87c7c21edd2d41fb67189c5272d0b33}{%
+           family={Till},
+           familyi={T\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod}}}%
+        {{hash=3d73fca1844be34db908684a4ae3a984}{%
+           family={Siebert},
+           familyi={S\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7f4984c0bd2c55b0979014f131fc2dfc}{%
+           family={Rode},
+           familyi={R\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8b136c399b9f9b6737278da98ce2fde9}{%
+           family={Blickhan},
+           familyi={B\bibinitperiod},
+           given={Reinhard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{289075a14e53757bc19afe7d843f7c24}
+      \strng{fullhash}{c9f1ae896d65961c9cc1fd0de47b0df1}
+      \strng{bibnamehash}{289075a14e53757bc19afe7d843f7c24}
+      \strng{authorbibnamehash}{289075a14e53757bc19afe7d843f7c24}
+      \strng{authornamehash}{289075a14e53757bc19afe7d843f7c24}
+      \strng{authorfullhash}{c9f1ae896d65961c9cc1fd0de47b0df1}
+      \field{labelalpha}{Til08}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Tension in eccentric contractions of skeletal muscles is expressed with a Hill-type model with a term containing a tension–velocity relation and a second term which is supposed to account for effects of contraction history. Based on experimental data (rat gastrocnemius medialis) a method is derived to uniquely characterize the tension–velocity relation in the first term. Also, a description of the second term is derived and its single additional parameter is determined. The model is tested in simulations. The experimental data used to characterize the model indicates that the slope of tension in the second phase of eccentric contractions is independent of muscle length.}
+      \field{issn}{0022-5193}
+      \field{journaltitle}{Journal of Theoretical Biology}
+      \field{number}{2}
+      \field{title}{Characterization of isovelocity extension of activated muscle: A Hill-type model for eccentric contractions and a method for parameter determination}
+      \field{volume}{255}
+      \field{year}{2008}
+      \field{pages}{176\bibrangedash 187}
+      \range{pages}{12}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jtbi.2008.08.009
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0022519308004244
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0022519308004244
+      \endverb
+      \keyw{Gastrocnemius medialis,Eccentric contraction,Muscle model,Parameter determination,Simulation}
+    \endentry
+    \entry{Campen2014}{article}{}
+      \name{author}{5}{}{%
+        {{hash=4eca9531282a97ef488c0c8b0855bd68}{%
+           family={Van\bibnamedelima Campen},
+           familyi={V\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Anke},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9308a79a031e501e2cc0205a403a882b}{%
+           family={Pipeleers},
+           familyi={P\bibinitperiod},
+           given={Goele},
+           giveni={G\bibinitperiod}}}%
+        {{hash=171addd085809fc5b5caf6cf5d5cd007}{%
+           family={De\bibnamedelima Groote},
+           familyi={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={Friedl},
+           giveni={F\bibinitperiod}}}%
+        {{hash=dee59e4a4ddc7d93dff1033f75fb1bd4}{%
+           family={Jonkers},
+           familyi={J\bibinitperiod},
+           given={Ilse},
+           giveni={I\bibinitperiod}}}%
+        {{hash=4a7923b7454088a30f379e9734c6a46a}{%
+           family={De\bibnamedelima Schutter},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Joris},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdb5d8d246d2ac7d4f6fa0d241d4ab20}
+      \strng{fullhash}{1ad233a374dc274ae50e296e77308567}
+      \strng{bibnamehash}{bdb5d8d246d2ac7d4f6fa0d241d4ab20}
+      \strng{authorbibnamehash}{bdb5d8d246d2ac7d4f6fa0d241d4ab20}
+      \strng{authornamehash}{bdb5d8d246d2ac7d4f6fa0d241d4ab20}
+      \strng{authorfullhash}{1ad233a374dc274ae50e296e77308567}
+      \field{labelalpha}{Van14}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{SUMMARYA new method for the estimation of subject-specific muscle–tendon parameters of the knee actuators based on dynamometry experiments is presented. The algorithm aims at estimating the tendon slack length and the optimal muscle fiber length by minimizing the difference between experimentally reproduced and model-based joint moments. The key innovative features are as follows: (i) the inclusion of a priori physiological knowledge to define a physiologically feasible set, the hot start for the optimization, and constraints for the optimization and (ii) the introduction of a new (affine) transformation of the muscle–tendon parameters, which greatly improves the numerical condition of the optimization.The influence of the initial guess and of measurement noise was studied in a simulation environment, and the performance was compared with that of the method presented earlier by Garner and Pandy for the upper limb. The tendon slack length was estimated for 97.5/63\% (extensors/flexors) of all initial guesses within 2\% of the ground truth. The optimal fiber length was estimated for 89/90\% (extensors/flexors) of all initial guesses within 2\% of the ground truth. When 10 Nm measurement noise was added, the mean value of the estimated tendon slack length deviated at most 1.9/1.6\% (extensors/flexors) from the ground truth whereas the standard deviations were at most 5.1/3.9\%. The mean value of the estimated optimal fiber length deviated at most 4.3/3.0\% (extensors/flexors) from the ground truth whereas the standard deviations were at most 10.2/15.5\%. In comparison, mean values resulting from the method of Garner and Pandy deviated up to 181\% ( ± 123\%) and 119\% ( ± 30\%) from the ground truth for, respectively, optimal fiber length and tendon slack length of rectus femoris.We concluded that the presented method had a low dependency on the initial guess and outperformed the method of Garner and Pandy in terms of accuracy by at least one order of magnitude when parameters were estimated from noisy data. The improvements open new perspectives for subject-specific modelling of muscles and tendons, which is beneficial for the accuracy of human motion simulations. Copyright © 2014 John Wiley \& Sons, Ltd.}
+      \field{journaltitle}{International Journal for Numerical Methods in Biomedical Engineering}
+      \field{number}{10}
+      \field{title}{A new method for estimating subject-specific muscle–tendon parameters of the knee joint actuators: a simulation study}
+      \field{volume}{30}
+      \field{year}{2014}
+      \field{pages}{969\bibrangedash 987}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1002/cnm.2639
+      \endverb
+      \verb{eprint}
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/cnm.2639
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/cnm.2639
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/cnm.2639
+      \endverb
+      \keyw{muscle-tendon parameters,subject specific,estimation,motion simulation,optimization}
+    \endentry
+    \entry{Venture2005}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=a581a3ad6c633e83cb8d63d79c1775ca}{%
+           family={{Venture}},
+           familyi={V\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ed8a146f14ad89a0c217e6eaf99baa8}{%
+           family={{Yamane}},
+           familyi={Y\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8d28d0788e60d22b7c8ebe9c89507ea5}{%
+           family={{Nakamura}},
+           familyi={N\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{6b1db1af1068410071bbb9328439f991}
+      \strng{fullhash}{6b1db1af1068410071bbb9328439f991}
+      \strng{bibnamehash}{6b1db1af1068410071bbb9328439f991}
+      \strng{authorbibnamehash}{6b1db1af1068410071bbb9328439f991}
+      \strng{authornamehash}{6b1db1af1068410071bbb9328439f991}
+      \strng{authorfullhash}{6b1db1af1068410071bbb9328439f991}
+      \field{labelalpha}{Ven05}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{5th IEEE-RAS International Conference on Humanoid Robots, 2005.}
+      \field{title}{Identifying musculo-tendon parameters of human body based on the musculo-skeletal dynamics computation and Hill-Stroeve muscle model}
+      \field{year}{2005}
+      \field{pages}{351\bibrangedash 356}
+      \range{pages}{6}
+    \endentry
+    \entry{Wagner2005}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6877f3f678da831be88b6b78341b2385}{%
+           family={Wagner},
+           familyi={W\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=15b479b19c1d10cf23d2a49d076dc0b2}{%
+           family={Siebert},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=507fff2009c20c0dcae82eab02a758c8}{%
+           family={Ellerby},
+           familyi={E\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=8b8dbbfcf1ad091c7fe847294e591605}{%
+           family={Marsh},
+           familyi={M\bibinitperiod},
+           given={R.\bibnamedelimi L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=edbfa6c31f665ed9da38fa148f2e4e8b}{%
+           family={Blickhan},
+           familyi={B\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7a02e2d51db3caab9c3706db85e2c65}
+      \strng{fullhash}{08a180795c2da2cfc5506dd3c4637e9a}
+      \strng{bibnamehash}{d7a02e2d51db3caab9c3706db85e2c65}
+      \strng{authorbibnamehash}{d7a02e2d51db3caab9c3706db85e2c65}
+      \strng{authornamehash}{d7a02e2d51db3caab9c3706db85e2c65}
+      \strng{authorfullhash}{08a180795c2da2cfc5506dd3c4637e9a}
+      \field{labelalpha}{Wag05}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Estimation of muscle parameters specifying force--length and force--velocity behavior requires in general a large number of sophisticated experiments often including a combination of isometric, isokinetic, isotonic, and quick-release experiments. This study validates a simpler method (ISOFIT) to determine muscle properties by fitting a Hill-type muscle model to a set of isovelocity data. Muscle properties resulting from the ISOFIT method agreed well with muscle properties determined separately in in vitro measurements using frog semitendinosus muscles. The force--length curve was described well by the results of the model. The force--velocity curve resulting from the model coincided with the experimentally determined curve above approximately 20{\%} of maximum isometric force (correlation coefficient R>0.99). At lower forces and thus higher velocities the predicted curve underestimated velocity. The stiffness of the series elastic component determined with direct experiments was approximately 10{\%} lower than that determined by the ISOFIT method. Use of the ISOFIT method can decrease experimental time up to 80{\%} and reduce potential changes in muscle parameters due to fatigue.}
+      \field{issn}{1617-7940}
+      \field{journaltitle}{Biomechanics and Modeling in Mechanobiology}
+      \field{month}{8}
+      \field{number}{1}
+      \field{title}{ISOFIT: a model-based method to measure muscle--tendon properties simultaneously}
+      \field{volume}{4}
+      \field{year}{2005}
+      \field{pages}{10\bibrangedash 19}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/s10237-005-0068-9
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10237-005-0068-9
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10237-005-0068-9
+      \endverb
+    \endentry
+    \entry{summerschool2019}{article}{}
+      \name{author}{15}{}{%
+        {{hash=9077d0e6524392339abc5cb79a6a1313}{%
+           family={Walter},
+           familyi={W\bibinitperiod},
+           given={J.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=f660b31d5778d3ecbd2d343222f73adb}{%
+           family={Saini},
+           familyi={S\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=96d41526049a332cc65cea04b7497151}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=0d00f40696f2c714e4f1ea0066520ca5}{%
+           family={Mostashiri},
+           familyi={M\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=7969ceba1fb3522bc418b7c3b463febe}{%
+           family={Aguayo},
+           familyi={A\bibinitperiod},
+           given={J.\bibnamedelimi L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=4d60fb0c90a1d1d492a1a9f43dcfe28e}{%
+           family={Zarshenas},
+           familyi={Z\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=85c2c63529e8a4a4261d9e3463242e92}{%
+           family={Hinze},
+           familyi={H\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=70463c1e83c8532d6ea27e2607d8ef20}{%
+           family={Shuva},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=97f60bf4da34a8e87b9c540fff2960c5}{%
+           family={Köhler},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c84d74cf7ca2236489d8199c8cbb4080}{%
+           family={Sahrmann},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=50c758db2e0828d10613758e7d382a42}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={C.-M.},
+           giveni={C\bibinithyphendelim M\bibinitperiod}}}%
+        {{hash=39e5bd8719d1af61eb8834764746b698}{%
+           family={Csiszar},
+           familyi={C\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b4c500832fe2a173c2c459bbeee822bb}{%
+           family={Galliani},
+           familyi={G\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a87c3eeef8e92c9b916fc945cd57bb1b}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={L.\bibnamedelimi K.},
+           giveni={L\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=f73ca9484f92b6193978a31bd9778ce5}{%
+           family={Röhrle},
+           familyi={R\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{db2950628e193a616a757dbb0ac36084}
+      \strng{fullhash}{0977604d80f153e8ecd3b719f643575e}
+      \strng{bibnamehash}{db2950628e193a616a757dbb0ac36084}
+      \strng{authorbibnamehash}{db2950628e193a616a757dbb0ac36084}
+      \strng{authornamehash}{db2950628e193a616a757dbb0ac36084}
+      \strng{authorfullhash}{0977604d80f153e8ecd3b719f643575e}
+      \field{labelalpha}{Wal20}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{42nd Annual International Conferences of the IEEE Engineering in Medicine and Biology Society}
+      \field{title}{Comparative Study of a Biomechanical Model based and Black-box Approach for Subject-Specific Movement Prediction}
+      \field{year}{2020}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
