@@ -536,6 +536,84 @@
       \verb https://royalsocietypublishing.org/doi/abs/10.1098/rspb.1938.0050
       \endverb
     \endentry
+    \entry{Krebs2002}{article}{}
+      \name{author}{8}{}{%
+        {{hash=2bee7607f585eebd16902075d9b4d532}{%
+           family={Krebs},
+           familyi={K\bibinitperiod},
+           given={H.\bibnamedelimi I.},
+           giveni={H\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=f99877523b2a95aafbb3bd14bf9f5c51}{%
+           family={Volpe},
+           familyi={V\bibinitperiod},
+           given={B.T.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fb7495fe722df4618bb1c1cae9b5afb2}{%
+           family={Ferraro},
+           familyi={F\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=65cace5fe541acab03c96c96576ced0a}{%
+           family={Fasoli},
+           familyi={F\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e193fca3d08992144bed361cce4a726d}{%
+           family={Palazzolo},
+           familyi={P\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ebcaa1421a602b57c186a4ec95d07a56}{%
+           family={Rohrer},
+           familyi={R\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=453e7e8ac3be59c0134cddb4fee909cc}{%
+           family={Edelstein},
+           familyi={E\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=65dc9e87f56081e926869fca20f9ffdf}{%
+           family={Hogan},
+           familyi={H\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor & Francis}%
+      }
+      \strng{namehash}{4bec48abdb36a3b7b57955b1e0aa828a}
+      \strng{fullhash}{484e61d2bd6fafa947cfbcdc95ab4a15}
+      \strng{bibnamehash}{4bec48abdb36a3b7b57955b1e0aa828a}
+      \strng{authorbibnamehash}{4bec48abdb36a3b7b57955b1e0aa828a}
+      \strng{authornamehash}{4bec48abdb36a3b7b57955b1e0aa828a}
+      \strng{authorfullhash}{484e61d2bd6fafa947cfbcdc95ab4a15}
+      \field{labelalpha}{Kre02}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Topics in Stroke Rehabilitation}
+      \field{note}{PMID: 14523730}
+      \field{number}{4}
+      \field{title}{Robot-Aided Neurorehabilitation: From Evidence-Based to Science-Based Rehabilitation}
+      \field{volume}{8}
+      \field{year}{2002}
+      \field{pages}{54\bibrangedash 70}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1310/6177-QDJJ-56DU-0NW0
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1310/6177-QDJJ-56DU-0NW0
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1310/6177-QDJJ-56DU-0NW0
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1310/6177-QDJJ-56DU-0NW0
+      \endverb
+    \endentry
     \entry{kuss2006gaussian}{thesis}{}
       \name{author}{1}{}{%
         {{hash=a9a021adf74ddda71f70b0cd106db173}{%
@@ -635,43 +713,6 @@
       \verb http://www.sciencedirect.com/science/article/pii/S0021929003000101
       \endverb
       \keyw{EMG-driven model,Musculoskeletal model,Knee biomechanics}
-    \endentry
-    \entry{Maier2021}{article}{}
-      \name{author}{3}{}{%
-        {{hash=d94a4e531c626bc3d5b67f710b993249}{%
-           family={Maier},
-           familyi={M\bibinitperiod},
-           given={Benjamin},
-           giveni={B\bibinitperiod}}}%
-        {{hash=5d17e15e5b30ce41484890214301da6d}{%
-           family={Stach},
-           familyi={S\bibinitperiod},
-           given={Marius},
-           giveni={M\bibinitperiod}}}%
-        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
-           family={Mehl},
-           familyi={M\bibinitperiod},
-           given={Miriam},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \strng{fullhash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \strng{bibnamehash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \strng{authorbibnamehash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \strng{authornamehash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \strng{authorfullhash}{7387fd801ee60ac0f29f3700ef896c0b}
-      \field{labelalpha}{Mai21}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Mechatronics and Machine Vision in Practice}
-      \field{title}{Real-Time, Dynamic Simulation of Deformable Linear Objects with Friction on a 2D Surface}
-      \field{volume}{4}
-      \field{year}{2021}
-      \verb{doi}
-      \verb 10.1007/978-3-030-43703-9
-      \endverb
     \endentry
     \entry{Morl2012}{article}{}
       \name{author}{5}{}{%
@@ -1394,6 +1435,72 @@
       \field{journaltitle}{42nd Annual International Conferences of the IEEE Engineering in Medicine and Biology Society}
       \field{title}{Comparative Study of a Biomechanical Model based and Black-box Approach for Subject-Specific Movement Prediction}
       \field{year}{2020}
+    \endentry
+    \entry{Zhang2018}{article}{}
+      \name{author}{6}{}{%
+        {{hash=accfaf086a407bfb746d7875478d9130}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Kai},
+           giveni={K\bibinitperiod}}}%
+        {{hash=9f462aeae7b81268ff85ee1b72f113de}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xiaofeng},
+           giveni={X\bibinitperiod}}}%
+        {{hash=0138deaf332692ced30d823b9cebc488}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Fei},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b95e5bad89b71020a1327170e1f7298a}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Haili},
+           giveni={H\bibinitperiod}}}%
+        {{hash=49a19e08791a3dc09c932ff975949361}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=317b70d84219558790489842e720c490}{%
+           family={Wen},
+           familyi={W\bibinitperiod},
+           given={Weina},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Hindawi}%
+      }
+      \strng{namehash}{f84f8a717f92d391f50ada63543df446}
+      \strng{fullhash}{b26ff847a7e577b59263b190acc9f271}
+      \strng{bibnamehash}{f84f8a717f92d391f50ada63543df446}
+      \strng{authorbibnamehash}{f84f8a717f92d391f50ada63543df446}
+      \strng{authornamehash}{f84f8a717f92d391f50ada63543df446}
+      \strng{authorfullhash}{b26ff847a7e577b59263b190acc9f271}
+      \field{labelalpha}{Zha18}
+      \field{sortinit}{Z}
+      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Neurological impairments such as stroke cause damage to the functional mobility of survivors and affect their ability to perform activities of daily living. Recently, robotic treatment for upper limb stroke rehabilitation has received significant attention because it can provide high-intensity and repetitive movement therapy. In this review, the current status of upper limb rehabilitation robots is explored. Firstly, an overview of mechanical design of robotics for upper-limb rehabilitation and clinical effects of part robots are provided. Then, the comparisons of human-machine interactions, control strategies, driving modes, and training modes are described. Finally, the development and the possible future directions of the upper limb rehabilitation robot are discussed.}
+      \field{issn}{0953-4180}
+      \field{journaltitle}{Behavioural Neurology}
+      \field{month}{12}
+      \field{title}{System Framework of Robotics in Upper Limb Rehabilitation on Poststroke Motor Recovery}
+      \field{volume}{2018}
+      \field{year}{2018}
+      \field{pages}{6737056}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1155/2018/6737056
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1155/2018/6737056
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1155/2018/6737056
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

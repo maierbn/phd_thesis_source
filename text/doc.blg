@@ -1,29 +1,31 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[33] biber:313> INFO - === Fr Jul 31, 2020, 00:52:37
-[52] Biber.pm:371> INFO - Reading 'doc.bcf'
-[112] Biber.pm:857> INFO - Found 29 citekeys in bib section 0
-[125] Biber.pm:3981> INFO - Processing section 0
-[136] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[152] bibtex.pm:1468> INFO - LaTeX decoding ...
-[450] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[507] Utils.pm:169> WARN - month field 'Aug' in entry 'Song2005' is not an integer - this will probably not sort properly.
-[567] Utils.pm:169> WARN - month field 'Sep' in entry 'Pontonnier2009' is not an integer - this will probably not sort properly.
-[607] Utils.pm:169> WARN - month field 'Feb' in entry 'Garner2003' is not an integer - this will probably not sort properly.
-[616] Utils.pm:169> WARN - month field 'Aug' in entry 'Wagner2005' is not an integer - this will probably not sort properly.
-[711] Utils.pm:169> WARN - month field 'Feb' in entry 'Siebert2008' is not an integer - this will probably not sort properly.
-[725] Utils.pm:169> WARN - month field 'Jul' in entry 'Gunther2007' is not an integer - this will probably not sort properly.
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1274, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1313, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1366, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1471, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1498, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1530, warning: 3 characters of junk seen at toplevel
-[747] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KcSXijsDKs/references.bib_15007.utf8, line 1565, warning: 3 characters of junk seen at toplevel
-[787] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[787] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[787] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[788] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[825] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[840] bbl.pm:720> INFO - Output to doc.bbl
-[841] Biber.pm:110> INFO - WARNINGS: 13
+[27] biber:313> INFO - === Mi Aug 19, 2020, 18:39:59
+[47] Biber.pm:371> INFO - Reading 'doc.bcf'
+[107] Biber.pm:857> INFO - Found 30 citekeys in bib section 0
+[119] Biber.pm:3981> INFO - Processing section 0
+[131] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[143] bibtex.pm:1468> INFO - LaTeX decoding ...
+[332] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[366] Utils.pm:169> WARN - month field 'Dec' in entry 'Zhang2018' is not an integer - this will probably not sort properly.
+[388] Utils.pm:169> WARN - month field 'Aug' in entry 'Song2005' is not an integer - this will probably not sort properly.
+[425] Utils.pm:169> WARN - month field 'Sep' in entry 'Pontonnier2009' is not an integer - this will probably not sort properly.
+[451] Utils.pm:169> WARN - month field 'Feb' in entry 'Garner2003' is not an integer - this will probably not sort properly.
+[460] Utils.pm:169> WARN - month field 'Aug' in entry 'Wagner2005' is not an integer - this will probably not sort properly.
+[564] Utils.pm:169> WARN - month field 'Feb' in entry 'Siebert2008' is not an integer - this will probably not sort properly.
+[579] Utils.pm:169> WARN - month field 'Jul' in entry 'Gunther2007' is not an integer - this will probably not sort properly.
+[601] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1255, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1287, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1331, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1433, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1459, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1491, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1526, warning: 3 characters of junk seen at toplevel
+[602] Utils.pm:169> WARN - BibTeX subsystem: /tmp/EC0kLmp6P_/references.bib_9964.utf8, line 1599, warning: 3 characters of junk seen at toplevel
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[661] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[661] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[703] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[722] bbl.pm:720> INFO - Output to doc.bbl
+[722] Biber.pm:110> INFO - WARNINGS: 15

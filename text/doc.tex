@@ -1,4 +1,5 @@
 \input{header.tex}
+\input{preamble/acronyms}
 
 \graphicspath{
 {images/summer_school_study/png/}{images/summer_school_study/}{images/summer_school_study/plots/}{images/summer_school_study/2018/}
@@ -12,40 +13,40 @@
 
 
 \part{Introduction}
-  \chapter{Motivation}
-  - great picture, digital human vision, connection to soft tissue robotics\\
-  - EMG, parameter estimation, see motivation of IRTG paper\\
-  - MU estimation\\
-  
-  \chapter{State of the art and aims}
-  \chapter{Own contributions}
-  - own contributions
-  \chapter{Overview}
-  - structure of following sections
+%  \chapter{Motivation}
+%  - great picture, digital human vision, connection to soft tissue robotics\\
+%  - EMG, parameter estimation, see motivation of IRTG paper\\
+%  - MU estimation\\
+%  
+%  \chapter{State of the art and aims}
+%  \chapter{Own contributions}
+%  - own contributions
+%  \chapter{Overview}
+%  - structure of following sections
 \part{Digital human}
 
 \chapter{Comparative Study: Modeling Upper Arm Movement}
 
 Moving one's upper arms and forearms is an action that is performed unnoticed every day. 
-What seems like a trivial task involves a sophisticated interplay of muscles, tendons, bones and joints. Macroscopic behaviour, such as mechanical properties of fibers and tissues, as well as microscopic mechanisms, such as molecular-scale processes inside biological cells and changes in electric potential across muscle fiber membranes contribute to the overall, versatile, human muskuloskeletal system.
+What seems like a trivial task involves a sophisticated interplay of muscles, tendons, bones and joints. Macroscopic behaviour such as mechanical properties of fibers and tissues as well as microscopic mechanisms such as molecular-scale processes inside biological cells and changes in electric potential across muscle fiber membranes contribute to the overall, versatile human musculoskeletal system.
 
 Understanding this system well allows to use observations to make predictions.
-Using observations and predictions of the musculoskeletal system, we can design safe assistive robotic devices.
-Such robotic devices, in the form of exoskeletons, can potentially support humans in strenuous, unhealthy tasks that pose high loads on the human skeleton. An example is the precise handling of heavy objects, which is required in various industries and can only done by human. Moreover, they can help to restore muscle function in a rehabilitation therapy.
+Using observations and predictions of the musculoskeletal system, we can for example design safe assistive robotic devices.
+Such robotic devices, in the form of exoskeletons, can potentially support humans in strenuous, unhealthy tasks that pose high loads on the human skeleton. An example is the precise handling of heavy objects that can only be done by humans, which is required in various industries. Moreover, exoskeletons can help to restore muscle function in a rehabilitation therapy.
 
-When developing models for such predictions, various choices have to be made. 
+In order to develop models for such predictions, various choices have to be made. 
 Relevant properties of the muscular system have to be identified. Based on a physiological understanding, essential relationships have to be selected. Phenomenologic relations can be incorporated. Mathematical formulations and numerical algorithms have to be found.
 
-Model formulations can be differentiated by how much they are based on biophysical insights compared to raw experimental observations. This chapters presents two different approaches that use a relatively high proportion of experimental observations combined with some biophysically justified relations. The two approaches are compared in an experimental study of forearm movement. 
+Model formulations can be differentiated by how much they are based on biophysical insights compared to raw experimental observations. The following sections present two different approaches that use a relatively high proportion of experimental observations combined with some biophysically justified relations. The two approaches are compared in an experimental study of forearm movement. 
 
-After the models described in this chapter, the remainder of this thesis is mainly concerned with models that have a higher proportion of biophysical insight. These models include more details of the physiology of the musculoskeletal system.
+The first of the two presented models completely relies on experimental data. The second model adds physiological knowledge at a high level. In the remainder of this thesis after the current chapter, this trend continues: More details of the functioning of the musculoskeletal system get included. More advanced models are introduced that have finer model resolutions.
 
 \section{Introduction}
 % definition of the task: movement prediction EMG->torque
-Actuated orthoses and prosthesis help rehabilitation patients to regain their ability to move arms and legs when muscles have lost their full function. The dysfunction can be a result of muscular or nervous diseases, e.g., after stroke, or originate from amputation of part of the limb. 
-The rehabilitation or prosthetic device is firmly attached to the body. Powered actuators at the joints support or replicate the natural movement of the limb. 
+Actuated orthoses and prosthesis help rehabilitation patients to regain their ability to move arms and legs when muscles have lost their full function. The dysfunction can be a result of muscular or nervous diseases, e.g., after a stroke, or originate from amputation of parts of the limb \cite{Krebs2002, Zhang2018}.
 
-Exoskeletons are similar devices that typically extend to a larger part of the human body. Apart from rehabilitation they are used as assistive, haptic or teleoperation device. Details can be found in \cite{Perry2007}.
+Rehabilitation or prosthetic devices are firmly attached to the body. Powered actuators at the joints support or replicate the natural movements of the limb.
+Exoskeletons are similar devices that typically extend to a larger part of the human body. Apart from rehabilitation, they are used as assistive, haptic or teleoperation device. Details can be found in \cite{Perry2007}.
 
 For the actuation to be supportive and helpful, the device has to determine the intended movement of the limb. If muscles are functioning at least residually, EMG signals can be captured from the skin surface. They can be interpreted to determine finely graduated levels of force.
 
@@ -54,7 +55,7 @@ Because of the variety of muscle characteristics among humans, such models have 
 
 In the following study, two different approaches for formulating such models, A and B, are developed. Instances of these two models are parameterized for a particular healthy subject. 
 
-The specific task in this study is to predict movements of a human upper arm. The arm is flexed and extended under varying loads and with varying velocities. Measured EMG signals on the agonist and antagonist muscles should be used to predict the torque in the elbow joint. Considering the application of a supportive orthosis or exoskeleton, the predicted torque value is the control input to the actuator at the joint.
+The specific task in this study is to predict movements of a human upper arm. The arm is flexed and extended under varying loads and with varying velocities. Measured EMG signals on the agonist and antagonist muscles are used to predict the torque in the elbow joint. Considering the application of a supportive orthosis or exoskeleton, the predicted torque value is the control input to the actuator at the joint.
 
 Prior to online application of the models, an offline training-phase is carried out, where all required parameter values get identified for the subject. After the two computational models have been trained, we perform validation experiments and compare the output of the models with measurements from the real system.
  
@@ -69,52 +70,53 @@ The second approach, B, uses biophysically informed models of individual muscles
 Numerous experimental studies of flexion and extension of the upper arm with the aim to predict elbow torques can be found in the literature. The studies presented in the following all include a Hill-type muscle model; such a model is also present in approach B of the present study.
 
 In \cite{Rosen1999}, an exoskeleton across the elbow joint on the forearm is used as a passive measurement device. Experiments with lifting weights are performed and EMG is captured.
-Two different models are evaluated to compare their performance in predicting moments and, thus, their fitness for exoskeleton control.
+Two different models are compared with respect to their performance in predicting moments and, thus, their suitability for exoskeleton control.
 The first model is Hill-based, similar to model B in the study of this work.
 The second model is data-driven, as is model A in our study. However, the method is different, the authors use a neural network.
 
-The study reveals that the neural network is easier to setup but only works for the space defined by the learning data set. The advantage of the Hill-based model is that it is universal and not task dependend. 
-
+The study reveals that the neural network is easier to set up but only works for the space defined by the learning data set. The advantage of the Hill-based model is that it is universal and not task dependent. 
 Further studies using neural networks to estimate muscle activations and elbow torques are presented by \cite{Wang2002} and \cite{Song2005}.
 %
-The paper of \cite{Rosen2001} focuses on an exoskeleton that supports the forearm in lifting heavy weights. Different control stategies are investigated. A naturally feeling human machine interface is achieved when
-control input is taken from processed EMG measurements and moment feedback of the external load. 
-The predictions are based on a generic Hill-type model. This result is promising as it shows that neural control of exoskeletons is possible, even using non-customized models. 
 
-The goal and setup of all these studies is similar to the work presenting in the following sections. Differences are, apart from different setups, that they use state-less Hill-type models instead of the more advanced Hill-based models in our study. Furthermore, they do not use subject specific parametrizations. Both improvements can lead to better predictions of the moments in the elbow.
+The paper of \cite{Rosen2001} focuses on an exoskeleton that supports the forearm in lifting heavy weights. A generic Hill-type model is the base for the model predictions. Different control stategies are investigated. 
+A naturally feeling human machine interface is achieved when
+control input is taken from processed EMG measurements and moment feedback of the external load. 
+This result is promising as it shows that neural control of exoskeletons is possible, even using non-customized models. 
+
+The goal and setup of all these studies is similar to the work presented in the following sections. Differences are, apart from different setups, that they use state-less Hill-type models instead of the Hill-based models in our study that are more advanced. Furthermore, they do not use subject specific parametrizations. Both improvements can lead to better predictions of the moments in the elbow.
 
 %
-Several studies of predicting joint torques using Hill-type models exist in the literature that optimize model parameters to fit a specific subject.
+However, several studies predicting joint torques using Hill-type models exist in the literature that optimize model parameters to fit a specific subject.
 The authors of \cite{Cavallaro2005, Cavallaro2006} study a scenario where a weight is lifted by the forearm. They use a genetic algorithm to find subject specific parameters to the models. Similar studies are given in \cite{Lloyd2003,Venture2005,Pontonnier2009,Sartori2012}.
 
 %\cite{Chadwick2014} present a real-time simulation of movements of the upper limb with eleven degrees of freedom. The input to the model consists of the muscle activation levels.
-One study is performed by \cite{Heine2003}. The authors include models of activation dynamics, Hill-type muscle contraction and musculo-skeletal geometry and restrict the scenario to isometric tasks. They optimize parameters for different subjects and determine the importance of parameters for good model predictions. It is found that the predictive quality of the model decreases with its complexity, however a model with seven parameters still has reasonable validity. 
+A further study is performed by \cite{Heine2003}. The authors include models of activation dynamics, Hill-type muscle contraction and musculo-skeletal geometry and restrict the scenario to isometric tasks. They optimize parameters for different subjects and determine the importance of parameters for good model predictions. It is found that the predictive quality of the model decreases with its complexity, but a model with seven parameters still has reasonable validity. 
 In contrast to this study that only predicts static cases, our study also includes muscle dynamics and has more parameters to describe all required muscle properties.
 
-Another detailed study is performed by \cite{Falisse2016}. They estimate muscle model parameters of the knee joint actuators involving 23 degrees of freedom considering eight flexors and four extensors. Just like our study with model approach B, EMG signals and motion capture data is used to solve an optimization problem to fit the model. A difference is that three-element Hill-type models are used, whereas our study is based on more detailed, four-element Hill-type models but includes a smaller number of muscles.
+\cite{Falisse2016} estimate muscle model parameters of the knee joint actuators involving 23 degrees of freedom considering eight flexors and four extensors. Just like our study with model approach B, EMG signals and motion capture data are used to solve an optimization problem to fit the model. A difference is that three-element Hill-type models are used, whereas our study is based on more detailed, four-element Hill-type models but includes a smaller number of muscles.
 
 Hill-based models of the muscle-tendon complex can also be parameterized without using EMG data.
-\cite{Garner2003} estimate characteristic parameters of 26 major muscles around shoulder, elbow and  wrist in a two-phase optimzation procedure. This approach uses individual experiments to identify different parameters. A method that requires less experiments is the ISOFIT method presented by \cite{Wagner2005}. They use non-linear regression to fit Hill-type model parameters for various muscles from only 6-8 isovelocity contractions.
+\cite{Garner2003} estimate characteristic parameters of 26 major muscles around shoulder, elbow and  wrist in a two-phase optimization procedure. This approach uses individual experiments to identify different parameters. A method that requires less experiments is the ISOFIT method presented by \cite{Wagner2005}. They use non-linear regression to fit Hill-type model parameters for various muscles from only 6-8 isovelocity contractions.
 
-The authors of \cite{Campen2014} develop a new method for estimating a subject-specific model of muscles around the knee which achieves higher accuracy than \cite{Garner2003} and is robust with respect to noisy data. Two improvements are that they use physiological constraints in the parameter optimization process and a heuristic for the initial guess of the parameters. The former is also done in the present study. Concerning the latter, we base our initial guess on literature values.
+The authors of \cite{Campen2014} develop a new method for estimating a subject-specific model of muscles around the knee which achieves higher accuracy than \cite{Garner2003} and is robust with respect to noisy data. Two improvements are that they use physiological constraints in the parameter optimization process and a heuristic for the initial guess of the parameters. The former is also done in our study. Concerning the latter, we base our initial guess on literature values which, too, is an improvement compared to using random initial values.
 
 \subsection{Contribution Statement}
 
-The work presented in this Sec. was performed in collaboration by several members of the IRTG \say{Soft Tissue Robotics}. A summary can be found in the publication \cite{summerschool2019}, where also the list of contributors can be seen.
-The experiments were conducted during the IRTG's Summer School in 2019 at the University of Auckland, New Zealand, where all involved researchers were present. Derivation and programming of the models as well as evaluation and discussion of the results was done in smaller expert groups as well as plenary video calls before and after this event at both the Universities of Stuttgart and Auckland.
+The work presented in this section was performed in collaboration with several members of the IRTG \say{Soft Tissue Robotics}. A summary can be found in the publication \cite{summerschool2019}, where also the list of contributors is given.
+The experiments were conducted during the IRTG's Summer School 2019 at the University of Auckland, New Zealand, where all involved researchers were present. Derivation and programming of the models as well as evaluation and discussion of the results was done in smaller expert groups as well as plenary video calls before and after this event at both the Universities of Stuttgart and Auckland.
 
 An overview of the workflow from experiments to the models A and B and their validation is visualized in \cref{fig:schematitc}.
 \begin{figure}%
   \centering%
   \includegraphics[width=0.8\textwidth]{images/summer_school_study/schematitc.pdf}%
-  \caption{Schematic workflow of data processing. In experiments, Motion Capture (MoCap) data and EMG signals were recorded. They were processed using inverse kinematics and filtering techniques, respectively. The sizes of the large datasets were reduced by selecting specific features. Those were used as training inputs for the two models A and B. The trained models were validated using a validation dataset that also originated from experiments.}%
+  \caption{Upper Arm Movement Modeling:\\ Schematic workflow of data processing. In experiments, Motion Capture (MoCap) data and EMG signals were recorded. They were processed using inverse kinematics and filtering techniques, respectively. The size of the large datasets was reduced by selecting specific features. Those were used as training inputs for the two models A and B. The trained models were validated using a validation dataset that also originated from experiments.}%
   \label{fig:schematitc}%
 \end{figure}%
 %
-This author contributed mainly to the fields of data processing, especially filtering of EMG signals and feature selection, derivation and training of both models, A and B, their validation and the overall programming and visualization of the results. The respective fields are presented more detailed in the following, corresponding sections.
+I contributed mainly to the fields of data processing, especially filtering of EMG signals and feature selection, derivation and training of both models, A and B, their validation and the overall programming and visualization of the results. The respective fields are presented more detailed in the following, corresponding sections.
 
 \subsection{Structure of this Chapter}
-\Cref{sec:exp_study} gives an overview over the experiments, data processing and feature selection, which resulted in the required datasets. In \cref{sec:study_models}, the two models, A and B are described. Results including the validation of the models and a discussion are given in \cref{sec:evaluation}. A conclusion follows in \cref{sec:study_conclusion}.
+\Cref{sec:exp_study} gives an overview of the experiments, data processing and feature selection, which resulted in the required datasets. In \cref{sec:study_models}, the two models, A and B, are described. Results including the validation of the models and a discussion are given in \cref{sec:evaluation}. Conclusions follow in \cref{sec:study_conclusion}.
 
 \section{Experimental Study}\label{sec:exp_study}
 
@@ -122,20 +124,20 @@ This author contributed mainly to the fields of data processing, especially filt
     \centering%
     \def\svgwidth{5cm}%
     \input{images/summer_school_study/summer_school_study.pdf_tex}%
-    \caption{Experimental setup for the triceps trials. The subject pulls down a rope over a pulley which is connected to a weight with mass $m_w$.
+    \caption{Upper Arm Movement Modeling: \\Experimental setup for the triceps trials. The subject pulls down a rope over a pulley which is connected to a weight with mass $m_w$.
     Angles required for the kinematic formulation are the elbow angle, $\phi_e$, the forearm angle, $\phi_a$, and the angle of the weight, $\phi_w$. The length of the ulna bone is denoted by $\ell_u$.}%
     \label{fig:summer_school_study}%
 \end{figure}%
 
-At first, details about the experimental study are given. Experiments are required to identify the model parameters for the particular subject. First, the experimental setup is described, second, details on the processing of the measured values are given.
+Experiments are required to identify the model parameters for the particular subject. First, the experimental setup is described, then, details on the processing of the measured values are given. Then, the selection of feature points from the experimental data is described.
 
 \subsection{Experimental Trials}
 
-In a series of experiments, eight different actions of flexing and extending the elbow were performed by the subject. Weights of 3 kg and 5 kg were hold in the hand during the elbow flexion trials. For the elbow extension trials, a pulley system was installed that redirected the force of the weight such that the downward movement of the forearm acted against the direction of the force. This is shown in \cref{fig:summer_school_study}. A detailed description of the experimental trials can be found in \cite{summerschool2019}.
+In a series of experiments, eight different actions of flexing and extending the elbow were performed by the subject. Weights of 3 kg and 5 kg were held in the hand during the elbow flexion trials. For the elbow extension trials, a pulley system was installed that redirected the force of the weight such that the downward movement of the forearm acted against the direction of the force. This is shown in \cref{fig:summer_school_study}. A detailed description of the experimental trials can be found in \cite{summerschool2019}.
 
-Time series of position and velocity of upper arm and forearm were recorded using a Motion Capture system. It consisted of eight cameras that tracked three markers placed on shoulder, elbow and wrist of the subject. 
+Time series of position and velocity of the upper arm and the forearm were recorded using a Motion Capture system. It consisted of eight cameras that tracked three markers placed on shoulder, elbow and wrist of the subject. 
 
-The elbow torque, $\tau$, was computed as
+The elbow torque $\tau$ was computed as
 \begin{equation*}
   \begin{array}{lll}
     \tau = m_w\,g\,\ell_u\,\sin(\phi_w) - m_{a}\,g\,\dfrac{\ell_u}{2}\,\sin(\phi_a),
@@ -145,15 +147,16 @@ where $(m_w\,g)$ is the force of the weight, $m_{a}$ is the mass of forearm and 
 
 \subsection{Data Processing}
 From the captured data, derived quantities of biceps ($B$) and triceps $(T$) muscles were estimated using a geometric model of the upper arm. 
-The geometric model is available in the software OpenSim \cite{OpenSim2007} and was customized for the particular subject. The inverse kinematics module of OpenSim was used to estimate the muscle tendon unit lengths, $\ell_{\text{MTU},M}$, contraction velocities, $v_M=\dot{\ell}_M$ and moment arms $r_{M}$ of the two muscles, $M\in\{B,T\}$.
+The geometric model is available in the software OpenSim \cite{OpenSim2007} and was customized for the particular subject. The inverse kinematics module of OpenSim was used to estimate the muscle tendon unit lengths, $\ell_{\text{MTU},M}$, contraction velocities, $v_M=\dot{\ell}_M$, and moment arms, $r_{M}$, of the two muscles, $M\in\{B,T\}$.
 
-EMG signals were captured by two electrodes on the skin above the biceps and triceps muscles. For both signals, several preprocessing steps were applied to obtain the inputs for the two models, A and B.
-The raw signal was filtered according to the procedure of \cite{Falisse2016}. First a fourth-order Butterworth high pass filter with cutoff frequency of 30 Hz was applied to reduce non-zero average voltages. The resulting signal was full-wave rectified by taking the absolute value of every measured data point. Then, application of a fourth-order Butterworth low pass filter with 10 Hz cutoff frequency yielded a smoothed signal.
-The resulting filtered EMG signals were normalized to the interval $[0,1]$, such that the value of 1 corresponds to the experimentally determined value of maximum voluntary contraction.
+EMG signals were captured by two electrodes on the skin at the biceps and triceps muscles. For both signals, several preprocessing steps were applied to obtain the inputs for the two models, A and B.
 
-The measured EMG signals on the skin directly correspond to the electric excitation level in the muscle, $u$. Excitation leads to the release of free calcium ions within the sarcomere. Binding of calcium ions to myosin increases the concentration of cross-bridges, which is commonly known as the muscular activation, $\alpha$. The muscular activation directly corresponds to the produced force of the muscle \cite{Bayer2017}.
+The raw signal was filtered with the same procedure as in \cite{Falisse2016}. First, a fourth-order Butterworth high pass filter with cutoff frequency 30 Hz was applied to reduce non-zero average voltages. Second, the resulting signal was full-wave rectified by taking the absolute value of every measured data point. Third, application of a fourth-order Butterworth low pass filter with 10 Hz cutoff frequency yielded a smoothed signal.
+Forth, the resulting filtered EMG signals were normalized to the interval $[0,1]$, such that the value of 1 corresponds to the experimentally determined value of maximum voluntary contraction.
 
-The concentration of free calcium ions is denoted as $\gamma$ and can be computed from excitation, $u$, by the following first order differential equation \cite{Hatze1977},
+The measured EMG signals on the skin directly correspond to the electric excitation level $u$ in the muscle. Excitation leads to the release of free calcium ions within the sarcomere. Binding of calcium ions to myosin increases the concentration of cross-bridges. This concentration is commonly known as the muscular activation $\alpha$. The muscular activation directly corresponds to the produced force of the muscle \cite{Bayer2017}.
+
+The concentration of free calcium ions is denoted as $\gamma$ and can be computed from the excitation $u$ by the following first order differential equation \cite{Hatze1977}
 %
 \begin{equation*}
   \begin{array}{lll}
@@ -161,156 +164,248 @@ The concentration of free calcium ions is denoted as $\gamma$ and can be compute
   \end{array}
 \end{equation*}
 %
-We used the filtered EMG signal, $u$, to obtain values for $\gamma$. \Cref{fig:emg_filtering} shows the raw and filtered EMG signals and the resulting free calcium concentration for a sample of the experimental data.
+We used the filtered EMG signal $u$ to obtain values for $\gamma$. \Cref{fig:emg_filtering} shows the raw and filtered EMG signals and the resulting free calcium concentration for a sample of the experimental data.
 
 \begin{figure}%
   \centering%
   \includegraphics[width=0.8\textwidth]{images/summer_school_study/emg_filtering.pdf}%
-  \caption{From raw EMG data of the biceps (yellow) to the filtered signal, $u$, (red) to the free calcium concentration, $\gamma$ (blue). The data is taken from the beginning of the first ellbow flexion experiment. It can be seen that the filtering smooths out the initial signal and removes the constant offset. The free calcium ion concentration follows the filtered EMG with a short delay.}%
+  \caption{From raw EMG data of the biceps (yellow) to the filtered signal $u$ (red) and the free calcium concentration $\gamma$ (blue). The data are taken from the beginning of the first ellbow flexion experiment. It can be seen that the filtering smooths out the initial signal and removes the constant offset. The free calcium ion concentration follows the filtered EMG with a short delay.}%
   \label{fig:emg_filtering}%
 \end{figure}%
 
-The activation of the muscle, $\alpha$, does not only depend on the free ion concentration, $\gamma$, but also on the current state of muscle contraction. This excitation-contraction coupling has to be described by a dynamic system of ODEs and is included in model B.
+The activation of the muscle $\alpha$ does not only depend on the free ion concentration $\gamma$ but also on the current state of muscle contraction. This excitation-contraction coupling has to be described by a dynamic system of ODEs and is included in model B.
 Therefore, preprocessing is completed with computing the free calcium concentration $\gamma$ and not the activation $\alpha$.
 
-The experimental trials were split into $n_\text{trials}=7$ experiments to be used for model identification and one for validation.
-The total captured number of values in the training experiments, $N$, was too large, such that not all points could be used for training of models A and B.
-To reduce the amount of data and, thus, speed up the computation, we selected $n \ll N$ featured values with the aim that they are representative for the whole data set.
-For every experimental trial, we choose the same fixed number of data points, $n_\text{per\_trial}$.
-Our selection algorithm identifies $n_\text{per\_trial}$ time steps, $t_i, i=1, \dots, n$ such that the summed values of the free calcium concentrations for biceps and triceps, $\gamma_B(t_i) + \gamma_T(t_i)$, are evenly distributed along the value range.
+\subsection{Feature Selection} \label{sec:study_feature_selection}
+
+The eight experimental trials were split into $n_\text{trials}=7$ experiments to be used for model identification and one for validation.
+The total number $N$ of captured values in the training experiments was large, such that not all points could be used for training of models A and B.
+To reduce the amount of data and, thus, speed up the computation, we selected $n \ll N$ featured values with the assumption that they are representative for the whole data set.
+For every experimental trial, we choose the same fixed number $n_\text{per\_trial}$ of data points.
+Our selection algorithm identifies $n_\text{per\_trial}$ time steps, $t_i, i=1, \dots, n$ such that the summed values of the free calcium concentrations $\gamma_B(t_i) + \gamma_T(t_i)$ for biceps and triceps are evenly distributed along the value range.
 This leads to $n = n_\text{trials} \cdot n_\text{per\_trial}$ selected data points.
 
 The set of training data $\mathcal{D} = \mathcal{X} \times \mathcal{Y}$ consists of the $n$ selected vectors of the experimental values that are the input to the system of muscles, $\bfx_i \in \mathcal{X}, i=1,\dots, n$, together with the observed output values, $y_i \in \mathcal{Y}, i=1,\dots,n$.
-The input vectors contain values for muscle tendon unit lengths, contraction velocities, moment arms and free calcium ion concentrations for biceps and triceps each, $\bfx_i = (\ell_{\text{MTU},B}, \ell_{\text{MTU},T}, v_B, v_T, r_{B}, r_{T}, \gamma_B, \gamma_T)^\top(t_i)$. The output values consist of the elbow torques, $y_i = \tau(t_i)$. This data set, $\mathcal{D}$, serves as training input for both models A and B.
+The input vectors contain values for muscle tendon unit lengths, contraction velocities, moment arms and free calcium ion concentrations for biceps and triceps each, $\bfx_i = (\ell_{\text{MTU},B}, \ell_{\text{MTU},T}, v_B, v_T, r_{B}, r_{T}, \gamma_B, \gamma_T)^\top(t_i)$. The output values consist of the elbow torques, $y_i = \tau(t_i)$. This data set, $\mathcal{D}$, serves as training input for both models, A and B.
 
 \section{Models}\label{sec:study_models}
 
-The current section describes the two model approaches that can predict elbow torques from experimental input data. \Cref{sec:data_driven_model} introduces the non-parametric data driven model, A. Afterwards, \cref{sec:biophysical_model} presents the biophysically based model, B. It requires a parameter optimization, which will be described in \cref{sec:parameter_optimization}.
+The current section describes the two model approaches that can predict elbow torques from experimental input data. \Cref{sec:data_driven_model} introduces the non-parametric, data driven model A. \Cref{sec:biophysical_model} presents the biophysically based model B. It requires a parameter optimization, which is be described in \cref{sec:parameter_optimization}.
 
 \subsection{Data-driven Model A}\label{sec:data_driven_model}
 
-The first modeling approach uses a non-parametric model. Such model approximates the function $f$ that maps from input to output data points. The function $f$ is learned by using the training data sets. Regression is used to obtain predictions for new data points. In our case, we use a propabilistic model that considers the propability distribution of the model function.
+The first modeling approach uses a non-parametric model. Such a model approximates the function $f$ that maps from input to output data points. The function $f$ is learned from the training data set. Regression is used to obtain predictions for new data points. In our case, we use a stochastic model that considers the probability distribution of the model function.
 
 We use the method of \emph{Gaussian Process Regression}. A Gaussian process is a collection of random variables such that the joint distribution of every finite subset of these random variables is multivariate normal (Gaussian).
 In our example, each input data point in the space of measured values, $\bfx \in \mathcal{X}$ has an associated random variable $f(\bfx)$ that describes the output of the model for this point.
 
-A Gaussian process, $\mathcal{GP}$, is characterized by a mean function, $m(\bfx)$, and a kernel function, $k(\bfx,\bfx')$ that models the covariance between any pair of points, $\bfx, \bfx' \in \mathcal{X}$. Different choices of kernel functions are possible and can depend on hyperparameters, $\bfpsi$. Describing observed values, $y$, by a Gaussian process distribution can be expressed as
+A Gaussian process, $\mathcal{GP}$, is characterized by a mean function $m(\bfx)$ and a kernel function $k(\bfx,\bfx')$ that models the covariance between any pair $(\bfx, \bfx') \in \mathcal{X} \times \mathcal{X}$ of points. Different choices of kernel functions are possible and can depend on hyperparameters $\bfpsi$. Describing observed values $y$ by a Gaussian process distribution can be expressed as
 \begin{equation*}
   \begin{array}{lll}
-    y \sim \mathcal{GP}\big(m(\bfx), k(\bfx,\bfx',\bfpsi)\big).
+    f(x) \approx y \sim \mathcal{GP}\big(m(\bfx), k(\bfx,\bfx',\bfpsi)\big).
   \end{array}
 \end{equation*}
-This representation is non-parametric in the sense that no particular parametric form of the function $y=f(\bfx)$ is assumed whose parameters would be determined. Instead, the probabilistic model is constructed using the observed function values at measured inputs, $\bfx \in \mathcal{X}$.
+This representation is non-parametric in the sense that no particular parametric form of the function $y=f(\bfx)$ is assumed whose (biophysical) parameters would be determined. Instead, a generic probabilistic model is constructed using the observed function values at measured inputs $\bfx_i \in \mathcal{X}$.
 %More specifically, the conditional distribution $p(y|\bfx)$ considered.
 
-Gaussian Process Regression is based on \emph{Bayesian Inference} to update a prior belief of the model to a posterier model using information contained in observations of the process.
-The observed data is the set of measurements, $\mathcal{D}$. 
+Gaussian Process Regression is based on \emph{Bayesian Inference} to update a prior belief of the model to a posterior model using information contained in observations of the process.
+The observed data are the set of measurements $\mathcal{D}$. 
 
-The \emph{prior} distribution, $p(\bff\mid\mathcal{X},\bfpsi)$, is described by the Gaussian process as 
+The \emph{prior} distribution $p(\bff\mid\mathcal{X},\bfpsi)$ for the vector of function values $\bff$ is described by the Gaussian process,
 \begin{equation*}
   \begin{array}{lll}
-    p(\bff\mid\mathcal{X},\psi) = \mathcal{N}(\bff\mid\bfm,\bfK),
+    p(\bff\mid\mathcal{X},\bfpsi) = \mathcal{N}(\bff\mid\bfm,\bfK),
   \end{array}
 \end{equation*}
 with mean values $\bfm = (m(\bfx_i))^\top_{i=1,\dots,n}$ and convariance matrix $\bfK$ with $K_{ij} = k(\bfx_i,\bfx_j,\bfpsi).$
 
-The \emph{likelihood}, $p(\bfy\mid f(\bfx), \bftheta)$, describes the probability of an observation $\bfy$ given a particular model, $f$. The vector $\bftheta$ denotes additional parameters of the likelihood. 
+The \emph{likelihood} $p(\bfy\mid f(\bfx), \bftheta)$ describes the probability of an observation $\bfy$ given a particular model $f$. The vector $\bftheta$ denotes additional parameters of the likelihood. 
 
-Using Bayes' rule, the \emph{posterior} distribution, $p(\bff\mid\mathcal{D})$, of the function values, $\bff$, can be computed from prior and likelihood as
+Using Bayes' rule, the \emph{posterior} distribution $p(\bff\mid\mathcal{D})$ of the function values $\bff$ can be computed from prior and likelihood as
 \begin{equation*}
   \begin{array}{lll}
     p(\bff\mid\mathcal{D},\bftheta,\bfpsi) 
       = \dfrac{p(\bfy\mid\bff,\bftheta)\,p(\bff\mid\mathcal{X},\bfpsi)}{p(\mathcal{D}\mid\bftheta,\bfpsi)}.
   \end{array}
 \end{equation*}
-This results in a measure for the uncertainty of the model, $f$, at unobserved points $\bfx_\ast \notin \mathcal{D}$. 
+This results in a measure for the uncertainty of the model $f$ at unobserved points $\bfx_\ast \notin \mathcal{D}$. 
 
 Additionally, the fact that the measured quantities in the experiments are subject to measurement noise can be incorporated into the model.
-The assumption $y = f(\bfx) + \eps$ adds a normally distributed value of observational noise, $\eps \sim \mathcal{N}(0,\sigma_n^2)$, to the formulation. The noise variance, $\theta = \sigma_n^2$, is an additional parameter of the likelihood. 
-
-It is also possible to explicitly model the mean function, $m(\bfx)$. By relacing the model $f(\bfx)$ by
+The assumption 
 \begin{equation*}
   \begin{array}{lll}
-    g(\bfx) = f(\bfx) + \bfh(\bfx)^\top \bfbeta,
+    y = f(\bfx) + \eps
   \end{array}
 \end{equation*}
-we allow for a global trend in the data that is formulated in terms of a vector of explicit basis functions, $\bfh(\bfx)$, and corresponding coefficients, $\bfbeta$.
+adds a normally distributed random variable of observational noise $\eps \sim \mathcal{N}(0,\sigma_n^2)$ to the formulation. The noise variance $\theta = \sigma_n^2$ is an additional parameter of the likelihood. 
+It is also possible to explicitly model the mean function $m(\bfx)$. By replacing the model $f(\bfx)$ by $g(\bfx) = f(\bfx) + \bfh(\bfx)^\top \bfbeta$, i.e.
+\begin{align*}
+  %\begin{array}{rlrl}
+    y &= f(\bfx) + \bfh(\bfx)^\top \bfbeta + \eps, \quad 
+    &\text{ with } f(x) &\sim\mathcal{GP} \big(m(\bfx), k(\bfx,\bfx',\bfpsi)\big),\\[4mm]
+    && \eps &\sim \mathcal{N}(0,\sigma_n^2),
+  %\end{array}
+\end{align*}
+we allow for a global trend in the data that is formulated in terms of a vector of explicit basis functions $\bfh(\bfx)$ and corresponding coefficients $\bfbeta$.
 
-The algorithm for Gaussian Process Regression involves estimating several values from the given data. The hyperparameters of the covariance function, $\bfpsi$, the noise variance, $\bftheta$, and the coefficients of the fixed basis functions, $\bfbeta$, are determined by solving an optimization problem. The computation involves matrix inversions and has a computational complexity that is cubic in the number of data points, $\O(n^3)$. For details, the reader is referred to the literature \cite{Rasmussen2005,kuss2006gaussian}.
+The algorithm for Gaussian Process Regression involves estimating the following values from the given data during the training phase. The hyperparameters of the covariance function $\bfpsi$, the noise variance $\bftheta$, and the coefficients of the fixed basis functions $\bfbeta$ are determined by solving an optimization problem. The computation involves matrix inversions and has a computational complexity $\O(n^3)$, i.e. is cubic in the number of data points. For details, the reader is referred to the literature \cite{Rasmussen2005,kuss2006gaussian}.
+
+In our study, training of the Gaussian Process of model A was performed using the ready to use implementation provided by MATLAB.
+We parametrized the covariance by a squared exponential kernel and used constant basis functions, $\bfh(x) = 1$. We enabled observational noise, its variance $\bftheta = \sigma_n^2$ was found by optimization during training of the model.
 
 %$p(\bff^\ast | \mathcal{D},\mathcal{X}^\ast)$
 \subsection{Biophysical Model B}\label{sec:biophysical_model}
 
-During elbow flexion, three muscles are involed: biceps brachii, brachialis and brachioradialis. For simplicity, only biceps brachii, which contributes most, is considered is the current study, the effects of the other two muscle are lumped and contained in the biceps brachii model.
+Extension of the elbow is governed by the triceps brachii muscle.
+During elbow flexion, three muscles are involed: biceps brachii, brachialis and brachioradialis. For simplicity, only biceps brachii, which contributes most of the moment, is explicitly considered in the current study. The effects of the other two muscle are contained in the biceps brachii model in a lumped manner.
 
 Thus, the biophysical model consists of two Hill-type muscle models, for biceps and triceps, respectively. The muscle models are arranged around a hinge joint for the elbow angle. The muscle forces contribute to the torque at the elbow over their respective moment arms.
 
 Hill-type models describe the macroscopic, dynamic mechanical behaviour of an entire muscle along a one-dimensional line of action.
-The behaviour is formulated by mathematical functions that have to be parameterized to fit experimental observations.
+The behaviour is formulated by phenomenological, mathematical functions that have to be parameterized to fit experimental observations.
 
 %Such models are often used to compute muscle forces in simulations of various movements, e.g. \cite{Siebert2003}, \cite{Kistemaker2006}.
-Multiple variants of Hill-type models exist that use various configurations of mechanical elements to consider different effects of the muscle. The original model was proposed in \cite{Hill1938}. It contains a contractile element (CE) and two elastic elements, arranged in series and in parallel to the CE.
+Multiple variants of Hill-type models exist that use various configurations of mechanical elements to consider different properties and functionalities of the muscle. The original model was proposed in \cite{Hill1938}. It contains a contractile element (\ac{CE}) and two elastic elements, arranged in series and in parallel to the \ac{CE}.
 The authors of \cite{Siebert2008} compare two different approaches using these three elements. The effect of tension in eccentric contractions is added to the Hill-type model by \cite{Till2008}. The authors of \cite{Gunther2007} add a forth, damping element to account for high-frequency damping of the muscle tissue. In \cite{Morl2012}, electro-mechanical delay is investigated with and without the additional damping element. 
 
 \begin{figure}%
   \centering%
   \def\svgwidth{0.5\textwidth}
   \input{images/summer_school_study/hilltype.pdf_tex}%
-  \caption{Mechanical structure of the Hill-type muscle model. The force generating contractile element (CE) is parallel-connected to the parallel elastic element (PEE) and connected in series to a second parallel-connected structure of the serial elastic element (SEE) and the serial damping element (SDE). The length of the whole muscle tendon unit, $l_\text{MTU}$, is composed of the common length of CE and PEE, $l_\text{CE}$, and the common length of SEE and SDE, $l_\text{SEE}$. The variable $l_\text{CE}$ is an internal state of the model.}
+  \caption{Mechanical structure of the Hill-type muscle model. The force generating contractile element (\ac{CE}) is parallel-connected to the parallel elastic element (PEE) and connected in series to a second parallel-connected structure consisting of the serial elastic element (\ac{SEE}) and the serial damping element (SDE). The length $l_\text{MTU}$ of the whole muscle tendon unit is composed of the common length $l_\text{CE}$ of CE and PEE and the common length $l_\text{SEE}$ of SEE and SDE. The variable $l_\text{CE}$ is an internal state of the model.}
   \label{fig:hilltype}%
 \end{figure}%
 
 \newcommand{\CE}{\text{CE}}
 \newcommand{\MTU}{\text{MTU}}
 
-We employ the four-element Hill-type muscle model that is described by \cite{Hilltype2014}. The structure is visualized in \cref{fig:hilltype}. It consists of four components: the contractile element (CE), the parallel elastic element (PEE), the serial elastic element (SEE) and the serial damping element (SDE). Inputs to the model are the muscular activation, $\alpha(t)$, and length and contraction velocity of the muscle tendon unit (MTU), $l_\MTU(t)$ and $\dot{l}_\MTU(t)$.
-The output of the model is the muscle force, $f_\text{MTU}(t)$. The model contains one internal state variable, the length of the CE, $l_\text{CE}(t)$. The muscle dynamics determine this internal length and its time derivative, the contraction velocity of the CE, $\dot{l}_\text{CE}(t)$.
+We employ the four-element Hill-type muscle model that is described by \cite{Hilltype2014}. Its structure is visualized in \cref{fig:hilltype}. It consists of four components: the contractile element (CE), the parallel elastic element (PEE), the serial elastic element (SEE), and the serial damping element (SDE). Inputs to the model are the muscular activation $\alpha(t)$, the length $l_\MTU(t)$ and the contraction velocity $\dot{l}_\MTU(t)$ of the muscle tendon unit (\ac{MTU}).
+The output of the model is the muscle force $f_\text{MTU}(t)$. The model contains one internal state variable, the length $l_\text{CE}(t)$ of the CE. The muscle dynamics determine this internal length and its time derivative, the contraction velocity $\dot{l}_\text{CE}(t)$ of the CE.
 
-The force of the MTU is computed as sum of the forces of the respective parallel elements as visualized in \cref{fig:hilltype},
+The resulting force of the MTU is given as sum of the forces of the respective parallel elements as visualized in \cref{fig:hilltype}:
 \begin{equation}\label{eq:hill_type0}
   \begin{array}{lll}
     F_\MTU = F_\CE(l_\CE, \dot{l}_\CE, \alpha) + F_\text{PEE}(l_\CE) = F_\text{SEE}(l_\CE,l_\MTU) + F_\text{SDE}(l_\CE,\dot{l}_\CE,\dot{l}_\MTU,\alpha).
   \end{array}
 \end{equation}
-The force terms of the four elements, $F_\CE, F_\text{PEE}, F_\text{SEE}$ and $F_\text{SDE}$ are described by analytical functions that use a total of 19 parameters. The second identity of \eqref{eq:hill_type0} can be solved for $\dot{l}_\CE$ to get an evolution equation for the length of the CE, $l_\CE$, which is an internal state of the model. Together with the activation dynamics, which describes the relation between the free calcium ion concentration, $\gamma$, and the muscle activation, $\alpha \in [0,1]$, we get the following coupled system of differential-algebraic equations,
-\begin{align}
-  F_\MTU &= F_\MTU(l_\MTU,l_\CE,\dot{l}_\CE,\alpha),      \label{eq:hill_type1} \\[4mm]
-  \dot{l}_\CE &= f_\CE(l_\CE,l_\MTU,\dot{l}_\MTU,\alpha), \label{eq:hill_type2}\\[4mm]
-  \alpha &= f_\alpha(\gamma, l_\CE).                      \label{eq:hill_type3}
-\end{align}
-The detailed equations of the force terms in \cref{eq:hill_type1,eq:hill_type2} can be found in \cite{Hilltype2014}. \Cref{fig:force_curves_generic} visualizes characteristic curves of the model. \Cref{fig:force_curves_generic_length} shows how the generated force depends on the length of the CE. The active force, shown by the solid red line, has its maximum at an optimal length, $l_\text{CE,opt}$. This is explained by the exposure of the actin and myosin filaments in the sarcomere relative to each other, which is lower when the actin filaments are pulled apart or pushed together.
-The dashed line in \cref{fig:force_curves_generic_length} represents the passive force of the elastic muscular tissue which is essentially generated by the titin proteins in the sarcomere. Only starting from a certain length, the structure excerts reaction forces against lengthening forces to avoid overstretching of the muscle.
+The force terms of the four elements, $F_\CE, F_\text{PEE}, F_\text{SEE}$ and $F_\text{SDE}$ are described by analytical functions that use a total of 19 parameters. A description of the detailed equations and parameters can be found in \cite{Hilltype2014}. In the following, an overview over the formulation is given with a focus on the piecewise formulated terms that contribute to the overall muscle model. In the following formulations, underlined variables designate constant parameters that either have to be specified or follow from other given parameters.
 
-The force-velocity relation of the Hill-type model is shown in \cref{fig:force_curves_generic_velocity}. The curve is composed of two branches: 
-The concentric branch for shortening contraction with $\dot{l}_\CE \leq 0$ and the eccentric branch for lengthening contraction with $\dot{l}_\CE > 0$. It can be seen that the generated force increases monotonically over the lengthening velocity. It approaches a limit for maximum positive and negative velocity. These limits are given by parameters and are exemplary for how the shape of the curves of a Hill-type model can be parametrized.
+The muscle output force $F_\text{MTU}$ is computed by the second identity of \cref{eq:hill_type0}, i.e., from the forces $F_\text{SEE}$ and $F_\text{SDE}$. The force $F_\text{SEE}$ acting in the SEE is formulated as a continuous piecewise function with a constant zero, an exponential and a linear branch:
+\begin{equation*}
+  \begin{array}{lll}
+    F_\text{SEE}(\ell_\CE,\ell_\MTU) = \begin{cases}
+      0, & \ell_\text{SEE} < \underline{l_{\text{SEE},0}}\\[2mm]
+      \underline{K_\text{SEE,nl}}(\ell_\text{SEE} - \underline{\ell_\text{SEE,0}})^{\underline{\nu_\text{SEE}}}, & \ell_\text{SEE} < \underline{\ell_\text{SEE,nll}}\\[2mm]
+    \underline{\Delta F_\text{SEE,0}} + \underline{K_\text{SEE,l}}(\ell_\text{SEE} - \underline{\ell_\text{SEE,nll}}), & 
+    \ell_\text{SEE} \geq \underline{\ell_\text{SEE,nll}}
+    \end{cases}, \quad \text{with } \ell_\text{SEE} = \ell_\MTU - \ell_\CE.
+  \end{array}
+\end{equation*}
+
+The damping force $F_\text{SDE}$ in the SDE is proportional to the lengthing velocity ${\dot{\ell}_\text{SEE} = \dot{\ell}_\MTU - \dot{\ell}_\CE}$ of this element. It is given by
+\begin{equation}\label{eq:sde_force}
+  \begin{array}{lll}
+    F_\text{SDE}(l_\CE,\dot{l}_\CE,\dot{l}_\MTU,\alpha) \\ \qquad = \underline{D_\text{SDE,max}}\left( (1-\underline{R_\text{SDE}}) \dfrac{F_\text{PEE}(\ell_\CE)+F_\text{CE}(\ell_\CE, \dot{\ell}_\CE, \alpha)}{\underline{F_\text{max}} + \underline{R_\text{SDE}}} \right) (\dot{\ell}_\MTU - \dot{\ell}_\CE).
+  \end{array}
+\end{equation}
+The amount of damping is dependent on the force $F_\MTU$ of the MTU which appears in the nominator of the fraction in \cref{eq:sde_force} as the sum of the forces $F_\text{PEE}$ and $F_\CE$. Formulas for these two forces are given in the following.
+
+The force $F_\text{PEE}$ of the PEE is formulated piecewise as a shifted and cut off polynomial function:
+\begin{equation}\label{eq:fpee}
+  \begin{array}{lll}
+    F_\text{PEE}(\ell_\CE) = \begin{cases}
+      0, & \ell_\CE < \underline{\ell_{\text{PEE},0}}\\[4mm]
+    \underline{K_\text{PEE}}(l_\CE - \underline{l_{\text{PEE},0}})^{\underline{\nu_\text{PEE}}},& \ell_\CE \geq \underline{\ell_{\text{PEE},0}}
+    \end{cases}.
+  \end{array}
+\end{equation}
+
+The force $F_\CE$ of the CE is the active force produced by the muscle and is given by:
+\begin{equation}\label{eq:fce}
+  \begin{array}{lll}
+    F_\CE(l_\CE, \dot{l}_\CE, \alpha) 
+    = \underline{F_\text{max}} \left(
+    \dfrac{\alpha\,F_\text{isom}(\ell_\CE) + A_\text{rel}(\dot{\ell}_\CE,\ell_\CE,\alpha)}
+    {1 - 
+    \frac{\dot{\ell}_\CE}
+    {B_\text{rel}(\dot{\ell}_\CE,\ell_\CE,\alpha)\,\ell_{\CE,\text{opt}}}}\right)
+    - A_\text{rel}(\dot{\ell}_\CE,\ell_\CE,\alpha).
+  \end{array}
+\end{equation}
+It can be seen that the active force depends on the activation level $\alpha$. 
+The formulation of $F_\CE$ contains the two main characteristic curves for muscle forces, the force-length relation and the force-velocity relation.
+
+The force-length relation is modeled by the function $F_\text{isom}(\ell_\CE)$ of isometric force, which describes the relative force for the condition $\dot{\ell}_\CE = 0$. This function is formulated piecewise for CE lengths $\ell_\CE$ smaller and larger than an optimal length $\ell_\text{CE,opt}$. 
+
+The force-velocity relation follows from the auxiliary functions $A_\text{rel}(\dot{\ell}_\CE,\ell_\CE,\alpha)$ and $B_\text{rel}(\dot{\ell}_\CE,\ell_\CE,\alpha)$. These functions have different forms for concentric ($\dot{\ell}_\CE < 0$) and eccentric ($\dot{\ell}_\CE \geq 0$) conditions as well as for the two ranges of CE  length, $\ell_\CE < \ell_\text{CE,opt}$ and $\ell_\CE \geq \ell_\text{CE,opt}$.
 
 \begin{figure}%
   \centering%
   \begin{subfigure}[t]{0.9\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/force_curves_generic_length.pdf}%
-    \caption{Force-length curves of the PEE (dashed red line) and CE (solid red line), for isometric condition ($\dot{l}_\CE=0$) and normalized to the maximum isometric force. The optimal length of the CE, $l_\text{CE,opt}$, is shown as yellow vertical line. The force of the PEE, $F_\text{PEE}(l_\CE)$, is zero for $l_\CE < 0.9\,l_\text{CE,opt}$. The isometric contraction force, $F_\text{isom} = F_\CE(l_\CE)$ is formulated by two branches for separated by $l_\text{CE,opt}$.}%
+    \caption{Force-length curves of the PEE (dashed red line) and isometric force $F_\text{isom}$ (solid red line) for an isometric condition ($\dot{l}_\CE=0$), normalized to the maximum isometric force. The optimal length $l_\text{CE,opt}$ of the CE is shown as yellow vertical line. The force $F_\text{PEE}(l_\CE)$ of the PEE is zero for $l_\CE < 0.9\,l_\text{CE,opt}$. The isometric contraction force $F_\text{isom}$ is formulated piecewise by two branches separated by $l_\text{CE,opt}$.}%
     \label{fig:force_curves_generic_length}%
   \end{subfigure}\\[6mm]
   \begin{subfigure}[t]{0.9\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/force_curves_generic_velocity.pdf}%
-    \caption{Force-velocity curve of the CE, $F_\CE(\dot{l}_\CE)$, at optimal length, $l_\CE=l_{\CE,\text{opt}}$, and for activation level $\alpha=0.5$. The function (red solid line) is formulated piecewise, the base functions of the two branches are shown as red dotted lines. Their limits are visualized by the yellow horizontal and vertical asymptotes.}%
+    \caption{Force-velocity curve $F_\CE(\dot{l}_\CE)$ of the CE at optimal length $l_\CE=l_{\CE,\text{opt}}$, and for activation level $\alpha=0.5$. The function (red solid line) is formulated piecewise, graphs of the base functions of the two branches continue as red dotted lines. Their limits and singularities are visualized by the yellow horizontal and vertical asymptotes.}%
     \label{fig:force_curves_generic_velocity}%
   \end{subfigure}%
-  \caption{Force-length and Force-velocity relations for the muscle model with generic parameters taken from literature \cite{Hilltype2014}.}%
+  \caption{Force-length and force-velocity relations for the muscle model with generic parameters taken from literature \cite{Hilltype2014}.}%
   \label{fig:force_curves_generic}%
 \end{figure}%
 
-The model of activation dynamics, \cref{eq:hill_type3}, is the one of Hatze et al. \cite{Hatze1977} with parameters taken from \cite{Bayer2017}.
+\Cref{fig:force_curves_generic} visualizes the two main characteristic curves of the model. 
+\Cref{fig:force_curves_generic_length} shows how the generated force depends on the length of the CE. 
+The active force $F_\CE$, given by \cref{eq:fce}, is visualized by the solid red line. It has its maximum at the optimal length $l_\text{CE,opt}$ of the CE. This can be explained by the overlap of actin and myosin filaments in the sarcomere. The overlap is lower when the actin filaments are pulled apart or pushed together. A higher overlap leads to a higher force output.
+
+The dashed line in \cref{fig:force_curves_generic_length} represents the passive force $F_\text{PEE}$ of the elastic muscular tissue, formulated in \cref{eq:fpee}. The passive force is essentially generated by the titin proteins in the sarcomere. Only starting from a certain length, the structure exerts reaction forces against lengthening forces to avoid overstretching of the muscle.
+
+\cref{fig:force_curves_generic_velocity} shows the force-velocity relation of the Hill-type model. The curve of $F_\CE(\dot{l}_\CE)$ is composed of two branches: 
+The concentric branch for shortening contraction with $\dot{l}_\CE \leq 0$ and the eccentric branch for lengthening contraction with $\dot{l}_\CE > 0$. It can be seen that the generated force increases monotonically over the lengthening velocity. It approaches a limit for maximum positive and negative velocity. These limits can be adjusted by parameters of the model and are exemplary for how the shape of the curves of a Hill-type model can be parametrized.
+
+In addition to the resulting muscle force $F_\MTU$, a formulation for the internal state variable $\ell_\CE$ is required.
+The second identity of \eqref{eq:hill_type0} can be solved for the lengthing velocity $\dot{\ell}_\CE$ of the CE to get an evolution equation for the length $\ell_\CE$ of the CE. The derivation and the resulting formula can be found in \cite{Hilltype2014}.
+
+To describe the activation dynamics, i.e., the evolution of the muscle activation ${\alpha \in [0,1]}$, the model of Hatze et al. \cite{Hatze1977} is used.
+The activation is computed depending on the free calcium ion concentration $\gamma$ and the length $\ell_\CE$ of the CE by
+\begin{equation*}
+  \begin{array}{lll}
+    \alpha(\ell_\CE,\gamma) = \dfrac{\underline{a_0} + \big(\rho(\ell_\CE)\,\gamma\big)^3}
+    {1 + \big(\rho(\ell_\CE)\,\gamma\big)^3}.
+  \end{array}
+\end{equation*}
+The function $\rho$ is given by
+\begin{equation*}
+  \begin{array}{lll}
+    \rho(\ell_\CE) = \underline{c}\,\underline{\eta}\,\dfrac{(\underline{k}-1)\,\ell_\CE}{(\underline{k} - \ell_\CE/\ell_\text{CE,opt})\,l_\text{CE,opt}}.
+  \end{array}
+\end{equation*}
+All used parameter values for the activation dynamics can be found in \cite{Bayer2017}.
+
+In summary, we get the following coupled system of differential-algebraic equations, where $f_\CE$ and $f_\alpha$ denote the respective formulas:
+\begin{align}
+  F_\MTU &= F_\MTU(\ell_\MTU,l_\CE,\dot{l}_\CE,\alpha),      \label{eq:hill_type1} \\[4mm]
+  \dot{l}_\CE &= f_\CE(l_\CE,\ell_\MTU,\dot{l}_\MTU,\alpha), \label{eq:hill_type2}\\[4mm]
+  \alpha &= f_\alpha(\gamma, l_\CE).                      \label{eq:hill_type3}
+\end{align}
+
+To compute the joint torque in a system of an agonist and antagonist muscle pair, two instances of the presented Hill-type muscle model can be used. In our study considering the upper arm, the torque $\tau$ at the ellbow is computed by multiplying the predicted forces $F_{\MTU,B}$ and $F_{\MTU,T}$ of biceps and triceps with the corresponding moment arms $\hat{r}_B$ and $\hat{r}_T$:
+\begin{equation}\label{eq:muscle_torque}
+  \begin{array}{lll}
+    \tau = F_{\MTU,B}(l_{\MTU,B},\dot{l}_{\MTU,B},\alpha_B) \cdot \hat{r}_B - F_{\MTU,T}(l_{\MTU,T},\dot{l}_{\MTU,T},\alpha_T) \cdot \hat{r}_T.
+  \end{array}
+\end{equation}
 
 \subsection{Parameter Identification for Model B}\label{sec:parameter_optimization}
+%
+The process of model identification finds the parameters that make the model B predict correct values for the specific subject, i.e., minimizes the error in the predicted outcome for the training data set.
 
-The process of model identification finds the parameters that make the model B predict correct values for the specific subject. An optimization scheme finds the parameters that minimize the error in the predicted outcome for the training data set.
-
-The following minimization is performed,
+The following minimization is performed:
 \begin{align}
-  &&\min\limits_{\substack{\bftheta_M,l_{\CE,M}(t), \\M \in \{B,T\}, \,t \in \mathcal{T}}} &\sum\limits_{t\in \mathcal{T}}|\tau(t) - \hat{\tau}(t)|^2
+  &&\min\limits_{\substack{\bftheta_M,l_{\CE,M}(t), \\\forall M \in \{B,T\}, \,\forall t \in \mathcal{T}}} &\sum\limits_{t\in \mathcal{T}}|\tau(t) - \hat{\tau}(t)|^2
    \label{eq:opt_1}\\[4mm]
   &&\text{s.t. }\forall t \in \mathcal{T}:\quad &\tau(t) = F_{\MTU,B}(t,l_{\CE,B},\bftheta_B) \cdot \hat{r}_B(t) \notag\\
       &&&\qquad\quad- F_{\MTU,T}(t,l_{\CE,T},\bftheta_T) \cdot \hat{r}_T(t),                 \label{eq:opt_2}\\[4mm]
@@ -319,42 +414,45 @@ The following minimization is performed,
   &&& l_{\CE,M}(t) \in [0,l_{\MTU,M}(t)],\quad M \in \{B,T\}.                  \label{eq:opt_5}
 \end{align}
 
-The optimization variables are the parameters for the biceps and triceps Hill-type models, $\bftheta_B$ and $\bftheta_T$, and the lengths of the contractile elements for both models at every point in time, $l_{\CE,B}$ and $l_{\CE,T}$. The variables designated as $\hat{\square}$ are the measured quantities from the training experiments. The objective function, \Cref{eq:opt_1}, penalizes the difference between computed torque, $\tau$, and measured torque, $\hat{\tau}$, at every timestep of the training data, $t \in \mathcal{T}$. The torque is computed in \cref{eq:opt_2} by multiplying the predicted forces, $F_{\MTU,B}, F_{\MTU,T}$, with the measured moment arms, $\hat{r}_B, \hat{r}_T$.
+The optimization variables are the parameters $\bftheta_B$ and $\bftheta_T$ for the biceps and triceps Hill-type models and the lengths $l_{\CE,B}(t)$ and $l_{\CE,T}(t)$ of the contractile elements for both models at every point in time. The variables designated as $\hat{\square}$ are the measured quantities from the training experiments. The objective function given in \cref{eq:opt_1} penalizes the difference between computed torque $\tau$ and measured torque $\hat{\tau}$ at every timestep $t \in \mathcal{T}$ of the training data. 
 
-In \cref{eq:opt_3}, the contraction velocities are constraint to the measured values. Because the lengthening velocity of the CE, $\dot{l}_\CE$, is an internal quantity and, thus, cannot be observed in experiments, we assume it to be equal to the lengthening velocity of the whole muscle, $\dot{l}_\CE \approx \dot{l}_{\MTU} = \dot{l}_\text{CE} + \dot{l}_\text{SE}$. This requires the assumption $\dot{l}_{\text{SE}} \approx 0$ which can be justified given the low dynamic nature of the experiments.
+\Cref{eq:opt_2} computes the torque values and follows from \cref{eq:muscle_torque} of the muscle model. For every point in time, the predicted forces $F_{\MTU,B}$ and $F_{\MTU,T}$ are multiplied with the measured moment arms $\hat{r}_B$ and $\hat{r}_T$.
 
-By \cref{eq:opt_4} we bound each of the parameters, $\bftheta_B,\bftheta_T$, to a range between half and twice the generic value from literature.
-The lengths of the CEs are constraint by \cref{eq:opt_5} to be positive and smaller than the length of the MTU.
+In \cref{eq:opt_3}, the contraction velocities are constrained to the measured values. Because the lengthening velocity $\dot{l}_\CE$ of the CE is an internal quantity and, thus, cannot be observed in experiments, we assume it to be equal to the lengthening velocity of the whole muscle: $\dot{l}_\CE \approx \dot{l}_{\MTU} = \dot{l}_\text{CE} + \dot{l}_\text{SEE}$. This requires the assumption $\dot{l}_{\text{SEE}} \approx 0$ which can be justified given the low dynamic nature of the experiments.
+
+By \cref{eq:opt_4}, we bound each of the parameters $\bftheta_B$ and $\bftheta_T$ to a range between half and twice the generic value from literature.
+The lengths of the CEs are constrained by \cref{eq:opt_5} to be positive and smaller than the length of the MTU.
 
 All optimization variables are normalized to improve the numeric conditioning of the optimization problem. 
-The parameters $\bftheta_B,\bftheta_T$ are normalized with respect to generic values from literature, that were taken from \cite{Gunther2007, Morl2012, Hilltype2014}. The initial values are set to these generic parameters, which corresponds to the value one for the normalized variables.
-The internal states, $l_{\CE,B},l_{\CE_T}$, are normalized with respect to the measured MTU lengths, $\hat{l}_{\MTU,B}, \hat{l}_{\MTU,T}$ and initialized to zero.
+The parameters $\bftheta_B$ and $\bftheta_T$ are normalized with respect to generic values from literature that were taken from \cite{Gunther2007, Morl2012, Hilltype2014}. The initial values are set to one, which corresponds to the generic literature values.
+The internal states $l_{\CE,B}$ and $l_{\CE,T}$, are normalized with respect to the measured MTU lengths $\hat{l}_{\MTU,B}$ and $\hat{l}_{\MTU,T}$ and initialized with zero.
+
+%For training of model B, the optimization problem for the parameters needed to be solved. 
+We implemented the Hill-type models and the constraints in MATLAB and used the nonlinear programming implementation, \code{fmincon}, to minimize the given bounded and nonlinear constrained, multivariable function.
+In our study, the total number of optimization variables is computed by $2\cdot 19 + 2n = 598$, as each of the parameter vectors $\bftheta_B,\bftheta_T$ had 19 entries. 
 
 \section{Results and Discussion}\label{sec:evaluation}
 
-In the following, results of combining the experimental data with the two models, A and B are presented.
-At first, \cref{sec:res_feature_selection} gives details on the preprocessed data. The training phase is described in \cref{sec:res_training}. Applying the trained models to the validation data is done in \cref{sec:res_validation}. For model A, \cref{sec:res_simplified_a} tests a simplified version. For model B, \cref{ref:res_insights_b} shows some insights into the optimized parameter values.
+In the following, results of connecting the two model formulations, A and B, to the experimental data are presented.
+At first, \cref{sec:res_feature_selection} gives details on the preprocessed data. The training phase is described in \cref{sec:res_training}. Applying the trained models to the validation data is done in \cref{sec:res_validation}. Then, \cref{sec:res_simplified_a} tests a simplified version for model A. Then, \cref{ref:res_insights_b} shows some insights into the optimized parameter values for model B.
 
 \subsection{Feature Selection}\label{sec:res_feature_selection}
 % intro
-The experimental data is split into a training and a validation dataset. \Cref{fig:selected_points} shows the processed data of the training data set. In total we captured $N=34,934$ data points for the seven experimental trials. Out of these, we select $n_\text{per\_trial}=40$ feature points in every trial, leading to a total of $n=n_\text{per\_trial}\cdot n_\text{trials}=280$ points. The selected points are visualized by crosses in the top plot of \cref{fig:selected_points}. It can be seen that the algorithm distributes the feature points equally along the $\gamma$ axis.
+The experimental data is split into a training and a validation dataset. \Cref{fig:selected_points} shows the processed data of the training data set. In total we captured $N=\num{34934}$ data points for the seven experimental trials. Out of these, we select $n_\text{per\_trial}=\num{40}$ feature points in every trial, leading to a total of $n=n_\text{per\_trial}\cdot n_\text{trials}=\num{280}$ points. The selected points are visualized by crosses in the top plot of \cref{fig:selected_points}. It can be seen that the algorithm described in \cref{sec:study_feature_selection} distributes the feature points equally along the $\gamma$ axis.
 
 \begin{figure}%
   \centering%
   \includegraphics[width=\textwidth]{images/summer_school_study/selected_points.pdf}%
-  \caption{Processed experimental values over time that were used for training of both models. The concatenated data of seven trials is shown which yields a total end time of 363.32 s. The individual trials are separated by the yellow triangles on the $x$-axis. The three upper plots show the values of $\gamma, l_\MTU$ and $\dot{l}_\MTU$ for both biceps (brown) and triceps (blue), the bottom plot shows the elbow torque, $\tau$. The selected feature points are visualized as crosses in the two top plots. In the upper-most plot, it can be seen that the first three trials, which correspond to elbow flexion, mainly activated the biceps muscle, whereas in the last four trials, corresponding to elbow extension, the triceps is more active.
+  \caption{Processed experimental values over time that were used for training of both models. The concatenated data of seven trials are shown, which yield an end time of $\SI{363.32}{s}$. The individual trials are separated by the yellow triangles on the $x$-axis. The three upper plots show the values of $\gamma, \ell_\MTU$ and $\dot{l}_\MTU$ for both biceps (brown) and triceps (blue), the bottom plot shows the elbow torque $\tau$. The selected feature points are visualized as crosses in the two top plots. In the upper-most plot, it can be seen that the first three trials, which correspond to elbow flexion, mainly activated the biceps muscle, whereas in the last four trials, corresponding to elbow extension, the triceps is more active.
 }%
   \label{fig:selected_points}%
 \end{figure}%
 
 \subsection{Training of the Models}\label{sec:res_training}
+%
+Training of model A consists of estimating the hyperparameters for the Gaussian Process Regression model from the training data.
 
-Training of the Gaussian Process of model A was performed using the ready to use implementation provided by MATLAB.
-We parametrized the covariance by a squared exponential kernel and used constant basis functions, $H(x) = 1$. We enabled observational noise, its standard deviation, $\sigma_n^2$, was found by optimization during training of the model.
-
-For training of model B, the optimization problem for the parameters needed to be solved. We implemented the Hill-type models and the constraints also in MATLAB and used the nonlinear programming implementation, \code{fmincon}, to minimize the given bounded and nonlinear constrained, multivariable function.
-
-The total number of optimization variables can be computed by $2\cdot 19 + 2n = 598$, as each of the parameter vectors $\bftheta_B,\bftheta_T$ had 19 entries. The resulting parameter values and their relation to the initial values are summarized in \cref{tab:model_b_parameters}. It can be seen that none of the final parameter values are limited by the constraints which would be $-50\%$ and $+100 \%$. However, setting the constraints helps the optimizer to stay in the valid range of meaningful model parameters.
+For model B, the optimization problem for the biophysical parameters is solved. The resulting parameter values and their relation to the initial values are summarized in \cref{tab:model_b_parameters}. It can be seen that none of the final parameter values is limited by the constraints, which would be $\SI{-50}{\percent}$ and +\SI{100}\percent. However, it was observed that including the constraints helps the optimizer to stay in the valid range of meaningful model parameters and, thus, reach the optimum faster.
 
 \begin{table}[t] 
   \centering
@@ -429,8 +527,8 @@ The total number of optimization variables can be computed by $2\cdot 19 + 2n = 
       & $\Delta W_{a} \,[\;]$ 
       & $\nu_{\mathrm{CE},d} \,[\;]$ \\  \midrule
     Generic & $4260$ & $0.3$ & $0.35$ & $0.35$ & $1.5$  \\ %\hline
-    Biceps  & $+11.0\%$ & $+31.7\%$ & $+10.9\%$ & $+91.6\%$ & $+10.9\%$  \\ %\hline
-    Triceps & $-49.0\%$ & $-25.4\%$ & $+10.9\%$ & $+5.1\%$ & $+10.9\%$  \\ %\hline 
+    Biceps  & $+\SI{11.0}{\percent}$ & $+\SI{31.7}{\percent}$ & $+\SI{10.9}{\percent}$ & $+\SI{91.6}{\percent}$ & $+\SI{10.9}{\percent}$  \\ %\hline
+    Triceps & $-\SI{49.0}{\percent}$ & $-\SI{25.4}{\percent}$ & $+\SI{10.9}{\percent}$ & $+\SI{5.1}{\percent}$ & $+\SI{10.9}{\percent}$  \\ %\hline 
     \addlinespace[2ex]
     \textbf{CE} 
       &  $\nu_{\mathrm{CE},a} \,[\;]$ 
@@ -439,8 +537,8 @@ The total number of optimization variables can be computed by $2\cdot 19 + 2n = 
       & $S_\text{ecc} \,[\;]$ 
       & $F_\text{ecc} \,[\;]$\\  \hline
     Generic & $3.0$ & $0.25$ & $2.25$ & $2$ & $1.5$ \\ %\hline
-    Biceps & $-46.4\%$ & $+14.0\%$ & $+77.5\%$ & $-4.1\%$ & $-30.1\%$ \\ %\hline
-    Triceps &  $+95.9\%$ & $-20.3\%$ & $+41.4\%$ & $+22.3\%$ & $+36.8\%$ \\ %\hline
+    Biceps & $-\SI{46.4}{\percent}$ & $+\SI{14.0}{\percent}$ & $+\SI{77.5}{\percent}$ & $-\SI{4.1}{\percent}$ & $-\SI{30.1}{\percent}$ \\ %\hline
+    Triceps &  $+\SI{95.9}{\percent}$ & $-\SI{20.3}{\percent}$ & $+\SI{41.4}{\percent}$ & $+\SI{22.3}{\percent}$ & $+\SI{36.8}{\percent}$ \\ %\hline
     \addlinespace[2ex]
     \textbf{PEE} 
       & $L_{\mathrm{PEE},0} \,[\;]$ 
@@ -448,135 +546,140 @@ The total number of optimization variables can be computed by $2\cdot 19 + 2n = 
       & $F_{\mathrm{PEE}} \,[\;]$
       \\ \hline
     Generic & $0.9$ & $2.5$ & $2.0$  \\ %\hline
-    Biceps & $+10.9\%$ & $+10.9\%$ & $+10.9\%$  \\ %\hline
-    Triceps & $+10.9\%$ & $+10.9\%$ & $+10.9\%$  \\ %\hline
+    Biceps & $+\SI{10.9}{\percent}$ & $+\SI{10.9}{\percent}$ & $+\SI{10.9}{\percent}$  \\ %\hline
+    Triceps & $+\SI{10.9}{\percent}$ & $+\SI{10.9}{\percent}$ & $+\SI{10.9}{\percent}$  \\ %\hline
     \addlinespace[2ex]
     \textbf{SDE} 
       & $D_{\mathrm{SDE}} \,[\;]$ 
       & $R_{\mathrm{SDE}} \,[\;]$ 
       \\ \midrule
     Generic & $0.3$ & $0.01$    \\ %\hline
-    Biceps & $+10.9\%$ & $+8.6\%$   \\ %\hline
-    Triceps & $+10.9\%$ & $-11.0\%$  \\ %\hline
+    Biceps & $+\SI{10.9}{\percent}$ & $+\SI{8.6}{\percent}$   \\ %\hline
+    Triceps & $+\SI{10.9}{\percent}$ & $-\SI{11.0}{\percent}$  \\ %\hline
     \addlinespace[2ex]
     \textbf{SEE} 
       & $l_{\mathrm{SEE},0}\,[\mathrm{m}]$ 
       & $\Delta F_{\mathrm{SEE},0} \,[\;]$  
-      & $\Delta U_{l} \,[\;]$  
-      & $\Delta U_{nll}\,[\;]$
+      & $\Delta U_\text{l} \,[\;]$  
+      & $\Delta U_\text{nll}\,[\;]$
       \\ \hline
     Generic & $0.172$ & $0.0425$ & $0.017$ & $568$ \\ %\hline
-    Biceps & $-25.0\%$ & $-42.4\%$ & $+63.3\%$ & $+59.2\%$ \\ %\hline
-    Triceps & $-10.3\%$ & $+64.75\%$ & $+19.0\%$ & $+23.6\%$ \\ %\hline
+    Biceps & $-\SI{25.0}{\percent}$ & $-\SI{42.4}{\percent}$ & $+\SI{63.3}{\percent}$ & $+\SI{59.2}{\percent}$ \\ %\hline
+    Triceps & $-\SI{10.3}{\percent}$ & $+\SI{64.75}{\percent}$ & $+\SI{19.0}{\percent}$ & $+\SI{23.6}{\percent}$ \\ %\hline
     \bottomrule
   \end{tabular}
 
-  \caption{Hill-type muscle model parameters of the four elements, CE, PEE, SDE and SEE, initial values given in literature and relative changes of the optimized values. Further explanations of the parameters and references to their initial values are given in \cite{Hilltype2014}.}
+  \caption{Hill-type muscle model parameters of the four elements: CE, PEE, SDE and SEE, initial values given in literature and relative changes of the optimized values. Further explanations of the parameters and references to literature containing their initial values are given in \cite{Hilltype2014}.}
   \label{tab:model_b_parameters}
   %\end{scriptsize}
 \end{table}
 
-After training of the models A and B using the selected points of the training dataset, both models were tested by a \emph{resubstitution prediction}, i.e. predicting output from the training input data. The results are shown in \cref{fig:measured_optimized_torque_A} for model A and \cref{fig:measured_optimized_torque_B} for model B. As this uses only the selected subset of experimental values, the data points have no natural ordering and therefore were sorted for better visibility.
-It can be seen that for both models the predicted value are a good fit to the measured values. For model A, the predicted 95\% confidence interval includes the real values almost everywhere. For model B, the predicted values have a higher variance, especially for high torque values.
+After training of the models A and B using the selected points of the training dataset, both models were tested by a \emph{resubstitution prediction}, i.e., predicting output from the training input data. The results are shown in \cref{fig:measured_optimized_torque_A} for model A and \cref{fig:measured_optimized_torque_B} for model B. As this evaluation only uses the subset of selected experimental values, the data points have no natural ordering. They were sorted for better visibility.
+
+It can be seen that, for both models, the predicted values are a good fit to the measured values. For model A, the predicted 95\% confidence interval includes the actually measured values almost everywhere. For model B, the predicted values show a higher variance, especially for high torque values.
 
 \begin{figure}%
   \centering%
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/measured_optimized_torque_A.pdf}%
-    \caption{Measured values (blue) and values predicted by Model A (dark green), with 95\% confidence interval (light green).}%
+    \caption{Measured values (blue) and values predicted by model A (dark green), with 95\% confidence interval (light green).}%
     \label{fig:measured_optimized_torque_A}%
   \end{subfigure}%
   \quad
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/measured_optimized_torque_B.pdf}%
-    \caption{Measured values (blue) and predicted values by Model B (orange).}%
+    \caption{Measured values (blue) and values predicted by model B (orange).}%
     \label{fig:measured_optimized_torque_B}%
   \end{subfigure}%
-  \caption{Measured and predicted torque values for the training data set. The measured points are ordered by magnitude, the order of the predicted points matches the order of the measured points.}%
+  \caption{Resubstitution prediction: Measured and predicted torque values for the training data set. The measured points are ordered and numbered by magnitude, the order of the predicted points matches the order of the measured points.}%
   \label{fig:measured_optimized_torque}%
 \end{figure}%
 
 \subsection{Validation}\label{sec:res_validation}
 
-The next evaluation is to use the validation dataset and compare the predicted outputs of the model with the real, experimental values.
-In contrast to the training data, where a small number, $n$, of points was selected, we use all captured values, in total \num{54e3} data points for a time span of $t=54 \si{\second}$. The results are shown in \cref{fig:validation_bv5_40_points}.
+The next evaluation uses the validation dataset and compares the predicted outputs of the models with the actual experimental values.
+In contrast to the training data, where a small number $n$ of points was selected, we now use all captured values. This involves a total of \num{54e3} data points for a time span of $t=\SI{54}s$. 
 
 \begin{figure}%
   \centering%
   \includegraphics[width=\textwidth]{images/summer_school_study/validation_bv5_40_points.pdf}%
-  \caption{Predicted torque values by model A (green), trained model B (red) and untrained model B (yellow), in comparison to the experimentally measured values (blue), for the validation data set.}%
+  \caption{Validation: Predicted torque values by model A (green), trained model B (red) and untrained model B (yellow), in comparison to the experimentally measured values (blue), for the validation data set.}%
   \label{fig:validation_bv5_40_points}%
 \end{figure}%
 
-Comparing the green curve for model A with the blue curve for the experimental data, it can be seen that the predicted values match qualitatively for most of the time span. The predicted torque values are slightly smaller than the real values. Only for the two intervals $[11 \si\second, 12 \si\second]$ and $[40 \si\second, 42 \si\second]$ the predicted value is far off. The 95\% confidence interval that was computed by the Gaussian Process spans a large range for these time intervals which implies that the model prediction is not to be trusted in this area. 
+The results are shown in \cref{fig:validation_bv5_40_points}. Comparing the green curve for model A with the blue curve for the experimental data, it can be seen that the predicted values match qualitatively for most of the time span. The predicted torque values appear consistently slightly smaller than the real values. Only for the two intervals $[\SI{11}s, \SI{12}s]$ and $[\SI{40}s, \SI{42}s]$ the predicted value is far off. The \SI{95}\percent{} confidence interval that was computed by the Gaussian Process spans a large range for these time intervals which implies that the model prediction is not to be trusted for this area. 
 
-The biophysical model approach, model B was tested in two variants. First, with the generic parameters from literature (yellow curve), second with the subject-specific, optimized parameters (red curve). It can be seen that the generic model fails to predict the torque values whereas the trained model computed reasonable values. These values are worse than most of the predictions from model A, but they succeed in giving a qualitative estimate about a low, medium or high torque output.
+The biophysical model approach, model B, was tested in two variants. First, with the generic parameters from literature (yellow curve), second, with the subject-specific, optimized parameters (red curve). It can be seen that the generic model fails to predict the torque values whereas the trained model predicts reasonable values. These values are worse than most of the predictions from model A, but they succeed in giving a qualitative estimate about a low, medium or high torque output.
 
-The match between models and experiment can be quantified using the normalized root-mean-square error (NRMSE), which is defined as
+The match between model outputs $\tau_i$ and experimental data $\hat\tau_i$ can be quantified using the normalized root-mean-square error (NRMSE). This is a scaled version of the root-mean-square error (RMSE) and can be defined as
 \begin{equation*}
   \begin{array}{lll}
-    \text{RMSE} = \sqrt{\sum\limits_{i=1}^N (\theta_i - \hat{\theta_i})^2 / N},\\[4mm]
-    \text{NRMSE} = \dfrac{\text{RMSE}}{\max\limits_i\{\hat\theta_i\} - \min\limits_i\{\hat\theta_i\}}.
+    \text{RMSE} = \sqrt{\sum\limits_{i=1}^N (\tau_i - \hat{\tau_i})^2 / N},\\[4mm]
+    \text{NRMSE} = \dfrac{\text{RMSE}}{\max\limits_i\{\hat\tau_i\} - \min\limits_i\{\hat\tau_i\}}.
   \end{array}
 \end{equation*}
 The NRMSE for model A is 0.267 which is worse than the value of 0.163 for the trained model B. The generic model B has the worst NRMSE of 0.547.
 
 \subsection{Simplified Model A}\label{sec:res_simplified_a}
-An advantage of model approach A is that it forgos any biophysical description and the associated type of model error. It is a generic approach that does not require expert knowledge about the physiological structure. In the present study, however, some level of expert knowledge and physiological model was required in preprocessing the MoCap data, i.e. solving the inverse kinematics of the observed forarm movements to get the kinematic quantities of muscle lengths, velocities and moment arms. Therefore, the next study tries to apply the approach of model A using only the elbow angle instead, which is easier to measure experimentally. Thus, training data consist of input vectors $\bfx_i = (\phi_e(t_i), \gamma_B(t_i), \gamma_T(t_i))^\top \in \mathcal{X}$. In the following, this model is named \say{Simplified model A} in constrast to the \say{Full model A} that used the extended input data.
+An advantage of model approach A is that it forgos any biophysical description and the associated type of model error. It is a generic approach that does not require expert knowledge about the physiological structure. In the present study, however, some level of expert knowledge and physiological model was required in preprocessing the MoCap data, i.e. solving the inverse kinematics of the observed forarm movements to get the kinematic quantities of muscle lengths, velocities and moment arms. 
 
-The results are shown in \cref{fig:measured_optimized_A2}. It can be seen that the resubstitution prediction in \cref{fig:measured_optimized_torque_A2} where the trained model is used to predict the training values shows a perfect fit. In contrast to the full model A, \cref{fig:measured_optimized_torque_A}, here, the learned input-output mapping shows no variance. However, the prediction for the validation dataset in \cref{fig:measured_optimized_torque_A3} shows a high error relative to the experimental data. The curve for the experimental data even lies outside the 95\% confidence interval of the prediction at some points. The NRMSE value has a high value of 0.461. 
-The NRMSE values of the full and simplified model A and the generic and optimized model B are summarized in \cref{fig:nrmse}.
-This means that simplified model A gives no useful results where the training input is too scarce. Instead, preprocessing of the measurements using a subject specific geometric model, as done for the full model A gives the desired results.
+Since model A performed well in the previous validation study, we tested whether good results can also be achieved without this expert knowlegde.
+Consequently, the next study applies model approach A using only the elbow angle and no muscle lengths, velocities nor moment arms. Thus, the training data consists of input vectors $\bfx_i = (\phi_e(t_i), \gamma_B(t_i), \gamma_T(t_i))^\top \in \mathcal{X}$. In the following, this model is named \say{implified model A} in constrast to the \say{full model A} that uses the complete set of input variables.
+
+The results are shown in \cref{fig:measured_optimized_A2}. It can be seen that the resubstitution prediction in \cref{fig:measured_optimized_torque_A2} where the trained model is used to predict the training values shows a perfect fit. In contrast to the full model A, \cref{fig:measured_optimized_torque_A}, here, the learned input-output mapping shows no variance. However, the prediction for the validation dataset in \cref{fig:measured_optimized_torque_A3} shows a high error relative to the experimental data. The curve for the experimental data even lies outside the 95\% confidence interval of the prediction at some points. 
+
+The simplified model A has a NRMSE value of 0.461. For comparison, the NRMSE values of the full and simplified model A and the generic and optimized model B are summarized in \cref{fig:nrmse}. 
+
+This evaluation shows that simplified model A gives no useful results where the training input is too scarce. Instead, preprocessing of the measurements using a subject specific geometric model, as done for the full model A, is needed to allow for a useful prediction.
 
 \begin{figure}%
   \centering%
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/measured_optimized_torque_A2.pdf}%
-    \caption{Measured and predicted torque values of the training dataset, ordered by magnitude. The measured values (blue) and the values predicted by the Gaussian Process (green) lie on each other.}%
+    \caption{Measured and predicted torque values of the training dataset, ordered and numbered by magnitude. The measured values (blue) and the values predicted by the Gaussian Process (green) lie on each other.}%
     \label{fig:measured_optimized_torque_A2}%
   \end{subfigure}%
   \quad
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/validation_bv5_40_points_only_gamma_for_training.pdf}%
-    \caption{Predicted torque values for the validation trials (green dotted line), 95\% confidence interval (light green) and the reference values of the experiment (blue), which reveal bad prediction capabilities of the simplified model A.}%
+    \caption{Predicted torque values for the validation trials (green dotted line), 95\% confidence interval (light green) and the reference values of the experiment (blue). The plot reveals bad prediction capabilities of the simplified model A.}%
     \label{fig:measured_optimized_torque_A3}%
   \end{subfigure}%
-  \caption{Result for the simplified model A, where only the elbow angles, $\phi_e$, are used as training input instead of MTU lengths, velocities and moment arms, $\ell_{\text{MTU},B}, \ell_{\text{MTU},T}, v_B, v_T, r_{B}$ and $r_{T}$}%
+  \caption{Result for the simplified model A, where, apart from the free calcium ion contractions, only the elbow angles, $\phi_e$, are used as training input instead of MTU lengths, velocities and moment arms.}
   \label{fig:measured_optimized_A2}%
 \end{figure}%
 
 \subsection{Insights of Model B}\label{ref:res_insights_b}
 An advantage of model approach B is that the trained parameters are physically meaningful and allow insight into the properties of the subject specific model. Furthermore, the quality of the training data can be assessed. \Cref{fig:biceps_working_area} shows the force-length relation of the biceps muscle model using the generic and the optimized parameter values. It can be seen that the subject-specific model has a smaller slope of the force curve. 
-All points of the training data set are indicated by red crosses on the curves and show the operating range of the muscle in which the model has been trained. It can be seen that the experimental training data is restricted to a small range of the muscle length below its optimal CE length, $l_{\CE,\text{opt}}$. In order to improve the quality of the model predictions for this subject, additional experimental trials can be designed for training that fills in the missing  range of operation for larger muscle extensions.
+All points of the training data set are indicated by red crosses on the curves and show the operating range of the muscle in which the model has been trained. It can be seen that the experimental training data are limited to a small range of the muscle length below its optimal CE length $l_{\CE,\text{opt}}$. In order to improve the quality of the model predictions for this subject, specific additional experimental trials can be designed for model training. They can be designed to fill in values in the missing range of operation, which in this case is for larger muscle extensions.
 
-A low computational time of the offline parameter identification and the online evaluation of the two models would be an important measure for their practical applicability. In the present study, the training phase of Model A, i.e. optimization of the quantities for the Gaussian Process Regression using 280 training data points took 2.24 \si\second. The evaluation of Model A for the validation data set of \num{54e3} took 116 \si{\milli\second}.
-The parameter optimization of model B had a duration of 25\si\minute 16\si\second and the evaluation for the validation data 13 \si\second.
+A low computational time of the offline parameter identification and the online evaluation of the two models would be an important measure for their practical applicability. In the present study, the training phase of Model A, i.e., optimization of the quantities for the Gaussian Process Regression using 280 training data points took \SI{2.24}{\second}. The evaluation of Model A for the validation data set containing \num{54e3} points had a duration of \SI{116}{\milli\second}.
 
-The large difference in runtime between models A and B can be explained by the inefficient implementation of the biophysical model using the MATLAB programming language. During parameter identification, this model needs to be evaluated iteratively by the optimization algorithm. In contrast, the optimization within model A works on an internal implementation of the Gaussian Process which could be optimized during development of the particular MATLAB functionality.
-In general, the training for Gaussian Process Regression has cubic time complexity whereas for the parameter optimization of model B, iterative solvers with linear time complexity exist.
+The runtimes for model B were significantly higher. The parameter optimization lasted \SI{25}{\minute} \SI{16}{\second} and the evaluation for the validation data set had a duration of \SI{13}{\second}.
 
-If EMG is used to control an exoskeleton that supports the movement of the limb, the measured signals are ahead of the human movement for a small duration. This is a result of the time delay in the neuromusculoskeletal system. This property gives the assistive exoskeleton a small time to predict the intended movement, and thereby allows a seamless integration.
+The large differences in runtime between models A and B can be explained by the inefficient implementation of the biophysical model using the MATLAB programming language. During parameter identification, this model needs to be evaluated iteratively in the optimization algorithm. In contrast, the optimization within model A works with an internal implementation of the Gaussian Process which was be optimized during development of the particular MATLAB functionality.
+In general, the evaluation of Gaussian Process Regression has cubic time complexity whereas, for the parameter optimization of model B, iterative solvers with linear time complexity exist.
 
 \begin{figure}%
   \centering%
   \begin{subfigure}[t]{0.47\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/biceps_initial.pdf}%
-    \caption{Model with generic parametrization and training data points.}%
+    \caption{Model with generic parametrization.}%
     \label{fig:biceps_a}%
   \end{subfigure}%
   \quad
   \begin{subfigure}[t]{0.47\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/summer_school_study/biceps_optimized.pdf}%
-    \caption{Model with subject-specific parametrization and training data points.}%
+    \caption{Model with subject-specific parametrization.}%
     \label{fig:biceps_b}%
   \end{subfigure}%
-  \caption{Isometric force-length relation of the CE for the biceps model, analogous to \cref{fig:force_curves_generic_length}.}%
+  \caption{Isometric force-length relation of the CE for the biceps model, analogue to \cref{fig:force_curves_generic_length}, but additionally with training data points. The points are placed on the model curve and visualize the predicted relative forces for the lengths of the CE that occured during the training trials.}%
   \label{fig:biceps_working_area}%
 \end{figure}%
 
@@ -589,161 +692,178 @@ If EMG is used to control an exoskeleton that supports the movement of the limb,
 \end{figure}%
 
 \section{Conclusion}\label{sec:study_conclusion}
-In this study, elbow torques during flexion and extension of the upper arm was predicted from motion capture information and EMG measurements. Two models, A and B, were developed. Model A is non-parametric and uses Gaussian Process Regression. Model B is biophysically informed and involves two Hill-type muscle models for biceps and triceps. Experiments were conducted to generate training data that was used for model parameter identification. The two models were evaluated using experimental validation data.
+In this study, elbow torques during flexion and extension of the upper arm were predicted from motion capture data and EMG measurements. Two models, A and B, were developed. Model A is non-parametric and uses Gaussian Process Regression. Model B is biophysically informed and involves two state-of-the-art Hill-type muscle models for biceps and triceps. Experiments were conducted to generate training and validation data. These training data were used for model parameter identification. Predictions from the two models were compared to real experimental values using the validation data.
 
-Regarding the implementation, model A requires low effort and no special knowledge about the model, except when motion data is preprocessed for a specific subject. Model B needs expert knowledge about the biophysical structure and the implementation of all comprised models.
+Regarding the formulation and implementation, model A requires low effort and no special knowledge about the model, except where experimental motion data is preprocessed for a specific subject. In contrast, model B needs expert knowledge about the biophysical structure and the implementation of all comprised models.
 
-Similar holds for the offline training phase. Here, an advantage of model A is that additional information, e.g. from neighbouring muscles or additional sensors can easily be added. Instead, Model B incorporates a-priori information about the functioning of the muscular system and allows to aid the parameter identification step by enforcing physiological constraints $\Theta$ for the parameters.
+Similar holds for the offline training phase. There are no parameters in model A that have to be tuned manually, which allows a quick start. Conversely, model B requires the appropriate definition of initial values and physiological constraints for the optimization problem. However, this can also be seen as an advantage for model B, as a-priori knowledge can be integrated in such a model.
 
-Considering the prediction error, both models were able to predict the level of torque reasonably. 
-\Cref{fig:nrmse} showed the best score for model A, followed by model B. It was also shown that the generic parametrization of model B does not yield a useful prediction. The same is true for a simplified application of model A, where the elbow torque was used as training input instead of derived quantities from the motion capture system that required a complex preprocessing step.
+On the other hand, an advantage of model A is that additional experimental data, e.g., from neighbouring muscles or additional sensors, can easily be added to the model. This is not possible with model B, where the model formulation would have to be changed.
 
-Both models provide possiblities to assess the level of confidence of their predictions. With model A, confidence intervals can be computed directly from the Gaussian Processes. Their usefulness was shown in the validation where regions with large errors also had a large confidence interval. Model B allows insight into force-length and force-velocity characteristics of the two involved muscles. The operating range of the muscle during the experiments can be visualized and allows to assess whether the desired model features were covered by the training phase and, thus, promise a good prediction.
+Our studies showed that both models were able to predict the levels of torque reasonably. 
+\Cref{fig:nrmse} showed the best score for model A, followed by model B. It was also seen that the generic parametrization of model B does not yield a useful prediction. The same is true for a simplified version of model A, where the elbow torque was used as training input instead of derived quantities from the motion capture system that required a complex preprocessing step.
 
-In our study, runtimes were low for model A and high for model B in both offline and online phases. However, this is due to our prototypical implementation of model B. For larger data sizes and more sophisticated implementation, the reverse effect is expected. The runtime complexity for the training phase is better for model B (linear in time) compared to model A (cubic in time). For the online phase, costly integration over data points is needed for model A whereas model B directly provides a differential equation of the system that can be solved efficiently. 
+Both models provide possiblities to assess the confidence of their predictions. With model A, confidence intervals can be computed directly from the Gaussian Processes. Their usefulness was shown in the validation where regions with large errors also had a large confidence interval. 
+Model B allows insight into force-length and force-velocity characteristics of the two involved muscles. The operating ranges of the muscles during the experiments can be visualized and allow to assess whether the desired model features were covered by the training phase and, thus, will yield a good prediction.
 
-When targeted at real-time application, such as for powered orthoses and prostheses or exoskeletons, both models could be considered. Model A fits the use case of a device that could be (re-)calibrated by the patient itself. Because of the built-in confidence estimation, compliance and safety could be ensured more easily even for imperfect training.
+In our study, runtimes were low for model A and high for model B in both offline and online phases. However, this is due to our prototypical implementation of model B. For larger data sizes and a more sophisticated implementation, the reverse effect is expected. The runtime complexity for the training phase is better for model B (linear in time) compared to model A (cubic in time). For the online phase, costly integration over data points is needed for model A whereas model B directly provides a differential equation of the system that can be solved efficiently. 
+
+If EMG is used to control an exoskeleton that supports the movement of the limb, it is known that the measured signals are ahead of the intended movement by a small offset. This is a result of the time delay in the neuromusculoskeletal system. This property gives the assistive exoskeleton a small time to predict the intended movement and thereby allows a seamless integration of the artifical device with human control.
+
+When targeted at such a real-time application, both models could be considered to be integrated into the control. Model A better fits the use case of a device that could be (re\nobreakdash-)calibrated by the patient itself. Because of the built-in estimation of prediction quality, compliance and safety could be ensured more easily even for imperfect training.
 Model B would need a controlled environment such as a specialist's laboratory and careful assistence for the calibration process.
-After calibration it would promise a more natural and more responsive experience because of the subject-specific model and possibly smaller computation times.
+After calibration, it would promise a more natural and more responsive experience because of the subject-specific model and possibly smaller compute times.
 
-This study reveiled some advantages of biophysically informed models for prediction of human movements. The kinematics and the individual muscle dynamics were modeled close to the understanding of the system in-vivo. However, several aspects where not modeled as detailed as possible. The pathway from neural stimulation to excitation and activation of the muscle, the recruitment strategies including different motor units, neural feedback loops as well as effects stemming from the 3D geometry of the muscle were not considered. A more detailed, biophysically informed model including these properties will be described in the following sections of the chapter.
+Where real-time application is not a requirement, biophysically informed models have a high potential to leverage the understanding how the human neuro-musculo-skeletal system operates for given tasks.
+In model B of this study, the kinematics and individual muscle dynamics were described close to the current  understanding of the system. However, several aspects where not modeled as detailed as possible. The pathway from neural stimulation to excitation and activation of the muscle, the recruitment strategies including different motor units, neural feedback loops as well as effects stemming from the 3D geometry of the muscle were not considered. Therefore, this thesis develops a more detailed, biophysically informed model including these properties in the following chapters.
 
+The presented study reproduced what similar studies in literature have shown: Subject-specific model identification for Hill-based torque prediction models can vastly improve the prediction quality compared to generic models. Our work adds to the common knowledge that this holds also for the four-element Hill-type model that was used for model B. Furthermore, a comparison with Gaussian Process Regression was given, various advantages and disadvantages of these two approaches were identified. Future work can test the two models with more subjects and increase the variety of motion in the training experiments. For example, effects resulting from high contraction velocities or excentric contractions could be investigated to evaluate the model's potential in more complex movements.
 
-  \chapter{Formulation of electrophysiology and muscle contraction}
-    - electrophysiology introduction
-    \section{State of the art}
-    - Hodgkin-Huxley, shorten, advanced models, how it gets solved
-    \section{discretization}
-    - discretization of electrophysiology, operator splitting
-    \section{Standard for formulation of models}
-    - cellml introduction
-    \section{Bidomain}
-    - EMG
-    \section{Multidomain}
-    - multidomain formulation
-    \section{Formulation of solid mechanics}
-    - basics solid mechanics framework, material modeling, 
-    
-  \section{Simulation workflow}
-  - simulation workflow of skeletal muscle
-  
-  \chapter{Numeric}
-  \section{Fundamentals of the discretization}
-    \section{Finite element method}
-    - basics FEM formulation of Laplace operator and diffusion equation, boundary conditions
-    \section{Incompressible nonlinear solid mechanics}
-    - incompressibility, penalty formulation vs. mixed formulation\\
-    - governing nonlinear eq.\\
-    - jacobian
-  \section{Numerical schemes}
-    \section{time stepping schemes}
-    \section{linear system solvers}
-    \section{newton algorithm}
-    
-  \chapter{Simulation software}
-    \section{General aspects}
-    \section{Detail}
-  % 
-  \chapter{Simulation software}
-    \section{State of the art}
-    - review on bioengineering simulation frameworks 
-    
-    \section{OpenCMISS}
-  - OpenCMISS introduction, iron zinc cmgui, unstructured\\
-  
-  - Strang splitting, solvers 1D\\
-  - improved interpolation\\
-  - parallelization, issue with 1D \\
-  - 3D parallelization strategies\\
-  - design flaws, memory\\
-    % untergliedern, z.B. schnittstellen parall etc.
-    \section{The simulation framework \emph{opendihu}}
-    - modularity of opendihu, concepts (python c++ build system)
-    \section{Overview of discretization features}
-    - feature overview, implemented equations, ansatz functions, meshes
-    \section{Input and output}
-    - file i/o parallel, i: only local data important for high parallelism, o: paraview
-    \section{In-situ visualization}
-    - in-situ
-    \section{Details on the implementation}
-    \section{Representation of structured meshes}
-    \section{Parallel data handling}
-    - data structures, petsc variables, partitioning, ghost communication
-    \section{Implementation of boundary conditions}
-    - Neumann, Dirichlet boundary conditions
-    \section{Implementation of material formulation and automatic derivation of derivatives}
-    - implementation of solid mechanics with analytic differentiation
-    
-    \section{efficient and configurable data transfer}
-    - data layout details, efficient transfer of variables between solvers
-    \section{Mapping between meshes}
-    - parallel mapping between meshes, invertability of index space represesantion
-    \section{An efficient solver to the Monodomain equation}    
-    - cellml code generator and its optimizations - openmp, simd, vc
-    \section{Details on the partitioning}
-    - fibers emg structure and partitioning
-    \section{Parallelization of the multidomain system}
-    - multidomain parallelization, reordering of matrix
-    \section{load balancing}
-    - load balancing on fiber level
-  \chapter{External coupling}
-    - introduction to external coupling, precice
-    \section{coupling with FEBio}
-    \section{coupling with AceFEM}
-  
-  \chapter{An algorithm for mesh generation}
-    - introduction, need for fiber and 3d mesh
-    \section{State of the art}
-    - literature, laplace potential flow idea
-    \section{Data preprocessing}
-    - visual human dataset, methods to extract surface, approximation by spline surfaces
-    \section{Outline of the algorithm}
-    - pseudo code
-    \section{Plane mesh smoothing}
-    \section{Parallelization}
-    \section{Generation of fiber meshes}
-    - generation of muscle mesh, 3D and fibers, also in parallel
-  
-  \chapter{Simulation scenarios}
-    \section{Simulation of electromyography with fiber-based formulation}
-      - scenario static-biceps-emg, composite meshes
-    \section{Simulation of electromyography with multidomain formulation}
-    \section{Muscle contraction with fiber-based formulation}
-      - fibers with contraction
-    \section{Muscle contraction with multidomain formulation}
-  \chapter{Technical simulation results}
-    \section{Runtime evaluation}
-    - results and experiments, runtime, peak performance\\
-    - monodomain runtime comparison OpenCMISS opendihu
-    \section{parallel partitioning}
-    - parallel partitioning and weak scaling, opencmiss and opendihu 
-    \section{memory consumption}
-    - memory scaling OpenCMISS
-  \chapter{biomechanical simulation results}
-    \section{Simulation of fatigue}
-    - monodomain, hh  shorten, fatigue effects
-    \section{Simulation of EMG}
-    - static biceps emg\\
-    - fibers with contraction\\
-    - multidomain with fat layer\\
-    - multidomain with contraction\\
-
-\part{Soft tissue robotics}
-\chapter{...}
-  - introduction, handling flexible objects, overview of different object types\\
-  - basics Lagrange formulation of cable\\
-  - cable with friction on surface\\
-  - placing cable\\
-  - peg-in-hole, with sparse grids\\
-  - simulation of 2d tissue\\
-  - gripping point estimation\\
-  
-  \cite{Maier2021}
-  
-\part{Conclusion}
+%\chapter{Formulation of electrophysiology and muscle contraction}
+%    - electrophysiology introduction
+%    \section{State of the art}
+%    - Hodgkin-Huxley, shorten, advanced models, how it gets solved
+%    \section{discretization}
+%    - discretization of electrophysiology, operator splitting
+%    \section{Standard for formulation of models}
+%    - cellml introduction
+%    \section{Bidomain}
+%    - EMG
+%    \section{Multidomain}
+%    - multidomain formulation
+%    \section{Formulation of solid mechanics}
+%    - basics solid mechanics framework, material modeling, 
+%    
+%  \section{Simulation workflow}
+%  - simulation workflow of skeletal muscle
+%  
+%  \chapter{Numeric}
+%  \section{Fundamentals of the discretization}
+%    \section{Finite element method}
+%    - basics FEM formulation of Laplace operator and diffusion equation, boundary conditions
+%    \section{Incompressible nonlinear solid mechanics}
+%    - incompressibility, penalty formulation vs. mixed formulation\\
+%    - governing nonlinear eq.\\
+%    - jacobian
+%  \section{Numerical schemes}
+%    \section{time stepping schemes}
+%    \section{linear system solvers}
+%    \section{newton algorithm}
+%    
+%  \chapter{Simulation software}
+%    \section{General aspects}
+%    \section{Detail}
+%  % 
+%  \chapter{Simulation software}
+%    \section{State of the art}
+%    - review on bioengineering simulation frameworks 
+%    
+%    \section{OpenCMISS}
+%  - OpenCMISS introduction, iron zinc cmgui, unstructured\\
+%  
+%  - Strang splitting, solvers 1D\\
+%  - improved interpolation\\
+%  - parallelization, issue with 1D \\
+%  - 3D parallelization strategies\\
+%  - design flaws, memory\\
+%    % untergliedern, z.B. schnittstellen parall etc.
+%    \section{The simulation framework \emph{opendihu}}
+%    - modularity of opendihu, concepts (python c++ build system)
+%    \section{Overview of discretization features}
+%    - feature overview, implemented equations, ansatz functions, meshes
+%    \section{Input and output}
+%    - file i/o parallel, i: only local data important for high parallelism, o: paraview
+%    \section{In-situ visualization}
+%    - in-situ
+%    \section{Details on the implementation}
+%    \section{Representation of structured meshes}
+%    \section{Parallel data handling}
+%    - data structures, petsc variables, partitioning, ghost communication
+%    \section{Implementation of boundary conditions}
+%    - Neumann, Dirichlet boundary conditions
+%    \section{Implementation of material formulation and automatic derivation of derivatives}
+%    - implementation of solid mechanics with analytic differentiation
+%    
+%    \section{efficient and configurable data transfer}
+%    - data layout details, efficient transfer of variables between solvers
+%    \section{Mapping between meshes}
+%    - parallel mapping between meshes, invertability of index space represesantion
+%    \section{An efficient solver to the Monodomain equation}    
+%    - cellml code generator and its optimizations - openmp, simd, vc
+%    \section{Details on the partitioning}
+%    - fibers emg structure and partitioning
+%    \section{Parallelization of the multidomain system}
+%    - multidomain parallelization, reordering of matrix
+%    \section{load balancing}
+%    - load balancing on fiber level
+%  \chapter{External coupling}
+%    - introduction to external coupling, precice
+%    \section{coupling with FEBio}
+%    \section{coupling with AceFEM}
+%  
+%  \chapter{An algorithm for mesh generation}
+%    - introduction, need for fiber and 3d mesh
+%    \section{State of the art}
+%    - literature, laplace potential flow idea
+%    \section{Data preprocessing}
+%    - visual human dataset, methods to extract surface, approximation by spline surfaces
+%    \section{Outline of the algorithm}
+%    - pseudo code
+%    \section{Plane mesh smoothing}
+%    \section{Parallelization}
+%    \section{Generation of fiber meshes}
+%    - generation of muscle mesh, 3D and fibers, also in parallel
+%  
+%  \chapter{Simulation scenarios}
+%    \section{Simulation of electromyography with fiber-based formulation}
+%      - scenario static-biceps-emg, composite meshes
+%    \section{Simulation of electromyography with multidomain formulation}
+%    \section{Muscle contraction with fiber-based formulation}
+%      - fibers with contraction
+%    \section{Muscle contraction with multidomain formulation}
+%  \chapter{Technical simulation results}
+%    \section{Runtime evaluation}
+%    - results and experiments, runtime, peak performance\\
+%    - monodomain runtime comparison OpenCMISS opendihu
+%    \section{parallel partitioning}
+%    - parallel partitioning and weak scaling, opencmiss and opendihu 
+%    \section{memory consumption}
+%    - memory scaling OpenCMISS
+%  \chapter{biomechanical simulation results}
+%    \section{Simulation of fatigue}
+%    - monodomain, hh  shorten, fatigue effects
+%    \section{Simulation of EMG}
+%    - static biceps emg\\
+%    - fibers with contraction\\
+%    - multidomain with fat layer\\
+%    - multidomain with contraction\\
+%
+%\part{Soft tissue robotics}
+%\chapter{...}
+%  - introduction, handling flexible objects, overview of different object types\\
+%  - basics Lagrange formulation of cable\\
+%  - cable with friction on surface\\
+%  - placing cable\\
+%  - peg-in-hole, with sparse grids\\
+%  - simulation of 2d tissue\\
+%  - gripping point estimation\\
+%  
+%  \cite{Maier2021}
+%  
+%\part{Conclusion}
 
 % -------------- Literaturseite --------------------
 \newpage
+
+%\acsetup{pages/display=first,pages/name=true}
+
+% Abbreviations
+\printacronyms[include-classes=abbrev,name=Abbreviations]
+
+% Nomenclature
+\printacronyms[include-classes=nomencl,name=Nomenclature]
+
+
 %\bibliography{references}{}
 %\bibliographystyle{abbrv}
 \printbibliography[%
