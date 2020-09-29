@@ -4,48 +4,43 @@
 
 %%%%%%%%%%%%%%%%   Pakete   %%%%%%%%%%%%%%%%%%
 
-\usepackage{ifxetex}
-\ifxetex                % Pakete für XeLaTex / XeTex
-    
-    \usepackage{fontspec}
-    \defaultfontfeatures{Mapping=tex-text}
-    \usepackage{unicode-math}
-    
-    %------------- Schriftarten: ------------------------------
-    %\setmathfont{xits-math.otf}
-    %\setmathfont{latinmodern-math.otf}
-    %\setmathfont{texgyrepagella-math.otf}
-    %\setmathfont{Asana-Math.otf}
-    
-\else                   % Befehle für pdflatex
-%   \usepackage[utf8]{inputenc}
-
-  %------------- Schriftarten: ------------------------------
-  
-  %Fallback-Schriftart
-  %\usepackage{lmodern}  % Latin Modern Fonts sind die Nachfolger von Computer Modern, den LaTeX-Standardfonts
-  %Quelle: http://homepage.ruhr-uni-bochum.de/Georg.Verweyen/pakete.html
-  %Allerdings sieht diese Schritart in Diplomarbeiten fuer Fliesstext auch nicht besonders schoen aus.
-  %Trotzdem ist sie fuer Programmcode gut geeignet
-  %\usepackage[scaled=.95]{helvet}
-  %Linux Libertine, siehe http://www.linuxlibertine.org/
-  %Packageparamter [osf] = Minuskel-Ziffern
-  %rm = libertine im Brottext, Linux Biolinum NICHT als serifenlose Schrift, sondern helvet (von oben) beibehalten
-  %\usepackage[rm]{libertine}
-  %\usepackage[scaled=0.83]{beramono} %BeraMono als Typewriter-Schrift, Tipp von http://tex.stackexchange.com/a/71346/9075
-  
-  \usepackage{charter} %Charter fuer englische Texte
-  %\linespread{1.05} % Durchschuss für Charter leicht erhöhen
+\usepackage{charter} %Charter fuer englische Texte
+%\linespread{1.05} % Durchschuss für Charter leicht erhöhen
 
 %\usepackage[mathletters]{ucs} %direkt griechisches im Mathe modus
+%\usepackage[utf8]{inputenc}
 \usepackage[utf8]{inputenc}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[T1]{fontenc}
 %\usepackage{times}
 
+% utf8x is incompatible with biblatex, the following trick is a remedy
+% source: https://tex.stackexchange.com/a/213177
+\input{binhex}
+\makeatletter
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{mathletters}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-3.def}
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{default}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-34.def}
+\makeatother
+
+
+
+
+
+
 %TODO_Lorin: besser?
    %\usepackage{uniinput}       % für Unicode-Zeichen, wird momentan nicht verwendet, deshalb auskommentiert by Benni
-\fi
 
 
 %\usepackage[ngerman]{babel}
@@ -79,7 +74,7 @@
 \usepackage{float}          % eigene Float-Umgebungen, H-Option, um Bilder an der aktuellen Stelle anzuzeigen
 \usepackage{caption}
 \usepackage{subcaption,array}
-%\usepackage{subcaption}
+%\usepackage{array}
 
 \restylefloat{figure}       % Bilder an der Stelle, wo sie eingebunden werden
 \usepackage{multirow}
@@ -113,7 +108,10 @@
 \usepackage{moreverb}       % verbatimwrite
 \usepackage{verbatimbox}    % \begin{verbbox}
 \usepackage{booktabs}
-\usepackage{morefloats}
+\usepackage{morefloats}     % Increase the number of simultaneous LaTeX floats
+%\usepackage{algorithm2e}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
 
 \newsavebox\lstbox
 \mdfdefinestyle{MyFrame}{%
@@ -162,111 +160,6 @@
 \input{preamble/packages}
 \input{preamble/settings}
     
-\newcommand{\bild}[3]{%
-    \begin{figure}%
-        \centering%
-        \def\svgwidth{#2}%
-        \input{images/#1.pdf_tex}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-\newcommand{\bildcap}[4]{%
-    \begin{figure}%
-        \centering%
-        \def\svgwidth{#2}%
-        \input{images/#1.pdf_tex}%
-        \caption[#4]{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-
-\newcommand{\subfig}[3]{%
-    \begin{subfigure}[b]{#2}%
-        \centering%
-        \def\svgwidth{#2}%
-        \input{images/#1.pdf_tex}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{subfigure}%
-}
-
-\newcommand{\subfigpng}[3]{%
-    \begin{subfigure}[t]{#2}%
-        \centering%
-        \includegraphics[width=#2]{images/#1.png}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{subfigure}%
-}
-\newcommand{\subfigpngcap}[4]{%
-    \begin{subfigure}[t]{#2}%
-        \centering%
-        \includegraphics[width=#2]{images/#1.png}%
-        \caption[#4]{#3}%
-        \label{fig:#1}%
-    \end{subfigure}%
-}
-\newcommand{\subfigpngheight}[4]{%
-    \begin{subfigure}[t]{#2}%
-        \centering%
-        \includegraphics[height=#3]{images/#1.png}%
-        \caption{#4}%
-        \label{fig:#1}%
-    \end{subfigure}%
-}
-
-\newcommand{\subfigpdf}[3]{%
-    \begin{subfigure}[b]{#2}%
-        \centering%
-        \includegraphics[width=#2]{images/#1.pdf}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{subfigure}%
-}
-
-\newcommand{\figpdf}[3]{%
-    \begin{figure}[b]{#2}%
-        \centering%
-        \includegraphics[width=#2]{images/#1.pdf}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-
-\newcommand{\bildpng}[3]{%
-    \begin{figure}[ht]%
-        \centering%
-        \includegraphics[width=#2]{images/#1.png}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-\newcommand{\bildpngcap}[4]{%
-    \begin{figure}[ht]%
-        \centering%
-        \includegraphics[width=#2]{images/#1.png}%
-        \caption[#4]{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-\newcommand{\bildsvg}[3]{%
-    \begin{figure}[ht]%
-        \centering%
-        \includegraphics[width=#2]{images/#1.svg}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
-
-\newcommand{\bildpdf}[3]{%
-    \begin{figure}%
-        \centering%
-        \includegraphics[width=#2]{images/#1.pdf}%
-        \caption{#3}%
-        \label{fig:#1}%
-    \end{figure}%
-}
 
 %%%%%%%%%%%%%%%%   Abkürzungen   %%%%%%%%%%%%%%%%%%
 
@@ -283,7 +176,6 @@
 \newcommand{\bal}{\begin{align}}
 \def\ealll{ \end{align} }
 
-\newcommand{\Name}[1]   {\textit{#1}\/}                 % Eigennamen kursiv
 \renewcommand{\emph}[1]{\textit{#1}\/}
 \def\clap#1{\hbox  to  0pt{\hss#1\hss}}                 % für underbrace
 \def\mathclap{\mathpalette\mathclapinternal}
@@ -295,8 +187,8 @@
 
 \usepackage{setspace}
 \newcommand{\code}[1]{{\small\lstinline[basicstyle=\footnotesize\ttfamily]!#1!}}
-\newfloat{algorithm}{ht}{aux0}              % Algorithmus-Umgebung
-\floatname{algorithm}{Code-Abschnitt}
+%\newfloat{algorithm}{ht}{aux0}              % Algorithmus-Umgebung
+%\floatname{algorithm}{Code-Abschnitt}
 \newcommand{\anm}[1]{\textcolor{blue}{#1}}
 \def\bigA{\mathop{\mathrm{A}}}
 

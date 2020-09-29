@@ -3,23 +3,15 @@
 \babel@toc {american}{}
 \contentsline {part}{\numberline {I}Introduction}{3}{part.1}
 \contentsline {part}{\numberline {II}Digital human}{5}{part.2}
-\contentsline {chapter}{\numberline {1}Comparative Study: Modeling Upper Arm Movement}{7}{chapter.1}
-\contentsline {section}{\numberline {1.1}Introduction}{8}{section.2.1}
-\contentsline {subsection}{\numberline {1.1.1}Related Works}{9}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Contribution Statement}{11}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {1.1.3}Structure of this Chapter}{12}{subsection.2.1.3}
-\contentsline {section}{\numberline {1.2}Experimental Study}{12}{section.2.2}
-\contentsline {subsection}{\numberline {1.2.1}Experimental Trials}{12}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Data Processing}{13}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Feature Selection}{15}{subsection.2.2.3}
-\contentsline {section}{\numberline {1.3}Models}{15}{section.2.3}
-\contentsline {subsection}{\numberline {1.3.1}Data-driven Model A}{16}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Biophysical Model B}{18}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Parameter Identification for Model B}{23}{subsection.2.3.3}
-\contentsline {section}{\numberline {1.4}Results and Discussion}{24}{section.2.4}
-\contentsline {subsection}{\numberline {1.4.1}Feature Selection}{25}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {1.4.2}Training of the Models}{25}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {1.4.3}Validation}{27}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {1.4.4}Simplified Model A}{29}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {1.4.5}Insights of Model B}{31}{subsection.2.4.5}
-\contentsline {section}{\numberline {1.5}Conclusion}{31}{section.2.5}
+\contentsline {chapter}{\numberline {1}Generation of Meshes}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Related Works}{8}{section.2.1}
+\contentsline {section}{\numberline {1.2}Preprocessing of the Muscle Geometry}{8}{section.2.2}
+\contentsline {subsection}{\numberline {1.2.1}Data source}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Automatic surface extraction}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Manually guided surface extraction}{14}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Fitting a Spline surface}{17}{subsection.2.2.4}
+\contentsline {section}{\numberline {1.3}Serial Algorithm to Create Muscle and Fiber Meshes}{22}{section.2.3}
+\contentsline {section}{\numberline {1.4}Parallel Algorithm to Create Muscle and Fiber Meshes}{25}{section.2.4}
+\contentsline {section}{\numberline {1.5}Parallel Algorithm to Create Muscle and Fiber Meshes}{28}{section.2.5}
+\contentsline {section}{\numberline {1.6}Results and Discussion}{28}{section.2.6}
+\contentsline {section}{\numberline {1.7}Motor unit distribution}{29}{section.2.7}

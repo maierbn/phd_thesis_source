@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="50.245216mm"
+   height="110.78712mm"
+   viewBox="0 0 50.245215 110.78712"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="scheme_preprocessing.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker11791"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11789"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker11021"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path11019"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker10967"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path10965"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker10919"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path10917"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker10877"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path10875"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker10841"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path10839"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path1409"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="23.255369"
+     inkscape:cy="322.80615"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="989"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-43.607936,-23.145584)">
+    <g
+       id="g10760">
+      <rect
+         y="23.291225"
+         x="62.405903"
+         height="7.3966179"
+         width="12.649282"
+         id="rect823"
+         style="opacity:1;fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2912831;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         ry="0" />
+      <g
+         transform="translate(18.642049,-2.3386084)"
+         id="g10471">
+        <text
+           id="text829"
+           y="28.861845"
+           x="45.836723"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             id="tspan827"
+             style="stroke-width:0.26458332px"
+             y="28.861845"
+             x="45.836723"
+             sodipodi:role="line">Imaging</tspan><tspan
+             style="stroke-width:0.26458332px"
+             y="31.507679"
+             x="45.836723"
+             sodipodi:role="line"
+             id="tspan10762">data</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g10513">
+      <rect
+         y="38.756786"
+         x="43.784325"
+         height="10.208273"
+         width="20.93996"
+         id="rect833"
+         style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.35277778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         ry="1.8040693" />
+      <text
+         id="text819"
+         y="42.893494"
+         x="46.037178"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan821"
+           style="stroke-width:0.26458332px"
+           y="42.893494"
+           x="46.037178"
+           sodipodi:role="line">Segmentation,</tspan><tspan
+           id="tspan837"
+           style="stroke-width:0.26458332px"
+           y="45.539326"
+           x="46.037178"
+           sodipodi:role="line">edge detection</tspan></text>
+    </g>
+    <g
+       id="g11262">
+      <rect
+         ry="1.8040693"
+         style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.35277778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect839"
+         width="20.93996"
+         height="10.208273"
+         x="72.736801"
+         y="38.756786" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="74.701836"
+         y="42.893494"
+         id="text845"><tspan
+           id="tspan10464"
+           sodipodi:role="line"
+           x="74.701836"
+           y="42.893494"
+           style="stroke-width:0.26458332px">Surface fitting</tspan><tspan
+           id="tspan10462"
+           sodipodi:role="line"
+           x="74.701836"
+           y="45.539326"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 45 Light Oblique';-inkscape-font-specification:'Univers for UniS 45 Light Oblique, ';stroke-width:0.26458332px"><tspan
+   id="tspan10531"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, '">using </tspan>MAP-Client</tspan></text>
+    </g>
+    <g
+       id="g10523"
+       transform="translate(28.952479,22.517468)">
+      <rect
+         ry="1.8040693"
+         style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.35277778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect10515"
+         width="20.93996"
+         height="10.208273"
+         x="43.784325"
+         y="38.756786" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="46.037178"
+         y="42.893494"
+         id="text10521"><tspan
+           sodipodi:role="line"
+           x="46.037178"
+           y="42.893494"
+           style="stroke-width:0.26458332px"
+           id="tspan10519">Export STL file</tspan><tspan
+           sodipodi:role="line"
+           x="46.037178"
+           y="45.539326"
+           style="stroke-width:0.26458332px"
+           id="tspan10527">using <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 45 Light Oblique';-inkscape-font-specification:'Univers for UniS 45 Light Oblique, '"
+   id="tspan10529">cmgui</tspan></tspan></text>
+    </g>
+    <g
+       transform="translate(28.952479,45.034916)"
+       id="g10573">
+      <rect
+         y="38.756786"
+         x="43.784325"
+         height="10.208273"
+         width="20.93996"
+         id="rect10563"
+         style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.35277778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         ry="1.8040693" />
+      <text
+         id="text10571"
+         y="42.893494"
+         x="46.037178"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332px"
+           y="42.893494"
+           x="46.037178"
+           sodipodi:role="line"
+           id="tspan10575">Remove interior </tspan><tspan
+           id="tspan10569"
+           style="stroke-width:0.26458332px"
+           y="45.539326"
+           x="46.037178"
+           sodipodi:role="line">triangles</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="m 82.719917,49.040695 v 11.91503"
+       id="path10809"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker10841)"
+       d="M 82.853553,71.501407 V 83.451646"
+       id="path10831"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker10877)"
+       d="M 82.719917,94.008793 68.855311,101.92665"
+       id="path10867"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1;marker-end:url(#marker10919)"
+       d="m 53.587541,49.107513 v 43.564931 l 14.800048,9.254206"
+       id="path10909"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <g
+       id="g11779">
+      <g
+         transform="translate(-0.16563689)"
+         id="g10653">
+        <g
+           transform="translate(17.840241,76.439084)"
+           id="g10491">
+          <rect
+             y="25.629833"
+             x="44.154484"
+             height="7.3966179"
+             width="12.649282"
+             id="rect10473"
+             style="opacity:1;fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2912831;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+             ry="0" />
+          <text
+             id="text10477"
+             y="28.861845"
+             x="45.836723"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="stroke-width:0.26458332px"
+               y="28.861845"
+               x="45.836723"
+               sodipodi:role="line"
+               id="tspan10481">Surface</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 45 Light Oblique';-inkscape-font-specification:'Univers for UniS 45 Light Oblique, ';stroke-width:0.26458332px"
+               y="31.507679"
+               x="45.836723"
+               sodipodi:role="line"
+               id="tspan10485">STL file</tspan></text>
+        </g>
+        <g
+           transform="translate(14.065061,74.033659)"
+           id="g10589">
+          <rect
+             y="38.756786"
+             x="43.784325"
+             height="10.208273"
+             width="20.93996"
+             id="rect10579"
+             style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.35277778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+             ry="1.8040693" />
+          <text
+             id="text10587"
+             y="42.893494"
+             x="46.037178"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan10585"
+               style="stroke-width:0.26458332px"
+               y="42.893494"
+               x="46.037178"
+               sodipodi:role="line">Fit spline surface</tspan></text>
+        </g>
+        <g
+           id="g10605"
+           transform="translate(17.840241,100.76061)">
+          <rect
+             ry="0"
+             style="opacity:1;fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2912831;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+             id="rect10597"
+             width="12.649282"
+             height="7.3966179"
+             x="44.154484"
+             y="25.629833" />
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             x="45.836723"
+             y="28.861845"
+             id="text10603"><tspan
+               id="tspan10601"
+               sodipodi:role="line"
+               x="45.836723"
+               y="28.861845"
+               style="stroke-width:0.26458332px">Smoothed</tspan><tspan
+               sodipodi:role="line"
+               x="45.836723"
+               y="31.507679"
+               style="stroke-width:0.26458332px"
+               id="tspan10609">surface</tspan></text>
+        </g>
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         id="path10957"
+         d="m 68.153729,109.37679 v 2.92375"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker10967)"
+         sodipodi:nodetypes="cc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path11011"
+         d="m 68.153729,123.00754 v 2.95478"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker11021)"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g10551"
+       transform="translate(32.727659,47.308965)">
+      <rect
+         ry="0"
+         style="opacity:1;fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2912831;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect10543"
+         width="12.649282"
+         height="7.3966179"
+         x="44.154484"
+         y="25.629833" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="45.836723"
+         y="28.861845"
+         id="text10549"><tspan
+           id="tspan10545"
+           sodipodi:role="line"
+           x="45.836723"
+           y="28.861845"
+           style="stroke-width:0.26458332px">Volume</tspan><tspan
+           id="tspan10547"
+           sodipodi:role="line"
+           x="45.836723"
+           y="31.507679"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 45 Light Oblique';-inkscape-font-specification:'Univers for UniS 45 Light Oblique, ';stroke-width:0.26458332px">STL file</tspan></text>
+    </g>
+    <g
+       id="g10501"
+       transform="translate(32.026077,24.791523)">
+      <rect
+         ry="0"
+         style="opacity:1;fill:#fff6d5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2912831;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect10493"
+         width="14.052445"
+         height="7.3966179"
+         x="44.154484"
+         y="25.629833" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="45.836723"
+         y="28.861845"
+         id="text10499"><tspan
+           id="tspan10497"
+           sodipodi:role="line"
+           x="45.836723"
+           y="28.861845"
+           style="stroke-width:0.26458332px">Volume</tspan><tspan
+           id="tspan10505"
+           sodipodi:role="line"
+           x="45.836723"
+           y="31.507679"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Univers for UniS 45 Light Oblique';-inkscape-font-specification:'Univers for UniS 45 Light Oblique, ';stroke-width:0.26458332px">Exnode file</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker11791)"
+       d="M 82.682291,38.558779 68.602677,30.715772 54.050595,38.558779"
+       id="path11781"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

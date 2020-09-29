@@ -1923,50 +1923,13 @@
     <bcf:datasource type="file" datatype="bibtex">./references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">Krebs2002</bcf:citekey>
-    <bcf:citekey order="1">Zhang2018</bcf:citekey>
-    <bcf:citekey order="2">Perry2007</bcf:citekey>
-    <bcf:citekey order="3">Rosen1999</bcf:citekey>
-    <bcf:citekey order="4">Wang2002</bcf:citekey>
-    <bcf:citekey order="5">Song2005</bcf:citekey>
-    <bcf:citekey order="6">Rosen2001</bcf:citekey>
-    <bcf:citekey order="7">Cavallaro2005</bcf:citekey>
-    <bcf:citekey order="7">Cavallaro2006</bcf:citekey>
-    <bcf:citekey order="8">Lloyd2003</bcf:citekey>
-    <bcf:citekey order="8">Venture2005</bcf:citekey>
-    <bcf:citekey order="8">Pontonnier2009</bcf:citekey>
-    <bcf:citekey order="8">Sartori2012</bcf:citekey>
-    <bcf:citekey order="9">Heine2003</bcf:citekey>
-    <bcf:citekey order="10">Falisse2016</bcf:citekey>
-    <bcf:citekey order="11">Garner2003</bcf:citekey>
-    <bcf:citekey order="12">Wagner2005</bcf:citekey>
-    <bcf:citekey order="13">Campen2014</bcf:citekey>
-    <bcf:citekey order="14">Garner2003</bcf:citekey>
-    <bcf:citekey order="15">summerschool2019</bcf:citekey>
-    <bcf:citekey order="16">summerschool2019</bcf:citekey>
-    <bcf:citekey order="17">OpenSim2007</bcf:citekey>
-    <bcf:citekey order="18">Falisse2016</bcf:citekey>
-    <bcf:citekey order="19">Bayer2017</bcf:citekey>
-    <bcf:citekey order="20">Hatze1977</bcf:citekey>
-    <bcf:citekey order="21">Rasmussen2005</bcf:citekey>
-    <bcf:citekey order="21">kuss2006gaussian</bcf:citekey>
-    <bcf:citekey order="22">Hill1938</bcf:citekey>
-    <bcf:citekey order="23">Siebert2008</bcf:citekey>
-    <bcf:citekey order="24">Till2008</bcf:citekey>
-    <bcf:citekey order="25">Gunther2007</bcf:citekey>
-    <bcf:citekey order="26">Morl2012</bcf:citekey>
-    <bcf:citekey order="27">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="28">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="29">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="30">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="31">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="32">Hatze1977</bcf:citekey>
-    <bcf:citekey order="33">Bayer2017</bcf:citekey>
-    <bcf:citekey order="34">Gunther2007</bcf:citekey>
-    <bcf:citekey order="34">Morl2012</bcf:citekey>
-    <bcf:citekey order="34">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="35">Hilltype2014</bcf:citekey>
-    <bcf:citekey order="36">Hilltype2014</bcf:citekey>
+    <bcf:citekey order="1">visible_human_male</bcf:citekey>
+    <bcf:citekey order="2">Kusterer</bcf:citekey>
+    <bcf:citekey order="3">mapclient</bcf:citekey>
+    <bcf:citekey order="4">ray-triangle</bcf:citekey>
+    <bcf:citekey order="5">piegl2012nurbs</bcf:citekey>
+    <bcf:citekey order="6">piegl2012nurbs</bcf:citekey>
+    <bcf:citekey order="7">piegl2012nurbs</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">
