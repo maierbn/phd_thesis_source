@@ -11,7 +11,13 @@
 \contentsline {subsection}{\numberline {1.2.3}Manually guided surface extraction}{14}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Fitting a Spline surface}{17}{subsection.2.2.4}
 \contentsline {section}{\numberline {1.3}Serial Algorithm to Create Muscle and Fiber Meshes}{22}{section.2.3}
-\contentsline {section}{\numberline {1.4}Parallel Algorithm to Create Muscle and Fiber Meshes}{25}{section.2.4}
-\contentsline {section}{\numberline {1.5}Parallel Algorithm to Create Muscle and Fiber Meshes}{28}{section.2.5}
-\contentsline {section}{\numberline {1.6}Results and Discussion}{28}{section.2.6}
-\contentsline {section}{\numberline {1.7}Motor unit distribution}{29}{section.2.7}
+\contentsline {subsection}{\numberline {1.3.1}Slicing of the geometry}{23}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Triangulation of the Slices}{25}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Harmonic Maps}{28}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Construction of a regular grid in the parameter domain}{32}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Formation of Three-Dimensional Elements}{34}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {1.3.6}Generation of Fiber Meshes}{34}{subsection.2.3.6}
+\contentsline {subsection}{\numberline {1.3.7}Results and Discussion}{34}{subsection.2.3.7}
+\contentsline {section}{\numberline {1.4}Parallel Algorithm to Create Muscle and Fiber Meshes}{34}{section.2.4}
+\contentsline {section}{\numberline {1.5}Results and Discussion}{34}{section.2.5}
+\contentsline {section}{\numberline {1.6}Motor unit distribution}{38}{section.2.6}

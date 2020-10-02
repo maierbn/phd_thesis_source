@@ -19,6 +19,62 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
+    \entry{quickhull}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6958617c4dfae9e76286084faaa9002d}{%
+           family={Barber},
+           familyi={B\bibinitperiod},
+           given={C.\bibnamedelimi Bradford},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=fc5a72cb8ffa4f867c37a328264cc017}{%
+           family={Dobkin},
+           familyi={D\bibinitperiod},
+           given={David\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=d224d11196f6715c003349ee16431479}{%
+           family={Huhdanpaa},
+           familyi={H\bibinitperiod},
+           given={Hannu},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{88eb76b01466b91feaa330586597a49b}
+      \strng{fullhash}{88eb76b01466b91feaa330586597a49b}
+      \strng{bibnamehash}{88eb76b01466b91feaa330586597a49b}
+      \strng{authorbibnamehash}{88eb76b01466b91feaa330586597a49b}
+      \strng{authornamehash}{88eb76b01466b91feaa330586597a49b}
+      \strng{authorfullhash}{88eb76b01466b91feaa330586597a49b}
+      \field{labelalpha}{Bar96}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The convex hull of a set of points is the smallest convex set that contains the points. This article presents a practical convex hull algorithm that combines the two-dimensional Quickhull algorithm with the general-dimension Beneath-Beyond Algorithm. It is similar to the randomized, incremental algorithms for convex hull and delaunay triangulation. We provide empirical evidence that the algorithm runs faster when the input contains nonextreme points and that it used less memory. computational geometry algorithms have traditionally assumed that input sets are well behaved. When an algorithm is implemented with floating-point arithmetic, this assumption can lead to serous errors. We briefly describe a solution to this problem when computing the convex hull in two, three, or four dimensions. The output is a set of “thick” facets that contain all possible exact convex hulls of the input. A variation is effective in five or more dimensions.}
+      \field{issn}{0098-3500}
+      \field{journaltitle}{ACM Trans. Math. Softw.}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{The Quickhull Algorithm for Convex Hulls}
+      \field{volume}{22}
+      \field{year}{1996}
+      \field{pages}{469\bibrangedash 483}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1145/235815.235821
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/235815.235821
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/235815.235821
+      \endverb
+      \keyw{halfspace intersection,Voronoi diagram,convex hull,Delaunay triangulation}
+    \endentry
     \entry{Kusterer}{misc}{}
       \name{author}{1}{}{%
         {{hash=badaa12b5cf862eaa77b00d9cb399e51}{%
@@ -133,6 +189,149 @@
       \field{labeltitlesource}{title}
       \field{title}{The NURBS book}
       \field{year}{2012}
+    \endentry
+    \entry{Remacle2010}{article}{}
+      \name{author}{4}{}{%
+        {{hash=9ee62d74e070331732df9fc95db191d1}{%
+           family={Remacle},
+           familyi={R\bibinitperiod},
+           given={J.-F.},
+           giveni={J\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=7ed75fd9e44b0349bc26c48d1f63e694}{%
+           family={Geuzaine},
+           familyi={G\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f4054f973fc35d395dd141a268d57dc5}{%
+           family={Compère},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=5cd99234d325e651f6f815524e7b4737}{%
+           family={Marchandise},
+           familyi={M\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
+      \strng{fullhash}{39779b192624979dae19dc198d66057c}
+      \strng{bibnamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
+      \strng{authorbibnamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
+      \strng{authornamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
+      \strng{authorfullhash}{39779b192624979dae19dc198d66057c}
+      \field{labelalpha}{Rem10}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Abstract In this paper, we present an efficient and robust technique for surface remeshing based on harmonic maps. We show how to ensure a one-to-one mapping for the discrete harmonic map and introduce a cubic representation of the geometry based on curved PN triangles. Topological and geometrical limitations of harmonic maps are also put to the fore and discussed. We show that, with the proposed approach, we are able to recover high quality meshes from both low input STL triangulations and complex surfaces defined by many CAD patches. The overall procedure is implemented in the open-source mesh generator Gmsh. Copyright © 2010 John Wiley \& Sons, Ltd.}
+      \field{journaltitle}{International Journal for Numerical Methods in Engineering}
+      \field{number}{4}
+      \field{title}{High-quality surface remeshing using harmonic maps}
+      \field{volume}{83}
+      \field{year}{2010}
+      \field{pages}{403\bibrangedash 425}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1002/nme.2824
+      \endverb
+      \verb{eprint}
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/nme.2824
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.2824
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.2824
+      \endverb
+      \keyw{surface remeshing,surface parametrization,STL file format,surface mapping,harmonic map,surface smoothing}
+    \endentry
+    \entry{Delaunay2002}{article}{}
+      \name{author}{1}{}{%
+        {{hash=eb086bafa609a33eb2558aeee67f070a}{%
+           family={Shewchuk},
+           familyi={S\bibinitperiod},
+           given={Jonathan\bibnamedelima Richard},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{fullhash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{bibnamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authorbibnamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authornamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authorfullhash}{eb086bafa609a33eb2558aeee67f070a}
+      \field{labelalpha}{She02}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Delaunay refinement is a technique for generating unstructured meshes of triangles for use in interpolation, the finite element method, and the finite volume method. In theory and practice, meshes produced by Delaunay refinement satisfy guaranteed bounds on angles, edge lengths, the number of triangles, and the grading of triangles from small to large sizes. This article presents an intuitive framework for analyzing Delaunay refinement algorithms that unifies the pioneering mesh generation algorithms of L. Paul Chew and Jim Ruppert, improves the algorithms in several minor ways, and most importantly, helps to solve the difficult problem of meshing nonmanifold domains with small angles. Although small angles inherent in the input geometry cannot be removed, one would like to triangulate a domain without creating any new small angles. Unfortunately, this problem is not always soluble. A compromise is necessary. A Delaunay refinement algorithm is presented that can create a mesh in which most angles are 30° or greater and no angle is smaller than arcsin[(3/2)sin(φ/2)]∼(3/4)φ, where φ⩽60°is the smallest angle separating two segments of the input domain. New angles smaller than 30° appear only near input angles smaller than 60°. In practice, the algorithm's performance is better than these bounds suggest. Another new result is that Ruppert's analysis technique can be used to reanalyze one of Chew's algorithms. Chew proved that his algorithm produces no angle smaller than 30° (barring small input angles), but without any guarantees on grading or number of triangles. He conjectures that his algorithm offers such guarantees. His conjecture is conditionally confirmed here: if the angle bound is relaxed to less than 26.5°, Chew's algorithm produces meshes (of domains without small input angles) that are nicely graded and size-optimal.}
+      \field{issn}{0925-7721}
+      \field{journaltitle}{Computational Geometry}
+      \field{note}{16th ACM Symposium on Computational Geometry}
+      \field{number}{1}
+      \field{title}{Delaunay refinement algorithms for triangular mesh generation}
+      \field{volume}{22}
+      \field{year}{2002}
+      \field{pages}{21\bibrangedash 74}
+      \range{pages}{54}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0925-7721(01)00047-5
+      \endverb
+      \verb{urlraw}
+      \verb http://www.sciencedirect.com/science/article/pii/S0925772101000475
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S0925772101000475
+      \endverb
+      \keyw{Triangular mesh generation,Delaunay triangulation,Constrained Delaunay triangulation,Delaunay refinement,Computational geometry}
+    \endentry
+    \entry{shewchuk96b}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=eb086bafa609a33eb2558aeee67f070a}{%
+           family={Shewchuk},
+           familyi={S\bibinitperiod},
+           given={Jonathan\bibnamedelima Richard},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=09ddb06c86489f6ce620363037720982}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Ming\bibnamedelima C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=d350899843e74c7cb6f945d48def0dfa}{%
+           family={Manocha},
+           familyi={M\bibinitperiod},
+           given={Dinesh},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{fullhash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{bibnamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authorbibnamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authornamehash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{authorfullhash}{eb086bafa609a33eb2558aeee67f070a}
+      \strng{editorbibnamehash}{f44452d051827e709b6465c436ec434c}
+      \strng{editornamehash}{f44452d051827e709b6465c436ec434c}
+      \strng{editorfullhash}{f44452d051827e709b6465c436ec434c}
+      \field{labelalpha}{She96}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Applied Computational Geometry: Towards Geometric Engineering}
+      \field{month}{5}
+      \field{note}{From the First ACM Workshop on Applied Computational Geometry}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Triangle: Engineering a {2D} Quality Mesh Generator and Delaunay Triangulator}
+      \field{volume}{1148}
+      \field{year}{1996}
+      \field{pages}{203\bibrangedash 222}
+      \range{pages}{20}
     \endentry
     \entry{visible_human_male}{article}{}
       \name{author}{4}{}{%

@@ -439,28 +439,29 @@ The serial algorithm for generation of the 3D mesh is presented in \cref{alg:ser
     \Require triangulated tubular surface
     \Ensure structured 3D volume mesh
     \Statex
-    \State Slice geometry       \label{alg:1.1}
-    \State Triangulate 2D slices
-    \State Compute harmonic maps $u, v$
-    \State Map a regular grid
-    \State Form 3D quadrilateral elements between the 2D slices’ meshes
+    \State Slice geometry           \label{alg:1.1}
+    \State Triangulate 2D slices      \label{alg:1.2}
+    \State Compute harmonic maps $u, v$      \label{alg:1.3}
+    \State Construct regular grid in parameter space and map to slices            \label{alg:1.4}
+    \State Form 3D quadrilateral elements between the 2D slices’ meshes   \label{alg:1.5}
     \EndProcedure
   \end{algorithmic}%
   \caption{Serial algorithm}%
   \label{alg:serial_algorithm_1}%
 \end{algorithm}%
 
+\subsection{Slicing of the geometry}
 The first step in line \algref{alg:serial_algorithm_1}{alg:1.1} states to slice the geometry. This means that horizontal \say{slices} of the cross-sectional area are extracted from the surface mesh. First, the muscle is divided into equidistant positions $z_i, i=1,\dots,n$ along the $z$-axis where the slices are to be extracted. As can be seen in \cref{fig:serial_alg_0}, $n=13$ $z$ coordinates are selected. Next, for every position $z_i$, all surface triangles $T_j$ that intersect the plane $Z_i = \{\bfp=(x,y,z) | z=z_i$\} are considered and the intersection lines $P = T_j \cap Z_i$ are computed. The method of computing plane-triangle intersection is described in the following.
 
 Given is a triangle $T$ with points $\bfp^{1},\bfp^2,\bfp^3 ∈ \R^3$ and a value $\hat{z}$, the wanted result is the set of points $P = T ∩ \{\bfp = (\bfp_x,\bfp_y,\bfp_z) \mid \bfp_z=\hat{z}\}$ which corresponds to a line segment $\overline{\bfp^a\bfp^b}$. 
 
 We describe the points in the triangle by two barycentric coordinates $\xi_1$ and $\xi_2$ as
-\begin{equation*}
+\begin{equation}\label{eq:barycentric_triangle}
   \begin{array}{lll}
     \bfp(ξ_1,ξ_2) = (1-ξ_1-ξ_2)\,\bfp^{1} + \xi_1\,\bfp^{2} + \xi_2\,\bfp^{3},  \\[4mm]
     \text{with }\xi_1+\xi_2 \leq 1, \quad 0 \leq \xi_1,\xi_2 \leq 1.
   \end{array}
-\end{equation*}
+\end{equation}
 By letting $\bfp_z(ξ_1,ξ_2) = \hat{z}$ we calculate the equation for the line segment $\overline{\bfp^a\bfp^b}$ in barycentric coordinates to be
 \begin{equation*}
   \begin{array}{lll}
@@ -514,30 +515,31 @@ The resulting grid of points on the biceps surface is visualized in \cref{fig:se
 %
 \begin{figure}%
   \centering%
-  \begin{subfigure}[t]{0.49\textwidth}%
+  \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[height=10cm]{images/fiber_creation/serial_alg_0.png}% [trim=left bottom right top, clip]
-    \caption{Extracted border points (blue) on the bicep surface mesh (gray). This is the result of line \algref{alg:serial_algorithm_1}{alg:1.1}.}%
+    \caption{Extracted border points (blue) on the biceps surface mesh (gray). This is the result of line \algref{alg:serial_algorithm_1}{alg:1.1}.}%
     \label{fig:serial_alg_0}%
   \end{subfigure}
-  \begin{subfigure}[t]{0.49\textwidth}%
+  \quad
+  \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[height=10cm]{images/fiber_creation/serial_alg_3.png}%
-    \caption{}%
+    \caption{The generated triangulation of the slices (left) and the image $\bfy(\bfx)$ of the triangulation under the harmonic map (right). This figure shows the result of lines \algref{alg:serial_algorithm_1}{alg:1.2} and \algref{alg:serial_algorithm_1}{alg:1.3}.}%
     \label{fig:serial_alg_3}%
   \end{subfigure}\\
   \centering%
   \begin{subfigure}[t]{0.49\textwidth}%
     \centering%
     \includegraphics[height=10cm]{images/fiber_creation/serial_alg_4.png}%
-    \caption{}%
+    \caption{Grid in parameter space (right) and muscle domain (left), result after line \algref{alg:serial_algorithm_1}{alg:1.4}.}%
     \label{fig:serial_alg_4}%
   \end{subfigure}
   \hfill{}
   \begin{subfigure}[t]{0.4\textwidth}%
     \centering%
     \includegraphics[height=10cm]{images/fiber_creation/serial_alg_8.png}%
-    \caption{}%
+    \caption{3D elements formed by connecting the slices, result after line \algref{alg:serial_algorithm_1}{alg:1.5}.}%
     \label{fig:serial_alg_8}%
   \end{subfigure}
   \caption{Steps of the serial algorithm, \cref{alg:serial_algorithm_1}, executed directly on the surface mesh of the biceps muscle (not the B-spline surface).}%
@@ -545,41 +547,212 @@ The resulting grid of points on the biceps surface is visualized in \cref{fig:se
 \end{figure}%
 %
 
-The points of each ring enclose a planar, polygonal surface, a \say{slice} of the muscle.
-The next step in the algorithm, line \algref{alg:serial_algorithm_1}{alg:1.1}, is to triangulate the extracted slices, i.e. construct triangles that decompose the polygons.
+\subsection{Triangulation of the Slices}
+The points of each ring enclose a planar, polygonal surface, a \say{slice} $S_M$ of the muscle.
+The next step in the algorithm, line \algref{alg:serial_algorithm_1}{alg:1.2}, is to triangulate the extracted slices, i.e. construct triangles that decompose the polygons. This is visualized at the left side in \cref{fig:serial_alg_3}.
+
+Three different methods have been selected to construct the triangulation. The first and second methods are based on Delaunay triangulations, the third method constructs a custom triangulation.
+\Cref{fig:triangulations} visualizes results of the three methods.
+
+The first method uses the Delaunay tesselation algorithm from the spatial algorithms and data structures module of the Python package SciPy. The Quickhull algorithm \cite{quickhull} is used which triangulates the convex hull of the points. In consequence, the triangulation of concave slices have triangles that lie outside the interior of the slice. An advantage is that the triangulation uses all given points and no new points are added.
+
+The example in \cref{fig:triangulation_0} shows a concave slice. At the bottom of the domain, the triangles are outside the slice and almost degenerate.
+
+The second method uses a Delaunay refinement algorithm described in \cite{Delaunay2002} and implementated in the \emph{Triangle} software \cite{shewchuk96b}. A conforming, constrained Delaunay triangulation is created. The triangulation correctly handles convex and concave domains.
+Conforming means that the triangulation uses the given points at the border. Additional points at the border as well as in the interior are added. The triangulation is constraint to generate triangles with minimum angles of 20 degrees and a maximum area $A$ that is set to a value dependend on the area of the bounding box. In consequence, all generated triangulations have a guaranteed mesh quality in terms of angles and about the same size and number of triangles.
+
+Comparing the result of the second method in \cref{fig:triangulation_1} with the result of the first method in \cref{fig:triangulation_0} shows the better triangulation quality as the triangles all have higher angles.
+
+The third method places one additional point in the center of gravity of the given points. Triangles are constructed by connecting the center point with two adjacent points on the border, for all given points. The resulting triangulation resembles a pie chart. For some concave slices, this method also creates triangles that partly lie outside the slice. The advantage of this approach is its simplicity.
+
+\Cref{fig:triangulation_2} shows the result for an exemplary slice. Here, in contrast to the first method, the third method creates a valid triangulation despite the concave domain.
 
 \begin{figure}%
   \centering%
-  \includegraphics[width=0.8\textwidth]{images/fiber_creation/harmonic_map_9.pdf}%
-  \caption{.}%
-  \label{fig:harmonic_map}%
-\end{figure}%
-%
-\begin{figure}%
-  \centering%
-  \begin{subfigure}[t]{0.49\textwidth}%
+  \begin{subfigure}[t]{0.31\textwidth}%
     \centering%
-    \includegraphics[height=10cm]{images/fiber_creation/potential_flow.png}%
-    \caption{}%
-    \label{fig:potential_flow}%
+    \includegraphics[width=\textwidth]{images/fiber_creation/triangulation_0.png}%
+    \caption{First triangulation method}%
+    \label{fig:triangulation_0}%
   \end{subfigure}
-  \begin{subfigure}[t]{0.49\textwidth}%
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
     \centering%
-    \includegraphics[height=10cm]{images/fiber_creation/streamlines.png}%
-    \caption{}%
-    \label{fig:streamlines}%
-  \end{subfigure}\\
-  \caption{.}%
-  \label{fig:potential_flow_streamlines}%
+    \includegraphics[width=\textwidth]{images/fiber_creation/triangulation_1.png}%
+    \caption{Second trian\-gulation method}%
+    \label{fig:triangulation_1}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/triangulation_2.png}%
+    \caption{Third triangulation method}%
+    \label{fig:triangulation_2}%
+  \end{subfigure}
+  \caption{Result of different triangulation methods for a slice in the center of the biceps muscle.}%
+  \label{fig:triangulations}%
 \end{figure}%
+
+\subsection{Harmonic Maps}
+The next step is line \algref{alg:serial_algorithm_1}{alg:1.3}, compute the harmonic maps $u$ and $v$. For a given slice $S_M$, these functions map from $S_M$ to coordinates $u,v\in \R$ of a parameter domain $\Omega_P \subset \R^2$. The parameter domain is either a unit circle or a unit square.
+
+The vector $\bfy(\bfx) := (u(\bfx), v(\bfx))^\top$ for $\bfx \in S_M$ is interpreted as position in $\Omega_P$. The maps are constructed such that the border $∂S_M$ of the slice $S_M$ is evenly mapped to the border $∂\Omega_P$ of the parameter domain $\Omega_P$.
+The mapping $\bfy: S_M \to \Omega_P$ is bijective and harmonic, i.e. the Laplace operator of $u$ and $v$ is zero.
+
+More specifically, the definition is
+%
+\begin{equation}\label{eq:def_harmonic_maps}
+  \begin{array}{l}
+    u : S_M \to \R, \quad v : S_M \to \R,\\[4mm]
+    Δu(\bfy) = 0, \quad Δv(\bfy) = 0 \quad \forall \bfy \in S_M.
+  \end{array}
+\end{equation}
+%
+For a uniform parametrization $\bfp:[0,1] \to ∂S_M$ of the border $∂S_M$ of the slice, i.e., 
+%
+\begin{align*}
+  \p{l(t)}{t} = c \in \R \quad \forall t \in [0,1], \quad \text{where } l(t) := \i{0}{t} |\bfp'(\tau)| \,\d\tau,
+\end{align*}
+%
+we require the mapping of the parametrization to be also uniform, i.e.,%
+\begin{align*}
+  \p{l_P(t)}{t} = c_P \in \R \quad \forall t \in [0,1], \quad \text{where } l_P(t) := \i{0}{t} |\bfy'\big(\bfp(\tau\big)| \,\d\tau.
+\end{align*}
+%
+This leads to the following Dirichlet boundary conditions that close the definition in \cref{eq:def_harmonic_maps}:%
+\begin{align}\label{eq:bc_harmonic_maps}
+  u(\bfx_\text{M,border}) = u_\text{P,border}, \quad v(\bfx_\text{M,border}) = v_\text{P,border}.
+\end{align}
 %
 
-\section{Parallel Algorithm to Create Muscle and Fiber Meshes}\label{sec:parallel_algorithm}
-parallel algorihm
+\Cref{eq:def_harmonic_maps,eq:def_harmonic_maps} describes a boundary value problem of ordinary differential equations in $u$ and $v$. We solve it using the Finite Element Method and the spatial discretization given by the triangulation of the slices.
 
-slicing, harmonic maps
-various options for triangulation
+The first step is to compute the prescribed border points in parameter space,\\
+ ${(u_\text{P,border}, v_\text{P,border})^\top}$. When using the first and third triangulation methods, the border points on the slices are  equidistant and therefore the same number of points need to be sampled equidistantly on the border $∂\Omega_P$ of the parameter space.
+If the second triangulation method which added additional points is used, also the same number of points  are created on the border $∂\Omega_P$ of the slice as are given on the slice $∂S_M$. The border points are created such that the relations of their distances is the same on $∂\Omega_P$ as for the original points on $∂S_M$.
 
+Using the standard procedure of the Finite Element method for $\nabla u(\bfx) = 0$ on $S_M$ and $u=f(\bfx)$ on $∂S_M$, e.g. as outlined in \cite{Remacle2010}, leads to the weak form with ansatz and test functions $\phi$,
+\begin{align}\label{eq:est_fe_w}
+    \i{S_M}{} (\nabla u^\top \nabla \phi + \nabla f(\bfx)^\top \nabla \phi) \,\d \bfx = 0 \quad \forall \phi \in \mathcal{H}_0^1.
+\end{align}
+Standard linear hat functions are used on the triangles with the interpolation property $\phi_i(\bfx_j) = \delta_{ij}$. Using the barycentric parametrization of triangles with points $\bfp^1,\bfp^2$ and $\bfp^3$ introduced in \cref{eq:barycentric_triangle} we get for the ansatz functions and their derivatives within the elements
+%
+\begin{align*}
+  \phi^{(e)}_1 &= (1 - \xi_1)(1 - \xi_2), \quad&
+  \phi^{(e)}_2 &= \xi_1 (1 - \xi_2), \quad &
+  \phi^{(e)}_3 &= (1 - \xi_1) \xi_2,\\[4mm]
+  \nabla \phi^{(e)}_1 &= (\xi_2-1, \xi_1 - 1)^\top, \quad&
+  \nabla \phi^{(e)}_2 &= (1-\xi_2, -\xi_1)^\top, \quad&
+  \nabla \phi^{(e)}_3 &= (-\xi_2, 1-\xi_1)^\top.
+\end{align*}
+The superscript $\square^{(e)}$ refers to the definition of the functions within elements. The usual global assembly involves composing the global, nodal functions $\phi_i(\bfx)$ for nodes indexed by $i=1, \dots, n_\text{nodes}$ and using a mapping between the barycentric coordinates $\xi_1,\xi_2 \in [0,1]^2$ inside the elements to the global coordinates $\bfx \in S_M$.
+
+Inserting the discretization
+\begin{align*}
+  u_h(\bfx) = \s{i=1}{n_\text{nodes}} u_i\,\phi_i(\xi_1(\bfx), \xi_2(\bfx))
+\end{align*}
+into \cref{eq:est_fe_w} leads to the form
+\begin{equation}\label{eq:est_weak_form}
+  \begin{array}{lll}
+    \s{i=1}{n_\text{nodes}}u_i \i{S_M}{} \nabla_\bfx \phi_i^\top \nabla_\bfx \phi_j \,\d\bfx + \s{i=1}{n_\text{nodes}} f_i \i{S_M}{} \nabla_\bfx \phi_i^\top \nabla_\bfx \phi_j \,\d \bfx = 0\,\quad \forall j=1,\dots,n_\text{nodes}.
+  \end{array}
+\end{equation}
+The integrations are executed element-wise and over the elemental coordinates $\xi_1,\xi_2$. 
+
+The transformation to elemental coordinates involves the computation of the Jacobian $J=\d\bfx/\d\bfxi$ of the mapping between element coordinates $\bfxi = (ξ_1,ξ_2)$ and global coordinates $\bfx$. From the definition \cref{eq:barycentric_triangle} it follows that
+\begin{align*}
+  J = \d{\bfx}{\bfxi} = [\bfp^2-\bfp^1, \bfp^3-\bfp^1].\\[4mm]
+\end{align*}
+The metric tensor for this mapping is given by
+\begin{align*}
+  \mathcal{M} := \left(\d{x}{\bfxi}\right)^T \, \left(\d{x}{\bfxi}\right).
+\end{align*}
+%
+The transformation of the integrals in \cref{eq:est_weak_form} introduces an additional integration factor of $\sqrt{\det{\mathcal{M}}}$.
+
+We get the following matrix equation:
+\begin{align}\label{eq:est_fe_system}
+  M_u \bfu = -M_f\,\bff,
+\end{align}
+with the vector $\bfu$ of nodal solution values, the vector $\bff$ of nodal Dirichlet boundary condition values at the border and the global stiffness matrices $M_u$ and $M_f$. The two global stiffness matrices are assembled from the element stiffness matrices $M^\text{el}$ for the degrees of freedom at all nodes respectively at the border nodes. The entries of the element stiffness matrices are given by
+\begin{align*}
+  M^\text{el}_{i,j} = \i{0}{1}\i{0}{1-\xi_1}   \nabla \phi_i^{(e)}(\xi_1,\xi_2)^\top \, \mathcal{M}^{-1} \, \nabla \phi_j^{(e)}(\xi_1,\xi_2) \, \sqrt{\det{\mathcal{M}}}  \,\d\xi_2\d\xi_1.
+\end{align*}
+By solving \cref{eq:est_fe_system} for $\bfu$ we get the discretized harmonic map $u$.
+The Finite Element formulation and computation for $v$ is analogous and uses the same global stiffness matrices.
+
+\Cref{fig:harmonic_map_solution} visualizes the triangulation of $S_M$ and the solutions $u(\bfx)$ and $v(\bfx)$ in the first two plots. The color range from bright yellow to dark violet corresponds increasing values of $u$ and $v$. It can be seen that the $u$ values increase from left to right whereas the $v$ values increase from bottom to top, corresponding to the horizontal and vertical coordinate axis $y_1$ and $y_2$ of $\Omega_P$.
+
+
+Applying the computed harmonic map $\bfy(\bfx)$ to the triangulation of the slices results in a triangulation of the parameter domain $\Omega_P$. This is shown in the third plot of \cref{fig:harmonic_map_solution} and in \cref{fig:serial_alg_3}.
+The generated triangulation of the slices was generated using the second triangulation method with the constrained Delaunay triangulation. On the right, the image $\bfy(\bfx)$ under the harmonic map of the triangulation in the slices is shown on the unit circle parameter domains.
+
+\begin{figure}%
+  \centering%
+  \includegraphics[width=\textwidth]{images/fiber_creation/harmonic_map_9b.pdf}%
+  \caption{Triangulations and harmonic map for a slice $S_M$ of the biceps muscle. The first two plots show the solutions of $u$ and $v$ on the slice $S_M$. The third plot shows the image in $\Omega_P$ of the triangulation in $S_M$ under the harmonic map.}%
+  \label{fig:harmonic_map_solution}%
+\end{figure}%
+
+\subsection{Construction of a regular grid in the parameter domain}
+The next step in the \cref{alg:serial_algorithm_1} is the construction of a structured, regular grid in the parameter domain $\Omega_P$, as stated in line \algref{alg:serial_algorithm_1}{alg:1.4}. This grid will then be mapped to the slices $S_M$. Creating a structured grid in a given domain is also called \emph{quadrangulation}.
+
+The parameter domain $\Omega_P$ can be selected to be either a unit square or a unit circle. For both choices, two different schemes how to generate a grid with given number of cells can be selected.
+\Cref{fig:quads} shows all four possiblities.
+
+The first scheme, \cref{fig:quad_1}, uses an equidistant regular grid. The grid will be mapped to a cross section of the muscle which has no sharp corners like the unit square. Therefore, the cells of the grid will be distorted at the corners, usually shortening diagonals that point towards the corners and stretching the other diagonals. This assumption motivates the second scheme in \cref{fig:quad_2}. Here, the elements are already distorted in the described manner, with increasing distortion closer to the corners.
+
+A different approach is to use a unit circle, which has no corners and therefore might more resemble a muscle cross section. The first scheme of the unit circle is given in \cref{fig:quad_0}. It uses the radial and circumferential directions for the two dimensions of the grid. A disadvantage of this scheme is that the quadrilaterals at the center are degenerated to triangles. Additionally, the area of the cells varies significantly and the outer cells have unequal side lengths. To remedy this problem, the second scheme given in \cref{fig:quad_3} is constructed. When traversing from the outer border towards the center point and considering the circumferential lines of grid points, the circle morphs into a square as the number of grid points decreases. This approach has the disadvantage that some cells have an inner angle of nearly \SI{180}{\degree}, especially four elements at the border.
+
+Each construction schemes allows to specify the (squared) number of nodes and in consequence the number of cells. The examples in \cref{fig:quad_1,fig:quad_2,fig:quad_3} have $11 \times 11$ nodes and $10 \times 10$ cells. For \cref{fig:quad_0}, the numbers are slightly different. There are $10 \times 11 + 1$ nodes resulting in $10 \times 11$ cells.
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_1.png}%
+    \caption{Unit square, scheme 1}%
+    \label{fig:quad_1}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_2.png}%
+    \caption{Unit square, scheme 2}%
+    \label{fig:quad_2}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_0.png}%
+    \caption{Unit circle, scheme 1}%
+    \label{fig:quad_0}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_3.png}%
+    \caption{Unit circle, scheme 2}%
+    \label{fig:quad_3}%
+  \end{subfigure}
+  \caption{Different quadrangulation schemes of the parameter domain with $11\times 11$ nodes. The borders of the grid are colored for better perceptiblity.}%
+  \label{fig:quads}%
+\end{figure}%
+
+Next, the grid in the parameter domain is transferred to the muscle domain by applying the harmonic map $\bfy(\bfx) \in S_M$ on every point of the quadrangulation $\bfx \in \Omega_P$. This is illustrated in \cref{fig:serial_alg_4} for a parameter domain consisting of the unit circle, with quadrangulation scheme 2 and $5 \times 5$ nodes. The cells of the grid in $\Omega_P$ are shown in the right-most stack of domains. The grid points are visualized left of the grids. The resulting image of the mesh in the slices $S_M$ is shown on the left. For visualization reasons, each quadrilateral has been split into two triangles.
+
+\subsection{Formation of Three-Dimensional Elements}
+
+The result of the previous steps is a number of quadrangulated muscle slices. The grid on every slice has the same number of nodes and elements. The nodes on the border of neighbouring slices are positioned similarly.
+
+The final step of \cref{alg:serial_algorithm_1} is line \algref{alg:serial_algorithm_1}{alg:1.5}, the formation of 3D elements. Inserting edges between all corresponding nodes on two neighbouring slices creates a set of 3D elements and, thus, an overall 3D quadrilateral mesh of the muscle volume. This step is visualized in \cref{fig:serial_alg_8}.
+
+\subsection{Generation of Fiber Meshes}
+
+% idea, literature
+% Laplace, BC, FEM
+% Computation of gradient
+% Streamlines in gradient
+% resampling
 
 \begin{algorithm}
   \begin{algorithmic}[1]%
@@ -596,10 +769,239 @@ various options for triangulation
   \label{alg:serial_algorithm_2}%
 \end{algorithm}%
 
+
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.49\textwidth}%
+    \centering%
+    \includegraphics[height=10cm]{images/fiber_creation/potential_flow.png}%
+    \caption{}%
+    \label{fig:potential_flow}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.49\textwidth}%
+    \centering%
+    \includegraphics[height=10cm]{images/fiber_creation/streamlines.png}%
+    \caption{}%
+    \label{fig:streamlines}%
+  \end{subfigure}
+  \caption{.}%
+  \label{fig:potential_flow_streamlines}%
+\end{figure}%
+%
+
+
+\subsection{Results and Discussion}
+
+% ------------------
+% parameter space triangulations
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_0.png}%
+    \caption{First method}%
+    \label{fig:triu_0}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_1.png}%
+    \caption{Second method}%
+    \label{fig:triu_1}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_2.png}%
+    \caption{Third method}%
+    \label{fig:triu_2}%
+  \end{subfigure}\\
+  
+  % square
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_1_0_tri.png}%
+    %\caption{}%
+    \label{fig:w_01}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_1_0_tri.png}%
+    %\caption{}%
+    \label{fig:w_11}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_1_0_tri.png}%
+    %\caption{}%
+    \label{fig:w_21}%
+  \end{subfigure}\\
+  
+  % circle
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_0_0_tri.png}% trim=left bottom right top, clip]
+    %\caption{}%
+    \label{fig:w_00}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_0_0_tri.png}%
+    %\caption{}%
+    \label{fig:w_10}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[width=0.9\textwidth, trim=37mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_0_0_tri.png}%
+    %\caption{}%
+    \label{fig:w_20}%
+  \end{subfigure}
+  
+  \caption{Top row: Different triangulation methods for $S_M$, the color represents the solution $u$ of the harmonic map. Middle and bottom row: triangulation mapped to the parameter domain $\Omega_P$, for the unit square (middle) and the unit circle (bottom). Each column corresponds to one triangulation method.}%
+  \label{fig:tri_triangulations}%
+\end{figure}%
+
+
+
+% ------------------
+% resulting meshes
+\begin{figure}%
+  \centering%
+  \hspace{0.24\textwidth}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_0.png}%
+    \caption{First method}%
+    \label{fig:tu_0}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_1.png}%
+    \caption{Second method}%
+    \label{fig:tu_1}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/u_2.png}%
+    \caption{Third method}%
+    \label{fig:tu_2}%
+  \end{subfigure}\\
+  
+  % square
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_1.png}%
+    \caption{Square, scheme 1}%
+    \label{fig:tquad_1}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=26mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_1_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_01}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_1_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_11}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_1_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_21}%
+  \end{subfigure}\\[-4mm]
+  
+  % square adjusted
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_2.png}%
+    \caption{Square, scheme 2}%
+    \label{fig:tquad_2}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=26mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_2_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_02}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_2_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_12}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_2_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_22}%
+  \end{subfigure}\\[-4mm]
+  
+  % circle
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_0.png}%
+    \caption{Circle, scheme 1}%
+    \label{fig:tquad_0}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=26mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_0_0_w.png}% trim=left bottom right top, clip]
+    %\caption{}%
+    \label{fig:tri_00}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=26mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_0_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_10}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_0_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_20}%
+  \end{subfigure}\\[-4mm]
+  
+  % circle adjusted
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/fiber_creation/quad_3.png}%
+    \caption{Circle, scheme 2}%
+    \label{fig:lquad_3}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_0_3_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_03}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_1_3_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_13}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth, trim=30mm 14mm 6mm 6mm, clip]{images/fiber_creation/mesh_plots/out_2_3_0_w.png}%
+    %\caption{}%
+    \label{fig:tri_23}%
+  \end{subfigure}
+  \caption{Meshes in $S_M$ for quadrangulations (rows) and triangulations (columns).}%
+  \label{fig:tri_meshes}%
+\end{figure}%
+
+
 \section{Parallel Algorithm to Create Muscle and Fiber Meshes}\label{sec:parallel_algorithm}
 parallel algorihm
-
-
 
 \begin{algorithm}
   \begin{algorithmic}[1]%
