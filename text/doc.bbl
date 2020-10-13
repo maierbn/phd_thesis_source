@@ -19,464 +19,88 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
-    \entry{quickhull}{article}{}
-      \name{author}{3}{}{%
-        {{hash=6958617c4dfae9e76286084faaa9002d}{%
-           family={Barber},
+    \entry{byrd1995limited}{article}{}
+      \name{author}{4}{}{%
+        {{hash=fa085bce7b050ffe908e7de2750f73de}{%
+           family={Byrd},
            familyi={B\bibinitperiod},
-           given={C.\bibnamedelimi Bradford},
-           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=fc5a72cb8ffa4f867c37a328264cc017}{%
-           family={Dobkin},
-           familyi={D\bibinitperiod},
-           given={David\bibnamedelima P.},
-           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=d224d11196f6715c003349ee16431479}{%
-           family={Huhdanpaa},
-           familyi={H\bibinitperiod},
-           given={Hannu},
-           giveni={H\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York, NY, USA}%
+           given={Richard\bibnamedelima H},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=8c2f3741ab4369f5590e2e16412db71b}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Peihuang},
+           giveni={P\bibinitperiod}}}%
+        {{hash=88a342d927bf795b0d92af8a5613da31}{%
+           family={Nocedal},
+           familyi={N\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod}}}%
+        {{hash=db29c9e94410252c9dd6938604f708b8}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Ciyou},
+           giveni={C\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Association for Computing Machinery}%
+        {SIAM}%
       }
-      \strng{namehash}{88eb76b01466b91feaa330586597a49b}
-      \strng{fullhash}{88eb76b01466b91feaa330586597a49b}
-      \strng{bibnamehash}{88eb76b01466b91feaa330586597a49b}
-      \strng{authorbibnamehash}{88eb76b01466b91feaa330586597a49b}
-      \strng{authornamehash}{88eb76b01466b91feaa330586597a49b}
-      \strng{authorfullhash}{88eb76b01466b91feaa330586597a49b}
-      \field{labelalpha}{Bar96}
+      \strng{namehash}{885ef6b79628003d0644d59c51818a85}
+      \strng{fullhash}{7309f364b77990c74627c38b1c70740c}
+      \strng{bibnamehash}{885ef6b79628003d0644d59c51818a85}
+      \strng{authorbibnamehash}{885ef6b79628003d0644d59c51818a85}
+      \strng{authornamehash}{885ef6b79628003d0644d59c51818a85}
+      \strng{authorfullhash}{7309f364b77990c74627c38b1c70740c}
+      \field{labelalpha}{Byr95}
       \field{sortinit}{B}
       \field{sortinithash}{276475738cc058478c1677046f857703}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{The convex hull of a set of points is the smallest convex set that contains the points. This article presents a practical convex hull algorithm that combines the two-dimensional Quickhull algorithm with the general-dimension Beneath-Beyond Algorithm. It is similar to the randomized, incremental algorithms for convex hull and delaunay triangulation. We provide empirical evidence that the algorithm runs faster when the input contains nonextreme points and that it used less memory. computational geometry algorithms have traditionally assumed that input sets are well behaved. When an algorithm is implemented with floating-point arithmetic, this assumption can lead to serous errors. We briefly describe a solution to this problem when computing the convex hull in two, three, or four dimensions. The output is a set of “thick” facets that contain all possible exact convex hulls of the input. A variation is effective in five or more dimensions.}
-      \field{issn}{0098-3500}
-      \field{journaltitle}{ACM Trans. Math. Softw.}
-      \field{month}{12}
-      \field{number}{4}
-      \field{title}{The Quickhull Algorithm for Convex Hulls}
-      \field{volume}{22}
-      \field{year}{1996}
-      \field{pages}{469\bibrangedash 483}
-      \range{pages}{15}
-      \verb{doi}
-      \verb 10.1145/235815.235821
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/235815.235821
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/235815.235821
-      \endverb
-      \keyw{halfspace intersection,Voronoi diagram,convex hull,Delaunay triangulation}
+      \field{journaltitle}{SIAM Journal on scientific computing}
+      \field{number}{5}
+      \field{title}{A limited memory algorithm for bound constrained optimization}
+      \field{volume}{16}
+      \field{year}{1995}
+      \field{pages}{1190\bibrangedash 1208}
+      \range{pages}{19}
     \endentry
-    \entry{Kusterer}{misc}{}
+    \entry{Weyl1916}{article}{}
       \name{author}{1}{}{%
-        {{hash=badaa12b5cf862eaa77b00d9cb399e51}{%
-           family={Kusterer},
-           familyi={K\bibinitperiod},
-           given={Jan},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {Deutsch}%
-      }
-      \strng{namehash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \strng{fullhash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \strng{bibnamehash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \strng{authorbibnamehash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \strng{authornamehash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \strng{authorfullhash}{badaa12b5cf862eaa77b00d9cb399e51}
-      \field{labelalpha}{Kus19}
-      \field{sortinit}{K}
-      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{F{ü}r biomechanische Simulationen ist es wichtig, realistische Modelle zur Verf{ü}gung zu haben. Ein Beispiel ist die Simulation der Kontraktion des Oberarms. Daf{ü}r werden die 3D-Modelle von Biceps, Triceps, Humerus, Radius und Ulna ben{ö}tigt. Ziel dieser Bachleorarbeit ist, solch realistische Modelle zu erstellen. Dies geschieht mithilfe der Bilder des ”Visible Human Project”, welches durch 1877 Fotos den gesamten Menschen in Schichten darstellt. Nachdem die wichtigen Daten entnommen wurden und die groben Modelle voneinander getrennt wurden, wird NURBS-fitting auf die Kontrollpunkte angewandt, wodurch eine glattes, realit{ä}tsnahes Modell entsteht.}
-      \field{howpublished}{Bachelorarbeit: Universit{ä}t Stuttgart, Institut f{ü}r Parallele und Verteilte Systeme, Simulation großer Systeme}
-      \field{month}{Mai}
-      \field{number}{19}
-      \field{title}{{Extraktion anatomischer Strukturen und Darstellung durch NURBS}}
-      \field{type}{Bachelorarbeit}
-      \field{year}{2019}
-      \field{pages}{41}
-      \range{pages}{1}
-      \verb{urlraw}
-      \verb http://www2.informatik.uni-stuttgart.de/cgi-bin/NCSTRL/NCSTRL_view.pl?id=BCLR-2019-19&engl=0
-      \endverb
-      \verb{url}
-      \verb http://www2.informatik.uni-stuttgart.de/cgi-bin/NCSTRL/NCSTRL_view.pl?id=BCLR-2019-19&engl=0
-      \endverb
-    \endentry
-    \entry{ray-triangle}{article}{}
-      \name{author}{2}{}{%
-        {{hash=94e27db04e86f2b4ec0d38fac3669e6b}{%
-           family={Möller},
-           familyi={M\bibinitperiod},
-           given={Tomas},
-           giveni={T\bibinitperiod}}}%
-        {{hash=338726ecdd858a4b49e5cb7ca1325d4d}{%
-           family={Trumbore},
-           familyi={T\bibinitperiod},
-           given={Ben},
-           giveni={B\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor & Francis}%
-      }
-      \strng{namehash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \strng{fullhash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \strng{bibnamehash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \strng{authorbibnamehash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \strng{authornamehash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \strng{authorfullhash}{d0eeec1f9de25a0ee8052444e5b8c1e2}
-      \field{labelalpha}{Möl97}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Graphics Tools}
-      \field{number}{1}
-      \field{title}{Fast, Minimum Storage Ray-Triangle Intersection}
-      \field{volume}{2}
-      \field{year}{1997}
-      \field{pages}{21\bibrangedash 28}
-      \range{pages}{8}
-      \verb{doi}
-      \verb 10.1080/10867651.1997.10487468
-      \endverb
-      \verb{eprint}
-      \verb https://doi.org/10.1080/10867651.1997.10487468
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1080/10867651.1997.10487468
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1080/10867651.1997.10487468
-      \endverb
-    \endentry
-    \entry{piegl2012nurbs}{book}{}
-      \name{author}{2}{}{%
-        {{hash=3eaf67b9798d8cccc04b5a4802005b5b}{%
-           family={Piegl},
-           familyi={P\bibinitperiod},
-           given={Les},
-           giveni={L\bibinitperiod}}}%
-        {{hash=e0d912e18543fb8f2e878705ffa608f5}{%
-           family={Tiller},
-           familyi={T\bibinitperiod},
-           given={Wayne},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer Science \& Business Media}%
-      }
-      \strng{namehash}{01e7e051514a3b20ca461c88cc1c1352}
-      \strng{fullhash}{01e7e051514a3b20ca461c88cc1c1352}
-      \strng{bibnamehash}{01e7e051514a3b20ca461c88cc1c1352}
-      \strng{authorbibnamehash}{01e7e051514a3b20ca461c88cc1c1352}
-      \strng{authornamehash}{01e7e051514a3b20ca461c88cc1c1352}
-      \strng{authorfullhash}{01e7e051514a3b20ca461c88cc1c1352}
-      \field{labelalpha}{Pie12}
-      \field{sortinit}{P}
-      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{The NURBS book}
-      \field{year}{2012}
-    \endentry
-    \entry{Remacle2010}{article}{}
-      \name{author}{4}{}{%
-        {{hash=9ee62d74e070331732df9fc95db191d1}{%
-           family={Remacle},
-           familyi={R\bibinitperiod},
-           given={J.-F.},
-           giveni={J\bibinithyphendelim F\bibinitperiod}}}%
-        {{hash=7ed75fd9e44b0349bc26c48d1f63e694}{%
-           family={Geuzaine},
-           familyi={G\bibinitperiod},
-           given={C.},
-           giveni={C\bibinitperiod}}}%
-        {{hash=f4054f973fc35d395dd141a268d57dc5}{%
-           family={Compère},
-           familyi={C\bibinitperiod},
-           given={G.},
-           giveni={G\bibinitperiod}}}%
-        {{hash=5cd99234d325e651f6f815524e7b4737}{%
-           family={Marchandise},
-           familyi={M\bibinitperiod},
-           given={E.},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
-      \strng{fullhash}{39779b192624979dae19dc198d66057c}
-      \strng{bibnamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
-      \strng{authorbibnamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
-      \strng{authornamehash}{fd21b46d5307af7e9de3a0dbb2d3a16d}
-      \strng{authorfullhash}{39779b192624979dae19dc198d66057c}
-      \field{labelalpha}{Rem10}
-      \field{sortinit}{R}
-      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Abstract In this paper, we present an efficient and robust technique for surface remeshing based on harmonic maps. We show how to ensure a one-to-one mapping for the discrete harmonic map and introduce a cubic representation of the geometry based on curved PN triangles. Topological and geometrical limitations of harmonic maps are also put to the fore and discussed. We show that, with the proposed approach, we are able to recover high quality meshes from both low input STL triangulations and complex surfaces defined by many CAD patches. The overall procedure is implemented in the open-source mesh generator Gmsh. Copyright © 2010 John Wiley \& Sons, Ltd.}
-      \field{journaltitle}{International Journal for Numerical Methods in Engineering}
-      \field{number}{4}
-      \field{title}{High-quality surface remeshing using harmonic maps}
-      \field{volume}{83}
-      \field{year}{2010}
-      \field{pages}{403\bibrangedash 425}
-      \range{pages}{23}
-      \verb{doi}
-      \verb 10.1002/nme.2824
-      \endverb
-      \verb{eprint}
-      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/nme.2824
-      \endverb
-      \verb{urlraw}
-      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.2824
-      \endverb
-      \verb{url}
-      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.2824
-      \endverb
-      \keyw{surface remeshing,surface parametrization,STL file format,surface mapping,harmonic map,surface smoothing}
-    \endentry
-    \entry{Delaunay2002}{article}{}
-      \name{author}{1}{}{%
-        {{hash=eb086bafa609a33eb2558aeee67f070a}{%
-           family={Shewchuk},
-           familyi={S\bibinitperiod},
-           given={Jonathan\bibnamedelima Richard},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{fullhash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{bibnamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authorbibnamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authornamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authorfullhash}{eb086bafa609a33eb2558aeee67f070a}
-      \field{labelalpha}{She02}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Delaunay refinement is a technique for generating unstructured meshes of triangles for use in interpolation, the finite element method, and the finite volume method. In theory and practice, meshes produced by Delaunay refinement satisfy guaranteed bounds on angles, edge lengths, the number of triangles, and the grading of triangles from small to large sizes. This article presents an intuitive framework for analyzing Delaunay refinement algorithms that unifies the pioneering mesh generation algorithms of L. Paul Chew and Jim Ruppert, improves the algorithms in several minor ways, and most importantly, helps to solve the difficult problem of meshing nonmanifold domains with small angles. Although small angles inherent in the input geometry cannot be removed, one would like to triangulate a domain without creating any new small angles. Unfortunately, this problem is not always soluble. A compromise is necessary. A Delaunay refinement algorithm is presented that can create a mesh in which most angles are 30° or greater and no angle is smaller than arcsin[(3/2)sin(φ/2)]∼(3/4)φ, where φ⩽60°is the smallest angle separating two segments of the input domain. New angles smaller than 30° appear only near input angles smaller than 60°. In practice, the algorithm's performance is better than these bounds suggest. Another new result is that Ruppert's analysis technique can be used to reanalyze one of Chew's algorithms. Chew proved that his algorithm produces no angle smaller than 30° (barring small input angles), but without any guarantees on grading or number of triangles. He conjectures that his algorithm offers such guarantees. His conjecture is conditionally confirmed here: if the angle bound is relaxed to less than 26.5°, Chew's algorithm produces meshes (of domains without small input angles) that are nicely graded and size-optimal.}
-      \field{issn}{0925-7721}
-      \field{journaltitle}{Computational Geometry}
-      \field{note}{16th ACM Symposium on Computational Geometry}
-      \field{number}{1}
-      \field{title}{Delaunay refinement algorithms for triangular mesh generation}
-      \field{volume}{22}
-      \field{year}{2002}
-      \field{pages}{21\bibrangedash 74}
-      \range{pages}{54}
-      \verb{doi}
-      \verb https://doi.org/10.1016/S0925-7721(01)00047-5
-      \endverb
-      \verb{urlraw}
-      \verb http://www.sciencedirect.com/science/article/pii/S0925772101000475
-      \endverb
-      \verb{url}
-      \verb http://www.sciencedirect.com/science/article/pii/S0925772101000475
-      \endverb
-      \keyw{Triangular mesh generation,Delaunay triangulation,Constrained Delaunay triangulation,Delaunay refinement,Computational geometry}
-    \endentry
-    \entry{shewchuk96b}{incollection}{}
-      \name{author}{1}{}{%
-        {{hash=eb086bafa609a33eb2558aeee67f070a}{%
-           family={Shewchuk},
-           familyi={S\bibinitperiod},
-           given={Jonathan\bibnamedelima Richard},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \name{editor}{2}{}{%
-        {{hash=09ddb06c86489f6ce620363037720982}{%
-           family={Lin},
-           familyi={L\bibinitperiod},
-           given={Ming\bibnamedelima C.},
-           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=d350899843e74c7cb6f945d48def0dfa}{%
-           family={Manocha},
-           familyi={M\bibinitperiod},
-           given={Dinesh},
-           giveni={D\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer-Verlag}%
-      }
-      \strng{namehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{fullhash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{bibnamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authorbibnamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authornamehash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{authorfullhash}{eb086bafa609a33eb2558aeee67f070a}
-      \strng{editorbibnamehash}{f44452d051827e709b6465c436ec434c}
-      \strng{editornamehash}{f44452d051827e709b6465c436ec434c}
-      \strng{editorfullhash}{f44452d051827e709b6465c436ec434c}
-      \field{labelalpha}{She96}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Applied Computational Geometry: Towards Geometric Engineering}
-      \field{month}{5}
-      \field{note}{From the First ACM Workshop on Applied Computational Geometry}
-      \field{series}{Lecture Notes in Computer Science}
-      \field{title}{Triangle: Engineering a {2D} Quality Mesh Generator and Delaunay Triangulator}
-      \field{volume}{1148}
-      \field{year}{1996}
-      \field{pages}{203\bibrangedash 222}
-      \range{pages}{20}
-    \endentry
-    \entry{visible_human_male}{article}{}
-      \name{author}{4}{}{%
-        {{hash=a1035cbf441f5abf0dda8dffaf085036}{%
-           family={Spitzer},
-           familyi={S\bibinitperiod},
-           given={Victor},
-           giveni={V\bibinitperiod}}}%
-        {{hash=7e7310a11b93baec8b8f9e6584cd9001}{%
-           family={Ackerman},
-           familyi={A\bibinitperiod},
-           given={Michael\bibnamedelima J.},
-           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=6de54aaba90ad05f423580821cfdb463}{%
-           family={Scherzinger},
-           familyi={S\bibinitperiod},
-           given={Ann\bibnamedelima L.},
-           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=bc9d9f31ea43c43910cce93000e56267}{%
-           family={Whitlock},
+        {{hash=53a04b0452e82d11dbbb27d1587aac8a}{%
+           family={Weyl},
            familyi={W\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
+           given={Hermann},
+           giveni={H\bibinitperiod}}}%
       }
-      \strng{namehash}{b09254a8d4bfc616e25262ae54fd709c}
-      \strng{fullhash}{5cb96b0da19f7983174b57cf4cf60d03}
-      \strng{bibnamehash}{b09254a8d4bfc616e25262ae54fd709c}
-      \strng{authorbibnamehash}{b09254a8d4bfc616e25262ae54fd709c}
-      \strng{authornamehash}{b09254a8d4bfc616e25262ae54fd709c}
-      \strng{authorfullhash}{5cb96b0da19f7983174b57cf4cf60d03}
-      \field{labelalpha}{Spi96}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \strng{namehash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \strng{fullhash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \strng{bibnamehash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \strng{authorbibnamehash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \strng{authornamehash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \strng{authorfullhash}{53a04b0452e82d11dbbb27d1587aac8a}
+      \field{labelalpha}{Wey16}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{{The National Library of Medicine's Visible Human Male data set consists of digital magnetic resonance (MR), computed tomography (CT), and anatomic images derived from a single male cadaver. The data set is 15 gigabytes in size and is available from the National Library of Medicine under a no-cost license agreement. The history of the Visible Human Male cadaver and the methods and technology to produce the data set are described.}}
-      \field{issn}{1067-5027}
-      \field{journaltitle}{Journal of the American Medical Informatics Association}
-      \field{month}{03}
-      \field{number}{2}
-      \field{title}{{The Visible Human Male: A Technical Report}}
-      \field{volume}{3}
-      \field{year}{1996}
-      \field{pages}{118\bibrangedash 130}
-      \range{pages}{13}
+      \field{issn}{1432-1807}
+      \field{journaltitle}{Mathematische Annalen}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{{Ü}ber die Gleichverteilung von Zahlen mod. Eins}
+      \field{volume}{77}
+      \field{year}{1916}
+      \field{pages}{313\bibrangedash 352}
+      \range{pages}{40}
       \verb{doi}
-      \verb 10.1136/jamia.1996.96236280
-      \endverb
-      \verb{eprint}
-      \verb https://academic.oup.com/jamia/article-pdf/3/2/118/2089636/3-2-118.pdf
+      \verb 10.1007/BF01475864
       \endverb
       \verb{urlraw}
-      \verb https://doi.org/10.1136/jamia.1996.96236280
+      \verb https://doi.org/10.1007/BF01475864
       \endverb
       \verb{url}
-      \verb https://doi.org/10.1136/jamia.1996.96236280
+      \verb https://doi.org/10.1007/BF01475864
       \endverb
-    \endentry
-    \entry{mapclient}{inproceedings}{}
-      \name{author}{9}{}{%
-        {{hash=15edc7bbbe2d7e51b42bda002f3d0a45}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Ju},
-           giveni={J\bibinitperiod}}}%
-        {{hash=2a26b303d12004d5f994778093054e61}{%
-           family={Sorby},
-           familyi={S\bibinitperiod},
-           given={Hugh},
-           giveni={H\bibinitperiod}}}%
-        {{hash=32480091c0e13864677f5645909265bb}{%
-           family={Clement},
-           familyi={C\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
-        {{hash=052d3b99bba3708d1f3eb499b77edc10}{%
-           family={Thomas},
-           familyi={T\bibinitperiod},
-           given={C.\bibnamedelimi David\bibnamedelima L.},
-           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=1e8395cdb6d6a428ca5a8bc584f31f52}{%
-           family={Hunter},
-           familyi={H\bibinitperiod},
-           given={Peter},
-           giveni={P\bibinitperiod}}}%
-        {{hash=f83d46a95dc8e7cd6c31f1e9d6c404d4}{%
-           family={Nielsen},
-           familyi={N\bibinitperiod},
-           given={Poul},
-           giveni={P\bibinitperiod}}}%
-        {{hash=26975f1320e50dfce11b9eda556e853d}{%
-           family={Lloyd},
-           familyi={L\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
-        {{hash=0a8a747591efdf29a9af62be9939051e}{%
-           family={Taylor},
-           familyi={T\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-        {{hash=11c83030c55f1361bd4beff5dfdc4a92}{%
-           family={Besier},
-           familyi={B\bibinitperiod},
-           given={Thor},
-           giveni={T\bibinitperiod}}}%
-      }
-      \name{editor}{2}{}{%
-        {{hash=ca0d2d7cdb171e842662dc323ebb0854}{%
-           family={Bello},
-           familyi={B\bibinitperiod},
-           given={Fernando},
-           giveni={F\bibinitperiod}}}%
-        {{hash=553cef8fafd87f41e56198806d56a8eb}{%
-           family={Cotin},
-           familyi={C\bibinitperiod},
-           given={St{é}phane},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Cham}%
-      }
-      \list{publisher}{1}{%
-        {Springer International Publishing}%
-      }
-      \strng{namehash}{ee20a5c9b8d4f717c74fea0637e7a9a1}
-      \strng{fullhash}{c80d552f8b15f445c37c2a3bae7d7894}
-      \strng{bibnamehash}{ee20a5c9b8d4f717c74fea0637e7a9a1}
-      \strng{authorbibnamehash}{ee20a5c9b8d4f717c74fea0637e7a9a1}
-      \strng{authornamehash}{ee20a5c9b8d4f717c74fea0637e7a9a1}
-      \strng{authorfullhash}{c80d552f8b15f445c37c2a3bae7d7894}
-      \strng{editorbibnamehash}{f2bf934cd0f5e17578f64bff6c77cb0f}
-      \strng{editornamehash}{f2bf934cd0f5e17578f64bff6c77cb0f}
-      \strng{editorfullhash}{f2bf934cd0f5e17578f64bff6c77cb0f}
-      \field{labelalpha}{Zha14}
-      \field{sortinit}{Z}
-      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Subject-specific models of the musculoskeletal system are capable of accurately estimating function and loads and show promise for clinical use. However, creating subject-specific models is time-consuming and requires high levels of expertise. To address these issues, we have developed the open source Musculoskeletal Atlas Project (MAP) Client software. The MAP Client provides a user-friendly interface for creating musculoskeletal modelling workflows using community-created plug-ins. In this paper, we discuss the design of the MAP Client, its plug-in architecture and its integration with the Physiome Model Repository. We demonstrate the use of MAP Client with a subject-specific femur modelling workflow using a set of modular open source plug-ins for image segmentation, landmark prediction, model registration and customisation. Our long-term goal is to foster a community of MAP users and plug-in developers to accelerate the clinical use of computational models.}
-      \field{booktitle}{Biomedical Simulation}
-      \field{isbn}{978-3-319-12057-7}
-      \field{title}{The MAP Client: User-Friendly Musculoskeletal Modelling Workflows}
-      \field{year}{2014}
-      \field{pages}{182\bibrangedash 192}
-      \range{pages}{11}
     \endentry
   \enddatalist
 \endrefsection

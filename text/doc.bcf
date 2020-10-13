@@ -1923,17 +1923,9 @@
     <bcf:datasource type="file" datatype="bibtex">./references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">visible_human_male</bcf:citekey>
-    <bcf:citekey order="2">Kusterer</bcf:citekey>
-    <bcf:citekey order="3">mapclient</bcf:citekey>
-    <bcf:citekey order="4">ray-triangle</bcf:citekey>
-    <bcf:citekey order="5">piegl2012nurbs</bcf:citekey>
-    <bcf:citekey order="6">piegl2012nurbs</bcf:citekey>
-    <bcf:citekey order="7">piegl2012nurbs</bcf:citekey>
-    <bcf:citekey order="8">quickhull</bcf:citekey>
-    <bcf:citekey order="9">Delaunay2002</bcf:citekey>
-    <bcf:citekey order="10">shewchuk96b</bcf:citekey>
-    <bcf:citekey order="11">Remacle2010</bcf:citekey>
+    <bcf:citekey order="1">Weyl1916</bcf:citekey>
+    <bcf:citekey order="2">Weyl1916</bcf:citekey>
+    <bcf:citekey order="3">byrd1995limited</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

@@ -1,25 +1,27 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[26] biber:313> INFO - === Sa Okt  3, 2020, 00:41:59
-[46] Biber.pm:371> INFO - Reading 'doc.bcf'
-[102] Biber.pm:857> INFO - Found 9 citekeys in bib section 0
-[114] Biber.pm:3981> INFO - Processing section 0
-[124] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[139] bibtex.pm:1468> INFO - LaTeX decoding ...
-[404] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[431] Utils.pm:169> WARN - month field 'Mai' in entry 'Kusterer' is not an integer - this will probably not sort properly.
-[521] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1255, warning: 3 characters of junk seen at toplevel
-[521] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1287, warning: 3 characters of junk seen at toplevel
-[521] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1331, warning: 3 characters of junk seen at toplevel
-[521] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1433, warning: 3 characters of junk seen at toplevel
-[521] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1459, warning: 3 characters of junk seen at toplevel
-[522] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1491, warning: 3 characters of junk seen at toplevel
-[522] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1526, warning: 3 characters of junk seen at toplevel
-[522] Utils.pm:169> WARN - BibTeX subsystem: /tmp/9I34cEmOfF/references.bib_14139.utf8, line 1599, warning: 3 characters of junk seen at toplevel
-[553] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[553] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[553] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[553] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[572] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[580] bbl.pm:720> INFO - Output to doc.bbl
-[580] Biber.pm:110> INFO - WARNINGS: 9
+[24] biber:313> INFO - === Di Okt 13, 2020, 17:11:14
+[43] Biber.pm:371> INFO - Reading 'doc.bcf'
+[99] Biber.pm:857> INFO - Found 2 citekeys in bib section 0
+[111] Biber.pm:3981> INFO - Processing section 0
+[121] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[136] bibtex.pm:1468> INFO - LaTeX decoding ...
+[377] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[395] Utils.pm:169> WARN - month field 'Sep' in entry 'Weyl1916' is not an integer - this will probably not sort properly.
+[402] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1244, warning: 3 characters of junk seen at toplevel
+[402] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1275, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1318, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1420, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1446, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1478, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1513, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1586, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 1809, warning: 3 characters of junk seen at toplevel
+[403] Utils.pm:169> WARN - BibTeX subsystem: /tmp/bMBd2pD4yH/references.bib_17868.utf8, line 2224, warning: 3 characters of junk seen at toplevel
+[412] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[412] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[412] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[412] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[419] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[420] bbl.pm:720> INFO - Output to doc.bbl
+[420] Biber.pm:110> INFO - WARNINGS: 11
