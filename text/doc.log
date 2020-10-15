@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  13 OCT 2020 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  15 OCT 2020 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3675,20 +3675,7 @@ Package biblatex Info: ... file 'german.lbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/german.lbx
 File: german.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
-)) (./doc.aux
-
-LaTeX Warning: Label `fig:extraction_result' multiply defined.
-
-
-LaTeX Warning: Label `fig:extraction_result@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:extraction_result' multiply defined.
-
-
-LaTeX Warning: Label `fig:extraction_result@cref' multiply defined.
-
-)
+)) (./doc.aux)
 \openout1 = `doc.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -3707,7 +3694,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 13.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 13.
- (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
+
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 13.
@@ -4047,85 +4035,78 @@ LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
 \tf@toc=\write6
 \openout6 = `doc.toc'.
 
-LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 21.
+Package tocbasic Info: character protrusion at toc deactivated on input line 21
+.
+
+(./04_motor_units.tex
+LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 2.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 8.36005pt on input line 21.
+(Font)              scaled to size 8.36005pt on input line 2.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 5.85199pt on input line 21.
+(Font)              scaled to size 5.85199pt on input line 2.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 4.18002pt on input line 21.
+(Font)              scaled to size 4.18002pt on input line 2.
 
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 21.
+(Font)              size <9> substituted on input line 2.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 21.
+(Font)              scaled to size 6.384pt on input line 2.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 21.
+(Font)              scaled to size 4.56003pt on input line 2.
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 21.
+(Font)              size <9> substituted on input line 2.
 
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 21.
+(Font)              scaled to size 9.12006pt on input line 2.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
 
 ] [2
 
 
 ]
-Package tocbasic Info: character protrusion at toc deactivated on input line 21
-.
-LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 13.82408pt on input line 21.
- [3] [4
-
-
-]
-part I.
-Package scrkbase Info: You've told me to use the font selection of the element
-(scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 34.
-[5] [6]
 chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -4142,170 +4123,122 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface .
 
+[3] [4] [5]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 129.
+(Font)              scaled to size 7.68005pt on input line 52.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 129.
-[7
-
-
-]
+(Font)              scaled to size 5.76004pt on input line 52.
+ [6]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 146.
+(Font)              scaled to size 4.80003pt on input line 81.
 LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 148.
-
-Overfull \hbox (21.16574pt too wide) in paragraph at lines 151--152
+(Font)              scaled to size 11.52008pt on input line 83.
+ [7]
+Overfull \hbox (9.64566pt too wide) in paragraph at lines 86--87
 []\T1/mdbch/m/n/12 (-10) The used quasir-an-dom se-quence is the fol-low-ing We
-yl low-discrepancy se-quence [][][[][]Wey16[][]][][]: 
+yl low-discrepancy se-quence [][][[][]Wey16[][]][][]:
  []
 
-[8] [9]
+<images/motor_unit_assignment/phat.pdf, id=155, 462.52798pt x 346.89601pt>
+File: images/motor_unit_assignment/phat.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/phat.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/phat.pdf  used on input l
+ine 112.
+(pdftex.def)             Requested size: 176.4044pt x 132.30353pt.
+[8] [9 <./images/motor_unit_assignment/phat.pdf>]
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 11.52008pt on input line 199.
+(Font)              scaled to size 11.52008pt on input line 143.
+ [10] [11] [12]
+<images/motor_unit_assignment/interleaving_scheme.pdf, id=224, 373.59065pt x 28
+5.90503pt>
+File: images/motor_unit_assignment/interleaving_scheme.pdf Graphic file (type p
+df)
+<use images/motor_unit_assignment/interleaving_scheme.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/interleaving_scheme.pdf  
+used on input line 217.
+(pdftex.def)             Requested size: 132.30666pt x 101.25487pt.
 
-Overfull \hbox (13.37566pt too wide) in paragraph at lines 198--200
-\T1/mdbch/m/n/12 (-10) Newton method, more specif-i-cally the limited-memory ve
-r-sion of the \T1/mdbch/m/it/12 (-10) Broy-den^^U Fletcher^^U Gold-
- []
 
-[10] [11]
-<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distribution
-.pdf, id=135, 462.52798pt x 346.89601pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distrib
-ution.pdf Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distribu
-tion.pdf>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_fiber_distribution.pdf  used on input line 240.
-(pdftex.def)             Requested size: 352.81554pt x 264.62294pt.
+Package scrlayer-scrpage Warning: \headheight to low.
+(scrlayer-scrpage)                At least 29.78392pt needed,
+(scrlayer-scrpage)                but only 21.98557pt found.
+(scrlayer-scrpage)                I'll enlarge \headheight, for further
+(scrlayer-scrpage)                processing, but you should do this yourself,
+(scrlayer-scrpage)                e.g., setting geometry's option
+(scrlayer-scrpage)                `head=29.78392pt'.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 2
+26.
+
+
+Overfull \vbox (7.79836pt too high) has occurred while \output is active []
+
+
+[13]
 <images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distribut
-ion.pdf, id=136, 289.08pt x 289.08pt>
+ion.pdf, id=235, 289.08pt x 289.08pt>
 File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_dist
 ribution.pdf Graphic file (type pdf)
 <use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distr
 ibution.pdf>
 Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_2d_fiber_distribution.pdf  used on input line 249.
+13_10_2d_fiber_distribution.pdf  used on input line 235.
 (pdftex.def)             Requested size: 211.68663pt x 211.68387pt.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 9.63605pt on input line 250.
+(Font)              scaled to size 9.63605pt on input line 236.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 250.
+(Font)              scaled to size 10.51207pt on input line 236.
 <images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distribut
-ion_sigma.pdf, id=137, 289.08pt x 289.08pt>
+ion_sigma.pdf, id=236, 289.08pt x 289.08pt>
 File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_dist
 ribution_sigma.pdf Graphic file (type pdf)
 <use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distr
 ibution_sigma.pdf>
 Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_2d_fiber_distribution_sigma.pdf  used on input line 255.
+13_10_2d_fiber_distribution_sigma.pdf  used on input line 242.
 (pdftex.def)             Requested size: 211.68663pt x 211.68387pt.
 <images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_2d_fiber_di
-stribution.pdf, id=138, 289.08pt x 289.08pt>
+stribution.pdf, id=237, 289.08pt x 289.08pt>
 File: images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_2d_fib
 er_distribution.pdf Graphic file (type pdf)
 <use images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_2d_fibe
 r_distribution.pdf>
 Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_spa
-rse_13x13_10_2d_fiber_distribution.pdf  used on input line 261.
+rse_13x13_10_2d_fiber_distribution.pdf  used on input line 248.
 (pdftex.def)             Requested size: 211.68663pt x 211.68387pt.
 <images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_sigma_2d_fi
-ber_distribution.pdf, id=139, 289.08pt x 289.08pt>
+ber_distribution.pdf, id=238, 289.08pt x 289.08pt>
 File: images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_sigma_
 2d_fiber_distribution.pdf Graphic file (type pdf)
 <use images/motor_unit_assignment/MU_fibre_distribution_sparse_13x13_10_sigma_2
 d_fiber_distribution.pdf>
 Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_spa
-rse_13x13_10_sigma_2d_fiber_distribution.pdf  used on input line 267.
+rse_13x13_10_sigma_2d_fiber_distribution.pdf  used on input line 255.
 (pdftex.def)             Requested size: 211.68663pt x 211.68387pt.
-<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf, id=140, 4
-62.52798pt x 346.89601pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf Graph
-ic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf>
+<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distribution
+.pdf, id=241, 462.52798pt x 346.89601pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distrib
+ution.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distribu
+tion.pdf>
 Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_pdf.pdf  used on input line 277.
+13_10_fiber_distribution.pdf  used on input line 267.
 (pdftex.def)             Requested size: 352.81554pt x 264.62294pt.
-<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pdf, id
-=141, 401.48169pt x 333.0443pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pd
-f Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pdf
->
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_fibers_mu3.pdf  used on input line 286.
-(pdftex.def)             Requested size: 136.71442pt x 113.41142pt.
-<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pdf, id
-=142, 403.31905pt x 332.80855pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pd
-f Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pdf
->
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
-13_10_fibers_mu9.pdf  used on input line 293.
-(pdftex.def)             Requested size: 136.71442pt x 112.81316pt.
-<images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.pdf, i
-d=143, 416.748pt x 331.38539pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.p
-df Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.pd
-f>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_37x
-37_50_fibers_mu41.pdf  used on input line 300.
-(pdftex.def)             Requested size: 136.71442pt x 108.71027pt.
-<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions.pdf,
- id=144, 378.76427pt x 282.8909pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions
-.pdf Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions.
-pdf>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
-67_100_mu_positions.pdf  used on input line 312.
-(pdftex.def)             Requested size: 211.68663pt x 158.10703pt.
-<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distributio
-n.pdf, id=145, 406.69534pt x 296.01178pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distri
-bution.pdf Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distrib
-ution.pdf>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
-67_100_fiber_distribution.pdf  used on input line 319.
-(pdftex.def)             Requested size: 211.68663pt x 154.07605pt.
-<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_2d_fiber_distribu
-tion.pdf, id=146, 555.20393pt x 407.51738pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_2d_fiber_dis
-tribution.pdf Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_2d_fiber_dist
-ribution.pdf>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
-67_100_2d_fiber_distribution.pdf  used on input line 325.
-(pdftex.def)             Requested size: 211.68663pt x 155.38054pt.
-<images/motor_unit_assignment/MU_fibre_distribution_sparse_67x67_100_2d_fiber_d
-istribution.pdf, id=147, 550.81186pt x 408.91914pt>
-File: images/motor_unit_assignment/MU_fibre_distribution_sparse_67x67_100_2d_fi
-ber_distribution.pdf Graphic file (type pdf)
-<use images/motor_unit_assignment/MU_fibre_distribution_sparse_67x67_100_2d_fib
-er_distribution.pdf>
-Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_spa
-rse_67x67_100_2d_fiber_distribution.pdf  used on input line 332.
-(pdftex.def)             Requested size: 211.68663pt x 157.1567pt.
- [12 <./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distr
-ibution.pdf>] [13 <./images/motor_unit_assignment/MU_fibre_distribution_13x13_1
-0_2d_fiber_distribution.pdf> <./images/motor_unit_assignment/MU_fibre_distribut
-ion_13x13_10_2d_fiber_distribution_sigma.pdf
+ [14 <./images/motor_unit_assignment/interleaving_scheme.pdf>] [15 <./images/mo
+tor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distribution.pdf> <
+./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_2d_fiber_distribu
+tion_sigma.pdf
 
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
 tion_13x13_10_2d_fiber_distribution_sigma.pdf): PDF inclusion: multiple pdfs wi
@@ -4322,8 +4255,37 @@ d_fiber_distribution.pdf
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
 tion_sparse_13x13_10_sigma_2d_fiber_distribution.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] [14 <./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf> 
-<./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pdf
+>]
+<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pdf, id
+=357, 401.48169pt x 333.0443pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pd
+f Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu3.pdf
+>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
+13_10_fibers_mu3.pdf  used on input line 281.
+(pdftex.def)             Requested size: 136.71442pt x 113.41142pt.
+<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pdf, id
+=358, 403.31905pt x 332.80855pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pd
+f Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fibers_mu9.pdf
+>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
+13_10_fibers_mu9.pdf  used on input line 288.
+(pdftex.def)             Requested size: 136.71442pt x 112.81316pt.
+<images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.pdf, i
+d=359, 416.748pt x 331.38539pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.p
+df Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_37x37_50_fibers_mu41.pd
+f>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_37x
+37_50_fibers_mu41.pdf  used on input line 295.
+(pdftex.def)             Requested size: 136.71442pt x 108.71027pt.
+ [16 <./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fiber_distr
+ibution.pdf> <./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_fib
+ers_mu3.pdf
 
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
 tion_13x13_10_fibers_mu3.pdf): PDF inclusion: multiple pdfs with page group inc
@@ -4340,64 +4302,197 @@ f
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
 tion_37x37_50_fibers_mu41.pdf): PDF inclusion: multiple pdfs with page group in
 cluded in a single page
->] [15 <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_posit
-ions.pdf> <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber
-_distribution.pdf
+>]
+<images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf, id=5580, 
+462.52798pt x 346.89601pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf Graph
+ic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_13x
+13_10_pdf.pdf  used on input line 311.
+(pdftex.def)             Requested size: 352.81554pt x 264.62294pt.
+ [17] [18 <./images/motor_unit_assignment/MU_fibre_distribution_13x13_10_pdf.pd
+f>]
+<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions.pdf,
+ id=5659, 378.76427pt x 282.8909pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions
+.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_positions.
+pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
+67_100_mu_positions.pdf  used on input line 342.
+(pdftex.def)             Requested size: 211.68663pt x 158.10703pt.
+<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distributio
+n.pdf, id=5660, 406.69534pt x 296.01178pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distri
+bution.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fiber_distrib
+ution.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
+67_100_fiber_distribution.pdf  used on input line 349.
+(pdftex.def)             Requested size: 211.68663pt x 154.07605pt.
+<images/motor_unit_assignment/MU_fibre_distribution_67x67_100_some_2d_fiber_dis
+tribution.pdf, id=5661, 409.18321pt x 310.50162pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_67x67_100_some_2d_fibe
+r_distribution.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_67x67_100_some_2d_fiber
+_distribution.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_67x
+67_100_some_2d_fiber_distribution.pdf  used on input line 362.
+(pdftex.def)             Requested size: 211.68663pt x 160.63737pt.
+<images/motor_unit_assignment/MU_fibre_distribution_sparse2_67x67_100_2d_fiber_
+distribution.pdf, id=5662, 410.44218pt x 308.43355pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_sparse2_67x67_100_2d_f
+iber_distribution.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_sparse2_67x67_100_2d_fi
+ber_distribution.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_spa
+rse2_67x67_100_2d_fiber_distribution.pdf  used on input line 374.
+(pdftex.def)             Requested size: 211.68663pt x 159.0733pt.
+<images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_0_2d_fib
+er_distribution_.pdf, id=5669, 363.59668pt x 287.00192pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_0_2
+d_fiber_distribution_.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_0_2d
+_fiber_distribution_.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_67x67_100_0_2d_fiber_distribution_.pdf  used on input line 406.
+(pdftex.def)             Requested size: 211.68663pt x 167.09183pt.
+<images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_1_2d_fib
+er_distribution_.pdf, id=5670, 363.59668pt x 287.00192pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_1_2
+d_fiber_distribution_.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_1_2d
+_fiber_distribution_.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_67x67_100_1_2d_fiber_distribution_.pdf  used on input line 413.
+(pdftex.def)             Requested size: 211.68663pt x 167.09183pt.
+<images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2_2d_fib
+er_distribution_.pdf, id=5671, 363.59668pt x 287.00192pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2_2
+d_fiber_distribution_.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2_2d
+_fiber_distribution_.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_67x67_100_2_2d_fiber_distribution_.pdf  used on input line 420.
+(pdftex.def)             Requested size: 211.68663pt x 167.09183pt.
+<images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2d_fiber
+_distribution_.pdf, id=5672, 366.47069pt x 287.64496pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2d_
+fiber_distribution_.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2d_f
+iber_distribution_.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_67x67_100_2d_fiber_distribution_.pdf  used on input line 433.
+(pdftex.def)             Requested size: 211.68663pt x 166.15387pt.
+<images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_fiber_di
+stribution.pdf, id=5673, 462.52798pt x 208.61061pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_fib
+er_distribution.pdf Graphic file (type pdf)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_fibe
+r_distribution.pdf>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_67x67_100_fiber_distribution.pdf  used on input line 444.
+(pdftex.def)             Requested size: 396.91327pt x 179.026pt.
+ [19] [20 <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_mu_po
+sitions.pdf> <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_fi
+ber_distribution.pdf
 
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
 tion_67x67_100_fiber_distribution.pdf): PDF inclusion: multiple pdfs with page 
 group included in a single page
-> <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_2d_fiber_dist
-ribution.pdf
+> <./images/motor_unit_assignment/MU_fibre_distribution_67x67_100_some_2d_fiber
+_distribution.pdf
 
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
-tion_67x67_100_2d_fiber_distribution.pdf): PDF inclusion: multiple pdfs with pa
-ge group included in a single page
-> <./images/motor_unit_assignment/MU_fibre_distribution_sparse_67x67_100_2d_fib
-er_distribution.pdf
+tion_67x67_100_some_2d_fiber_distribution.pdf): PDF inclusion: multiple pdfs wi
+th page group included in a single page
+> <./images/motor_unit_assignment/MU_fibre_distribution_sparse2_67x67_100_2d_fi
+ber_distribution.pdf
 
 pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
-tion_sparse_67x67_100_2d_fiber_distribution.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
->] [16
+tion_sparse2_67x67_100_2d_fiber_distribution.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>] [21 <./images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100
+_0_2d_fiber_distribution_.pdf> <./images/motor_unit_assignment/MU_fibre_distrib
+ution_combined_67x67_100_1_2d_fiber_distribution_.pdf
 
+pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
+tion_combined_67x67_100_1_2d_fiber_distribution_.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+> <./images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2_2d
+_fiber_distribution_.pdf
 
-]
+pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
+tion_combined_67x67_100_2_2d_fiber_distribution_.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+> <./images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_2d_f
+iber_distribution_.pdf
+
+pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
+tion_combined_67x67_100_2d_fiber_distribution_.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+> <./images/motor_unit_assignment/MU_fibre_distribution_combined_67x67_100_fibe
+r_distribution.pdf
+
+pdfTeX warning: pdflatex (file ./images/motor_unit_assignment/MU_fibre_distribu
+tion_combined_67x67_100_fiber_distribution.pdf): PDF inclusion: multiple pdfs w
+ith page group included in a single page
+>]
+<images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x251_100
+_2d_fiber_distribution_.png, id=55315, 3029.3175pt x 2340.745pt>
+File: images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x25
+1_100_2d_fiber_distribution_.png Graphic file (type png)
+<use images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x251
+_100_2d_fiber_distribution_.png>
+Package pdftex.def Info: images/motor_unit_assignment/MU_fibre_distribution_com
+bined_sparse_251x251_100_2d_fiber_distribution_.png  used on input line 455.
+(pdftex.def)             Requested size: 396.91327pt x 306.66484pt.
+ [22 <./images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x
+251_100_2d_fiber_distribution_.png>] [23]) [24]
 LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 405.
+(Font)              scaled to size 10.51207pt on input line 183.
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 405.
+(Font)              scaled to size 10.51207pt on input line 183.
 LaTeX Font Info:    Font shape `T1/mdbch/m/fsc' will be
-(Font)              scaled to size 10.51207pt on input line 405.
- 
+(Font)              scaled to size 10.51207pt on input line 183.
+
+Overfull \hbox (29.40654pt too wide) in paragraph at lines 186--186
+\T1/mdbch/m/n/10.95 (-10) 349, \T1/mdbch/m/fsc/10.95/100ls (-10) issn\T1/mdbch/
+m/n/10.95 (-10) : 1617-7940, [][]$\T1/GoMono-TLF/m/n/8 doi : 10 . 1007 / s10237
+-[]019-[]01214-[]5$[][]\T1/mdbch/m/n/10.95 (-10) , [][]$\T1/GoMono-TLF/m/n/8 ht
+tps : / / doi . org / 10 . 1007 / s10237-[]019-[]01214-[]5$[][] 
+ []
+
+[25
+
+
+] 
 AED: lastpage setting LastPage
-[17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
+[26]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 193.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 193.
  (./doc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 193.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 193.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package logreq Info: Writing requests to 'doc.run.xml'.
 \openout1 = `doc.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 415.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 193.
  ) 
 Here is how much of TeX's memory you used:
- 59452 strings out of 492982
- 1194488 string characters out of 6134895
- 1745896 words of memory out of 5000000
- 61682 multiletter control sequences out of 15000+600000
- 685082 words of font info for 346 fonts, out of 8000000 for 9000
+ 59745 strings out of 492982
+ 1202797 string characters out of 6134895
+ 1754861 words of memory out of 5000000
+ 61800 multiletter control sequences out of 15000+600000
+ 692104 words of font info for 446 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 68i,22n,88p,10492b,2098s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,22n,86p,10492b,2040s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/gofonts/go_t66sex.enc}{/usr/sh
 are/texlive/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/share/texmf/fonts
 /enc/dvips/tex-gyre/q-ec.enc}</usr/share/texlive/texmf-dist/fonts/type1/bh/gofo
@@ -4405,17 +4500,19 @@ nts/GoMono-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/char
 ter/bchb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-</usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/fonts/
-type1/public/tex-gyre/qhvr.pfb>
-Output written on doc.pdf (17 pages, 3537549 bytes).
+share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chrma.pf
+b></usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/font
+s/type1/public/tex-gyre/qhvr.pfb>
+Output written on doc.pdf (26 pages, 7006015 bytes).
 PDF statistics:
- 33048 PDF objects out of 38293 (max. 8388607)
- 21856 compressed objects within 219 object streams
- 54 named destinations out of 1000 (max. 500000)
- 80118 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 55472 PDF objects out of 66169 (max. 8388607)
+ 36757 compressed objects within 368 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 79670 words of extra memory for PDF output out of 89155 (max. 10000000)
 
