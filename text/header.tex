@@ -58,6 +58,7 @@
 \usepackage{esint}
 \usepackage{framed}
 \usepackage{wasysym}  % \ocircle
+%\usepackage{calc}   % \begin{tabular}[b]{|p{\textwidth-2\tabcolsep}|}
 
 %\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}  % print
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}    % web
@@ -99,7 +100,9 @@
 \definecolor{darkblue}{rgb}{0,0,.5}
 \definecolor{black}{rgb}{0,0,0}
 
-\usepackage{mdframed}       % Rahmen um Text und Gleichungen
+\usepackage[framemethod=TikZ]{mdframed}       % Rahmen um Text und Gleichungen
+
+
 %\usepackage{arydshln}      % gestrichelte Linie in Tabelle mit \hdashline
 \usepackage{dirtytalk}          % \say{...} erzeugt (deutsche) Anführungszeichen
 
@@ -187,11 +190,39 @@
 %\newcommand{\code}[1]{{\small\lstinline[columns=fixed]!#1!}}
 
 \usepackage{setspace}
-\newcommand{\code}[1]{{\small\lstinline[basicstyle=\footnotesize\ttfamily]!#1!}}
+\newcommand{\code}[1]{{\small\lstinline[basicstyle=\small\ttfamily]!#1!}}
+\newcommand{\codebox}[1]{\begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]#1\end{lstlisting}}
+
 %\newfloat{algorithm}{ht}{aux0}              % Algorithmus-Umgebung
 %\floatname{algorithm}{Code-Abschnitt}
 \newcommand{\anm}[1]{\textcolor{blue}{#1}}
 \def\bigA{\mathop{\mathrm{A}}}
+
+% -------------
+% Using mdframed, define environment for \begin{reproduce} abcdefgh \end{reproduce}
+%\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\newcounter{reproduce}[section]
+\newenvironment{reproduce}{%
+  \stepcounter{reproduce}%
+  \mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[anchor=east,rectangle,fill=red!20]
+      {How to reproduce};}
+  }
+  \mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+            linewidth=2pt,topline=true,roundcorner=5pt,frametitleaboveskip=-\ht\strutbox\relax,%
+  }
+  \vfill
+  \begin{minipage}[b!]{\linewidth}
+  \begin{mdframed}\relax%
+}
+{
+  \end{mdframed}%
+  \end{minipage}%
+}
+% -------------
+
 
 %----------------------Funktionen, Zeichen----------------------
 \def\det{\hbox{det} \,}

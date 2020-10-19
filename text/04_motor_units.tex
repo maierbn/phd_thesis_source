@@ -27,7 +27,9 @@ Further physiological properties of fibers such as their fast or slow-twitch typ
 
 \subsection{Related Works}
 Simulations involving individually resolved muscle fibers are scarce in the literature. Therefore, not much previous work exists regarding methods to algorithmically assign fibers to MUs. The chemo-electro-mechanical skeletal muscle framework of \cite{Heidlauf2013} uses a method introduced in \cite{Roehrle2012} where center points of MU territories are positioned normally distributed around two distinct weighting centers for fast- and slow-twitch fibers. 
-The algorithm randomly selects from certain sets of fibers and assigns them to MUs with exponentially increasing MU sizes. \sout{However, the formulation contains mathematical inaccuracies and therefore the process of the exact algorithm can only be guessed.} The method is applied to determine up to 50 MUs in the tibialis anterior (TA) muscle.
+The algorithm randomly selects from certain sets of fibers and assigns them to MUs with exponentially increasing MU sizes. 
+%\sout{However, the formulation contains mathematical inaccuracies and therefore the process of the exact algorithm can only be guessed.} 
+The method is applied to determine up to 50 MUs in the tibialis anterior (TA) muscle.
 
 This algorithm fulfills the previously formulated properties (a)-(e). Among those, the fulfillment of (c) is not guaranteed but may be given by the random nature of the algorithm. An assumed issue regarding property (b) is that no predictions can be made about the fiber locations of the larger MUs. The larger MUs get assigned to previously unassigned fibers in a late stage of the algorithm, after most of the fibers have been selected for smaller MUs. The largest MU simply gets associated with all remaining fibers that were not selected for other MUs. In the worst case, these fibers can accumulate at multiple different regions, e.g., at boundaries of the muscle which is not physiological.
 
@@ -457,6 +459,18 @@ It can be seen in \cref{fig:mu_method3_2} that the fibers are dispersed over the
   \label{fig:mu_method3_2}%
 \end{figure}%
 % resulting fibers: 13618 / 63001 = 22\%
+
+\begin{reproduce}
+  Run the script \code{generate_fiber_distribution.py} without arguments to get usage information.
+  The script contains the implementation for all three presented methods. For example, to run method 3-1 to get the result of \cref{fig:mu_method3_partial}, use:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    generate_fiber_distribution.py MU_fibre_distribution_combined_67x67_100 100 3 1 67 1.05 100 10
+  \end{lstlisting}
+  Then, existing fiber distribution files can be visualized by the following script:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    $\$$OPENDIHU_HOME/examples/electrophysiology/input/plot_fibre_distribution_2d.py MU_fibre_distribution_combined_67x67_100.txt 67
+  \end{lstlisting}
+\end{reproduce}
 
 \section{Summary and Conclusion}\label{sec:mu_conclusion}
 In the beginning of this chapter, two methods 1 and 2 for associating MUs with fibers in a given 2D grid were presented. The methods were constructed based on biophysical properties of MU distribution. The fibers were located in intermingling MU territories that were each centered at different MU center points.

@@ -257,8 +257,9 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
-INPUT /usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
+INPUT /usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
+INPUT /usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 INPUT /usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/dirtytalk/dirtytalk.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
@@ -919,6 +920,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/md-chr7y.t
 INPUT images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x251_100_2d_fiber_distribution_.png
 INPUT ./images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x251_100_2d_fiber_distribution_.png
 INPUT ./images/motor_unit_assignment/MU_fibre_distribution_combined_sparse_251x251_100_2d_fiber_distribution_.png
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/bh/gofonts/GoMono-tlf-t1.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/bh/gofonts/GoMono-tlf-t1--base.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/mdbchb8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/mdbchri8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/mdbchrfc8t.tfm
@@ -931,8 +934,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/md-chri8t.
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/mathdesign/mdbch/mdbchrfc8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/md-chr8y.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathdesign/mdbch/md-chr8t.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/bh/gofonts/GoMono-tlf-t1.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/bh/gofonts/GoMono-tlf-t1--base.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/bh/gofonts/GoMono-tlf-t1.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/bh/gofonts/GoMono-tlf-t1--base.tfm
 INPUT doc.aux
