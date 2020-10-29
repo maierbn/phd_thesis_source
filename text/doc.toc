@@ -1,15 +1,30 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {american}{}
-\contentsline {chapter}{\numberline {1}Muscle Fibers and Motor Units}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Introduction}{3}{section.0.1}
-\contentsline {subsection}{\numberline {1.1.1}Related Works}{4}{subsection.0.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Two Alternative Premises for Motor Unit Assignment}{6}{subsection.0.1.2}
-\contentsline {section}{\numberline {1.2}Method 1: Assignment of Motor Units to a Given Set of Fibers}{7}{section.0.2}
-\contentsline {subsection}{\numberline {1.2.1}Stochastic Formulation of Motor Unit Assignment}{7}{subsection.0.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Algorithm to Solve the Optimization Problem}{10}{subsection.0.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Sampling Motor Unit Indices from the Given Probabilities}{11}{subsection.0.2.3}
-\contentsline {section}{\numberline {1.3}Method 2: Assignment of Motor Units to a Selection of Fibers}{12}{section.0.3}
-\contentsline {section}{\numberline {1.4}Method 3: Assignment of Different Motor Units for Neighboring Fibers}{13}{section.0.4}
-\contentsline {section}{\numberline {1.5}Results and Discussion}{14}{section.0.5}
-\contentsline {section}{\numberline {1.6}Summary and Conclusion}{23}{section.0.6}
+\contentsline {chapter}{\numberline {1}Generation of Meshes for the Multiscale Models}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Overview and Notation of Required Meshes}{3}{section.0.1}
+\contentsline {section}{\numberline {1.2}Related Works}{5}{section.0.2}
+\contentsline {section}{\numberline {1.3}Preprocessing of the Muscle Geometry}{11}{section.0.3}
+\contentsline {subsection}{\numberline {1.3.1}Data Source}{11}{subsection.0.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Automatic Surface Extraction}{11}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Manually Guided Surface Extraction}{17}{subsection.0.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Introduction of Spline Surfaces}{20}{subsection.0.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Fitting a Spline Surface to the Muscle Geometry}{23}{subsection.0.3.5}
+\contentsline {section}{\numberline {1.4}Serial Algorithm to Create Muscle and Fiber Meshes}{25}{section.0.4}
+\contentsline {subsection}{\numberline {1.4.1}Slicing of the Geometry}{26}{subsection.0.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Triangulation of the Slices}{28}{subsection.0.4.2}
+\contentsline {subsection}{\numberline {1.4.3}Harmonic Maps}{30}{subsection.0.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Construction of a Regular Grid in the Parameter Domain}{35}{subsection.0.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Formation of Three-Dimensional Elements}{37}{subsection.0.4.5}
+\contentsline {subsection}{\numberline {1.4.6}Generation of Fiber Meshes}{37}{subsection.0.4.6}
+\contentsline {subsection}{\numberline {1.4.7}Algorithm for Streamline Tracing}{40}{subsection.0.4.7}
+\contentsline {subsection}{\numberline {1.4.8}Results and Discussion}{41}{subsection.0.4.8}
+\contentsline {section}{\numberline {1.5}Parallel Algorithm to Create Muscle and Fiber Meshes}{48}{section.0.5}
+\contentsline {subsection}{\numberline {1.5.1}Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{49}{subsection.0.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Generation of the 3D Mesh}{50}{subsection.0.5.2}
+\contentsline {subsection}{\numberline {1.5.3}Computation of Subdomains}{52}{subsection.0.5.3}
+\contentsline {subsection}{\numberline {1.5.4}Procedure on Higher Recursion Levels}{57}{subsection.0.5.4}
+\contentsline {subsection}{\numberline {1.5.5}Repair of Incomplete Streamlines}{61}{subsection.0.5.5}
+\contentsline {subsection}{\numberline {1.5.6}Postprocessing of the Generated Streamlines}{63}{subsection.0.5.6}
+\contentsline {subsection}{\numberline {1.5.7}Results and Discussion}{65}{subsection.0.5.7}
+\contentsline {section}{\numberline {1.6}Conclusion and Future Work}{75}{section.0.6}
