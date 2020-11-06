@@ -33,740 +33,194 @@
 \@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \babel@aux{american}{}
-\BKM@entry{id=1,open,dest={636861707465722E31},srcline={39}}{312047656E65726174696F6E206F66204D657368657320666F7220746865204D756C74697363616C65204D6F64656C73}
-\BKM@entry{id=2,open,dest={73656374696F6E2E302E31},srcline={10}}{312E31204F7665727669657720616E64204E6F746174696F6E206F66205265717569726564204D6573686573}
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Generation of Meshes for the Multiscale Models}{3}{chapter.1}}
+\BKM@entry{id=1,open,dest={636861707465722E31},srcline={1}}{3120496D706C656D656E746174696F6E}
+\BKM@entry{id=2,open,dest={73656374696F6E2E302E31},srcline={9}}{312E3120496E74726F64756374696F6E}
+\abx@aux@cite{DihuWeb}
+\abx@aux@segm{0}{0}{DihuWeb}
+\abx@aux@cite{Maier2019}
+\abx@aux@segm{0}{0}{Maier2019}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Implementation}{3}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Overview and Notation of Required Meshes}{3}{section.0.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.1}{\ignorespaces Visualization of the computational domains: tendons $\Omega _{T,1}, \Omega _{T,2}$, muscle belly $\Omega _M$, body domain $\Omega _B$ and fiber domains $\Omega _{F,i}$.\relax }}{4}{figure.1.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{3}{section.0.1}}
+\BKM@entry{id=3,open,dest={73756273656374696F6E2E302E312E31},srcline={17}}{312E312E312044657369676E20476F616C73206F66204F70656E44694875}
+\abx@aux@cite{ISO9241}
+\abx@aux@segm{0}{0}{ISO9241}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Design Goals of OpenDiHu{}}{4}{subsection.0.1.1}}
+\BKM@entry{id=4,open,dest={73756273656374696F6E2E302E312E32},srcline={35}}{312E312E32204F76657276696577206F6620746869732043686170746572}
+\BKM@entry{id=5,open,dest={73656374696F6E2E302E32},srcline={41}}{312E3220446174612048616E646C696E672077697468205045545363}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Overview of this Chapter}{5}{subsection.0.1.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Data Handling with PETSc}{5}{section.0.2}}
+\newlabel{sec:data_handling_with_petsc}{{1.2}{5}{Data Handling with PETSc}{section.0.2}{}}
+\newlabel{sec:data_handling_with_petsc@cref}{{[section][2][1]1.2}{[1][5][]5}}
+\abx@aux@cite{petsc-web-page}
+\abx@aux@segm{0}{0}{petsc-web-page}
+\abx@aux@cite{petsc-user-ref}
+\abx@aux@segm{0}{0}{petsc-user-ref}
+\abx@aux@cite{petsc-efficient}
+\abx@aux@segm{0}{0}{petsc-efficient}
+\abx@aux@cite{mumps2001}
+\abx@aux@segm{0}{0}{mumps2001}
+\abx@aux@cite{mumps2019}
+\abx@aux@segm{0}{0}{mumps2019}
+\abx@aux@cite{falgout2002hypre}
+\abx@aux@segm{0}{0}{falgout2002hypre}
+\BKM@entry{id=6,open,dest={73756273656374696F6E2E302E322E31},srcline={52}}{312E322E31204F7267616E697A6174696F6E206F6620506172616C6C656C20506172746974696F6E65642044617461}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Organization of Parallel Partitioned Data}{6}{subsection.0.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.1}{\ignorespaces Partitioning and local and global numberings of a 1D mesh with $N^\text  {el}_x=6$ elements partitioned to $n_x=3$ processes.\relax }}{7}{figure.1.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:fibers_domains}{{\relax 1.1}{4}{Visualization of the computational domains: tendons $\Omega _{T,1}, \Omega _{T,2}$, muscle belly $\Omega _M$, body domain $\Omega _B$ and fiber domains $\Omega _{F,i}$.\relax }{figure.1.1}{}}
-\newlabel{fig:fibers_domains@cref}{{[figure][1][1]\relax 1.1}{[1][4][]4}}
-\BKM@entry{id=3,open,dest={73656374696F6E2E302E32},srcline={50}}{312E322052656C6174656420576F726B73}
-\abx@aux@cite{untaroiu2013finite}
-\abx@aux@segm{0}{0}{untaroiu2013finite}
-\abx@aux@cite{grosland2009ia}
-\abx@aux@segm{0}{0}{grosland2009ia}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Related Works}{5}{section.0.2}}
-\newlabel{sec:fiber_meshes_related_works}{{1.2}{5}{Related Works}{section.0.2}{}}
-\newlabel{sec:fiber_meshes_related_works@cref}{{[section][2][1]1.2}{[1][5][]5}}
-\abx@aux@cite{Jamin2015CGALmesh}
-\abx@aux@segm{0}{0}{Jamin2015CGALmesh}
-\abx@aux@cite{Ellankavi2018}
-\abx@aux@segm{0}{0}{Ellankavi2018}
-\abx@aux@cite{vichot2012cardiac}
-\abx@aux@segm{0}{0}{vichot2012cardiac}
-\abx@aux@cite{delaunay1934sphere}
-\abx@aux@segm{0}{0}{delaunay1934sphere}
-\abx@aux@cite{Ruppert1995}
-\abx@aux@segm{0}{0}{Ruppert1995}
-\abx@aux@cite{chew1997guaranteed}
-\abx@aux@segm{0}{0}{chew1997guaranteed}
-\abx@aux@cite{Alliez2005Variational}
-\abx@aux@segm{0}{0}{Alliez2005Variational}
-\abx@aux@cite{eppstein1999linear}
-\abx@aux@segm{0}{0}{eppstein1999linear}
-\abx@aux@cite{owen1998survey}
-\abx@aux@segm{0}{0}{owen1998survey}
-\abx@aux@cite{schneiders1996grid}
-\abx@aux@segm{0}{0}{schneiders1996grid}
-\abx@aux@cite{schneiders1997algorithm}
-\abx@aux@segm{0}{0}{schneiders1997algorithm}
-\abx@aux@cite{price1995hexahedral}
-\abx@aux@segm{0}{0}{price1995hexahedral}
-\abx@aux@cite{price1997hexahedral}
-\abx@aux@segm{0}{0}{price1997hexahedral}
-\abx@aux@cite{blacker1993seams}
-\abx@aux@segm{0}{0}{blacker1993seams}
-\abx@aux@cite{staten2006unconstrained}
-\abx@aux@segm{0}{0}{staten2006unconstrained}
-\abx@aux@cite{staten2010unconstrained}
-\abx@aux@segm{0}{0}{staten2010unconstrained}
-\abx@aux@cite{tautges1996whisker}
-\abx@aux@segm{0}{0}{tautges1996whisker}
-\abx@aux@cite{ledoux2008extension}
-\abx@aux@segm{0}{0}{ledoux2008extension}
-\abx@aux@cite{kawamura2008strategy}
-\abx@aux@segm{0}{0}{kawamura2008strategy}
-\abx@aux@cite{dong2005quadrangulating}
-\abx@aux@segm{0}{0}{dong2005quadrangulating}
-\abx@aux@cite{Kovacs2011Anisotropic}
-\abx@aux@segm{0}{0}{Kovacs2011Anisotropic}
-\abx@aux@cite{Bessmeltsev2012}
-\abx@aux@segm{0}{0}{Bessmeltsev2012}
-\abx@aux@cite{Meng2016Consistent}
-\abx@aux@segm{0}{0}{Meng2016Consistent}
-\abx@aux@cite{Zhang2003}
-\abx@aux@segm{0}{0}{Zhang2003}
-\abx@aux@cite{Zhang20053DFiniteElementMeshing}
-\abx@aux@segm{0}{0}{Zhang20053DFiniteElementMeshing}
-\abx@aux@cite{blemker2005three}
-\abx@aux@segm{0}{0}{blemker2005three}
-\abx@aux@cite{Nike3D}
-\abx@aux@segm{0}{0}{Nike3D}
-\abx@aux@segm{0}{0}{blemker2005three}
-\abx@aux@segm{0}{0}{blemker2005three}
-\abx@aux@cite{Choi2013}
-\abx@aux@segm{0}{0}{Choi2013}
-\abx@aux@cite{Inouye2015}
-\abx@aux@segm{0}{0}{Inouye2015}
-\abx@aux@cite{Handsfield2017}
-\abx@aux@segm{0}{0}{Handsfield2017}
-\BKM@entry{id=4,open,dest={73656374696F6E2E302E33},srcline={131}}{312E332050726570726F63657373696E67206F6620746865204D7573636C652047656F6D65747279}
-\BKM@entry{id=5,open,dest={73756273656374696F6E2E302E332E31},srcline={147}}{312E332E31204461746120536F75726365}
-\abx@aux@cite{visible_human_male}
-\abx@aux@segm{0}{0}{visible_human_male}
-\BKM@entry{id=6,open,dest={73756273656374696F6E2E302E332E32},srcline={166}}{312E332E32204175746F6D6174696320537572666163652045787472616374696F6E}
-\abx@aux@cite{Kusterer}
-\abx@aux@segm{0}{0}{Kusterer}
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}Preprocessing of the Muscle Geometry}{11}{section.0.3}}
-\newlabel{sec:preprocessing_of_the_muscle_geometry}{{1.3}{11}{Preprocessing of the Muscle Geometry}{section.0.3}{}}
-\newlabel{sec:preprocessing_of_the_muscle_geometry@cref}{{[section][3][1]1.3}{[1][10][]11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Data Source}{11}{subsection.0.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Automatic Surface Extraction}{11}{subsection.0.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.2}{\ignorespaces Workflow of generating a surface representation of the muscle and tendons from imaging data. Operations and intermediate results are shown as gray and yellow boxes, respectively. Two alternatives are given by the two branches. On the left, the imaging data is automatically processed to directly retrieve points on the surface of the muscle. The right branch achieves the same with three steps of which the first one involves manual adjustments. At the end, a spline surface smooths the collected data from both possibilities to yield the resulting surface representation.\relax }}{12}{figure.1.2}}
-\newlabel{fig:scheme_preprocessing}{{\relax 1.2}{12}{Workflow of generating a surface representation of the muscle and tendons from imaging data. Operations and intermediate results are shown as gray and yellow boxes, respectively. Two alternatives are given by the two branches. On the left, the imaging data is automatically processed to directly retrieve points on the surface of the muscle. The right branch achieves the same with three steps of which the first one involves manual adjustments. At the end, a spline surface smooths the collected data from both possibilities to yield the resulting surface representation.\relax }{figure.1.2}{}}
-\newlabel{fig:scheme_preprocessing@cref}{{[figure][2][1]\relax 1.2}{[1][11][]12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.3}{\ignorespaces Exemplary extract of image number 483 from the Visible Human Male. A transversal slice of the left upper arm is shown as seen from the bottom. The biceps and triceps muscles as well as the humerus bone can be identified. \relax }}{13}{figure.1.3}}
-\newlabel{fig:vhp_image}{{\relax 1.3}{13}{Exemplary extract of image number 483 from the Visible Human Male. A transversal slice of the left upper arm is shown as seen from the bottom. The biceps and triceps muscles as well as the humerus bone can be identified. \relax }{figure.1.3}{}}
-\newlabel{fig:vhp_image@cref}{{[figure][3][1]\relax 1.3}{[1][11][]13}}
-\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.1}{\ignorespaces Ranges in the RGB color space to identify pixels of muscle and bone segments. The numbers correspond to 24 bit colors with the range $[0,255]$ for every color channel.\relax }}{14}{table.caption.2}}
-\newlabel{tab:color_ranges}{{\relax 1.1}{14}{Ranges in the RGB color space to identify pixels of muscle and bone segments. The numbers correspond to 24 bit colors with the range $[0,255]$ for every color channel.\relax }{table.caption.2}{}}
-\newlabel{tab:color_ranges@cref}{{[table][1][1]\relax 1.1}{[1][13][]14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.4}{\ignorespaces Intermediate steps of the algorithm to determine surface geometry of muscles and bones. The left columns shows pixels from the image in \cref  {fig:vhp_image} that were categorized to be muscle tissue (top) and bone material (bottom). The right column shows a later step in the algorithm, where the surface of muscle (top) and bone (bottom) is estimated.\relax }}{15}{figure.1.4}}
-\newlabel{fig:extraction}{{\relax 1.4}{15}{Intermediate steps of the algorithm to determine surface geometry of muscles and bones. The left columns shows pixels from the image in \cref {fig:vhp_image} that were categorized to be muscle tissue (top) and bone material (bottom). The right column shows a later step in the algorithm, where the surface of muscle (top) and bone (bottom) is estimated.\relax }{figure.1.4}{}}
-\newlabel{fig:extraction@cref}{{[figure][4][1]\relax 1.4}{[1][14][]15}}
-\newlabel{fig:extraction_result_biceps}{{\relax 1.5a}{16}{Surface of the biceps brachii muscle. At the right side of the muscle, the groove of the humerus bone can be seen.\relax }{subfigure.1.5.1}{}}
-\newlabel{fig:extraction_result_biceps@cref}{{[subfigure][1][1,5]\relax 1.5a}{[1][14][]16}}
-\newlabel{sub@fig:extraction_result_biceps}{{a}{16}{Surface of the biceps brachii muscle. At the right side of the muscle, the groove of the humerus bone can be seen.\relax }{subfigure.1.5.1}{}}
-\newlabel{sub@fig:extraction_result_biceps@cref}{{[subfigure][1][1,5]\relax 1.5a}{[1][14][]16}}
-\newlabel{fig:extraction_result_humerus}{{\relax 1.5b}{16}{Surface of the humerus\relax }{subfigure.1.5.2}{}}
-\newlabel{fig:extraction_result_humerus@cref}{{[subfigure][2][1,5]\relax 1.5b}{[1][14][]16}}
-\newlabel{sub@fig:extraction_result_humerus}{{b}{16}{Surface of the humerus\relax }{subfigure.1.5.2}{}}
-\newlabel{sub@fig:extraction_result_humerus@cref}{{[subfigure][2][1,5]\relax 1.5b}{[1][14][]16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.5}{\ignorespaces Resulting surfaces of biceps and humerus bone obtained by the automatic surface extraction algorithm.\relax }}{16}{figure.1.5}}
-\newlabel{fig:extraction_result}{{\relax 1.5}{16}{Resulting surfaces of biceps and humerus bone obtained by the automatic surface extraction algorithm.\relax }{figure.1.5}{}}
-\newlabel{fig:extraction_result@cref}{{[figure][5][1]\relax 1.5}{[1][14][]16}}
-\BKM@entry{id=7,open,dest={73756273656374696F6E2E302E332E33},srcline={241}}{312E332E33204D616E75616C6C792047756964656420537572666163652045787472616374696F6E}
-\abx@aux@cite{mapclient}
-\abx@aux@segm{0}{0}{mapclient}
-\abx@aux@cite{Fernandez2018}
-\abx@aux@segm{0}{0}{Fernandez2018}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Manually Guided Surface Extraction}{17}{subsection.0.3.3}}
-\newlabel{sec:surf_extr}{{1.3.3}{17}{Manually Guided Surface Extraction}{subsection.0.3.3}{}}
-\newlabel{sec:surf_extr@cref}{{[subsection][3][1,3]1.3.3}{[1][17][]17}}
-\newlabel{fig:vhp_total}{{\relax 1.6a}{18}{Mesh of the trunk and limbs, the surface has been triangulated for visualization.\relax }{subfigure.1.6.1}{}}
-\newlabel{fig:vhp_total@cref}{{[subfigure][1][1,6]\relax 1.6a}{[1][18][]18}}
-\newlabel{sub@fig:vhp_total}{{a}{18}{Mesh of the trunk and limbs, the surface has been triangulated for visualization.\relax }{subfigure.1.6.1}{}}
-\newlabel{sub@fig:vhp_total@cref}{{[subfigure][1][1,6]\relax 1.6a}{[1][18][]18}}
-\newlabel{fig:vhp_detail}{{\relax 1.6b}{18}{Detail view of part of the right upper arm and the trunk with blue nodes and edges of a cubic Hermite element mesh.\relax }{subfigure.1.6.2}{}}
-\newlabel{fig:vhp_detail@cref}{{[subfigure][2][1,6]\relax 1.6b}{[1][18][]18}}
-\newlabel{sub@fig:vhp_detail}{{b}{18}{Detail view of part of the right upper arm and the trunk with blue nodes and edges of a cubic Hermite element mesh.\relax }{subfigure.1.6.2}{}}
-\newlabel{sub@fig:vhp_detail@cref}{{[subfigure][2][1,6]\relax 1.6b}{[1][18][]18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.6}{\ignorespaces Mesh of the Visible Human Male from the Visible Human Project.\relax }}{18}{figure.1.6}}
-\newlabel{fig:vhp_geometry}{{\relax 1.6}{18}{Mesh of the Visible Human Male from the Visible Human Project.\relax }{figure.1.6}{}}
-\newlabel{fig:vhp_geometry@cref}{{[figure][6][1]\relax 1.6}{[1][18][]18}}
-\abx@aux@cite{ray-triangle}
-\abx@aux@segm{0}{0}{ray-triangle}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.7}{\ignorespaces Processing the geometry of the biceps brachii muscle. From left to right: mesh with cubic Hermite elements, STL mesh with inside triangles, STL surface mesh where triangles lying inside have been removed, Spline surface of the muscle belly.\relax }}{19}{figure.1.7}}
-\newlabel{fig:biceps_processing}{{\relax 1.7}{19}{Processing the geometry of the biceps brachii muscle. From left to right: mesh with cubic Hermite elements, STL mesh with inside triangles, STL surface mesh where triangles lying inside have been removed, Spline surface of the muscle belly.\relax }{figure.1.7}{}}
-\newlabel{fig:biceps_processing@cref}{{[figure][7][1]\relax 1.7}{[1][18][]19}}
-\BKM@entry{id=8,open,dest={73756273656374696F6E2E302E332E34},srcline={295}}{312E332E3420496E74726F64756374696F6E206F662053706C696E65205375726661636573}
-\abx@aux@cite{piegl2012nurbs}
-\abx@aux@segm{0}{0}{piegl2012nurbs}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Introduction of Spline Surfaces}{20}{subsection.0.3.4}}
-\newlabel{sec:nurbs}{{1.3.4}{20}{Introduction of Spline Surfaces}{subsection.0.3.4}{}}
-\newlabel{sec:nurbs@cref}{{[subsection][4][1,3]1.3.4}{[1][20][]20}}
-\abx@aux@segm{0}{0}{piegl2012nurbs}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.8}{\ignorespaces Exemplary B-spline curve (red) of degree $p=3$ for the knot vector $\Xi = (0,0,0,0,7,10,10,49,49,49,50,50,50,50)$, control points (blue) and control polygon (black). Positions of the curve $\textbf  {C}(\xi _i)$ at the knots $\xi _i$ are indicated by the red squares and the knot value $\xi $ and its multiplicity $m$ is given. The effect of moving one control point is shown in green.\relax }}{22}{figure.1.8}}
-\newlabel{fig:bspline_curve}{{\relax 1.8}{22}{Exemplary B-spline curve (red) of degree $p=3$ for the knot vector $\Xi = (0,0,0,0,7,10,10,49,49,49,50,50,50,50)$, control points (blue) and control polygon (black). Positions of the curve $\bfC (\xi _i)$ at the knots $\xi _i$ are indicated by the red squares and the knot value $\xi $ and its multiplicity $m$ is given. The effect of moving one control point is shown in green.\relax }{figure.1.8}{}}
-\newlabel{fig:bspline_curve@cref}{{[figure][8][1]\relax 1.8}{[1][22][]22}}
-\newlabel{eq:bspline_surface}{{\relax 1.1}{22}{Introduction of Spline Surfaces}{equation.0.3.1}{}}
-\newlabel{eq:bspline_surface@cref}{{[equation][1][1]\relax 1.1}{[1][22][]22}}
-\BKM@entry{id=9,open,dest={73756273656374696F6E2E302E332E35},srcline={368}}{312E332E352046697474696E6720612053706C696E65205375726661636520746F20746865204D7573636C652047656F6D65747279}
-\abx@aux@segm{0}{0}{piegl2012nurbs}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Fitting a Spline Surface to the Muscle Geometry}{23}{subsection.0.3.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.9}{\ignorespaces Fitted NURBS surface of the biceps muscle (green) and the control polygon (blue).\relax }}{24}{figure.1.9}}
-\newlabel{fig:biceps_splines_control_points}{{\relax 1.9}{24}{Fitted NURBS surface of the biceps muscle (green) and the control polygon (blue).\relax }{figure.1.9}{}}
-\newlabel{fig:biceps_splines_control_points@cref}{{[figure][9][1]\relax 1.9}{[1][23][]24}}
-\BKM@entry{id=10,open,dest={73656374696F6E2E302E34},srcline={410}}{312E342053657269616C20416C676F726974686D20746F20437265617465204D7573636C6520616E64204669626572204D6573686573}
-\newlabel{fig:biceps_splines_wrong}{{\relax 1.10a}{25}{First approach with $10 \times 12$ points. The kink at the seam line along the muscle is clearly visible.\relax }{subfigure.1.10.1}{}}
-\newlabel{fig:biceps_splines_wrong@cref}{{[subfigure][1][1,10]\relax 1.10a}{[1][24][]25}}
-\newlabel{sub@fig:biceps_splines_wrong}{{a}{25}{First approach with $10 \times 12$ points. The kink at the seam line along the muscle is clearly visible.\relax }{subfigure.1.10.1}{}}
-\newlabel{sub@fig:biceps_splines_wrong@cref}{{[subfigure][1][1,10]\relax 1.10a}{[1][24][]25}}
-\newlabel{fig:biceps_splines_seam}{{\relax 1.10b}{25}{Second, improved approach with $28 \times 12$ points. It can be seen that the tangent at the seam line matches very well.\relax }{subfigure.1.10.2}{}}
-\newlabel{fig:biceps_splines_seam@cref}{{[subfigure][2][1,10]\relax 1.10b}{[1][24][]25}}
-\newlabel{sub@fig:biceps_splines_seam}{{b}{25}{Second, improved approach with $28 \times 12$ points. It can be seen that the tangent at the seam line matches very well.\relax }{subfigure.1.10.2}{}}
-\newlabel{sub@fig:biceps_splines_seam@cref}{{[subfigure][2][1,10]\relax 1.10b}{[1][24][]25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.10}{\ignorespaces Fitted NURBS surface of the biceps muscle, triangulated for visualization purposes.\relax }}{25}{figure.1.10}}
-\newlabel{fig:biceps_splines}{{\relax 1.10}{25}{Fitted NURBS surface of the biceps muscle, triangulated for visualization purposes.\relax }{figure.1.10}{}}
-\newlabel{fig:biceps_splines@cref}{{[figure][10][1]\relax 1.10}{[1][24][]25}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Serial Algorithm to Create Muscle and Fiber Meshes}{25}{section.0.4}}
-\newlabel{sec:ser_alg_meshes}{{1.4}{25}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{sec:ser_alg_meshes@cref}{{[section][4][1]1.4}{[1][25][]25}}
-\BKM@entry{id=11,open,dest={73756273656374696F6E2E302E342E31},srcline={432}}{312E342E3120536C6963696E67206F66207468652047656F6D65747279}
-\newlabel{alg:1.1}{{2}{26}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{alg:1.1@cref}{{[section][4][1]1.4}{[1][25][]26}}
-\newlabel{alg:1.2}{{3}{26}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{alg:1.2@cref}{{[section][4][1]1.4}{[1][25][]26}}
-\newlabel{alg:1.3}{{4}{26}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{alg:1.3@cref}{{[section][4][1]1.4}{[1][25][]26}}
-\newlabel{alg:1.4}{{5}{26}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{alg:1.4@cref}{{[section][4][1]1.4}{[1][25][]26}}
-\newlabel{alg:1.5}{{6}{26}{Serial Algorithm to Create Muscle and Fiber Meshes}{section.0.4}{}}
-\newlabel{alg:1.5@cref}{{[section][4][1]1.4}{[1][25][]26}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Serial algorithm for generation of 3D meshes\relax }}{26}{algorithm.1}}
-\newlabel{alg:serial_algorithm_1}{{1}{26}{Serial algorithm for generation of 3D meshes\relax }{algorithm.1}{}}
-\newlabel{alg:serial_algorithm_1@cref}{{[algorithm][1][]1}{[1][25][]26}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}Slicing of the Geometry}{26}{subsection.0.4.1}}
-\newlabel{sec:slicing_of_the_geometry}{{1.4.1}{26}{Slicing of the Geometry}{subsection.0.4.1}{}}
-\newlabel{sec:slicing_of_the_geometry@cref}{{[subsection][1][1,4]1.4.1}{[1][26][]26}}
-\newlabel{eq:barycentric_triangle}{{\relax 1.2}{26}{Slicing of the Geometry}{equation.0.4.2}{}}
-\newlabel{eq:barycentric_triangle@cref}{{[equation][2][1]\relax 1.2}{[1][26][]26}}
-\BKM@entry{id=12,open,dest={73756273656374696F6E2E302E342E32},srcline={531}}{312E342E3220547269616E67756C6174696F6E206F662074686520536C69636573}
-\abx@aux@cite{quickhull}
-\abx@aux@segm{0}{0}{quickhull}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}Triangulation of the Slices}{28}{subsection.0.4.2}}
-\newlabel{sec:triangulation_of_the_slices}{{1.4.2}{28}{Triangulation of the Slices}{subsection.0.4.2}{}}
-\newlabel{sec:triangulation_of_the_slices@cref}{{[subsection][2][1,4]1.4.2}{[1][28][]28}}
-\newlabel{fig:serial_alg_0}{{\relax 1.11a}{29}{Extracted border points (blue) on the biceps surface mesh (gray). This is the result of line \algref {alg:serial_algorithm_1}{alg:1.1}.\relax }{subfigure.1.11.1}{}}
-\newlabel{fig:serial_alg_0@cref}{{[subfigure][1][1,11]\relax 1.11a}{[1][28][]29}}
-\newlabel{sub@fig:serial_alg_0}{{a}{29}{Extracted border points (blue) on the biceps surface mesh (gray). This is the result of line \algref {alg:serial_algorithm_1}{alg:1.1}.\relax }{subfigure.1.11.1}{}}
-\newlabel{sub@fig:serial_alg_0@cref}{{[subfigure][1][1,11]\relax 1.11a}{[1][28][]29}}
-\newlabel{fig:serial_alg_3}{{\relax 1.11b}{29}{The generated triangulation of the slices (left) and the image $\bfy (\bfx )$ of the triangulation under the harmonic map (right). This figure shows the result of lines \algref {alg:serial_algorithm_1}{alg:1.2} and \algref {alg:serial_algorithm_1}{alg:1.3}.\relax }{subfigure.1.11.2}{}}
-\newlabel{fig:serial_alg_3@cref}{{[subfigure][2][1,11]\relax 1.11b}{[1][28][]29}}
-\newlabel{sub@fig:serial_alg_3}{{b}{29}{The generated triangulation of the slices (left) and the image $\bfy (\bfx )$ of the triangulation under the harmonic map (right). This figure shows the result of lines \algref {alg:serial_algorithm_1}{alg:1.2} and \algref {alg:serial_algorithm_1}{alg:1.3}.\relax }{subfigure.1.11.2}{}}
-\newlabel{sub@fig:serial_alg_3@cref}{{[subfigure][2][1,11]\relax 1.11b}{[1][28][]29}}
-\newlabel{fig:serial_alg_4}{{\relax 1.11c}{29}{Grid in parameter space (right) and muscle domain (left), result after line \algref {alg:serial_algorithm_1}{alg:1.4}.\relax }{subfigure.1.11.3}{}}
-\newlabel{fig:serial_alg_4@cref}{{[subfigure][3][1,11]\relax 1.11c}{[1][28][]29}}
-\newlabel{sub@fig:serial_alg_4}{{c}{29}{Grid in parameter space (right) and muscle domain (left), result after line \algref {alg:serial_algorithm_1}{alg:1.4}.\relax }{subfigure.1.11.3}{}}
-\newlabel{sub@fig:serial_alg_4@cref}{{[subfigure][3][1,11]\relax 1.11c}{[1][28][]29}}
-\newlabel{fig:serial_alg_8}{{\relax 1.11d}{29}{3D elements formed by connecting the slices, result after line \algref {alg:serial_algorithm_1}{alg:1.5}.\relax }{subfigure.1.11.4}{}}
-\newlabel{fig:serial_alg_8@cref}{{[subfigure][4][1,11]\relax 1.11d}{[1][28][]29}}
-\newlabel{sub@fig:serial_alg_8}{{d}{29}{3D elements formed by connecting the slices, result after line \algref {alg:serial_algorithm_1}{alg:1.5}.\relax }{subfigure.1.11.4}{}}
-\newlabel{sub@fig:serial_alg_8@cref}{{[subfigure][4][1,11]\relax 1.11d}{[1][28][]29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.11}{\ignorespaces Steps of the serial algorithm, \cref  {alg:serial_algorithm_1}, executed directly on the surface mesh of the biceps muscle (not the B-spline surface).\relax }}{29}{figure.1.11}}
-\newlabel{fig:serial_alg}{{\relax 1.11}{29}{Steps of the serial algorithm, \cref {alg:serial_algorithm_1}, executed directly on the surface mesh of the biceps muscle (not the B-spline surface).\relax }{figure.1.11}{}}
-\newlabel{fig:serial_alg@cref}{{[figure][11][1]\relax 1.11}{[1][28][]29}}
-\abx@aux@cite{Delaunay2002}
-\abx@aux@segm{0}{0}{Delaunay2002}
-\abx@aux@cite{shewchuk96b}
-\abx@aux@segm{0}{0}{shewchuk96b}
-\BKM@entry{id=13,open,dest={73756273656374696F6E2E302E342E33},srcline={576}}{312E342E33204861726D6F6E6963204D617073}
-\abx@aux@cite{marchandise2010quality}
-\abx@aux@segm{0}{0}{marchandise2010quality}
-\abx@aux@cite{Marchandise2_2011}
-\abx@aux@segm{0}{0}{Marchandise2_2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.3}Harmonic Maps}{30}{subsection.0.4.3}}
-\newlabel{fig:triangulation_0}{{\relax 1.12a}{31}{First triangulation method\relax }{subfigure.1.12.1}{}}
-\newlabel{fig:triangulation_0@cref}{{[subfigure][1][1,12]\relax 1.12a}{[1][30][]31}}
-\newlabel{sub@fig:triangulation_0}{{a}{31}{First triangulation method\relax }{subfigure.1.12.1}{}}
-\newlabel{sub@fig:triangulation_0@cref}{{[subfigure][1][1,12]\relax 1.12a}{[1][30][]31}}
-\newlabel{fig:triangulation_1}{{\relax 1.12b}{31}{Second trian\-gulation method\relax }{subfigure.1.12.2}{}}
-\newlabel{fig:triangulation_1@cref}{{[subfigure][2][1,12]\relax 1.12b}{[1][30][]31}}
-\newlabel{sub@fig:triangulation_1}{{b}{31}{Second trian\-gulation method\relax }{subfigure.1.12.2}{}}
-\newlabel{sub@fig:triangulation_1@cref}{{[subfigure][2][1,12]\relax 1.12b}{[1][30][]31}}
-\newlabel{fig:triangulation_2}{{\relax 1.12c}{31}{Third triangulation method\relax }{subfigure.1.12.3}{}}
-\newlabel{fig:triangulation_2@cref}{{[subfigure][3][1,12]\relax 1.12c}{[1][30][]31}}
-\newlabel{sub@fig:triangulation_2}{{c}{31}{Third triangulation method\relax }{subfigure.1.12.3}{}}
-\newlabel{sub@fig:triangulation_2@cref}{{[subfigure][3][1,12]\relax 1.12c}{[1][30][]31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.12}{\ignorespaces Result of different triangulation methods for a slice in the center of the biceps muscle.\relax }}{31}{figure.1.12}}
-\newlabel{fig:triangulations}{{\relax 1.12}{31}{Result of different triangulation methods for a slice in the center of the biceps muscle.\relax }{figure.1.12}{}}
-\newlabel{fig:triangulations@cref}{{[figure][12][1]\relax 1.12}{[1][30][]31}}
-\newlabel{eq:def_harmonic_maps}{{\relax 1.3}{31}{Harmonic Maps}{equation.0.4.3}{}}
-\newlabel{eq:def_harmonic_maps@cref}{{[equation][3][1]\relax 1.3}{[1][31][]31}}
-\abx@aux@cite{Remacle2010}
-\abx@aux@segm{0}{0}{Remacle2010}
-\newlabel{eq:bc_harmonic_maps}{{\relax 1.4}{32}{Harmonic Maps}{equation.0.4.4}{}}
-\newlabel{eq:bc_harmonic_maps@cref}{{[equation][4][1]\relax 1.4}{[1][32][]32}}
-\newlabel{eq:est_fe_w}{{\relax 1.5}{33}{Harmonic Maps}{equation.0.4.5}{}}
-\newlabel{eq:est_fe_w@cref}{{[equation][5][1]\relax 1.5}{[1][32][]33}}
-\newlabel{eq:est_weak_form}{{\relax 1.6}{33}{Harmonic Maps}{equation.0.4.6}{}}
-\newlabel{eq:est_weak_form@cref}{{[equation][6][1]\relax 1.6}{[1][33][]33}}
-\BKM@entry{id=14,open,dest={73756273656374696F6E2E302E342E34},srcline={681}}{312E342E3420436F6E737472756374696F6E206F66206120526567756C6172204772696420696E2074686520506172616D6574657220446F6D61696E}
-\newlabel{eq:est_fe_system}{{\relax 1.7}{34}{Harmonic Maps}{equation.0.4.7}{}}
-\newlabel{eq:est_fe_system@cref}{{[equation][7][1]\relax 1.7}{[1][34][]34}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.13}{\ignorespaces Triangulations and harmonic map for a slice $S_M$ of the biceps muscle. The first two plots show the solutions of $u$ and $v$ on the slice $S_M$. The third plot shows the image in $\Omega _P$ of the triangulation in $S_M$ under the harmonic map.\relax }}{35}{figure.1.13}}
-\newlabel{fig:harmonic_map_solution}{{\relax 1.13}{35}{Triangulations and harmonic map for a slice $S_M$ of the biceps muscle. The first two plots show the solutions of $u$ and $v$ on the slice $S_M$. The third plot shows the image in $\Omega _P$ of the triangulation in $S_M$ under the harmonic map.\relax }{figure.1.13}{}}
-\newlabel{fig:harmonic_map_solution@cref}{{[figure][13][1]\relax 1.13}{[1][34][]35}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.4}Construction of a Regular Grid in the Parameter Domain}{35}{subsection.0.4.4}}
-\newlabel{fig:quad_1}{{\relax 1.14a}{36}{Unit square, scheme 1\relax }{subfigure.1.14.1}{}}
-\newlabel{fig:quad_1@cref}{{[subfigure][1][1,14]\relax 1.14a}{[1][36][]36}}
-\newlabel{sub@fig:quad_1}{{a}{36}{Unit square, scheme 1\relax }{subfigure.1.14.1}{}}
-\newlabel{sub@fig:quad_1@cref}{{[subfigure][1][1,14]\relax 1.14a}{[1][36][]36}}
-\newlabel{fig:quad_2}{{\relax 1.14b}{36}{Unit square, scheme 2\relax }{subfigure.1.14.2}{}}
-\newlabel{fig:quad_2@cref}{{[subfigure][2][1,14]\relax 1.14b}{[1][36][]36}}
-\newlabel{sub@fig:quad_2}{{b}{36}{Unit square, scheme 2\relax }{subfigure.1.14.2}{}}
-\newlabel{sub@fig:quad_2@cref}{{[subfigure][2][1,14]\relax 1.14b}{[1][36][]36}}
-\newlabel{fig:quad_0}{{\relax 1.14c}{36}{Unit circle, scheme 1\relax }{subfigure.1.14.3}{}}
-\newlabel{fig:quad_0@cref}{{[subfigure][3][1,14]\relax 1.14c}{[1][36][]36}}
-\newlabel{sub@fig:quad_0}{{c}{36}{Unit circle, scheme 1\relax }{subfigure.1.14.3}{}}
-\newlabel{sub@fig:quad_0@cref}{{[subfigure][3][1,14]\relax 1.14c}{[1][36][]36}}
-\newlabel{fig:quad_3}{{\relax 1.14d}{36}{Unit circle, scheme 2\relax }{subfigure.1.14.4}{}}
-\newlabel{fig:quad_3@cref}{{[subfigure][4][1,14]\relax 1.14d}{[1][36][]36}}
-\newlabel{sub@fig:quad_3}{{d}{36}{Unit circle, scheme 2\relax }{subfigure.1.14.4}{}}
-\newlabel{sub@fig:quad_3@cref}{{[subfigure][4][1,14]\relax 1.14d}{[1][36][]36}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.14}{\ignorespaces Different quadrangulation schemes of the parameter domain with $11\times 11$ nodes. The borders of the grid are colored for better perceptiblity.\relax }}{36}{figure.1.14}}
-\newlabel{fig:quads}{{\relax 1.14}{36}{Different quadrangulation schemes of the parameter domain with $11\times 11$ nodes. The borders of the grid are colored for better perceptiblity.\relax }{figure.1.14}{}}
-\newlabel{fig:quads@cref}{{[figure][14][1]\relax 1.14}{[1][36][]36}}
-\BKM@entry{id=15,open,dest={73756273656374696F6E2E302E342E35},srcline={727}}{312E342E3520466F726D6174696F6E206F662054687265652D44696D656E73696F6E616C20456C656D656E7473}
-\BKM@entry{id=16,open,dest={73756273656374696F6E2E302E342E36},srcline={733}}{312E342E362047656E65726174696F6E206F66204669626572204D6573686573}
-\abx@aux@segm{0}{0}{Choi2013}
-\abx@aux@segm{0}{0}{Choi2013}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.5}Formation of Three-Dimensional Elements}{37}{subsection.0.4.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.6}Generation of Fiber Meshes}{37}{subsection.0.4.6}}
-\newlabel{sec:generation_of_fiber_meshes}{{1.4.6}{37}{Generation of Fiber Meshes}{subsection.0.4.6}{}}
-\newlabel{sec:generation_of_fiber_meshes@cref}{{[subsection][6][1,4]1.4.6}{[1][37][]37}}
-\newlabel{eq:fiberest_laplace}{{\relax 1.8}{37}{Generation of Fiber Meshes}{equation.0.4.8}{}}
-\newlabel{eq:fiberest_laplace@cref}{{[equation][8][1]\relax 1.8}{[1][37][]37}}
-\newlabel{eq:fiberest_neumann}{{\relax 1.9}{37}{Generation of Fiber Meshes}{equation.0.4.9}{}}
-\newlabel{eq:fiberest_neumann@cref}{{[equation][9][1]\relax 1.9}{[1][37][]37}}
-\abx@aux@cite{Pollock1988}
-\abx@aux@segm{0}{0}{Pollock1988}
-\abx@aux@cite{HAEGLAND2007Streamline}
-\abx@aux@segm{0}{0}{HAEGLAND2007Streamline}
-\abx@aux@cite{cordes1992continuous}
-\abx@aux@segm{0}{0}{cordes1992continuous}
-\abx@aux@cite{juanes2006unified}
-\abx@aux@segm{0}{0}{juanes2006unified}
-\BKM@entry{id=17,open,dest={73756273656374696F6E2E302E342E37},srcline={802}}{312E342E3720416C676F726974686D20666F722053747265616D6C696E652054726163696E67}
-\newlabel{eq:fiberest_dirichlet}{{\relax 1.10}{38}{Generation of Fiber Meshes}{equation.0.4.10}{}}
-\newlabel{eq:fiberest_dirichlet@cref}{{[equation][10][1]\relax 1.10}{[1][38][]38}}
-\newlabel{line:2.2}{{2}{39}{Generation of Fiber Meshes}{equation.0.4.10}{}}
-\newlabel{line:2.2@cref}{{[subsection][6][1,4]1.4.6}{[1][38][]39}}
-\newlabel{line:2.3}{{3}{39}{Generation of Fiber Meshes}{equation.0.4.10}{}}
-\newlabel{line:2.3@cref}{{[subsection][6][1,4]1.4.6}{[1][38][]39}}
-\newlabel{line:2.4}{{4}{39}{Generation of Fiber Meshes}{equation.0.4.10}{}}
-\newlabel{line:2.4@cref}{{[subsection][6][1,4]1.4.6}{[1][38][]39}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Serial algorithm\relax }}{39}{algorithm.2}}
-\newlabel{alg:serial_algorithm_2}{{2}{39}{Serial algorithm\relax }{algorithm.2}{}}
-\newlabel{alg:serial_algorithm_2@cref}{{[algorithm][2][]2}{[1][38][]39}}
-\newlabel{fig:potential_flow}{{\relax 1.15a}{39}{Solution (color coding) and direction vectors of the gradient field for the boundary value problem \cref {eq:fiberest_laplace} with Dirichlet boundary conditions \cref {eq:fiberest_dirichlet}.\relax }{subfigure.1.15.1}{}}
-\newlabel{fig:potential_flow@cref}{{[subfigure][1][1,15]\relax 1.15a}{[1][38][]39}}
-\newlabel{sub@fig:potential_flow}{{a}{39}{Solution (color coding) and direction vectors of the gradient field for the boundary value problem \cref {eq:fiberest_laplace} with Dirichlet boundary conditions \cref {eq:fiberest_dirichlet}.\relax }{subfigure.1.15.1}{}}
-\newlabel{sub@fig:potential_flow@cref}{{[subfigure][1][1,15]\relax 1.15a}{[1][38][]39}}
-\newlabel{fig:fiber_tracing_streamlines}{{\relax 1.15b}{39}{Resulting streamlines that were traced through the gradient field.\relax }{subfigure.1.15.2}{}}
-\newlabel{fig:fiber_tracing_streamlines@cref}{{[subfigure][2][1,15]\relax 1.15b}{[1][38][]39}}
-\newlabel{sub@fig:fiber_tracing_streamlines}{{b}{39}{Resulting streamlines that were traced through the gradient field.\relax }{subfigure.1.15.2}{}}
-\newlabel{sub@fig:fiber_tracing_streamlines@cref}{{[subfigure][2][1,15]\relax 1.15b}{[1][38][]39}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.15}{\ignorespaces Setup and solution of the Laplace problem for the biceps geometry that is used to estimate muscle fibers by streamline tracing.\relax }}{39}{figure.1.15}}
-\newlabel{fig:potential_flow_streamlines}{{\relax 1.15}{39}{Setup and solution of the Laplace problem for the biceps geometry that is used to estimate muscle fibers by streamline tracing.\relax }{figure.1.15}{}}
-\newlabel{fig:potential_flow_streamlines@cref}{{[figure][15][1]\relax 1.15}{[1][38][]39}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.7}Algorithm for Streamline Tracing}{40}{subsection.0.4.7}}
-\newlabel{sec:algorithm_for_streamline_tracing}{{1.4.7}{40}{Algorithm for Streamline Tracing}{subsection.0.4.7}{}}
-\newlabel{sec:algorithm_for_streamline_tracing@cref}{{[subsection][7][1,4]1.4.7}{[1][38][]40}}
-\BKM@entry{id=18,open,dest={73756273656374696F6E2E302E342E38},srcline={826}}{312E342E3820526573756C747320616E642044697363757373696F6E}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.8}Results and Discussion}{41}{subsection.0.4.8}}
-\newlabel{sec:mesh_generation_0_results_and_discussion}{{1.4.8}{41}{Results and Discussion}{subsection.0.4.8}{}}
-\newlabel{sec:mesh_generation_0_results_and_discussion@cref}{{[subsection][8][1,4]1.4.8}{[1][41][]41}}
-\newlabel{fig:triu_0}{{\relax 1.16a}{43}{First method,\\Quickhull agorithm\relax }{subfigure.1.16.1}{}}
-\newlabel{fig:triu_0@cref}{{[subfigure][1][1,16]\relax 1.16a}{[1][43][]43}}
-\newlabel{sub@fig:triu_0}{{a}{43}{First method,\\Quickhull agorithm\relax }{subfigure.1.16.1}{}}
-\newlabel{sub@fig:triu_0@cref}{{[subfigure][1][1,16]\relax 1.16a}{[1][43][]43}}
-\newlabel{fig:triu_1}{{\relax 1.16b}{43}{Second method,\\Delaunay refinement\relax }{subfigure.1.16.2}{}}
-\newlabel{fig:triu_1@cref}{{[subfigure][2][1,16]\relax 1.16b}{[1][43][]43}}
-\newlabel{sub@fig:triu_1}{{b}{43}{Second method,\\Delaunay refinement\relax }{subfigure.1.16.2}{}}
-\newlabel{sub@fig:triu_1@cref}{{[subfigure][2][1,16]\relax 1.16b}{[1][43][]43}}
-\newlabel{fig:triu_2}{{\relax 1.16c}{43}{Third method,\\center of gravity\relax }{subfigure.1.16.3}{}}
-\newlabel{fig:triu_2@cref}{{[subfigure][3][1,16]\relax 1.16c}{[1][43][]43}}
-\newlabel{sub@fig:triu_2}{{c}{43}{Third method,\\center of gravity\relax }{subfigure.1.16.3}{}}
-\newlabel{sub@fig:triu_2@cref}{{[subfigure][3][1,16]\relax 1.16c}{[1][43][]43}}
-\newlabel{fig:w_01}{{\caption@xref {fig:w_01}{ on input line 879}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_01@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_01}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_01@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{fig:w_11}{{\caption@xref {fig:w_11}{ on input line 886}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_11@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_11}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_11@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{fig:w_21}{{\caption@xref {fig:w_21}{ on input line 893}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_21@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_21}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_21@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{fig:w_00}{{\caption@xref {fig:w_00}{ on input line 902}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_00@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_00}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_00@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{fig:w_10}{{\caption@xref {fig:w_10}{ on input line 909}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_10@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_10}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_10@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{fig:w_20}{{\caption@xref {fig:w_20}{ on input line 916}}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{fig:w_20@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\newlabel{sub@fig:w_20}{{c}{43}{Results and Discussion}{subfigure.1.16.3}{}}
-\newlabel{sub@fig:w_20@cref}{{[subsection][8][1,4]1.4.8}{[1][43][]43}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.16}{\ignorespaces Top row: Different triangulation methods for $S_M$, the color represents the solution $u$ of the harmonic map. Middle and bottom row: triangulation mapped to the parameter domain $\Omega _P$, for the unit square (middle) and the unit circle (bottom). Each column corresponds to one triangulation method.\relax }}{43}{figure.1.16}}
-\newlabel{fig:tri_triangulations}{{\relax 1.16}{43}{Top row: Different triangulation methods for $S_M$, the color represents the solution $u$ of the harmonic map. Middle and bottom row: triangulation mapped to the parameter domain $\Omega _P$, for the unit square (middle) and the unit circle (bottom). Each column corresponds to one triangulation method.\relax }{figure.1.16}{}}
-\newlabel{fig:tri_triangulations@cref}{{[figure][16][1]\relax 1.16}{[1][43][]43}}
-\abx@aux@cite{field1988laplacianSmoothingAndDelaunayTriangulations}
-\abx@aux@segm{0}{0}{field1988laplacianSmoothingAndDelaunayTriangulations}
-\newlabel{fig:tu_0}{{\relax 1.17a}{45}{First method\relax }{subfigure.1.17.1}{}}
-\newlabel{fig:tu_0@cref}{{[subfigure][1][1,17]\relax 1.17a}{[1][44][]45}}
-\newlabel{sub@fig:tu_0}{{a}{45}{First method\relax }{subfigure.1.17.1}{}}
-\newlabel{sub@fig:tu_0@cref}{{[subfigure][1][1,17]\relax 1.17a}{[1][44][]45}}
-\newlabel{fig:tu_1}{{\relax 1.17b}{45}{Second method\relax }{subfigure.1.17.2}{}}
-\newlabel{fig:tu_1@cref}{{[subfigure][2][1,17]\relax 1.17b}{[1][44][]45}}
-\newlabel{sub@fig:tu_1}{{b}{45}{Second method\relax }{subfigure.1.17.2}{}}
-\newlabel{sub@fig:tu_1@cref}{{[subfigure][2][1,17]\relax 1.17b}{[1][44][]45}}
-\newlabel{fig:tu_2}{{\relax 1.17c}{45}{Third method\relax }{subfigure.1.17.3}{}}
-\newlabel{fig:tu_2@cref}{{[subfigure][3][1,17]\relax 1.17c}{[1][44][]45}}
-\newlabel{sub@fig:tu_2}{{c}{45}{Third method\relax }{subfigure.1.17.3}{}}
-\newlabel{sub@fig:tu_2@cref}{{[subfigure][3][1,17]\relax 1.17c}{[1][44][]45}}
-\newlabel{fig:tquad_1}{{\relax 1.17d}{45}{Square, scheme 1\relax }{subfigure.1.17.4}{}}
-\newlabel{fig:tquad_1@cref}{{[subfigure][4][1,17]\relax 1.17d}{[1][44][]45}}
-\newlabel{sub@fig:tquad_1}{{d}{45}{Square, scheme 1\relax }{subfigure.1.17.4}{}}
-\newlabel{sub@fig:tquad_1@cref}{{[subfigure][4][1,17]\relax 1.17d}{[1][44][]45}}
-\newlabel{fig:tri_01}{{\caption@xref {fig:tri_01}{ on input line 974}}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{fig:tri_01@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_01}{{d}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{sub@fig:tri_01@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_11}{{\caption@xref {fig:tri_11}{ on input line 980}}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{fig:tri_11@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_11}{{d}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{sub@fig:tri_11@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_21}{{\caption@xref {fig:tri_21}{ on input line 986}}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{fig:tri_21@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_21}{{d}{45}{Results and Discussion}{subfigure.1.17.4}{}}
-\newlabel{sub@fig:tri_21@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tquad_2}{{\relax 1.17e}{45}{Square, scheme 2\relax }{subfigure.1.17.5}{}}
-\newlabel{fig:tquad_2@cref}{{[subfigure][5][1,17]\relax 1.17e}{[1][44][]45}}
-\newlabel{sub@fig:tquad_2}{{e}{45}{Square, scheme 2\relax }{subfigure.1.17.5}{}}
-\newlabel{sub@fig:tquad_2@cref}{{[subfigure][5][1,17]\relax 1.17e}{[1][44][]45}}
-\newlabel{fig:tri_02}{{\caption@xref {fig:tri_02}{ on input line 1000}}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{fig:tri_02@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_02}{{e}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{sub@fig:tri_02@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_12}{{\caption@xref {fig:tri_12}{ on input line 1006}}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{fig:tri_12@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_12}{{e}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{sub@fig:tri_12@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_22}{{\caption@xref {fig:tri_22}{ on input line 1012}}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{fig:tri_22@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_22}{{e}{45}{Results and Discussion}{subfigure.1.17.5}{}}
-\newlabel{sub@fig:tri_22@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tquad_0}{{\relax 1.17f}{45}{Circle, scheme 1\relax }{subfigure.1.17.6}{}}
-\newlabel{fig:tquad_0@cref}{{[subfigure][6][1,17]\relax 1.17f}{[1][44][]45}}
-\newlabel{sub@fig:tquad_0}{{f}{45}{Circle, scheme 1\relax }{subfigure.1.17.6}{}}
-\newlabel{sub@fig:tquad_0@cref}{{[subfigure][6][1,17]\relax 1.17f}{[1][44][]45}}
-\newlabel{fig:tri_00}{{\caption@xref {fig:tri_00}{ on input line 1026}}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{fig:tri_00@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_00}{{f}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{sub@fig:tri_00@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_10}{{\caption@xref {fig:tri_10}{ on input line 1032}}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{fig:tri_10@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_10}{{f}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{sub@fig:tri_10@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_20}{{\caption@xref {fig:tri_20}{ on input line 1038}}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{fig:tri_20@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_20}{{f}{45}{Results and Discussion}{subfigure.1.17.6}{}}
-\newlabel{sub@fig:tri_20@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:lquad_3}{{\relax 1.17g}{45}{Circle, scheme 2\relax }{subfigure.1.17.7}{}}
-\newlabel{fig:lquad_3@cref}{{[subfigure][7][1,17]\relax 1.17g}{[1][44][]45}}
-\newlabel{sub@fig:lquad_3}{{g}{45}{Circle, scheme 2\relax }{subfigure.1.17.7}{}}
-\newlabel{sub@fig:lquad_3@cref}{{[subfigure][7][1,17]\relax 1.17g}{[1][44][]45}}
-\newlabel{fig:tri_03}{{\caption@xref {fig:tri_03}{ on input line 1052}}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{fig:tri_03@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_03}{{g}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{sub@fig:tri_03@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_13}{{\caption@xref {fig:tri_13}{ on input line 1058}}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{fig:tri_13@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_13}{{g}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{sub@fig:tri_13@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{fig:tri_23}{{\caption@xref {fig:tri_23}{ on input line 1064}}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{fig:tri_23@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\newlabel{sub@fig:tri_23}{{g}{45}{Results and Discussion}{subfigure.1.17.7}{}}
-\newlabel{sub@fig:tri_23@cref}{{[subsection][8][1,4]1.4.8}{[1][44][]45}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.17}{\ignorespaces Meshes in $S_M$ for quadrangulations (rows) and triangulations (columns).\relax }}{45}{figure.1.17}}
-\newlabel{fig:tri_meshes}{{\relax 1.17}{45}{Meshes in $S_M$ for quadrangulations (rows) and triangulations (columns).\relax }{figure.1.17}{}}
-\newlabel{fig:tri_meshes@cref}{{[figure][17][1]\relax 1.17}{[1][44][]45}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.18}{\ignorespaces Mesh quality (red, lower is better) and duration (yellow) for the three different triangulation methods and the different parameter space quadrangulation schemes. A low value for the standard deviation of relative element lengths indicates good quality.\relax }}{46}{figure.1.18}}
-\newlabel{fig:mesh_quality}{{\relax 1.18}{46}{Mesh quality (red, lower is better) and duration (yellow) for the three different triangulation methods and the different parameter space quadrangulation schemes. A low value for the standard deviation of relative element lengths indicates good quality.\relax }{figure.1.18}{}}
-\newlabel{fig:mesh_quality@cref}{{[figure][18][1]\relax 1.18}{[1][46][]46}}
-\zref@newlabel{mdf@pagelabel-1}{\default{1.4.8}\page{47}\abspage{47}\mdf@pagevalue{47}}
-\pgfsyspdfmark {pgfid2}{4661698}{5620130}
-\BKM@entry{id=19,open,dest={73656374696F6E2E302E35},srcline={2}}{312E3520506172616C6C656C20416C676F726974686D20746F20437265617465204D7573636C6520616E64204669626572204D6573686573}
-\newlabel{fig:tendon2}{{\relax 1.19a}{48}{Two meshes for the top tendons with $9 \times 9 \times 21 = \num {1701}$ nodes each.\relax }{subfigure.1.19.1}{}}
-\newlabel{fig:tendon2@cref}{{[subfigure][1][1,19]\relax 1.19a}{[1][47][]48}}
-\newlabel{sub@fig:tendon2}{{a}{48}{Two meshes for the top tendons with $9 \times 9 \times 21 = \num {1701}$ nodes each.\relax }{subfigure.1.19.1}{}}
-\newlabel{sub@fig:tendon2@cref}{{[subfigure][1][1,19]\relax 1.19a}{[1][47][]48}}
-\newlabel{fig:tendon1}{{\relax 1.19b}{48}{One mesh for the bottom tendon with $5 \times 5 \times 25 = \num {525}$ nodes.\relax }{subfigure.1.19.2}{}}
-\newlabel{fig:tendon1@cref}{{[subfigure][2][1,19]\relax 1.19b}{[1][47][]48}}
-\newlabel{sub@fig:tendon1}{{b}{48}{One mesh for the bottom tendon with $5 \times 5 \times 25 = \num {525}$ nodes.\relax }{subfigure.1.19.2}{}}
-\newlabel{sub@fig:tendon1@cref}{{[subfigure][2][1,19]\relax 1.19b}{[1][47][]48}}
-\newlabel{fig:muscle_with_tendons}{{\relax 1.19c}{48}{The tendon meshes in the volume of the whole biceps muscle.\relax }{subfigure.1.19.3}{}}
-\newlabel{fig:muscle_with_tendons@cref}{{[subfigure][3][1,19]\relax 1.19c}{[1][47][]48}}
-\newlabel{sub@fig:muscle_with_tendons}{{c}{48}{The tendon meshes in the volume of the whole biceps muscle.\relax }{subfigure.1.19.3}{}}
-\newlabel{sub@fig:muscle_with_tendons@cref}{{[subfigure][3][1,19]\relax 1.19c}{[1][47][]48}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.19}{\ignorespaces Tendon meshes that were created using the serial algorithm for mesh creation.\relax }}{48}{figure.1.19}}
-\newlabel{fig:tendon_meshes}{{\relax 1.19}{48}{Tendon meshes that were created using the serial algorithm for mesh creation.\relax }{figure.1.19}{}}
-\newlabel{fig:tendon_meshes@cref}{{[figure][19][1]\relax 1.19}{[1][47][]48}}
-\zref@newlabel{mdf@pagelabel-2}{\default{1.4.8}\page{48}\abspage{48}\mdf@pagevalue{48}}
-\pgfsyspdfmark {pgfid3}{5594039}{16992401}
-\@writefile{toc}{\contentsline {section}{\numberline {1.5}Parallel Algorithm to Create Muscle and Fiber Meshes}{48}{section.0.5}}
-\newlabel{sec:parallel_algorithm}{{1.5}{48}{Parallel Algorithm to Create Muscle and Fiber Meshes}{section.0.5}{}}
-\newlabel{sec:parallel_algorithm@cref}{{[section][5][1]1.5}{[1][48][]48}}
-\BKM@entry{id=20,open,dest={73756273656374696F6E2E302E352E31},srcline={12}}{312E352E31204F76657276696577206F662074686520506172616C6C656C20416C676F726974686D20746F20437265617465204D7573636C6520616E64204669626572204D6573686573}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{49}{subsection.0.5.1}}
-\BKM@entry{id=21,open,dest={73756273656374696F6E2E302E352E32},srcline={52}}{312E352E322047656E65726174696F6E206F6620746865203344204D657368}
-\newlabel{line:3.2}{{2}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.2@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.3}{{3}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.3@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.4}{{4}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.4@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.5}{{5}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.5@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.6}{{6}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.6@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.7}{{7}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.7@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.8}{{8}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.8@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.9}{{9}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.9@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.10}{{10}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.10@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.11a}{{11}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.11a@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.11}{{12}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.11@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\newlabel{line:3.12}{{12}{50}{Overview of the Parallel Algorithm to Create Muscle and Fiber Meshes}{subsection.0.5.1}{}}
-\newlabel{line:3.12@cref}{{[subsection][1][1,5]1.5.1}{[1][50][]50}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Parallel algorithm to create muscle and fiber meshes\relax }}{50}{algorithm.3}}
-\newlabel{alg:parallel_algorithm_1}{{3}{50}{Parallel algorithm to create muscle and fiber meshes\relax }{algorithm.3}{}}
-\newlabel{alg:parallel_algorithm_1@cref}{{[algorithm][3][]3}{[1][50][]50}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Generation of the 3D Mesh}{50}{subsection.0.5.2}}
-\abx@aux@cite{sedgewick2011algorithms}
-\abx@aux@segm{0}{0}{sedgewick2011algorithms}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.20}{\ignorespaces A quadrilateral (left) and the four triangles (right) that can be constructed from its four points. These triangles are needed for the check in \cref  {alg:parallel_algorithm_1} if the quadrilateral is valid.\relax }}{51}{figure.1.20}}
-\newlabel{fig:quads_tris}{{\relax 1.20}{51}{A quadrilateral (left) and the four triangles (right) that can be constructed from its four points. These triangles are needed for the check in \cref {alg:parallel_algorithm_1} if the quadrilateral is valid.\relax }{figure.1.20}{}}
-\newlabel{fig:quads_tris@cref}{{[figure][20][1]\relax 1.20}{[1][51][]51}}
-\abx@aux@segm{0}{0}{field1988laplacianSmoothingAndDelaunayTriangulations}
-\BKM@entry{id=22,open,dest={73756273656374696F6E2E302E352E33},srcline={104}}{312E352E3320436F6D7075746174696F6E206F6620537562646F6D61696E73}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.3}Computation of Subdomains}{52}{subsection.0.5.3}}
-\newlabel{fig:world_mesh}{{\relax 1.21a}{53}{Initial 2D mesh of a subdomain at the border of the biceps muscle.\relax }{subfigure.1.21.1}{}}
-\newlabel{fig:world_mesh@cref}{{[subfigure][1][1,21]\relax 1.21a}{[1][52][]53}}
-\newlabel{sub@fig:world_mesh}{{a}{53}{Initial 2D mesh of a subdomain at the border of the biceps muscle.\relax }{subfigure.1.21.1}{}}
-\newlabel{sub@fig:world_mesh@cref}{{[subfigure][1][1,21]\relax 1.21a}{[1][52][]53}}
-\newlabel{fig:world_mesh_improved}{{\relax 1.21b}{53}{The mesh of (\subref {fig:world_mesh}) after 20 iterations of Laplacian smoothing.\relax }{subfigure.1.21.2}{}}
-\newlabel{fig:world_mesh_improved@cref}{{[subfigure][2][1,21]\relax 1.21b}{[1][52][]53}}
-\newlabel{sub@fig:world_mesh_improved}{{b}{53}{The mesh of (\subref {fig:world_mesh}) after 20 iterations of Laplacian smoothing.\relax }{subfigure.1.21.2}{}}
-\newlabel{sub@fig:world_mesh_improved@cref}{{[subfigure][2][1,21]\relax 1.21b}{[1][52][]53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.21}{\ignorespaces Effect of Laplacian smoothing of a 2D grid which occurs in line \ref  {alg:parallel_algorithm_1}.\ref  {line:3.3} of \cref  {alg:parallel_algorithm_1}.\relax }}{53}{figure.1.21}}
-\newlabel{fig:laplace_smoothing}{{\relax 1.21}{53}{Effect of Laplacian smoothing of a 2D grid which occurs in line \algref {alg:parallel_algorithm_1}{line:3.3} of \cref {alg:parallel_algorithm_1}.\relax }{figure.1.21}{}}
-\newlabel{fig:laplace_smoothing@cref}{{[figure][21][1]\relax 1.21}{[1][52][]53}}
-\newlabel{fig:border_grid_1}{{\relax 1.22a}{53}{Grid of $4 \times 4$ border points, which occurs at the beginning of the procedure of \cref {alg:parallel_algorithm_1}.\relax }{subfigure.1.22.1}{}}
-\newlabel{fig:border_grid_1@cref}{{[subfigure][1][1,22]\relax 1.22a}{[1][52][]53}}
-\newlabel{sub@fig:border_grid_1}{{a}{53}{Grid of $4 \times 4$ border points, which occurs at the beginning of the procedure of \cref {alg:parallel_algorithm_1}.\relax }{subfigure.1.22.1}{}}
-\newlabel{sub@fig:border_grid_1@cref}{{[subfigure][1][1,22]\relax 1.22a}{[1][52][]53}}
-\newlabel{fig:border_grid_2}{{\relax 1.22b}{53}{Grid with $4 \times 8$ border points, which occurs after a refinement step at beginning of the procedure of \cref {alg:parallel_algorithm_1}.\relax }{subfigure.1.22.2}{}}
-\newlabel{fig:border_grid_2@cref}{{[subfigure][2][1,22]\relax 1.22b}{[1][52][]53}}
-\newlabel{sub@fig:border_grid_2}{{b}{53}{Grid with $4 \times 8$ border points, which occurs after a refinement step at beginning of the procedure of \cref {alg:parallel_algorithm_1}.\relax }{subfigure.1.22.2}{}}
-\newlabel{sub@fig:border_grid_2@cref}{{[subfigure][2][1,22]\relax 1.22b}{[1][52][]53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.22}{\ignorespaces Logical grid of a subdomain (gray) specified by the border points (red) during execution of \cref  {alg:parallel_algorithm_1}.\relax }}{53}{figure.1.22}}
-\newlabel{fig:border_grid}{{\relax 1.22}{53}{Logical grid of a subdomain (gray) specified by the border points (red) during execution of \cref {alg:parallel_algorithm_1}.\relax }{figure.1.22}{}}
-\newlabel{fig:border_grid@cref}{{[figure][22][1]\relax 1.22}{[1][52][]53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.23}{\ignorespaces Partitioning of the muscle volume into eight subdomains during the first call to the procedure in \cref  {alg:parallel_algorithm_1}. The first (red) and the eighth subdomain (green) are shown.\relax }}{54}{figure.1.23}}
-\newlabel{fig:subdomain}{{\relax 1.23}{54}{Partitioning of the muscle volume into eight subdomains during the first call to the procedure in \cref {alg:parallel_algorithm_1}. The first (red) and the eighth subdomain (green) are shown.\relax }{figure.1.23}{}}
-\newlabel{fig:subdomain@cref}{{[figure][23][1]\relax 1.23}{[1][52][]54}}
-\newlabel{fig:dirichlet_bc_1}{{\relax 1.24a}{55}{Location of Dirichlet boundary condition nodes at the bottom and top.\relax }{subfigure.1.24.1}{}}
-\newlabel{fig:dirichlet_bc_1@cref}{{[subfigure][1][1,24]\relax 1.24a}{[1][54][]55}}
-\newlabel{sub@fig:dirichlet_bc_1}{{a}{55}{Location of Dirichlet boundary condition nodes at the bottom and top.\relax }{subfigure.1.24.1}{}}
-\newlabel{sub@fig:dirichlet_bc_1@cref}{{[subfigure][1][1,24]\relax 1.24a}{[1][54][]55}}
-\newlabel{fig:laplace_1}{{\relax 1.24b}{55}{Solution $p$ of the Laplace problem and direction of gradient $\nabla p$.\relax }{subfigure.1.24.2}{}}
-\newlabel{fig:laplace_1@cref}{{[subfigure][2][1,24]\relax 1.24b}{[1][54][]55}}
-\newlabel{sub@fig:laplace_1}{{b}{55}{Solution $p$ of the Laplace problem and direction of gradient $\nabla p$.\relax }{subfigure.1.24.2}{}}
-\newlabel{sub@fig:laplace_1@cref}{{[subfigure][2][1,24]\relax 1.24b}{[1][54][]55}}
-\newlabel{fig:border_points_1}{{\relax 1.24c}{55}{Traced streamlines that split the domain into eight subdomains.\relax }{subfigure.1.24.3}{}}
-\newlabel{fig:border_points_1@cref}{{[subfigure][3][1,24]\relax 1.24c}{[1][54][]55}}
-\newlabel{sub@fig:border_points_1}{{c}{55}{Traced streamlines that split the domain into eight subdomains.\relax }{subfigure.1.24.3}{}}
-\newlabel{sub@fig:border_points_1@cref}{{[subfigure][3][1,24]\relax 1.24c}{[1][54][]55}}
-\newlabel{fig:slices_2}{{\relax 1.24d}{55}{Rings of the slices $S_M$ and traced streamlines in the interior.\relax }{subfigure.1.24.4}{}}
-\newlabel{fig:slices_2@cref}{{[subfigure][4][1,24]\relax 1.24d}{[1][54][]55}}
-\newlabel{sub@fig:slices_2}{{d}{55}{Rings of the slices $S_M$ and traced streamlines in the interior.\relax }{subfigure.1.24.4}{}}
-\newlabel{sub@fig:slices_2@cref}{{[subfigure][4][1,24]\relax 1.24d}{[1][54][]55}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.24}{\ignorespaces Process of subdividing the muscle volume into eight subdomains, which is an important step in the procedure of \cref  {alg:parallel_algorithm_1}.\relax }}{55}{figure.1.24}}
-\newlabel{fig:determining_subdomains}{{\relax 1.24}{55}{Process of subdividing the muscle volume into eight subdomains, which is an important step in the procedure of \cref {alg:parallel_algorithm_1}.\relax }{figure.1.24}{}}
-\newlabel{fig:determining_subdomains@cref}{{[figure][24][1]\relax 1.24}{[1][54][]55}}
-\newlabel{fig:seed_points_to_send_1}{{\relax 1.25a}{56}{The seed points used to determine the subdomain borders. \relax }{subfigure.1.25.1}{}}
-\newlabel{fig:seed_points_to_send_1@cref}{{[subfigure][1][1,25]\relax 1.25a}{[1][56][]56}}
-\newlabel{sub@fig:seed_points_to_send_1}{{a}{56}{The seed points used to determine the subdomain borders. \relax }{subfigure.1.25.1}{}}
-\newlabel{sub@fig:seed_points_to_send_1@cref}{{[subfigure][1][1,25]\relax 1.25a}{[1][56][]56}}
-\newlabel{fig:fixed_1}{{\relax 1.25b}{56}{Streamlines and lines on the muscle surface that define the new subdomain borders, view from the top of the muscle.\relax }{subfigure.1.25.2}{}}
-\newlabel{fig:fixed_1@cref}{{[subfigure][2][1,25]\relax 1.25b}{[1][56][]56}}
-\newlabel{sub@fig:fixed_1}{{b}{56}{Streamlines and lines on the muscle surface that define the new subdomain borders, view from the top of the muscle.\relax }{subfigure.1.25.2}{}}
-\newlabel{sub@fig:fixed_1@cref}{{[subfigure][2][1,25]\relax 1.25b}{[1][56][]56}}
-\newlabel{fig:final_interior_1}{{\relax 1.25c}{56}{All streamlines and lines on the muscle surface that are created if the algorithm is run with one process.\relax }{subfigure.1.25.3}{}}
-\newlabel{fig:final_interior_1@cref}{{[subfigure][3][1,25]\relax 1.25c}{[1][56][]56}}
-\newlabel{sub@fig:final_interior_1}{{c}{56}{All streamlines and lines on the muscle surface that are created if the algorithm is run with one process.\relax }{subfigure.1.25.3}{}}
-\newlabel{sub@fig:final_interior_1@cref}{{[subfigure][3][1,25]\relax 1.25c}{[1][56][]56}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.25}{\ignorespaces Seed points and streamlines that occur during the first call to the procedure in \cref  {alg:serial_algorithm_2}.\relax }}{56}{figure.1.25}}
-\newlabel{fig:seed_points}{{\relax 1.25}{56}{Seed points and streamlines that occur during the first call to the procedure in \cref {alg:serial_algorithm_2}.\relax }{figure.1.25}{}}
-\newlabel{fig:seed_points@cref}{{[figure][25][1]\relax 1.25}{[1][56][]56}}
-\BKM@entry{id=23,open,dest={73756273656374696F6E2E302E352E34},srcline={234}}{312E352E342050726F636564757265206F6E2048696768657220526563757273696F6E204C6576656C73}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.4}Procedure on Higher Recursion Levels}{57}{subsection.0.5.4}}
-\newlabel{fig:02_border_points}{{\relax 1.26a}{59}{Refined border points.\relax }{subfigure.1.26.1}{}}
-\newlabel{fig:02_border_points@cref}{{[subfigure][1][1,26]\relax 1.26a}{[1][58][]59}}
-\newlabel{sub@fig:02_border_points}{{a}{59}{Refined border points.\relax }{subfigure.1.26.1}{}}
-\newlabel{sub@fig:02_border_points@cref}{{[subfigure][1][1,26]\relax 1.26a}{[1][58][]59}}
-\newlabel{fig:03_seed_points}{{\relax 1.26b}{59}{Seed points for the streamlines.\relax }{subfigure.1.26.2}{}}
-\newlabel{fig:03_seed_points@cref}{{[subfigure][2][1,26]\relax 1.26b}{[1][58][]59}}
-\newlabel{sub@fig:03_seed_points}{{b}{59}{Seed points for the streamlines.\relax }{subfigure.1.26.2}{}}
-\newlabel{sub@fig:03_seed_points@cref}{{[subfigure][2][1,26]\relax 1.26b}{[1][58][]59}}
-\newlabel{fig:05_corner_streamlines}{{\relax 1.26c}{59}{The four border streamlines (red) and the green layers of ghost elements at the bottom and right of the subdomain.\relax }{subfigure.1.26.3}{}}
-\newlabel{fig:05_corner_streamlines@cref}{{[subfigure][3][1,26]\relax 1.26c}{[1][58][]59}}
-\newlabel{sub@fig:05_corner_streamlines}{{c}{59}{The four border streamlines (red) and the green layers of ghost elements at the bottom and right of the subdomain.\relax }{subfigure.1.26.3}{}}
-\newlabel{sub@fig:05_corner_streamlines@cref}{{[subfigure][3][1,26]\relax 1.26c}{[1][58][]59}}
-\newlabel{fig:07_filled}{{\relax 1.26d}{59}{New border points at the outer (light green) and interior border (dark green).\relax }{subfigure.1.26.4}{}}
-\newlabel{fig:07_filled@cref}{{[subfigure][4][1,26]\relax 1.26d}{[1][58][]59}}
-\newlabel{sub@fig:07_filled}{{d}{59}{New border points at the outer (light green) and interior border (dark green).\relax }{subfigure.1.26.4}{}}
-\newlabel{sub@fig:07_filled@cref}{{[subfigure][4][1,26]\relax 1.26d}{[1][58][]59}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.26}{\ignorespaces Streamlines in the first subdomain for recursion level $l=1$ of the parallel algorithm for mesh generation.\relax }}{59}{figure.1.26}}
-\newlabel{fig:03_border_points_and_seed_points}{{\relax 1.26}{59}{Streamlines in the first subdomain for recursion level $l=1$ of the parallel algorithm for mesh generation.\relax }{figure.1.26}{}}
-\newlabel{fig:03_border_points_and_seed_points@cref}{{[figure][26][1]\relax 1.26}{[1][58][]59}}
-\BKM@entry{id=24,open,dest={73756273656374696F6E2E302E352E35},srcline={321}}{312E352E3520526570616972206F6620496E636F6D706C6574652053747265616D6C696E6573}
-\newlabel{fig:06_subdomain}{{\relax 1.27a}{61}{Border points of the first subdomain on level $l=2$ (dark yellow and brown) embedded in the border (white) of level $l=1$, generated if $l_\text {max} > 1$.\relax }{subfigure.1.27.1}{}}
-\newlabel{fig:06_subdomain@cref}{{[subfigure][1][1,27]\relax 1.27a}{[1][61][]61}}
-\newlabel{sub@fig:06_subdomain}{{a}{61}{Border points of the first subdomain on level $l=2$ (dark yellow and brown) embedded in the border (white) of level $l=1$, generated if $l_\text {max} > 1$.\relax }{subfigure.1.27.1}{}}
-\newlabel{sub@fig:06_subdomain@cref}{{[subfigure][1][1,27]\relax 1.27a}{[1][61][]61}}
-\newlabel{fig:08_final}{{\relax 1.27b}{61}{Seed points (yellow), traced interior streamlines (light blue) and border points (dark blue), generated if $l_\text {max}=1$.\relax }{subfigure.1.27.2}{}}
-\newlabel{fig:08_final@cref}{{[subfigure][2][1,27]\relax 1.27b}{[1][61][]61}}
-\newlabel{sub@fig:08_final}{{b}{61}{Seed points (yellow), traced interior streamlines (light blue) and border points (dark blue), generated if $l_\text {max}=1$.\relax }{subfigure.1.27.2}{}}
-\newlabel{sub@fig:08_final@cref}{{[subfigure][2][1,27]\relax 1.27b}{[1][61][]61}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.27}{\ignorespaces Results of the procedure in the parallel algorithm for mesh generation.\relax }}{61}{figure.1.27}}
-\newlabel{fig:improved}{{\relax 1.27}{61}{Results of the procedure in the parallel algorithm for mesh generation.\relax }{figure.1.27}{}}
-\newlabel{fig:improved@cref}{{[figure][27][1]\relax 1.27}{[1][61][]61}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.5}Repair of Incomplete Streamlines}{61}{subsection.0.5.5}}
-\BKM@entry{id=25,open,dest={73756273656374696F6E2E302E352E36},srcline={343}}{312E352E3620506F737470726F63657373696E67206F66207468652047656E6572617465642053747265616D6C696E6573}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.28}{\ignorespaces Examples of the four repair mechanisms for estimating incomplete streamlines during the parallel algorithm for mesh generation. Invalid streamlines are indicated by red circles, valid streamlines by black circles. The green arrows show the direction of data transfer.\relax }}{63}{figure.1.28}}
-\newlabel{fig:fix_invalid}{{\relax 1.28}{63}{Examples of the four repair mechanisms for estimating incomplete streamlines during the parallel algorithm for mesh generation. Invalid streamlines are indicated by red circles, valid streamlines by black circles. The green arrows show the direction of data transfer.\relax }{figure.1.28}{}}
-\newlabel{fig:fix_invalid@cref}{{[figure][28][1]\relax 1.28}{[1][62][]63}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.6}Postprocessing of the Generated Streamlines}{63}{subsection.0.5.6}}
-\BKM@entry{id=26,open,dest={73756273656374696F6E2E302E352E37},srcline={386}}{312E352E3720526573756C747320616E642044697363757373696F6E}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.7}Results and Discussion}{65}{subsection.0.5.7}}
-\abx@aux@cite{MacDougall1984}
-\abx@aux@segm{0}{0}{MacDougall1984}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.29}{\ignorespaces Resulting fibers and points on the fibers created with the parallel algorithm, $9\times 9$ fibers with $1481$ nodes each. Irregularities in the outer surface can be seen in the center at the bottom if the image.\relax }}{66}{figure.1.29}}
-\newlabel{fig:poor_border_33x33}{{\relax 1.29}{66}{Resulting fibers and points on the fibers created with the parallel algorithm, $9\times 9$ fibers with $1481$ nodes each. Irregularities in the outer surface can be seen in the center at the bottom if the image.\relax }{figure.1.29}{}}
-\newlabel{fig:poor_border_33x33@cref}{{[figure][29][1]\relax 1.29}{[1][65][]66}}
-\newlabel{fig:muscle_mesh_0}{{\relax 1.30a}{67}{Grid of $7 \times 7$ fibers (red) and the aligned 3D mesh with $7 \times 7 \times 30$ nodes (yellow).\relax }{subfigure.1.30.1}{}}
-\newlabel{fig:muscle_mesh_0@cref}{{[subfigure][1][1,30]\relax 1.30a}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_0}{{a}{67}{Grid of $7 \times 7$ fibers (red) and the aligned 3D mesh with $7 \times 7 \times 30$ nodes (yellow).\relax }{subfigure.1.30.1}{}}
-\newlabel{sub@fig:muscle_mesh_0@cref}{{[subfigure][1][1,30]\relax 1.30a}{[1][66][]67}}
-\newlabel{fig:muscle_mesh_1}{{\relax 1.30b}{67}{Grid of $9 \times 9$ fibers and 3D mesh with the solution of an electrophysiology simulation.\relax }{subfigure.1.30.2}{}}
-\newlabel{fig:muscle_mesh_1@cref}{{[subfigure][2][1,30]\relax 1.30b}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_1}{{b}{67}{Grid of $9 \times 9$ fibers and 3D mesh with the solution of an electrophysiology simulation.\relax }{subfigure.1.30.2}{}}
-\newlabel{sub@fig:muscle_mesh_1@cref}{{[subfigure][2][1,30]\relax 1.30b}{[1][66][]67}}
-\newlabel{fig:muscle_mesh_2}{{\relax 1.30c}{67}{Grid of $13 \times 13$ fibers.\relax }{subfigure.1.30.3}{}}
-\newlabel{fig:muscle_mesh_2@cref}{{[subfigure][3][1,30]\relax 1.30c}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_2}{{c}{67}{Grid of $13 \times 13$ fibers.\relax }{subfigure.1.30.3}{}}
-\newlabel{sub@fig:muscle_mesh_2@cref}{{[subfigure][3][1,30]\relax 1.30c}{[1][66][]67}}
-\newlabel{fig:muscle_mesh_3}{{\relax 1.30d}{67}{Grid $67 \times 67$ muscle fibers for the biceps geometry\relax }{subfigure.1.30.4}{}}
-\newlabel{fig:muscle_mesh_3@cref}{{[subfigure][4][1,30]\relax 1.30d}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_3}{{d}{67}{Grid $67 \times 67$ muscle fibers for the biceps geometry\relax }{subfigure.1.30.4}{}}
-\newlabel{sub@fig:muscle_mesh_3@cref}{{[subfigure][4][1,30]\relax 1.30d}{[1][66][]67}}
-\newlabel{fig:muscle_mesh_5}{{\relax 1.30e}{67}{$25 \times 25$ fibers of triceps\relax }{subfigure.1.30.5}{}}
-\newlabel{fig:muscle_mesh_5@cref}{{[subfigure][5][1,30]\relax 1.30e}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_5}{{e}{67}{$25 \times 25$ fibers of triceps\relax }{subfigure.1.30.5}{}}
-\newlabel{sub@fig:muscle_mesh_5@cref}{{[subfigure][5][1,30]\relax 1.30e}{[1][66][]67}}
-\newlabel{fig:muscle_mesh_4}{{\relax 1.30f}{67}{Grid of $67 \times 67$ fibers for the triceps geometry as seen from within the muscle. The total number of points is \num {8982489}.\relax }{subfigure.1.30.6}{}}
-\newlabel{fig:muscle_mesh_4@cref}{{[subfigure][6][1,30]\relax 1.30f}{[1][66][]67}}
-\newlabel{sub@fig:muscle_mesh_4}{{f}{67}{Grid of $67 \times 67$ fibers for the triceps geometry as seen from within the muscle. The total number of points is \num {8982489}.\relax }{subfigure.1.30.6}{}}
-\newlabel{sub@fig:muscle_mesh_4@cref}{{[subfigure][6][1,30]\relax 1.30f}{[1][66][]67}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.30}{\ignorespaces 1D fiber meshes and corresponding 3D meshes created by \cref  {alg:parallel_algorithm_1}. The biceps geometry is used in (a)-(d), the triceps geometry in (e) and (f). The fibers have 1481 nodes each in the biceps muscle and 2001 nodes each in the triceps muscle.\relax }}{67}{figure.1.30}}
-\newlabel{fig:muscle_meshes}{{\relax 1.30}{67}{1D fiber meshes and corresponding 3D meshes created by \cref {alg:parallel_algorithm_1}. The biceps geometry is used in (a)-(d), the triceps geometry in (e) and (f). The fibers have 1481 nodes each in the biceps muscle and 2001 nodes each in the triceps muscle.\relax }{figure.1.30}{}}
-\newlabel{fig:muscle_meshes@cref}{{[figure][30][1]\relax 1.30}{[1][66][]67}}
-\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.2}{\ignorespaces Different parameter choices of $l_\text  {max}$ and $m$ and the resulting number $n_\text  {proc}$ of processes, number of fibers and file size. Some results can be achieved with different parameter combinations, e.g. both $\ell _\text  {max}=0, m=1$ and $\ell _\text  {max}=1, m=0$ result in $17\times 17$ fibers. These combinations are separated by slashes.\relax }}{69}{table.caption.3}}
-\newlabel{tab:file_sizes}{{\relax 1.2}{69}{Different parameter choices of $l_\text {max}$ and $m$ and the resulting number $n_\text {proc}$ of processes, number of fibers and file size. Some results can be achieved with different parameter combinations, e.g. both $\ell _\text {max}=0, m=1$ and $\ell _\text {max}=1, m=0$ result in $17\times 17$ fibers. These combinations are separated by slashes.\relax }{table.caption.3}{}}
-\newlabel{tab:file_sizes@cref}{{[table][2][1]\relax 1.2}{[1][68][]69}}
-\newlabel{fig:31x31_l0_center}{{\relax 1.31a}{70}{Result for parameters $l_\text {max}=0, m=3$, i.e., with three interpolated fibers between every two traced fibers.\relax }{subfigure.1.31.1}{}}
-\newlabel{fig:31x31_l0_center@cref}{{[subfigure][1][1,31]\relax 1.31a}{[1][69][]70}}
-\newlabel{sub@fig:31x31_l0_center}{{a}{70}{Result for parameters $l_\text {max}=0, m=3$, i.e., with three interpolated fibers between every two traced fibers.\relax }{subfigure.1.31.1}{}}
-\newlabel{sub@fig:31x31_l0_center@cref}{{[subfigure][1][1,31]\relax 1.31a}{[1][69][]70}}
-\newlabel{fig:31x31_l2_center}{{\relax 1.31b}{70}{Result for parameters $l_\text {max}=2, m=0$, i.e., without interpolation.\relax }{subfigure.1.31.2}{}}
-\newlabel{fig:31x31_l2_center@cref}{{[subfigure][2][1,31]\relax 1.31b}{[1][69][]70}}
-\newlabel{sub@fig:31x31_l2_center}{{b}{70}{Result for parameters $l_\text {max}=2, m=0$, i.e., without interpolation.\relax }{subfigure.1.31.2}{}}
-\newlabel{sub@fig:31x31_l2_center@cref}{{[subfigure][2][1,31]\relax 1.31b}{[1][69][]70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.31}{\ignorespaces Comparison of generated meshes of the biceps with different maximum recursion levels $l_\text  {max}$. A lower left portion of the full mesh with $31 \times 31$ fibers is shown.\relax }}{70}{figure.1.31}}
-\newlabel{fig:different_recursion_levels}{{\relax 1.31}{70}{Comparison of generated meshes of the biceps with different maximum recursion levels $l_\text {max}$. A lower left portion of the full mesh with $31 \times 31$ fibers is shown.\relax }{figure.1.31}{}}
-\newlabel{fig:different_recursion_levels@cref}{{[figure][31][1]\relax 1.31}{[1][69][]70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.32}{\ignorespaces Variance of the element angles for meshes with the same number of $31 \times 31$ fibers, but created by different recursion levels $\ell _\text  {max}$. The parameters correspond to the third row of \cref  {tab:file_sizes}. A lower variance means better mesh quality.\relax }}{70}{figure.1.32}}
-\newlabel{fig:2mesh_quality}{{\relax 1.32}{70}{Variance of the element angles for meshes with the same number of $31 \times 31$ fibers, but created by different recursion levels $\ell _\text {max}$. The parameters correspond to the third row of \cref {tab:file_sizes}. A lower variance means better mesh quality.\relax }{figure.1.32}{}}
-\newlabel{fig:2mesh_quality@cref}{{[figure][32][1]\relax 1.32}{[1][69][]70}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.33}{\ignorespaces Comparison of the mesh quality that results from different options in the mesh generation algorithm. A lower variance means better mesh quality.\relax }}{72}{figure.1.33}}
-\newlabel{fig:3mesh_quality}{{\relax 1.33}{72}{Comparison of the mesh quality that results from different options in the mesh generation algorithm. A lower variance means better mesh quality.\relax }{figure.1.33}{}}
-\newlabel{fig:3mesh_quality@cref}{{[figure][33][1]\relax 1.33}{[1][72][]72}}
-\newlabel{sec:repro_tendon_meshes}{{1.5.7}{72}{Results and Discussion}{figure.1.33}{}}
-\newlabel{sec:repro_tendon_meshes@cref}{{[subsection][7][1,5]1.5.7}{[1][72][]72}}
-\zref@newlabel{mdf@pagelabel-3}{\default{1.5.7}\page{73}\abspage{73}\mdf@pagevalue{73}}
-\pgfsyspdfmark {pgfid5}{4661698}{27616648}
-\zref@newlabel{mdf@pagelabel-4}{\default{1.5.7}\page{74}\abspage{74}\mdf@pagevalue{74}}
-\pgfsyspdfmark {pgfid6}{5594039}{7630771}
-\BKM@entry{id=27,open,dest={73656374696F6E2E302E36},srcline={594}}{312E3620436F6E636C7573696F6E20616E642046757475726520576F726B}
-\zref@newlabel{mdf@pagelabel-5}{\default{1.5.7}\page{75}\abspage{75}\mdf@pagevalue{75}}
-\pgfsyspdfmark {pgfid7}{4661698}{36293859}
-\@writefile{toc}{\contentsline {section}{\numberline {1.6}Conclusion and Future Work}{75}{section.0.6}}
-\newlabel{sec:meshes_summary_and_conclusion}{{1.6}{75}{Conclusion and Future Work}{section.0.6}{}}
-\newlabel{sec:meshes_summary_and_conclusion@cref}{{[section][6][1]1.6}{[1][75][]75}}
-\abx@aux@segm{0}{0}{Choi2013}
-\newlabel{LastPage}{{}{82}{}{page.82}{}}
-\xdef\lastpage@lastpage{82}
-\xdef\lastpage@lastpageHy{82}
+\newlabel{fig:1d_nodes}{{\relax 1.1}{7}{Partitioning and local and global numberings of a 1D mesh with $N^\text {el}_x=6$ elements partitioned to $n_x=3$ processes.\relax }{figure.1.1}{}}
+\newlabel{fig:1d_nodes@cref}{{[figure][1][1]\relax 1.1}{[1][7][]7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.2}{\ignorespaces Subdomains and numberings of a 2D mesh with $N^\text  {el}_x \times N^\text  {el}_y=5\times 4$ elements partitioned to $n_x\times n_y = 2 \times 3$ processes. (a)-(c) show the different numberings needed for (a) boundary condition specification, (b) identification of local non-ghost dofs (black) and local ghost dofs (yellow), and (c) identification of global dofs.\relax }}{8}{figure.1.2}}
+\newlabel{fig:dof_numbering}{{\relax 1.2}{8}{Subdomains and numberings of a 2D mesh with $N^\text {el}_x \times N^\text {el}_y=5\times 4$ elements partitioned to $n_x\times n_y = 2 \times 3$ processes. (a)-(c) show the different numberings needed for (a) boundary condition specification, (b) identification of local non-ghost dofs (black) and local ghost dofs (yellow), and (c) identification of global dofs.\relax }{figure.1.2}{}}
+\newlabel{fig:dof_numbering@cref}{{[figure][2][1]\relax 1.2}{[1][7][]8}}
+\BKM@entry{id=7,open,dest={73756273656374696F6E2E302E322E32},srcline={129}}{312E322E32204E756D626572696E6720536368656D657320666F72204E6F64657320616E642044656772656573206F662046726565646F6D}
+\newlabel{fig:1d_comm1}{{\relax 1.3a}{10}{\code {startGhostManipulation()}: Communication of values at $r_1$ to the ghost buffer at $r_0$.\relax }{subfigure.1.3.1}{}}
+\newlabel{fig:1d_comm1@cref}{{[subfigure][1][1,3]\relax 1.3a}{[1][9][]10}}
+\newlabel{sub@fig:1d_comm1}{{a}{10}{\code {startGhostManipulation()}: Communication of values at $r_1$ to the ghost buffer at $r_0$.\relax }{subfigure.1.3.1}{}}
+\newlabel{sub@fig:1d_comm1@cref}{{[subfigure][1][1,3]\relax 1.3a}{[1][9][]10}}
+\newlabel{fig:1d_comm2}{{\relax 1.3b}{10}{\code {finishGhostManipulation()}: Communication and addition of ghost values at $r_0$ to the non-ghost dofs at $r_1$.\relax }{subfigure.1.3.2}{}}
+\newlabel{fig:1d_comm2@cref}{{[subfigure][2][1,3]\relax 1.3b}{[1][9][]10}}
+\newlabel{sub@fig:1d_comm2}{{b}{10}{\code {finishGhostManipulation()}: Communication and addition of ghost values at $r_0$ to the non-ghost dofs at $r_1$.\relax }{subfigure.1.3.2}{}}
+\newlabel{sub@fig:1d_comm2@cref}{{[subfigure][2][1,3]\relax 1.3b}{[1][9][]10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.3}{\ignorespaces Communication operations for ghost values in an example with two ranks $r_0$ and $r_1$. Depicted are the vectors of local storage for non-ghost (black) and ghost values (yellow). The red arrows indicate the data transfer.\relax }}{10}{figure.1.3}}
+\newlabel{fig:1d_comm}{{\relax 1.3}{10}{Communication operations for ghost values in an example with two ranks $r_0$ and $r_1$. Depicted are the vectors of local storage for non-ghost (black) and ghost values (yellow). The red arrows indicate the data transfer.\relax }{figure.1.3}{}}
+\newlabel{fig:1d_comm@cref}{{[figure][3][1]\relax 1.3}{[1][9][]10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Numbering Schemes for Nodes and Degrees of Freedom}{10}{subsection.0.2.2}}
+\newlabel{sec:numbering_schemes_for}{{1.2.2}{10}{Numbering Schemes for Nodes and Degrees of Freedom}{subsection.0.2.2}{}}
+\newlabel{sec:numbering_schemes_for@cref}{{[subsection][2][1,2]1.2.2}{[1][10][]10}}
+\BKM@entry{id=8,open,dest={73756273656374696F6E2E302E322E33},srcline={149}}{312E322E3320506172616C6C656C2044617461205374727563747572657320696E204F70656E44694875}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Parallel Data Structures in OpenDiHu{}}{11}{subsection.0.2.3}}
+\newlabel{sec:paralel_data_structures_in_opendihu}{{1.2.3}{11}{Parallel Data Structures in \Opendihu {}}{subsection.0.2.3}{}}
+\newlabel{sec:paralel_data_structures_in_opendihu@cref}{{[subsection][3][1,2]1.2.3}{[1][11][]11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.4}{\ignorespaces Global natural numbering of nodes in a mesh with $4 \times 4 \times 4$ linear elements.\relax }}{12}{figure.1.4}}
+\newlabel{fig:dof_numbering_global_3D}{{\relax 1.4}{12}{Global natural numbering of nodes in a mesh with $4 \times 4 \times 4$ linear elements.\relax }{figure.1.4}{}}
+\newlabel{fig:dof_numbering_global_3D@cref}{{[figure][4][1]\relax 1.4}{[1][11][]12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.5}{\ignorespaces Classes in OpenDiHu{} that represent vectors in parallel execution. The abstraction layer increases from raw memory at the top to the {\relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}\lstinline [basicstyle=\relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}\ttfamily  \color {Maroon},breaklines=true,upquote=true]!FieldVariable!} at the bottom.\relax }}{12}{figure.1.5}}
+\newlabel{fig:partitioned_petsc_vec}{{\relax 1.5}{12}{Classes in \opendihu {} that represent vectors in parallel execution. The abstraction layer increases from raw memory at the top to the \code {FieldVariable} at the bottom.\relax }{figure.1.5}{}}
+\newlabel{fig:partitioned_petsc_vec@cref}{{[figure][5][1]\relax 1.5}{[1][12][]12}}
+\abx@aux@cite{Shorten2007}
+\abx@aux@segm{0}{0}{Shorten2007}
+\BKM@entry{id=9,open,dest={73756273656374696F6E2E302E322E34},srcline={181}}{312E322E342044697363757373696F6E206F66205365766572616C2044657369676E204465636973696F6E73}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}Discussion of Several Design Decisions}{14}{subsection.0.2.4}}
+\BKM@entry{id=10,open,dest={73756273656374696F6E2E302E322E35},srcline={216}}{312E322E3520496D706C656D656E7465642042617369732046756E6374696F6E73}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.5}Implemented Basis Functions}{16}{subsection.0.2.5}}
+\BKM@entry{id=11,open,dest={73756273656374696F6E2E302E322E36},srcline={284}}{312E322E3620496D706C656D656E746564205479706573206F66204D6573686573}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.1}{\ignorespaces Finite Element ansatz functions and resulting element shapes of hexahedral meshes in 1D, 2D and 3D. From top to bottom: Linear Lagrange, quadratic Lagrange and cubic Hermite ansatz functions.\relax }}{17}{table.caption.2}}
+\newlabel{tab:ansatz_functions_mesh}{{\relax 1.1}{17}{Finite Element ansatz functions and resulting element shapes of hexahedral meshes in 1D, 2D and 3D. From top to bottom: Linear Lagrange, quadratic Lagrange and cubic Hermite ansatz functions.\relax }{table.caption.2}{}}
+\newlabel{tab:ansatz_functions_mesh@cref}{{[table][1][1]\relax 1.1}{[1][16][]17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.6}Implemented Types of Meshes}{18}{subsection.0.2.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.6}{\ignorespaces The three implemented mesh types in OpenDiHu{}, each time for 2D linear Lagrange or Hermite ansatz functions (left) and for 2D quadratic Lagrange ansatz functions (right).\relax }}{19}{figure.1.6}}
+\newlabel{fig:meshe_types}{{\relax 1.6}{19}{The three implemented mesh types in \opendihu {}, each time for 2D linear Lagrange or Hermite ansatz functions (left) and for 2D quadratic Lagrange ansatz functions (right).\relax }{figure.1.6}{}}
+\newlabel{fig:meshe_types@cref}{{[figure][6][1]\relax 1.6}{[1][18][]19}}
+\BKM@entry{id=12,open,dest={73756273656374696F6E2E302E322E37},srcline={311}}{312E322E3720436F6D706F73697465204D6573686573}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.7}Composite Meshes}{20}{subsection.0.2.7}}
+\BKM@entry{id=13,open,dest={73656374696F6E2E302E33},srcline={360}}{312E332046696E69746520456C656D656E74204D6174726963657320616E6420426F756E6461727920436F6E646974696F6E73}
+\BKM@entry{id=14,open,dest={73756273656374696F6E2E302E332E31},srcline={365}}{312E332E312053746F72616765206F66204D61747269636573}
+\newlabel{fig:meshes_composite}{{\relax 1.7a}{22}{A composite mesh that is created from three structured meshes (different colors) and a possible subdivision for parallel partitioning (white vertical line).\relax }{subfigure.1.7.1}{}}
+\newlabel{fig:meshes_composite@cref}{{[subfigure][1][1,7]\relax 1.7a}{[1][21][]22}}
+\newlabel{sub@fig:meshes_composite}{{a}{22}{A composite mesh that is created from three structured meshes (different colors) and a possible subdivision for parallel partitioning (white vertical line).\relax }{subfigure.1.7.1}{}}
+\newlabel{sub@fig:meshes_composite@cref}{{[subfigure][1][1,7]\relax 1.7a}{[1][21][]22}}
+\newlabel{fig:dof_numbering_structured_composite}{{\relax 1.7b}{22}{Numbering scheme of dofs for a composite mesh that is created from two quadratic meshes.\relax }{subfigure.1.7.2}{}}
+\newlabel{fig:dof_numbering_structured_composite@cref}{{[subfigure][2][1,7]\relax 1.7b}{[1][21][]22}}
+\newlabel{sub@fig:dof_numbering_structured_composite}{{b}{22}{Numbering scheme of dofs for a composite mesh that is created from two quadratic meshes.\relax }{subfigure.1.7.2}{}}
+\newlabel{sub@fig:dof_numbering_structured_composite@cref}{{[subfigure][2][1,7]\relax 1.7b}{[1][21][]22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.7}{\ignorespaces Examples for composite meshes that combine the advantages of structured and unstructured meshes.\relax }}{22}{figure.1.7}}
+\newlabel{fig:composite_meshes}{{\relax 1.7}{22}{Examples for composite meshes that combine the advantages of structured and unstructured meshes.\relax }{figure.1.7}{}}
+\newlabel{fig:composite_meshes@cref}{{[figure][7][1]\relax 1.7}{[1][21][]22}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Finite Element Matrices and Boundary Conditions}{22}{section.0.3}}
+\newlabel{sec:fem_matrices_and_bc}{{1.3}{22}{Finite Element Matrices and Boundary Conditions}{section.0.3}{}}
+\newlabel{sec:fem_matrices_and_bc@cref}{{[section][3][1]1.3}{[1][21][]22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Storage of Matrices}{22}{subsection.0.3.1}}
+\abx@aux@segm{0}{0}{petsc-web-page}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.8}{\ignorespaces Composite mesh of the biceps muscle. Top: the two structured meshes from which the composite mesh is created, bottom: partitioning to four processes.\relax }}{23}{figure.1.8}}
+\newlabel{fig:composite_muscle_mesh0}{{\relax 1.8}{23}{Composite mesh of the biceps muscle. Top: the two structured meshes from which the composite mesh is created, bottom: partitioning to four processes.\relax }{figure.1.8}{}}
+\newlabel{fig:composite_muscle_mesh0@cref}{{[figure][8][1]\relax 1.8}{[1][21][]23}}
+\newlabel{eq:nonzero_estimates}{{\relax 1.1}{24}{Storage of Matrices}{equation.0.3.1}{}}
+\newlabel{eq:nonzero_estimates@cref}{{[equation][1][1]\relax 1.1}{[1][24][]24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.9}{\ignorespaces Solution of the Laplace equation $ \Delta \textbf  {u}= \textbf  {f}$ with prescribed values $\textbf  {u}|_\text  {bottom}=1$ and $\textbf  {u}|_\text  {top}=2.$ The mesh consists of $4\times 4\times 4$ quadratic elements and, thus, $9^3$ nodes. Left: Solution, right: Partitioning to four processes.\relax }}{25}{figure.1.9}}
+\newlabel{fig:3d_laplace}{{\relax 1.9}{25}{Solution of the Laplace equation $ \Delta \bfu = \bff $ with prescribed values $\bfu |_\text {bottom}=1$ and $\bfu |_\text {top}=2.$ The mesh consists of $4\times 4\times 4$ quadratic elements and, thus, $9^3$ nodes. Left: Solution, right: Partitioning to four processes.\relax }{figure.1.9}{}}
+\newlabel{fig:3d_laplace@cref}{{[figure][9][1]\relax 1.9}{[1][24][]25}}
+\BKM@entry{id=15,open,dest={73756273656374696F6E2E302E332E32},srcline={425}}{312E332E3220417373656D626C79206F662046696E69746520456C656D656E74204D61747269636573}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.10}{\ignorespaces Sparsity pattern, i.e., locations of non-zero entries of the $729 \times 729$ stiffness matrix $\textbf  {K}$ for the example problem in \cref  {fig:3d_laplace}. The rows for the four processes are given by different colors matching the partitioning in \cref  {fig:3d_laplace}. The processes have 144, 180, 180 and 225 local dofs.\relax }}{26}{figure.1.10}}
+\newlabel{fig:sparsity_pattern}{{\relax 1.10}{26}{Sparsity pattern, i.e., locations of non-zero entries of the $729 \times 729$ stiffness matrix $\bfK $ for the example problem in \cref {fig:3d_laplace}. The rows for the four processes are given by different colors matching the partitioning in \cref {fig:3d_laplace}. The processes have 144, 180, 180 and 225 local dofs.\relax }{figure.1.10}{}}
+\newlabel{fig:sparsity_pattern@cref}{{[figure][10][1]\relax 1.10}{[1][25][]26}}
+\zref@newlabel{mdf@pagelabel-1}{\default{1.3.1}\page{26}\abspage{26}\mdf@pagevalue{26}}
+\pgfsyspdfmark {pgfid2}{5594039}{5594039}
+\abx@aux@cite{Kretz2012}
+\abx@aux@segm{0}{0}{Kretz2012}
+\abx@aux@cite{Kretz2015}
+\abx@aux@segm{0}{0}{Kretz2015}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Assembly of Finite Element Matrices}{27}{subsection.0.3.2}}
+\newlabel{sec:assembly_of_finite_element_matrices}{{1.3.2}{27}{Assembly of Finite Element Matrices}{subsection.0.3.2}{}}
+\newlabel{sec:assembly_of_finite_element_matrices@cref}{{[subsection][2][1,3]1.3.2}{[1][26][]27}}
+\newlabel{eq:alg_assembly_m}{{\relax 1.2}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{eq:alg_assembly_m@cref}{{[equation][2][1]\relax 1.2}{[1][26][]27}}
+\newlabel{line:4.2}{{2}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.2@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.3}{{3}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.3@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.4}{{4}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.4@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.5}{{5}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.5@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.6}{{6}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.6@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.7}{{7}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.7@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.8}{{8}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.8@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.9}{{9}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.9@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.10}{{10}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.10@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.11}{{11}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.11@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\newlabel{line:4.12}{{12}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
+\newlabel{line:4.12@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Finite Element matrix assembly\relax }}{27}{algorithm.1}}
+\newlabel{alg:fe_matrix_assembly}{{1}{27}{Finite Element matrix assembly\relax }{algorithm.1}{}}
+\newlabel{alg:fe_matrix_assembly@cref}{{[algorithm][1][]1}{[1][27][]27}}
+\BKM@entry{id=16,open,dest={73756273656374696F6E2E302E332E33},srcline={488}}{312E332E3320506572666F726D616E6365206F662074686520416C676F726974686D20666F7220506172616C6C656C204D617472697820417373656D626C79}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Performance of the Algorithm for Parallel Matrix Assembly}{29}{subsection.0.3.3}}
+\newlabel{sec:performance_of_the_algorithm_for_pma}{{1.3.3}{29}{Performance of the Algorithm for Parallel Matrix Assembly}{subsection.0.3.3}{}}
+\newlabel{sec:performance_of_the_algorithm_for_pma@cref}{{[subsection][3][1,3]1.3.3}{[1][29][]29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.11}{\ignorespaces Runtimes of different optimizations for the algorithm to assemble the FEM stiffness matrix.\relax }}{30}{figure.1.11}}
+\newlabel{fig:matrix_runtimes}{{\relax 1.11}{30}{Runtimes of different optimizations for the algorithm to assemble the FEM stiffness matrix.\relax }{figure.1.11}{}}
+\newlabel{fig:matrix_runtimes@cref}{{[figure][11][1]\relax 1.11}{[1][30][]30}}
+\BKM@entry{id=17,open,dest={73756273656374696F6E2E302E332E34},srcline={528}}{312E332E3420417373656D626C79206F662046696E69746520456C656D656E74204D6174726963657320666F7220526567756C6172204D6573686573}
+\zref@newlabel{mdf@pagelabel-2}{\default{1.3.3}\page{31}\abspage{31}\mdf@pagevalue{31}}
+\pgfsyspdfmark {pgfid4}{4661698}{5594039}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Assembly of Finite Element Matrices for Regular Meshes}{32}{subsection.0.3.4}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.2}{\ignorespaces Stencils of the Finite Element stiffness matrix of $\IeC {\ensuremath  {\Delta }}u$ for a mesh with uniform resolution and linear ansatz functions. The stiffness matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }}{33}{table.caption.3}}
+\newlabel{tab:stencils_laplace}{{\relax 1.2}{33}{Stencils of the Finite Element stiffness matrix of $Δu$ for a mesh with uniform resolution and linear ansatz functions. The stiffness matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }{table.caption.3}{}}
+\newlabel{tab:stencils_laplace@cref}{{[table][2][1]\relax 1.2}{[1][32][]33}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.3}{\ignorespaces Stencils of the Finite Element mass matrix for a mesh with uniform resolution and linear ansatz functions. The mass matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }}{33}{table.caption.4}}
+\newlabel{tab:stencils_mass_laplace}{{\relax 1.3}{33}{Stencils of the Finite Element mass matrix for a mesh with uniform resolution and linear ansatz functions. The mass matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }{table.caption.4}{}}
+\newlabel{tab:stencils_mass_laplace@cref}{{[table][3][1]\relax 1.3}{[1][32][]33}}
+\BKM@entry{id=18,open,dest={73756273656374696F6E2E302E332E35},srcline={735}}{312E332E3520416C676F726974686D20666F72204469726963686C657420426F756E6461727920436F6E646974696F6E73}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Algorithm for Dirichlet Boundary Conditions}{34}{subsection.0.3.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.12}{\ignorespaces Example to illustrate ghost element transfer that is needed for handling Dirichlet boundary conditions in parallel. A mesh with Dirichlet boundary conditions on the red nodes is given in (a). The subdomains for two processes are given in (b) and (c). (c) shows a ghost element in orange that is sent from rank 0 to rank 1.\relax }}{36}{figure.1.12}}
+\newlabel{fig:dirichlet_bc_example}{{\relax 1.12}{36}{Example to illustrate ghost element transfer that is needed for handling Dirichlet boundary conditions in parallel. A mesh with Dirichlet boundary conditions on the red nodes is given in (a). The subdomains for two processes are given in (b) and (c). (c) shows a ghost element in orange that is sent from rank 0 to rank 1.\relax }{figure.1.12}{}}
+\newlabel{fig:dirichlet_bc_example@cref}{{[figure][12][1]\relax 1.12}{[1][35][]36}}
+\newlabel{LastPage}{{}{39}{}{page.39}{}}
+\xdef\lastpage@lastpage{39}
+\xdef\lastpage@lastpageHy{39}
 \abx@aux@refcontextdefaultsdone
-\abx@aux@defaultrefcontext{0}{Alliez2005Variational}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{quickhull}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Bessmeltsev2012}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{blacker1993seams}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{blemker2005three}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{chew1997guaranteed}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Choi2013}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{cordes1992continuous}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{delaunay1934sphere}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{dong2005quadrangulating}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{eppstein1999linear}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Fernandez2018}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{field1988laplacianSmoothingAndDelaunayTriangulations}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{grosland2009ia}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{HAEGLAND2007Streamline}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Handsfield2017}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Inouye2015}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Jamin2015CGALmesh}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{juanes2006unified}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{kawamura2008strategy}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Kovacs2011Anisotropic}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Kusterer}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{ledoux2008extension}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{MacDougall1984}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Nike3D}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{marchandise2010quality}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Marchandise2_2011}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Meng2016Consistent}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{ray-triangle}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{owen1998survey}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{piegl2012nurbs}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Pollock1988}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{price1995hexahedral}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{price1997hexahedral}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Ellankavi2018}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Remacle2010}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Ruppert1995}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{schneiders1996grid}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{schneiders1997algorithm}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{sedgewick2011algorithms}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Delaunay2002}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{shewchuk96b}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{visible_human_male}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{staten2006unconstrained}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{staten2010unconstrained}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{tautges1996whisker}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{untaroiu2013finite}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{vichot2012cardiac}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Zhang2003}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Zhang20053DFiniteElementMeshing}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{mapclient}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{mumps2001}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{mumps2019}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{petsc-user-ref}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{petsc-web-page}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{petsc-efficient}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{falgout2002hypre}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{ISO9241}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Kretz2012}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Kretz2015}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Maier2019}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{DihuWeb}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Shorten2007}{anyt/global//global/global}
 \acro@rerun@check 
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{11.47192pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{20.62083pt}

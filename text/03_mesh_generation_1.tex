@@ -328,15 +328,15 @@ Mechanism \#1 checks all streamlines at borders in the interior, which are share
 
 Mechanism \#2 checks streamlines at the outer corners of the subdomains. Incomplete streamlines at these locations are recreated from the given border points. Because the set of border points is twice as coarse as the required number of sampled points at these streamlines, every second point gets interpolated from the top and bottom neighbor points.
 
-Mchanism \#3 is concerned with streamlines at interior borders that could not be fixed by mechanism \#1 because the streamlines are incomplete on both sharing processes. In this case, the streamlines are interpolated from the two complete neighboring streamlines that are located next along the border as shown in the example in \cref{fig:fix_invalid}. Instead of the factors $\frac13$ and $2\frac23$, the actual relation of distances between the seed points of the streamlines is used. The same interpolation is executed independently on both involved processes. Because the valid streamlines have the same data on both subdomains the resulting fixed streamlines will also be identical.
+Mechanism \#3 is concerned with streamlines at interior borders that could not be fixed by mechanism \#1 because the streamlines are incomplete on both sharing processes. In this case, the streamlines are interpolated from the two complete neighboring streamlines that are located next along the border as shown in the example in \cref{fig:fix_invalid}. Instead of the factors $\frac13$ and $2\frac23$, the actual relation of distances between the seed points of the streamlines is used. The same interpolation is executed independently on both involved processes. Because the valid streamlines have the same data on both subdomains the resulting fixed streamlines will also be identical.
 
-Mchanism \#4 follows a similar approach. It is applied to the interior fibers of the final result and can repair any number of incomplete fibers that are located between complete fibers. In the example \#4a in \cref{fig:fix_invalid}, the two invalid streamlines are interpolated from their left and right valid neighbors. In the example \#4b, no valid right neighbor exists. Instead, the streamlines are interpolated by using valid positions from the upper and lower neighbors.
+Mechanism \#4 follows a similar approach. It is applied to the interior fibers of the final result and can repair any number of incomplete fibers that are located between complete fibers. In the example \#4a in \cref{fig:fix_invalid}, the two invalid streamlines are interpolated from their left and right valid neighbors. In the example \#4b, no valid right neighbor exists. Instead, the streamlines are interpolated by using valid positions from the upper and lower neighbors.
 
 \begin{figure}%
   \centering%
   \def\svgwidth{0.8\textwidth}
   \input{images/parallel_fiber_estimation/fix_invalid.pdf_tex}
-  \caption{Examples of the four repair mechanisms for estimating incomplete streamlines during the parallel algorithm for mesh generation. Invalid streamlines are indicated by red circles, valid streamlines by black circles. The green arrows show the direction of data transfer.}%
+  \caption{Examples of the four repair mechanisms for estimating incomplete streamlines during the parallel algorithm for mesh generation. Invalid streamlines are indicated by red circles, valid streamlines by black circles. The brown arrows show the direction of data transfer.}%
   \label{fig:fix_invalid}%
 \end{figure}%
 

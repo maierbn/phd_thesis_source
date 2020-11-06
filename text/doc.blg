@@ -1,29 +1,29 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[39] biber:313> INFO - === Do Okt 29, 2020, 12:55:57
-[69] Biber.pm:371> INFO - Reading 'doc.bcf'
-[141] Biber.pm:857> INFO - Found 51 citekeys in bib section 0
-[154] Biber.pm:3981> INFO - Processing section 0
-[167] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[186] bibtex.pm:1468> INFO - LaTeX decoding ...
-[512] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[1039] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1244, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1275, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1318, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1420, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1446, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1478, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1513, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1586, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 1809, warning: 3 characters of junk seen at toplevel
-[1040] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 2224, warning: 3 characters of junk seen at toplevel
-[1041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 2262, warning: 3 characters of junk seen at toplevel
-[1041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 2320, warning: 3 characters of junk seen at toplevel
-[1041] Utils.pm:169> WARN - BibTeX subsystem: /tmp/vA48jaWnyx/references.bib_4171.utf8, line 2353, warning: 3 characters of junk seen at toplevel
-[1133] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1133] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1133] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[1133] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[1208] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[1241] bbl.pm:720> INFO - Output to doc.bbl
-[1241] Biber.pm:110> INFO - WARNINGS: 13
+[24] biber:313> INFO - === Fr Nov  6, 2020, 15:04:52
+[42] Biber.pm:371> INFO - Reading 'doc.bcf'
+[96] Biber.pm:857> INFO - Found 12 citekeys in bib section 0
+[108] Biber.pm:3981> INFO - Processing section 0
+[117] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[135] bibtex.pm:1468> INFO - LaTeX decoding ...
+[426] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[545] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1243, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1274, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1315, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1415, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1441, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1473, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1508, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1581, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1804, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2219, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2257, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2315, warning: 3 characters of junk seen at toplevel
+[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2348, warning: 3 characters of junk seen at toplevel
+[568] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[568] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[568] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[568] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[589] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[597] bbl.pm:720> INFO - Output to doc.bbl
+[598] Biber.pm:110> INFO - WARNINGS: 13

@@ -260,8 +260,8 @@ As a result, meshes of individual muscles or the whole human organism can be cre
   \quad
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
-    \includegraphics[height=7cm]{images/fiber_creation/elements4.png}%
-    \caption{Detail view of part of the right upper arm and the trunk with blue nodes and edges of a cubic Hermite element mesh.}%
+    \includegraphics[height=7cm]{images/fiber_creation/elements4_red.png}%
+    \caption{Detail view of part of the right upper arm and the trunk with orange nodes and edges of a cubic Hermite element mesh.}%
     \label{fig:vhp_detail}%
   \end{subfigure} 
   \caption{Mesh of the Visible Human Male from the Visible Human Project.}%
@@ -275,7 +275,7 @@ Therefore, the next step of the workflow, as visualized by the right branch of \
 
 \begin{figure}%
   \centering%
-  \includegraphics[height=10cm]{images/fiber_creation/exfile.png}\quad%
+  \includegraphics[height=10cm]{images/fiber_creation/exfile_red.png}\quad%
   \includegraphics[height=10cm]{images/fiber_creation/biceps23.png}%
   \includegraphics[height=10cm]{images/fiber_creation/biceps22.png}%
   \includegraphics[height=10cm,trim=-2cm 0 0 -2cm, clip]{images/fiber_creation/splines00.png}%
@@ -283,7 +283,7 @@ Therefore, the next step of the workflow, as visualized by the right branch of \
   \label{fig:biceps_processing}%
 \end{figure}%
 
-The Hermite elements can be triangulated and stored as an STL file using the tool \code{cmgui}. This process triangulates the non-planar faces of all Hermite elements. This leads to a dataset with triangles both on the surface and in the inside of the volume, as can be seen in the second image of \cref{fig:biceps_processing}. At this stage, the use of the MAP and OpenCMISS related tools is finished and further processing steps are performed using tools from \opendihu{} that we developed on our own.
+The Hermite elements can be triangulated and stored as an STL file using the tool \mbox{\code{cmgui}.} This process triangulates the non-planar faces of all Hermite elements. This leads to a dataset with triangles both on the surface and in the inside of the volume, as can be seen in the second image of \cref{fig:biceps_processing}. At this stage, the use of the MAP and OpenCMISS related tools is finished and further processing steps are performed using tools from \opendihu{} that we developed on our own.
 
 A Python script removes the triangles in the inside of the volume. The detection whether a triangle is inside the volume is done by casting four rays from the center of gravity of the triangle and determining if the rays intersect any other triangles. The rays have directions $(x,y,z) = (\pm1,\pm1,\frac13)$, where the $z$ axis is oriented along the muscle and the $x$ and $y$ axes are oriented in radial direction. The ray-triangle intersection is done using the fast Möller-Trumbore algorithm \cite{ray-triangle}. For every ray, all triangles are checked.
 Only if all four rays intersect at least one more triangle, the starting triangle is considered to be inside the volume and subsequently removed from the dataset. 
@@ -375,8 +375,8 @@ The resulting NURBS surface and the control polygon is visualized in \cref{fig:b
 %
 \begin{figure}%
   \centering%
-  \includegraphics[width=0.35\textwidth]{images/fiber_creation/splines01.png}%
-  \caption{Fitted NURBS surface of the biceps muscle (green) and the control polygon (blue).}%
+  \includegraphics[width=0.35\textwidth]{images/fiber_creation/splines01red.png}%
+  \caption{Fitted NURBS surface of the biceps muscle (red) and the control polygon (orange).}%
   \label{fig:biceps_splines_control_points}%
 \end{figure}%
 
@@ -512,14 +512,14 @@ The resulting grid of points on the biceps surface is visualized in \cref{fig:se
   \centering%
   \begin{subfigure}[t]{0.49\textwidth}%
     \centering%
-    \includegraphics[height=10cm]{images/fiber_creation/serial_alg_4.png}%
+    \includegraphics[height=10cm]{images/fiber_creation/serial_alg_4_orange.png}%
     \caption{Grid in parameter space (right) and muscle domain (left), result after line \algref{alg:serial_algorithm_1}{alg:1.4}.}%
     \label{fig:serial_alg_4}%
   \end{subfigure}
   \hfill{}
   \begin{subfigure}[t]{0.4\textwidth}%
     \centering%
-    \includegraphics[height=10cm]{images/fiber_creation/serial_alg_8.png}%
+    \includegraphics[height=10cm]{images/fiber_creation/serial_alg_8_orange.png}%
     \caption{3D elements formed by connecting the slices, result after line \algref{alg:serial_algorithm_1}{alg:1.5}.}%
     \label{fig:serial_alg_8}%
   \end{subfigure}
@@ -791,7 +791,7 @@ Because modeling muscle fascicles is only a heuristic approach, the generated st
   \quad
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
-    \includegraphics[height=10cm]{images/fiber_creation/streamlines.png}%
+    \includegraphics[height=10cm]{images/fiber_creation/streamlines_red.png}%
     \caption{Resulting streamlines that were traced through the gradient field.}%
     \label{fig:fiber_tracing_streamlines}%
   \end{subfigure}
