@@ -1,4 +1,4 @@
-\chapter{Implementation}
+\chapter{Implementation}\label{sec:implementation}
 
 The simulation of complex multi-scale models often requires the combination of tailored numerical solution schemes. Spatial mesh resolutions and time step widths have to be chosen carefully to avoid instabilities and at the same time allow to compute a sufficiently long simulation time span in a feasible runtime.
 Meshes with different dimensionalities have to be combined, data mapping between the meshes can be necessary. 
@@ -814,7 +814,13 @@ Another alternative approach would be to store all Dirichlet boundary condition 
 
 Is summary, the presented algorithm fits our design goals of good performance. It is used in our implementation to enforce Dirichlet boundary conditions for static and dynamic problems. The algorithm is executed after assembling the stiffness matrix. In consequence, for static problems the linear system solver sets the prescribed values at the respective dofs and the boundary conditions are fulfilled. For dynamic problems with constant stiffness matrices, Dirichlet boundary conditions have to be ensured in every timestep. After running the algorithm on the system matrix once, the operation on the right hand side vector needs to be repeated in every timestep on the updated right hand side.
 
-
+% solver structure of contraction
+\begin{figure}
+  \centering%
+  \includegraphics[width=0.5\textwidth]{images/implementation/solver_structure_contraction.pdf}%
+  \caption{solver structure}%
+  \label{fig:prestrech1b}%
+\end{figure}%
 
 % Neumann boundary conditions
 

@@ -33,194 +33,379 @@
 \@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax }
 \babel@aux{american}{}
-\BKM@entry{id=1,open,dest={636861707465722E31},srcline={1}}{3120496D706C656D656E746174696F6E}
-\BKM@entry{id=2,open,dest={73656374696F6E2E302E31},srcline={9}}{312E3120496E74726F64756374696F6E}
-\abx@aux@cite{DihuWeb}
-\abx@aux@segm{0}{0}{DihuWeb}
-\abx@aux@cite{Maier2019}
-\abx@aux@segm{0}{0}{Maier2019}
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Implementation}{3}{chapter.1}}
+\BKM@entry{id=1,open,dest={636861707465722E31},srcline={1}}{31204D6F64656C7320616E642044697363726574697A6174696F6E}
+\abx@aux@cite{Roehrle2012}
+\abx@aux@segm{0}{0}{Roehrle2012}
+\abx@aux@cite{Heidlauf2013}
+\abx@aux@segm{0}{0}{Heidlauf2013}
+\abx@aux@cite{Heidlauf2015Diss}
+\abx@aux@segm{0}{0}{Heidlauf2015Diss}
+\abx@aux@cite{Mordhorst2015}
+\abx@aux@segm{0}{0}{Mordhorst2015}
+\abx@aux@cite{Klotz2020}
+\abx@aux@segm{0}{0}{Klotz2020}
+\abx@aux@cite{Cisi2008}
+\abx@aux@segm{0}{0}{Cisi2008}
+\abx@aux@cite{Mileusnic2006Spindle}
+\abx@aux@segm{0}{0}{Mileusnic2006Spindle}
+\abx@aux@cite{Mileusnic2006Golgi}
+\abx@aux@segm{0}{0}{Mileusnic2006Golgi}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Models and Discretization}{3}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{3}{section.0.1}}
-\BKM@entry{id=3,open,dest={73756273656374696F6E2E302E312E31},srcline={17}}{312E312E312044657369676E20476F616C73206F66204F70656E44694875}
-\abx@aux@cite{ISO9241}
-\abx@aux@segm{0}{0}{ISO9241}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Design Goals of OpenDiHu{}}{4}{subsection.0.1.1}}
-\BKM@entry{id=4,open,dest={73756273656374696F6E2E302E312E32},srcline={35}}{312E312E32204F76657276696577206F6620746869732043686170746572}
-\BKM@entry{id=5,open,dest={73656374696F6E2E302E32},srcline={41}}{312E3220446174612048616E646C696E672077697468205045545363}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Overview of this Chapter}{5}{subsection.0.1.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Data Handling with PETSc}{5}{section.0.2}}
-\newlabel{sec:data_handling_with_petsc}{{1.2}{5}{Data Handling with PETSc}{section.0.2}{}}
-\newlabel{sec:data_handling_with_petsc@cref}{{[section][2][1]1.2}{[1][5][]5}}
-\abx@aux@cite{petsc-web-page}
-\abx@aux@segm{0}{0}{petsc-web-page}
-\abx@aux@cite{petsc-user-ref}
-\abx@aux@segm{0}{0}{petsc-user-ref}
-\abx@aux@cite{petsc-efficient}
-\abx@aux@segm{0}{0}{petsc-efficient}
-\abx@aux@cite{mumps2001}
-\abx@aux@segm{0}{0}{mumps2001}
-\abx@aux@cite{mumps2019}
-\abx@aux@segm{0}{0}{mumps2019}
-\abx@aux@cite{falgout2002hypre}
-\abx@aux@segm{0}{0}{falgout2002hypre}
-\BKM@entry{id=6,open,dest={73756273656374696F6E2E302E322E31},srcline={52}}{312E322E31204F7267616E697A6174696F6E206F6620506172616C6C656C20506172746974696F6E65642044617461}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Organization of Parallel Partitioned Data}{6}{subsection.0.2.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.1}{\ignorespaces Partitioning and local and global numberings of a 1D mesh with $N^\text  {el}_x=6$ elements partitioned to $n_x=3$ processes.\relax }}{7}{figure.1.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.1}{\ignorespaces Interacting components of the multi-scale model.\relax }}{3}{figure.1.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:1d_nodes}{{\relax 1.1}{7}{Partitioning and local and global numberings of a 1D mesh with $N^\text {el}_x=6$ elements partitioned to $n_x=3$ processes.\relax }{figure.1.1}{}}
-\newlabel{fig:1d_nodes@cref}{{[figure][1][1]\relax 1.1}{[1][7][]7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.2}{\ignorespaces Subdomains and numberings of a 2D mesh with $N^\text  {el}_x \times N^\text  {el}_y=5\times 4$ elements partitioned to $n_x\times n_y = 2 \times 3$ processes. (a)-(c) show the different numberings needed for (a) boundary condition specification, (b) identification of local non-ghost dofs (black) and local ghost dofs (yellow), and (c) identification of global dofs.\relax }}{8}{figure.1.2}}
-\newlabel{fig:dof_numbering}{{\relax 1.2}{8}{Subdomains and numberings of a 2D mesh with $N^\text {el}_x \times N^\text {el}_y=5\times 4$ elements partitioned to $n_x\times n_y = 2 \times 3$ processes. (a)-(c) show the different numberings needed for (a) boundary condition specification, (b) identification of local non-ghost dofs (black) and local ghost dofs (yellow), and (c) identification of global dofs.\relax }{figure.1.2}{}}
-\newlabel{fig:dof_numbering@cref}{{[figure][2][1]\relax 1.2}{[1][7][]8}}
-\BKM@entry{id=7,open,dest={73756273656374696F6E2E302E322E32},srcline={129}}{312E322E32204E756D626572696E6720536368656D657320666F72204E6F64657320616E642044656772656573206F662046726565646F6D}
-\newlabel{fig:1d_comm1}{{\relax 1.3a}{10}{\code {startGhostManipulation()}: Communication of values at $r_1$ to the ghost buffer at $r_0$.\relax }{subfigure.1.3.1}{}}
-\newlabel{fig:1d_comm1@cref}{{[subfigure][1][1,3]\relax 1.3a}{[1][9][]10}}
-\newlabel{sub@fig:1d_comm1}{{a}{10}{\code {startGhostManipulation()}: Communication of values at $r_1$ to the ghost buffer at $r_0$.\relax }{subfigure.1.3.1}{}}
-\newlabel{sub@fig:1d_comm1@cref}{{[subfigure][1][1,3]\relax 1.3a}{[1][9][]10}}
-\newlabel{fig:1d_comm2}{{\relax 1.3b}{10}{\code {finishGhostManipulation()}: Communication and addition of ghost values at $r_0$ to the non-ghost dofs at $r_1$.\relax }{subfigure.1.3.2}{}}
-\newlabel{fig:1d_comm2@cref}{{[subfigure][2][1,3]\relax 1.3b}{[1][9][]10}}
-\newlabel{sub@fig:1d_comm2}{{b}{10}{\code {finishGhostManipulation()}: Communication and addition of ghost values at $r_0$ to the non-ghost dofs at $r_1$.\relax }{subfigure.1.3.2}{}}
-\newlabel{sub@fig:1d_comm2@cref}{{[subfigure][2][1,3]\relax 1.3b}{[1][9][]10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.3}{\ignorespaces Communication operations for ghost values in an example with two ranks $r_0$ and $r_1$. Depicted are the vectors of local storage for non-ghost (black) and ghost values (yellow). The red arrows indicate the data transfer.\relax }}{10}{figure.1.3}}
-\newlabel{fig:1d_comm}{{\relax 1.3}{10}{Communication operations for ghost values in an example with two ranks $r_0$ and $r_1$. Depicted are the vectors of local storage for non-ghost (black) and ghost values (yellow). The red arrows indicate the data transfer.\relax }{figure.1.3}{}}
-\newlabel{fig:1d_comm@cref}{{[figure][3][1]\relax 1.3}{[1][9][]10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Numbering Schemes for Nodes and Degrees of Freedom}{10}{subsection.0.2.2}}
-\newlabel{sec:numbering_schemes_for}{{1.2.2}{10}{Numbering Schemes for Nodes and Degrees of Freedom}{subsection.0.2.2}{}}
-\newlabel{sec:numbering_schemes_for@cref}{{[subsection][2][1,2]1.2.2}{[1][10][]10}}
-\BKM@entry{id=8,open,dest={73756273656374696F6E2E302E322E33},srcline={149}}{312E322E3320506172616C6C656C2044617461205374727563747572657320696E204F70656E44694875}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Parallel Data Structures in OpenDiHu{}}{11}{subsection.0.2.3}}
-\newlabel{sec:paralel_data_structures_in_opendihu}{{1.2.3}{11}{Parallel Data Structures in \Opendihu {}}{subsection.0.2.3}{}}
-\newlabel{sec:paralel_data_structures_in_opendihu@cref}{{[subsection][3][1,2]1.2.3}{[1][11][]11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.4}{\ignorespaces Global natural numbering of nodes in a mesh with $4 \times 4 \times 4$ linear elements.\relax }}{12}{figure.1.4}}
-\newlabel{fig:dof_numbering_global_3D}{{\relax 1.4}{12}{Global natural numbering of nodes in a mesh with $4 \times 4 \times 4$ linear elements.\relax }{figure.1.4}{}}
-\newlabel{fig:dof_numbering_global_3D@cref}{{[figure][4][1]\relax 1.4}{[1][11][]12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.5}{\ignorespaces Classes in OpenDiHu{} that represent vectors in parallel execution. The abstraction layer increases from raw memory at the top to the {\relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}\lstinline [basicstyle=\relax \fontsize  {10.95}{13.6}\selectfont  \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}\ttfamily  \color {Maroon},breaklines=true,upquote=true]!FieldVariable!} at the bottom.\relax }}{12}{figure.1.5}}
-\newlabel{fig:partitioned_petsc_vec}{{\relax 1.5}{12}{Classes in \opendihu {} that represent vectors in parallel execution. The abstraction layer increases from raw memory at the top to the \code {FieldVariable} at the bottom.\relax }{figure.1.5}{}}
-\newlabel{fig:partitioned_petsc_vec@cref}{{[figure][5][1]\relax 1.5}{[1][12][]12}}
+\newlabel{fig:multi-scale-model}{{\relax 1.1}{3}{Interacting components of the multi-scale model.\relax }{figure.1.1}{}}
+\newlabel{fig:multi-scale-model@cref}{{[figure][1][1]\relax 1.1}{[1][3][]3}}
+\BKM@entry{id=2,open,dest={73656374696F6E2E302E31},srcline={30}}{312E31204D6F64656C206571756174696F6E73}
+\BKM@entry{id=3,open,dest={73756273656374696F6E2E302E312E31},srcline={32}}{312E312E312053756263656C6C756C6172206D6F64656C}
+\abx@aux@cite{Hodgkin1952}
+\abx@aux@segm{0}{0}{Hodgkin1952}
+\abx@aux@cite{hodgkin1952propagation}
+\abx@aux@segm{0}{0}{hodgkin1952propagation}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Model equations}{4}{section.0.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Subcellular model}{4}{subsection.0.1.1}}
+\newlabel{eq:subcellular_model_helper1}{{\relax 1.1}{5}{Subcellular model}{equation.0.1.1}{}}
+\newlabel{eq:subcellular_model_helper1@cref}{{[equation][1][1]\relax 1.1}{[1][5][]5}}
+\newlabel{eq:subcellular_model_helper2}{{\relax 1.2}{5}{Subcellular model}{equation.0.1.2}{}}
+\newlabel{eq:subcellular_model_helper2@cref}{{[equation][2][1]\relax 1.2}{[1][5][]5}}
+\newlabel{eq:subcellular_model_helper4}{{\relax 1.3a}{5}{Subcellular model}{equation.0.1.3a}{}}
+\newlabel{eq:subcellular_model_helper4@cref}{{[subequation][1][1,3]\relax 1.3a}{[1][5][]5}}
+\newlabel{eq:subcellular_model_helper5}{{\relax 1.3b}{5}{Subcellular model}{equation.0.1.3b}{}}
+\newlabel{eq:subcellular_model_helper5@cref}{{[subequation][2][1,3]\relax 1.3b}{[1][5][]5}}
+\newlabel{eq:subcellular_model_helper3}{{\relax 1.4}{6}{Subcellular model}{equation.0.1.4}{}}
+\newlabel{eq:subcellular_model_helper3@cref}{{[equation][4][1]\relax 1.4}{[1][5][]6}}
+\newlabel{eq:subcellular_model_helper0}{{\relax 1.5}{6}{Subcellular model}{equation.0.1.5}{}}
+\newlabel{eq:subcellular_model_helper0@cref}{{[equation][5][1]\relax 1.5}{[1][6][]6}}
 \abx@aux@cite{Shorten2007}
 \abx@aux@segm{0}{0}{Shorten2007}
-\BKM@entry{id=9,open,dest={73756273656374696F6E2E302E322E34},srcline={181}}{312E322E342044697363757373696F6E206F66205365766572616C2044657369676E204465636973696F6E73}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}Discussion of Several Design Decisions}{14}{subsection.0.2.4}}
-\BKM@entry{id=10,open,dest={73756273656374696F6E2E302E322E35},srcline={216}}{312E322E3520496D706C656D656E7465642042617369732046756E6374696F6E73}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.5}Implemented Basis Functions}{16}{subsection.0.2.5}}
-\BKM@entry{id=11,open,dest={73756273656374696F6E2E302E322E36},srcline={284}}{312E322E3620496D706C656D656E746564205479706573206F66204D6573686573}
-\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.1}{\ignorespaces Finite Element ansatz functions and resulting element shapes of hexahedral meshes in 1D, 2D and 3D. From top to bottom: Linear Lagrange, quadratic Lagrange and cubic Hermite ansatz functions.\relax }}{17}{table.caption.2}}
-\newlabel{tab:ansatz_functions_mesh}{{\relax 1.1}{17}{Finite Element ansatz functions and resulting element shapes of hexahedral meshes in 1D, 2D and 3D. From top to bottom: Linear Lagrange, quadratic Lagrange and cubic Hermite ansatz functions.\relax }{table.caption.2}{}}
-\newlabel{tab:ansatz_functions_mesh@cref}{{[table][1][1]\relax 1.1}{[1][16][]17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.6}Implemented Types of Meshes}{18}{subsection.0.2.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.6}{\ignorespaces The three implemented mesh types in OpenDiHu{}, each time for 2D linear Lagrange or Hermite ansatz functions (left) and for 2D quadratic Lagrange ansatz functions (right).\relax }}{19}{figure.1.6}}
-\newlabel{fig:meshe_types}{{\relax 1.6}{19}{The three implemented mesh types in \opendihu {}, each time for 2D linear Lagrange or Hermite ansatz functions (left) and for 2D quadratic Lagrange ansatz functions (right).\relax }{figure.1.6}{}}
-\newlabel{fig:meshe_types@cref}{{[figure][6][1]\relax 1.6}{[1][18][]19}}
-\BKM@entry{id=12,open,dest={73756273656374696F6E2E302E322E37},srcline={311}}{312E322E3720436F6D706F73697465204D6573686573}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.7}Composite Meshes}{20}{subsection.0.2.7}}
-\BKM@entry{id=13,open,dest={73656374696F6E2E302E33},srcline={360}}{312E332046696E69746520456C656D656E74204D6174726963657320616E6420426F756E6461727920436F6E646974696F6E73}
-\BKM@entry{id=14,open,dest={73756273656374696F6E2E302E332E31},srcline={365}}{312E332E312053746F72616765206F66204D61747269636573}
-\newlabel{fig:meshes_composite}{{\relax 1.7a}{22}{A composite mesh that is created from three structured meshes (different colors) and a possible subdivision for parallel partitioning (white vertical line).\relax }{subfigure.1.7.1}{}}
-\newlabel{fig:meshes_composite@cref}{{[subfigure][1][1,7]\relax 1.7a}{[1][21][]22}}
-\newlabel{sub@fig:meshes_composite}{{a}{22}{A composite mesh that is created from three structured meshes (different colors) and a possible subdivision for parallel partitioning (white vertical line).\relax }{subfigure.1.7.1}{}}
-\newlabel{sub@fig:meshes_composite@cref}{{[subfigure][1][1,7]\relax 1.7a}{[1][21][]22}}
-\newlabel{fig:dof_numbering_structured_composite}{{\relax 1.7b}{22}{Numbering scheme of dofs for a composite mesh that is created from two quadratic meshes.\relax }{subfigure.1.7.2}{}}
-\newlabel{fig:dof_numbering_structured_composite@cref}{{[subfigure][2][1,7]\relax 1.7b}{[1][21][]22}}
-\newlabel{sub@fig:dof_numbering_structured_composite}{{b}{22}{Numbering scheme of dofs for a composite mesh that is created from two quadratic meshes.\relax }{subfigure.1.7.2}{}}
-\newlabel{sub@fig:dof_numbering_structured_composite@cref}{{[subfigure][2][1,7]\relax 1.7b}{[1][21][]22}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.7}{\ignorespaces Examples for composite meshes that combine the advantages of structured and unstructured meshes.\relax }}{22}{figure.1.7}}
-\newlabel{fig:composite_meshes}{{\relax 1.7}{22}{Examples for composite meshes that combine the advantages of structured and unstructured meshes.\relax }{figure.1.7}{}}
-\newlabel{fig:composite_meshes@cref}{{[figure][7][1]\relax 1.7}{[1][21][]22}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}Finite Element Matrices and Boundary Conditions}{22}{section.0.3}}
-\newlabel{sec:fem_matrices_and_bc}{{1.3}{22}{Finite Element Matrices and Boundary Conditions}{section.0.3}{}}
-\newlabel{sec:fem_matrices_and_bc@cref}{{[section][3][1]1.3}{[1][21][]22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Storage of Matrices}{22}{subsection.0.3.1}}
-\abx@aux@segm{0}{0}{petsc-web-page}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.8}{\ignorespaces Composite mesh of the biceps muscle. Top: the two structured meshes from which the composite mesh is created, bottom: partitioning to four processes.\relax }}{23}{figure.1.8}}
-\newlabel{fig:composite_muscle_mesh0}{{\relax 1.8}{23}{Composite mesh of the biceps muscle. Top: the two structured meshes from which the composite mesh is created, bottom: partitioning to four processes.\relax }{figure.1.8}{}}
-\newlabel{fig:composite_muscle_mesh0@cref}{{[figure][8][1]\relax 1.8}{[1][21][]23}}
-\newlabel{eq:nonzero_estimates}{{\relax 1.1}{24}{Storage of Matrices}{equation.0.3.1}{}}
-\newlabel{eq:nonzero_estimates@cref}{{[equation][1][1]\relax 1.1}{[1][24][]24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.9}{\ignorespaces Solution of the Laplace equation $ \Delta \textbf  {u}= \textbf  {f}$ with prescribed values $\textbf  {u}|_\text  {bottom}=1$ and $\textbf  {u}|_\text  {top}=2.$ The mesh consists of $4\times 4\times 4$ quadratic elements and, thus, $9^3$ nodes. Left: Solution, right: Partitioning to four processes.\relax }}{25}{figure.1.9}}
-\newlabel{fig:3d_laplace}{{\relax 1.9}{25}{Solution of the Laplace equation $ \Delta \bfu = \bff $ with prescribed values $\bfu |_\text {bottom}=1$ and $\bfu |_\text {top}=2.$ The mesh consists of $4\times 4\times 4$ quadratic elements and, thus, $9^3$ nodes. Left: Solution, right: Partitioning to four processes.\relax }{figure.1.9}{}}
-\newlabel{fig:3d_laplace@cref}{{[figure][9][1]\relax 1.9}{[1][24][]25}}
-\BKM@entry{id=15,open,dest={73756273656374696F6E2E302E332E32},srcline={425}}{312E332E3220417373656D626C79206F662046696E69746520456C656D656E74204D61747269636573}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.10}{\ignorespaces Sparsity pattern, i.e., locations of non-zero entries of the $729 \times 729$ stiffness matrix $\textbf  {K}$ for the example problem in \cref  {fig:3d_laplace}. The rows for the four processes are given by different colors matching the partitioning in \cref  {fig:3d_laplace}. The processes have 144, 180, 180 and 225 local dofs.\relax }}{26}{figure.1.10}}
-\newlabel{fig:sparsity_pattern}{{\relax 1.10}{26}{Sparsity pattern, i.e., locations of non-zero entries of the $729 \times 729$ stiffness matrix $\bfK $ for the example problem in \cref {fig:3d_laplace}. The rows for the four processes are given by different colors matching the partitioning in \cref {fig:3d_laplace}. The processes have 144, 180, 180 and 225 local dofs.\relax }{figure.1.10}{}}
-\newlabel{fig:sparsity_pattern@cref}{{[figure][10][1]\relax 1.10}{[1][25][]26}}
-\zref@newlabel{mdf@pagelabel-1}{\default{1.3.1}\page{26}\abspage{26}\mdf@pagevalue{26}}
-\pgfsyspdfmark {pgfid2}{5594039}{5594039}
-\abx@aux@cite{Kretz2012}
-\abx@aux@segm{0}{0}{Kretz2012}
-\abx@aux@cite{Kretz2015}
-\abx@aux@segm{0}{0}{Kretz2015}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Assembly of Finite Element Matrices}{27}{subsection.0.3.2}}
-\newlabel{sec:assembly_of_finite_element_matrices}{{1.3.2}{27}{Assembly of Finite Element Matrices}{subsection.0.3.2}{}}
-\newlabel{sec:assembly_of_finite_element_matrices@cref}{{[subsection][2][1,3]1.3.2}{[1][26][]27}}
-\newlabel{eq:alg_assembly_m}{{\relax 1.2}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{eq:alg_assembly_m@cref}{{[equation][2][1]\relax 1.2}{[1][26][]27}}
-\newlabel{line:4.2}{{2}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.2@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.3}{{3}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.3@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.4}{{4}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.4@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.5}{{5}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.5@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.6}{{6}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.6@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.7}{{7}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.7@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.8}{{8}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.8@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.9}{{9}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.9@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.10}{{10}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.10@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.11}{{11}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.11@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\newlabel{line:4.12}{{12}{27}{Assembly of Finite Element Matrices}{equation.0.3.2}{}}
-\newlabel{line:4.12@cref}{{[subsection][2][1,3]1.3.2}{[1][27][]27}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Finite Element matrix assembly\relax }}{27}{algorithm.1}}
-\newlabel{alg:fe_matrix_assembly}{{1}{27}{Finite Element matrix assembly\relax }{algorithm.1}{}}
-\newlabel{alg:fe_matrix_assembly@cref}{{[algorithm][1][]1}{[1][27][]27}}
-\BKM@entry{id=16,open,dest={73756273656374696F6E2E302E332E33},srcline={488}}{312E332E3320506572666F726D616E6365206F662074686520416C676F726974686D20666F7220506172616C6C656C204D617472697820417373656D626C79}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Performance of the Algorithm for Parallel Matrix Assembly}{29}{subsection.0.3.3}}
-\newlabel{sec:performance_of_the_algorithm_for_pma}{{1.3.3}{29}{Performance of the Algorithm for Parallel Matrix Assembly}{subsection.0.3.3}{}}
-\newlabel{sec:performance_of_the_algorithm_for_pma@cref}{{[subsection][3][1,3]1.3.3}{[1][29][]29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.11}{\ignorespaces Runtimes of different optimizations for the algorithm to assemble the FEM stiffness matrix.\relax }}{30}{figure.1.11}}
-\newlabel{fig:matrix_runtimes}{{\relax 1.11}{30}{Runtimes of different optimizations for the algorithm to assemble the FEM stiffness matrix.\relax }{figure.1.11}{}}
-\newlabel{fig:matrix_runtimes@cref}{{[figure][11][1]\relax 1.11}{[1][30][]30}}
-\BKM@entry{id=17,open,dest={73756273656374696F6E2E302E332E34},srcline={528}}{312E332E3420417373656D626C79206F662046696E69746520456C656D656E74204D6174726963657320666F7220526567756C6172204D6573686573}
-\zref@newlabel{mdf@pagelabel-2}{\default{1.3.3}\page{31}\abspage{31}\mdf@pagevalue{31}}
-\pgfsyspdfmark {pgfid4}{4661698}{5594039}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Assembly of Finite Element Matrices for Regular Meshes}{32}{subsection.0.3.4}}
-\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.2}{\ignorespaces Stencils of the Finite Element stiffness matrix of $\IeC {\ensuremath  {\Delta }}u$ for a mesh with uniform resolution and linear ansatz functions. The stiffness matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }}{33}{table.caption.3}}
-\newlabel{tab:stencils_laplace}{{\relax 1.2}{33}{Stencils of the Finite Element stiffness matrix of $Δu$ for a mesh with uniform resolution and linear ansatz functions. The stiffness matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }{table.caption.3}{}}
-\newlabel{tab:stencils_laplace@cref}{{[table][2][1]\relax 1.2}{[1][32][]33}}
-\@writefile{lot}{\contentsline {table}{\numberline {\relax 1.3}{\ignorespaces Stencils of the Finite Element mass matrix for a mesh with uniform resolution and linear ansatz functions. The mass matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }}{33}{table.caption.4}}
-\newlabel{tab:stencils_mass_laplace}{{\relax 1.3}{33}{Stencils of the Finite Element mass matrix for a mesh with uniform resolution and linear ansatz functions. The mass matrix entries can be computed by multiplication with a mesh width dependent factor.\relax }{table.caption.4}{}}
-\newlabel{tab:stencils_mass_laplace@cref}{{[table][3][1]\relax 1.3}{[1][32][]33}}
-\BKM@entry{id=18,open,dest={73756273656374696F6E2E302E332E35},srcline={735}}{312E332E3520416C676F726974686D20666F72204469726963686C657420426F756E6461727920436F6E646974696F6E73}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Algorithm for Dirichlet Boundary Conditions}{34}{subsection.0.3.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.12}{\ignorespaces Example to illustrate ghost element transfer that is needed for handling Dirichlet boundary conditions in parallel. A mesh with Dirichlet boundary conditions on the red nodes is given in (a). The subdomains for two processes are given in (b) and (c). (c) shows a ghost element in orange that is sent from rank 0 to rank 1.\relax }}{36}{figure.1.12}}
-\newlabel{fig:dirichlet_bc_example}{{\relax 1.12}{36}{Example to illustrate ghost element transfer that is needed for handling Dirichlet boundary conditions in parallel. A mesh with Dirichlet boundary conditions on the red nodes is given in (a). The subdomains for two processes are given in (b) and (c). (c) shows a ghost element in orange that is sent from rank 0 to rank 1.\relax }{figure.1.12}{}}
-\newlabel{fig:dirichlet_bc_example@cref}{{[figure][12][1]\relax 1.12}{[1][35][]36}}
-\newlabel{LastPage}{{}{39}{}{page.39}{}}
-\xdef\lastpage@lastpage{39}
-\xdef\lastpage@lastpageHy{39}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.2}{\ignorespaces Subcellular model: Graph of the analytic solution (red) of the ordinary differential equation that is part of the activation model of ion channels for constant transmembrane voltage and initial condition $n(0)=0$, given in \cref  {eq:subcellular_model_helper0}. The variables $n_\infty $ and $\tau _n$ can be interpreted as the equilibrium value and the time constant, respectively.\relax }}{7}{figure.1.2}}
+\newlabel{fig:ode_solution}{{\relax 1.2}{7}{Subcellular model: Graph of the analytic solution (red) of the ordinary differential equation that is part of the activation model of ion channels for constant transmembrane voltage and initial condition $n(0)=0$, given in \cref {eq:subcellular_model_helper0}. The variables $n_\infty $ and $\tau _n$ can be interpreted as the equilibrium value and the time constant, respectively.\relax }{figure.1.2}{}}
+\newlabel{fig:ode_solution@cref}{{[figure][2][1]\relax 1.2}{[1][6][]7}}
+\newlabel{eq:subcellular}{{\relax 1.6}{7}{Subcellular model}{equation.0.1.6}{}}
+\newlabel{eq:subcellular@cref}{{[equation][6][1]\relax 1.6}{[1][7][]7}}
+\BKM@entry{id=4,open,dest={73756273656374696F6E2E302E312E32},srcline={127}}{312E312E32204269646F6D61696E206D6F64656C}
+\abx@aux@cite{tung1978bi}
+\abx@aux@segm{0}{0}{tung1978bi}
+\abx@aux@cite{peskoff1979electric}
+\abx@aux@segm{0}{0}{peskoff1979electric}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Bidomain model}{8}{subsection.0.1.2}}
+\newlabel{sec:bidomain_model}{{1.1.2}{8}{Bidomain model}{subsection.0.1.2}{}}
+\newlabel{sec:bidomain_model@cref}{{[subsection][2][1,1]1.1.2}{[1][8][]8}}
+\newlabel{eq:bidomain_helper1}{{\relax 1.7}{8}{Bidomain model}{equation.0.1.7}{}}
+\newlabel{eq:bidomain_helper1@cref}{{[equation][7][1]\relax 1.7}{[1][8][]8}}
+\newlabel{eq:bidomain_helper2}{{\relax 1.8}{8}{Bidomain model}{equation.0.1.8}{}}
+\newlabel{eq:bidomain_helper2@cref}{{[equation][8][1]\relax 1.8}{[1][8][]8}}
+\BKM@entry{id=5,open,dest={73756273656374696F6E2E302E312E33},srcline={167}}{312E312E33204D6F6E6F646F6D61696E206D6F64656C}
+\newlabel{eq:bidomain1}{{\relax 1.9a}{9}{Bidomain model}{equation.0.1.9a}{}}
+\newlabel{eq:bidomain1@cref}{{[subequation][1][1,9]\relax 1.9a}{[1][9][]9}}
+\newlabel{eq:bidomain2}{{\relax 1.9b}{9}{Bidomain model}{equation.0.1.9b}{}}
+\newlabel{eq:bidomain2@cref}{{[subequation][2][1,9]\relax 1.9b}{[1][9][]9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Monodomain model}{9}{subsection.0.1.3}}
+\newlabel{sec:monodomain_model}{{1.1.3}{9}{Monodomain model}{subsection.0.1.3}{}}
+\newlabel{sec:monodomain_model@cref}{{[subsection][3][1,1]1.1.3}{[1][9][]9}}
+\newlabel{eq:monodomain_helper1}{{\relax 1.10}{9}{Monodomain model}{equation.0.1.10}{}}
+\newlabel{eq:monodomain_helper1@cref}{{[equation][10][1]\relax 1.10}{[1][9][]9}}
+\abx@aux@segm{0}{0}{Mordhorst2015}
+\newlabel{eq:monodomain}{{\relax 1.11}{10}{Monodomain model}{equation.0.1.11}{}}
+\newlabel{eq:monodomain@cref}{{[equation][11][1]\relax 1.11}{[1][10][]10}}
+\newlabel{eq:monodomain_bc}{{\relax 1.12}{10}{Monodomain model}{equation.0.1.12}{}}
+\newlabel{eq:monodomain_bc@cref}{{[subequation][12][1]\relax 1.12}{[1][10][]10}}
+\newlabel{eq:monodomain_bc1}{{\relax 1.12a}{10}{Monodomain model}{equation.0.1.12a}{}}
+\newlabel{eq:monodomain_bc1@cref}{{[subequation][1][1,12]\relax 1.12a}{[1][10][]10}}
+\newlabel{eq:monodomain_bc2}{{\relax 1.12b}{10}{Monodomain model}{equation.0.1.12b}{}}
+\newlabel{eq:monodomain_bc2@cref}{{[subequation][2][1,12]\relax 1.12b}{[1][10][]10}}
+\newlabel{eq:monodomain_bc3}{{\relax 1.12c}{10}{Monodomain model}{equation.0.1.12c}{}}
+\newlabel{eq:monodomain_bc3@cref}{{[subequation][3][1,12]\relax 1.12c}{[1][10][]10}}
+\BKM@entry{id=6,open,dest={73756273656374696F6E2E302E312E34},srcline={220}}{312E312E34204D756C7469646F6D61696E206D6F64656C}
+\abx@aux@segm{0}{0}{Klotz2020}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}Multidomain model}{11}{subsection.0.1.4}}
+\newlabel{sec:multidomain_model}{{1.1.4}{11}{Multidomain model}{subsection.0.1.4}{}}
+\newlabel{sec:multidomain_model@cref}{{[subsection][4][1,1]1.1.4}{[1][11][]11}}
+\newlabel{eq:multidomain_helper1}{{\relax 1.13}{11}{Multidomain model}{equation.0.1.13}{}}
+\newlabel{eq:multidomain_helper1@cref}{{[equation][13][1]\relax 1.13}{[1][11][]11}}
+\BKM@entry{id=7,open,dest={73756273656374696F6E2E302E312E35},srcline={262}}{312E312E3520456C65637472696320436F6E64756374696F6E20696E2074686520426F647920446F6D61696E}
+\newlabel{eq:multidomain1}{{\relax 1.14}{12}{Multidomain model}{equation.0.1.14}{}}
+\newlabel{eq:multidomain1@cref}{{[equation][14][1]\relax 1.14}{[1][11][]12}}
+\newlabel{eq:multidomain2}{{\relax 1.15}{12}{Multidomain model}{equation.0.1.15}{}}
+\newlabel{eq:multidomain2@cref}{{[equation][15][1]\relax 1.15}{[1][12][]12}}
+\newlabel{eq:multidomain_bc}{{\relax 1.16}{12}{Multidomain model}{equation.0.1.16}{}}
+\newlabel{eq:multidomain_bc@cref}{{[subequation][16][1]\relax 1.16}{[1][12][]12}}
+\newlabel{eq:multidomain_bc1}{{\relax 1.16a}{12}{Multidomain model}{equation.0.1.16a}{}}
+\newlabel{eq:multidomain_bc1@cref}{{[subequation][1][1,16]\relax 1.16a}{[1][12][]12}}
+\newlabel{eq:multidomain_bc2}{{\relax 1.16b}{12}{Multidomain model}{equation.0.1.16b}{}}
+\newlabel{eq:multidomain_bc2@cref}{{[subequation][2][1,16]\relax 1.16b}{[1][12][]12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.5}Electric Conduction in the Body Domain}{12}{subsection.0.1.5}}
+\abx@aux@segm{0}{0}{Mordhorst2015}
+\abx@aux@segm{0}{0}{Mordhorst2015}
+\abx@aux@segm{0}{0}{Klotz2020}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.3}{\ignorespaces Computational domains for simulations of surface EMG. The body domain $\Omega _B$ and the muscle domain $\Omega _M$ share a part of their boundary, $\Gamma _M$, which has a normal vector $\textbf  {n}_m$. The outer boundary is composed of $\Gamma _B^\text  {out}$ and $\Gamma _M^\text  {out}$ and has the outward normal vector $\textbf  {n}_b$. \relax }}{13}{figure.1.3}}
+\newlabel{fig:body_domain_visualization}{{\relax 1.3}{13}{Computational domains for simulations of surface EMG. The body domain $\Omega _B$ and the muscle domain $\Omega _M$ share a part of their boundary, $\Gamma _M$, which has a normal vector $\bfn _m$. The outer boundary is composed of $\Gamma _B^\text {out}$ and $\Gamma _M^\text {out}$ and has the outward normal vector $\bfn _b$. \relax }{figure.1.3}{}}
+\newlabel{fig:body_domain_visualization@cref}{{[figure][3][1]\relax 1.3}{[1][13][]13}}
+\newlabel{eq:body}{{\relax 1.17}{13}{Electric Conduction in the Body Domain}{equation.0.1.17}{}}
+\newlabel{eq:body@cref}{{[equation][17][1]\relax 1.17}{[1][13][]13}}
+\newlabel{eq:body_domain_coupling}{{\relax 1.18}{13}{Electric Conduction in the Body Domain}{equation.0.1.18}{}}
+\newlabel{eq:body_domain_coupling@cref}{{[subequation][18][1]\relax 1.18}{[1][13][]13}}
+\newlabel{eq:body_domain_bc1}{{\relax 1.18a}{13}{Electric Conduction in the Body Domain}{equation.0.1.18a}{}}
+\newlabel{eq:body_domain_bc1@cref}{{[subequation][1][1,18]\relax 1.18a}{[1][13][]13}}
+\newlabel{eq:body_domain_bc2}{{\relax 1.18b}{13}{Electric Conduction in the Body Domain}{equation.0.1.18b}{}}
+\newlabel{eq:body_domain_bc2@cref}{{[subequation][2][1,18]\relax 1.18b}{[1][13][]13}}
+\newlabel{eq:body_domain_bc3}{{\relax 1.19}{13}{Electric Conduction in the Body Domain}{equation.0.1.19}{}}
+\newlabel{eq:body_domain_bc3@cref}{{[equation][19][1]\relax 1.19}{[1][13][]13}}
+\BKM@entry{id=8,open,dest={73756273656374696F6E2E302E312E36},srcline={313}}{312E312E36204D6F64656C206F66204D7573636C6520436F6E7472616374696F6E}
+\abx@aux@cite{holzapfel2000nonlinear}
+\abx@aux@segm{0}{0}{holzapfel2000nonlinear}
+\abx@aux@cite{marsden1994mathematical}
+\abx@aux@segm{0}{0}{marsden1994mathematical}
+\abx@aux@cite{zienkiewicz1977finite}
+\abx@aux@segm{0}{0}{zienkiewicz1977finite}
+\abx@aux@cite{SUSSMAN1987357}
+\abx@aux@segm{0}{0}{SUSSMAN1987357}
+\abx@aux@cite{zienkiewicz2005finite}
+\abx@aux@segm{0}{0}{zienkiewicz2005finite}
+\newlabel{eq:monodomain_fat_bc1}{{\relax 1.20a}{14}{Electric Conduction in the Body Domain}{equation.0.1.20a}{}}
+\newlabel{eq:monodomain_fat_bc1@cref}{{[subequation][1][1,20]\relax 1.20a}{[1][13][]14}}
+\newlabel{eq:monodomain_fat_bc2}{{\relax 1.20b}{14}{Electric Conduction in the Body Domain}{equation.0.1.20b}{}}
+\newlabel{eq:monodomain_fat_bc2@cref}{{[subequation][2][1,20]\relax 1.20b}{[1][13][]14}}
+\newlabel{eq:multidomain_fat_bc1}{{\relax 1.21a}{14}{Electric Conduction in the Body Domain}{equation.0.1.21a}{}}
+\newlabel{eq:multidomain_fat_bc1@cref}{{[subequation][1][1,21]\relax 1.21a}{[1][14][]14}}
+\newlabel{eq:multidomain_fat_bc2}{{\relax 1.21b}{14}{Electric Conduction in the Body Domain}{equation.0.1.21b}{}}
+\newlabel{eq:multidomain_fat_bc2@cref}{{[subequation][2][1,21]\relax 1.21b}{[1][14][]14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.6}Model of Muscle Contraction}{14}{subsection.0.1.6}}
+\newlabel{sec:model_muscle_contraction}{{1.1.6}{14}{Model of Muscle Contraction}{subsection.0.1.6}{}}
+\newlabel{sec:model_muscle_contraction@cref}{{[subsection][6][1,1]1.1.6}{[1][14][]14}}
+\newlabel{eq:contraction_helper1}{{\relax 1.22}{15}{Model of Muscle Contraction}{equation.0.1.22}{}}
+\newlabel{eq:contraction_helper1@cref}{{[equation][22][1]\relax 1.22}{[1][15][]15}}
+\newlabel{eq:assumption_1_local}{{\relax 1.23}{15}{Model of Muscle Contraction}{equation.0.1.23}{}}
+\newlabel{eq:assumption_1_local@cref}{{[equation][23][1]\relax 1.23}{[1][15][]15}}
+\newlabel{eq:assumption_2_local}{{\relax 1.24}{15}{Model of Muscle Contraction}{equation.0.1.24}{}}
+\newlabel{eq:assumption_2_local@cref}{{[equation][24][1]\relax 1.24}{[1][15][]15}}
+\abx@aux@segm{0}{0}{Heidlauf2013}
+\abx@aux@segm{0}{0}{Heidlauf2013}
+\abx@aux@segm{0}{0}{Heidlauf2013}
+\newlabel{eq:mooney_rivlin}{{\relax 1.25}{16}{Model of Muscle Contraction}{equation.0.1.25}{}}
+\newlabel{eq:mooney_rivlin@cref}{{[equation][25][1]\relax 1.25}{[1][16][]16}}
+\abx@aux@cite{Carniel2017}
+\abx@aux@segm{0}{0}{Carniel2017}
+\abx@aux@segm{0}{0}{Roehrle2012}
+\abx@aux@segm{0}{0}{Heidlauf2013}
+\newlabel{eq:contraction}{{\relax 1.26}{17}{Model of Muscle Contraction}{equation.0.1.26}{}}
+\newlabel{eq:contraction@cref}{{[subequation][26][1]\relax 1.26}{[1][17][]17}}
+\newlabel{eq:contraction_1}{{\relax 1.26a}{17}{Model of Muscle Contraction}{equation.0.1.26a}{}}
+\newlabel{eq:contraction_1@cref}{{[subequation][1][1,26]\relax 1.26a}{[1][17][]17}}
+\newlabel{eq:contraction_2}{{\relax 1.26b}{17}{Model of Muscle Contraction}{equation.0.1.26b}{}}
+\newlabel{eq:contraction_2@cref}{{[subequation][2][1,26]\relax 1.26b}{[1][17][]17}}
+\newlabel{eq:contraction_3}{{\relax 1.26c}{17}{Model of Muscle Contraction}{equation.0.1.26c}{}}
+\newlabel{eq:contraction_3@cref}{{[subequation][3][1,26]\relax 1.26c}{[1][17][]17}}
+\newlabel{eq:contraction_4}{{\relax 1.26d}{17}{Model of Muscle Contraction}{equation.0.1.26d}{}}
+\newlabel{eq:contraction_4@cref}{{[subequation][4][1,26]\relax 1.26d}{[1][17][]17}}
+\BKM@entry{id=9,open,dest={73656374696F6E2E302E32},srcline={432}}{312E322044697363726574697A6174696F6E}
+\BKM@entry{id=10,open,dest={73756273656374696F6E2E302E322E31},srcline={437}}{312E322E312044697363726574697A6174696F6E206F6620746865204D6F6E6F646F6D61696E206D6F64656C}
+\abx@aux@cite{Godunov2003}
+\abx@aux@segm{0}{0}{Godunov2003}
+\abx@aux@segm{0}{0}{Roehrle2012}
+\abx@aux@cite{Strang1968}
+\abx@aux@segm{0}{0}{Strang1968}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Discretization}{18}{section.0.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Discretization of the Monodomain model}{18}{subsection.0.2.1}}
+\newlabel{sec:discretization_monodomain}{{1.2.1}{18}{Discretization of the Monodomain model}{subsection.0.2.1}{}}
+\newlabel{sec:discretization_monodomain@cref}{{[subsection][1][1,2]1.2.1}{[1][18][]18}}
+\newlabel{eq:monodomain_godunov}{{\relax 1.27}{19}{Discretization of the Monodomain model}{equation.0.2.27}{}}
+\newlabel{eq:monodomain_godunov@cref}{{[subequation][27][1]\relax 1.27}{[1][19][]19}}
+\newlabel{eq:monodomain_strang}{{\relax 1.28}{19}{Discretization of the Monodomain model}{equation.0.2.28}{}}
+\newlabel{eq:monodomain_strang@cref}{{[subequation][28][1]\relax 1.28}{[1][19][]19}}
+\abx@aux@cite{CrankNicolson1947}
+\abx@aux@segm{0}{0}{CrankNicolson1947}
+\newlabel{fig:godunov_splitting}{{\relax 1.4a}{20}{The Godunov splitting uses two substeps: 0D, 1D.\relax }{subfigure.1.4.1}{}}
+\newlabel{fig:godunov_splitting@cref}{{[subfigure][1][1,4]\relax 1.4a}{[1][19][]20}}
+\newlabel{sub@fig:godunov_splitting}{{a}{20}{The Godunov splitting uses two substeps: 0D, 1D.\relax }{subfigure.1.4.1}{}}
+\newlabel{sub@fig:godunov_splitting@cref}{{[subfigure][1][1,4]\relax 1.4a}{[1][19][]20}}
+\newlabel{fig:strang_splitting}{{\relax 1.4b}{20}{The Strang splitting uses three substeps: 0D, 1D, 0D.\relax }{subfigure.1.4.2}{}}
+\newlabel{fig:strang_splitting@cref}{{[subfigure][2][1,4]\relax 1.4b}{[1][19][]20}}
+\newlabel{sub@fig:strang_splitting}{{b}{20}{The Strang splitting uses three substeps: 0D, 1D, 0D.\relax }{subfigure.1.4.2}{}}
+\newlabel{sub@fig:strang_splitting@cref}{{[subfigure][2][1,4]\relax 1.4b}{[1][19][]20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.4}{\ignorespaces Godunov and Strang splitting schemes that are used to solve the monodomain equation. The equation is split into a reaction part (0D,yellow) and a diffusion part (1D,red), which are solved alternatingly. The visualization shows one splitting timestep, which starts at the left circle and is completed at the right circle.\relax }}{20}{figure.1.4}}
+\newlabel{fig:splitting_schemes}{{\relax 1.4}{20}{Godunov and Strang splitting schemes that are used to solve the monodomain equation. The equation is split into a reaction part (0D,yellow) and a diffusion part (1D,red), which are solved alternatingly. The visualization shows one splitting timestep, which starts at the left circle and is completed at the right circle.\relax }{figure.1.4}{}}
+\newlabel{fig:splitting_schemes@cref}{{[figure][4][1]\relax 1.4}{[1][19][]20}}
+\newlabel{eq:explicit_euler}{{\relax 1.29a}{20}{Discretization of the Monodomain model}{equation.0.2.29a}{}}
+\newlabel{eq:explicit_euler@cref}{{[subequation][1][1,29]\relax 1.29a}{[1][19][]20}}
+\newlabel{eq:heun}{{\relax 1.29b}{20}{Discretization of the Monodomain model}{equation.0.2.29b}{}}
+\newlabel{eq:heun@cref}{{[subequation][2][1,29]\relax 1.29b}{[1][19][]20}}
+\newlabel{eq:implicit_euler}{{\relax 1.29c}{20}{Discretization of the Monodomain model}{equation.0.2.29c}{}}
+\newlabel{eq:implicit_euler@cref}{{[subequation][3][1,29]\relax 1.29c}{[1][19][]20}}
+\newlabel{eq:crank_nicolson}{{\relax 1.29d}{20}{Discretization of the Monodomain model}{equation.0.2.29d}{}}
+\newlabel{eq:crank_nicolson@cref}{{[subequation][4][1,29]\relax 1.29d}{[1][19][]20}}
+\BKM@entry{id=11,open,dest={73756273656374696F6E2E302E322E32},srcline={540}}{312E322E322044697363726574697A6174696F6E206F6620446966667573696F6E20616E64204C61706C616365204571756174696F6E73}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Discretization of Diffusion and Laplace Equations}{21}{subsection.0.2.2}}
+\newlabel{sec:discretization_diffusion}{{1.2.2}{21}{Discretization of Diffusion and Laplace Equations}{subsection.0.2.2}{}}
+\newlabel{sec:discretization_diffusion@cref}{{[subsection][2][1,2]1.2.2}{[1][21][]21}}
+\newlabel{eq:diffusion_helper1}{{\relax 1.30}{22}{Discretization of Diffusion and Laplace Equations}{equation.0.2.30}{}}
+\newlabel{eq:diffusion_helper1@cref}{{[equation][30][1]\relax 1.30}{[1][21][]22}}
+\newlabel{eq:diffusion_matrices}{{\relax 1.31}{22}{Discretization of Diffusion and Laplace Equations}{equation.0.2.31}{}}
+\newlabel{eq:diffusion_matrices@cref}{{[equation][31][1]\relax 1.31}{[1][22][]22}}
+\newlabel{eq:diffusion_helper2}{{\relax 1.32}{22}{Discretization of Diffusion and Laplace Equations}{equation.0.2.32}{}}
+\newlabel{eq:diffusion_helper2@cref}{{[equation][32][1]\relax 1.32}{[1][22][]22}}
+\BKM@entry{id=12,open,dest={73756273656374696F6E2E302E322E33},srcline={615}}{312E322E33205573696E67204D617373204C756D70696E6720666F7220496D706C696369742054696D657374657070696E67}
+\newlabel{eq:definition_boundary_matrix}{{\relax 1.33}{23}{Discretization of Diffusion and Laplace Equations}{equation.0.2.33}{}}
+\newlabel{eq:definition_boundary_matrix@cref}{{[equation][33][1]\relax 1.33}{[1][22][]23}}
+\newlabel{eq:boundary_relation}{{\relax 1.34}{23}{Discretization of Diffusion and Laplace Equations}{equation.0.2.34}{}}
+\newlabel{eq:boundary_relation@cref}{{[equation][34][1]\relax 1.34}{[1][23][]23}}
+\newlabel{eq:discretization_laplace}{{\relax 1.35}{23}{Discretization of Diffusion and Laplace Equations}{equation.0.2.35}{}}
+\newlabel{eq:discretization_laplace@cref}{{[equation][35][1]\relax 1.35}{[1][23][]23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Using Mass Lumping for Implicit Timestepping}{23}{subsection.0.2.3}}
+\newlabel{sec:mass_lumping}{{1.2.3}{23}{Using Mass Lumping for Implicit Timestepping}{subsection.0.2.3}{}}
+\newlabel{sec:mass_lumping@cref}{{[subsection][3][1,2]1.2.3}{[1][23][]23}}
+\newlabel{eq:lumping_crank_nicolson}{{\relax 1.36}{23}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.36}{}}
+\newlabel{eq:lumping_crank_nicolson@cref}{{[subequation][36][1]\relax 1.36}{[1][23][]23}}
+\newlabel{eq:lumping_crank_nicolson_1}{{\relax 1.36a}{23}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.36a}{}}
+\newlabel{eq:lumping_crank_nicolson_1@cref}{{[subequation][1][1,36]\relax 1.36a}{[1][23][]23}}
+\newlabel{eq:lumping_crank_nicolson_2}{{\relax 1.36b}{23}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.36b}{}}
+\newlabel{eq:lumping_crank_nicolson_2@cref}{{[subequation][2][1,36]\relax 1.36b}{[1][23][]23}}
+\abx@aux@cite{Hinton1976}
+\abx@aux@segm{0}{0}{Hinton1976}
+\BKM@entry{id=13,open,dest={73756273656374696F6E2E302E322E34},srcline={635}}{312E322E342044697363726574697A6174696F6E206F6620746865204D756C7469646F6D61696E204D6F64656C}
+\newlabel{eq:lumping_implicit_euler}{{\relax 1.37}{24}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.37}{}}
+\newlabel{eq:lumping_implicit_euler@cref}{{[subequation][37][1]\relax 1.37}{[1][23][]24}}
+\newlabel{eq:lumping_implicit_euler_1}{{\relax 1.37a}{24}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.37a}{}}
+\newlabel{eq:lumping_implicit_euler_1@cref}{{[subequation][1][1,37]\relax 1.37a}{[1][23][]24}}
+\newlabel{eq:lumping_implicit_euler_2}{{\relax 1.37b}{24}{Using Mass Lumping for Implicit Timestepping}{equation.0.2.37b}{}}
+\newlabel{eq:lumping_implicit_euler_2@cref}{{[subequation][2][1,37]\relax 1.37b}{[1][23][]24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}Discretization of the Multidomain Model}{24}{subsection.0.2.4}}
+\newlabel{sec:discretization_multidomain}{{1.2.4}{24}{Discretization of the Multidomain Model}{subsection.0.2.4}{}}
+\newlabel{sec:discretization_multidomain@cref}{{[subsection][4][1,2]1.2.4}{[1][24][]24}}
+\newlabel{eq:multidomain_discretization_helper_multidomain1}{{\relax 1.38}{24}{Discretization of the Multidomain Model}{equation.0.2.38}{}}
+\newlabel{eq:multidomain_discretization_helper_multidomain1@cref}{{[equation][38][1]\relax 1.38}{[1][24][]24}}
+\newlabel{eq:multidomain_discretization_helper_multidomain2}{{\relax 1.39}{25}{Discretization of the Multidomain Model}{equation.0.2.39}{}}
+\newlabel{eq:multidomain_discretization_helper_multidomain2@cref}{{[equation][39][1]\relax 1.39}{[1][25][]25}}
+\newlabel{eq:multidomain_discretization_helper_multidomain3}{{\relax 1.40}{25}{Discretization of the Multidomain Model}{equation.0.2.40}{}}
+\newlabel{eq:multidomain_discretization_helper_multidomain3@cref}{{[subequation][40][1]\relax 1.40}{[1][25][]25}}
+\newlabel{eq:multidomain_discretization_helper1}{{\relax 1.41}{25}{Discretization of the Multidomain Model}{equation.0.2.41}{}}
+\newlabel{eq:multidomain_discretization_helper1@cref}{{[equation][41][1]\relax 1.41}{[1][25][]25}}
+\newlabel{eq:multidomain_discretization_helper2}{{\relax 1.42}{25}{Discretization of the Multidomain Model}{equation.0.2.42}{}}
+\newlabel{eq:multidomain_discretization_helper2@cref}{{[equation][42][1]\relax 1.42}{[1][25][]25}}
+\newlabel{eq:definition_q}{{\relax 1.43}{25}{Discretization of the Multidomain Model}{equation.0.2.43}{}}
+\newlabel{eq:definition_q@cref}{{[equation][43][1]\relax 1.43}{[1][25][]25}}
+\newlabel{eq:multidomain_discretization_helper3}{{\relax 1.44}{26}{Discretization of the Multidomain Model}{equation.0.2.44}{}}
+\newlabel{eq:multidomain_discretization_helper3@cref}{{[equation][44][1]\relax 1.44}{[1][25][]26}}
+\newlabel{eq:multidomain_discretization_helper4}{{\relax 1.45}{26}{Discretization of the Multidomain Model}{equation.0.2.45}{}}
+\newlabel{eq:multidomain_discretization_helper4@cref}{{[equation][45][1]\relax 1.45}{[1][26][]26}}
+\newlabel{eq:multidomain_discretization1}{{\relax 1.46}{26}{Discretization of the Multidomain Model}{equation.0.2.46}{}}
+\newlabel{eq:multidomain_discretization1@cref}{{[equation][46][1]\relax 1.46}{[1][26][]26}}
+\BKM@entry{id=14,open,dest={73756273656374696F6E2E302E322E35},srcline={726}}{312E322E352044697363726574697A6174696F6E206F6620746865204D756C7469646F6D61696E204D6F64656C205769746820426F647920446F6D61696E}
+\newlabel{eq:multidomain_discretization2}{{\relax 1.47}{27}{Discretization of the Multidomain Model}{equation.0.2.47}{}}
+\newlabel{eq:multidomain_discretization2@cref}{{[equation][47][1]\relax 1.47}{[1][26][]27}}
+\newlabel{eq:multidomain_discretization3}{{\relax 1.48}{27}{Discretization of the Multidomain Model}{equation.0.2.48}{}}
+\newlabel{eq:multidomain_discretization3@cref}{{[equation][48][1]\relax 1.48}{[1][27][]27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.5}Discretization of the Multidomain Model With Body Domain}{27}{subsection.0.2.5}}
+\newlabel{eq:discretized_body}{{\relax 1.49}{27}{Discretization of the Multidomain Model With Body Domain}{equation.0.2.49}{}}
+\newlabel{eq:discretized_body@cref}{{[equation][49][1]\relax 1.49}{[1][27][]27}}
+\newlabel{eq:discretized_multidomain_body}{{\relax 1.50}{28}{Discretization of the Multidomain Model With Body Domain}{equation.0.2.50}{}}
+\newlabel{eq:discretized_multidomain_body@cref}{{[equation][50][1]\relax 1.50}{[1][27][]28}}
+\newlabel{eq:discretized_multidomain_body2}{{\relax 1.51}{29}{Discretization of the Multidomain Model With Body Domain}{equation.0.2.51}{}}
+\newlabel{eq:discretized_multidomain_body2@cref}{{[equation][51][1]\relax 1.51}{[1][29][]29}}
+\BKM@entry{id=15,open,dest={73756273656374696F6E2E302E322E36},srcline={821}}{312E322E362053756D6D617279206F6620446F6D61696E7320616E64204D6573686573}
+\BKM@entry{id=16,open,dest={73656374696F6E2E302E33},srcline={833}}{312E332044697363726574697A6174696F6E20616E6420536F6C7574696F6E206F662074686520536F6C6964204D656368616E696373204D6F64656C}
+\abx@aux@segm{0}{0}{holzapfel2000nonlinear}
+\abx@aux@segm{0}{0}{zienkiewicz1977finite}
+\abx@aux@segm{0}{0}{zienkiewicz2005finite}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.6}Summary of Domains and Meshes}{30}{subsection.0.2.6}}
+\BKM@entry{id=17,open,dest={73756273656374696F6E2E302E332E31},srcline={837}}{312E332E312047656F6D6574726963204465736372697074696F6E}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Discretization and Solution of the Solid Mechanics Model}{31}{section.0.3}}
+\newlabel{sec:discretization_mechanics}{{1.3}{31}{Discretization and Solution of the Solid Mechanics Model}{section.0.3}{}}
+\newlabel{sec:discretization_mechanics@cref}{{[section][3][1]1.3}{[1][30][]31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Geometric Description}{31}{subsection.0.3.1}}
+\newlabel{sec:geometric_description}{{1.3.1}{31}{Geometric Description}{subsection.0.3.1}{}}
+\newlabel{sec:geometric_description@cref}{{[subsection][1][1,3]1.3.1}{[1][31][]31}}
+\newlabel{eq:solid1}{{\relax 1.52}{31}{Geometric Description}{equation.0.3.52}{}}
+\newlabel{eq:solid1@cref}{{[equation][52][1]\relax 1.52}{[1][31][]31}}
+\newlabel{eq:geometry_maps}{{\relax 1.53}{32}{Geometric Description}{equation.0.3.53}{}}
+\newlabel{eq:geometry_maps@cref}{{[subequation][53][1]\relax 1.53}{[1][31][]32}}
+\newlabel{eq:tangent_map}{{\relax 1.53a}{32}{Geometric Description}{equation.0.3.53a}{}}
+\newlabel{eq:tangent_map@cref}{{[subequation][1][1,53]\relax 1.53a}{[1][32][]32}}
+\newlabel{eq:normal_map}{{\relax 1.53b}{32}{Geometric Description}{equation.0.3.53b}{}}
+\newlabel{eq:normal_map@cref}{{[subequation][2][1,53]\relax 1.53b}{[1][32][]32}}
+\newlabel{eq:volume_map}{{\relax 1.53c}{32}{Geometric Description}{equation.0.3.53c}{}}
+\newlabel{eq:volume_map@cref}{{[subequation][3][1,53]\relax 1.53c}{[1][32][]32}}
+\newlabel{eq:green_lagrange_u}{{\relax 1.54}{32}{Geometric Description}{equation.0.3.54}{}}
+\newlabel{eq:green_lagrange_u@cref}{{[equation][54][1]\relax 1.54}{[1][32][]32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.5}{\ignorespaces Vector spaces and variables used in the geometric description for the solid mechanics model. The left side shows the reference domain with tangent and co-tangent space of point $\textbf  {X}$. The right side shows these space for the current domain and a point $\textbf  {x}$. The maps $\chi _t$, $\textbf  {F}$ and $\textbf  {F}^{-\top }$ map tangents and normals between the configurations.\relax }}{33}{figure.1.5}}
+\newlabel{fig:geometric_quantities}{{\relax 1.5}{33}{Vector spaces and variables used in the geometric description for the solid mechanics model. The left side shows the reference domain with tangent and co-tangent space of point $\bfX $. The right side shows these space for the current domain and a point $\bfx $. The maps $\chi _t$, $\bfF $ and $\bfF ^{-\top }$ map tangents and normals between the configurations.\relax }{figure.1.5}{}}
+\newlabel{fig:geometric_quantities@cref}{{[figure][5][1]\relax 1.5}{[1][32][]33}}
+\BKM@entry{id=18,open,dest={73756273656374696F6E2E302E332E32},srcline={924}}{312E332E322041204C696E656172697A6564204D6F64656C20617320616E204578616D706C617279204465736372697074696F6E206F6620536F6C6964204D656368616E696373}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.6}{\ignorespaces Stress tensors and geometric maps that can be used together in a solid mechanics formulation. The right Cauchy-Green tensor $\textbf  {C}$ and the second Piola-Kirchhoff stress $\textbf  {S}$ are dual Eulerian tensors and map between tangent space $T_\textbf  {X}\Omega _0$ and co-tangent space $T^\ast _\textbf  {X}\Omega _0$ in the reference domain. The deformation gradient $\textbf  {F}$ and the first Piola-Kirchhoff stress $\textbf  {P}$ are dual two-point tensors mapping from reference to current configuration. The Eulerian metric $\textbf  {g}$ which is the identity in cartesian coordinates and the Kirchhoff stress $J\tmspace  +\thinmuskip {.1667em}\boldsymbol  {\sigma }$ (where $\boldsymbol  {\sigma }$ is the Cauchy stress) are the dual objects in the Eulerian setting. All three pairs of dual tensors are linked together by transformations such as pull-back and push-forward.\relax }}{34}{figure.1.6}}
+\newlabel{fig:stress_tensors}{{\relax 1.6}{34}{Stress tensors and geometric maps that can be used together in a solid mechanics formulation. The right Cauchy-Green tensor $\bfC $ and the second Piola-Kirchhoff stress $\bfS $ are dual Eulerian tensors and map between tangent space $T_\bfX \Omega _0$ and co-tangent space $T^\ast _\bfX \Omega _0$ in the reference domain. The deformation gradient $\bfF $ and the first Piola-Kirchhoff stress $\bfP $ are dual two-point tensors mapping from reference to current configuration. The Eulerian metric $\bfg $ which is the identity in cartesian coordinates and the Kirchhoff stress $J\,\bfsigma $ (where $\bfsigma $ is the Cauchy stress) are the dual objects in the Eulerian setting. All three pairs of dual tensors are linked together by transformations such as pull-back and push-forward.\relax }{figure.1.6}{}}
+\newlabel{fig:stress_tensors@cref}{{[figure][6][1]\relax 1.6}{[1][34][]34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 1.7}{\ignorespaces The three relations between various quantities that compose the solid mechanics model: Equilibrium links traction and body forces $\textbf  {T}$ and $\textbf  {B}$ to the stresses $\textbf  {S}$. A material model connects them to strains $\textbf  {E}$. The kinematic relations yield the resulting displacement field $\textbf  {u}$. Note that all quantities in this diagram are given in Lagrangian formulation.\relax }}{35}{figure.1.7}}
+\newlabel{fig:tonti_diagram}{{\relax 1.7}{35}{The three relations between various quantities that compose the solid mechanics model: Equilibrium links traction and body forces $\bfT $ and $\bfB $ to the stresses $\bfS $. A material model connects them to strains $\bfE $. The kinematic relations yield the resulting displacement field $\bfu $. Note that all quantities in this diagram are given in Lagrangian formulation.\relax }{figure.1.7}{}}
+\newlabel{fig:tonti_diagram@cref}{{[figure][7][1]\relax 1.7}{[1][35][]35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}A Linearized Model as an Examplary Description of Solid Mechanics}{35}{subsection.0.3.2}}
+\newlabel{eq:linearized_helper1}{{\relax 1.55}{36}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.55}{}}
+\newlabel{eq:linearized_helper1@cref}{{[equation][55][1]\relax 1.55}{[1][36][]36}}
+\newlabel{eq:linearized_helper2}{{\relax 1.57}{36}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.57}{}}
+\newlabel{eq:linearized_helper2@cref}{{[equation][57][1]\relax 1.57}{[1][36][]36}}
+\newlabel{eq:symmetries}{{\relax 1.58}{36}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.58}{}}
+\newlabel{eq:symmetries@cref}{{[subequation][58][1]\relax 1.58}{[1][36][]36}}
+\BKM@entry{id=19,open,dest={73756273656374696F6E2E302E332E33},srcline={1008}}{312E332E33204D6174657269616C204D6F64656C696E67}
+\newlabel{eq:linearized_helper3}{{\relax 1.59}{37}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.59}{}}
+\newlabel{eq:linearized_helper3@cref}{{[equation][59][1]\relax 1.59}{[1][37][]37}}
+\newlabel{eq:linearized_helper4}{{\relax 1.60}{37}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.60}{}}
+\newlabel{eq:linearized_helper4@cref}{{[equation][60][1]\relax 1.60}{[1][37][]37}}
+\newlabel{eq:linearized_helper5}{{\relax 1.61}{37}{A Linearized Model as an Examplary Description of Solid Mechanics}{equation.0.3.61}{}}
+\newlabel{eq:linearized_helper5@cref}{{[equation][61][1]\relax 1.61}{[1][37][]37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Material Modeling}{38}{subsection.0.3.3}}
+\newlabel{eq:material_model_helper1}{{\relax 1.62}{38}{Material Modeling}{equation.0.3.62}{}}
+\newlabel{eq:material_model_helper1@cref}{{[equation][62][1]\relax 1.62}{[1][38][]38}}
+\BKM@entry{id=20,open,dest={73756273656374696F6E2E302E332E34},srcline={1056}}{312E332E342044657269766174697665206F6620746865207374726573732074656E736F7220616E6420656C61737469636974792074656E736F72}
+\abx@aux@segm{0}{0}{holzapfel2000nonlinear}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.4}Derivative of the stress tensor and elasticity tensor}{39}{subsection.0.3.4}}
+\BKM@entry{id=21,open,dest={73756273656374696F6E2E302E332E35},srcline={1141}}{312E332E352044657269766174696F6E206F66207468652046696E69746520456C656D656E74204D6F64656C}
+\abx@aux@cite{Heidlauf2014a}
+\abx@aux@segm{0}{0}{Heidlauf2014a}
+\abx@aux@segm{0}{0}{Heidlauf2014a}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.5}Derivation of the Finite Element Model}{42}{subsection.0.3.5}}
+\newlabel{eq:mechanics_mass}{{\relax 1.63}{42}{Derivation of the Finite Element Model}{equation.0.3.63}{}}
+\newlabel{eq:mechanics_mass@cref}{{[equation][63][1]\relax 1.63}{[1][42][]42}}
+\newlabel{eq:mechanics_linear_momentum}{{\relax 1.64}{42}{Derivation of the Finite Element Model}{equation.0.3.64}{}}
+\newlabel{eq:mechanics_linear_momentum@cref}{{[equation][64][1]\relax 1.64}{[1][42][]42}}
+\newlabel{eq:mechanics_angular_momentum}{{\relax 1.65}{42}{Derivation of the Finite Element Model}{equation.0.3.65}{}}
+\newlabel{eq:mechanics_angular_momentum@cref}{{[equation][65][1]\relax 1.65}{[1][42][]42}}
+\newlabel{eq:mechanics_incompressiblity}{{\relax 1.66}{42}{Derivation of the Finite Element Model}{equation.0.3.66}{}}
+\newlabel{eq:mechanics_incompressiblity@cref}{{[equation][66][1]\relax 1.66}{[1][42][]42}}
+\newlabel{eq:mechanics1}{{\relax 1.67}{42}{Derivation of the Finite Element Model}{equation.0.3.67}{}}
+\newlabel{eq:mechanics1@cref}{{[equation][67][1]\relax 1.67}{[1][42][]42}}
+\newlabel{eq:mechanics2}{{\relax 1.68}{42}{Derivation of the Finite Element Model}{equation.0.3.68}{}}
+\newlabel{eq:mechanics2@cref}{{[equation][68][1]\relax 1.68}{[1][42][]42}}
+\newlabel{eq:mechanics3}{{\relax 1.69}{42}{Derivation of the Finite Element Model}{equation.0.3.69}{}}
+\newlabel{eq:mechanics3@cref}{{[equation][69][1]\relax 1.69}{[1][42][]42}}
+\newlabel{LastPage}{{}{46}{}{page.46}{}}
+\xdef\lastpage@lastpage{46}
+\xdef\lastpage@lastpageHy{46}
 \abx@aux@refcontextdefaultsdone
-\abx@aux@defaultrefcontext{0}{mumps2001}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{mumps2019}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{petsc-user-ref}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{petsc-web-page}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{petsc-efficient}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{falgout2002hypre}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{ISO9241}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Kretz2012}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Kretz2015}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{Maier2019}{anyt/global//global/global}
-\abx@aux@defaultrefcontext{0}{DihuWeb}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Carniel2017}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Cisi2008}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{CrankNicolson1947}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Godunov2003}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Heidlauf2013}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Heidlauf2015Diss}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Hinton1976}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Hodgkin1952}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{hodgkin1952propagation}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{holzapfel2000nonlinear}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Klotz2020}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{marsden1994mathematical}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Mileusnic2006Golgi}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Mileusnic2006Spindle}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Mordhorst2015}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{peskoff1979electric}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Roehrle2012}{anyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{Shorten2007}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{Strang1968}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{SUSSMAN1987357}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{tung1978bi}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{zienkiewicz2005finite}{anyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{zienkiewicz1977finite}{anyt/global//global/global}
 \acro@rerun@check 
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{11.47192pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{20.62083pt}

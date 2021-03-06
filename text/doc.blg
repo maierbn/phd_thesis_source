@@ -1,29 +1,18 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[24] biber:313> INFO - === Fr Nov  6, 2020, 15:04:52
-[42] Biber.pm:371> INFO - Reading 'doc.bcf'
-[96] Biber.pm:857> INFO - Found 12 citekeys in bib section 0
-[108] Biber.pm:3981> INFO - Processing section 0
-[117] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[135] bibtex.pm:1468> INFO - LaTeX decoding ...
-[426] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[545] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1243, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1274, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1315, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1415, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1441, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1473, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1508, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1581, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 1804, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2219, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2257, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2315, warning: 3 characters of junk seen at toplevel
-[546] Utils.pm:169> WARN - BibTeX subsystem: /tmp/puz_vkwgsx/references.bib_11382.utf8, line 2348, warning: 3 characters of junk seen at toplevel
-[568] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[568] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[568] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[568] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[589] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[597] bbl.pm:720> INFO - Output to doc.bbl
-[598] Biber.pm:110> INFO - WARNINGS: 13
+[26] biber:313> INFO - === Sa Mär  6, 2021, 21:01:20
+[45] Biber.pm:371> INFO - Reading 'doc.bcf'
+[102] Biber.pm:857> INFO - Found 24 citekeys in bib section 0
+[114] Biber.pm:3981> INFO - Processing section 0
+[125] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[150] bibtex.pm:1468> INFO - LaTeX decoding ...
+[495] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[628] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ogtinZExyQ/references.bib_26245.utf8, line 2640, warning: 3 characters of junk seen at toplevel
+[628] Utils.pm:169> WARN - I didn't find a database entry for 'Heidlauf2014a' (section 0)
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[661] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[661] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[690] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[701] bbl.pm:720> INFO - Output to doc.bbl
+[701] Biber.pm:110> INFO - WARNINGS: 2
