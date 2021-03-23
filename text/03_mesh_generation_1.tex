@@ -519,18 +519,20 @@ A specified number $m$ of additional fibers is placed between the key fibers in 
 The additional fibers together with the key fibers form a grid of fibers in the muscle cross sections with an $m$ times finer mesh width. In the grid of key fibers, every portion bounded by $2 \times 2$ key fibers contains $(2+m)^2 - 4$ additional fine fibers. The total number of fibers depending on $n_x$ and $m$, therefore, is $N=(2\,n_\text{el,x}\,n_x\,(1+m)+1)^2$. Due to construction, this number is always odd. This is a desired property because it yields an even number of elements per coordinate direction and this allows to construct a mesh with quadratic ansatz functions.
 
 The new fibers are computed by barycentric interpolation. The location of every new point $\bfp$ is calculated from the nearest points $\bfp_0, \bfp_1, \bfp_2$ and $\bfp_3$ of key fibers in the $x$-$y$ plane, numbered according to  \cref{fig:quads_tris}, by%
-\begin{align*}
+\begin{align}\label{eq:mesh_barycentric_interpolation}
   \bfp = (1-\alpha_x)\,(1-\alpha_y)\,\bfp_0 + \alpha_x\,(1-\alpha_y)\,\bfp_1 
         + (1-\alpha_x)\,\alpha_y\,\bfp_2 + \alpha_x\,\alpha_y\,\bfp_3.
-\end{align*}
+\end{align}
 Here, the factors $\alpha_x,\alpha_y \in [0,1]$ are chosen in a way to create the fine grid of fibers:
 %
 \begin{align*}
   \alpha_x = i / (m+1), \quad \alpha_y = j / (m+1)\quad \text{ for }i,j = 0, \dots,m, \quad (i,j) \neq (0,0).
 \end{align*}
-As a result, we can generate a 3D mesh where the number of points in $x$ and $y$ direction can be adjusted by the parameter $m$.
+As a result, we can generate a 3D mesh where the number of points in $x$ and $y$ directions can be adjusted by the parameter $m$. 
 
-The points are stored in a binary file format. The contents of this output file can be either interpreted as grid points of a 3D mesh or as points of individual fibers. This is an advantage in a multi-scale simulation where both a 3D muscle mesh and multiple embedded 1D fiber meshes occur: First, all mesh information of both $\Omega_M$ and $\Omega_{F,i}$ can be given by a single file. And second, the 3D mesh is aligned with the 1D fibers and all 3D mesh points are also 1D mesh points. 
+During this algorithm, each process only has to keep the data of its own subdomain in memory at any time. This allows parallel processing of very large meshes. For small-enough meshes that do not fall under this restriction, the utility script \code{resample_bin_fibers.py} can be used to create meshes of any resolution from any other mesh using the barycentric interpolation in \cref{eq:mesh_barycentric_interpolation}.
+
+The resulting points are stored in a binary file format. The contents of this output file can either be interpreted as grid points of a 3D mesh or as points of individual 1D fibers. This is an advantage in a multi-scale simulation where both a 3D muscle mesh and multiple embedded 1D fiber meshes occur: First, all mesh information of both $\Omega_M$ and $\Omega_{F,i}$ can be given by a single file. And second, the 3D mesh is aligned with the 1D fibers and all 3D mesh points are also 1D mesh points. 
 
 The spacing in $z$ direction between points on a fiber is typically chosen as $\Delta z = \SI{0.01}{\cm}$. This value was found to ensure a low error in the model for propagation of electric stimuli along the muscle. The value leads to 1481 points per fiber on the belly of the biceps muscle. 
 
@@ -794,6 +796,8 @@ In summary, the quadratic formulation (\say{q}) and the streamline tracing using
 
 TODO write some text
 
+
+
 % seed points 33x33, 71x71 from scaling script
 \begin{figure}[H]
   \centering%
@@ -817,21 +821,9 @@ TODO write some text
 % fat layer mesh and partitioning
 \begin{figure}
   \centering%
-  \begin{subfigure}[t]{0.2\textwidth}%
-    \centering%
-    \includegraphics[width=\textwidth]{images/parallel_fiber_estimation/partitioning_biceps.png}%
-    \caption{Multidomain}%
-    \label{fig:partitioning_biceps}%
-  \end{subfigure}
-  \quad
-  \begin{subfigure}[t]{0.78\textwidth}%
-    \centering%
-    \includegraphics[width=\textwidth]{images/parallel_fiber_estimation/structured_grid_n_nodes.pdf}%
-    \caption{Fibers}%
-    \label{fig:structured_grid_n_nodes}%
-  \end{subfigure}   
-  \caption{Fibers and Multidomain}%
-  \label{fig:multidomain_fibers}%
+  \includegraphics[width=\textwidth]{images/parallel_fiber_estimation/partitioning_biceps.png}%
+  \caption{fat mesh and fibers}%
+  \label{fig:partitioning_biceps}%
 \end{figure}%
 
 % 3D and 1D meshes

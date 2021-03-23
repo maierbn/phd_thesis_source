@@ -1,0 +1,397 @@
+\section{Parallel Partitioning and Sampling}\label{sec:parallel_partitioning_and_sampling_of_the}
+
+% dedicated solver
+
+The derivation of increasingly detailed models in the domain of biomechanics has to be complemented by engineering of efficient software that is used to solve these models. Using proper parallelization allows to increase the amount of computational load that is possible to handle. In turn, this allows to simulate more complex models with higher resolution and ultimately enables physiological and pathological insights on a new level.
+
+For detailed multi-scale model solvers, parallelization is a complex task. 
+The paradigm has to be regarded  during the whole setup process of the system. Different descriptions for the same physical behaviour have to be evaluated with respect to their solvability in parallel. For a given model, suitably parallelizable numerical solution schemes have to be selected. The implementation of individual solvers and their coupling have to take into account the parallel environment. 
+Discretization schemes enabling parallel domain decomposition are required. Their representation on compute hardware with distributed memory has to be taken into account as well as ensuring acceptable conditioning of large scale problems. To ensure fast runtimes, load balancing between compute nodes and parallel scalability are important.
+
+All these fundamental considerations potentially depend on each other and require a comprehensive solution. 
+Thus, it is often difficult to port existing, isolated solver software that was designed for serial or moderately parallel execution to efficiently fit into a highly-parallel, multi-scale solution framework. To not (re-)create this kind of isolated solvers for individual model components, we focus on their parallel design from the ground up in the current and following sections.
+
+In this section, we introduce algorithms for the generation of parallel partitioned meshes, which are fundamental ingredients to all our solvers. \Cref{sec:algorithm_for_partitioning_and_sampling,sec:partitioning_requirements} set the scene and define our requirements for well-behaved parallelized meshes. \Cref{sec:partitioning_alg1,sec:partitioning_alg2} give details on the implemented algorithms and \cref{sec:partitioning_user_options} addresses the configuration for the user. \Cref{sec:partitioning_results} concludes by comparing the resulting partitionings for different parameters.
+
+Afterwards, \cref{sec:parallel_partitioning_for_fiber_based,sec:parallel_solver_multidomain} TODO present dedicated parallel solvers for various parts of the multi-scale model. Sections (TODO: reference) describe structures that are needed for the interplay of the individual model components.
+
+
+%\subsection{Algorithm for Partitioning and Sampling the 3D Mesh}\label{sec:algorithm_for_partitioning_and_sampling}
+\subsection{Specification of the Partitioning}\label{sec:algorithm_for_partitioning_and_sampling}
+
+Structured meshes of the types \code{RegularFixed}\code{OfDimension<D>} or \code{Structured}\code{Deformable}\code{OfDimension<D>} are partitioned for parallel execution by distributing the elements to all processes. As mentioned in \cref{sec:oragnization_of_parallel_partitioned_data}, planar cuts in the space of the element indices separate the subdomains. For example, in computations on a structured 3D mesh with $N_x^\text{el} \times N_y^\text{el} \times N_z^\text{el}$ global elements, the process with rank $r$ owns a subdomain with
+$N_x^{\text{el,local,}r} \times N_y^{\text{el,local,}r} \times N_z^{\text{el,local,}r}$ local elements.
+The sizes of the local subdomains depend on the specified total number of subdomains $n_i$ in each coordinate direction $i \in \{x,y,z\}$.
+Given $n_i$, the number of local elements in every subdomain along the coordinate axis $i$ can be set to either $N_i^{\text{el,local}} = \lfloor N^\text{el}_i/n_i+1\rfloor$ or $N_i^{\text{el,local}} = \lfloor N^\text{el}_i/n_i \rfloor$ to allow for good load balancing.
+
+A prerequisite to construct such a partitioning for $n_\text{proc}$ processes is to fix the numbers of subdomains $n_x \times n_y \times n_z = n_\text{proc}$. In OpenDiHu, the Python settings file can either specify the global numbers $N_i^\text{el}$ of elements or separate local numbers $N_i^{\text{el,local,}r}$ of elements for every rank $r$. This step involves setting the option \code{inputMeshIsGlobal} to either \code{True} or \code{False} as explained in \cref{sec:exemplary_usage_1}.
+
+Specifying the global numbers of elements is often useful for toy problems when the total element count is small and the actual partitioning is not important. In this case, PETSc is used to determine optimal subdomain sizes for all processes and, subsequently, constructing the partitioning. Because the partitioning is not yet known at the time of parsing of the Python settings, spatial information such as node positions or boundary conditions have to be specified on every rank for the whole domain.
+
+Most of the electrophysiology examples, however, use the specification of local numbers of elements. Thus, every rank only needs to specify the local data of its subdomain, such as node positions and boundary conditions. This is a prerequisite for good parallel weak scaling behavior as the amount of data processing on each process stays constant when simultaneously increasing problem size and total process counts.
+
+In the electrophysiology examples, the partitioning into $n_x \times n_y \times n_z$ subdomains can be specified by the command line parameter \code{--n_subdomains n_x n_y n_z}, where \code{n_x}, \code{n_y} and \code{n_z} are replaced by the actual numbers. Their product has to match the process count $n_\text{proc}$ that is given to MPI to start the program.
+If this option is not specified, the values are determined automatically by the following algorithm: For all partitions of the number $n_\text{proc}$ into three integer factors, a performance value $p$ is computed as follows:
+%
+\begin{align*}
+  p = (n_x-n_\text{opt})^2 + (n_y-n_\text{opt})^2 + (n_z-n_\text{opt})^2.
+\end{align*}
+The optimal value is given by $n_\text{opt} = n_\text{proc}^{1/3}$. The partitioning with the lowest value of $p$ is selected among all partitions as it leads to subdomains with the best volume-to-surface ratio for a cube-shaped domain. An advantage of this method is that it is independent of the mesh size.
+
+\subsection{Requirements for Partitioning and Sampling of the 3D Mesh}\label{sec:partitioning_requirements}
+
+Simulation scenarios with fiber-based electrophysiology use a 3D muscle mesh and embedded 1D fiber meshes that are generated from the same node positions, as described in \cref{sec:postprocessing_of_the_generated_streamlines}. The binary input file contains a structured grid of points that can be either interpreted as 1D fibers by connecting the points in $z$-direction or as 3D mesh by additionally connection points in $x$ and $y$-directions.
+
+Usually, all points in such a file are used to define the 1D fiber meshes and the 3D mesh is constructed from only a subset of the available points. To obtain a 3D mesh with approximately equal mesh widths in all coordinate directions, the point data is sampled by constant strides in $x$, $y$ and $z$ direction.  The stride in fiber direction ($z$ direction) is typically chosen larger than the strides in transverse directions as the distance between the given points is smaller in this direction.
+
+In the following, we discuss the sampling procedure that generates the partitioned 3D mesh from the fiber data in more detail.
+Given a structured hexahedral fine 3D mesh, numbers of subdomains $n_i$ and sampling stride parameters \code{sampling_stride_$i$} for the three coordinate directions $i\in\{x,y,z\}$, we have to determine the nodes that should be part of each subdomain in the resulting coarser hexahedral 3D mesh. 
+
+For illustration, \cref{fig:partitioning1} shows the initial fine mesh consisting of spheres that are arranged in fibers that run from the shown cross section to the back. The resulting sampled mesh is given by the white elements and uses a subset of the nodes in the fine mesh. The sampled mesh is parallel partitioned into the colored subdomains. 
+Furthermore, the coarse mesh consists of quadratic elements that are formed from two by two white elements in the cross section each. Hence, every subdomain contains an even number of the white elements in horizontal and vertical directions.
+
+% quadratic partitioning
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/partitioning7.png}%
+  \caption{Partitioning and subsampling of a fiber mesh to twelve proceses. The fiber data indicated by the spheres is sampled with a stride parameter of two to obtain the partitioned quadratic coarse mesh given by the white elements. The subdomains are indicated by different colors.}%
+  \label{fig:partitioning1}%
+\end{figure}%
+
+The requirements to the sampling and partitioning algorithm are as follows: 
+\begin{enumerate}[label=(\roman*)]
+\item The resulting coarser 3D mesh should use every $k$th node where $k$ is adjustable by the parameter \code{sampling_stride_$i$} in the settings.
+\item The number of nodes in every subdomain should be approximately equal to allow for a good load balancing in the computation.
+\item There should be as little \say{remainder elements} that have a different mesh width than the majority of the elements as possible.
+\item If a quadratic mesh is required, e.g., for solid mechanics models, the number of (linear) elements in every subdomain in every coordinate direction has to be even to allow for the generation of quadratic hexahedral elements.
+\end{enumerate}
+
+Clearly, not all requirements can be fulfilled exactly for all given input meshes. For combinations of given input mesh sizes and sampling strides that lead to an even number of sampled nodes, requirement (iv) cannot be fulfilled. 
+Exact fulfillment of requirement (ii), i.e., an equal number of nodes in every subdomain is also only possible for suited parameter choices. Therefore, we relax requirement (i) and also occasionally allow different step widths between the selected nodes on the fine grid. Having varying distances between the nodes leads to elements with different mesh widths, which is unfavorable in terms of the numeric conditioning of the problem. Therefore, the number of such elements should be as low as possible, which is also stated by requirement (iii).
+
+To avoid differently sized elements as possible, we work with a granularity parameter. This parameter specifies the amount of nodes to summarize and treat as an indivisible unit. For example, a value of \code{granularity_x=2} specifies that always two neighboring points are in the same element. Then, subdomain boundaries and element boundaries can only occur at every second node.
+
+\subsection{Algorithm for Determining the Subdomains}\label{sec:partitioning_alg1}
+
+Important steps in the algorithm for sampling the fine mesh and constructing the partitioning are, first, to determine the locations of the new subdomains in the original fine grid, second, to determine the number of sampled points in each subdomain and third, to determine which points from the fine grid will be sampled in every subdomain of the coarse grid. The steps have to be carried out independently for all three coordinate directions. Thus, it suffices to only consider the algorithm for the partitioning along one axis.
+In the following, we present the algorithms of the first two steps for the $x$-axis. 
+
+The algorithm for the first step is given in \cref{alg:n_fibers_in_subdomain}. Input to the function \code{n_fibers_in_}\code{subdomain_x} is a subdomain coordinate in the range $[0,n_x-1]$ that identifies the subdomain. The output to be computed is the number of grid points in the fine grid or equivalently, the number of fibers that are contained in the subdomain. Calling this function for all subdomains defines the partitioning of the fine grid.
+
+% partitioning algorithm
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/partitioning_algorithm.pdf}%
+  \caption{Visualization of the steps of the partitioning algorithms given by \cref{alg:n_fibers_in_subdomain,alg:n_sampled_points_in_subdomain} that yield the partitioning shown in \cref{fig:partitioning1}.}%
+  \label{fig:partitioning_algorithm}%
+\end{figure}%
+
+\begin{algorithm}
+  \begin{algorithmic}[1]%
+    \Procedure{n\_fibers\_in\_subdomain\_x}{subdomain\_coordinate\_x}
+    \Require Index of a subdomain in $x$-direction
+    \Ensure Number of fibers that are contained in this subdomain
+    \Statex
+    \State   $\alpha$ = $\lfloor$ n\_fibers\_x / $n_x$ / granularity\_x $\rfloor$ * granularity\_x   \label{alg:3.2}
+    \Statex
+    \State a1 = $\lfloor$(n\_fibers\_x - $n_x$ * $\alpha$) / granularity\_x $\rfloor$ \label{alg:3.3}  \Comment{subdomains with $>\alpha$ nodes}
+    \State a2 = $n_x$ - a1                        \label{alg:3.4}              \Comment{subdomains with $\alpha $ nodes}
+    \Statex
+    \If{subdomain\_coordinate\_x < a1} \Comment{first a1 subdomains} \label{alg:3.5}
+      \State \textbf{return} $\alpha$ + granularity\_x \label{alg:3.6}
+    \ElsIf{subdomain\_coordinate\_x < $n_x$ - 1}\label{alg:3.7}
+      \State \textbf{return} $\alpha$                        \label{alg:3.8}
+    \Else  \Comment{last subdomain}  \label{alg:3.9}
+      \State \textbf{return} $\alpha$ + n\_fibers\_x \% granularity\_x  \label{alg:3.10}
+    \EndIf
+    \EndProcedure
+  \end{algorithmic}%
+  \caption{Computation of subdomain sizes, needed for the construction of a parallel partitioning.}%
+  \label{alg:n_fibers_in_subdomain}%
+\end{algorithm}%
+
+\Cref{fig:partitioning_algorithm} provides a visualization of the algorithmic steps, corresponding to the partitioning in vertical direction of the mesh shown in \cref{fig:partitioning1}. \Cref{fig:partitioning_algorithm} (a) shows a 1D mesh with \code{n_fibers_x=23} nodes or fibers.
+% By comparing with \cref{fig:partitioning1}, it can be seen that nodes and fibers are equivalent in this point of view.
+The goal is to partition them to $n_x=3$ subdomains. According to requirement (ii), the nodes should be distributed equally to the subdomains. Dividing 23 nodes by 3 subdomains yields an average number of $7\frac23$ nodes per subdomain, which is indicated by the orange color in \cref{fig:partitioning_algorithm} (a). 
+
+For now, we neglect the granularity parameter and set \code{granularity_x=1}. 
+Line \ref{alg:3.2} of the algorithm computes the rounded down value $\alpha$ of the average number fraction. Every subdomain should obtain either $\alpha$ or $(\alpha+1)$ nodes. We specify that the first \code{a1} subdomains obtain $(\alpha+1)$ nodes and the remaining subdomains obtain $\alpha$ nodes. 
+The amount of nodes that remain after we fill every subdomain with $\alpha$ nodes is the difference between all nodes \code{n_fibers_x} and  $n_x \cdot \alpha$. This difference is equal to \code{a1} and the formula in line \ref{alg:3.3} of the algorithm computes the value of \code{a1} accordingly. The remainder number of subdomains \code{a2} follows as given in line \ref{alg:3.4}.
+The visualization in \cref{fig:partitioning_algorithm} (b) shows that, in the example, \code{a1=2} subdomains obtain $\alpha+1=8$ nodes and only the last subdomain, i.e., \code{a2=1}, obtains $\alpha=7$ nodes.
+
+The rest of \cref{alg:n_fibers_in_subdomain} checks whether the given subdomain coordinate \code{subdomain}\code{_coor}\code{dinate_x} refers to a subdomain with $(\alpha+1)$ or with $\alpha$ nodes by comparing the coordinate with \code{a1} in line \ref{alg:3.5}. The first branch of the \code{if} statement returns the high number of nodes $(\alpha+1)$, the other branches return the low number $\alpha$, as far as the granularity parameter is neglected.
+
+Next, we discuss the algorithm with a granularity value that is different from 1. 
+Assuming a value of, e.g., \code{granularity_x=2}, always two neighboring nodes are grouped and the algorithm acts on these groups instead of individual nodes. The visualization in \cref{fig:partitioning_algorithm} (c) shows this grouping. Because the considered example has an odd total number of 23 nodes, one a single nodes remains for the last group.
+
+The number of nodes per subdomains should now be a multiple of the granularity. This is ensured in line \ref{alg:3.2} of \cref{alg:n_fibers_in_subdomain} by dividing by the granularity, rounding down and multiplying again with the granularity. The subdomains obtain either \code{$\alpha$} or \code{($\alpha$ + granularity_x)} nodes. The computation of the number \code{a1} of subdomains with the higher number of nodes in line \ref{alg:3.3} requires a division by \code{granularity_x} as every subdomain with the higher number takes \code{granularity_x} extra nodes. The rounding down in line \ref{alg:3.3} is needed to obtain an integer value even if the total number of nodes is not a multiple of the granularity.
+
+In the example in \cref{fig:partitioning_algorithm} (d), the subdomains obtain either $\alpha=6$ or $\alpha +$ \code{granularity_x}$=8$ nodes. In fact, for the last subdomain only seven nodes remain as the total number of 23 nodes is not divisible by the granularity of two.
+In the algorithm, this is accounted for by the last branch of the \code{if-else} construct in line \ref{alg:3.10}, where only the remaining nodes are added to the last subdomain.
+
+\subsection{Algorithm for Sampling Points from the Fine Mesh}\label{sec:partitioning_alg2}
+
+Next, we can sample points from the nodes that were assigned to each subdomain. The sampling process is parametrized by the value of \code{sampling_stride_x}, which specifies the step width of the nodes from the fine mesh to select for the coarse mesh.
+\Cref{alg:n_sampled_points_in_subdomain} lists the function that determines the number of sampled points in a given subdomain. Similar to \cref{alg:n_fibers_in_subdomain}, the input is a 1D subdomain coordinate. The output is the number of sampled points in this subdomain.
+
+\begin{algorithm}
+  \begin{algorithmic}[1]%
+    \Procedure{n\_sampled\_points\_in\_subdomain\_x}{subdomain\_coordinate\_x}
+    \Require Index of a subdomain in $x$-direction
+    \Ensure Number of points in the subdomain for the coarse 3D mesh
+      \Statex
+      \State n = n\_fibers\_in\_subdomain\_x(subdomain\_coordinate\_x)  \hypertarget{alg:4.2}
+    \State \textbf{if} subdomain\_coordinate\_x == $n_x$ - 1 \textbf{then}      \hypertarget{alg:4.3}                      
+      \State \hspace{0.8em} n -= 1                                                     \hypertarget{alg:4.4}
+    \Statex
+    \If{linear 3D elements}                                                     \hypertarget{alg:4.5}
+      \State result = $\lfloor$ n / sampling\_stride\_x $\rfloor$               \hypertarget{alg:4.6}
+    \Else                                                       \hypertarget{alg:4.7}
+      \State result = $\lfloor$ n / (sampling\_stride\_x * 2) $\rfloor$ * 2              \hypertarget{alg:4.8}
+    \EndIf
+    \Statex
+    \If{subdomain\_coordinate\_x == $n_x$ - 1}              \hypertarget{alg:4.9}
+      \State result += 1              \hypertarget{alg:4.10}
+    \EndIf              \hypertarget{alg:4.11}
+    \State \textbf{return} result
+    \EndProcedure
+  \end{algorithmic}%
+  \caption{Algorithm for sampling the fine mesh to obtain the coarser 3D mesh}%
+  \label{alg:n_sampled_points_in_subdomain}%
+\end{algorithm}%
+
+First, line \hyperlink{alg:4.2}{2} of \cref{alg:n_sampled_points_in_subdomain} calls \cref{alg:n_fibers_in_subdomain} to obtain the number of fine grid points in the subdomain. The number of elements \code{n} is equal to the number of points for all except the last 1D subdomain, which has one element less. This can be seen, e.g., in \cref{fig:partitioning1} where the first process with rank 0 (dark brown at the upper left) does not own the nodes on its subdomain boundary whereas the last process with rank 11 (light brown at the lower right) owns all nodes on its subdomain boundary.
+Thus, lines \hyperlink{alg:4.3}{3} and \hyperlink{alg:4.4}{4} of \cref{alg:n_sampled_points_in_subdomain} decrement the value of \code{n} to yield the correct number of elements. 
+
+The corresponding visualization in \cref{fig:partitioning_algorithm} (e) assumes \code{granularity_x=2} and shows $n=8$ elements for both the first and the second subdomain and $n=6$ elements for the last subdomain. 
+
+The resulting number of sampled points is obtained from the number of elements by a division by the sampling stride parameter and rounding down in lines \hyperlink{alg:4.5}{5} to \hyperlink{alg:4.8}{8}. For the last subdomain, line \hyperlink{alg:4.10}{10} increments the result by one to account for the additional node on the boundary.
+
+Depending on whether the sampled mesh should contain linear or quadratic elements, the number of elements obtained from the algorithm has no restriction or it has to be even. This is checked in the \code{if} statement in line \hyperlink{alg:4.5}{5}. In case of quadratic elements, an even number of elements is enforced by the formula in line \hyperlink{alg:4.8}{8}.
+
+In the considered example, we require quadratic elements and set \code{sampling_stride_x=2}. The visualization in \cref{fig:partitioning_algorithm} (f) shows the number of elements as long bars, which equals the \code{result} variable before line \hyperlink{alg:4.9}{9} in the algorithm. The resulting number of nodes is given in \cref{fig:partitioning_algorithm} (f) by the circles below.
+
+The actual selection of the nodes from the fine grid according to the stride parameter and using the determined subdomains and their numbers of contained nodes is a straight-forward task and not part of the algorithms listed here. For quadratic elements in the last subdomain, the potentially different mesh widths are resolved by selecting the second-last node in the middle between the third-last and the last node. In \cref{fig:partitioning_algorithm} (f), this case occurs in the last subdomain. The orange node is sampled at the middle between the two neighboring dark red nodes. This behaviour can also be observed in the corresponding partitioning in \cref{fig:partitioning1} for the elements given by white lines in the lowest row. These elements have a larger vertical mesh width of three sampled points than the other elements, which have a vertical mesh width of two sampled points.
+
+\subsection{User Options for the Algorithms}\label{sec:partitioning_user_options}
+
+By adjusting the sampling stride and granularity parameters, it is possible to tune the outcome of the partitioning algorithms.
+The trade-off between the two requirements that each subdomain obtains the same number of fibers  (ii) and that the least possible number of remainder elements is generated (iii) can be adjusted. By default, we set the granularity parameters to the same value as the sampling parameters and additionally ensure  for quadratic meshes that the granularities are a multiple of two. This setting typically yields partitionings with equally sized elements, however the number of fibers per subdomain is not always optimal.
+
+To allow users to enforce a partitioning, where every rank gets the exact same number of fibers, except for the last subdomains in each coordinate direction, which potentially gets one layer of fibers less, we provide the option \code{distribute_nodes_equally}, which can be set in the variables files. If this option is set to \code{True}, the granularity values are internally fixed to one for linear meshes and to two for quadratic meshes.
+
+\subsection{Results}\label{sec:partitioning_results}
+
+The different results are demonstrated in \cref{fig:partitioning3_4,fig:partitioning56}. \Cref{fig:partitioning3_4} shows the automatic partitioning, where a simulation of fiber based electrophysiology with a grid of $9 \times 9$ fibers is executed with eight processes and the stride values \code{sampling_stride_x} and \code{sampling_stride_y} are set to two.
+By default, a linear mesh of $4\times 4$ elements in $x$ and $y$-directions is created with $2\times 2 \times 2=8$ subdomains, as shown in \cref{fig:partitioning4}. Only the first four subdomains can be seen in the visualization, the other four are located behind. 
+
+The distribution of the fibers to the two 1D subdomains along both $x$ and $y$ directions yields four fibers for the first and five fibers for the second 1D subdomain. Thus, the total 3D subdomains of the first four processes contain $16,20,20$ and 25 fibers.
+
+\Cref{fig:partitioning3} shows the same scenario except that the option \code{distribute_nodes_equally} has been set. The resulting partitioning is different and the fiber distribution is reversed, five and four fibers are assigned to the two 1D subdomains in both $x$ and $y$ directions. In result, we get $25,20,20$ and $16$ fibers for the first four 3D subdomains. Note that this is the best balanced partitioning of a structured mesh that is possible for $9 \times 9$ fibers.
+The subdomain sizes are the same as in \cref{fig:partitioning4}, except for a different order. However, for larger partitionings using more processes, the respective partitioning with the \code{distribute_nodes_equally} option is always optimal, whereas the balance rapidly degrades without this option.
+
+While in this example, there is no difference between \cref{fig:partitioning4}  and \cref{fig:partitioning3} in terms of load balancing, the 3D mesh quality of the generated partitioning is worse for \cref{fig:partitioning3}. As can be seen in \cref{fig:partitioning3}, the first and third subdomains have one layer of elements more in both $x$ and $y$ direction and these elements have half the mesh width of the normal elements. Additionally, the second and fourth subdomain also contain elements of different mesh widths.
+
+Similar effects can also be studied in the scenario of \cref{fig:partitioning56}, where the same mesh is partitioned to four processes in $z$-direction. The number of nodes in $z$-direction is \num{1481} and the sampling stride is chosen as \code{sampling_stride_z=50}. \Cref{fig:partitioning6,fig:partitioning5} show the resulting partitionings without and with the \code{distribute_nodes_equally} option. Again, the second scenario shows \say{remainder} elements with smaller mesh widths at the end of every subdomain. The distribution of nodes is $400,350,350$ and $381$ nodes per subdomain in \cref{fig:partitioning6} and $371,370,370$ and $370$ nodes per subdomain for the scenario in \cref{fig:partitioning5} where the \code{distribute_nodes_equally} option has been set. The first case has the better 3D mesh quality, whereas only the second case yields the perfect load balancing.
+
+In summary, it is possible to tweak the created partitioning by adjusting the sampling stride and deciding between mesh quality and perfect load balancing. For electrophysiology simulations that impose high computational loads because of the subcellular model, the load balancing aspect is more important and the option \code{distribute_nodes_equally}  should be set to \code{False}. In simulations with elasticity models, the quality of the 3D meshes is more important and the partitioning for the corresponding meshes should be parametrized with the  \code{distribute_nodes_equally} option set to \code{True}.
+
+% partitioning with and without distribute_nodes_equally
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/partitioning4.png}
+    \caption{Resulting sampled mesh with option \code{distribute_nodes_equally=False}.}%
+    \label{fig:partitioning4}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/partitioning3.png}
+    \caption{Resulting sampled mesh with option \code{distribute_nodes_equally=True}.}%
+    \label{fig:partitioning3}%
+  \end{subfigure}
+  \caption{Mesh partitions generated by the sampling algorithm with different settings. A fine mesh with 49 fibers is sampled with a stride parameter of two and partitioned to eight processes.}%
+  \label{fig:partitioning3_4}%
+\end{figure}%
+
+% partitioning with and without distribute_nodes_equally
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/partitioning6.png}
+    \caption{Resulting sampled mesh with option \code{distribute_nodes_equally=False}. The mesh width is constant, but the partitioning is not perfectly balanced.}%
+    \label{fig:partitioning6}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/partitioning5.png}
+    \caption{Resulting sampled mesh with option \code{distribute_nodes_equally=True}. The partitioning is perfectly balanced, but the mesh width is not constant.}%
+    \label{fig:partitioning5}%
+  \end{subfigure}
+  \caption{Sampling a mesh along the fiber direction. The original mesh has 1481 nodes and is sampled with a stride value of 50.}%
+  \label{fig:partitioning56}%
+\end{figure}%
+
+
+\begin{reproduce_no_break}
+  The partitioning in \cref{fig:partitioning1} is obtained by the following simulation:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_contraction/no_precice/build_release
+    mpirun -n 12 ./biceps_contraction ../settings_biceps_contraction.py partitioning_demo.py --n_subdomains 4 3 1
+  \end{lstlisting}
+  The partitionings in \cref{fig:partitioning3_4,fig:partitioning56} are created by the following simulations. For \cref{fig:partitioning4,fig:partitioning6}, edit the variables file \code{partitioning_demo.py} and set \code{distribute_nodes_equally = False}. For \cref{fig:partitioning3,fig:partitioning5}, set \code{distribute_}\code{nodes_equally = True}.
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_emg/build_release
+    mpirun -n 8 ./fast_fibers_emg ../settings_fibers_emg.py partitioning_demo.py
+    mpirun -n 4 ./fast_fibers_emg ../settings_fibers_emg.py partitioning_demo.py --n_subdomains 1 1 4
+  \end{lstlisting}
+\end{reproduce_no_break}
+
+
+\section{Parallel Solver for the Fiber Based Electrophysiology Model}\label{sec:parallel_partitioning_for_fiber_based}
+
+After discussing the general partitioning and sampling of 3D and 1D meshes in the last section, we now focus on the concrete application for the fiber based electrophysiology model.
+\Cref{sec:parallel_partitioning_for_fiber_based_solver} begins with a description of the solver structure and the parallelization. Subsequently, performance improvements considering the parallel execution of the solver are discussed. \Cref{sec:improved_parallel_solver_for_fiber_based} presents a variant, where a faster solver is employed for the 1D part of the computation. \Cref{sec:adaptive_computation_for_fiber_based} shows how the computational load can be reduced by only computing activated parts of the muscle.
+
+\subsection{Parallel Solver Structure}\label{sec:parallel_partitioning_for_fiber_based_solver}
+For better visualization, we consider the 2D setting of a mesh and embedded 1D fibers partitioned to $2\times 2$ processes as shown in \cref{fig:mesh_structure} by different colors. However, all discussions are also valid for the real 3D setting shown in the last section and for abitrary partitionings to $n_x \times n_y \times n_z$ processes.
+
+% program structure and partitioning
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.30\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/mesh_structure.pdf}
+    \caption{Visualization of the 3D mesh with embedded 1D fibers, partitioned to four ranks.}%
+    \label{fig:mesh_structure}%
+  \end{subfigure}
+  \qquad
+  \begin{subfigure}[t]{0.45\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/program_structure.pdf}
+    \caption{Structure of the OpenDiHu example program to solve the fiber based electrophysiology model.}%
+    \label{fig:program_structure}%
+  \end{subfigure}
+  \\[8mm]
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[height=8cm]{images/implementation/fiber_partitioning1.pdf}
+    \caption{Instances of the outer \code{MultipleInstances} class in \cref{fig:program_structure}.}%
+    \label{fig:fiber_partitioning1}%
+  \end{subfigure}
+  \,
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[height=7.5cm]{images/implementation/fiber_partitioning2.pdf}
+    \caption{Instances of the inner \break\code{MultipleInstances} classes in \cref{fig:program_structure}.}%
+    \label{fig:fiber_partitioning2}%
+  \end{subfigure}
+  \caption{Visualizations for the discussion of the program structure and partitioning used for fiber based electrophysiology simulations.}%
+  \label{fig:partitioning_program}%
+\end{figure}%
+
+\Cref{fig:program_structure} shows the program structure of the example that solves the fiber based electrophysiology model. The outer class is a \code{Coupling} that alternates between computing the monodomain equation on the 1D fibers and computing the static bidomain equation on the 3D domain. The second part, the bidomain solver, is given in \cref{fig:program_structure} by the class \code{StaticBidomainSolver}, which includes two \code{FiniteElementMethod} classes. The first class solves the potential flow to obtain the fiber direction for the anisotropic conduction tensor, the second class is used to discretize the spatial derivatives in the bidomain equation.
+
+The first part of the coupling scheme in \cref{fig:program_structure} consists of a tree of a \code{Multiple}\code{Instances} class that encloses the Strang operator splitting. The splitting has two child solvers for the subcellular model and the diffusion or conduction term. The first child consists of another \code{MultipleInstances} class with a \code{Heun} scheme and the \code{CellmlAdapter}\nolinebreak.
+The second child of the Strang splitting also consists of a \code{MultipleInstances} class and a combination of an \code{ImplicitEuler} scheme (alternatively a \code{CrankNicolson} scheme can be used) and a \code{FiniteElementMethod}.
+
+A \code{MultipleInstances} class can be used to apply a solver to more than one problem of the same kind. The class allows to specify a number of instances of its nested solver. Each instance can be given a subset of processes that will take part in the computation of the instance. Each process then iterates over all instances where it is part of the subset. Thus, the nested solver of a \code{MultipleInstances} class is called in series for all instances that share a process and it is called in parallel and independently for instances that have disjoint subsets of ranks.
+
+Furthermore, the class provides a common output writer that collectively writes the data of all instances. This allows, e.g., to create a single output file in every timestep containing the data of all fibers. Especially for large scenarios, this is more practical than having as many output files as there are fibers.
+
+The settings that have to be specified in the Python file for a \code{MultipleInstances} class comprise the number of instances and a list with the according number of entries, which further configure the instances. Each list entry can be \code{None} if the rank does not take part in the computation of the corresponding instance. 
+Otherwise, the list entry consists of (i) a specification of all ranks that should collectively compute the corresponding instance and (ii) the settings of the corresponding nested solver. 
+
+The own MPI rank of a process is known in the Python settings file. This allows to specify different settings for different ranks in the same file. By omitting the configuration of irrelevant instances and setting their list entry to \code{None}, the amount of data is reduced and parsing of the script is sped up, especially for large problem sizes.
+
+The settings and corresponding subdomains of the \code{MultipleInstances} classes that are indicated by (c) and (d) in \cref{fig:program_structure} are shown in \cref{fig:fiber_partitioning1,fig:fiber_partitioning2}, respectively.
+As can be seen in \cref{fig:fiber_partitioning1}, the outer \code{MultipleInstances} class separates the subdomains that are not connected by any fibers such that they can be computed in parallel and independently of each other. In the example of \cref{fig:mesh_structure}, the subdomains of ranks 0 and 2 can be computed independently of the subdomains of ranks 1 and 3. In consequence, all processes specify that their \code{MultipleInstances} class has two instances. At rank 0, the list of instance settings contains in the first list item the settings of the nested Strang solver with all information of rank 0's subdomain and in the second list item the value \code{None}, as rank 0 has no information about fibers outside of its subdomain. Ranks 1, 2 and 3 specify their subdomain accordingly, as shown in \cref{fig:fiber_partitioning1}.
+
+During computation, ranks 0 and 2 as well as ranks 1 and 3 enter the \code{Strang} solver class collectively with a shared MPI communicator.
+The inner \code{MultipleInstances} classes employ the 0D subcellular and 1D electric conduction solvers on multiple fibers. As shown in \cref{fig:fiber_partitioning2}, ranks 0 and 2 specify four instances with the settings of the four shared fibers. At the same time and concurrently, ranks 1 and 3 specify five instances with settings for their five shared fibers. 
+
+Note that the multiplicity of the 0D instances on a fiber is not achieved by another \code{MultipleInstances} class but the model is solved for all points on the mesh together, using parallelism on the lower, instruction-based level.
+
+These different splits of the geometry allow to compute the electrophysiology model on the fibers in parallel. The partitioning of the domain has to be the same for the 3D mesh and the embedded fibers to allow value mapping from the fibers to the 3D mesh without communication. The fibers are oriented along the $z$-direction in the 3D setting. This explains why the ranks for a particular fiber, e.g., $\{0,2\}$ or $\{1,3\}$ are not direct successors of each other but increasing with a stride equal to the number of subdomains in $x$ and $y$ directions, $n_x \cdot n_y$.
+
+\subsection{Improved Parallel Solver Scheme using the Thomas Algorithm}\label{sec:improved_parallel_solver_for_fiber_based}
+% FastMonodomainSolver
+
+The monodomain model that is solved on each fiber consists of a reaction-diffusion equation that is solved using the Strang operator splitting.
+The diffusion part uses an implicit timestepping scheme, which leads to a linear system of equation to be solved in every timestep.
+As the Finite Element method with linear ansatz functions is used for spatial discretization, this linear system has a tridiagonal system matrix.
+
+In the solver tree structure in \cref{fig:program_structure}, this solution step occurs in the solvers under the second inner \code{MultipleInstances} class.  As can be seen in \cref{fig:fiber_partitioning2}, the dofs of each fiber that are part of this linear system are partitioned to multiple processes. Hence, this linear system is solved using a parallel conjugate-gradient solver of PETSc.
+
+However, there is the possibility to improve the performance by exploiting the tridiagonal matrix structure. The \emph{Thomas algorithm} is the specialization of Gaussian elemination for this matrix type and is known to efficiently solve such a system in linear time complexity. More specifically, it only requires a first downwards sweep through the matrix entries for forward substitution and a second upwards sweep for back substitution to compute the solution. It is stable for diagonally dominant matrices and this condition is met for the governing system matrix.
+
+As the Thomas algorithm is not parallel, we have to gather the matrix data on a single process in order to employ the algorithm. In OpenDiHu, the \code{FastMonodomainSolver} class is taylored to the parallel solution of fiber based electrophysiology using the Thomas algorithm.
+The parallel partitioning of the fibers is carried out normally, as described in \cref{sec:parallel_partitioning_for_fiber_based}. Before the computation, the fiber data in \cref{fig:fiber_partitioning2} are communicated such that every fiber is completely present at a single processes. The assignment of the fibers to processes occurs in a round-robin fashion, i.e., the first fiber is sent to rank 0, the second to the next rank, etc. In result, every process has approximately the same number of complete fibers. The processes then each compute the full monodomain model consisting of the Strang splitting with the subcellular model on the nodes of each fiber and the diffusion part using the Thomas algorithm.
+
+In the C++ file, the \code{FastMonodomainSolver} class is inserted as a wrapper to the outer \code{MultipleInstances} class that is indicated by (c) in the solver structure in \cref{fig:mesh_structure}. In the Python settings, the class does not add an additional nesting level such that the same settings file can be used for programs with and without the \code{FastMonodomainSolver} class and yields the same simulation results.
+
+During initialization, the \code{FastMonodomainSolver} class initializes its nested solver tree as normal. At the beginning of the first timestep, the communication to gather complete fiber data on single processes is carried out. Then, the monodomain equation is solved in a separate serial implementation for the now locally owned fibers, i.e., not using the nested solvers. The solution is obtained for as many subsequent timesteps as were specified in the settings. When the end time of the enclosing coupling scheme is reached, the fiber data is communicated back to the original partitioned fibers. Then, the coupling scheme continues with the data mapping from the partitioned fibers to the 3D domain and with the \code{StaticBidomainSolver}. Afterwards, the \code{FastMonodomainSolver} is called again and performs its computation anew starting with the communication step.
+
+In summary, the efficient serial computation of the monodomain model in the \code{Fast}\code{MonodomainSolver} is wrapped by communication steps of  the partitioned fiber data. The frequency of this communication step is determined by the timestep width of the coupling scheme. 
+The scenario solves the bidomain equation to simulate EMG signals. A typical sampling frequency of EMG capture devices is $f=\SI{2}{\kilo\hertz}$, which corresponds to a coupling timestep width of $\dt_\text{3D}=\SI{0.5}{\milli\second}$. The timestep widths $\dt_\text{0D}$ of the subcellular model and $\dt_\text{1D}$ of the diffusion term have to be set at maximum to $\SI{1e-3}{\milli\second}$, yielding \num{500} timesteps of computations on the fiber between subsequent communication steps. As a result, the communication cost is negligible.
+
+\subsection{Adaptive Computation of the Subcellular Model}\label{sec:adaptive_computation_for_fiber_based}
+% adaptive solution of cells and whole fibers
+
+During simulations of the fiber based electrophysiology model, often only a small fraction of the given fibers are activated.
+The reason is that in physiological conditions the smaller MUs are activated first and the larger MUs only get activated when the full force of the muscle is required. As the majority of the fibers belongs to larger MUs, a high portion of fibers is less frequently activated, also depending on the scenario.
+But even if the scenario specifies a tetanic stimulation of all MUs, the larger MUs have lower stimulation frequencies which again leads to less action potentials on large MUs than on smaller MUs in the same time span.
+
+A naive solver of the monodomain models always computes all 1D electric conduction problems on the fiber meshes and all 0D subcellular models on the nodes of the fiber meshes, regardless of their activation state. In the following, we present a method in OpenDiHu that exploits the infrequent activation events on most of the fibers while obtaining the same solution as the naive solver.
+
+We assume that the subcellular models are initialized in their equilibrium state, where the temporal derivative of the state vector $\bfy$ vanishes, $∂\bfy/∂t = 0$. The first algorithmic improvement is to only consider those fibers in the solver that have yet been stimulated. This improves the performance especially for \say{ramp like} motor recruitment where more and larger MUs are activated over time. However, after all MUs have been activated at least once, all fibers are computed again and no more performance improvement is obtained.
+
+The second improvement is to only compute instances of the subcellular model at those points where it is not in equilibrium. To determine if an instance of the subcellular model is in equilibrium, we compare the solution before and after one integration step by the Heun method. Only if the relative change of any component of the state vector $\bfy$ is larger than \num{1e-5}, we consider the model to be not in equilibrium.
+
+This check requires to compute the solution of the subcellular model, the avoidance of which is subject of the improved scheme. Therefore, we use the property of the 1D diffusion problem discretized by linear Finite Elements that the value at one spatial point can only influence its two neighbors in a single timestep. This allows us to avoid checking the equilibrium condition at points that are surrounded by other points in equilibrium. This means that the subcellular model does not have to be solved at most points in equilibrium, which drastically reduces the runtime. The 1D electric conduction problem, however, has to be solved for the whole fiber mesh if at least one point one it is not in equilibrium.
+
+In our method, each subcellular point can be in one of the three states \say{active}, \say{inactive} and \say{neighbor is active}.
+If the subcellular model is not in equilibrium, the point is in the state \say{active} and has to be solved in the next timestep. If the subcellular model is in equilibrium and does not have to be solved because the solution vector stays constant, the point is in the state \say{inactive}. The state \say{neighbor is active} occurs for a previously inactive point, of which at least one neighbor became active and, thus, the check if the point is still in equilibrium has to be performed and the subcellular model has to be solved in the next timestep. After each solution step, the state of a point changes according to the transitions given in \cref{fig:state_chart}.
+
+An active point stays active, if the solution has changed in the last numeric integration step. It transitions to inactive, if the solution did not change. The same applies to points in the state \say{neighbor is active}, which also change to \say{active} or \say{inactive} after one time step. 
+An inactive state cannot be activated by a check on the point itself, as this state implies that no computation and subsequent equilibrium check are carried out. The only transition for a point $A$ from an inactive state occurs when a neighbor point $B$ reaches the state \say{active}. Then, point $A$ changes to \say{neighbor is active}.
+For propagating action potentials along a fiber that is in the \say{inactive} state, this leads to a propagating front of points in the \say{neighbor is active} state.
+
+Initially, all states are set to \say{active}. If no stimulation occurs and the subcellular model is in equilibrium, they momentarily change to \say{inactive}. Upon external stimulation, the stimulated points are automatically set to \say{active} and their neighbors are set to \say{neighbor is active} such that the effect of the stimulation can be considered in subcellular model computations.
+
+% compute state
+\begin{figure}%
+  \centering%
+  \includegraphics[width=0.6\textwidth]{images/implementation/state_chart.pdf}%
+  \caption{Transition diagram for the adaptive computation of the subcellular model.}%
+  \label{fig:state_chart}%
+\end{figure}%
+
+\Cref{fig:compute_state3} shows a simulation where the effect of both improvements are visible. The Hodgkin-Huxley subcellular model has been solved on a set of 49 fibers. At the displayed time of $t=\SI{28}{\milli\second}$, two MUs have been activated. The value of the membrane potential $V_m$ is visualized by the radius of the fibers. The active or inactive state of the improved scheme is indicated by the colors.
+
+% compute state
+\begin{figure}%
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/compute_state3.png}%
+  \caption{Simulation scenario that demonstrates the adaptive computation method of fibers and subcellular points. A simulation of the monodomain equation on a set of 49 fibers with the subcellular model of Hodgkin and Huxley is shown. The transmembrane potential is visualized by the fiber radius. The states of the points used in the algorithm are given by the different colors.}%
+  \label{fig:compute_state3}%
+\end{figure}%
+
+It can be seen that several fibers have gray color which indicates that they have not yet been stimulated and, thus, are not part of the computation. The other fibers have been stimulated either by the first or the second MU. Action potentials at two different distances from the center corresponding to the two MUs can be identified by the bulbous shapes. The red parts of the fibers contain the active points where the subcellular model is not in equilibrium. At the yellow regions, the subcellular models are in equilibrium and no computational work is performed there. The yellow regions are at the outer ends of the fibers that were not yet reached by the action potentials as well as around the center for fibers of the first MU. This demonstrates the repolarisation effect after which the model reaches its equilibrium state again. 
+
+The purple colored points are in the state \say{neighbor is active} and can be found between active and inactive points. As the algorithm iterates over all points of a fiber from left to right, these purple points only occur at the left boundaries of active regions. At their right boundaries, the initial \say{neighbor is active} points transition to \say{active} or \say{inactive} directly after the computation step within this iteration.
+
+Instead of individual nodes on the fiber mesh, our implementation treats SIMD vectors of four or eight such adjacent nodes (depending on the hardware capabilities) as one point in the algorithm.  If one of these nodal instances is not in equilibrium, the whole SIMD vector is considered not in equilibrium and transitions to the \say{active} state. This coarser granularity of the model instances allows to solve the subcellular problem in chunks according to the SIMD lane width using SIMD instructions.
+
+\begin{reproduce_no_break}
+  The scenario of \cref{fig:compute_state3} can be run as follows:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_emg/build_release
+    mpirun -n 4 ./fast_fibers_emg ../settings_fibers_emg.py compute_state_demo.py
+  \end{lstlisting}
+  Instead of four processors you can use as many as you have to speed up the computation.
+\end{reproduce_no_break}

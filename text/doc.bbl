@@ -19,683 +19,1606 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
-    \entry{Carniel2017}{article}{}
-      \name{author}{2}{}{%
-        {{hash=f91883adaf0fadb7bb54e813e8ef93ff}{%
-           family={Carniel},
-           familyi={C\bibinitperiod},
-           given={Thiago\bibnamedelima André},
-           giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=6fa3140e3f758596fe98df51433db46d}{%
-           family={Fancello},
-           familyi={F\bibinitperiod},
-           given={Eduardo\bibnamedelima Alberto},
-           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \strng{namehash}{50968d856707d848951287b58beb9d15}
-      \strng{fullhash}{50968d856707d848951287b58beb9d15}
-      \strng{bibnamehash}{50968d856707d848951287b58beb9d15}
-      \strng{authorbibnamehash}{50968d856707d848951287b58beb9d15}
-      \strng{authornamehash}{50968d856707d848951287b58beb9d15}
-      \strng{authorfullhash}{50968d856707d848951287b58beb9d15}
-      \field{labelalpha}{Car17}
-      \field{sortinit}{C}
-      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Several constitutive models for fibrous soft tissues used in literature provide a completely isotropic response when fibers are compressed. However, recent experimental investigations confirm the expectation that tendons behave anisotropically during compression tests. Motivated by these facts, the present manuscript presents an appropriate choice of hyperelastic potentials able to predict the coupled mechanical behaviors of tendons under both tensile and compressive loads with a relatively small number of material parameters. The high stiffness of tendons under tensile tests is handled by a transversely isotropic model while the coupled compressive response is modeled by means of a Fung-type potential in terms of Seth-Hill’s generalized strain tensors. In present study the logarithm strain measure is used instead of the usually employed Green-Lagrange strain. After a parameter identification procedure, the resulting model showed ability to satisfactorily reproduce the experimental data. Details on the analytical material tangent modulus are provided. Present results will then enhance further researches related to tendon dissipative effects and numerical multiscale investigations.}
-      \field{issn}{0021-9290}
-      \field{journaltitle}{Journal of Biomechanics}
-      \field{title}{A transversely isotropic coupled hyperelastic model for the mechanical behavior of tendons}
-      \field{volume}{54}
-      \field{year}{2017}
-      \field{pages}{49\bibrangedash 57}
-      \range{pages}{9}
-      \verb{doi}
-      \verb https://doi.org/10.1016/j.jbiomech.2017.01.042
-      \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0021929017300726
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0021929017300726
-      \endverb
-      \keyw{Constitutive modeling,Anisotropic,Transversely isotropic,Tendon,Soft tissues}
-    \endentry
-    \entry{Cisi2008}{article}{}
-      \name{author}{2}{}{%
-        {{hash=2da8f1d76514effefb3998f9377f10eb}{%
-           family={Cisi},
-           familyi={C\bibinitperiod},
-           given={Rogerio\bibnamedelima RL},
-           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=90fe5ecedd72ef208657a02973bda8a3}{%
-           family={Kohn},
+    \entry{mumps2001}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5a3c83eb2849395a1594b00aace6f57e}{%
+           family={Amestoy},
+           familyi={A\bibinitperiod},
+           given={Patrick\bibnamedelima R.},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=8dea8491f777d9ecf0e0f929a72184e7}{%
+           family={Duff},
+           familyi={D\bibinitperiod},
+           given={Iain\bibnamedelima S.},
+           giveni={I\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=631ef5b7953417104c88df29c4a9312d}{%
+           family={L'Excellent},
+           familyi={L\bibinitperiod},
+           given={Jean-Yves},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=9639b91236d646486486b7a3387c5f22}{%
+           family={Koster},
            familyi={K\bibinitperiod},
-           given={Andre\bibnamedelima F},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{fullhash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{bibnamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authorbibnamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authornamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authorfullhash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \field{labelalpha}{Cis08}
-      \field{sortinit}{C}
-      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of computational neuroscience}
-      \field{number}{3}
-      \field{title}{Simulation system of spinal cord motor nuclei and associated nerves and muscles, in a Web-based architecture}
-      \field{volume}{25}
-      \field{year}{2008}
-      \field{pages}{520\bibrangedash 542}
-      \range{pages}{23}
-    \endentry
-    \entry{CrankNicolson1947}{article}{}
-      \name{author}{2}{}{%
-        {{hash=27c298747e4ca84c98a81ccb6246fb09}{%
-           family={Crank},
-           familyi={C\bibinitperiod},
-           given={J.},
+           given={Jacko},
            giveni={J\bibinitperiod}}}%
-        {{hash=f174983b5400466e03dbc1c64fe4b976}{%
-           family={Nicolson},
-           familyi={N\bibinitperiod},
-           given={P.},
-           giveni={P\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \strng{fullhash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \strng{bibnamehash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \strng{authorbibnamehash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \strng{authornamehash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \strng{authorfullhash}{be1ba54514989b03bf2ce6c45ac00e5d}
-      \field{labelalpha}{Cra47}
-      \field{sortinit}{C}
-      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \strng{namehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{fullhash}{c1ced244d2d0e6bf31a6ec345f10064a}
+      \strng{bibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorbibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authornamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorfullhash}{c1ced244d2d0e6bf31a6ec345f10064a}
+      \field{labelalpha}{Ame01}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Mathematical Proceedings of the Cambridge Philosophical Society}
+      \field{journaltitle}{SIAM Journal on Matrix Analysis and Applications}
       \field{number}{1}
-      \field{title}{A practical method for numerical evaluation of solutions of partial differential equations of the heat-conduction type}
-      \field{volume}{43}
-      \field{year}{1947}
-      \field{pages}{50\bibrangedash 67}
-      \range{pages}{18}
+      \field{title}{A Fully Asynchronous Multifrontal Solver Using Distributed Dynamic Scheduling}
+      \field{volume}{23}
+      \field{year}{2001}
+      \field{pages}{15\bibrangedash 41}
+      \range{pages}{27}
       \verb{doi}
-      \verb 10.1017/S0305004100023197
+      \verb 10.1137/S0895479899358194
       \endverb
-    \endentry
-    \entry{Godunov2003}{incollection}{}
-      \name{editor}{1}{}{%
-        {{hash=336dc9e76882f11cf47f1cd644f64b2a}{%
-           family={Guinot},
-           familyi={G\bibinitperiod},
-           given={Vincent},
-           giveni={V\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Amsterdam}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \strng{fullhash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \strng{bibnamehash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \strng{editorbibnamehash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \strng{editornamehash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \strng{editorfullhash}{336dc9e76882f11cf47f1cd644f64b2a}
-      \field{labelalpha}{Gui03}
-      \field{sortinit}{G}
-      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
-      \field{labelnamesource}{editor}
-      \field{booktitle}{Godunov-type Schemes}
-      \field{isbn}{978-0-444-51155-3}
-      \field{year}{2003}
-      \field{pages}{471\bibrangedash 480}
-      \range{pages}{10}
-      \verb{doi}
-      \verb https://doi.org/10.1016/B978-044451155-3/50015-3
+      \verb{eprint}
+      \verb https://doi.org/10.1137/S0895479899358194
       \endverb
       \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/B9780444511553500153
+      \verb https://doi.org/10.1137/S0895479899358194
       \endverb
       \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/B9780444511553500153
+      \verb https://doi.org/10.1137/S0895479899358194
       \endverb
     \endentry
-    \entry{Heidlauf2013}{article}{}
-      \name{author}{2}{}{%
-        {{hash=a62949e649f9c2137d057064b2c2f290}{%
-           family={Heidlauf},
-           familyi={H\bibinitperiod},
-           given={T.},
+    \entry{mumps2019}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5a3c83eb2849395a1594b00aace6f57e}{%
+           family={Amestoy},
+           familyi={A\bibinitperiod},
+           given={Patrick\bibnamedelima R.},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=88b43ae6448981c0f22d0d3738bfa74b}{%
+           family={Buttari},
+           familyi={B\bibinitperiod},
+           given={Alfredo},
+           giveni={A\bibinitperiod}}}%
+        {{hash=631ef5b7953417104c88df29c4a9312d}{%
+           family={L'Excellent},
+           familyi={L\bibinitperiod},
+           given={Jean-Yves},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=942e933ef33d504bb4df81d4c92f0b81}{%
+           family={Mary},
+           familyi={M\bibinitperiod},
+           given={Theo},
            giveni={T\bibinitperiod}}}%
-        {{hash=a610a46138685fc369bc27137ca60f58}{%
-           family={R{ö}hrle},
-           familyi={R\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
       }
       \list{publisher}{1}{%
-        {Hindawi Publishing Corporation}%
+        {Association for Computing Machinery}%
       }
-      \strng{namehash}{cd610a279ef7f93d03943b703f63badf}
-      \strng{fullhash}{cd610a279ef7f93d03943b703f63badf}
-      \strng{bibnamehash}{cd610a279ef7f93d03943b703f63badf}
-      \strng{authorbibnamehash}{cd610a279ef7f93d03943b703f63badf}
-      \strng{authornamehash}{cd610a279ef7f93d03943b703f63badf}
-      \strng{authorfullhash}{cd610a279ef7f93d03943b703f63badf}
-      \field{labelalpha}{Hei13}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \strng{namehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{fullhash}{c4c512b41a1e95669ddd572d4577710d}
+      \strng{bibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorbibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authornamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorfullhash}{c4c512b41a1e95669ddd572d4577710d}
+      \field{labelalpha}{Ame19}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Computational and Mathematical Methods in Medicine}
-      \field{title}{Modeling the Chemoelectromechanical Behavior of Skeletal Muscle Using the Parallel Open-Source Software Library OpenCMISS}
-      \field{volume}{2013}
-      \field{year}{2013}
-      \field{pages}{1\bibrangedash 14}
-      \range{pages}{14}
+      \field{abstract}{Matrices coming from elliptic Partial Differential Equations have been shown to have a low-rank property that can be efficiently exploited in multifrontal solvers to provide a substantial reduction of their complexity. Among the possible low-rank formats, the Block Low-Rank format (BLR) is easy to use in a general purpose multifrontal solver and its potential compared to standard (full-rank) solvers has been demonstrated. Recently, new variants have been introduced and it was proved that they can further reduce the complexity but their performance has never been analyzed. In this article, we present a multithreaded BLR factorization and analyze its efficiency and scalability in shared-memory multicore environments. We identify the challenges posed by the use of BLR approximations in multifrontal solvers and put forward several algorithmic variants of the BLR factorization that overcome these challenges by improving its efficiency and scalability. We illustrate the performance analysis of the BLR multifrontal factorization with numerical experiments on a large set of problems coming from a variety of real-life applications.}
+      \field{issn}{0098-3500}
+      \field{journaltitle}{ACM Trans. Math. Softw.}
+      \field{month}{2}
+      \field{number}{1}
+      \field{title}{Performance and Scalability of the Block Low-Rank Multifrontal Factorization on Multicore Architectures}
+      \field{volume}{45}
+      \field{year}{2019}
       \verb{doi}
-      \verb 10.1155/2013/517287
-      \endverb
-      \verb{file}
-      \verb :/home/heidlauf/Desktop/old_Desktop/Heidlauf_Roehrle_2013/Computational_and_Mathematical_Methods_in_Medicine/517287.pdf:PDF
+      \verb 10.1145/3242094
       \endverb
       \verb{urlraw}
-      \verb http://dx.doi.org/10.1155/2013/517287
+      \verb https://doi.org/10.1145/3242094
       \endverb
       \verb{url}
-      \verb http://dx.doi.org/10.1155/2013/517287
+      \verb https://doi.org/10.1145/3242094
       \endverb
+      \keyw{multicore architectures,multifrontal factorization,Block Low-Rank,Sparse linear algebra}
     \endentry
-    \entry{Heidlauf2015Diss}{misc}{}
-      \name{editor}{1}{}{%
-        {{hash=2a2fd49ab20a7278f21fd7eaeda51e7f}{%
-           family={Heidlauf},
-           familyi={H\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod}}}%
+    \entry{petsc-user-ref}{report}{}
+      \name{author}{16}{}{%
+        {{hash=0661bc042688479e939e81e7f9185f66}{%
+           family={Balay},
+           familyi={B\bibinitperiod},
+           given={Satish},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c2f21e31f748bc7b4a64b259db788eab}{%
+           family={Abhyankar},
+           familyi={A\bibinitperiod},
+           given={Shrirang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bd61e23ab4cd8bb6ec50ffb42a082c68}{%
+           family={Adams},
+           familyi={A\bibinitperiod},
+           given={Mark\bibnamedelima F.},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=d0832f00d5cff405e609d25f1430b8a9}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Jed},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8300e613a4da2304833266877fa26671}{%
+           family={Brune},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0ae21ec60c05b5bb08bc6babeaa201be}{%
+           family={Buschelman},
+           familyi={B\bibinitperiod},
+           given={Kris},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6600c3041cf5eea1f4cc4c7e4ffbd9b3}{%
+           family={Dalcin},
+           familyi={D\bibinitperiod},
+           given={Lisandro},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8f5cf31bd93743a8ea5093c586cacf29}{%
+           family={Eijkhout},
+           familyi={E\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=b016abeda2277600099618b7766f9f97}{%
+           family={Gropp},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima D.},
+           giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=5ccd554baf55c6d85a260dc5d7e44fb1}{%
+           family={Kaushik},
+           familyi={K\bibinitperiod},
+           given={Dinesh},
+           giveni={D\bibinitperiod}}}%
+        {{hash=70cdf9da102df41b4cdd380deba5fcbb}{%
+           family={Knepley},
+           familyi={K\bibinitperiod},
+           given={Matthew\bibnamedelima G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=da47e8b6609c21c307fa738976a98f76}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Lois\bibnamedelima Curfman},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=b324ba6bbe80060fa05a80690c4f588a}{%
+           family={Rupp},
+           familyi={R\bibinitperiod},
+           given={Karl},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c6bef195fcda026586a3f723ac071cf3}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Barry\bibnamedelima F.},
+           giveni={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=102a753d9421d7549a9a4af2337a58e3}{%
+           family={Zampini},
+           familyi={Z\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5c197210ea3c3cd10b35ad3c6922e157}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Hong},
+           giveni={H\bibinitperiod}}}%
       }
-      \list{language}{1}{%
-        {Englisch}%
+      \list{institution}{1}{%
+        {Argonne National Laboratory}%
       }
-      \list{location}{1}{%
-        {Stuttgart}%
-      }
-      \list{publisher}{2}{%
-        {Institut für Mechanik (Bauwesen), Lehrstuhl für Kontinuumsmechanik, Research Group on Continuum Biomechanics}%
-        {Mechanobiology, Universität Stuttgart}%
-      }
-      \strng{namehash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \strng{fullhash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \strng{bibnamehash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \strng{editorbibnamehash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \strng{editornamehash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \strng{editorfullhash}{2a2fd49ab20a7278f21fd7eaeda51e7f}
-      \field{labelalpha}{Hei15}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
-      \field{labelnamesource}{editor}
+      \strng{namehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{fullhash}{ac1aaa9f8be9570b0ea748b410191b34}
+      \strng{bibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorbibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authornamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorfullhash}{ac1aaa9f8be9570b0ea748b410191b34}
+      \field{labelalpha}{Bal15}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{978-3-946412-00-7 (Druck-Ausgabe)}
-      \field{note}{Online publiziert 2016}
-      \field{title}{Chemo-electro-mechanical modelling of the neuromuscular system}
-      \field{type}{Text (nur für elektronische Ressourcen)}
+      \field{number}{ANL-95/11 - Revision 3.6}
+      \field{title}{{PETS}c Users Manual}
+      \field{type}{techreport}
       \field{year}{2015}
+    \endentry
+    \entry{petsc-web-page}{misc}{}
+      \name{author}{17}{}{%
+        {{hash=0661bc042688479e939e81e7f9185f66}{%
+           family={Balay},
+           familyi={B\bibinitperiod},
+           given={Satish},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c2f21e31f748bc7b4a64b259db788eab}{%
+           family={Abhyankar},
+           familyi={A\bibinitperiod},
+           given={Shrirang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bd61e23ab4cd8bb6ec50ffb42a082c68}{%
+           family={Adams},
+           familyi={A\bibinitperiod},
+           given={Mark\bibnamedelima F.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d0832f00d5cff405e609d25f1430b8a9}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Jed},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8300e613a4da2304833266877fa26671}{%
+           family={Brune},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0ae21ec60c05b5bb08bc6babeaa201be}{%
+           family={Buschelman},
+           familyi={B\bibinitperiod},
+           given={Kris},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6600c3041cf5eea1f4cc4c7e4ffbd9b3}{%
+           family={Dalcin},
+           familyi={D\bibinitperiod},
+           given={Lisandro},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8f5cf31bd93743a8ea5093c586cacf29}{%
+           family={Eijkhout},
+           familyi={E\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=b016abeda2277600099618b7766f9f97}{%
+           family={Gropp},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima D.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=5ccd554baf55c6d85a260dc5d7e44fb1}{%
+           family={Kaushik},
+           familyi={K\bibinitperiod},
+           given={Dinesh},
+           giveni={D\bibinitperiod}}}%
+        {{hash=70cdf9da102df41b4cdd380deba5fcbb}{%
+           family={Knepley},
+           familyi={K\bibinitperiod},
+           given={Matthew\bibnamedelima G.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=da47e8b6609c21c307fa738976a98f76}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Lois\bibnamedelima Curfman},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=b324ba6bbe80060fa05a80690c4f588a}{%
+           family={Rupp},
+           familyi={R\bibinitperiod},
+           given={Karl},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c6bef195fcda026586a3f723ac071cf3}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Barry\bibnamedelima F.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=102a753d9421d7549a9a4af2337a58e3}{%
+           family={Zampini},
+           familyi={Z\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5c197210ea3c3cd10b35ad3c6922e157}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Hong},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5c197210ea3c3cd10b35ad3c6922e157}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Hong},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{fullhash}{7a1b8319a5427c38aafa2f162be38c88}
+      \strng{bibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorbibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authornamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorfullhash}{7a1b8319a5427c38aafa2f162be38c88}
+      \field{labelalpha}{Bal16}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.mcs.anl.gov/petsc}}
+      \field{title}{{PETS}c Web page}
+      \field{year}{2016}
       \verb{urlraw}
-      \verb http://nbn-resolving.de/urn:nbn:de:bsz:93-opus-104496
+      \verb http://www.mcs.anl.gov/petsc
       \endverb
       \verb{url}
-      \verb http://nbn-resolving.de/urn:nbn:de:bsz:93-opus-104496
+      \verb http://www.mcs.anl.gov/petsc
       \endverb
-      \keyw{Mechanik. Biomechanik. Elektrophysiologie. Elektromyographie. Stimulation. Motoneuron. Muskel. Skelettmuskel. Neuromuskuläres System}
     \endentry
-    \entry{Hinton1976}{article}{}
-      \name{author}{3}{}{%
-        {{hash=7e50181b8d831ff000491cddc0ffda36}{%
-           family={Hinton},
-           familyi={H\bibinitperiod},
+    \entry{petsc-efficient1997}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=0661bc042688479e939e81e7f9185f66}{%
+           family={Balay},
+           familyi={B\bibinitperiod},
+           given={Satish},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b016abeda2277600099618b7766f9f97}{%
+           family={Gropp},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima D.},
+           giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=da47e8b6609c21c307fa738976a98f76}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Lois\bibnamedelima Curfman},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c6bef195fcda026586a3f723ac071cf3}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Barry\bibnamedelima F.},
+           giveni={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=7255858860325cfc4fd19491b4dc63e6}{%
+           family={Arge},
+           familyi={A\bibinitperiod},
            given={E.},
            giveni={E\bibinitperiod}}}%
-        {{hash=353fb708e796bf68557bed95ced6c388}{%
-           family={Rock},
-           familyi={R\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-        {{hash=f78ed66e944228d5902508ae1db82473}{%
-           family={Zienkiewicz},
-           familyi={Z\bibinitperiod},
-           given={O.\bibnamedelimi C.},
-           giveni={O\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=576ec15dd4ec6f8b3a23060fa0b4c2ad}{%
+           family={Bruaset},
+           familyi={B\bibinitperiod},
+           given={A.\bibnamedelimi M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e52bb5c5cbb49e38fb0f014842f939fc}{%
+           family={Langtangen},
+           familyi={L\bibinitperiod},
+           given={H.\bibnamedelimi P.},
+           giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
       }
-      \strng{namehash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \strng{fullhash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \strng{bibnamehash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \strng{authorbibnamehash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \strng{authornamehash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \strng{authorfullhash}{e61b8a2df98c6ca17a2b57c6f4141c19}
-      \field{labelalpha}{Hin76}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Earthquake Engineering \& Structural Dynamics}
-      \field{number}{3}
-      \field{title}{A note on mass lumping and related processes in the finite element method}
-      \field{volume}{4}
-      \field{year}{1976}
-      \field{pages}{245\bibrangedash 249}
-      \range{pages}{5}
-      \verb{doi}
-      \verb 10.1002/eqe.4290040305
-      \endverb
-    \endentry
-    \entry{Hodgkin1952}{article}{}
-      \name{author}{2}{}{%
-        {{hash=380378d55a343a5bcffc8c323d8ca4b8}{%
-           family={Hodgkin},
-           familyi={H\bibinitperiod},
-           given={A.\bibnamedelimi L.},
-           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=9a6704d0bf7a4ab9213d4e7e5c16cf18}{%
-           family={Huxley},
-           familyi={H\bibinitperiod},
-           given={A.\bibnamedelimi F.},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      \list{publisher}{1}{%
+        {Birkh{ä}user Press}%
       }
-      \strng{namehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{fullhash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{bibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authorbibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
-      \field{labelalpha}{Hod52}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \strng{namehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{fullhash}{bd446adb02261246091b41fdf15df671}
+      \strng{bibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorbibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authornamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorfullhash}{bd446adb02261246091b41fdf15df671}
+      \strng{editorbibnamehash}{e55396617f2e8fcdcbe48278032bb19e}
+      \strng{editornamehash}{e55396617f2e8fcdcbe48278032bb19e}
+      \strng{editorfullhash}{e55396617f2e8fcdcbe48278032bb19e}
+      \field{labelalpha}{Bal97}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
       \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{The Journal of Physiology}
-      \field{number}{4}
-      \field{title}{A quantitative description of membrane current and its application to conduction and excitation in nerve.}
-      \field{volume}{117}
-      \field{year}{1952}
-      \field{pages}{500\bibrangedash 544}
-      \range{pages}{45}
+      \field{booktitle}{Modern Software Tools in Scientific Computing}
+      \field{title}{Efficient Management of Parallelism in Object Oriented Numerical Software Libraries}
+      \field{year}{1997}
+      \field{pages}{163\bibrangedash 202}
+      \range{pages}{40}
     \endentry
-    \entry{hodgkin1952propagation}{article}{}
-      \name{author}{2}{}{%
-        {{hash=2d431cbefa844616ace34344773b12a4}{%
-           family={Hodgkin},
-           familyi={H\bibinitperiod},
-           given={Alan\bibnamedelima L},
-           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=05ec64db08e6a30baaadb6f9656ddd0e}{%
-           family={Huxley},
-           familyi={H\bibinitperiod},
-           given={Andrew\bibnamedelima F},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+    \entry{petsc-efficient}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=0661bc042688479e939e81e7f9185f66}{%
+           family={Balay},
+           familyi={B\bibinitperiod},
+           given={Satish},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b016abeda2277600099618b7766f9f97}{%
+           family={Gropp},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima D.},
+           giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=da47e8b6609c21c307fa738976a98f76}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Lois\bibnamedelima Curfman},
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c6bef195fcda026586a3f723ac071cf3}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Barry\bibnamedelima F.},
+           giveni={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=7255858860325cfc4fd19491b4dc63e6}{%
+           family={Arge},
+           familyi={A\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=576ec15dd4ec6f8b3a23060fa0b4c2ad}{%
+           family={Bruaset},
+           familyi={B\bibinitperiod},
+           given={A.\bibnamedelimi M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e52bb5c5cbb49e38fb0f014842f939fc}{%
+           family={Langtangen},
+           familyi={L\bibinitperiod},
+           given={H.\bibnamedelimi P.},
+           giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {JSTOR}%
+        {Birkh{ä}user Press}%
       }
-      \strng{namehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \strng{fullhash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \strng{bibnamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \strng{authorbibnamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \strng{authornamehash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \strng{authorfullhash}{af7085a23cb19b7b6fa7ab351ccdb7b2}
-      \field{labelalpha}{Hod52}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \strng{namehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{fullhash}{bd446adb02261246091b41fdf15df671}
+      \strng{bibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorbibnamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authornamehash}{456de0534e91c8a938d1b1a557f67342}
+      \strng{authorfullhash}{bd446adb02261246091b41fdf15df671}
+      \strng{editorbibnamehash}{e55396617f2e8fcdcbe48278032bb19e}
+      \strng{editornamehash}{e55396617f2e8fcdcbe48278032bb19e}
+      \strng{editorfullhash}{e55396617f2e8fcdcbe48278032bb19e}
+      \field{labelalpha}{Bal97}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
       \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Proceedings of the Royal Society of London. Series B, Biological Sciences}
-      \field{title}{Propagation of electrical signals along giant nerve fibres}
-      \field{year}{1952}
-      \field{pages}{177\bibrangedash 183}
-      \range{pages}{7}
+      \field{booktitle}{Modern Software Tools in Scientific Computing}
+      \field{title}{Efficient Management of Parallelism in Object Oriented Numerical Software Libraries}
+      \field{year}{1997}
+      \field{pages}{163\bibrangedash 202}
+      \range{pages}{40}
     \endentry
-    \entry{holzapfel2000nonlinear}{article}{}
-      \name{author}{1}{}{%
-        {{hash=ddc6e29304db19c753a30e6f35cce6d8}{%
-           family={Holzapfel},
+    \entry{precice}{article}{}
+      \name{author}{7}{}{%
+        {{hash=26eafa3a34098b617e2a5381e1d2e42c}{%
+           family={Bungartz},
+           familyi={B\bibinitperiod},
+           given={Hans-Joachim},
+           giveni={H\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=f00cf71d273a55215642cdbd03ce6e48}{%
+           family={Lindner},
+           familyi={L\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=d3d9bcce952061700df6d9dd87ecfb01}{%
+           family={Gatzhammer},
+           familyi={G\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
+           family={Mehl},
+           familyi={M\bibinitperiod},
+           given={Miriam},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a9e3cd19308531620502019b677d1135}{%
+           family={Scheufele},
+           familyi={S\bibinitperiod},
+           given={Klaudius},
+           giveni={K\bibinitperiod}}}%
+        {{hash=060b92f49fee312546012e5375925f6c}{%
+           family={Shukaev},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=96492da40bafc5224b4ca48bed84b96a}{%
+           family={Uekermann},
+           familyi={U\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{fullhash}{3b6a2df2cf7f394a01813ffa34a44fad}
+      \strng{bibnamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authorbibnamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authornamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authorfullhash}{3b6a2df2cf7f394a01813ffa34a44fad}
+      \field{labelalpha}{Bun16}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0045-7930}
+      \field{journaltitle}{Computers \& Fluids}
+      \field{note}{Advances in Fluid-Structure Interaction}
+      \field{title}{preCICE -- A fully parallel library for multi-physics surface coupling}
+      \field{volume}{141}
+      \field{year}{2016}
+      \field{pages}{250\bibrangedash 258}
+      \range{pages}{9}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.compfluid.2016.04.003
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0045793016300974
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0045793016300974
+      \endverb
+      \keyw{Partitioned multi-physics,Strong coupling,Non-matching grids,Inter-code communication,Quasi-Newton,Radial basis functions,High performance computing}
+    \endentry
+    \entry{Choi2013}{article}{}
+      \name{author}{2}{}{%
+        {{hash=eb2a48e31a55753997d48b8ff44ac6c5}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Hon\bibnamedelima Fai},
+           giveni={H\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=591652e965cbe1a4585c1f2d8bddeaef}{%
+           family={Blemker},
+           familyi={B\bibinitperiod},
+           given={Silvia\bibnamedelima S.},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{34495a00784d9c2690995de7f964193a}
+      \strng{fullhash}{34495a00784d9c2690995de7f964193a}
+      \strng{bibnamehash}{34495a00784d9c2690995de7f964193a}
+      \strng{authorbibnamehash}{34495a00784d9c2690995de7f964193a}
+      \strng{authornamehash}{34495a00784d9c2690995de7f964193a}
+      \strng{authorfullhash}{34495a00784d9c2690995de7f964193a}
+      \field{labelalpha}{Cho13}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLOS ONE}
+      \field{number}{10}
+      \field{title}{Skeletal Muscle Fascicle Arrangements Can Be Reconstructed Using a Laplacian Vector Field Simulation}
+      \field{volume}{8}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0077576
+      \endverb
+    \endentry
+    \entry{falgout2002hypre}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=cd0218f423f544a4dd1e92ddae2bddf0}{%
+           family={Falgout},
+           familyi={F\bibinitperiod},
+           given={Robert\bibnamedelima D},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=57c03e4eab1b21d1e643bc0e53ad6c0f}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Ulrike\bibnamedelima Meier},
+           giveni={U\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \strng{fullhash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \strng{bibnamehash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \strng{authorbibnamehash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \strng{authornamehash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \strng{authorfullhash}{1f4b829376c70ed3bb42fe7b5660c783}
+      \field{labelalpha}{Fal02}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Computational Science}
+      \field{title}{hypre: A library of high performance preconditioners}
+      \field{year}{2002}
+      \field{pages}{632\bibrangedash 641}
+      \range{pages}{10}
+    \endentry
+    \entry{openmpi}{inproceedings}{}
+      \name{author}{14}{}{%
+        {{hash=987f8a12b82d6699f2ef91671ee693e9}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Edgar},
+           giveni={E\bibinitperiod}}}%
+        {{hash=a0cbe7c5e612efd8028620cdec02d56b}{%
+           family={Fagg},
+           familyi={F\bibinitperiod},
+           given={Graham\bibnamedelima E.},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=19dc9d515baafa2cc282bcc9d84cb352}{%
+           family={Bosilca},
+           familyi={B\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=dd49510973ce550829071851d40edc6d}{%
+           family={Angskun},
+           familyi={A\bibinitperiod},
+           given={Thara},
+           giveni={T\bibinitperiod}}}%
+        {{hash=fe1173b3e2dc759ad57f31d7dd83d59c}{%
+           family={Dongarra},
+           familyi={D\bibinitperiod},
+           given={Jack\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=071ae69518560695c2d9414cf8565c15}{%
+           family={Squyres},
+           familyi={S\bibinitperiod},
+           given={Jeffrey\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=f189b43f6175b695f30f34fec8457315}{%
+           family={Sahay},
+           familyi={S\bibinitperiod},
+           given={Vishal},
+           giveni={V\bibinitperiod}}}%
+        {{hash=f6546a085305b6de9433f0d2b08f6a2e}{%
+           family={Kambadur},
+           familyi={K\bibinitperiod},
+           given={Prabhanjan},
+           giveni={P\bibinitperiod}}}%
+        {{hash=b41f172836e34f699c8b1d4d0e612ad3}{%
+           family={Barrett},
+           familyi={B\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+        {{hash=76782c3af2abd54f0f96f4565cbc818a}{%
+           family={Lumsdaine},
+           familyi={L\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=596349e6d253e1aa7ddf2f8623a33eff}{%
+           family={Castain},
+           familyi={C\bibinitperiod},
+           given={Ralph\bibnamedelima H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=b9d38ba478a9f637970e7e2fdab5dc13}{%
+           family={Daniel},
+           familyi={D\bibinitperiod},
+           given={David\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=58acfc9051828cd3d029499372f736bd}{%
+           family={Graham},
+           familyi={G\bibinitperiod},
+           given={Richard\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1b6a389169afcbfe9c3aa5f0a5980256}{%
+           family={Woodall},
+           familyi={W\bibinitperiod},
+           given={Timothy\bibnamedelima S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Budapest, Hungary}%
+      }
+      \strng{namehash}{d92130dc5e56ddae2b285de078158405}
+      \strng{fullhash}{73f647bf321d8f33dd33023e649a06a7}
+      \strng{bibnamehash}{d92130dc5e56ddae2b285de078158405}
+      \strng{authorbibnamehash}{d92130dc5e56ddae2b285de078158405}
+      \strng{authornamehash}{d92130dc5e56ddae2b285de078158405}
+      \strng{authorfullhash}{73f647bf321d8f33dd33023e649a06a7}
+      \field{labelalpha}{Gab04}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings, 11th European PVM/MPI Users' Group Meeting}
+      \field{month}{9}
+      \field{title}{Open {MPI}: Goals, Concept, and Design of a Next Generation {MPI} Implementation}
+      \field{year}{2004}
+      \field{pages}{97\bibrangedash 104}
+      \range{pages}{8}
+    \endentry
+    \entry{OpenCOR2015}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8098b088665a1fe9d55eaa0d539d1418}{%
+           family={Garny},
+           familyi={G\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cb2b496249ab1322e3c5b6a625f79974}{%
+           family={Hunter},
            familyi={H\bibinitperiod},
-           given={A\bibnamedelima Gerhard},
-           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+           given={Peter\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \strng{fullhash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \strng{bibnamehash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \strng{authorbibnamehash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \strng{authornamehash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \strng{authorfullhash}{25f27db4ac0e6f7edbc3c6dd69e0d245}
+      \field{labelalpha}{Gar15}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Physiology}
+      \field{title}{{OpenCOR}: a modular and interoperable approach to computational biology}
+      \field{volume}{6}
+      \field{year}{2015}
+      \field{pages}{26}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fphys.2015.00026
+      \endverb
+    \endentry
+    \entry{adios2}{article}{}
+      \name{author}{29}{}{%
+        {{hash=9a4be5d03cf23877a3f21b328ce4fba0}{%
+           family={Godoy},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima F.},
+           giveni={W\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=8cdc32fb1a5abb26669e26a9c993fecf}{%
+           family={Podhorszki},
+           familyi={P\bibinitperiod},
+           given={Norbert},
+           giveni={N\bibinitperiod}}}%
+        {{hash=557419a1c9bb74614c48e249b6998dd8}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ruonan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=86458de570a59c715de5da4478a4f3c2}{%
+           family={Atkins},
+           familyi={A\bibinitperiod},
+           given={Chuck},
+           giveni={C\bibinitperiod}}}%
+        {{hash=5508a05937be31743755513769c388d8}{%
+           family={Eisenhauer},
+           familyi={E\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=eee13d21ebd909832fb99d73bcf7aeef}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Junmin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3f0e8eec691a7a1ef9bef053b5a2b8d0}{%
+           family={Davis},
+           familyi={D\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c11167fa21e45aaf5b6149d4c5d6059a}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Jong},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2851d8241a424bbf340b2f3e9ab5269b}{%
+           family={Germaschewski},
+           familyi={G\bibinitperiod},
+           given={Kai},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a59cdea0afb90cf59a1ae03b7f39550a}{%
+           family={Huck},
+           familyi={H\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1953d7fce3c923d7453987373d4eb02e}{%
+           family={Huebl},
+           familyi={H\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+        {{hash=99f88ce1658f8b952e438272f2201ecd}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d2ec05f56f8428a44f4e2a8367a2d8e2}{%
+           family={Kress},
+           familyi={K\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=00871038f9b48d82e17ba1b8d727f844}{%
+           family={Kurc},
+           familyi={K\bibinitperiod},
+           given={Tahsin},
+           giveni={T\bibinitperiod}}}%
+        {{hash=38189fe02b562b8892bd694420804211}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=ac6f26c66193f9f5e9523b95422475d2}{%
+           family={Logan},
+           familyi={L\bibinitperiod},
+           given={Jeremy},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f1601dde835a0e380b80d8885d81cb9f}{%
+           family={Mehta},
+           familyi={M\bibinitperiod},
+           given={Kshitij},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6ef2c2a61d0484e332402916c15cdcd9}{%
+           family={Ostrouchov},
+           familyi={O\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ee97a5f5e835dcd76c77709d1787609a}{%
+           family={Parashar},
+           familyi={P\bibinitperiod},
+           given={Manish},
+           giveni={M\bibinitperiod}}}%
+        {{hash=97b4f81f1f4d5121c5986a75823cb849}{%
+           family={Poeschel},
+           familyi={P\bibinitperiod},
+           given={Franz},
+           giveni={F\bibinitperiod}}}%
+        {{hash=08430d0035842158029fb6f0705fd507}{%
+           family={Pugmire},
+           familyi={P\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=61bf68e0d2dfd108ab91f94ebc2f3784}{%
+           family={Suchyta},
+           familyi={S\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=21f6cb5786a7ebe21396c28a4123e96c}{%
+           family={Takahashi},
+           familyi={T\bibinitperiod},
+           given={Keichi},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d5bf44b82e7d6656c81ea362c2ad3b8a}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+        {{hash=3997a3f65d905d9df83040ceab77e095}{%
+           family={Tsutsumi},
+           familyi={T\bibinitperiod},
+           given={Seiji},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b298628adb6a7ab2e63d5e3bc96987c5}{%
+           family={Wan},
+           familyi={W\bibinitperiod},
+           given={Lipeng},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a01dacc5040e6fcbca531f66a411236e}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+        {{hash=27bc913faf6f6759b0e8cb0d101396f2}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Kesheng},
+           giveni={K\bibinitperiod}}}%
+        {{hash=dca159a77e0bde6a6741b35754129c06}{%
+           family={Klasky},
+           familyi={K\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{a148a5e89d81b115efffbc151d2fd156}
+      \strng{fullhash}{f9417207188230a9c24a4ee468ffea15}
+      \strng{bibnamehash}{a148a5e89d81b115efffbc151d2fd156}
+      \strng{authorbibnamehash}{a148a5e89d81b115efffbc151d2fd156}
+      \strng{authornamehash}{a148a5e89d81b115efffbc151d2fd156}
+      \strng{authorfullhash}{f9417207188230a9c24a4ee468ffea15}
+      \field{labelalpha}{God20}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present ADIOS 2, the latest version of the Adaptable Input Output (I/O) System. ADIOS 2 addresses scientific data management needs ranging from scalable I/O in supercomputers, to data analysis in personal computer and cloud systems. Version 2 introduces a unified application programming interface (API) that enables seamless data movement through files, wide-area-networks, and direct memory access, as well as high-level APIs for data analysis. The internal architecture provides a set of reusable and extendable components for managing data presentation and transport mechanisms for new applications. ADIOS 2 bindings are available in C++11, C, Fortran, Python, and Matlab and are currently used across different scientific communities. ADIOS 2 provides a communal framework to tackle data management challenges as we approach the exascale era of supercomputing.}
+      \field{issn}{2352-7110}
+      \field{journaltitle}{SoftwareX}
+      \field{title}{ADIOS 2: The Adaptable Input Output System. A framework for high-performance data management}
+      \field{volume}{12}
+      \field{year}{2020}
+      \field{pages}{100561}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.softx.2020.100561
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S2352711019302560
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S2352711019302560
+      \endverb
+      \keyw{High-performance computing (HPC),Scalable I/O,Luster GPFS file systems,Staging,RDMA,Data science,In-situ,Exascale computing}
+    \endentry
+    \entry{googletest}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google},
+           familyi={G\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {John Wiley \& Sons, Inc.}%
+        {GitHub}%
       }
-      \strng{namehash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \strng{fullhash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \strng{bibnamehash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \strng{authorbibnamehash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \strng{authornamehash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \strng{authorfullhash}{ddc6e29304db19c753a30e6f35cce6d8}
-      \field{labelalpha}{Hol00}
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \field{labelalpha}{Goo20}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://google.github.io/googletest/}}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{GoogleTest User’s Guide}
+      \field{year}{2020}
+    \endentry
+    \entry{gutterman2004symbolic}{book}{}
+      \name{author}{1}{}{%
+        {{hash=65b2ac39cea2469008e3bc08071c056d}{%
+           family={Gutterman},
+           familyi={G\bibinitperiod},
+           given={Zvi},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Technion-Israel Institute of Technology, Faculty of Computer Science}%
+      }
+      \strng{namehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{fullhash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{bibnamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authorbibnamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authornamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authorfullhash}{65b2ac39cea2469008e3bc08071c056d}
+      \field{labelalpha}{Gut04}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Symbolic pre-computation for numerical applications}
+      \field{year}{2004}
+    \endentry
+    \entry{semt}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=65b2ac39cea2469008e3bc08071c056d}{%
+           family={Gutterman},
+           familyi={G\bibinitperiod},
+           given={Zvi},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{fullhash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{bibnamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authorbibnamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authornamehash}{65b2ac39cea2469008e3bc08071c056d}
+      \strng{authorfullhash}{65b2ac39cea2469008e3bc08071c056d}
+      \field{labelalpha}{Gut12}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/st-gille/semt}}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{SEMT - Compile-time symbolic differentiation via C++ templates}
+      \field{year}{2012}
+    \endentry
+    \entry{numpy}{article}{}
+      \name{author}{26}{}{%
+        {{hash=e25b1b9ca03e442ed9909fea833323a1}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Charles\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=9e0a9578c0bd7068ee69534fd04d0035}{%
+           family={Millman},
+           familyi={M\bibinitperiod},
+           given={K.\bibnamedelimi Jarrod},
+           giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=599cf936081d38ef865ed6b7ba1d1d06}{%
+           family={Walt},
+           familyi={W\bibinitperiod},
+           given={St{'e}fan\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=646fbfe08374cc41c2f9bd971d8c4725}{%
+           family={Gommers},
+           familyi={G\bibinitperiod},
+           given={Ralf},
+           giveni={R\bibinitperiod}}}%
+        {{hash=18703a2bb6a62484483c193a212da2f8}{%
+           family={Virtanen},
+           familyi={V\bibinitperiod},
+           given={Pauli},
+           giveni={P\bibinitperiod}}}%
+        {{hash=9fd9ed8466bbb96364ae008f2a665e6e}{%
+           family={Cournapeau},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4321feefe3d5715c6fe12639d2a1f7f1}{%
+           family={Wieser},
+           familyi={W\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=e8d1b0c2bff88b6bf54e2e934e2853f6}{%
+           family={Taylor},
+           familyi={T\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=265437a4424f0b845118651d7d04ab93}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4b8819e5830c9d2e77c463a378126c5e}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Nathaniel\bibnamedelima J.},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=9ad1d38817acd2f00cb7f324ec7d37ea}{%
+           family={Kern},
+           familyi={K\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8ae844f84614690134ff5d8252fdc430}{%
+           family={Picus},
+           familyi={P\bibinitperiod},
+           given={Matti},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4a22828b76006f42d747b699d2ef5167}{%
+           family={Hoyer},
+           familyi={H\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7d23f7f7842d547a89af14f4f17ed7a1}{%
+           family={Kerkwijk},
+           familyi={K\bibinitperiod},
+           given={Marten\bibnamedelima H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=626cc151613864abeb653c0d8172d98c}{%
+           family={Brett},
+           familyi={B\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a989405517bbf67ae7b16be1d03c0081}{%
+           family={Haldane},
+           familyi={H\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=66d7c6fae7a759311ba6f7f1a337ceb1}{%
+           family={R{'ı}o},
+           familyi={R\bibinitperiod},
+           given={Jaime\bibnamedelima Fern{'a}ndez},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={del},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=76256cb9e4c31e0a4744b1b49a6199f4}{%
+           family={Wiebe},
+           familyi={W\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3d6efaaa3d9682e20787eb06ff70a3d7}{%
+           family={Peterson},
+           familyi={P\bibinitperiod},
+           given={Pearu},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3675c4edab61bc1c123889f0c868b4ff}{%
+           family={G{'e}rard-Marchant},
+           familyi={G\bibinithyphendelim M\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=22fcbc93c38819e962968aad3e3cba7f}{%
+           family={Sheppard},
+           familyi={S\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=fbb0c40f5d70be8ce47ce9daafdf5749}{%
+           family={Reddy},
+           familyi={R\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4c7e4c94b846fa41e2fc0a88e0dc656d}{%
+           family={Weckesser},
+           familyi={W\bibinitperiod},
+           given={Warren},
+           giveni={W\bibinitperiod}}}%
+        {{hash=c588b2e35e75bba896fc5677afb52fa9}{%
+           family={Abbasi},
+           familyi={A\bibinitperiod},
+           given={Hameer},
+           giveni={H\bibinitperiod}}}%
+        {{hash=52e2684c111b194e1f15fa06b0ce4544}{%
+           family={Gohlke},
+           familyi={G\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=00f2976ade6b1d16d78161a1f190716c}{%
+           family={Oliphant},
+           familyi={O\bibinitperiod},
+           given={Travis\bibnamedelima E.},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media {LLC}}%
+      }
+      \strng{namehash}{7fb7a921a6d76dcd839af4b5119c8705}
+      \strng{fullhash}{b95d67aeccf319f5d54e2d07abdb8be8}
+      \strng{bibnamehash}{7fb7a921a6d76dcd839af4b5119c8705}
+      \strng{authorbibnamehash}{7fb7a921a6d76dcd839af4b5119c8705}
+      \strng{authornamehash}{7fb7a921a6d76dcd839af4b5119c8705}
+      \strng{authorfullhash}{b95d67aeccf319f5d54e2d07abdb8be8}
+      \field{labelalpha}{Har20}
       \field{sortinit}{H}
       \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Nonlinear Solid Mechanics}
-      \field{year}{2000}
+      \field{journaltitle}{Nature}
+      \field{month}{9}
+      \field{number}{7825}
+      \field{title}{Array programming with {NumPy}}
+      \field{volume}{585}
+      \field{year}{2020}
+      \field{pages}{357\bibrangedash 362}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1038/s41586-020-2649-2
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s41586-020-2649-2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/s41586-020-2649-2
+      \endverb
     \endentry
-    \entry{Klotz2020}{article}{}
-      \name{author}{4}{}{%
-        {{hash=7ddb0969ee770c35433f3ea832487a33}{%
-           family={Klotz},
-           familyi={K\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod}}}%
-        {{hash=0ccbd1a779e6d57b163ece087938b263}{%
-           family={Gizzi},
-           familyi={G\bibinitperiod},
-           given={Leonardo},
-           giveni={L\bibinitperiod}}}%
-        {{hash=71acd602255084b505dd22d85055d3cb}{%
-           family={Yavuz},
-           familyi={Y\bibinitperiod},
-           given={Utku\bibnamedelima Ş.},
-           giveni={U\bibinitperiod\bibinitdelim Ş\bibinitperiod}}}%
-        {{hash=568bedcf02451e212a37a40a973f6945}{%
-           family={R{ö}hrle},
-           familyi={R\bibinitperiod},
-           given={Oliver},
-           giveni={O\bibinitperiod}}}%
+    \entry{hoberock2016working}{report}{}
+      \name{author}{1}{}{%
+        {{hash=e510488ab7f12113da02968ba43e8704}{%
+           family={Hoberock},
+           familyi={H\bibinitperiod},
+           given={Jared},
+           giveni={J\bibinitperiod}}}%
       }
-      \strng{namehash}{caff0cbfe76d30dbfef3ee23c9f60314}
-      \strng{fullhash}{1f46b1cc48afc4f27a2a34c72e11fbd5}
-      \strng{bibnamehash}{caff0cbfe76d30dbfef3ee23c9f60314}
-      \strng{authorbibnamehash}{caff0cbfe76d30dbfef3ee23c9f60314}
-      \strng{authornamehash}{caff0cbfe76d30dbfef3ee23c9f60314}
-      \strng{authorfullhash}{1f46b1cc48afc4f27a2a34c72e11fbd5}
-      \field{labelalpha}{Klo20}
+      \list{institution}{1}{%
+        {International Organization for Standardization (ISO), International Electrotechnical Commission (IEC)}%
+      }
+      \strng{namehash}{e510488ab7f12113da02968ba43e8704}
+      \strng{fullhash}{e510488ab7f12113da02968ba43e8704}
+      \strng{bibnamehash}{e510488ab7f12113da02968ba43e8704}
+      \strng{authorbibnamehash}{e510488ab7f12113da02968ba43e8704}
+      \strng{authornamehash}{e510488ab7f12113da02968ba43e8704}
+      \strng{authorfullhash}{e510488ab7f12113da02968ba43e8704}
+      \field{labelalpha}{Hob19}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{N4808}
+      \field{title}{{Working Draft, C++ Extensions for Parallelism Version 2}}
+      \field{type}{techreport}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/n4808.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/n4808.pdf
+      \endverb
+    \endentry
+    \entry{sconsconfig}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=7d980ac07563e1bd130ecce7b0e2c039}{%
+           family={Hodkinson},
+           familyi={H\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \strng{fullhash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \strng{bibnamehash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \strng{authorbibnamehash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \strng{authornamehash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \strng{authorfullhash}{7d980ac07563e1bd130ecce7b0e2c039}
+      \field{labelalpha}{Hod13}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/furious-luke/scons-config}}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{scons-config}
+      \field{year}{2013}
+    \endentry
+    \entry{matplotlib}{article}{}
+      \name{author}{1}{}{%
+        {{hash=515b7a67462b8750a0711541001538cb}{%
+           family={Hunter},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE COMPUTER SOC}%
+      }
+      \strng{namehash}{515b7a67462b8750a0711541001538cb}
+      \strng{fullhash}{515b7a67462b8750a0711541001538cb}
+      \strng{bibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorbibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authornamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorfullhash}{515b7a67462b8750a0711541001538cb}
+      \field{labelalpha}{Hun07}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Matplotlib is a 2D graphics package used for Python for application development, interactive scripting, and publication-quality image generation across user interfaces and operating systems.}
+      \field{journaltitle}{Computing in Science \& Engineering}
+      \field{number}{3}
+      \field{title}{Matplotlib: A 2D graphics environment}
+      \field{volume}{9}
+      \field{year}{2007}
+      \field{pages}{90\bibrangedash 95}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/MCSE.2007.55
+      \endverb
+    \endentry
+    \entry{ISO9241}{report}{}
+      \name{author}{1}{}{%
+        {{hash=a725efcd64de809b1ffa896241f3dac3}{%
+           family={ISO-9241-11:2018(en)},
+           familyi={I\bibinithyphendelim 9\bibinithyphendelim 1\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {International Organization for Standardization}%
+      }
+      \list{location}{1}{%
+        {Geneva, CH}%
+      }
+      \strng{namehash}{a725efcd64de809b1ffa896241f3dac3}
+      \strng{fullhash}{a725efcd64de809b1ffa896241f3dac3}
+      \strng{bibnamehash}{a725efcd64de809b1ffa896241f3dac3}
+      \strng{authorbibnamehash}{a725efcd64de809b1ffa896241f3dac3}
+      \strng{authornamehash}{a725efcd64de809b1ffa896241f3dac3}
+      \strng{authorfullhash}{a725efcd64de809b1ffa896241f3dac3}
+      \field{labelalpha}{ISO18}
+      \field{sortinit}{I}
+      \field{sortinithash}{320bc8fe8101b9376f9f21cd507de0e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Ergonomics of human-system interaction -- Part 11: Usability: Definitions and concepts}}
+      \field{type}{Standard}
+      \field{volume}{2018}
+      \field{year}{2018}
+    \endentry
+    \entry{base64}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=32b5db182d97ea8d898e46519b2be14a}{%
+           family={Kislan},
+           familyi={K\bibinitperiod},
+           given={Tomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{32b5db182d97ea8d898e46519b2be14a}
+      \strng{fullhash}{32b5db182d97ea8d898e46519b2be14a}
+      \strng{bibnamehash}{32b5db182d97ea8d898e46519b2be14a}
+      \strng{authorbibnamehash}{32b5db182d97ea8d898e46519b2be14a}
+      \strng{authornamehash}{32b5db182d97ea8d898e46519b2be14a}
+      \strng{authorfullhash}{32b5db182d97ea8d898e46519b2be14a}
+      \field{labelalpha}{Kis20}
       \field{sortinit}{K}
       \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Electromyography (EMG) can be used to study the behaviour of the motor neurons and thus provides insights into the physiology of the central nervous system. However, due to the high complexity of neuromuscular control, EMG signals are challenging to interpret. While the exact knowledge of the excitation patterns of a specific muscle within an in vivo experimental setting remains elusive, simulations allow to systematically investigate EMG signals in a controlled environment. Within this context, simulations can provide virtual EMG data, which, for example, can be used to validate and optimise signal analysis methods that aim to estimate the relationship between EMG signals and the output of motor neuron pools. However, since existing methods, which are employed to compute EMG signals, exhibit deficiencies with respect to the physical model itself as well as with respect to numerical aspects, we propose a novel homogenised continuum model that closely resolves the electro-physiological behaviour of skeletal muscle tissue. The proposed model is based on an extension of the well-established bidomain model and includes a biophysically detailed description of the electrical activity within the tissue, which is due to the depolarisation of the muscle fibre membranes. In contrast to all other published EMG models, which assume that the electrical potential field for each muscle fibre can be calculated independently, the proposed model assumes that the electrical potential in the muscle fibres is coupled to the electrical potential in the extracellular space. We show that the newly proposed model is able to simulate realistic EMG signals and demonstrate the potential to employ the predicted virtual EMG signal in order to evaluate the goodness of automated decomposition algorithms.}
-      \field{issn}{1617-7940}
-      \field{journaltitle}{Biomechanics and Modeling in Mechanobiology}
-      \field{month}{2}
-      \field{number}{1}
-      \field{title}{Modelling the electrical activity of skeletal muscle tissue using a multi-domain approach}
-      \field{volume}{19}
+      \field{howpublished}{\url{https://github.com/tkislan/base64}}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{Base64 encoding and decoding for C++ projects}
       \field{year}{2020}
-      \field{pages}{335\bibrangedash 349}
-      \range{pages}{15}
-      \verb{doi}
-      \verb 10.1007/s10237-019-01214-5
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/s10237-019-01214-5
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/s10237-019-01214-5
-      \endverb
     \endentry
-    \entry{marsden1994mathematical}{book}{}
+    \entry{vc2012}{article}{}
       \name{author}{2}{}{%
-        {{hash=dc712089ec6c117d096c9676f66e2052}{%
-           family={Marsden},
-           familyi={M\bibinitperiod},
-           given={Jerrold\bibnamedelima E},
-           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=3048a5c0bdede9c50e4857f27a83640b}{%
-           family={Hughes},
-           familyi={H\bibinitperiod},
-           given={Thomas\bibnamedelima JR},
-           giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Courier Corporation}%
-      }
-      \strng{namehash}{f81ac5e419cd66d2f28935916278e585}
-      \strng{fullhash}{f81ac5e419cd66d2f28935916278e585}
-      \strng{bibnamehash}{f81ac5e419cd66d2f28935916278e585}
-      \strng{authorbibnamehash}{f81ac5e419cd66d2f28935916278e585}
-      \strng{authornamehash}{f81ac5e419cd66d2f28935916278e585}
-      \strng{authorfullhash}{f81ac5e419cd66d2f28935916278e585}
-      \field{labelalpha}{Mar94}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Mathematical foundations of elasticity}
-      \field{year}{1994}
-    \endentry
-    \entry{Mileusnic2006Golgi}{article}{}
-      \name{author}{2}{}{%
-        {{hash=b71ba7948004ffad35b4f0e12f98aecc}{%
-           family={Mileusnic},
-           familyi={M\bibinitperiod},
-           given={Milana\bibnamedelima P.},
-           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=c8d35ba9eb222ef048886b838c443a6d}{%
-           family={Loeb},
+        {{hash=e04b667833887b83e216f9566a0dd16b}{%
+           family={Kretz},
+           familyi={K\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5a177422e1c85b5644846a41b53f9362}{%
+           family={Lindenstruth},
            familyi={L\bibinitperiod},
-           given={Gerald\bibnamedelima E.},
-           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
       }
-      \strng{namehash}{7baf4c00fffb191c792adda5b200fe97}
-      \strng{fullhash}{7baf4c00fffb191c792adda5b200fe97}
-      \strng{bibnamehash}{7baf4c00fffb191c792adda5b200fe97}
-      \strng{authorbibnamehash}{7baf4c00fffb191c792adda5b200fe97}
-      \strng{authornamehash}{7baf4c00fffb191c792adda5b200fe97}
-      \strng{authorfullhash}{7baf4c00fffb191c792adda5b200fe97}
-      \field{labelalpha}{Mil06}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \strng{namehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{fullhash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{bibnamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authorbibnamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authornamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authorfullhash}{c7ecf93e48d12311958e1be173e35260}
+      \field{labelalpha}{Kre12}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
       \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We developed a physiologically realistic mathematical model of the Golgi tendon organ (GTO) whose elements correspond to anatomical features of the biological receptor. The mechanical interactions of these elements enable it to capture all salient aspects of GTO afferent behavior reported in the literature. The model accurately describes the GTO's static and dynamic responses to activation of single motor units whose muscle fibers insert into the GTO, including the different static and dynamic sensitivities that exist for different types of muscle fibers (S, FR, and FF). Furthermore, it captures the phenomena of self- and cross-adaptation wherein the GTO dynamic response during motor unit activation is reduced by prior activation of the same or a different motor unit, respectively. The model demonstrates various degrees of nonlinear summation of GTO responses resulting from simultaneous activation of multiple motor units. Similarly to the biological GTO, the model suggests that the activation of every additional motor unit to already active motor units that influence the receptor will have a progressively weaker incremental effect on the GTO afferent activity. Finally, the proportional relationship between the cross-adaptation and summation recorded for various pairs of motor units was captured by the model, but only by incorporating a particular type of occlusion between multiple transduction regions that were previously suggested. This occlusion mechanism is consistent with the anatomy of the afferent innervation and its arrangement with respect to the collagen strands inserting into the GTO.}
-      \field{journaltitle}{Journal of Neurophysiology}
-      \field{note}{PMID: 16672300}
-      \field{number}{4}
-      \field{title}{Mathematical Models of Proprioceptors. II. Structure and Function of the Golgi Tendon Organ}
-      \field{volume}{96}
-      \field{year}{2006}
-      \field{pages}{1789\bibrangedash 1802}
-      \range{pages}{14}
+      \field{journaltitle}{Software: Practice and Experience}
+      \field{number}{11}
+      \field{title}{{Vc: A C++ library for explicit vectorization}}
+      \field{volume}{42}
+      \field{year}{2012}
+      \field{pages}{1409\bibrangedash 1430}
+      \range{pages}{22}
       \verb{doi}
-      \verb 10.1152/jn.00869.2005
+      \verb https://doi.org/10.1002/spe.1149
       \endverb
       \verb{eprint}
-      \verb https://doi.org/10.1152/jn.00869.2005
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/spe.1149
       \endverb
       \verb{urlraw}
-      \verb https://doi.org/10.1152/jn.00869.2005
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/spe.1149
       \endverb
       \verb{url}
-      \verb https://doi.org/10.1152/jn.00869.2005
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/spe.1149
       \endverb
+      \keyw{SIMD,C++,data-parallel,AVX,LRBni,SSE,optimization,Vc,vectorization}
     \endentry
-    \entry{Mileusnic2006Spindle}{article}{}
-      \name{author}{4}{}{%
-        {{hash=b71ba7948004ffad35b4f0e12f98aecc}{%
-           family={Mileusnic},
-           familyi={M\bibinitperiod},
-           given={Milana\bibnamedelima P.},
-           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=ad9a5042c71a67169e72ba01b8c55ff4}{%
-           family={Brown},
-           familyi={B\bibinitperiod},
-           given={Ian\bibnamedelima E.},
-           giveni={I\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=8ef81c075faac8026c46e839ba6de3f5}{%
-           family={Lan},
+    \entry{Kretz2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e04b667833887b83e216f9566a0dd16b}{%
+           family={Kretz},
+           familyi={K\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5a177422e1c85b5644846a41b53f9362}{%
+           family={Lindenstruth},
            familyi={L\bibinitperiod},
-           given={Ning},
-           giveni={N\bibinitperiod}}}%
-        {{hash=c8d35ba9eb222ef048886b838c443a6d}{%
-           family={Loeb},
-           familyi={L\bibinitperiod},
-           given={Gerald\bibnamedelima E.},
-           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
       }
-      \strng{namehash}{388996ca0f896e9a92d739ea61d86cf4}
-      \strng{fullhash}{e64590b799eba1b71875baf711fcc56f}
-      \strng{bibnamehash}{388996ca0f896e9a92d739ea61d86cf4}
-      \strng{authorbibnamehash}{388996ca0f896e9a92d739ea61d86cf4}
-      \strng{authornamehash}{388996ca0f896e9a92d739ea61d86cf4}
-      \strng{authorfullhash}{e64590b799eba1b71875baf711fcc56f}
-      \field{labelalpha}{Mil06}
-      \field{sortinit}{M}
-      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \strng{namehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{fullhash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{bibnamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authorbibnamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authornamehash}{c7ecf93e48d12311958e1be173e35260}
+      \strng{authorfullhash}{c7ecf93e48d12311958e1be173e35260}
+      \field{labelalpha}{Kre12}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
       \field{extraalpha}{2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We constructed a physiologically realistic model of a lower-limb, mammalian muscle spindle composed of mathematical elements closely related to the anatomical components found in the biological spindle. The spindle model incorporates three nonlinear intrafusal fiber models (bag1, bag2, and chain) that contribute variously to action potential generation of primary and secondary afferents. A single set of model parameters was optimized on a number of data sets collected from feline soleus muscle, accounting accurately for afferent activity during a variety of ramp, triangular, and sinusoidal stretches. We also incorporated the different temporal properties of fusimotor activation as observed in the twitchlike chain fibers versus the toniclike bag fibers. The model captures the spindle's behavior both in the absence of fusimotor stimulation and during activation of static or dynamic fusimotor efferents. In the case of simultaneous static and dynamic fusimotor efferent stimulation, we demonstrated the importance of including the experimentally observed effect of partial occlusion. The model was validated against data that originated from the cat's medial gastrocnemius muscle and were different from the data used for the parameter determination purposes. The validation record included recently published experiments in which fusimotor efferent and spindle afferent activities were recorded simultaneously during decerebrate locomotion in the cat. This model will be useful in understanding the role of the muscle spindle and its fusimotor control during both natural and pathological motor behavior.}
-      \field{journaltitle}{Journal of Neurophysiology}
-      \field{note}{PMID: 16672301}
-      \field{number}{4}
-      \field{title}{Mathematical Models of Proprioceptors. I. Control and Transduction in the Muscle Spindle}
-      \field{volume}{96}
-      \field{year}{2006}
-      \field{pages}{1772\bibrangedash 1788}
-      \range{pages}{17}
+      \field{abstract}{SUMMARY It is an established trend that CPU development takes advantage of Moore's Law to improve in parallelism much more than in scalar execution speed. This results in higher hardware thread counts (MIMD) and improved vector units (SIMD), of which the MIMD developments have received the focus of library research and development in recent years. To make use of the latest hardware improvements, SIMD must receive a stronger focus of API research and development because the computational power can no longer be neglected and often auto-vectorizing compilers cannot generate the necessary SIMD code, as will be shown in this paper. Nowadays, the SIMD capabilities are sufficiently significant to warrant vectorization of algorithms requiring more conditional execution than was originally expected for Streaming SIMD Extension to handle. The Vc library (http://compeng.uni-frankfurt.de/?vc) was designed to support developers in the creation of portable vectorized code. Its capabilities and performance have been thoroughly tested. Vc provides portability of the source code, allowing full utilization of the hardware's SIMD capabilities, without introducing any overhead. Copyright © 2011 John Wiley \& Sons, Ltd.}
+      \field{journaltitle}{Software: Practice and Experience}
+      \field{number}{11}
+      \field{title}{Vc: A C++ library for explicit vectorization}
+      \field{volume}{42}
+      \field{year}{2012}
+      \field{pages}{1409\bibrangedash 1430}
+      \range{pages}{22}
       \verb{doi}
-      \verb 10.1152/jn.00868.2005
+      \verb 10.1002/spe.1149
       \endverb
       \verb{eprint}
-      \verb https://doi.org/10.1152/jn.00868.2005
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/spe.1149
       \endverb
       \verb{urlraw}
-      \verb https://doi.org/10.1152/jn.00868.2005
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/spe.1149
       \endverb
       \verb{url}
-      \verb https://doi.org/10.1152/jn.00868.2005
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/spe.1149
       \endverb
+      \keyw{SIMD,C++,data-parallel,AVX,LRBni,SSE,optimization,Vc,vectorization}
     \endentry
-    \entry{Mordhorst2015}{article}{}
-      \name{author}{3}{}{%
-        {{hash=382dd1760ccc7dedbca0ca702b4821f0}{%
-           family={Mordhorst},
-           familyi={M\bibinitperiod},
-           given={M.},
+    \entry{Kretz2015}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=e04b667833887b83e216f9566a0dd16b}{%
+           family={Kretz},
+           familyi={K\bibinitperiod},
+           given={Matthias},
            giveni={M\bibinitperiod}}}%
-        {{hash=a62949e649f9c2137d057064b2c2f290}{%
-           family={Heidlauf},
-           familyi={H\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-        {{hash=f73ca9484f92b6193978a31bd9778ce5}{%
-           family={Röhrle},
-           familyi={R\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
       }
-      \strng{namehash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \strng{fullhash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \strng{bibnamehash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \strng{authorbibnamehash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \strng{authornamehash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \strng{authorfullhash}{fb5aa9ba2dc2902f332f3837960ef2fe}
-      \field{labelalpha}{Mor15}
+      \list{institution}{1}{%
+        {Goethe University Frankfurt}%
+      }
+      \list{location}{1}{%
+        {Frankfurt am Main}%
+      }
+      \list{publisher}{1}{%
+        {Univ.-Bibliothek}%
+      }
+      \strng{namehash}{e04b667833887b83e216f9566a0dd16b}
+      \strng{fullhash}{e04b667833887b83e216f9566a0dd16b}
+      \strng{bibnamehash}{e04b667833887b83e216f9566a0dd16b}
+      \strng{authorbibnamehash}{e04b667833887b83e216f9566a0dd16b}
+      \strng{authornamehash}{e04b667833887b83e216f9566a0dd16b}
+      \strng{authorfullhash}{e04b667833887b83e216f9566a0dd16b}
+      \field{labelalpha}{Kre15}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Extending C++ for explicit data-parallel programming via SIMD vector types}
+      \field{type}{phdthesis}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/38415
+      \endverb
+      \verb{url}
+      \verb https://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/38415
+      \endverb
+      \keyw{C++; SIMD; data parallel; parallel programming; vectorization}
+    \endentry
+    \entry{Maas2012}{article}{}
+      \name{author}{4}{}{%
+        {{hash=55b98f253b06d973f3482481f56625ab}{%
+           family={Maas},
+           familyi={M\bibinitperiod},
+           given={Steve\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=02787149e6a44790037e3e012b3fb4f1}{%
+           family={Ellis},
+           familyi={E\bibinitperiod},
+           given={Benjamin\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=49e4682b4f910eb578931021f1796915}{%
+           family={Ateshian},
+           familyi={A\bibinitperiod},
+           given={Gerard\bibnamedelima A.},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=342b3f4f632447b2f6dba185d1461054}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Jeffrey\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c4ad2e013dc28927516b1347a4fa856e}
+      \strng{fullhash}{ceded223d48c1e5bb83abc241498f5f5}
+      \strng{bibnamehash}{c4ad2e013dc28927516b1347a4fa856e}
+      \strng{authorbibnamehash}{c4ad2e013dc28927516b1347a4fa856e}
+      \strng{authornamehash}{c4ad2e013dc28927516b1347a4fa856e}
+      \strng{authorfullhash}{ceded223d48c1e5bb83abc241498f5f5}
+      \field{labelalpha}{Maa12}
       \field{sortinit}{M}
       \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Interface Focus}
+      \field{abstract}{In the field of computational biomechanics, investigators have primarily used commercial software that is neither geared toward biological applications nor sufficiently flexible to follow the latest developments in the field. This lack of a tailored software environment has hampered research progress, as well as dissemination of models and results. To address these issues, we developed the FEBio software suite (http://mrl.sci.utah.edu/software/febio), a nonlinear implicit finite element (FE) framework, designed specifically for analysis in computational solid biomechanics. This paper provides an overview of the theoretical basis of FEBio and its main features. FEBio offers modeling scenarios, constitutive models, and boundary conditions, which are relevant to numerous applications in biomechanics. The open-source FEBio software is written in C++, with particular attention to scalar and parallel performance on modern computer architectures. Software verification is a large part of the development and maintenance of FEBio, and to demonstrate the general approach, the description and results of several problems from the FEBio Verification Suite are presented and compared to analytical solutions or results from other established and verified FE codes. An additional simulation is described that illustrates the application of FEBio to a research problem in biomechanics. Together with the pre- and postprocessing software PREVIEW and POSTVIEW, FEBio provides a tailored solution for research and development in computational biomechanics.}
+      \field{issn}{0148-0731}
+      \field{journaltitle}{Journal of Biomechanical Engineering}
       \field{month}{2}
-      \field{number}{2}
-      \field{title}{Predicting electromyographic signals under realistic conditions using a multiscale chemo-electro-mechanical finite element model}
-      \field{volume}{5}
-      \field{year}{2015}
-      \field{pages}{1\bibrangedash 11}
-      \range{pages}{11}
+      \field{note}{011005}
+      \field{number}{1}
+      \field{title}{FEBio: Finite Elements for Biomechanics}
+      \field{volume}{134}
+      \field{year}{2012}
       \verb{doi}
-      \verb 10.1098/rsfs.2014.0076
+      \verb 10.1115/1.4005694
       \endverb
       \verb{urlraw}
-      \verb http://dx.doi.org/10.1098/rsfs.2014.0076
+      \verb https://doi.org/10.1115/1.4005694
       \endverb
       \verb{url}
-      \verb http://dx.doi.org/10.1098/rsfs.2014.0076
+      \verb https://doi.org/10.1115/1.4005694
       \endverb
-      \keyw{electromypgraphy,finite element method,skeletal musle,bidomain,biophysial modelling,fatigue}
     \endentry
-    \entry{peskoff1979electric}{article}{}
-      \name{author}{1}{}{%
-        {{hash=473fc9195e70ce2ed9986f3bccd0d6db}{%
-           family={Peskoff},
-           familyi={P\bibinitperiod},
-           given={A},
-           giveni={A\bibinitperiod}}}%
+    \entry{maas2017febio}{article}{}
+      \name{author}{3}{}{%
+        {{hash=498875d2c565989638314743b5248bdf}{%
+           family={Maas},
+           familyi={M\bibinitperiod},
+           given={Steve\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5bfa19bf63a8b7e3c7810e4e997fd205}{%
+           family={Ateshian},
+           familyi={A\bibinitperiod},
+           given={Gerard\bibnamedelima A},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=8dbeb44050bea8f8fea789140b92ff44}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Jeffrey\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer}%
+        {Annual Reviews}%
       }
-      \strng{namehash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \strng{fullhash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \strng{bibnamehash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \strng{authorbibnamehash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \strng{authornamehash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \strng{authorfullhash}{473fc9195e70ce2ed9986f3bccd0d6db}
-      \field{labelalpha}{Pes79}
-      \field{sortinit}{P}
-      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \strng{namehash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \strng{fullhash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \strng{bibnamehash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \strng{authorbibnamehash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \strng{authornamehash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \strng{authorfullhash}{e6c9a44191b4ff05fda59bb2c5dc9322}
+      \field{labelalpha}{Maa17}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Bulletin of mathematical biology}
-      \field{number}{2}
-      \field{title}{Electric potential in three-dimensional electrically syncytial tissues}
-      \field{volume}{41}
-      \field{year}{1979}
-      \field{pages}{163\bibrangedash 181}
-      \range{pages}{19}
+      \field{journaltitle}{Annual review of biomedical engineering}
+      \field{title}{FEBio: history and advances}
+      \field{volume}{19}
+      \field{year}{2017}
+      \field{pages}{279\bibrangedash 299}
+      \range{pages}{21}
     \endentry
-    \entry{Roehrle2012}{article}{}
-      \name{author}{3}{}{%
-        {{hash=a610a46138685fc369bc27137ca60f58}{%
-           family={R{ö}hrle},
-           familyi={R\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-        {{hash=5c5494d03d60cd95d6c22c96ec9b4d18}{%
-           family={Davidson},
-           familyi={D\bibinitperiod},
-           given={J.\bibnamedelimi B.},
-           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=1a827cd3f70cf9c1943931349fd32441}{%
-           family={Pullan},
-           familyi={P\bibinitperiod},
-           given={A.\bibnamedelimi J.},
-           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+    \entry{opendihuWeb}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d94a4e531c626bc3d5b67f710b993249}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Frontiers Media SA}%
+        {Readthedocs}%
       }
-      \strng{namehash}{6e0ba35d236dde46338c79cfddac8b99}
-      \strng{fullhash}{6e0ba35d236dde46338c79cfddac8b99}
-      \strng{bibnamehash}{6e0ba35d236dde46338c79cfddac8b99}
-      \strng{authorbibnamehash}{6e0ba35d236dde46338c79cfddac8b99}
-      \strng{authornamehash}{6e0ba35d236dde46338c79cfddac8b99}
-      \strng{authorfullhash}{6e0ba35d236dde46338c79cfddac8b99}
-      \field{labelalpha}{Röh12}
+      \strng{namehash}{d94a4e531c626bc3d5b67f710b993249}
+      \strng{fullhash}{d94a4e531c626bc3d5b67f710b993249}
+      \strng{bibnamehash}{d94a4e531c626bc3d5b67f710b993249}
+      \strng{authorbibnamehash}{d94a4e531c626bc3d5b67f710b993249}
+      \strng{authornamehash}{d94a4e531c626bc3d5b67f710b993249}
+      \strng{authorfullhash}{d94a4e531c626bc3d5b67f710b993249}
+      \field{labelalpha}{Mai21}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://opendihu.readthedocs.io/}}
+      \field{title}{{OpenDiHu Online Documentation}}
+      \field{year}{2021}
+    \endentry
+    \entry{DihuWeb}{online}{}
+      \name{author}{1}{}{%
+        {{hash=77c75a286fc412f4121da382c9f2b89d}{%
+           family={Röhrle},
+           familyi={R\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{77c75a286fc412f4121da382c9f2b89d}
+      \strng{fullhash}{77c75a286fc412f4121da382c9f2b89d}
+      \strng{bibnamehash}{77c75a286fc412f4121da382c9f2b89d}
+      \strng{authorbibnamehash}{77c75a286fc412f4121da382c9f2b89d}
+      \strng{authornamehash}{77c75a286fc412f4121da382c9f2b89d}
+      \strng{authorfullhash}{77c75a286fc412f4121da382c9f2b89d}
+      \field{labelalpha}{Röh17}
       \field{sortinit}{R}
       \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Frontiers in Physiology}
-      \field{title}{A physiologically based, multi-scale model of skeletal muscle structure and function}
-      \field{volume}{3}
-      \field{year}{2012}
+      \field{title}{DiHu - Towards a digital human, Project Website}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2020}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ipvs.informatik.uni-stuttgart.de/SGS/digital_human/index.php
+      \endverb
+      \verb{url}
+      \verb https://ipvs.informatik.uni-stuttgart.de/SGS/digital_human/index.php
+      \endverb
+    \endentry
+    \entry{easyloggingpp}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c5d39c4eddd367dd76528762620c4907}{%
+           family={Services},
+           familyi={S\bibinitperiod},
+           given={Amrayn\bibnamedelima Web},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{c5d39c4eddd367dd76528762620c4907}
+      \strng{fullhash}{c5d39c4eddd367dd76528762620c4907}
+      \strng{bibnamehash}{c5d39c4eddd367dd76528762620c4907}
+      \strng{authorbibnamehash}{c5d39c4eddd367dd76528762620c4907}
+      \strng{authornamehash}{c5d39c4eddd367dd76528762620c4907}
+      \strng{authorfullhash}{c5d39c4eddd367dd76528762620c4907}
+      \field{labelalpha}{Ser21}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/amrayn/easyloggingpp}}
+      \field{journaltitle}{GitHub repository}
+      \field{title}{{Easylogging++ -- Single header C++ logging library}}
+      \field{year}{2021}
     \endentry
     \entry{Shorten2007}{article}{}
       \name{author}{4}{}{%
@@ -753,181 +1676,287 @@
       \endverb
       \keyw{Potassium; Fibre type; Fast-twitch; Slow-twitch; Phosphate; Calcium}
     \endentry
-    \entry{Strang1968}{article}{}
-      \name{author}{1}{}{%
-        {{hash=93733dfde0c47db226efad798ab3b662}{%
-           family={Strang},
-           familyi={S\bibinitperiod},
-           given={Gilbert},
+    \entry{python3}{book}{}
+      \name{author}{2}{}{%
+        {{hash=6e5c5006a95b090dafa8ef616ba15134}{%
+           family={Van\bibnamedelima Rossum},
+           familyi={V\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Guido},
            giveni={G\bibinitperiod}}}%
+        {{hash=22be61652b3fcc10f4499341956a8780}{%
+           family={Drake},
+           familyi={D\bibinitperiod},
+           given={Fred\bibnamedelima L.},
+           giveni={F\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
       }
-      \strng{namehash}{93733dfde0c47db226efad798ab3b662}
-      \strng{fullhash}{93733dfde0c47db226efad798ab3b662}
-      \strng{bibnamehash}{93733dfde0c47db226efad798ab3b662}
-      \strng{authorbibnamehash}{93733dfde0c47db226efad798ab3b662}
-      \strng{authornamehash}{93733dfde0c47db226efad798ab3b662}
-      \strng{authorfullhash}{93733dfde0c47db226efad798ab3b662}
-      \field{labelalpha}{Str68}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \list{location}{1}{%
+        {Scotts Valley, CA}%
+      }
+      \list{publisher}{1}{%
+        {CreateSpace}%
+      }
+      \strng{namehash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \strng{fullhash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \strng{bibnamehash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \strng{authorbibnamehash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \strng{authornamehash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \strng{authorfullhash}{2c10fb8b2aa0411d3fab9b300ef4d8c8}
+      \field{labelalpha}{Van09}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{SIAM Journal on Numerical Analysis}
-      \field{number}{3}
-      \field{title}{On the Construction and Comparison of Difference Schemes}
-      \field{volume}{5}
-      \field{year}{1968}
-      \field{pages}{506\bibrangedash 517}
+      \field{isbn}{1441412697}
+      \field{title}{Python 3 Reference Manual}
+      \field{year}{2009}
+    \endentry
+    \entry{libxml2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=99cac23b411ba681598eaebd9353ad3e}{%
+           family={Veillard},
+           familyi={V\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Gnome project}%
+      }
+      \strng{namehash}{99cac23b411ba681598eaebd9353ad3e}
+      \strng{fullhash}{99cac23b411ba681598eaebd9353ad3e}
+      \strng{bibnamehash}{99cac23b411ba681598eaebd9353ad3e}
+      \strng{authorbibnamehash}{99cac23b411ba681598eaebd9353ad3e}
+      \strng{authornamehash}{99cac23b411ba681598eaebd9353ad3e}
+      \strng{authorfullhash}{99cac23b411ba681598eaebd9353ad3e}
+      \field{labelalpha}{Vei21}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://xmlsoft.org/}}
+      \field{title}{{The XML C parser and toolkit of Gnome}}
+      \field{year}{2021}
+    \endentry
+    \entry{scipy}{article}{}
+      \name{author}{35}{}{%
+        {{hash=18703a2bb6a62484483c193a212da2f8}{%
+           family={Virtanen},
+           familyi={V\bibinitperiod},
+           given={Pauli},
+           giveni={P\bibinitperiod}}}%
+        {{hash=646fbfe08374cc41c2f9bd971d8c4725}{%
+           family={Gommers},
+           familyi={G\bibinitperiod},
+           given={Ralf},
+           giveni={R\bibinitperiod}}}%
+        {{hash=00f2976ade6b1d16d78161a1f190716c}{%
+           family={Oliphant},
+           familyi={O\bibinitperiod},
+           given={Travis\bibnamedelima E.},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=35bb9c71f55048509a3e9018c349ed73}{%
+           family={Haberland},
+           familyi={H\bibinitperiod},
+           given={Matt},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fbb0c40f5d70be8ce47ce9daafdf5749}{%
+           family={Reddy},
+           familyi={R\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod}}}%
+        {{hash=9fd9ed8466bbb96364ae008f2a665e6e}{%
+           family={Cournapeau},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=09a667aa6a26526bfcccb2676a494e55}{%
+           family={Burovski},
+           familyi={B\bibinitperiod},
+           given={Evgeni},
+           giveni={E\bibinitperiod}}}%
+        {{hash=3d6efaaa3d9682e20787eb06ff70a3d7}{%
+           family={Peterson},
+           familyi={P\bibinitperiod},
+           given={Pearu},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4c7e4c94b846fa41e2fc0a88e0dc656d}{%
+           family={Weckesser},
+           familyi={W\bibinitperiod},
+           given={Warren},
+           giveni={W\bibinitperiod}}}%
+        {{hash=7447cb057596bc2645d3980bb04f5c78}{%
+           family={Bright},
+           familyi={B\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5a84cb9a65911ebc6f401a4aff510ef3}{%
+           family={{van der Walt}},
+           familyi={v\bibinitperiod},
+           given={St{é}fan\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=626cc151613864abeb653c0d8172d98c}{%
+           family={Brett},
+           familyi={B\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod}}}%
+        {{hash=57849e8550281b202bd611bf6f11e14b}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Joshua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9e0a9578c0bd7068ee69534fd04d0035}{%
+           family={Millman},
+           familyi={M\bibinitperiod},
+           given={K.\bibnamedelimi Jarrod},
+           giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=fbaf80580622bd40577f4a6d38021c0a}{%
+           family={Mayorov},
+           familyi={M\bibinitperiod},
+           given={Nikolay},
+           giveni={N\bibinitperiod}}}%
+        {{hash=217989ee588229ce0c800adc39241d3a}{%
+           family={Nelson},
+           familyi={N\bibinitperiod},
+           given={Andrew\bibnamedelimb R.\bibnamedelimi J.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4b3d26f886661aa723985bcfd835ba18}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9ad1d38817acd2f00cb7f324ec7d37ea}{%
+           family={Kern},
+           familyi={K\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8d336f110675c46226ece1db501ce712}{%
+           family={Larson},
+           familyi={L\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=169824c5960200995fc2103940bd3c75}{%
+           family={Carey},
+           familyi={C\bibinitperiod},
+           given={C\bibnamedelima J},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b700f30af54131a197356b92b51eaa51}{%
+           family={Polat},
+           familyi={P\bibinitperiod},
+           given={{İ}lhan},
+           giveni={İ\bibinitperiod}}}%
+        {{hash=b8b88d61c79de60e6e1b5d44e03f5dec}{%
+           family={Feng},
+           familyi={F\bibinitperiod},
+           given={Yu},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0d3c30b7879c5c95c9090f4f05811348}{%
+           family={Moore},
+           familyi={M\bibinitperiod},
+           given={Eric\bibnamedelima W.},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=0fd9a0e34f1b2adda41357c948d14986}{%
+           family={{VanderPlas}},
+           familyi={V\bibinitperiod},
+           given={Jake},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c6a95a8ced3b86b4e7e60a74bc6ebf5a}{%
+           family={Laxalde},
+           familyi={L\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=85242652d69220e83cf71ceb8d90a8cb}{%
+           family={Perktold},
+           familyi={P\bibinitperiod},
+           given={Josef},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5bca159e697db439e23b8947dfa4b614}{%
+           family={Cimrman},
+           familyi={C\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=70b659f5067a8a2efbee66f770681598}{%
+           family={Henriksen},
+           familyi={H\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+        {{hash=d32371ff2ff4c743c50f81bd5ad5907f}{%
+           family={Quintero},
+           familyi={Q\bibinitperiod},
+           given={E.\bibnamedelimi A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=e25b1b9ca03e442ed9909fea833323a1}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Charles\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=bac2f690559c2325c74c7a185549a898}{%
+           family={Archibald},
+           familyi={A\bibinitperiod},
+           given={Anne\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=7b67b905c3a4c6de3ea048e363a115e5}{%
+           family={Ribeiro},
+           familyi={R\bibinitperiod},
+           given={Ant{ô}nio\bibnamedelima H.},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=bab4e5caee2d67831e464ce575022b37}{%
+           family={Pedregosa},
+           familyi={P\bibinitperiod},
+           given={Fabian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=968645a50fa00f5f3fa28e7aeb4bd2a2}{%
+           family={{van Mulbregt}},
+           familyi={v\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=45c761b2a04d7b48976630082ac31970}{%
+           family={{SciPy 1.0 Contributors}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f252038edd7f112d75da3bf0c1edecbc}
+      \strng{fullhash}{685c65516b9a94f1c3efe347042e2d86}
+      \strng{bibnamehash}{f252038edd7f112d75da3bf0c1edecbc}
+      \strng{authorbibnamehash}{f252038edd7f112d75da3bf0c1edecbc}
+      \strng{authornamehash}{f252038edd7f112d75da3bf0c1edecbc}
+      \strng{authorfullhash}{685c65516b9a94f1c3efe347042e2d86}
+      \field{labelalpha}{Vir20}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Methods}
+      \field{title}{{{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in Python}}
+      \field{volume}{17}
+      \field{year}{2020}
+      \field{pages}{261\bibrangedash 272}
       \range{pages}{12}
       \verb{doi}
-      \verb 10.1137/0705041
-      \endverb
-      \verb{eprint}
-      \verb https://doi.org/10.1137/0705041
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1137/0705041
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1137/0705041
+      \verb 10.1038/s41592-019-0686-2
       \endverb
     \endentry
-    \entry{SUSSMAN1987357}{article}{}
-      \name{author}{2}{}{%
-        {{hash=871b7fd586024c896a633ea354235bfe}{%
-           family={Sussman},
-           familyi={S\bibinitperiod},
-           given={Theodore},
-           giveni={T\bibinitperiod}}}%
-        {{hash=0d709c7a8f4b980c57eabfeec0ea9d86}{%
-           family={Bathe},
-           familyi={B\bibinitperiod},
-           given={Klaus-Jürgen},
-           giveni={K\bibinithyphendelim J\bibinitperiod}}}%
-      }
-      \strng{namehash}{02948724e7bf93b76b8a10683303508a}
-      \strng{fullhash}{02948724e7bf93b76b8a10683303508a}
-      \strng{bibnamehash}{02948724e7bf93b76b8a10683303508a}
-      \strng{authorbibnamehash}{02948724e7bf93b76b8a10683303508a}
-      \strng{authornamehash}{02948724e7bf93b76b8a10683303508a}
-      \strng{authorfullhash}{02948724e7bf93b76b8a10683303508a}
-      \field{labelalpha}{Sus87}
-      \field{sortinit}{S}
-      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0045-7949}
-      \field{journaltitle}{Computers \& Structures}
-      \field{number}{1}
-      \field{title}{A finite element formulation for nonlinear incompressible elastic and inelastic analysis}
-      \field{volume}{26}
-      \field{year}{1987}
-      \field{pages}{357\bibrangedash 409}
-      \range{pages}{53}
-      \verb{doi}
-      \verb https://doi.org/10.1016/0045-7949(87)90265-3
-      \endverb
-      \verb{urlraw}
-      \verb http://www.sciencedirect.com/science/article/pii/0045794987902653
-      \endverb
-      \verb{url}
-      \verb http://www.sciencedirect.com/science/article/pii/0045794987902653
-      \endverb
-    \endentry
-    \entry{tung1978bi}{thesis}{}
+    \entry{xbraid-package}{misc}{}
       \name{author}{1}{}{%
-        {{hash=4ea69b6991a2b2464975fdf859c83b7c}{%
-           family={Tung},
-           familyi={T\bibinitperiod},
-           given={Leslie},
-           giveni={L\bibinitperiod}}}%
+        {{hash=b2b69c822cb0016090576007f7916e49}{%
+           family={XBraid},
+           familyi={X\bibinitperiod},
+           given={Team},
+           giveni={T\bibinitperiod}}}%
       }
-      \list{institution}{1}{%
-        {Massachusetts Institute of Technology}%
-      }
-      \strng{namehash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \strng{fullhash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \strng{bibnamehash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \strng{authorbibnamehash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \strng{authornamehash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \strng{authorfullhash}{4ea69b6991a2b2464975fdf859c83b7c}
-      \field{labelalpha}{Tun78}
-      \field{sortinit}{T}
-      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \strng{namehash}{b2b69c822cb0016090576007f7916e49}
+      \strng{fullhash}{b2b69c822cb0016090576007f7916e49}
+      \strng{bibnamehash}{b2b69c822cb0016090576007f7916e49}
+      \strng{authorbibnamehash}{b2b69c822cb0016090576007f7916e49}
+      \strng{authornamehash}{b2b69c822cb0016090576007f7916e49}
+      \strng{authorfullhash}{b2b69c822cb0016090576007f7916e49}
+      \field{labelalpha}{XBr20}
+      \field{sortinit}{X}
+      \field{sortinithash}{b0b62a29ee4a21a0e618fed53a0313cc}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{A bi-domain model for describing ischemic myocardial dc potentials.}
-      \field{type}{phdthesis}
-      \field{year}{1978}
-    \endentry
-    \entry{zienkiewicz2005finite}{book}{}
-      \name{author}{3}{}{%
-        {{hash=ef43d6f362aa96924b3010d19ccc9fbd}{%
-           family={Zienkiewicz},
-           familyi={Z\bibinitperiod},
-           given={Olek\bibnamedelima C},
-           giveni={O\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=a1532afd578201b707b5220e4115a4f4}{%
-           family={Taylor},
-           familyi={T\bibinitperiod},
-           given={Robert\bibnamedelima L},
-           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=c062e3628d64e70d25fecdd6a8818877}{%
-           family={Zhu},
-           familyi={Z\bibinitperiod},
-           given={Jian\bibnamedelima Z},
-           giveni={J\bibinitperiod\bibinitdelim Z\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \strng{fullhash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \strng{bibnamehash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \strng{authorbibnamehash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \strng{authornamehash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \strng{authorfullhash}{b54fc91637c3ebe5054ac7504aa5840b}
-      \field{labelalpha}{Zie05}
-      \field{sortinit}{Z}
-      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{The finite element method: its basis and fundamentals}
-      \field{year}{2005}
-    \endentry
-    \entry{zienkiewicz1977finite}{book}{}
-      \name{author}{2}{}{%
-        {{hash=f49152c52023ec44ddb1661244f611dc}{%
-           family={Zienkiewicz},
-           familyi={Z\bibinitperiod},
-           given={Olgierd\bibnamedelima Cecil},
-           giveni={O\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=2da3182300244cd02bb75f9519ca4fe9}{%
-           family={Taylor},
-           familyi={T\bibinitperiod},
-           given={Robert\bibnamedelima Leroy},
-           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {McGraw-hill London}%
-      }
-      \strng{namehash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \strng{fullhash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \strng{bibnamehash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \strng{authorbibnamehash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \strng{authornamehash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \strng{authorfullhash}{ba171f61c526de9a12ff4de5bd1e5803}
-      \field{labelalpha}{Zie77}
-      \field{sortinit}{Z}
-      \field{sortinithash}{156173bd08b075d7295bc3e0f4735a04}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{The finite element method}
-      \field{volume}{3}
-      \field{year}{1977}
+      \field{howpublished}{\url{http://llnl.gov/casc/xbraid}}
+      \field{title}{{XB}raid: Parallel multigrid in time}
+      \field{year}{2020}
     \endentry
   \enddatalist
-  \missing{Heidlauf2014a}
 \endrefsection
 \endinput
 

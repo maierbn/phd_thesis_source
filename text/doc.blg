@@ -1,18 +1,20 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[26] biber:313> INFO - === Sa Mär  6, 2021, 21:01:20
-[45] Biber.pm:371> INFO - Reading 'doc.bcf'
-[102] Biber.pm:857> INFO - Found 24 citekeys in bib section 0
-[114] Biber.pm:3981> INFO - Processing section 0
-[125] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[150] bibtex.pm:1468> INFO - LaTeX decoding ...
-[495] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[628] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ogtinZExyQ/references.bib_26245.utf8, line 2640, warning: 3 characters of junk seen at toplevel
-[628] Utils.pm:169> WARN - I didn't find a database entry for 'Heidlauf2014a' (section 0)
-[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[661] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[661] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[661] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[690] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[701] bbl.pm:720> INFO - Output to doc.bbl
-[701] Biber.pm:110> INFO - WARNINGS: 2
+[43] biber:313> INFO - === Di Mär 23, 2021, 07:41:51
+[64] Biber.pm:371> INFO - Reading 'doc.bcf'
+[122] Biber.pm:857> INFO - Found 34 citekeys in bib section 0
+[134] Biber.pm:3981> INFO - Processing section 0
+[147] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[174] bibtex.pm:1468> INFO - LaTeX decoding ...
+[543] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[563] Utils.pm:169> WARN - Duplicate entry key: 'Kretz2015' in file './references.bib', skipping ...
+[629] Utils.pm:169> WARN - month field 'September' in entry 'openmpi' is not an integer - this will probably not sort properly.
+[920] Utils.pm:169> WARN - month field 'Feb' in entry 'Maas2012' is not an integer - this will probably not sort properly.
+[971] Utils.pm:169> WARN - BibTeX subsystem: /tmp/l9uVFxiWsM/references.bib_2278.utf8, line 2832, warning: 3 characters of junk seen at toplevel
+[1021] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1021] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1021] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1021] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1063] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[1087] bbl.pm:720> INFO - Output to doc.bbl
+[1088] Biber.pm:110> INFO - WARNINGS: 4

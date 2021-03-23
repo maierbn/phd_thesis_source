@@ -13,6 +13,7 @@
 %\usepackage[utf8x]{inputenc}
 %\usepackage[T1]{fontenc}
 %\usepackage{times}
+\usepackage{pmboxdraw}
 
 % utf8x is incompatible with biblatex, the following trick is a remedy
 % source: https://tex.stackexchange.com/a/213177
@@ -61,6 +62,7 @@
 %\usepackage{calc}   % \begin{tabular}[b]{|p{\textwidth-2\tabcolsep}|}
 \usepackage{makecell}  % \makecell{...\\...} to break in table cell
 \usepackage{textcomp}
+\usepackage{fancyvrb}  % improved verbatim 
 
 %\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}  % print
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}    % web
@@ -140,7 +142,8 @@
     {ö}{{\"o}}1
     {⇐}{{$\leftarrow$}}1
     {>=}{{$\geq$}}1
-    {~}{{\textasciitilde}}1,  
+    {~}{{\textasciitilde}}1
+    {`}{\textquotedbl}1,  
   language=C++,
   numbers=none,
   numberstyle=\tiny,
@@ -260,6 +263,7 @@
 \def\supp{\hbox{supp} \,}
 \def\cof{\hbox{cof} \,}
 \def\tr{\hbox{tr} \,}
+\def\sym{\hbox{sym} \,}
 %\def\spur{\hbox{\textup{spur}} \,}
 \DeclareMathOperator{\spur}{spur}
 \newcommand{\stern}[1] {\overset{*}{#1}}        %Sternchen auf Buchstabe
@@ -394,6 +398,7 @@
 \newcommand{\bftheta}{\boldsymbol{\theta}}
 \newcommand{\bfeta}{\boldsymbol{\eta}}
 \newcommand{\bfphi}{\boldsymbol{\phi}}
+\newcommand{\bfvarphi}{\boldsymbol{\varphi}}
 \newcommand{\bfpsi}{\boldsymbol{\psi}}
 \newcommand{\bfsigma}{\boldsymbol{\sigma}}
 \newcommand{\bfPi}{\boldsymbol{\Pi}}

@@ -58,8 +58,8 @@
     \put(0.6873301,0.52057193){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega_t$\end{tabular}}}}%
     \put(0.27223144,0.28157197){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\bfX\Omega_0$\end{tabular}}}}%
     \put(0.24018014,0.00815471){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T^\ast_\bfX\Omega_0$\end{tabular}}}}%
-    \put(0.22137412,0.79703741){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reference domain\end{tabular}}}}%
-    \put(0.60632435,0.7972381){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}current domain\end{tabular}}}}%
+    \put(0.14844543,0.79703741){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}reference configuration\end{tabular}}}}%
+    \put(0.60632435,0.7972381){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}current configuration\end{tabular}}}}%
     \put(-0.0003396,0.35425116){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}tangent space\\at point $\bfX$\end{tabular}}}}%
     \put(-0.00138929,0.16969633){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}co-tangent space\\at point $\bfX$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{geometric_quantities.pdf}}%
@@ -86,7 +86,7 @@
     \put(0.72699692,0.11755486){\color[rgb]{1,0.49803922,0.05490196}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bfa$\end{tabular}}}}%
     \put(0.72445489,0.08458756){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bfx$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{geometric_quantities.pdf}}%
-    \put(0.47189886,0.63588176){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\chi_t$\end{tabular}}}}%
+    \put(0.47189886,0.63588176){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bfvarphi_t$\end{tabular}}}}%
     \put(0.49737644,0.41582352){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bfF$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{geometric_quantities.pdf}}%
     \put(0.4937635,0.19915568){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bfF^{-\top}$\end{tabular}}}}%
