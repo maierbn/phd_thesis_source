@@ -1,3 +1,343 @@
 
-\section{Usage of CellML models}\label{sec:usage_cellml}
+\section{Usage of CellML Models}\label{sec:usage_cellml}
+
+The CellML description language can be used to describe mathematical models of a wide range of physiological processes. Abitrary systems of differential-algebraic equations (DAE) can be represented.
+We use it for incorporating and exchanging subcellular models that describe the electrophysiology on a muscle fiber and for models of motor neurons or sensory organs.
+The CellML infrastructure is popular in the bioengineering community. The CellML website of the Physiome project hosts over 600 curated CellML models from different areas. Each model can be downloaded in CellML format or converted to various programming languages such as MATLAB, Python and C.
+
+\subsection{Related Software}\label{sec:cellml_related_software}
+
+Various open source tools exist to create or manipulate CellML models and to solve them and visualize the results \cite{pmid18579471}. A comprehensive list is given on the CellML website \cite{cellmlWebsite}. In the following, we describe some of them that are relevant for our work.
+
+There exist two application programming interfaces (APIs), the \emph{CellML API} and the newer \emph{libCellML}, which allow direct access to the structures of the CellML model from, e.g., C++ code \cite{pmid20377909}. 
+
+\emph{OpenCOR} \cite{OpenCOR2015} provides a modelling environment in a graphical user interface, where models can be edited. 
+\Cref{fig:opencor1} shows the interface with the editor on the right. Mathematical equations are described in a declarative language and can be rendered to mathematical notation, as seen in the upper part in \cref{fig:opencor1}. OpenCOR automatically transfers the equations to the XML-based MathML syntax and integrates them in the XML-based CellML description.
+OpenCOR can also be used to solve the system of DAEs using implicit solvers such as backward differentiation formulas. \Cref{fig:opencor2} shows the interface that lists all variables with their current values on the left and a visualization of the result, in this case an action potiental, on the right.
+
+OpenCOR also provides command line functionality to convert CellML files into C code. Because OpenCOR is robust and well established in the bioengineering modeling community, we decide to use it in OpenDiHu. The installation procedure of OpenDiHu downloads and installs OpenCOR automatically.
+
+During execution of a simulation, our framework parses the C code of CellML models, compiles a shared library and executes the functions, all at runtime. Thus, the CellML model can be directly given as a C file. Otherwise, if the model file is in XML format, it is assummed to be a CellML description and automatically converted to the required C code using the OpenCOR command line interface.
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.45\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/opencor1.png}
+    \caption{CellML editor with the ODE for the membrane voltage \say{V} in the Hodgkin-Huxley cellular model, which corresponds to \cref{eq:subcellular_model_helper4} inserted into \cref{eq:subcellular_model_helper3}.}%
+    \label{fig:opencor1}%
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[t]{0.45\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/opencor2.png}
+    \caption{Visualization of a simulated action potential $V_m$ over time.}%
+    \label{fig:opencor2}%
+  \end{subfigure}
+  \caption{The CellML modelling environment OpenCOR.}%
+  \label{fig:opencor}%
+\end{figure}%
+
+If a CellML model should be manually simulated in the OpenCOR graphical user interface with time-varying input signals, these signals have to be hard-coded in the model, e.g., as a piecewise defined function. This is acceptable for getting insight into the models, but counteracts the idea of modular models that can be shared and recombined. 
+As a remedy, we allow simulations of CellML models with configurable time-varying input signals in OpenDiHu without the need to change the CellML description.
+
+CellML models are limited to single-cell systems of DAEs and are not designed for PDEs that, e.g., involve multiple instances of a DAE system on a given geometry. Thus, the monodomain equation cannot be solved with OpenCOR and a multi-scale software framework is needed for this task.
+
+Among the software frameworks that can solve the monodomain equation with the subcellular part in CellML format are Chaste and OpenCMISS Iron.
+Chaste \cite{ChasteCellML2015} also uses the approach of first converting a CellML description into C++ code using the tool \emph{PyCml} \cite{Cooper2006}. Chaste features adaptive timestepping solvers such as the \emph{CVODE} solver from the \emph{SUNDIALS} package \cite{cohen1996cvode} and infers analytic Jacobians from the model equations. The CellML support of Chaste targets \say{automated use} by automatically infering standard variable names, e.g., for membrane voltage and stimulation current.
+In OpenDiHu, this step of identifying the CellML variables to be connected to the coupled solvers is done manually, but can be achieved in a clear way with the Python settings script. Another difference in OpenDiHu is that all computational code is guaranteed to invoke vector instructions, i.e., following the single-instruction multiple data (SIMD) paradigm, whereas Chaste only relies on the optimization behavior of the Intel compiler, which is not guaranteed to be optimal, e.g., for non-Intel hardware.
+
+Another software framework with CellML support is the computational core \emph{Iron} from the OpenCMISS package. It relies on the CellML API and also requires manual connections of CellML variables to the solver code. These variable mappings have to be hardcoded in the main Fortran program (if the Python wrappers are not used) and are compiled into the program. One issue in Iron is the non-optimal memory layout which prohibits vectorization. 
+
+OpenCMISS implements the explicit forward Euler scheme or allows to use the backward differentiation formula (BDF) schemes with adaptive order of convergence of SUNDIALS. Recently, an implementation of the second order explicit Heun scheme was added by Aaron Krämer. Accuracy and runtimes were investigated for Euler, Heun and BDF solvers for the subcellular model within the monodomain equation. Because of the operator splitting scheme, only very small timespans have to be solved by those solvers, which does not redeem the overhead of advanced schemes such as the BDF solver, ultimately yielding the best performance for the Heun solver. Based on these investigations, we choose to implement the forward Euler and Heun schemes for the solution of CellML models in OpenDiHu.
+
+\subsection{Integration of CellML in OpenDiHu}
+
+Mathematically, a CellML model describes the functions $G$ and $H$ of the following DAE:
+\begin{align*}
+  \p{\bfy(t)}{t} &= G\big(t,\bfy(t),\bfh(t),\hat{\bfc},\hat{\bfp}(t)\big), & \bfh(t) &= H\big(\bfy(t),\hat{\bfc},\hat{\bfp}(t)\big).
+\end{align*}
+Here, $\bfy$ is the state vector and $\bfh$ is a vector with additional values that are derived from the state vector. Vectors of constants $\hat{\bfc}$ and parameters $\hat{\bfp}$ are prescribed and fixed over time for $\hat{\bfc}$ or varying over time for $\hat{\bfp}$.
+
+These quantities have different names in the software that was mentioned in \cref{sec:cellml_related_software}. The symbols and their names in OpenCOR, OpenCMISS and our choices in OpenDiHu are listed in \cref{tab:cellml_names}, together with information how their values are determined. 
+
+\begin{table}
+  \centering%
+  \begin{tabular}{|c|l|l|l|l|l|}
+    \hline
+    Symbol        & \multicolumn{3}{l|}{Name}            & Computed          & Initial values\\
+    \cline{2-4}
+                  & OpenCOR    & OpenCMISS & OpenDiHu   & by model?          & can be set?\\
+    \hline
+    $\bfy$        & \code{state}     & \code{STATES}    & \code{state}     & by timestepping   & yes \\[2mm]
+    $\partial\bfy/\partial t$ & \code{rate}      & \code{RATES}     & \code{rate}      & yes               & no  \\[2mm]
+    $\hat{\bfc}$  & \code{constant}  & \code{CONSTANTS} & \code{constant}  & no                &in CellML  \\[2mm]
+    $\bfh$        & \code{algebraic}  & \code{WANTED}    & \code{algebraic} & yes               & no  \\[2mm]
+    $\hat{\bfp}$  & -  & \code{KNOWN}     & \code{parameter} & no                & yes \\
+    \hline
+  \end{tabular}
+  \caption{The different CellML quantities and their properties and names in various tools.}%
+  \label{tab:cellml_names}%
+\end{table}
+
+All three software packages have the concept of \code{state} and \code{rate} vectors, where the states $\bfy$ are the input and the rates $\partial\bfy/\partial t$ are the output of the CellML formulas. Similarly, the constants $\hat{\bfc}$ are always a set of predefined values that are fixed during the computations.
+
+The algebraic formulas lead to the values in $\bfh$, independently of the timestepping scheme. These algebraic values can be considered as the resulting quantities of interest of the model and are typically written to output files or transferred to coupled solvers.
+
+Moreover, OpenCMISS and OpenDiHu define parameters $\hat{\bfp}$, which influence the behavior of the model. Their values can be changed by a coupled solver or prescribed from the settings. 
+In OpenDiHu, any constant or algebraic variable in a CellML model can be converted into a parameter. All occurences of the constant or algebraic variable in the CellML description get replaced by the parameter variable. For former algebraic variables, this replacement step overrides the equations that would have defined the algebraic value. Examplary use cases are to set the external stimulation current $I_\text{ext}$ in \cref{eq:subcellular_model_helper3} or to set the fiber stretch in a strain-dependent subcellular model.
+
+OpenCMISS uses a similar concept, where some of the algebraics in the CellML description can be declared as \code{WANTED} to be read by the framework. Some of the constants can be declared as \code{KNOWN} such that OpenCMISS sets their values from other computations within OpenCMISS. (Assigning new values to algebraics as in OpenDiHu is not possible.) Because the terms \code{WANTED} and \code{KNOWN} can be ambiguous if either seen from within the CellML model or from the framework, we decide to use the terms \code{algebraics} and \code{parameters} instead.
+
+The last two columns of \cref{tab:cellml_names} summarize the purpose of the different quantities. The CellML description defines formulas for the states, rates and algebraics. Rates and algebraics are directly calculated by the code that is generated from the CellML model, the vector of states is then computed from the vector of rates by the timestepping scheme. The initial values of the states are either explicitely specified in the OpenDiHu settings, e.g., to allow different values for different instances of a model. Or, if this specification is omitted,  the initial values are set according to the specification in the CellML file. The parameter values always have to be specified in the Python settings. By definition, the constants cannot be set from OpenDiHu, but are given in the CellML model. If the value of a constant should be specified from the settings, the variable should instead be configured to be a parameter.
+
+From a computational point of view, a CellML model computes the following function in terms of the introduced variable names:
+\begin{equation}
+  \left(
+    \begin{array}{cc}
+      \texttt{rates} \\ \texttt{algebraics} 
+    \end{array}
+  \right) = \texttt{cellml}\left(\texttt{states}, \texttt{constants}\right).
+  \label{eq:cellml_generic}
+\end{equation}
+
+In the fiber based electrophysiology model, CellML is needed to formulate the reaction term in the monodomain equation \cref{eq:monodomain}, which is repeated here:
+\begin{align}\label{eq:monodomain_2}
+  \p{V_m}{t}  = \dfrac{\sigma_\text{eff}}{A_m\,C_m} \p{V_m}{x}{2} - \dfrac{1}{C_m} I_\text{ion}(V_m,\bfy).
+\end{align}
+The \code{states} vector in \cref{eq:cellml_generic} includes both $V_m$ and $\bfy$ in \cref{eq:monodomain_2}. In consequence, the computed \code{rates} contain $\partial V_m/\partial t$ and $\partial\bfy/\partial t$. The right hand side of \cref{eq:cellml_generic}, i.e., the \code{cellml} function calculates the term $(-1/C_m \cdot I_\text{ion})$, which is the reaction part of the monodomain equation in \cref{eq:monodomain_2}. Thus, the CellML computation can be directly used in the operator splitting approach in \cref{sec:discretization_monodomain}.
+
+\subsection{Mapping of CellML Variables to Slots and Parameters}
+
+Preparing the OpenDiHu solver for use with a CellML model consists of the two steps of adjusting the C++ template parameters and setting up the variable mappings in the Python settings. The two C++ template parameters have to be set to the sizes of the state vector $\bfy$ and the algebraics vector $\bfh$. The code snipped in \cref{fig:example_shorten_cellml} belongs to the example program under \code{examples/electrophysiology/cellml/shorten}, which solves a single-cell CellML model:
+\begin{figure}[H]
+\centering
+\begin{framed}
+\begin{lstlisting}[basicstyle=\small\ttfamily,commentstyle=\color{gray},numbers=left]
+  TimeSteppingScheme::ExplicitEuler<
+    CellmlAdapter<56,71>
+  >
+\end{lstlisting}
+\end{framed}
+\caption{C++ code snipped that solves a CellML model with an explicit Euler scheme. The two template parameters 56 and 71 correspond to the number of states and algebraics, respectively.}%
+\label{fig:example_shorten_cellml}%
+\end{figure}
+In this case, the model contains 56 states and 71 algebraics. The reason that these numbers have to be fixed at compile-time is that this allows the data structures in the implementation to have a fixed layout and be allocated on the stack instead of the heap, which improves the performance.
+
+If the given numbers are not matching the variables in the CellML file, appropriate warnings or errors are generated, containing the correct C++ code to be copied to the C++ file. If the numbers are too high, the solver still works correctly, however, some memory and computation time is wasted for the excess variables.
+
+The other step is configuring the connections between the CellML computation and input data or coupled solvers. This involves defining a \code{mappings} parameter. \Cref{fig:example_mapping} shows such a definition for the multidomain example with fat layer and contraction model that was presented in \cref{sec:exemplary_usage_2}.
+
+\begin{figure}
+\centering
+\begin{framed}
+%\begin{Verbatim}[fontsize=\small]
+\begin{lstlisting}[basicstyle=\small\ttfamily,commentstyle=\color{gray},numbers=left,language=python]
+  mappings = {
+    # function in OpenDiHu      name in CellML model    # comment
+    
+    ("parameter", 0):           "wal_environment/I_HH", # I_stim (constant)   $\label{alg:5.3}$
+    ("parameter", 1):           "razumova/L_S",         # $\textcolor{gray}{\lambda}$ (constant)      $\label{alg:5.4}$
+    
+    ("connectorSlot", "vm"):    "wal_environment/vS",   # $\textcolor{gray}{V_m}$ (state)            $\label{alg:5.7}$
+    ("connectorSlot", "stress"):"razumova/stress",      # $\textcolor{gray}{\gamma}$ (algebraic) $\label{alg:5.8}$
+    ("connectorSlot", "lambda"):"razumova/L_S",         # $\textcolor{gray}{\lambda}$ (constant)        $\label{alg:5.9}$
+  }
+  
+  parameters_initial_values = [0.0, 1.0]                # I_stim=0, $\textcolor{gray}{\lambda}$=1                    $\label{alg:5.12}$
+\end{lstlisting}
+%\end{Verbatim}
+\end{framed}
+\caption{Specification of parameters and connector slots in a CellML model. The listed settings define two CellML variables to be parameters and specify three connector slots to transfer values between coupled solvers.}%
+\label{fig:example_mapping}%
+\end{figure}
+
+The \code{mappings} define which CellML constants or algebraics are treated as parameters. Lines \ref{alg:5.3} and \ref{alg:5.4} make the stimulation current and fiber stretch constants accessible from outside the CellML model by making them parameters. The variables are identified by their names and the model components they are defined in in the CellML model. In this example, the first parameter is the stimulation current \code{I_HH} within the \code{wal_environment} model component and the second parameter is the fiber stretch or half-sarcomere length \code{L_S} in the \code{razumova} component.
+The initial values for these parameters are given in line \ref{alg:5.12}, which sets the stimulation current to zero and the fiber stretch to one.
+
+The second information in the \code{mappings} parameter is which variables from the CellML model are exposed to coupled solvers in OpenDiHu. This happens by defining connector slots that can be connected between the solvers as shown in \cref{fig:example_multidomain_solver_structure}.
+Three slots are defined in lines \ref{alg:5.7} to \ref{alg:5.9} with slot names \code{`vm`}, \code{`stress`} and \code{`lambda`}. The corresponding CellML variables are again specified by their model component name and name. 
+
+CellML variables of all three different types are connected in the example. The membrane voltage $V_m$ in slot \code{`vm`} is part of the state vector $\bfy$. In this example, it is used in a bidirectional coupling with the diffusion solver. The second slot, \code{`stress`}, connects to the activation parameter $\gamma$, which is part of the algebraic vector $\bfh$. It is an output of the model. The slot \code{`lambda`} refers to a constant in the CellML description, which has been transformed to a parameter in line \ref{alg:5.4}. It is used as an  input and the received values at this slots are moved to the corresponding locations in the CellML formulation.
+
+
+\subsection{Consistent Units in CellML Models and the Multi-Scale Framework}
+
+The variables in a CellML model describe physical quantities. CellML handles their physical units and computes the appropriate conversions when combining model components within a CellML description.
+For the integration of a CellML model in external solvers such as OpenDiHu, we have to take care that the units are consistent.
+
+\sisetup{retain-unity-mantissa = false}
+The subcellular models that we use are formulated with the following units for length, time, electric current and capacitance:%
+\begin{align*}
+   \SI{1}{\centi\meter} &= \SI{1e-2}{\meter}, &
+   \SI{1}{\milli\second} &= \SI{1e-3}{\second}, &
+   \SI{1}{\micro\ampere} &= \SI{1e-6}{\ampere}, &
+   \SI{1}{\micro\farad} = \SI{1e-6}{\farad}.
+\end{align*}
+These basic units also fix derived units such as \SI{1}{\kilo\hertz} for frequencies and \SI{1}{\milli\volt} for voltages. For example, the membrane capacitance $C_m$ has to be specified in units \SI{1}{\micro\farad\per\square\centi\meter} and the stimulation current $I_\text{stim}$ in the units \SI{1}{\micro\ampere\per\square\centi\meter}.
+
+With this system of units, values are in a similar scale when computing subcellular models. However, these units are less suitable for organ-scale computations, as the derived mass and density units are \SI{1e-14}{\kilogram} and \SI{1e-8}{\kilogram\per\meter\cubed} and the derived force and stress units are \SI{1e-10}{\newton} and \SI{1e-6}{\pascal}. For the dynamic solid mechanics model where these quantities play a role, we use the following different system of units:
+\begin{align*}
+   \SI{1}{\centi\meter} &= \SI{1e-2}{\meter}, &
+   \SI{1}{\milli\second} &= \SI{1e-3}{\second}, &
+   \SI{1}{\newton}.
+\end{align*}
+The length and time scales are identical to the subcellular model and allow for consistent coupling. The coupling of active stresses from the subcellular model to the solid mechanics model uses the unit-less activation parameter $\gamma \in [0,1]$, which is transferred to stress units by multiplying with a maximum active stress value in the solid mechanics model.
+
+Derived units in the solid mechanics system of units are \SI{1e2}{\kilogram\per\meter\cubed} for the density, \SI{1e4}{\meter\per\square\second} for the acceleration and $\SI{1}{\newton\per\square\centi\meter} = \SI{10}{\kilo\pascal}$ for the stress. The values of material parameters and boundary conditions have to be given with respect to these units.
+The units allow for smaller values in the solid mechanics computation than the unit system of the subcellular model. Moreover, it is  convenient to specify forces directly in terms of \SI{1}{\newton}.
+
+% # Fixed units in cellMl models:
+% # These define the unit system.
+% # 1 cm = 1e-2 m
+% # 1 ms = 1e-3 s
+% # 1 uA = 1e-6 A
+% # 1 uF = 1e-6 F
+% # 
+% # derived units:
+% #   (F=s^4*A^2*m^-2*kg^-1) => 1 ms^4*uA^2*cm^-2*x*kg^-1 = (1e-3)^4 s^4 * (1e-6)^2 A^2 * (1e-2)^-2 m^-2 * (x)^-1 kg^-1 = 1e-12 * 1e-12 * 1e4 F = 1e-20 * x^-1 F := 1e-6 F => x = 1e-14
+% # 1e-14 kg = 10e-15 kg = 10e-12 g = 10 pg
+% 
+% # (N=kg*m*s^-2) => 1 10pg*cm*ms^2 = 1e-14 kg * 1e-2 m * (1e-3)^-2 s^-2 = 1e-14 * 1e-2 * 1e6 N = 1e-10 N = 10 nN
+% # (S=kg^-1*m^-2*s^3*A^2, Siemens not Sievert!) => (1e-14*kg)^-1*cm^-2*ms^3*uA^2 = (1e-14)^-1 kg^-1 * (1e-2)^-2 m^-2 * (1e-3)^3 s^3 * (1e-6)^2 A^2 = 1e14 * 1e4 * 1e-9 * 1e-12 S = 1e-3 S = 1 mS
+% # (V=kg*m^2*s^-3*A^-1) => 1 10pg*cm^2*ms^-3*uA^-1 = (1e-14) kg * (1e-2)^2 m^2 * (1e-3)^-3 s^-3 * (1e-6)^-1 A^-1 = 1e-14 * 1e-4 * 1e6 * 1e6 V = 1e-6 V = 1mV
+% # (Hz=s^-1) => 1 ms^-1 = (1e-3)^-1 s^-1 = 1e3 Hz
+% # (kg/m^3) => 1 10 pg/cm^3 = 1e-14 kg / (1e-2 m)^3 = 1e-14 * 1e6 kg/m^3 = 1e-8 kg/m^3
+% # (Pa=kg/(m*s^2)) => 1e-14 kg / (1e-2 m * 1e-3^2 s^2) = 1e-14 / (1e-8) Pa = 1e-6 Pa
+% 
+% # Hodgkin-Huxley
+% # t: ms
+% # STATES[0], Vm: mV
+% # CONSTANTS[1], Cm: uF*cm^-2
+% # CONSTANTS[2], I_Stim: uA*cm^-2
+% # -> all units are consistent
+% 
+% # Shorten
+% # t: ms
+% # CONSTANTS[0], Cm: uF*cm^-2
+% # STATES[0], Vm: mV
+% # ALGEBRAIC[32], I_Stim: uA*cm^-2
+% # -> all units are consistent
+% 
+% # Fixed units in mechanics system
+% # 1 cm = 1e-2 m
+% # 1 ms = 1e-3 s
+% # 1 N
+% # 1 N/cm^2 = (kg*m*s^-2) / (1e-2 m)^2 = 1e4 kg*m^-1*s^-2 = 10 kPa
+% # (kg = N*s^2*m^-1) => N*ms^2*cm^-1 = N*(1e-3 s)^2 * (1e-2 m)^-1 = 1e-4 N*s^2*m^-1 = 1e-4 kg
+% # (kg/m^3) => 1 * 1e-4 kg * (1e-2 m)^-3 = 1e2 kg/m^3
+% # (m/s^2) => 1 cm/ms^2 = 1e-2 m * (1e-3 s)^-2 = 1e4 m*s^-2
+
+\subsection{Specification of Stimulation Times Using Callback Functions}
+
+A muscle fiber is activated by impulse trains that are generated from a motor neuron and stimulate the fiber at its neuromuscular junction. At the synaptic terminal, neurotransmitters are released and open certain ion channels, which results in depolarization of the muscle fiber membrane.
+This process can either be modeled by adding an external stimulation current $I_\text{stim}$ through the dedicated ion channels or by directly prescribing the transmembrane voltage $V_m$ to reflect the resulting depolarized state. The first approach is more accurate as it also describes the depolarization process at the stimulated parts of the fiber. The electric \say{far field} some nodes away from the stimulation point, however, is the same for both approaches.
+
+In OpenDiHu, it is possible to configure either approach. Setting the stimulation current is more involved as the actual value of  $I_\text{stim}$ has to be chosen depending on the mesh width. Furthermore, multiple adjacent nodes have to be stimulated such that electric current that is added to the system balances with the amount that is carried away by the diffusion term. The nonlinear subcellular model fails to compute a valid solution if too much current is present. With too little current, the membrane potential stays below the activation threshold and no action potential is triggered. 
+
+Prescribing the transmembrane voltage to a value above the depolarization threshold at multiple adjacent nodes leads to an action potential independent of the mesh width. However, a suitable value for the prescribed voltage has also to be chosen in accordance with the employed subcellular model.
+
+The stimulation current $I_\text{stim}$ is a CellML parameter and the transmembrane voltage $V_m$ corresponds to a state in the CellML model. The values of both parameters and states can be adjusted during the simulation. This feature makes use of callback functions in the Python settings. A callback is a user defined function that gets called in regular intervals during the simulation, receives various information about the current state of the simulation and can alter some values such as the states vector $\bfy(t)$ or the parameters vector $\hat{\bfp}(t)$.
+
+\begin{figure}
+\centering
+\begin{framed}
+%\begin{Verbatim}[fontsize=\small]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,commentstyle=\color{gray},numbers=left,language=python]
+
+  # callback function that can set parameters, i.e. stimulation current
+  def $\textcolor{Maroon}{\text{\ttfamily set\_specific\_parameters}}$(n_nodes_global, time_step_no, current_time, $\label{alg:6.3}$
+                              parameters, fiber_no):    
+    
+    # determine if fiber gets stimulated at the current time
+    if fiber_gets_stimulated(fiber_no, current_time):    $\label{alg:6.6}$
+      stimulation_current = 40.
+    else:
+      stimulation_current = 0.
+
+    innervation_node_global = int(n_nodes_global / 2)    $\label{alg:6.11}$
+    parameters[(innervation_node_global),0,0] = stimulation_current    $\label{alg:6.12}$
+
+  # callback function that can set states, e.g., prescribe $\textcolor{gray}{V_m}$ for stimulation
+  def $\textcolor{Maroon}{\text{\ttfamily set\_specific\_states}}$(n_nodes_global, time_step_no, current_time,       $\label{alg:6.15}$
+                          states, fiber_no):            
+
+    # determine if fiber gets stimulated at the current time
+    if fiber_gets_stimulated(fiber_no, current_time):    $\label{alg:6.18}$
+      innervation_node_global = int(n_nodes_global / 2)    $\label{alg:6.19}$
+      states[(innervation_node_global),0,0] = 40.0      $\label{alg:6.20}$
+
+  config = {        $\label{alg:6.22}$
+    (...)          
+    
+    # callback to adjust parameters
+    "setSpecificParametersFunction":         $\textcolor{Maroon}{\text{\ttfamily set\_specific\_parameters}}$,    $\label{alg:6.28}$
+    "setSpecificParametersCallInterval":     1e3,
+    "setSpecificStatesFrequencyJitter":      0,                          
+                    
+    # callback to alter values of states
+    "setSpecificStatesFunction":             $\textcolor{Maroon}{\text{\ttfamily set\_specific\_states}}$,      $\label{alg:6.33}$
+    "setSpecificStatesCallInterval":         2*int(1/stimulation_frequency/dt_0D),     $\label{alg:6.34}$
+    
+    "setSpecificStatesCallFrequency":        stimulation_frequency,    $\label{alg:6.36}$
+    "setSpecificStatesCallEnableBegin":      0,                        $\label{alg:6.37}$
+    "setSpecificStatesRepeatAfterFirstCall": 0.01,                     $\label{alg:6.38}$
+    "setSpecificStatesFrequencyJitter":      [0.1,-0.2,0.0],           $\label{alg:6.39}$
+                         
+    # callback to postprocess the result
+    "handleResultFunction":                  $\textcolor{Maroon}{\text{\ttfamily handle\_result}}$,    $\label{alg:6.41}$
+    "handleResultCallInterval":              1e4,         
+     
+    "additionalArgument":                    fiber_no,        $\label{alg:6.43}$
+  }
+
+\end{lstlisting}
+%\end{Verbatim}
+\end{framed}
+\caption{Settings that define neural spike trains to activate muscle fibers. The definition of the two callback functions \code{set_specific_parameters} and \code{set_specific_states} is demonstrated.}%
+\label{fig:example_callback_functions}%
+\end{figure}
+
+\Cref{fig:example_callback_functions} defines two such callback functions used in the fiber based electrophysiology model to add electric stimulation to the monodomain model. Either suffices to implement the stimulation. The function \code{set_specific_parameters} in line \ref{alg:6.3} and the function \code{set_specific_states} in line \ref{alg:6.15} both receive simular information from the simulation as their function arguments: the total number \code{n_nodes_global} of nodes in the current fiber, the current integer timestep number \code{time_step_no} and the corresponding floating-point number \code{current_time} of the current simulation time, and the number \code{fiber_no} that identifies the current fiber.
+
+The variables \code{parameters} and \code{states} are the output of the callback function that alter the parameter and state values, respectively. Both callbacks determine if the current fiber should be stimulated at the current time, in lines \ref{alg:6.6} and \ref{alg:6.18}.
+If yes, the parameter or state at the center point of the fiber, computed in lines \ref{alg:6.11} and \ref{alg:6.19}, gets changed accordingly. In the real scenario, three adjacent points get stimulated instead of a single point.
+
+Because the conversion of transferred data between the Python code and the C++ code costs some runtime, the number of transferred values is reduced to a minimum. Only the parameters and states that should be changed are indicated in the \code{parameters} and \code{states} variables in lines \ref{alg:6.12} and \ref{alg:6.20}. These variables are Python dictionaries, i.e. key-value pairs. The key is a tuple of three items: First, the global coordinates $(x,y,z)$ of the node where the parameter or state change is applied. In case of a 1D fiber mesh, this is only a single coordinate. Second, the dof index on this node. This is different from zero only for Hermite ansatz functions, which have multiple dofs per node. And third, the index of the parameter or state that should be set. Parameter 0 corresponds to the stimulation current as defined in line \ref{alg:5.3} of \cref{fig:example_mapping} and state 0 corresponds to the transmembrane voltage $V_m$. The new value to set is the value of the key-value pair.
+
+The comparison of the two callbacks functions shows one difference: In the callback for the parameters, the stimulation current is set to zero when there is no stimulation, in the callback for the states, nothing is done during this time. The reason for this is that the state values will be continuously updated from the rates by the timestepping scheme, whereas the parameters keep their values until they are changed from the callback. This has consequences on the times when the callback functions have to be called from the simulation, which are described in the following.
+
+Invoking the Python interpreter on a callback requires some time. Calling the callback after every small timestep of the simulation is, thus, not performant. We model stimulation of a fiber by a piecewise constant function with two possible values for on and off.
+In the approach that sets the stimulation current, the callback \code{set_specific_parameters} has to be called at the onset and end of every stimulation spike. If the approach with the prescribed membrane voltage is used, the callback \code{set_specific_states} has to be called after every stimulation onset in every subsequent timestep until the stimulation is over.
+
+The requirements for both approaches can be satisfied by defining a small constant interval of timesteps after which the callback functions are invoked. This call interval can be specified in the \code{config} dictionary of the Python file in \cref{fig:example_callback_functions} , which is shown as excerpts from line \ref{alg:6.22} onwards. The \code{config} variable references the callback functions in lines \ref{alg:6.28} and \ref{alg:6.33} and the parameters for the call interval in the next lines. Note that this configuration is only shown for demonstration, a real configuration should either specify the states callback or the parameters callback function, not both.
+
+Line \ref{alg:6.34} in \cref{fig:example_callback_functions} shows how the call interval can be computed to correspond to a given stimulation frequency \code{stimulation_frequency}, given the timestep width \code{dt_0D}. The prefactor of two occurs because the callback would be called twice per timestep in the Strang splitting scheme.
+
+Real impulse trains from the motor neuron pool typically follow a base frequency with some added jitter that offsets the exact firing times from the base frequency by a small random time. Furthermore, studies are often designed to start with a completely inactive muscle and switch on certain MUs after specified times. To efficiently account for these two demands, we add another way to specify the times when the \code{set_specific_states} callback gets invoked. In this second way of specification, the \code{setSpecificStatesCallInterval} parameter is disabled by setting it to zero. Then, the three options \code{CallFrequency}, \code{CallEnableBegin}, \code{RepeatAfterFirstCall} and \code{FrequencyJitter} (prefixed by \code{set}\code{Specific}\code{States}) given in lines \ref{alg:6.36} to \ref{alg:6.39} are significant. 
+
+\begin{figure}%
+  \centering%
+  \includegraphics[width=0.8\textwidth]{images/implementation/stimulation_times.pdf}%
+  \caption{Parametrization of stimulation times in electrophysiology simulations. The neuronal impulse train is given by the black spikes. The parameters \code{CallEnableBegin}, \code{RepeatAfterFirstCall}, \code{CallFrequency} and \code{FrequencyJitter} (in the settings all prefixed by \code{setSpecificStates}) specify the shape of the spike train.}%
+  \label{fig:stimulation_times}%
+\end{figure}%
+
+Their meaning is illustrated in \cref{fig:stimulation_times}. \code{CallEnableBegin} specifies the time when the callback should be called for the first time. Then, it is called with a frequency that is additively composed of the base frequency given by \code{CallFrequency} and one entry of the parameter \code{FrequencyJitter}. This parameter is a ring buffer of relative factors by which the regular time span between subsequent firing events is prolonged. For example, if \code{FrequencyJitter} contains the list \code{[0.1,-0.2,0.0]}, the time span $T_{01}$ between the first two firing events is \SI{10}{\percent} longer than according to the base frequency $f$, the next timespan $T_{12}$ is \SI{20}{\percent} shorter and the next time span $T_{23}$ exactly equals the inverse base frequency, $T_{23} = 1/f$. Subsequently, the scheme repeats. Typically, this parameter is set to a randomly generated list with a large number of entries.
+After each onset of a stimulation, the \code{setSpecificStatesCallInterval} function is called repeatedly in every subsequent timestep for a time span given by \code{RepeatAfterFirstCall}. 
+
+In the fiber based electrophysiology example, every fiber has their own instance of the Python settings and it is possible to specify different parameter values for different fibers or motor units, e.g., to set a different beginning time of the stimulations. The fibers can be distinguished by the last parameter of the callbacks, which receives the custom value that is defined by the \code{`additionalArgument`} parameter in line \ref{alg:6.43}. In the given example, the current fiber number is used here, but any other Python variable is possible.
+
+\Cref{fig:firing_times_ramp} shows a scenario, where different parameters are set for different MUs. The figure shows the firing times of fibers grouped to 20 MUs that are activated in a ramp in the first $t=\SI{19}{\second}$. The base frequency decreases from \SI{23.92}{\hertz} to \SI{7.66}{\hertz} for MUs 1 to 20, which reproduces a scenario in literature \cite{Klotz2020}. The frequency jitter parameter is a list of 100 randomly chosen values between \SI{-10}{\percent} and \SI[retain-explicit-plus]{+10}{\percent}. The \code{CallEnableBegin} parameter enables the stimulation of the next MU every second.
+
+\begin{figure}%
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/firing_times_ramp1.pdf}%
+  \caption{Firing times for a scenario with 20 motor units with ramp-like activation and different stimulation frequencies.}%
+  \label{fig:firing_times_ramp}%
+\end{figure}%
+
+Similar to the two presented callbacks, which set parameter and states, a third callback \code{handle_result} can be defined as given in line \ref{alg:6.41} of \cref{fig:example_callback_functions}. This callback function gets called in a fixed interval specified by \code{`handleResultCallInterval`}. It receives the complete vectors of states $\bfy$ and intermediates $\bfh$ and can be used to perform custom postprocessing or to output custom data files from the Python script.
+
+In summary, variables of CellML models can be coupled to other solvers. Their parameters and values can be adjusted from the settings file. Callback functions are used to alter values during the simulation. This flexibility comes at the runtime cost of invoking the Python interpreter, therefore the times when to call the callback functions have to be specified appropriately. Special methods exist to model steady stimulation with frequency jitter, which occurs in typical neural stimulation of muscle fibers.
 

@@ -205,7 +205,7 @@ The effective conductivity $\sigma_\text{eff}$ combines the intra and extracellu
 %
 Rearranging the terms yields the classical form of the monodomain equation:
 %
-\begin{align}
+\begin{align} %eq:monodomain
   &\dfrac{\partial V_m}{\partial t} = \dfrac{1}{A_m\,C_m}\big(\sigma_\text{eff}\dfrac{\partial^2 V_m}{\partial x^2} - A_m\,I_\text{ion}(V_m,\bfy)\big) \quad && \text{for }x \in \Omega_f^j. \label{eq:monodomain}
 \end{align}
 %
@@ -300,7 +300,7 @@ The electric potentials $\phi_e$ and $\phi_b$ of the neighboring domains $\Omega
 \end{subequations}
 % 
 On the outer boundary $\Gamma_B^\text{out}$, homogeneous Neumann boundary conditions are assumed:
-\begin{align}
+\begin{align}% eq:body_domain_bc3
   \big(\bfsigma_b\, \grad( \phi_b)\big)\cdot \bfn_b &= 0 \qquad &&\text{on } \Gamma^\text{out}_B.\label{eq:body_domain_bc3}
 \end{align}
 
@@ -329,7 +329,7 @@ The first condition in \cref{eq:multidomain_fat_bc1} is enforced for all compart
 Muscle contraction is described on the organ level by a description of solid mechanics. Because of possibly large strains, a nonlinear hyperelastic formulation is used. For mathematical foundations in continuum mechanics, we refer to basic literature such as the books of Holzapfel \cite{holzapfel2000nonlinear} and Marsden and Hughes \cite{marsden1994mathematical}, as well as literature on the application of the Finite Element Method in continuum mechanics \cite{zienkiewicz1977finite,SUSSMAN1987357,zienkiewicz2005finite}.
 
 % assumptions
-We consider the 3D muscle domain $\Omega_0=\Omega_M \subset \R^3$ in reference configuration at time $t=0$ that deforms into a current configuration $\Omega_t$ at time $t$. The material points are given by $\bfX \in \Omega_0$. The corresponding points $\bfx \in \Omega_t$ in the current configuration are defined by the placement function $\bfx = \bfvarphi_t(\bfX)$. In the following, capital letters refer to quantities in material or Lagrangian description, i.e., defined in the reference configuration and small letters refer to quantities in spatial or Eulerian description, i.e., defined in the current configuration.
+We consider the 3D muscle domain $\Omega_0=\Omega_M \subset \R^3$ in reference configuration at time $t=0$, that deforms into a current configuration $\Omega_t$ at time $t$. The material points are given by $\bfX \in \Omega_0$. The corresponding points $\bfx \in \Omega_t$ in the current configuration are defined by the placement function $\bfx = \bfvarphi_t(\bfX)$. In the following, capital letters refer to quantities in material or Lagrangian description, i.e., defined in the reference configuration and small letters refer to quantities in spatial or Eulerian description, i.e., defined in the current configuration.
 
 The relation of point coordinates in the current configuration with respect to the reference configuration can also be described by the displacements field $\bfu$:
 \begin{align*}
@@ -374,10 +374,10 @@ The third assumption is the \emph{balance of angular momentum} and can be formul
   \d{t} \ds\int\limits_{V_t} \bfx \times (\rho\,\bfv)\, \d v = \ds\int\limits_{V_t} \bfx \times (\rho\,\bfb) \,\d v + \ds\int\limits_{∂V_t} \bfx \times \bft\,\d a.
 \end{align*}
 %
-Derivations yield equivalence to the symmetry of the Cauchy stress tensor, $\bfsigma = \bfsigma^\top$.
+This can be shown to be equivalent to the symmetry of the Cauchy stress tensor, $\bfsigma = \bfsigma^\top$.
 
 A further assumption in the multi-scale muscle framework is to only consider isothermal conditions. 
-An activated muscle performs work and by metabolism energy is added to the system. Further, the muscle is not thermodynamically isolated. The system is not closed regarding conversion and transfer of energy and, thus, the balance of energy cannot be modeled easily.
+An activated muscle performs work and energy is added to the system by metabolism. Further, the muscle is not thermodynamically isolated. The system is not closed regarding conversion and transfer of energy and, thus, the balance of energy cannot be modeled easily.
 
 The mathematical description has to be closed by defining a constitutive relation between stresses and strains. The usual approach for hyperelastic materials is to define a strain energy function $\Psi$. This scalar function is formulated in terms of the right Cauchy-Green tensor $\bfC$, which is related to the strain of the deformed body. Then, the stresses are given by%
 \begin{align*}
@@ -388,7 +388,7 @@ where $\bfS$ is the second Piola-Kirchhoff stress tensor, which in the incompres
 
 %It is usually formulated in terms of the five principle strain invariants $I_1$ to $I_5$. A derivative of $\Psi$ is used to derive a term for the stress. More details follow in \cref{sec:discretization_mechanics}.
 
-In the muscle contraction model of \cite{Heidlauf2013}, the strain energy function is additively composed of two passive terms, one isotropic and one anisotropic, and one additional active term:
+In the muscle contraction model of \cite{Heidlauf2013}, the strain energy function is additively composed of two passive terms, one isotropic, one anisotropic, and one additional active term:
 \begin{align*}
   \Psi(\bfC) = \Psi_\text{isotropic}(I_1,I_2) + \Psi_\text{anisotropic}(\lambda_f) + \Psi_\text{active}(\gamma).
 \end{align*}
@@ -408,14 +408,14 @@ The anisotropic behavior depends only on the fiber stretch $\lambda_f$. The form
 \end{align*}
 %
 
-The active contribution is directly formulated in terms of the second Piola-Kirchhoff stress $\bfS$. The relation between the active stress $\bfS_\text{active}$ and the active contribution $\Psi_\text{active}$ of the strain energy function as well as the definition of $\bfS_\text{active}$ are given as follows:
+The active contribution is directly formulated in terms of the second Piola-Kirchhoff stress $\bfS$. The relation between the active stress $\bfS_\text{active}$ and the active contribution $\Psi_\text{active}$ of the strain energy function as well as the definition of $\bfS_\text{active}$ is given as follows:
 \begin{align}\label{eq:active_stress_term}
-  \bfS_\text{active} = \dfrac{1}{\lambda_f}\p{\Psi_\text{active}}{\lambda_f} \bfA \otimes \bfA = \dfrac{1}{\lambda_f} \cdot S_\text{max,active}\cdot f_\ell(\lambda_f)\cdot\bar{\gamma}\, \bfA \otimes \bfA,
+  \bfS_\text{active} = \dfrac{1}{\lambda_f}\p{\Psi_\text{active}}{\lambda_f} \bfA \otimes \bfA = \dfrac{1}{\lambda_f} \cdot S_\text{max,active}\cdot f_\ell(\lambda_f)\cdot\bar{\gamma}\, \bfA \otimes \bfA.
 \end{align}
 %
 Here, the resulting active stress tensor $\bfS_\text{active}$ is the second order tensor oriented according to the material fiber direction $\bfA: \Omega_0 \to \R^3$ and given by the dyadic product $\bfA \otimes \bfA = A_{i}\,A_{j}\,\bfe_i \otimes \bfe_j$, scaled by the maximum active stress parameter $S_\text{max,active}$, a function $f_\ell$ that models the force-length relation, and the 3D homogenized value $\bar{\gamma}$ of the activation parameter $\gamma \in [0,1]$ following from the half-sarcomere model.
 
-In the deforming body fat layer, the active stress contribution is disregarded. For simulating tendons, different material models can be used such as the model proposed by Carniel et al. \cite{Carniel2017}, which describes microstructural interactions between collagen fibers and their matrix in addition to the elastic response of the fibers itself. To alter the material model, the definition of $\Psi$ can simply be changed while all other equations remain intact. Similarly, other material models can be defined using the framework of the strain energy function.
+In the deforming body fat layer, the active stress contribution is disregarded. For simulating tendons, different material models can be used such as the model proposed by Carniel et al. \cite{Carniel2017}, which describes microstructural interactions between collagen fibers and their matrix in addition to the elastic response of the fibers themselves. To alter the material model, the definition of $\Psi$ can simply be changed while all other equations remain intact. Similarly, other material models can be defined using the framework of the strain energy function.
 
 In short summary, the following system of equations describes the continuum mechanics model of muscle contraction:
 %
@@ -442,7 +442,7 @@ Initial conditions for $\bfu$ and $\bfv$ define the initial pose of the muscle t
 %
 Additionally, Neumann boundary conditions can be used to prescribe traction forces on the surface.
 
-The description of the multi-scale model \cite{Roehrle2012,Heidlauf2013} assumes quasi-static conditions, which means that the velocities are set to zero, $\bfv=\bfzero$, and inertial terms are neglected. In consequence, the incompressibility constraint in \cref{eq:contraction_1} has to be formulated differently and the balance of momentum in \cref{eq:contraction_2} reduces to $\rho\,\bfb + \div \bfsigma = 0$.
+The description of the multi-scale model \cite{Roehrle2012,Heidlauf2013} assumes quasi-static conditions, which means that the velocities are set to zero, $\bfv=\bfzero$, and inertial terms are neglected. As a consequence, the incompressibility constraint in \cref{eq:contraction_1} has to be formulated differently and the balance of momentum in \cref{eq:contraction_2} reduces to $\rho\,\bfb + \div \bfsigma = 0$.
 However, our implementation extends the model to the fully dynamic formulation given in \cref{eq:contraction_1,eq:contraction_2,eq:contraction_3,eq:contraction_4}. 
 
 More details on the mechanics equations, their discretization and the resulting numerical scheme to obtain the solution functions $\bfu$ and $\bfv$ are given in \cref{sec:discretization_mechanics}.
@@ -458,7 +458,7 @@ More details on the mechanics equations, their discretization and the resulting 
 
 \section{Discretization}\label{sec:discretization}
 
-The partial and ordinary differential equations described in the last section contain spatial an temporal derivatives that have to be discretized to be numerically solved. For temporal derivatives, we use timestepping schemes, for spatial derivatives, we employ the Finite Element Method.
+The partial and ordinary differential equations described in the last section contain spatial and temporal derivatives that have to be discretized to be solved numerically. For temporal derivatives, we use timestepping schemes, for spatial derivatives, we employ the Finite Element Method.
 
 In this section, we describe the discretization of the subcellular and electrophysiology models that were presented in the last section. A description of the discretization of the solid mechanics model follows in \cref{sec:discretization_mechanics}.
 
@@ -466,11 +466,11 @@ We begin with the discretization in time in \cref{sec:discretization_monodomain}
 
 \subsection{Discretization of the Monodomain Model}\label{sec:discretization_monodomain}
 
-Electrophysiology models typically consists of a reaction-diffusion equation. The diffusion term describes the electric conduction in the tissue and the reaction term includes the subcellular model. In our model, the monodomain equation used in the fiber based description, \cref{eq:monodomain}, and the second multidomain equation, \cref{eq:multidomain2}, are equations of this type.
+Electrophysiology models typically consists of a reaction-diffusion equation. The diffusion term describes the electric conduction in the tissue and the reaction term includes the subcellular model. In our model, the monodomain equation  \cref{eq:monodomain} used in the fiber based description and the second multidomain equation \cref{eq:multidomain2} are equations of this type.
 
 This type of partial differential equation is often solved using operator splitting schemes. A first order operator splitting scheme is Godunov splitting \cite{Godunov2003}. It was used for the solution of the chemo-electro-mechanical model in \cite{Roehrle2012}. In addition to Godunov splitting, we also employ the second order accurate Strang splitting scheme \cite{Strang1968}.
 
-In the following, the application of these two schemes is illustrated with the monodomain equation, \cref{eq:monodomain}. The right hand sides of the diffusion and reaction terms are designated as $\mathcal{L}_1$ and $\mathcal{L}_2$:%
+In the following, the application of these two schemes is illustrated for the monodomain equation \cref{eq:monodomain}. The right hand sides of the diffusion and reaction terms are denoted in short as $\mathcal{L}_1$ and $\mathcal{L}_2$:%
 \begin{align*}
   \mathcal{L}_1(V_m) := \dfrac{1}{A_m\,C_m} \sigma_\text{eff}\dfrac{\partial^2 V_m}{\partial x^2}, &&
   \mathcal{L}_2(V_m) := -\dfrac{1}{C_m} I_\text{ion}(V_m,\bfy).
@@ -478,12 +478,12 @@ In the following, the application of these two schemes is illustrated with the m
 %
 Then, the monodomain equation takes the form:
 %
-\begin{align*}
+\begin{align}\label{eq:monodomain_operator_splitting}
   \p{V_m}{t} = \mathcal{L}_1(V_m) + \mathcal{L}_2(V_m).
-\end{align*}
+\end{align}
 
 A timestepping scheme is constructed that starts with a given initial value $V_m^{(0)}$ and computes solution values $V_m^{(i)}$ at discrete points in time $t^{(i)} = i\cdot\dt$ with a fixed timestep width $\dt$.
-Godunov splitting proceeds by alternatingly solving the ODEs with right hand sides $\mathcal{L}_1$ and $\mathcal{L}_2$. In the first substep per iteration, an intermediate value $V_m^{\ast}$ is calculated, which is used as starting point for the second substep. Each of the substeps are performed using another timestepping scheme for the ODE, e.g., the explicit Euler scheme:
+Godunov splitting proceeds by alternatingly performing steps in the two directions of the right hand sides $\mathcal{L}_1$ and $\mathcal{L}_2$. In the first substep per iteration, an intermediate value $V_m^{\ast}$ is calculated, which is used as starting point for the second substep. Each of the substeps are performed using independent timestepping scheme, e.g., the explicit Euler scheme:
 %
 \begin{subequations}\label{eq:monodomain_godunov}
   \begin{align}
@@ -524,8 +524,10 @@ Strang splitting uses a similar approach with three substeps per timestep and tw
 %\textcolor{vred}{1D:}
 %\textcolor{vgreen}{3D:}
 
+Note that each substep can either be executed as a single timestep of the chosen method as in \cref{eq:monodomain_godunov,eq:monodomain_strang} or divided into several steps with timestep widths $\dt_{0D}$ (for the 0D subcellular model represented by $\mathcal{L}_1$) and $\dt_{1D}$ (for the diffusion equation represented by $\mathcal{L}_2$).
+
 \Cref{fig:splitting_schemes} visualizes both splitting schemes applied to the monodomain equation. 
-The yellow arrows correspond to the solution of the 0D subcellular model. The red arrows correspond to the solution of the 1D diffusion equation. The timestepping schemes of the substeps have timestep widths $\dt_\text{0D}$ and $\dt_\text{1D}$, respectively. The timestep width of one splitting step is $\dt_\text{splitting}$. Depending on how the timestep widths are chosen in relation to each other, different numbers of subcycles are used in the solution of the 0D and 1D problems.
+The yellow arrows correspond to the solution of the 0D subcellular model. The red arrows correspond to the solution of the 1D diffusion equation. The timestep width of one splitting step is $\dt_\text{splitting}$. Depending on how the timestep widths are chosen in relation to each other, different numbers of subcycles are used in the solution of the 0D and 1D problems.
 
 \begin{figure}%
   \centering%
@@ -548,7 +550,7 @@ The yellow arrows correspond to the solution of the 0D subcellular model. The re
 \end{figure}%
 
 Instead of the explicit Euler method in \cref{eq:monodomain_godunov,eq:monodomain_strang}, other timestepping methods can be used for the substeps. 
-We use the following schemes, which are listed as single iteration step for the generic ODE ${\p V_m / \p t = \mathcal{L}(V_m,t)}$:
+We use the following schemes, which are listed as single steps for the generic ODE ${\p V_m / \p t = \mathcal{L}(V_m,t)}$:
 \begin{subequations}\label{eq:ode_solver_schemes}
   \begin{align}
     V_m^{(i+1)} &= V_m^{(i)} + \dt \mathcal{L}(V_m^{(i)},t^{(i)}), \label{eq:explicit_euler}\\[4mm]
@@ -560,9 +562,9 @@ We use the following schemes, which are listed as single iteration step for the 
   \end{align}
 \end{subequations}
 %
-Here, \cref{eq:explicit_euler} is the first-order accurate explicit Euler scheme, \cref{eq:heun} is the second-order accurate Heun scheme, \cref{eq:implicit_euler} is the first order accurate implicit Euler scheme and \cref{eq:crank_nicolson} is the Crank-Nicolson scheme \cite{CrankNicolson1947}, which for $\theta=0$ equals the explicit Euler and for $\theta=1$ equals the implicit Euler scheme. For $\theta=\frac12$, it is second order accurate. An advantage of the implicit schemes in \cref{eq:implicit_euler,eq:crank_nicolson} is that, for our considered diffusion problems, they are unconditionally stable. A disadvantage is that a linear equation has to be solved in every timestep.
+Here, \cref{eq:explicit_euler} is the first-order accurate explicit Euler scheme, \cref{eq:heun} is the second-order accurate Heun scheme, \cref{eq:implicit_euler} is the first order accurate implicit Euler scheme, and \cref{eq:crank_nicolson} is the Crank-Nicolson scheme \cite{CrankNicolson1947}, which for $\theta=0$ equals the explicit Euler and for $\theta=1$ equals the implicit Euler scheme. For $\theta=\frac12$, it is second order accurate. An advantage of the implicit schemes in \cref{eq:implicit_euler,eq:crank_nicolson} is, that, for our considered diffusion problems, they are unconditionally stable. A disadvantage is, that a linear equation has to be solved in every timestep.
 
-A second order accurate timestepping scheme allows a higher timestep width to yield the same numerical error as a first order scheme.
+A second order accurate timestepping scheme yields a faster decrease of the numerical error with decreasing step size and, thus, in many cases allows a larger step size than a first order scheme.
 To obtain a second order scheme for the monodomain equation, we use Strang splitting (\cref{eq:monodomain_strang}) with the Crank-Nicolson scheme (\cref{eq:crank_nicolson}) for the diffusion term $\mathcal{L}_1$ and Heun's method (\cref{eq:heun}) for the reaction term $\mathcal{L}_2$. In the subcellular model, the system of ODEs with state vector $\bfy$ given in \cref{eq:subcellular} is solved with Heun's method along with the equation in terms of $V_m$.
 
 Next, the spatial derivatives in the diffusion part $\mathcal{L}_2$ of the split equation have to be discretized. Then, both the multidomain and the fiber based models can be solved using the splitting scheme.
@@ -575,7 +577,7 @@ We consider the following diffusion problem in the variable $u: \Omega \times [0
 \begin{align*}
   \p{u}{t} &= \div(\bfsigma \grad u), &(\bfsigma\,\grad u) \cdot \bfn &= f \quad \text{on }\Gamma_f, & (\bfsigma\,\grad u) \cdot \bfn &= 0 \quad \text{on } ∂Ω\backslash \Gamma_f.
 \end{align*}
-We discretize the temporal derivative using the Crank-Nicolson scheme of \cref{eq:crank_nicolson}. Following the procedure of the Galerkin Finite Element formulation with the Hilbert space $H^1_0(\Omega)$ of test functions $\phi$ that are zero on the boundary, we arrive at the following weak form:
+We discretize the temporal derivative using the Crank-Nicolson scheme as in \cref{eq:crank_nicolson}. Following the procedure of the Galerkin Finite Element formulation with the Hilbert space $H^1_0(\Omega)$ of test functions $\phi$ that are zero on the boundary, we arrive at the following weak form:
 %
 \begin{align*}
   \ds\int_Ω \big(\theta\,∇\cdot(\bfsigma ∇ \bfu^{(i+1)})  + (1-\theta)\,∇\cdot(\bfsigma ∇ u^{(i)})\big)\,\phi \,\d\bfx &&\\
@@ -583,7 +585,7 @@ We discretize the temporal derivative using the Crank-Nicolson scheme of \cref{e
 \end{align*}
 For brevity, we express divergence and gradient using the nabla operator. 
 
-To discretize the weak form, we choose a function space $V_h = \text{span}\{\varphi_j \mid j = 1, \dots, N\}$ to represent the solution as $u = \sum_{j=1}^N u_j \phi_j$. Applying the divergence theorem, we obtain:
+To discretize the weak form in space, we choose a function space $V_h = \text{span}\{\varphi_j \mid j = 1, \dots, N\}$ to represent the solution as $u = \sum_{j=1}^N u_j \phi_j$. Applying the divergence theorem, we obtain:
 \begin{equation}\label{eq:diffusion_helper1}
   \begin{array}{l}
     \ds\sum\limits_{j=1}^{N} \big(\theta\,u_j^{(i+1)} + (1-\theta)\,u_j^{(i)}\big)  
@@ -606,7 +608,7 @@ The formulation uses the standard stiffness matrix $\bfK_{\bfsigma}$, the matrix
      \bfB_{\bfsigma,kj} &= \ds\int_{\Gamma_f} \big((\bfsigma\,∇\varphi_j)\cdot \bfn\big)\,\varphi_k \,\d\bfx,&
      \bfM_{kj} &= \ds\int_Ω \varphi_j\,\varphi_k\,\d\bfx.
 \end{align}
-Note that after applying the divergence theorem, the definition of the stiffness matrix has a minus sign, which is correct for the positive second order derivative in the original diffusion term.
+Note that, after applying the divergence theorem, the definition of the stiffness matrix has a minus sign.
 
 Next, we take into account the Neumann boundary condition $\bfsigma∇u\cdot \bfn = f$ on the boundary $\Gamma_f$. The flux $f$ over the boundary is discretized by $M$ separate ansatz functions $\psi_j$ on $\Gamma_f$ as $f = \sum_{j=1}^M f_j\, \psi_j$.
 The flux values are summarized in a vector $\bff=(f_1,\dots,f_M)^\top$.
@@ -623,7 +625,7 @@ and the boundary matrix $\bfB_{\Gamma_f}$ given by:
 \begin{align}\label{eq:definition_boundary_matrix}
   \bfB_{\Gamma_f,kj} &= \ds\int_{\Gamma_f} \psi_j\,\varphi_k \,\d\bfx.
 \end{align}
-Note, incorporating the Neumann boundary conditions in the weak form corresponds to the following exchange of the boundary matrices $\bfB_\sigma$ and $\bfB_{\Gamma_f}$:%
+Note that incorporating the Neumann boundary conditions in the weak form corresponds to the following exchange of the boundary matrices $\bfB_\sigma$ and $\bfB_{\Gamma_f}$:%
 \begin{align}\label{eq:boundary_relation}
   \bfB_\sigma\,\bfu = \bfB_{\Gamma_f}\,\bff.
 \end{align}
@@ -649,18 +651,18 @@ Implicit timestepping schemes such as implicit Euler or the Crank-Nicoloson sche
 Assuming homogeneous Neumann boundary conditions for simplicity, the iteration step of the canonical Crank-Nicolson scheme follows from \cref{eq:diffusion_helper2}:
 \begin{subequations}\label{eq:lumping_crank_nicolson}
   \begin{align}
-    \big(\dfrac1{2}\bfK-\dfrac{1}{\dt}\bfM\big)\, \bfu^{(t+1)} &= \big(-\dfrac12{\bfK} - \dfrac{1}{\dt}\bfM\big)\, \bfu^{(t)}\label{eq:lumping_crank_nicolson_1}\\[4mm]
-    \Leftrightarrow \quad (\bfI - \dfrac{\dt}{2}\,\bfM^{-1}\bfK)\,\bfu^{(t+1)}&= \,\bfu^{(t)}(\bfI + \dfrac{\dt}{2}\,\bfM^{-1}\bfK).\label{eq:lumping_crank_nicolson_2}
+    \big(\dfrac1{2}\bfK-\dfrac{1}{\dt}\bfM\big)\, \bfu^{(i+1)} &= \big(-\dfrac12{\bfK} - \dfrac{1}{\dt}\bfM\big)\, \bfu^{(i)}\label{eq:lumping_crank_nicolson_1}\\[4mm]
+    \Leftrightarrow \quad (\bfI - \dfrac{\dt}{2}\,\bfM^{-1}\bfK)\,\bfu^{(i+1)}&= (\bfI + \dfrac{\dt}{2}\,\bfM^{-1}\bfK)\,\bfu^{(i)}.\label{eq:lumping_crank_nicolson_2}
   \end{align}
 \end{subequations}
 For the implicit Euler method, we obtain:%
 \begin{subequations}\label{eq:lumping_implicit_euler}
   \begin{align}
-    \ds(\bfK-\frac{\bfM}{\dt})\,\bfu^{(t+1)} &=\,\ds -\frac{\bfM}{\dt}\bfu^{(t)}\label{eq:lumping_implicit_euler_1}\\[4mm]
-    \Leftrightarrow \quad (\bfI - \dt\,\bfM^{-1}\bfK)\,\bfu^{(t+1)}&= \,\bfu^{(t)}.\label{eq:lumping_implicit_euler_2}
+    \ds(\bfK-\frac{\bfM}{\dt})\,\bfu^{(i+1)} &=\,\ds -\frac{\bfM}{\dt}\bfu^{(i)}\label{eq:lumping_implicit_euler_1}\\[4mm]
+    \Leftrightarrow \quad (\bfI - \dt\,\bfM^{-1}\bfK)\,\bfu^{(i+1)}&= \,\bfu^{(i)}.\label{eq:lumping_implicit_euler_2}
   \end{align}
 \end{subequations}
-Both iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_crank_nicolson_2} and in \cref{eq:lumping_implicit_euler_1,eq:lumping_implicit_euler} are equivalent, as the second equation follows from the first one by left multiplication of $(-\dt \bfM^{-1})$. In the second equations, the matrices to be multiplied are created by a sum of the unity matrix $\bfI$ and another matrix term that is scaled by the potentially small timestep width $\dt$. For the implicit Euler in \cref{eq:lumping_implicit_euler_2}, the matrix on the right hand side even completely vanishes. This is preferred over the first iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_implicit_euler_1} as it leads to better conditioned matrix-vector multiplications.
+Both iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_crank_nicolson_2} and in \cref{eq:lumping_implicit_euler_1,eq:lumping_implicit_euler} are equivalent, as the second equation follows from the first one by left multiplication of $(-\dt \bfM^{-1})$. In the second equations, the matrices to be multiplied are created by a sum of the unity matrix $\bfI$ and another matrix term that is scaled by the potentially small timestep width $\dt$. For the implicit Euler in \cref{eq:lumping_implicit_euler_2}, the matrix on the right hand side even reduces to the identity matrix. This is preferred over the first iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_implicit_euler_1} as it leads to better conditioned matrix-vector multiplications.
 
 The required inversions of the mass matrix cannot be carried out explicitly as the inversion would fill in numerous matrix entries and eliminate the sparse structure. This is not feasible for highly resolved meshes with a large number of degrees of freedom. Instead, \emph{mass lumping} is used, where the mass matrix $\bfM$ is approximated by a diagonal matrix with diagonal entries equal to the row sums in $\bfM$ \cite{Hinton1976}. Thus, multiplication with the inverse mass matrix corresponds to a rescaling of columns by the inverse lumped diagonal entries.
 
@@ -673,13 +675,14 @@ The first multidomain equation given in \cref{eq:multidomain1} yields the follow
   \big(\bfK_{\bfsigma_e + \bfsigma_i} + \bfB_{\bfsigma_e + \bfsigma_i}\big)\,\bfphi_{e} +  \s{k=1}{N_\text{MU}} f_r^k \big(\bfK_{\bfsigma_i^k} + \bfB_{\bfsigma_i^k}\big)\,\bfV_m^k = 0.  
 \end{align}
 Here, $\bfphi_{e}$ and $\bfV_m^k$ are the vectors of degrees of freedom for the extracellular potential $\phi_e$ and membrane voltage $V_m^k$ of compartment $k$. The matrices are defined by \cref{eq:diffusion_matrices} and do not yet include the boundary conditions.
+The subscripts of the stiffness matrices $\bfK$ and boundary integral matrices $\bfB$ refer to the anisotropy tensors that occur in their definitions.
 
 The diffusion part of the second multidomain equation, \cref{eq:multidomain2}, discretized with Crank-Nicolson, yields the system%
 \begin{align}\label{eq:multidomain_discretization_helper_multidomain2}
   \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb,  
 \end{align}
 %
-with the $1 \times 2$ system matrix $\bfA$ and right hand side vector $\bfb$ given by:%
+with the $1 \times 2$ block system matrix $\bfA$ and right hand side vector $\bfb$ given by:%
 \begin{subequations}\label{eq:multidomain_discretization_helper_multidomain3}
 \begin{align}
    \bfA &= \matt{
@@ -692,7 +695,7 @@ with the $1 \times 2$ system matrix $\bfA$ and right hand side vector $\bfb$ giv
 \end{subequations}
 
 A separate instance of this equation holds for every compartment $k$. Again, the integrals over the boundary are still present in the $\bfB_{\bfsigma_i^k}$ matrices.
-To resolve this and close the formulation, we have to consider the fluxes over the boundary of all involved unknowns and replace them using the boundary conditions.
+To resolve this and to close the formulation, we have to consider the fluxes over the boundary of all involved unknowns and to replace them using the boundary conditions.
 
 One required boundary conditions to solve the multidomain model without body domain is given in \cref{eq:multidomain_bc1}. The boundary condition for compartment $k$ in terms of the intracellular potential $\phi_i^k$,
 %
@@ -726,7 +729,7 @@ Plugging the generic relation \cref{eq:boundary_relation} for boundary integral 
   \bfK_{\bfsigma_e + \bfsigma_i}\,\bfphi_{e} + \bfB_{\Gamma_M}\,\big(\bfq - \s{k=1}{N_\text{MU}} f_r^k\,\bfp^k\big) +  \s{k=1}{N_\text{MU}} f_r^k \big(\bfK_{\bfsigma_i^k}\,\bfV_m^k + \bfB_{\Gamma_M}\,\bfp^k\big) = 0.  
 \end{align*}
 
-It can be seen that the terms involving $\bfp^k$ cancel out and result in:
+It can be seen that the terms involving $\bfp^k$ cancel out, such that we get:
 \begin{align}\label{eq:multidomain_discretization_helper4}
     \bfK_{\bfsigma_e + \bfsigma_i}\,\bfphi_{e} + \s{k=1}{N_\text{MU}} f_r^k \bfK_{\bfsigma_i^k}\,\bfV_m^k = -\bfB_{\Gamma_M}\,\bfq.
 \end{align}
@@ -736,11 +739,11 @@ If the multidomain description is used without body fat domain, the boundary con
 Adding boundary conditions to the discretization of the second multidomain equation proceeds using \cref{eq:multidomain_discretization_helper_multidomain2,eq:multidomain_discretization_helper_multidomain3}.
 Carrying out the analogous procedure to the first multidomain equation, we plug in \cref{eq:boundary_relation} to yield the matrix equation
 \begin{align}\label{eq:multidomain_discretization1}
-  \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb,
+  \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb
 \end{align}
 %
-with system matrix $\bfA$ and right hand side vector $\bfb$ given by:%
-
+with system matrix $\bfA$ and right hand side vector $\bfb$ given by
+%
 \begin{align}
  \bfA &= \matt{
     \dfrac{\theta}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k} -\dfrac{1}{\dt}\bfM & \quad
@@ -756,21 +759,21 @@ Again, the boundary terms involving $\bfp^k$ vanish to yield the following expre
     \bfb &= \Big( \dfrac{\theta-1}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k} - \dfrac{1}{\dt}\bfM\Big)\,\bfV_m^{k,(i)} 
       + \dfrac{\theta - 1}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k}\,\bfphi_e^{(i)}.
 \end{align}
-In summary, \cref{eq:multidomain_discretization_helper4} with $\bfq=\bfzero$ coupled with $N_\text{MU}$  instances of \cref{eq:multidomain_discretization1,eq:multidomain_discretization2,eq:multidomain_discretization3} comprise the discretization for the multidomain model without body domain. Definitions of the involved stiffness and mass matrices are given in \cref{eq:diffusion_matrices}.
+In summary, \cref{eq:multidomain_discretization_helper4} with $\bfq=\bfzero$ coupled with $N_\text{MU}$  instances of \cref{eq:multidomain_discretization1,eq:multidomain_discretization2,eq:multidomain_discretization3} comprises the discretization for the multidomain model without body domain. Definitions of the involved stiffness and mass matrices are given in \cref{eq:diffusion_matrices}.
 
-\subsection{Discretization of the Multidomain Model With Body Domain}\label{sec:discretization_body_domain}
+\subsection{Discretization of the Multidomain Model for Surface EMG}\label{sec:discretization_body_domain}
 
-To discretize the multidomain model with body domain, we reuse the formulation without body domain in \cref{sec:discretization_multidomain}.
-The body domain adds the electric potential $\phi_b$ to the vector of unknowns for which the system has to be solved. As before, we discretize the field using Finite Element ansatz functions and yield the vector $\bfphi_b$ of degrees of freedom.
+To discretize the multidomain model with the electric potential $\phi_b$ in the body domain, we extend the formulation without body domain in \cref{sec:discretization_multidomain}.
+The body domain adds the electric potential $\phi_b$ to the vector of unknowns, for which the system has to be solved. As before, we discretize the field using Finite Element ansatz functions and solve for the vector $\bfphi_b$ of degrees of freedom.
 
 The model for $\phi_b$ is the Laplace equation given in \cref{eq:body} with homogeneous Neumann boundary conditions given in \cref{eq:body_domain_bc3}. According to \cref{eq:discretization_laplace}, the discretized equation is given by
 \begin{align}\label{eq:discretized_body}
   \bfK_{\bfsigma_b}\,\bfphi_b = 0.
 \end{align}
 
-The value of the body potential $\phi_b$ is coupled to the extracellular potential $\phi_e$ in the muscle domain $\Omega_M$ via the coupling conditions on the boundary $\Gamma_M$ given in \cref{eq:body_domain_coupling}.
+In addition, the value of the body potential $\phi_b$ is coupled to the extracellular potential $\phi_e$ in the muscle domain $\Omega_M$ via the coupling conditions on the boundary $\Gamma_M$ given in \cref{eq:body_domain_coupling}.
 
-We combine the discretized and coupled multidomain equations into one linear system of equations:
+We write the discretized and coupled multidomain equations as a linear system of equations in generic block-matrix form:
 \begin{align}\label{eq:discretized_multidomain_body}
   \left[
   \begin{array}{@{}c|c|c|c@{}}
@@ -796,11 +799,11 @@ We combine the discretized and coupled multidomain equations into one linear sys
   \end{array}\right].
 \end{align}
 
-The vector of unknowns consists of the degrees of freedom in the Finite Element formulation at the next timestep $(i+1)$ of the transmembrane voltage $\bfV_m^{k,(i+1)}$, the extracellular potential $\bfphi_{e}^{(i+1)}$, the body potential $\bfphi_{b}^{(i+1)}$ and additionally the flux $\bfq^{(i+1)}$ over the shared boundary $\Gamma_M$ of muscle and body domain, which was defined in \cref{eq:definition_q}. For illustration purposes, only one compartment, $k=1$, for one MU, $N_\text{MU}=1$, is considered.
+The vector of unknowns consists of the degrees of freedom in the Finite Element formulation at the next timestep $(i+1)$ of the transmembrane voltage $\bfV_m^{k,(i+1)}$, the extracellular potential $\bfphi_{e}^{(i+1)}$, the body potential $\bfphi_{b}^{(i+1)}$, and additionally the flux $\bfq^{(i+1)}$ over the shared boundary $\Gamma_M$ of the muscle and the body domain, which was defined in \cref{eq:definition_q}. For illustration purposes, only one compartment, $k=1$, for one MU, $N_\text{MU}=1$, is considered.
 
-The resulting matrix equation is organized in sub blocks, as shown in \cref{eq:discretized_multidomain_body}. In the following text, we refer to them as block rows and block columns.
+We refer to parts of the matrix in \cref{eq:discretized_multidomain_body} as block rows and block columns according to the given block-structure.
 
-The first block row in the matrix equation is given by the discretized second multidomain equation. Following \cref{eq:multidomain_discretization2,eq:multidomain_discretization3}, the matrices and right hand side are given by:
+The first block row in the matrix equation is given by the discretized second multidomain equation. Following \cref{eq:multidomain_discretization2,eq:multidomain_discretization3}, the matrices and the right hand side are given by
 \begin{align*}
   &\bfA^k_{V_m,V_m} = \dfrac{\theta}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k} -\dfrac{1}{\dt}\bfM, \qquad
   \bfB^k_{V_m,\phi_e} = \dfrac{\theta}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k},\\[4mm]
@@ -821,8 +824,8 @@ The third block row is the formulation of the harmonic body potential $\phi_b$ a
 
 The other coupling condition, \cref{eq:body_domain_bc1}, is accounted for by the last block row in \cref{eq:discretized_body}. The degrees of freedom for the extracellular potential $\bfphi_e^{(i+1)}$ and the body potential $\bfphi_b^{(i+1)}$ have equal values on the boundary $\Gamma_M$. The matrices $\bfI_{\Gamma_M,\phi_e}$ and $\bfI_{\Gamma_M,\phi_b}$ are identity matrices that only have nonzero entries on the diagonal for the boundary degrees of freedom in the meshes of muscle domain and body domain, respectively.
 
-Because the vector $\bfq^{(i+1)}$ is not an unknown in the system, the respective values in \cref{eq:discretized_multidomain_body} have to be condensed out.
-In result, we obtain the following system, which is formulated for a generic number $N_\text{MU}$ of MUs:
+Because the vector $\bfq^{(i+1)}$ is not an unknown in the system, the respective values in \cref{eq:discretized_multidomain_body} have to be eliminated.
+As a result, we obtain the following system, which is formulated for a generic number $N_\text{MU}$ of MUs:
 %
 \begin{align}\label{eq:discretized_multidomain_body2}
   \left[\begin{array}{@{}ccc|c|c@{}}
@@ -849,7 +852,7 @@ In result, we obtain the following system, which is formulated for a generic num
   \end{array}\right].
 \end{align}
 
-Formally, the condensation step is carried out by adding the equations of the third block row in \cref{eq:discretized_multidomain_body} that correspond to the boundary degrees of freedom on $\Gamma_M$ to the corresponding equations of the same dofs in the second block row. This eliminates the last block column, which corresponds to $\bfq^{(i+1)}$. Next, the duplicate boundary dofs that appear in both the $\Omega_M$ and $\Omega_B$ meshes get unified. The corresponding matrix columns in the third block column are removed. To preserve the entries in the third block row, they are added in the sub matrix of block row three and block column two.
+Formally, the elimination step is carried out by adding the equations of the third block row in \cref{eq:discretized_multidomain_body}, that correspond to the boundary degrees of freedom on $\Gamma_M$, to the corresponding equations of the same degreres of freedom in the second block row. This eliminates the last block column, which corresponds to $\bfq^{(i+1)}$. Next, the duplicate boundary degrees of freedom, that appear in both the $\Omega_M$ and $\Omega_B$ meshes, get unified. The corresponding matrix columns in the third block column are removed. To preserve the entries in the third block row, they are added in the sub matrix of block row three and block column two.
 
 Now considering the updated matrix equation in \cref{eq:discretized_multidomain_body2}, all sub blocks are equal to \cref{eq:discretized_multidomain_body}, except for the former matrix $\bfC_{\phi_b,\phi_b}$ and the new matrices $\bfD$ and $\bfE$. The new matrix $\tilde{\bfC}_{\phi_b,\phi_b}$ is obtained from $\bfC_{\phi_b,\phi_b}$ by removing all rows and columns of boundary degrees of freedom. The removed entries are contained in the new matrices $\bfD$ and $\bfE$.
 
@@ -859,23 +862,85 @@ The size of the system matrix in \cref{eq:discretized_multidomain_body2} equals 
 
 The first $N_\text{MU}$ block rows in \cref{eq:discretized_multidomain_body2} contain the second multidomain equation for every MU. The second-to-last block row contains the first multidomain equation and the last block row  contains the body fat layer model.
 
-Because of the implicit formulation, electric conduction in the intra and extracellular space and the body domain are bidirectionlly coupled. Therefore, the model can be used to simulate the effects of natural activation in the muscle on EMG signals on the skin surface as well as the reverse effect of external stimulation on the surface on the electrophysiology.
+Because of the implicit formulation, electric conduction in the intracellular and extracellular space and the body domain are bidirectionlly coupled. Therefore, the model can be used to simulate the effects of natural activation in the muscle on EMG signals on the skin surface as well as the reverse effect of external stimulation on the surface on the electrophysiology.
+
+\subsection{Discretization of the Fiber Based Electrophysiology Model}
+
+% Nach zwei Abschnitten über das Multidomain-Modell wäre es hier glaub ich gut, noch einen Abschnitt über das fiber-based Modell einzufügen, mit entsprechender Überschrift. Der Abschnitt darf gern kurz sein und Gemeinsamkeiten und Unterschiede zu den vorausgehenden Abschnitten erklären. Eine kurze Zusammenfassung in generischer Matrix-Block-Schreibweise wie oben mit Erklärung uu den Blöcken wäre sehr hilfreich. Ich denke, man versteht dann auch die Parallelisierung und Implementierung besser, wenn man hier schonmal ganz klar die unabhängigen Blöcke für die Fasern gesehen hat. 
+
+The fiber based electrophysiology model consists of multiple independent 1D fiber domains, where the monodomain equation \cref{eq:monodomain} is solved. The transmembrane voltage $V_m$ is then mapped to a 3D mesh of the muscle domain and unidirectionally coupled to the first bidomain equation \cref{eq:bidomain1}. The first bidomain equation is solved for the extracellular potential $\phi_e$ and possibly the electric potential $\phi_b$ in the body fat domain, which corresponds to EMG signals on the skin surface.
+
+The temporal discretization of the monodomain equation was described in \cref{sec:discretization_monodomain}. The diffusion term within the operator splitting requires a spatial discretization for which we use the Finite Element Method. This 1D diffusion equation is given as
+\begin{align}\label{eq:discretization_diffusion_term}
+  \p{V_m}{t} = \dfrac{\sigma_\text{eff}}{A_m\,C_m} \p{V_m}{x}{2}.
+\end{align}
+It can be solved using a timestepping scheme such as the implicit Euler method to obtain time-discrete values $V_m^{(i)}, i=1,2,\dots$ for the transmembrane potential. The discretization leads to the matrix equation given in \cref{eq:diffusion_helper2} and to the variants presented in \cref{sec:mass_lumping} if mass lumping is used. In the stiffness and mass matrices, the anisotropic conduction tensor is replaced by the constant scalar prefactor $c := \sigma_\text{eff}/(A_m\,C_m)$ of the spatial second derivative in \cref{eq:discretization_diffusion_term}.
+
+The first bidomain equation \cref{eq:bidomain1} is a 3D Poisson problem in terms of the unknown extracellular potential $\phi_e$. According to \cref{eq:discretization_laplace}, the Finite Element discretization is given by%
+\begin{align*}
+  \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= - \bfB_{\Gamma_f}\bff + \textbf{rhs},
+\end{align*}
+where the right hand side $\textbf{rhs}$ of the Poisson problem is given by
+\begin{align*}
+  \textbf{rhs} &= -\bfK_{\bfsigma_i} \bfV_{m,3D}^{(i+1)}.
+\end{align*}
+Here, $\bfphi_e^{(i+1)}$ and $\bfV_{m,3D}^{(i+1)}$ are the vectors of degrees of freedom on the 3D mesh for the extracellular potential $\phi_e$ and the membrane potential $V_m$ at timestep $(i+1)$. With the homogeneous Neumann boundary conditions for $V_m$ and $\phi_e$ given in \cref{eq:monodomain_bc}, the boundary term $\bfB_{\Gamma_f}$ vanishes.
+
+In summary, the following matrix equations are solved for the fiber based electrophysiology model with $n$ fibers:
+\begin{subequations}\label{eq:discretized_fibers}
+  \begin{align}
+    \left[\begin{array}{@{}ccc@{}}
+      \bfA &&\\
+      &\ddots&\\
+      &&\bfA
+    \end{array}\right]
+    \left[\begin{array}{@{}c@{}}
+      \bfV_{m}^{1,(i+1)}  \\
+      \vdots\\
+      \bfV_{m}^{n,(i+1)}
+    \end{array}\right]
+    &= 
+    \left[\begin{array}{@{}c@{}}
+      \bfV_{m}^{1,(i)}  \\
+      \vdots\\
+      \bfV_{m}^{n,(i)}
+    \end{array}\right],\label{eq:discretized_fibers_1} \\[4mm]
+    \bfV_{m,3D}^{(i+1)} &= \bfP \left[\begin{array}{@{}c@{}}
+      \bfV_{m}^{1,(i+1)} \label{eq:discretized_fibers_2} \\
+      \vdots\\
+      \bfV_{m}^{n,(i+1)}
+    \end{array}\right],\\[4mm]
+    \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= -\bfM_{\bfsigma_i} \bfV_{m,3D}^{(i+1)} \label{eq:discretized_fibers_3}
+  \end{align}
+\end{subequations}
+with the system matrix $\bfA$ for a single fiber given according to \cref{eq:lumping_implicit_euler_2} by
+\begin{align*}
+  \bfA &= \bfI - \dt\,\bfM_c^{-1}\bfK_c.
+\end{align*}
+\Cref{eq:discretized_fibers_1} solves the diffusion part of the operator splitting in \cref{eq:monodomain_operator_splitting}. After the values $\bfV_{m}^{j,(i+1)}$ for the timestep $(i+1)$ are computed on the 1D fiber meshes, the homogenized vector $\bfV_{m,3D}^{(i+1)}$ in the 3D mesh of the muscle domain $\Omega_M$ is obtained by the prolongation operation $\bfP$ in \cref{eq:discretized_fibers_2}. The homogenized vector is used in the right hand side of the bidomain model in \cref{eq:discretized_fibers_3}, which computes the discretized extracellular potential $\bfphi_e^{(i+1)}$.
+
+\Cref{eq:discretized_fibers_3} can be extended by adding a body fat layer $\Omega_B$ and the corresponding model for the electric potential $\phi_b^{(i+1)}$. Then, the vector of unknowns contains the degrees of freedom for both $\phi_e^{(i+1)}$ and $\phi_b^{(i+1)}$. The stiffness matrix $\bfK_{\bfsigma_i + \bfsigma_e}$ is obtained by integrating over both meshes in $\Omega_M \cup \Omega_B$. Only in the elements of the Finite Element mesh for $\Omega_B$, the conduction tensors are redefined as $\bfsigma_i = \bfzero$ and $\bfsigma_e = \bfsigma_b$. This sets the right hand side of \cref{eq:discretized_fibers_3} to zero in $\Omega_B$ and the solution $\phi_b$ in harmonic according to the model in \cref{eq:body}. The coupling conditions \cref{eq:body_domain_coupling} between $\phi_e$ and $\phi_b$ and the outer Neumann boundary conditions \cref{eq:body_domain_bc3} for $\phi_b$ are satisfied automatically by this approach.
+
+The comparison between the discretized multidomain model in \cref{eq:discretized_multidomain_body2} with the discretized fiber based model in \cref{eq:discretized_fibers} reveals several differences. Whereas the multidomain description consists of a single coupled linear system for electric conduction in the intracellular, extracellular and body domains, the formulations are only unidirectionally coupled in the fiber based description. While the multidomain model always computes the EMG signals on the skin surface in every timestep, the corresponding model in the fiber based description can be solved with larger timestep widths, using subcycling for the action potential propagation model.
+
+As can be seen in \cref{eq:discretized_fibers_1}, the system matrix is decoupled and contains independent problems for every fiber. This is an advantage compared to the multidomain model, where a system describing the whole muscle domain has to be solved. On the downside, separate representations of the transmembrane voltage $V_m$ exist in the fiber based description. The representation in the 3D mesh has to be computed by interpolation from the representation on the fibers. The multidomain description has a single vector of degrees of freedom for $V_m$ with less entries than in the fiber-based description.
 
 \subsection{Summary of Domains and Meshes}
 
-The formulation requires Finite Element meshes for the 1D fiber domains $\Omega_f^j$ for ${j=1,\dots,n}$ if the fiber based description is used and for the 3D muscle domain $\Omega_M$ and the 3D body domain $\Omega_B$. The meshes for $\Omega_M$ and $\Omega_B$ share nodes on their common boundary $\Gamma_M$. The fiber meshes are embedded in the muscle domain. Their nodes do not necessarily have to coincide with the nodes of the muscle mesh.
+Various Finite Element meshes occur in the formulation of the multi-scale model.
+If the fiber based description is used, the description requires Finite Element meshes for the 1D fiber domains $\Omega_f^j$ for ${j=1,\dots,n}$. Further meshes are needed for the 3D muscle domain $\Omega_M$ and for the 3D body domain $\Omega_B$. The meshes for $\Omega_M$ and $\Omega_B$ share nodes on their common boundary $\Gamma_M$. The fiber meshes are embedded in the muscle domain. Their nodes do not necessarily have to coincide with the nodes of the muscle mesh.
 
 The subcellular model is solved at locations $\Omega_s^i$ for $i=1,\dots,m$. These locations are the nodes of the fiber meshes for the fiber based description and the nodes of the muscle mesh for the multidomain description. We therefore have the inclusion $\Omega_s^i \subset \Omega_f^j \subset \Omega_M$.
 
-For the solid mechanics model, the unified 3D domain $\Omega = \Omega_M \cup \Omega_B$ is used. The mesh for the continuum mechanics formulation can be different from the meshes used for the electrophysiology model. In fact, the continuum mechanics mesh has special requirements in order to yield a consistent formulation, e.g., our implementation uses two overlayed meshes of quadratic and linear hexahedral elements for displacements and the hydrostatic pressure. 
+For the solid mechanics model, the unified 3D domain $\Omega = \Omega_M \cup \Omega_B$ is used. The mesh for the continuum mechanics formulation can be different from the meshes used for the electrophysiology model. In fact, the continuum mechanics mesh has special requirements in order to yield a consistent formulation. Our implementation uses two overlayed meshes of quadratic and linear hexahedral elements for displacements and the hydrostatic pressure. 
 
-Often, the required accuracy of the electrophysiology model is higher than for the continuum mechanics model such that differently resolved meshes can be used. To facilitate data mapping, the nodes of the mechanics mesh should be chosen as subset of the nodes of the electrophysiology meshes.
+Often, the required accuracy of the electrophysiology model is higher than for the continuum mechanics model, such that differently resolved meshes can be used. To facilitate data mapping, the nodes of the mechanics mesh should be chosen as subset of the nodes of the electrophysiology meshes.
 
 %We spatially discretize the variables in \cref{eq:multi-domain1,eq:multi-domain2,eq:body,eq:bc1,eq:bc2,eq:bc3,eq:monodomain,eq:bidomain,eq:subcellular} using the Finite Element method with linear ansatz functions. The subcellular points $\Omega_s^i$ are placed at the nodes of the muscle domain mesh $\Omega_M$ for the multi-domain model and at the nodes of the fiber domain meshes $\Omega_f^j$ for the fiber based model. The fibers $\Omega_f^j$ are embedded in the muscle domain $\Omega_M$, however, the nodes of their meshes do not necessarily coincide. The nodes on the internal boundary $\Gamma_M$ between $\Omega_M$ and $\Omega_B$ are shared between the meshes of $\Omega_M$ and $\Omega_B$.
 
 % ---
 
-\section{Derivation and Discretization of the Solid Mechanics Model}\label{sec:discretization_mechanics}
+\section{Discretization and Solution Approach for the Solid Mechanics Model }\label{sec:discretization_mechanics}
 
 The following section provides a more profound introduction of solid mechanics to complement the overview given in \cref{sec:model_muscle_contraction}. It also describes the Finite Element discretization of the solid mechanics model and the algorithms used to obtain a numeric solution. 
 
@@ -902,11 +967,11 @@ Capital and small indices refer to reference and current configuration, respecti
 \end{align}
 
 Here and in the following, the gradient symbol $∇$ refers to differentiation with respect to material coordinates $\bfX$. 
-We assume cartesian coordinates such that the metric tensor $\bfg$ that occurs, e.g., in the transformation from tangent to co-tangent space equals the identity and can be omitted. This simplifies the description.
+We assume cartesian coordinates.
 
 % tangent, normal, volume map
-The determinant of the deformation gradient is $J:= \det \bfF>0$. Is is positive for any physically valid transformation.
-The deformation gradient is used to map geometric quantities from reference to current configuration:
+The determinant of the deformation gradient is $J:= \det \bfF>0$. It is positive for any physically valid transformation.
+The deformation gradient is used to map geometric quantities from the reference to the current configuration:
 \begin{subequations}\label{eq:geometry_maps}
   \begin{align}
     \bft &= \bfF\,\bfT, & \text{(tangent map)} \label{eq:tangent_map}\\[4mm]
@@ -921,7 +986,7 @@ Accordingly, the spatial stretch at a point $\bfx \in \Omega_t$ in a certain dir
 In \cref{eq:normal_map}, the cofactor of $\bfF$ given by $\cof(\bfF) = J\,\bfF^{-\top}$ maps normals $\bfA$ and surface areas $|\bfA|$ from $\Omega_0$ to the corresponding values $\bfa$ and $|\bfa|$ in $\Omega_t$. Nanson's formula, $\d \bfa = \cof(\bfF)\,\d\bfA$, is used to transform surface integrals from Eulerian to Lagrangian description.
 Note that tangents at a point $\bfX$ live in the tangent space $T_\bfX\Omega_0$ and normals live in the co-tangent space $T^\ast_\bfX\Omega_0$.
 
-\Cref{eq:volume_map} describes the volume map from $\Omega_0$ to $\Omega_t$, which simply scales the reference volume $V$ by the determinant $J$ to obtain the volume $v$ in current configuration.
+\Cref{eq:volume_map} describes the volume map from $\Omega_0$ to $\Omega_t$, which simply scales the reference volume $V$ by the determinant $J$ to obtain the volume $v$ in the current configuration.
 
 % geometric quantities
 \begin{figure}
@@ -932,13 +997,13 @@ Note that tangents at a point $\bfX$ live in the tangent space $T_\bfX\Omega_0$ 
   \label{fig:geometric_quantities}%
 \end{figure}
 
-Furthermore, the deformation gradient $\bfF$ is used to define the right Cauchy Green tensor $\bfC = \bfF^\top\bfF$, which maps from tangent to co-tangent space in reference configuration and subsequently the Green-Lagrange strain tensor:
+Furthermore, the deformation gradient $\bfF$ is used to define the right Cauchy Green tensor $\bfC = \bfF^\top\bfF$, which maps from tangent to co-tangent space in reference configuration, and subsequently the Green-Lagrange strain tensor:
 %
 \begin{align*}
   \bfE = \dfrac12(\bfC - \bfI).
 \end{align*}
 %
-This strain measure can be interpreted as comparing the current Lagrangian metric $\bfC$, a measure for the symmetric part of the current deformation, with the reference metric which is the identity. Using \cref{eq:solid1}, the Green-Lagrange strain tensor can be formulated only in terms of derivatives of the displacements:%
+This strain measure can be interpreted as comparing the current Lagrangian metric $\bfC$, a measure for the symmetric part of the current deformation, with the reference metric which is the identity. Using \cref{eq:solid1}, the Green-Lagrange strain tensor can be formulated in terms of derivatives of the displacements:%
 \begin{align}\label{eq:green_lagrange_u}
   \bfE &= \dfrac12\big((∇\bfU)^\top + ∇\bfU + ∇\bfU^\top ∇\bfU\big).
 \end{align}
@@ -949,15 +1014,17 @@ To employ the physical balance principles described in \cref{sec:model_muscle_co
   \bft = \bfsigma \cdot \bfn.
 \end{align*}
 Thus, the Cauchy stress describes the \say{true stress} of contact forces per deformed area. Both slots of the second order tensor are associated with the current configuration. More specifically, $\sigma$ is contravariant and maps from a normal $\bfn$ in co-tangent space $T^\ast_\bfx\Omega_t$ to the traction $\bft$ in tangent space $T_\bfx\Omega_t$. While the physical description is natural in this Eulerian setting, the numerical treatment is more convenient in the Lagrangian setting, where we can integrate over a non-deforming domain. 
-Moreover, a two-point setting where surface areas are measured in the undeformed configuration and traction forces are measured in the deformed configuration is often useful in engineering. This is the natural setting, e.g., in tension tests. Therefore, other stress measures involving the reference configuration are defined.
+Moreover, a two-point setting, where surface areas are measured in the undeformed configuration and traction forces are measured in the deformed configuration, is often useful in engineering. This is the natural setting, e.g., in tension tests. Therefore, other stress measures involving the reference configuration are defined.
 
 % numerics -> physics
 % pull-back, push-back
 Using the mappings presented in \cref{eq:geometry_maps}, all quantities can be transformed between both configurations. 
 The physical derivation can be carried out equivalently in a Lagrangian or Eulerian setting and switching between them is possible at any point in the derivation. For this purpose, two operations are defined: the pull-back $\varphi^\ast(\bfg) = \bfF^\top\bfg\,\bfF$ and push-forward operations $\varphi_\ast(\bfG) = \bfF^{-\top}\bfG\,\bfF^{-1}$, which bring tensors from Eulerian to Lagrangian description and vice-versa.
 
+Continuum mechanical models establish equations for the unknown displacement function $\bfu$ and its evolution in time via relations between stresses and strains. In the following, we focus on descriptions of the stress.
+
 % sigma, 1st PK, 2nd PK
-The first Piola-Kirchhoff stress tensor $\bfP$ measures contact forces in current configuration with regard to the area of the reference configuration and relates to the Cauchy stress as $\bfP = \bfsigma\,\cof(\bfF)$. The second Piola-Kirchhoff tensor $\bfS$ is a fully Lagrangian field given as the pull-back of the Cauchy stress scaled by $J$:%
+The first Piola-Kirchhoff stress tensor $\bfP$ measures contact forces in the current configuration with regard to the area of the reference configuration and relates to the Cauchy stress as $\bfP = \bfsigma\,\cof(\bfF)$. The second Piola-Kirchhoff tensor $\bfS$ is a fully Lagrangian field given as the pull-back of the Cauchy stress scaled by $J$:%
 \begin{align*}
   \bfS = \varphi^\ast(J\,\bfsigma) = J\,\bfF^{-1}\bfsigma\,\bfF^{-\top}.
 \end{align*}
@@ -968,11 +1035,17 @@ It appears in the summary of the muscle contraction model in \cref{eq:contractio
   \centering%
   \def\svgwidth{0.5\textwidth}
   \input{images/theory/stress_tensors.pdf_tex}%
-  \caption{Stress tensors and geometric maps that can be used together in a solid mechanics formulation. The right Cauchy-Green tensor $\bfC$  and the second Piola-Kirchhoff stress $\bfS$ are dual Eulerian tensors and map between tangent space $T_\bfX\Omega_0$ and co-tangent space $T^\ast_\bfX\Omega_0$ in the reference domain. The deformation gradient $\bfF$ and the first Piola-Kirchhoff stress $\bfP$ are dual two-point tensors mapping from reference to current configuration. The Eulerian metric $\bfg$ which is the identity in cartesian coordinates and the Kirchhoff stress $J\,\bfsigma$ (where $\bfsigma$ is the Cauchy stress) are the dual objects in the Eulerian setting. All three pairs of dual tensors are linked together by transformations such as pull-back and push-forward.}%
+  \caption{Stress tensors and geometric maps that can be used together in a solid mechanics formulation. The right Cauchy-Green tensor $\bfC$  and the second Piola-Kirchhoff stress $\bfS$ are dual Eulerian tensors and map between tangent space $T_\bfX\Omega_0$ and co-tangent space $T^\ast_\bfX\Omega_0$ in the reference domain. The deformation gradient $\bfF$ and the first Piola-Kirchhoff stress $\bfP$ are dual two-point tensors mapping from the reference to the current configuration. 
+  %The Eulerian metric $\bfg$ which is the identity in cartesian coordinates and the Kirchhoff stress $J\,\bfsigma$ (where $\bfsigma$ is the Cauchy stress) are the dual objects in the Eulerian setting. All three pairs of dual tensors are linked together by transformations such as pull-back and push-forward.
+  }%
   \label{fig:stress_tensors}%
 \end{figure}
 
-\Cref{fig:stress_tensors} summarizes the geometric maps by black arrows and the stress measures by red arrows. To relate strains and stresses in a material model, the corresponding tensors have to be dual objects. Here, three settings are possible: The Eulerian setting uses the metric $\bfg$ and the dual Kirchhoff stress $J\,\bfsigma$. The two-point setting uses the deformation gradient $\bfF$ and the dual first Piola-Kirchhoff stress $\bfP$. The Lagrangian setting uses the right Cauchy-Green tensor $\bfC$ and the dual second Piola-Kirchhoff stress $\bfS$. We consider the Lagrangian setting in the further derivations, because this formulation is naturally used to derive the discretization schemes. 
+\Cref{fig:stress_tensors} summarizes the geometric maps by black arrows and the stress measures by red arrows. 
+%To relate strains and stresses in a material model, the corresponding tensors have to be dual objects. Here, three settings are possible: The Eulerian setting uses the metric $\bfg$ and the dual Kirchhoff stress $J\,\bfsigma$. The two-point setting uses the deformation gradient $\bfF$ and the dual first Piola-Kirchhoff stress $\bfP$. The Lagrangian setting uses the right Cauchy-Green tensor $\bfC$ and the dual second Piola-Kirchhoff stress $\bfS$. 
+Different pairs of strain and stress tensors can be used. 
+The Lagrangian setting defines the right Cauchy-Green tensor $\bfC$ and the dual second Piola-Kirchhoff stress $\bfS$.
+We consider these quantities in the further derivations, because the Lagrangian formulation is naturally used to derive the discretization schemes.
 
 \subsection{A Linearized Model as an Exemplary Description of Solid Mechanics}\label{sec:linearized_mechanics_model}
 
@@ -983,7 +1056,7 @@ Whereas the equilibrium relation is linear, the material and kinematic descripti
 In cases of small strains, geometric and material linearity can be assumed.
 
 In this section, we present a simplified, static model where all of the assumed relations are linear. 
-This model serves as a prototype for the subsequent derivation of the fully nonlinear model. Besides the nonlinear model, our software OpenDiHu also implements the linearized description. The linear model exhibits better numerical properties and can be solved faster than the generic model. Thus, it can serve as a toy problem and for mechanical systems where the linearization assumption is valid.
+This model serves as a prototype for the subsequent derivation of the fully nonlinear model. Besides the nonlinear model, our software OpenDiHu also implements the linearized description. The linear model exhibits better numerical properties and can be solved faster than the generic model. Thus, it can serve as a toy problem and for mechanical systems, where the linearization assumption is valid.
 
 % Tonti diagram
 \begin{figure}
@@ -996,7 +1069,7 @@ This model serves as a prototype for the subsequent derivation of the fully nonl
 % linear, static and dynamic
 
 Using variational calculus, the system response of external forces and infinitesimal, compatible, virtual displacements $δ\bfu$ is studied. 
-We start with the \emph{principle of virtual work} which states that in equilibrium the virtual work $δW$ performed by external forces along virtual displacements $δ\bfu$ is zero. Equivalently, the external virtual work $δW_\text{ext}$ is equal to the internal virtual work $δW_\text{int}$. 
+We start with the \emph{principle of virtual work}, which states that in equilibrium the virtual work $δW$ performed by external forces along virtual displacements $δ\bfu$ is zero. Equivalently, the external virtual work $δW_\text{ext}$ is equal to the internal virtual work $δW_\text{int}$. 
 
 The external virtual work $δW_\text{ext}$ is given by external forces $\bft$ and the virtual displacements $δ\bfu$ at the same location. The internal virtual work $δW_\text{int}$ is the body's response in terms of stresses $\bfsigma$ and virtual strains $\bfeps$.
 In summary, the equilibrium equation is given by:
@@ -1036,7 +1109,7 @@ The strain expression given in \cref{eq:green_lagrange_u} is linearized by negle
 \begin{align}\label{eq:linearized_helper3}
   \bfeps = \dfrac12\big((∇\bfu)^\top + ∇\bfu\big).
 \end{align}
-Because of small displacements, we do not distinguish between reference and current configuration and \cref{eq:linearized_helper1} combines the strain measure $\bfeps$, which is derived from the Lagrangian Green-Lagrange strain with the Eulerian Cauchy stress $\bfsigma$.
+Because of small displacements, we do not distinguish between reference and current configuration, and \cref{eq:linearized_helper1} combines the strain measure $\bfeps$, which is derived from the Lagrangian Green-Lagrange strain with the Eulerian Cauchy stress $\bfsigma$.
 
 By combining \cref{eq:linearized_helper1,eq:linearized_helper2,eq:linearized_helper3} and discretizing displacements and virtual displacements, we get the linear matrix equation
 \begin{align}\label{eq:linearized_helper4}
@@ -1061,7 +1134,7 @@ From \cref{eq:linearized_helper5}, we get the same discretized linear system as 
 \end{align*}
 %
 
-\subsection{Material Modeling}\label{sec:material_modeling}
+\subsection{Nonlinear Material Modeling}\label{sec:material_modeling}
 %
 Next, we present the derivation of a nonlinear model that forgoes all linearization assumptions of small strains. We begin with the description of the material law, which links strains and stresses.
 
@@ -1079,14 +1152,14 @@ Consequently, we can formulate the strain energy function $\Psi=\Psi(I_1,I_2,I_3
   &I_4(\bfC,\bfa_0) = \bfa_0 \cdot \bfC \, \bfa_0, &
   &I_5(\bfC,\bfa_0) = \bfa_0 \cdot \bfC^2 \, \bfa_0. &
 \end{align*}
-The fiber stretch is related to the fourth invariant by $\lambda_f = \sqrt{I_4}$. Note that requiring incompressibility is equivalent to enforcing $J=1$ and in this case we get ${I_3(\bfC) = 1}$. 
+The fiber stretch is related to the fourth invariant by $\lambda_f = \sqrt{I_4}$. Note that requiring incompressibility is equivalent to enforcing $J=1$, and, in this case, we get ${I_3(\bfC) = 1}$. 
 
-It is convenient to use a decoupled description where the deformation gradient $\bfF$ and the right Cauchy-Green tensor $\bfC$ are multiplicatively decomposed into volume-changing (volumetric) and volume-preserving (isochoric) parts:%
+It is convenient to use a decoupled description, where the deformation gradient $\bfF$ and the right Cauchy-Green tensor $\bfC$ are multiplicatively decomposed into volume-changing (volumetric) and volume-preserving (isochoric) parts:%
 \begin{align*}
   \bfF &= (J^{1/3}\bfI)\,\bar{\bfF},  & \bfC &= (J^{2/3}\bfI)\,\bar{\bfC}.
 \end{align*}
 %
-Here, the the volumetric parts are the identity tensors scaled by a power of the determinant $J$ of the deformation gradient. The isochoric or distortional parts $\bar{\bfF}$ and $\bar{\bfC}$ are given by%
+Here, the volumetric parts are the identity tensors scaled by a power of the determinant $J$ of the deformation gradient. The isochoric or distortional parts $\bar{\bfF}$ and $\bar{\bfC}$ are given by%
 \begin{align*}
   \bar{\bfF} &= J^{-1/3}\,\bfF,  & \bar\bfC &= J^{-2/3}\,\bfC.
 \end{align*}
@@ -1099,13 +1172,13 @@ Similarly, the strain energy function has a decoupled representation with volume
 Using the decoupled form, any incompressible material can be modeled with the \emph{penalty method} as follows. 
 The material behaviour is given by the isochoric strain energy $\Psi_\text{iso}(\bar{\bfC})$, e.g., by employing the Mooney-Rivlin model in \cref{eq:mooney_rivlin}. The volumetric part is defined as
 \begin{align*}
-  \Psi_\text{vol}(J) &= \kappa\,G(J), & G(J) = \dfrac12 (J-1)^2,
+  \Psi_\text{vol}(J) &= \kappa\,G(J) \qquad \text{with } G(J) = \dfrac12 (J-1)^2,
 \end{align*}
-with the incompressibility parameter $\kappa$ and the penalty function $G(J)$. This function is strictly convex and approaches zero when reaching incompressibility as $J$ approaches 1. For large values of $\kappa$, the behavior is nearly incompressible. A disadvantage of this method is that the resulting system matrix is poorly conditioned and becomes singular for $J \to 1$.
+with the incompressibility parameter $\kappa$ and the penalty function $G(J)$. This function is strictly convex and approaches zero as $J$ approaches 1. For large values of $\kappa$, the behavior is nearly incompressible. A disadvantage of this method is, that the resulting system becomes singular for $J \to 1$.
 
 A better approach in this regard is to use a mixed formulation, where incompressibility is enforced exactly using a Lagrange multiplier. This approach is also implemented in OpenDiHu and is the preferred method for incompressible materials. 
 
-In OpenDiHu, the strain energy function of a new material can be given using any of the following four terms:
+In OpenDiHu, the strain energy function of a new material can be given using the following four terms:
 %
 \begin{align*}
   \Psi = \Psi_\text{vol}(J) + \Psi_\text{iso}(\bar{I}_1,\bar{I}_2,\bar{I}_4,\bar{I}_5) + \Psi_1(I_1,I_2,I_3) + \Psi_2(\bfC,\bfa_0).
@@ -1122,7 +1195,7 @@ For the representation using the invariants, the chain rule has to be used:%
 Using the decoupled form, the resulting stresses are also decoupled as $\bfS = \bfS_\text{vol}+\bfS_\text{iso}$. The volumetric stress $\bfS_\text{vol}$ describes the elastic response to compression, the isochoric stress $\bfS_\text{iso}$ describes the response to the deviatoric deformation. In the following, all steps to compute these stresses are listed. The rationale is to give a condensed reference of the implemented algorithm in OpenDiHu to facilitate further development.
 For the derivation of all intermediate steps, we refer to the literature \cite{holzapfel2000nonlinear}.
 
-At first, the reduced stress tensor $\bar{\bfS}$ that neglects the volumetric change is computed:%
+At first, the reduced stress tensor $\bar{\bfS}$ that neglects the volumetric change is formulated as:%
 %
 \begin{align*}
   \bar{\bfS} = 2\p{\Psi_\text{iso}(\bar{I}_1,\bar{I}_2,\bar{I}_4,\bar{I}_5)}{\bar{\bfC}} &= \bar{\gamma}_1\,\bfI + \bar{\gamma}_2\,\bar{\bfC}
@@ -1142,13 +1215,13 @@ Using the fourth order identity tensor $\mathbb{I}$ and the projection tensor $\
   (\mathbb{I})_{abcd} &= \delta_{ac}\,\delta_{bd}, &
   \mathbb{P} &= \mathbb{I} - \dfrac13 \bfC^{-1} \otimes \bfC,
 \end{align*}
-the stress tensors can finally be computed:
+the stress tensors can finally be computed as
 \begin{align*}
   \bfS_\text{iso} &= J^{-2/3}\mathbb{P}:\bar{\bfS}, &
   \bfS_\text{vol} &= J\,p\,\bfC^{-1}, &
   \bfS &= \bfS_\text{iso} + \bfS_\text{vol}.
 \end{align*}
-In the compressible case including the penalty method, the value of $p$ that is needed for $\bfS_\text{vol}$ is given by the constitutive model as $p = \d \Psi_\text{vol}(J)/\d J$. In the incompressible case, $p$ is the unknown Lagrange multiplier that gets computed as part of the numerical solution. In that case, $p$ has the physical meaning of the hydrostatic pressure.
+In the compressible case including the penalty method, the value of $p$, that is needed for $\bfS_\text{vol}$, is given by the constitutive model as $p = \d \Psi_\text{vol}(J)/\d J$. In the incompressible case, $p$ is the unknown Lagrange multiplier that gets computed as part of the numerical solution. In that case, $p$ has the physical meaning of the hydrostatic pressure.
 
 Another important quantity for the numerical solution is the fourth order elasticity tensor $\C$, which is defined as
 \begin{align*}
@@ -1224,8 +1297,8 @@ The internal energy functional is given by:
 Here, $\Psi_\text{iso}$ is the isochoric strain-energy density function in terms of the reduced right Cauchy-Green tensor $\bar{\bfC}$.
 The first term in \cref{eq:mechanics_helper1} describes the isochoric elastic response of the material, the second term adds the incompressibility constraint $J=1$ with the Lagrange multiplier $p$. The value of $p$ is computed as part of the model and can be identified as the hydrostatic pressure. Therefore, the second term is interpreted as the elastic response to compression and is included in the internal energy functional $\Pi_\text{int}$.
 
-According to the \emph{principle of stationary potential energy}, the system is in equilibrium if the potential energy functional is stationary.
-This is the case if the first variation $δ\Pi_L$ is zero.
+According to the \emph{principle of stationary potential energy}, the system is in equilibrium, if the potential energy functional is stationary.
+This is the case, if the first variation $δ\Pi_L$ is zero.
 Using the additive structure of $\Pi_L$, we can express the principle of stationarity as
 \begin{subequations}
   \begin{align}

@@ -1,53 +1,27 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {american}{}
-\contentsline {chapter}{\numberline {1}Usage and Implementation of the Software OpenDiHu}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Design Goals}{3}{section.0.1}
-\contentsline {subsection}{\numberline {1.1.1}Usability}{4}{subsection.0.1.1}
-\contentsline {subsection}{\numberline {1.1.2}Perfomance}{5}{subsection.0.1.2}
-\contentsline {subsection}{\numberline {1.1.3}Extensibility}{6}{subsection.0.1.3}
-\contentsline {subsection}{\numberline {1.1.4}Overview of this Chapter}{7}{subsection.0.1.4}
-\contentsline {section}{\numberline {1.2}Usage of OpenDiHu}{7}{section.0.2}
-\contentsline {subsection}{\numberline {1.2.1}Organization of the Repository}{7}{subsection.0.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Installation}{9}{subsection.0.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Exemplary Usage: Laplace Problem}{11}{subsection.0.2.3}
-\contentsline {subsection}{\numberline {1.2.4}Exemplary Usage: Multidomain Model With Solid Mechanics}{16}{subsection.0.2.4}
-\contentsline {subsection}{\numberline {1.2.5}Data Connections in the Example of a Multidomain Model With Solid Mechanics}{22}{subsection.0.2.5}
-\contentsline {subsection}{\numberline {1.2.6}Exemplary Usage: Neuromuscular System}{27}{subsection.0.2.6}
-\contentsline {subsection}{\numberline {1.2.7}Summary of Existing Solver Classes}{28}{subsection.0.2.7}
-\contentsline {section}{\numberline {1.3}Usage of CellML models}{30}{section.0.3}
-\contentsline {section}{\numberline {1.4}Data Handling with PETSc}{30}{section.0.4}
-\contentsline {subsection}{\numberline {1.4.1}Organization of Parallel Partitioned Data}{30}{subsection.0.4.1}
-\contentsline {subsection}{\numberline {1.4.2}Numbering Schemes for Nodes and Degrees of Freedom}{35}{subsection.0.4.2}
-\contentsline {subsection}{\numberline {1.4.3}Parallel Data Structures in OpenDiHu{}}{36}{subsection.0.4.3}
-\contentsline {subsection}{\numberline {1.4.4}Discussion of Several Design Decisions}{39}{subsection.0.4.4}
-\contentsline {subsection}{\numberline {1.4.5}Implemented Basis Functions}{41}{subsection.0.4.5}
-\contentsline {subsection}{\numberline {1.4.6}Implemented Types of Meshes}{42}{subsection.0.4.6}
-\contentsline {subsection}{\numberline {1.4.7}Composite Meshes}{44}{subsection.0.4.7}
-\contentsline {section}{\numberline {1.5}Finite Element Matrices and Boundary Conditions}{46}{section.0.5}
-\contentsline {subsection}{\numberline {1.5.1}Storage of Matrices}{47}{subsection.0.5.1}
-\contentsline {subsection}{\numberline {1.5.2}Assembly of Finite Element Matrices}{51}{subsection.0.5.2}
-\contentsline {subsection}{\numberline {1.5.3}Performance of the Algorithm for Parallel Matrix Assembly}{53}{subsection.0.5.3}
-\contentsline {subsection}{\numberline {1.5.4}Assembly of Finite Element Matrices for Regular Meshes}{56}{subsection.0.5.4}
-\contentsline {subsection}{\numberline {1.5.5}Algorithm for Dirichlet Boundary Conditions}{58}{subsection.0.5.5}
-\contentsline {subsection}{\numberline {1.5.6}Neumann Boundary Conditions}{62}{subsection.0.5.6}
-\contentsline {section}{\numberline {1.6}Parallel Partitioning and Sampling}{67}{section.0.6}
-\contentsline {subsection}{\numberline {1.6.1}Specification of the Partitioning}{68}{subsection.0.6.1}
-\contentsline {subsection}{\numberline {1.6.2}Requirements for Partitioning and Sampling of the 3D Mesh}{69}{subsection.0.6.2}
-\contentsline {subsection}{\numberline {1.6.3}Algorithm for Determining the Subdomains}{71}{subsection.0.6.3}
-\contentsline {subsection}{\numberline {1.6.4}Algorithm for Sampling Points from the Fine Mesh}{74}{subsection.0.6.4}
-\contentsline {subsection}{\numberline {1.6.5}User Options for the Algorithms}{75}{subsection.0.6.5}
-\contentsline {subsection}{\numberline {1.6.6}Results}{76}{subsection.0.6.6}
-\contentsline {section}{\numberline {1.7}Parallel Solver for the Fiber Based Electrophysiology Model}{79}{section.0.7}
-\contentsline {subsection}{\numberline {1.7.1}Parallel Solver Structure}{79}{subsection.0.7.1}
-\contentsline {subsection}{\numberline {1.7.2}Improved Parallel Solver Scheme using the Thomas Algorithm}{82}{subsection.0.7.2}
-\contentsline {subsection}{\numberline {1.7.3}Adaptive Computation of the Subcellular Model}{84}{subsection.0.7.3}
-\contentsline {section}{\numberline {1.8}Parallel Solver for the Multidomain Electrophysiology Model}{88}{section.0.8}
-\contentsline {subsection}{\numberline {1.8.1}Construction and Partitioning of the Mesh}{88}{subsection.0.8.1}
-\contentsline {subsection}{\numberline {1.8.2}Structure of the System Matrix}{90}{subsection.0.8.2}
-\contentsline {subsection}{\numberline {1.8.3}Properties of a Diagonal Block-Matrix for the Preconditioner}{90}{subsection.0.8.3}
-\contentsline {subsection}{\numberline {1.8.4}Mesh and Matrices for Higher Degrees of Parallelism}{92}{subsection.0.8.4}
-\contentsline {section}{\numberline {1.9}CellML Adapter}{95}{section.0.9}
-\contentsline {section}{\numberline {1.10}Solid Mechanics Solver}{95}{section.0.10}
-\contentsline {section}{\numberline {1.11}Mapping Between Meshes}{95}{section.0.11}
-\contentsline {section}{\numberline {1.12}Output Writers}{95}{section.0.12}
+\contentsline {chapter}{\numberline {1}Models and Discretization}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Model Equations}{4}{section.0.1}
+\contentsline {subsection}{\numberline {1.1.1}Subcellular Model}{5}{subsection.0.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Bidomain Model}{8}{subsection.0.1.2}
+\contentsline {subsection}{\numberline {1.1.3}Monodomain Model}{10}{subsection.0.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Multidomain Model}{12}{subsection.0.1.4}
+\contentsline {subsection}{\numberline {1.1.5}Electric Conduction in the Body Domain}{13}{subsection.0.1.5}
+\contentsline {subsection}{\numberline {1.1.6}Model of Muscle Contraction}{15}{subsection.0.1.6}
+\contentsline {section}{\numberline {1.2}Discretization}{19}{section.0.2}
+\contentsline {subsection}{\numberline {1.2.1}Discretization of the Monodomain Model}{20}{subsection.0.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Discretization of the Diffusion and Laplace Equations}{22}{subsection.0.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Using Mass Lumping for Implicit Timestepping}{25}{subsection.0.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Discretization of the Multidomain Model}{26}{subsection.0.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Discretization of the Multidomain Model for Surface EMG}{29}{subsection.0.2.5}
+\contentsline {subsection}{\numberline {1.2.6}Discretization of the Fiber Based Electrophysiology Model}{32}{subsection.0.2.6}
+\contentsline {subsection}{\numberline {1.2.7}Summary of Domains and Meshes}{34}{subsection.0.2.7}
+\contentsline {section}{\numberline {1.3}Discretization and Solution Approach for the Solid Mechanics Model}{35}{section.0.3}
+\contentsline {subsection}{\numberline {1.3.1}Geometric Description}{35}{subsection.0.3.1}
+\contentsline {subsection}{\numberline {1.3.2}A Linearized Model as an Exemplary Description of Solid Mechanics}{39}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Nonlinear Material Modeling}{42}{subsection.0.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Derivation of the Stress Tensor and the Elasticity Tensor}{44}{subsection.0.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Derivation of the Static Hyperelastic Finite Element Model}{46}{subsection.0.3.5}
+\contentsline {subsection}{\numberline {1.3.6}Nonlinear Solver for the Solid Mechanics Model}{49}{subsection.0.3.6}
+\contentsline {subsection}{\numberline {1.3.7}Derivation and Solution of the Dynamic Hyperelastic Finite Element Model}{50}{subsection.0.3.7}

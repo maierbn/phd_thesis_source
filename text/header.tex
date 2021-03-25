@@ -98,6 +98,10 @@
   % pass language used in document to enable cleveref in otherlanguage env
   ngerman,english,
 ]{cleveref}
+
+% generate Eqs. instead of Equations
+\crefmultiformat{equation}{#2Eqs.~(#1)#3}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+
 %\usepackage{ziffer}       % Komma in Dezimalzahlen
 \usepackage{url}          % Links
 %% end old

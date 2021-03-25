@@ -98,6 +98,60 @@ doi = {10.3389/fphys.2018.00816},
   YEAR={2015},      
   DOI={10.3389/fphys.2015.00026},      
 }
+@Article{pmid20377909,
+ Author="Miller, A. K.  and Marsh, J.  and Reeve, A.  and Garny, A.  and Britten, R.  and Halstead, M.  and Cooper, J.  and Nickerson, D. P.  and Nielsen, P. F. ",
+ Title="{{A}n overview of the {C}ell{M}{L} {A}{P}{I} and its implementation}",
+ Journal="BMC Bioinformatics",
+ Year="2010",
+ Volume="11",
+ Pages="178",
+ Month="Apr"
+}
+@Article{pmid18579471,
+   Author="Garny, A.  and Nickerson, D. P.  and Cooper, J.  and Weber dos Santos, R.  and Miller, A. K.  and McKeever, S.  and Nielsen, P. M.  and Hunter, P. J. ",
+   Title="{{C}ell{M}{L} and associated tools and techniques}",
+   Journal="Philos Trans A Math Phys Eng Sci",
+   Year="2008",
+   Volume="366",
+   Number="1878",
+   Pages="3017--3043",
+   Month="Sep"
+}
+
+@online{cellmlWebsite,
+  author = {CellML Team},
+  title = {The CellML project},
+  year = 2021,
+  url = {https://www.cellml.org/},
+  urldate = {2021-01-01}
+}
+
+@inproceedings{Cooper2006,
+  author = {Cooper, Jonathan and McKeever, Steve and Garny, Alan},
+  title = {On the Application of Partial Evaluation to the Optimisation of Cardiac Electrophysiological Simulations},
+  year = {2006},
+  isbn = {1595931961},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/1111542.1111546},
+  doi = {10.1145/1111542.1111546},
+  abstract = {Simulating the human heart is a challenging problem, with simulations being very time consuming---some can take days to compute even on high performance computing resources. There is considerable interest in optimisation techniques, with a view to making whole-heart simulations tractable. Reliability of heart model simulations is also of great concern, particularly considering clinical applications. Simulation software should be easily testable (against empirical data) and maintainable, which is often not the case with extensively hand-optimised software. Automating any optimisations will greatly improve this situation. This paper presents a framework for automatically optimising cardiac ionic cell models. An abstract format for such models, CellML [9], has been developed at Auckland University and is gaining in popularity. We utilise this format and investigate robust transformations of models that lead to reduced simulation times. In particular, we demonstrate that partial evaluation [13] is a promising technique for this purpose, and that it combines well with a lookup table technique, commonly used in cardiac modelling, which we have automated. In our tests, the technique of partial evaluation gives a speedup of 1.2 times. Further, applying such transformations prior to the lookup table optimisation results in additional speedups from the latter technique. When both optimisations are used we obtain nearly a 5-fold speedup, compared with a speedup of 1.7 times when lookup tables alone are used.},
+  booktitle = {Proceedings of the 2006 ACM SIGPLAN Symposium on Partial Evaluation and Semantics-Based Program Manipulation},
+  pages = {12–20},
+  numpages = {9},
+  location = {Charleston, South Carolina},
+  series = {PEPM '06}
+}
+@article{cohen1996cvode,
+  title={CVODE, a stiff/nonstiff ODE solver in C},
+  author={Cohen, Scott D and Hindmarsh, Alan C and Dubois, Paul F},
+  journal={Computers in physics},
+  volume={10},
+  number={2},
+  pages={138--143},
+  year={1996},
+  publisher={American Institute of Physics}
+}
 
 @inproceedings{jasak2007openfoam,
   title={OpenFOAM: A C++ library for complex physics simulations},
