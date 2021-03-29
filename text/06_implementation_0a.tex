@@ -683,7 +683,37 @@ Two adapters to the numerical coupling library preCICE \cite{precice}, \code{Pre
 % summary structure, how to define the settings, help with gui program
 For more details on the solver classes and their configuration, we refer to the online documentation \cite{opendihuWeb}.
 
-TODO mention GUI
+\subsection{Graphical Helper Program}
+For the creation of new examples from scratch, a helper program with a graphical user interface exists. The program was created by Matthias Tompert in his Bachelor thesis and is included in the OpenDiHu repository under \code{scripts/gui/gui.py}.
+
+Graphical widgets allow to select and nest compatible solver classes for OpenDiHu. The corresponding Python settings are automatically shown with their default values and can be adjusted in the graphical user interface. For every option, explaining comments are displayed and buttons allows to open the corresponding page of the online documentation in a web browser.
+
+The program also features a horizontally split code editor that shows both the C++ code and the corresponding Python code for the settings, either for a single node in the solver tree or as a global view of the whole example. 
+After the user completes the adjustments of the solver structure and the settings, the C++ source file and the Python settings can be exported and used with OpenDiHu.
+
+The program is also capable of parsing existing C++ and Python files and, thus, loading an existing example into the graphical representation to be extended by the user. The program is able to parse a large portion of the solvers and options that are available in OpenDiHu, however, some more advanced examples, e.g., where the Python settings contain complex code constructs are not fully supported.
+
+\Cref{fig:gui_a} shows the user interface after the 2D diffusion example of OpenDiHu has been loaded. The left pane in \cref{fig:gui} represents the solver tree as it appears in the C++ file. The right pane in \cref{fig:gui} displays the settings for the selected item in the left pane, which in this case is the mesh. Additional options that are not yet present in the Python settings are grayed out and can be added by clicking the checkboxes.
+\Cref{fig:gui3} shows an alternative view in the right pane which displays the corresponding Python code. The user can also directly edit the settings there.
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.71\textwidth}%
+    \centering%
+    \includegraphics[height=8cm]{images/implementation/gui.png}
+    \caption{User interface with the tree of nested solver on the left and the Python settings for the selected mesh on the right.}%
+    \label{fig:gui}%
+  \end{subfigure}
+  \,
+  \begin{subfigure}[t]{0.27\textwidth}%
+    \centering%
+    \includegraphics[height=8cm]{images/implementation/gui3.png}
+    \caption{Alternative view of the right pane that shows the Python settings editor.}%
+    \label{fig:gui3}%
+  \end{subfigure}
+  \caption{Graphical helper program to create and adjust the C++ and Python codes of OpenDiHu examples.}%
+  \label{fig:gui_a}%
+\end{figure}%
 
 
 

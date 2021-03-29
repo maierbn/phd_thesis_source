@@ -228,7 +228,7 @@ The units allow for smaller values in the solid mechanics computation than the u
 % # (kg/m^3) => 1 * 1e-4 kg * (1e-2 m)^-3 = 1e2 kg/m^3
 % # (m/s^2) => 1 cm/ms^2 = 1e-2 m * (1e-3 s)^-2 = 1e4 m*s^-2
 
-\subsection{Specification of Stimulation Times Using Callback Functions}
+\subsection{Specification of Stimulation Times Using Callback Functions}\label{sec:stimulation_times_callbacks}
 
 A muscle fiber is activated by impulse trains that are generated from a motor neuron and stimulate the fiber at its neuromuscular junction. At the synaptic terminal, neurotransmitters are released and open certain ion channels, which results in depolarization of the muscle fiber membrane.
 This process can either be modeled by adding an external stimulation current $I_\text{stim}$ through the dedicated ion channels or by directly prescribing the transmembrane voltage $V_m$ to reflect the resulting depolarized state. The first approach is more accurate as it also describes the depolarization process at the stimulated parts of the fiber. The electric \say{far field} some nodes away from the stimulation point, however, is the same for both approaches.
@@ -340,4 +340,107 @@ In the fiber based electrophysiology example, every fiber has their own instance
 Similar to the two presented callbacks, which set parameter and states, a third callback \code{handle_result} can be defined as given in line \ref{alg:6.41} of \cref{fig:example_callback_functions}. This callback function gets called in a fixed interval specified by \code{`handleResultCallInterval`}. It receives the complete vectors of states $\bfy$ and intermediates $\bfh$ and can be used to perform custom postprocessing or to output custom data files from the Python script.
 
 In summary, variables of CellML models can be coupled to other solvers. Their parameters and values can be adjusted from the settings file. Callback functions are used to alter values during the simulation. This flexibility comes at the runtime cost of invoking the Python interpreter, therefore the times when to call the callback functions have to be specified appropriately. Special methods exist to model steady stimulation with frequency jitter, which occurs in typical neural stimulation of muscle fibers.
+
+\section{Output File Formats}\label{sec:output_file_formats}
+
+TODO text
+
+\begin{figure}%
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/paraview.png}%
+  \caption{Paraview output.}%
+  \label{fig:paraview_output}%
+\end{figure}%
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.62\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/cmgui_graphics1.png}
+    \caption{Graphics window}%
+    \label{fig:current_configuration_1}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.363\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/cmgui_spectrum.png}
+    \caption{Spectrum editor}%
+    \label{fig:cmgui_spectrum}%
+  \end{subfigure}
+  \caption{CMGUI graphics1.}%
+  \label{fig:cmgui_output1}%
+\end{figure}%
+
+\begin{figure}%
+  \centering%
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/cmgui_emg.png}%
+    \caption{Graphics window}%
+    \label{fig:cmgui_emg}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/implementation/cmgui_phie.png}
+    \caption{Spectrum editor}%
+    \label{fig:cmgui_phie}%
+  \end{subfigure}
+  \caption{CMGUI EMG.}%
+  \label{fig:cmgui_output2}%
+\end{figure}%
+
+
+
+\begin{figure}%
+  \centering%
+  \includegraphics[width=\textwidth]{images/implementation/python_output.png}%
+  \caption{CMGUI phie.}%
+  \label{fig:python_output}%
+\end{figure}%
+
+
+\begin{figure}
+\centering
+\begin{framed}
+%\begin{Verbatim}[fontsize=\small]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,commentstyle=\color{gray},numbers=left,language=python]
+    string   config                         (...)
+    string   meta                           $\text{"}$current time: 2021/3/27 16:59:35,$\textcolor{gray}{\hookleftarrow}$
+                                             hostname: lapsgs05, n ranks: 1$\text{"}$
+    string   version                        $\text{"}$opendihu 1.2, built $\textcolor{gray}{\hookleftarrow}$
+                                             Mar 27 2021, C++ 201402, GCC 7.5.0$\text{"}$
+    double   globalBoundingBox              100*{6} = -56.3 / 19.8598
+    double   global_radius                  100*scalar = 0.0358984 / 0.0358984
+    double   localBoundingBox               100*{1, 6} = -56.3 / 19.8598
+    int32_t  nPointsPerCoordinateDirection  100*{3} = 0 / 1481
+    int32_t  nodeOffsetOnOwnComputeNode     100*{1} = 0 / 0
+    int32_t  node_count                     100*scalar = 72569 / 72569
+    int32_t  rankNo                         100*scalar = 0 / 0
+    double   vm                             100*scalar = 0 / 0
+    double   xyz                            100*{217707} = -56.3 / 19.8598
+\end{lstlisting}
+%\end{Verbatim}
+\end{framed}
+\caption{Contents of the output file created by ADIOS2.}%
+\label{fig:adios_output}%
+\end{figure}             
+
+
+\begin{reproduce_no_break}
+  The visualizations in this section are based on outputs of the following simulation:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_emg/build_release
+    ./fast_fibers_emg ../settings_fibers_emg.py output_demo.py
+  \end{lstlisting}
+  
+  Output files for ADIOS2, Cmgui, ParaView and Python will be generated in corresponding subdirectories under \code{out/}.
+  The following commands invoke the respective visualization tool in the corresponding output directory:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    paraview fibers.vtp.series              # ParaView
+    cmgui fibers.com                        # Cmgui
+    cmgui hd_emg.com                        # Cmgui
+    plot fibers_0000001_MeshFiber_*.py      # Python
+    bpls hd_emg.bp -la                      # ADIOS2
+  \end{lstlisting}
+  In the graphical user interfaces of Cmgui and Paraview, more settings have to be adjusted to obtain the results shown in \cref{fig:paraview_output,fig:cmgui_output1,fig:cmgui_output2}.
+\end{reproduce_no_break}
 
