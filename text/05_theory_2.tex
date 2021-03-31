@@ -1,4 +1,4 @@
-\section{Discretization}\label{sec:discretization}
+\section{Discretization of the Electrophysiology Models}\label{sec:discretization}
 
 The partial and ordinary differential equations described in the last section contain spatial and temporal derivatives that have to be discretized to be solved numerically. For temporal derivatives, we use timestepping schemes, for spatial derivatives, we employ the Finite Element Method.
 
@@ -422,10 +422,10 @@ The first bidomain equation \cref{eq:bidomain1} is a 3D Poisson problem in terms
 \begin{align*}
   \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= - \bfB_{\Gamma_f}\bff + \textbf{rhs},
 \end{align*}
-where the right hand side $\textbf{rhs}$ of the Poisson problem is given by
-\begin{align*}
+where the right hand side $\textbf{rhs}$ of the Poisson problem is the transmembrane flow and is given by
+\begin{align}\label{eq:static_bidomain_rhs}
   \textbf{rhs} &= -\bfK_{\bfsigma_i} \bfV_{m,3D}^{(i+1)}.
-\end{align*}
+\end{align}
 Here, $\bfphi_e^{(i+1)}$ and $\bfV_{m,3D}^{(i+1)}$ are the vectors of degrees of freedom on the 3D mesh for the extracellular potential $\phi_e$ and the membrane potential $V_m$ at timestep $(i+1)$. With the homogeneous Neumann boundary conditions for $V_m$ and $\phi_e$ given in \cref{eq:monodomain_bc}, the boundary term $\bfB_{\Gamma_f}$ vanishes.
 
 In summary, the following matrix equations are solved for the fiber based electrophysiology model with $n$ fibers:
@@ -452,7 +452,7 @@ In summary, the following matrix equations are solved for the fiber based electr
       \vdots\\
       \bfV_{m}^{n,(i+1)}
     \end{array}\right],\\[4mm]
-    \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= -\bfM_{\bfsigma_i} \bfV_{m,3D}^{(i+1)} \label{eq:discretized_fibers_3}
+    \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= -\bfK_{\bfsigma_i} \bfV_{m,3D}^{(i+1)} \label{eq:discretized_fibers_3}
   \end{align}
 \end{subequations}
 with the system matrix $\bfA$ for a single fiber given according to \cref{eq:lumping_implicit_euler_2} by

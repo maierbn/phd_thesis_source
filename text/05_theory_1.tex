@@ -290,7 +290,7 @@ Similarly, the strain energy function has a decoupled representation with volume
 \end{align}
 
 Using the decoupled form, any incompressible material can be modeled with the \emph{penalty method} as follows. 
-The material behaviour is given by the isochoric strain energy $\Psi_\text{iso}(\bar{\bfC})$, e.g., by employing the Mooney-Rivlin model in \cref{eq:mooney_rivlin}. The volumetric part is defined as
+The material behavior is given by the isochoric strain energy $\Psi_\text{iso}(\bar{\bfC})$, e.g., by employing the Mooney-Rivlin model in \cref{eq:mooney_rivlin}. The volumetric part is defined as
 \begin{align*}
   \Psi_\text{vol}(J) &= \kappa\,G(J) \qquad \text{with } G(J) = \dfrac12 (J-1)^2,
 \end{align*}
@@ -300,9 +300,9 @@ A better approach in this regard is to use a mixed formulation, where incompress
 
 In OpenDiHu, the strain energy function of a new material can be given using the following four terms:
 %
-\begin{align*}
+\begin{align}\label{eq:definition_psi}
   \Psi = \Psi_\text{vol}(J) + \Psi_\text{iso}(\bar{I}_1,\bar{I}_2,\bar{I}_4,\bar{I}_5) + \Psi_1(I_1,I_2,I_3) + \Psi_2(\bfC,\bfa_0).
-\end{align*}
+\end{align}
 The decoupled form is available with $\Psi_\text{vol}$ and $\Psi_\text{iso}$, the coupled form for isotropic materials can be used via $\Psi_1$. The term $\Psi_2$ gives the most flexibility, as the constitutive model can be directly formulated using the right Cauchy-Green tensor $\bfC$ and the fiber direction $\bfa_0$. The unused terms among $\Psi_\text{vol},\Psi_\text{iso},\Psi_1$ and $\Psi_2$ can be defined as constant zero. The incompressibility constraint using Lagrange multipliers can be switched on or off such that both incompressible and compressible materials can be computed.
 %
 % ---

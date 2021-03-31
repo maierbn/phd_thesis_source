@@ -26,9 +26,9 @@ The description is coupled with the electrophysiology models (b1),(b2) by the ge
 
 Sensory organs such as muscle spindles and Golgi tendon organs sense fiber stretch and contraction velocity (\cref{fig:multi-scale-model} (g)). They are connected with the motor neuron pool by layers of interneurons and modulate the stimulation in \cref{fig:multi-scale-model} (a).
 
-In this chapter, \cref{sec:model_equations} presents mathematical descriptions of all model components in the multi-scale framework and \cref{sec:discretization} addresses their discretization in time and space. An own section, \cref{sec:discretization_mechanics}, is dedicated to the discretization and solution of the mechanics model.
+In this chapter, \cref{sec:model_equations} presents mathematical descriptions of the electrophysiology model components in the multi-scale framework and \cref{sec:model_muscle_contraction} derives the solid mechanics models. Then, \cref{sec:discretization,sec:discretization_mechanics} address the spatial and temporal discretizations of the electrophysiology and mechanics descriptions, respectively.
 
-\section{Model Equations}\label{sec:model_equations}
+\section{Electrophysiology Model Equations}\label{sec:model_equations}
 In the following, more details and mathematical descriptions are given for the outlined models. The section begins with the 0D half-sarcomere model in \cref{sec:subcelullar_model}, followed by the bidomain and monodomain models in \cref{sec:bidomain_model,sec:monodomain_model}, which constitute the muscle fiber based model of electrophysiology. \Cref{sec:multidomain_model} continues with the multidomain model. Electric conduction in the body fat layer is described in \cref{sec:electric_conduction_body_domain}. An overview of the continuum mechanics model used for muscle contraction is given in \cref{sec:model_muscle_contraction}.
 % ----------
 \subsection{Subcellular Model}\label{sec:subcelullar_model}

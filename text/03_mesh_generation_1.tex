@@ -169,12 +169,12 @@ Note that this does not necessarily mean that the invalid element was fixed, onl
 When all elements in the slice $S_M$ are valid, this step is complete.
 
 \subsection{Laplacian Smoothing}
-The second step is the smoothing step that improves the mesh quality of the 2D slices. \num{20} iterations of Laplacian smoothing \cite{field1988laplacianSmoothingAndDelaunayTriangulations} are executed. Laplacian smoothing in our case subsequently visits all interior points of the mesh and sets the location of a point to the center of gravity of its four direct neighbours.
+The second step is the smoothing step that improves the mesh quality of the 2D slices. \num{20} iterations of Laplacian smoothing \cite{field1988laplacianSmoothingAndDelaunayTriangulations} are executed. Laplacian smoothing in our case subsequently visits all interior points of the mesh and sets the location of a point to the center of gravity of its four direct neighbors.
 %The order in which the points of the mesh are traversed is changed after every iteration: In the first iteration, the points are traversed starting at the bottom left. In the second iteration, the traversal starts at the top right and moves in opposite direction compared to the first iteration. The third and fourth iterations begin at the bottom right and top left nodes of the mesh. After these four iterations the scheme is repeated. The reason for this change of the traversal is to 
 \Cref{fig:laplace_smoothing} shows the effect of Laplacian smoothing for a slice in a subdomain on the first recursion level. It can be seen how the smoothing equalizes the element side lengths and angles.
 
 However, this smoothing step can invalidate a mesh by introducing overlapping quadrilaterals. An example for this case is given in \cref{fig:laplace_smoothing_0}. The initial mesh in \cref{fig:world_mesh_0} is concave and occurs during recursion level $l=2$. \Cref{fig:world_mesh_improved_0} shows the result of the smoothing, which contains one invalid element. The smoothing operation placed the fourth point of the element that also contains the three boundary points at the concavity outside of the mesh. As a remedy, the smoothing method checks the validity of the adjacent elements before a point is moved. If the move would result in an invalid element, the action is not carried out and the traversal continues with the next point instead.
-\Cref{fig:world_mesh_improved_1} shows the resulting mesh if this check is enabled. The mesh has slightly different boundaries because the check influenced the behaviour already on lower recursion levels.
+\Cref{fig:world_mesh_improved_1} shows the resulting mesh if this check is enabled. The mesh has slightly different boundaries because the check influenced the behavior already on lower recursion levels.
 
 % smoothing fix
 
@@ -711,7 +711,7 @@ This emphasizes the benefit of the parallel algorithm that uses finer meshes com
 
 \subsection{Effect of Mesh Quality Parameters}\label{sec:mesh_generation_mesh_quality_parameters}
 
-In addition to the parameters that affect the resulting mesh sizes, $n_\text{el,x}$, $l_\text{max}$ and $m$, further options exist to tune the behaviour of \cref{alg:parallel_algorithm_1} and in result lead to meshes with different quality. These options are described in the following.
+In addition to the parameters that affect the resulting mesh sizes, $n_\text{el,x}$, $l_\text{max}$ and $m$, further options exist to tune the behavior of \cref{alg:parallel_algorithm_1} and in result lead to meshes with different quality. These options are described in the following.
 
 The surface that is the input to \cref{sec:parallel_algorithm} can be represented either as triangulation or in parametric form as NURBS surface. The triangulation can either be the result of the image segmentation step or it can be obtained by triangulating a NURBS surface. Thus, if the approximation of the geometry by a smooth spline surface is desired 
 it is possible to choose between both options. 

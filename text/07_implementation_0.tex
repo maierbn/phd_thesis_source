@@ -1,4 +1,6 @@
+\chapter{Implementation of the Software OpenDiHu}\label{sec:implementation}
 
+After the usage of OpenDiHu has been described in the last chapter, we now discuss the implementation of the algorithms and solvers that are available in the framework. This chapter begins with the basic data organization in \cref{sec:data_handling_with_petsc} and generic algorithms to setup Finite Element discretizations and parallel partitionings of a problem in \cref{sec:fem_matrices_and_bc,sec:parallel_partitioning_and_sampling_of_the}. Then, details are given on the implementation of particular solvers. \Cref{sec:parallel_partitioning_for_fiber_based} discusses the solvers for the fiber based electrophysiology model, \cref{sec:parallel_solver_multidomain} addresses the multidomain solver and \cref{sec:computation_cellml_models} presents optimizations for the solver of the subcellular model. The chapter closes in \cref{sec:data_mapping_between_meshes} with a discussion of the data mapping required in coupling schemes.
 
 \section{Data Handling with PETSc}\label{sec:data_handling_with_petsc}
 

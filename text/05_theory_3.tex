@@ -1,5 +1,5 @@
 
-\section{Discretization and Solution Approach for the Solid Mechanics Model }\label{sec:discretization_mechanics}
+\section{Discretization and Solution Approach for the Solid Mechanics Model}\label{sec:discretization_mechanics}
 
 After the formulation of linear and nonlinear models for solid mechanics in \cref{sec:model_muscle_contraction}, this section discusses their discretization and derives Finite Element formulations for the linearized model and the nonlinear model, both static and dynamic.
 We also describe the algorithms used to obtain a numeric solution.
@@ -53,9 +53,9 @@ We add the active stress term $\bfsigma^\text{active}$ to the external virtual w
 %
 The active stress is associated with compression, i.e., negative virtual strains $δ\bfeps < 0$. Therefore, we use $δ\bfeps_{-}$ which is defined equal to $δ\bfeps$ for $δ\bfeps < 0$ and zero otherwise.
 From \cref{eq:linearized_helper5}, we get the same discretized linear system as in \cref{eq:linearized_helper4}, but with an additional term $\bff^\text{ active}$ in the right hand side that contains the discretized prescribed active stress field $\bfsigma^\text{active}_{ab}(\bfx)$:
-\begin{align*}
+\begin{align}\label{eq:linearized_helper6}
   \bff^\text{ active}_{La} = \ds\int_{Ω}\bfsigma^\text{active}_{ab}(\bfx)\,\p{\phi^L(\bfx)}{x_{b}} \,\d\bfx.
-\end{align*}
+\end{align}
 %
 \subsection{Discretization of the Nonlinear Static Hyperelastic Model}\label{sec:static_hyperelastic_fe_model}
 
@@ -346,10 +346,9 @@ Moreover, the size varies depending on whether the static or the dynamic problem
 
 In any case, the mechanics model can be linked to the subcellular model by defining the active stress as given in \cref{eq:active_stress_term}. Since the active stress does not depend directly on the passive behavior, the active stress term can be added as a constant to the passive stress term. This constant also has no influence on the jacobian matrix $\bfJ$. As the subcellular model depends on the fiber stretch $\lambda_f = \sqrt{I_4}$, there is a feedback loop between the subcellular and the solid mechanics model.
 
-Details on the connection to the subcellular model as well as details on the numeric solution schemes for the nonlinear Newton solver and the linear solvers in every Newton iteration, including the solver schemes, how initial values are chosen and measures to speed up convergence such as load stepping are discussed in the implementation and result sections.
+Details on the connection to the subcellular model as well as details on the numeric solution schemes are given in \cref{sec:solid_mechanics_solver}.
 
-TODO
-
+%, including the solver schemes, how initial values are chosen and measures to speed up convergence such as load stepping are discussed in the implementation and result sections.
 %To speed up the computation, the initial guess of the vector of unknowns in every timestep is linearly extrapolated from the two previous timesteps.
 
 

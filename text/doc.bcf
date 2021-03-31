@@ -1923,85 +1923,64 @@
     <bcf:datasource type="file" datatype="bibtex">./references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">Roehrle2012</bcf:citekey>
-    <bcf:citekey order="1">Heidlauf2013</bcf:citekey>
-    <bcf:citekey order="1">Heidlauf2015Diss</bcf:citekey>
-    <bcf:citekey order="1">Mordhorst2015</bcf:citekey>
-    <bcf:citekey order="2">Klotz2020</bcf:citekey>
-    <bcf:citekey order="3">Cisi2008</bcf:citekey>
-    <bcf:citekey order="4">Mileusnic2006Spindle</bcf:citekey>
-    <bcf:citekey order="5">Mileusnic2006Golgi</bcf:citekey>
-    <bcf:citekey order="6">Hodgkin1952</bcf:citekey>
-    <bcf:citekey order="6">hodgkin1952propagation</bcf:citekey>
-    <bcf:citekey order="7">Shorten2007</bcf:citekey>
-    <bcf:citekey order="8">tung1978bi</bcf:citekey>
-    <bcf:citekey order="8">peskoff1979electric</bcf:citekey>
-    <bcf:citekey order="9">Mordhorst2015</bcf:citekey>
-    <bcf:citekey order="10">Klotz2020</bcf:citekey>
-    <bcf:citekey order="11">Mordhorst2015</bcf:citekey>
-    <bcf:citekey order="12">Mordhorst2015</bcf:citekey>
-    <bcf:citekey order="13">Klotz2020</bcf:citekey>
-    <bcf:citekey order="14">holzapfel2000nonlinear</bcf:citekey>
-    <bcf:citekey order="15">zienkiewicz1977finite</bcf:citekey>
-    <bcf:citekey order="15">zienkiewicz2005finite</bcf:citekey>
-    <bcf:citekey order="16">marsden1994mathematical</bcf:citekey>
-    <bcf:citekey order="17">Heidlauf2013</bcf:citekey>
-    <bcf:citekey order="18">Heidlauf2013</bcf:citekey>
-    <bcf:citekey order="19">Heidlauf2013</bcf:citekey>
-    <bcf:citekey order="20">Carniel2017</bcf:citekey>
-    <bcf:citekey order="21">Roehrle2012</bcf:citekey>
-    <bcf:citekey order="21">Heidlauf2013</bcf:citekey>
-    <bcf:citekey order="22">Godunov2003</bcf:citekey>
-    <bcf:citekey order="23">Roehrle2012</bcf:citekey>
-    <bcf:citekey order="24">Strang1968</bcf:citekey>
-    <bcf:citekey order="25">CrankNicolson1947</bcf:citekey>
-    <bcf:citekey order="26">Hinton1976</bcf:citekey>
-    <bcf:citekey order="27">zienkiewicz1977finite</bcf:citekey>
-    <bcf:citekey order="27">SUSSMAN1987357</bcf:citekey>
-    <bcf:citekey order="27">zienkiewicz2005finite</bcf:citekey>
-    <bcf:citekey order="28">holzapfel2000nonlinear</bcf:citekey>
-    <bcf:citekey order="29">zienkiewicz2005finite</bcf:citekey>
-  </bcf:section>
-  <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="anyt">
-    <bcf:sort order="1">
-      <bcf:sortitem order="1">presort</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="2">
-      <bcf:sortitem order="1">labelalpha</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="3" final="1">
-      <bcf:sortitem order="1">sortkey</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="4">
-      <bcf:sortitem order="1">sortname</bcf:sortitem>
-      <bcf:sortitem order="2">author</bcf:sortitem>
-      <bcf:sortitem order="3">editor</bcf:sortitem>
-      <bcf:sortitem order="4">translator</bcf:sortitem>
-      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="6">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="5">
-      <bcf:sortitem order="1">sortyear</bcf:sortitem>
-      <bcf:sortitem order="2">year</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="6">
-      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="2">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="7">
-      <bcf:sortitem order="1">volume</bcf:sortitem>
-      <bcf:sortitem order="2">0</bcf:sortitem>
-    </bcf:sort>
-  </bcf:sortingtemplate>
-  <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="anyt/global//global/global"
-                type="entry"
-                sortingtemplatename="anyt"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
-</bcf:controlfile>
+    <bcf:citekey order="1">BarCohen2003</bcf:citekey>
+    <bcf:citekey order="1">BarCohen2004Electroactivepolymer</bcf:citekey>
+    <bcf:citekey order="1">Mirvakili2018</bcf:citekey>
+    <bcf:citekey order="2">Emery2002</bcf:citekey>
+    <bcf:citekey order="3">Emery1991</bcf:citekey>
+    <bcf:citekey order="4">Emery2002</bcf:citekey>
+    <bcf:citekey order="4">Heidlauf2015Diss</bcf:citekey>
+    <bcf:citekey order="5">Merletti2004</bcf:citekey>
+    <bcf:citekey order="6">Leonardis2015</bcf:citekey>
+    <bcf:citekey order="6">Mulas2005</bcf:citekey>
+    <bcf:citekey order="6">Andreasen2005</bcf:citekey>
+    <bcf:citekey order="7">MacIntosh2006</bcf:citekey>
+    <bcf:citekey order="8">Childers2004</bcf:citekey>
+    <bcf:citekey order="9">Milner-Brown1973b</bcf:citekey>
+    <bcf:citekey order="10">macintosh2006skeletal</bcf:citekey>
+    <bcf:citekey order="11">Merletti2004</bcf:citekey>
+    <bcf:citekey order="11">Farina2010</bcf:citekey>
+    <bcf:citekey order="12">DeLuca2006</bcf:citekey>
+    <bcf:citekey order="12">Nawab2010</bcf:citekey>
+    <bcf:citekey order="12">holobar2007gradient</bcf:citekey>
+    <bcf:citekey order="13">Clarke2021</bcf:citekey>
+    <bcf:citekey order="14">Cellml2003</bcf:citekey>
+    <bcf:citekey order="14">Lloyd2004</bcf:citekey>
+    <bcf:citekey order="15">Rohrle2019Review</bcf:citekey>
+    <bcf:citekey order="16">Cisi2008</bcf:citekey>
+    <bcf:citekey order="16">Dideriksen2010</bcf:citekey>
+    <bcf:citekey order="17">Zajac1989</bcf:citekey>
+    <bcf:citekey order="17">OpenSim2007</bcf:citekey>
+    <bcf:citekey order="17">Hilltype2014</bcf:citekey>
+    <bcf:citekey order="17">Bayer2017</bcf:citekey>
+    <bcf:citekey order="18">Johansson2000</bcf:citekey>
+    <bcf:citekey order="19">Blemker2005a</bcf:citekey>
+    <bcf:citekey order="20">Roehrle2007</bcf:citekey>
+    <bcf:citekey order="21">Boel2008</bcf:citekey>
+    <bcf:citekey order="22">blemker2005three</bcf:citekey>
+    <bcf:citekey order="22">Johansson2000</bcf:citekey>
+    <bcf:citekey order="22">Roehrle2008</bcf:citekey>
+    <bcf:citekey order="23">Boel2012</bcf:citekey>
+    <bcf:citekey order="23">Takaza2013</bcf:citekey>
+    <bcf:citekey order="23">VanLoocke2008</bcf:citekey>
+    <bcf:citekey order="23">VanLoocke2006</bcf:citekey>
+    <bcf:citekey order="24">Roehrle2008</bcf:citekey>
+    <bcf:citekey order="24">Roehrle2012</bcf:citekey>
+    <bcf:citekey order="24">Heidlauf2013</bcf:citekey>
+    <bcf:citekey order="24">HernandezGascon2013</bcf:citekey>
+    <bcf:citekey order="25">Mordhorst2017</bcf:citekey>
+    <bcf:citekey order="25">Valentin2018</bcf:citekey>
+    <bcf:citekey order="26">Mesin2013</bcf:citekey>
+    <bcf:citekey order="27">Dimitrov1998</bcf:citekey>
+    <bcf:citekey order="27">Farina2001</bcf:citekey>
+    <bcf:citekey order="27">Mesin2006</bcf:citekey>
+    <bcf:citekey order="28">Lowery2002</bcf:citekey>
+    <bcf:citekey order="28">Mordhorst2015</bcf:citekey>
+    <bcf:citekey order="28">Mordhorst2017</bcf:citekey>
+    <bcf:citekey order="28">Klotz2020</bcf:citekey>
+    <bcf:citekey order="29">Cellml2003</bcf:citekey>
+    <bcf:citekey order="29">Lloyd2004</bcf:citekey>
+    <bcf:citekey order="30">OpenCOR2015</bcf:citekey>
+    <bcf:citekey order="31">Bradley2011</bcf:citekey>
+    <bcf:citekey order="32">Nickerson2014</bcf:citekey>
+    <bcf:

@@ -1,25 +1,36 @@
-%\chapter{Usage and Implementation of the Software OpenDiHu}\label{sec:implementation}
+\chapter{Usage of the Software OpenDiHu}\label{sec:usage}
 
-The simulation of complex multi-scale models requires the combination of tailored numerical solution schemes: Spatial mesh resolutions and timestep widths have to be chosen carefully to avoid instabilities. For a given error tolerance, timestep widths should be chosen as large as possible to allow  a sufficiently long simulation time span in a feasible runtime.
-1D, 2D and 3D meshes have to be combined and mapping of data between these meshes is necessary. 
-The simulation should be able to run in parallel on multiple cores to efficiently exploit today's hardware and reduce the runtime to a minimum. Input and output has to be processed in proper data formats for different purposes, ranging from convenient debugging using small and simple scenarios to efficiently storing and visualizating large datasets in production runs. The configuration of model and solver parameters has to be well organized and documented to allow an efficient workflow.
+\Opendihu{} is an Open Source software framework for static and dynamic multi-physics problems that can be solved with the Finite Element Method. 
+We use it to simulate the multi-scale models presented in the last chapter: biophysical problems describing biomechanics and neurophysiology of the musculoskeletal system.
 
-In the following, we present details on the use and implementation of the software \opendihu{}, which aims to fulfill the mentioned requirements. 
-\Opendihu{} is an Open Source software framework that solves static and dynamic multi-physics problems using the Finite Element Method. 
-It is used to simulate the multi-scale models presented in the last chapter: biophysical problems describing the biomechanics and neurophysiology of the musculoskeletal system.
+In this chapter, we introduce basic concepts and present details on the usage of our software. The next chapter \cref{sec:implementation} continues with a discussion of programmatic aspects and gives details on how the different algorithms and solvers are implemented.
 
-\section{Design Goals}
+We begin this chapter with an explanation of the design goals in \cref{sec:design_goals}. Next, \cref{sec:usage} showcases how to setup simulation programs for various scenarios based on examples. \Cref{sec:usage_cellml} gives more details on the usage of CellML models. Finally, \cref{sec:output_file_formats} discusses various output formats and compatible tools for visualization.
 
-In addition to the functional requirements that are mentioned in the introduction, further demands can be formulated from the developer perspective.
-The program code should be modular and well documented to allow discovery, reuse and extension in the future. The implemented models should produce correct results and the correctness should be testable in order to be preserved during code changes.
+\section{Design Goals}\label{sec:design_goals}
 
-With these user and developer requirements in mind we develop our software framework named \opendihu{}.
+Simulations of complex multi-scale models require the combination of tailored numerical solution schemes. Spatial mesh resolutions and timestep widths should be chosen carefully to avoid instabilities and to allow the completion of useful simulation time spans in feasible runtimes.
+Numerical solvers on 1D, 2D and 3D meshes should be coupled and the data should be mapped between these meshes. 
+
+The simulations should be parallelized to efficiently exploit today's hardware and reduce the runtime to a minimum. Parallel runs should be performant on small workstations, larger compute servers and supercomputers. 
+
+Scenarios for different use cases should be possible, ranging from convenient debugging with simple physics and small problem sizes to large runs with highly resolved meshes and comprehensive models. Schemes for input and output of the data should be available for all of these use cases. Established community standards for models, such as the CellML description, and output file formats should be considered.
+The configuration of models and solver parameters should be flexible, well organized and properly documented to allow an efficient workflow.
+
+%Input and output have to be processed in proper data formats for different purposes, ranging
+% efficient storage and visualization of large datasets
+
+In addition to this feature list from a user perspective, further requirements can be formulated from a developer perspective.
+The program code should be modular, structured and well documented to allow discovery, reuse and extension in the future. The implemented solvers should compute correct results, which should be testable to preserve correctness during code changes.
+
+OpenDiHu aims to fulfill these requirements.
+%With these user and developer requirements in mind we develop our software framework named \opendihu{}.
 %In the different contexts of reporting and software development, the presented capitalized name and an all lower case version of the name are used, respectively. 
-The name originates from the Digital Human project that is entitled to advance the field of biomechanics by \say{providing new possibilities to improve the understanding of the neuromuscular system by switching from small-sized cluster model problems to realistic simulations on HPC clusters} \cite{DihuWeb}.
+The name originates from the Digital Human project that is entitled to advance the field of biomechanics by \say{providing new possibilities to improve the understanding of the neuromuscular system by switching from small-sized cluster model problems to realistic simulations on HPC clusters} \cite{DihuWeb}. The software framework contributes to this goal.
 %The software has been introduced in a publication \cite{Maier2019}.
 
 In the following, we concretize the requirements and formulate design goals to guide the software development.
-The design goals can be summarized under the keywords \emph{usability}, \emph{performance} and \emph{extensibility}. They span the introduced field of requirements from user centric to developer centric properties.
+The design goals can be summarized under the keywords \emph{usability}, \emph{performance} and \emph{extensibility}. They span the field of requirements from user centric properties to developer centric properties.
 
 \subsection{Usability}
 Usability is defined in ISO 9241-11 \cite{ISO9241} as \say{the extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use.}  

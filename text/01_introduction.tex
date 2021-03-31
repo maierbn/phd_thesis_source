@@ -138,7 +138,7 @@ On the next level of detail, phenomenological Hill-type muscle models, which hav
 
 While phenomenological models describe a whole muscle by a small number of parameters, continuum-based models exist that also take into account structural features and spatial heterogeneity \cite{Johansson2000}, \cite{Blemker2005a}, \cite{Roehrle2007}, \cite{Boel2008}.
 
-A commonly used approach to model muscle contraction in continuum-mechanics is to additively compose the stress tensor of a passive and an active stress term \cite{blemker2005three,Johansson2000,Roehrle2008}. The passive muscle behaviour can be parametrized using experimentally found relations, though this is challenging in practice \cite{Boel2012,Takaza2013,VanLoocke2008,VanLoocke2006}.
+A commonly used approach to model muscle contraction in continuum-mechanics is to additively compose the stress tensor of a passive and an active stress term \cite{blemker2005three,Johansson2000,Roehrle2008}. The passive muscle behavior can be parametrized using experimentally found relations, though this is challenging in practice \cite{Boel2012,Takaza2013,VanLoocke2008,VanLoocke2006}.
 
 Multi-scale models exist that combine formulations of continuum-mechanics with a description of electrophysiology \cite{Roehrle2008,Roehrle2012,Heidlauf2013,HernandezGascon2013}.
 These models couple various physical phenomena that occur on different temporal and spatial scales on cell, tissue and organ levels, such as subcellular ion dynamics in scales of milliseconds and micrometers and mechanical stresses and electric potentials in scales of seconds and multiple centimeters.% on the whole muscle with a length  scale of tens of centimeters.
@@ -157,14 +157,14 @@ A useful and widespread technology for biochemical models is CellML \cite{Cellml
 
 CellML provides an online repository where mathematical models and metadata such as figures and related publications are collected. The models can be downloaded as code in various formats and programming languages. Existing models can be combined into new models in a hierarchical manner. Dedicated modeling environments for CellML models exist. As an example, OpenCOR \cite{OpenCOR2015} can be used to edit, simulate and visualize CellML models.
 
-OpenCMISS (Continuum Mechanics, Imaging, Signal processing and System identification) \cite{Bradley2011} provides a set of open source libraries and applications for modelling and visualization of bioengineering problems. The frameworks allows to use CellML models \cite{Nickerson2014}.
+OpenCMISS (Continuum Mechanics, Imaging, Signal processing and System identification) \cite{Bradley2011} provides a set of open source libraries and applications for modeling and visualization of bioengineering problems. The frameworks allows to use CellML models \cite{Nickerson2014}.
 OpenCMISS Iron, the computational engine, can solve Finite Element models, discretized also with higher order elements and using cartesian or curvilinear coordinates. For example, the ventricles of the heart were modelled with a low number of cubic Hermite elements in a prolate spheroidal coordinate frame \cite{smith2004multiscale}.
 Various nested timestepping loops and solvers can be configured to create multi-scale models. 
 
 The library is programmed largely in the Fortran-90 standard, wrappers for the Python programming language can be automatically generated. It supports parallel execution on distributed memory systems.
 
-The development of OpenCMISS Iron started in 2005 as a rewrite of the computational modelling tool CMISS, whose history dates back to 1980. It is part of the Physiome Project, an international collaborative open-source effort to provide a public domain framework for computational physiology \cite{Hunter2004}.
-OpenCMISS has been used for multi-scale modeling of the lungs and heart \cite{smith2004multiscale}, vascular and thermoregulatory system \cite{ladd2016open,ghadam2020modelling} and skeletal muscle \cite{Heidlauf2013}. 
+The development of OpenCMISS Iron started in 2005 as a rewrite of the computational modeling tool CMISS, whose history dates back to 1980. It is part of the Physiome Project, an international collaborative open-source effort to provide a public domain framework for computational physiology \cite{Hunter2004}.
+OpenCMISS has been used for multi-scale modeling of the lungs and heart \cite{smith2004multiscale}, vascular and thermoregulatory system \cite{ladd2016open,ghadam2020modeling} and skeletal muscle \cite{Heidlauf2013}. 
 
 The "Cancer, Heart, and Soft Tissue Environment`` (Chaste) is an open source C++ library targeted at simulations of physiology and biology in general \cite{Chaste2013}. The code development is driven by cardiac electrophysiology and cancer growth simulations but the framework is also capable of solving  ordinary and partial differential equations from other fields. This involves solvers for CellML models, which have been used to simulate cellular cardiac electrophysiology \cite{ChasteCellML2015}.
 
@@ -198,14 +198,14 @@ Therefore, we move the existing models to the new code base "OpenDiHu`` and expa
 \section{The Multi-scale Model of the Neuromuscular System}\label{sec:the_multi_scale_model_of}
 
 Next, we briefly describe the existing multi-scale model framework that we base our work on.
-The chemo-electro-mechanical model was introduced by \cite{Roehrle2012} and described in more detail in \cite{Heidlauf2013} and \cite{Heidlauf2015Diss}. It has been used to investigate different muscle fibers lengths \cite{Heidlauf2014} and later was enhanced by also modelling actin-titin interactions \cite{Heidlauf2016}. The work of \cite{Mordhorst2015} extended the framework by a description of EMG signals.
+The chemo-electro-mechanical model was introduced by \cite{Roehrle2012} and described in more detail in \cite{Heidlauf2013} and \cite{Heidlauf2015Diss}. It has been used to investigate different muscle fibers lengths \cite{Heidlauf2014} and later was enhanced by also modeling actin-titin interactions \cite{Heidlauf2016}. The work of \cite{Mordhorst2015} extended the framework by a description of EMG signals.
 
 This model reflects the structural and functional aspects of skeletal muscle tissue and describes its mechanical and electrophysiological properties. Different biophysical processes are realized by sub-models that are linked together to form the overall multi-scale and multi-physics model.
 
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/introduction/model_scheme_overview.pdf}%
-  \caption{Modelling skeletal muscle physiology: From the anatomy (a) over a multi-scale discretization (b) to the multi-physics model (c) of \cite{Roehrle2012}.}%
+  \caption{Modeling skeletal muscle physiology: From the anatomy (a) over a multi-scale discretization (b) to the multi-physics model (c) of \cite{Roehrle2012}.}%
   \label{fig:model_scheme_overview_full}%
 \end{figure}%
 
@@ -275,7 +275,7 @@ Some notes for future work can be found in \cref{sec:future_work}
 
 % explain "we"
 The presented findings and conclusions were partly shaped by discussions with various researchers with expertise from different disciplines. Yet, this doctoral thesis lists essentially own contributions, marks collaborative work in the text and indicates others' work by citations.
-Using the pronoun "we``, the author refers to the group of originator, potentially the supervisers and certainly the interested reader.
+Using the pronoun "we``, the author refers to the group of originator, potentially the supervisors and certainly the interested reader.
 
 % overview of remainder
 This work is structured as follows. TODO

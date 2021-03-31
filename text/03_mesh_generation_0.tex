@@ -673,7 +673,7 @@ Corresponding boundary points $\bfx_\text{M,boundary} \in S_M$ and $\bfx_\text{P
 \end{align}
 %
 
-\Cref{eq:def_harmonic_maps,eq:bc_harmonic_maps} describe a boundary value problem of ordinary differential equations for $u$ and $v$. We solve it using the Finite Element Method and the spatial discretization given by the triangulation of the slices.
+Equations \eqref{eq:def_harmonic_maps} and \eqref{eq:bc_harmonic_maps} describe a boundary value problem of ordinary differential equations for $u$ and $v$. We solve it using the Finite Element Method and the spatial discretization given by the triangulation of the slices.
 Depending on the method of triangulation, a different number of degrees of freedom is given. For the first method with the Quickhull algorithm, no degree of freedom is present and no system of equations needs to be solved. Then, the mapping is only a FE interpolation of the boundary mapping.
 For the third method, only one degree of freedom for the center point needs to be computed. The second method has as many degrees of freedom as there are additional points inserted during the Delaunay refinement.
 
@@ -1168,7 +1168,7 @@ The standard deviation of the normalized lengths was determined in each mesh. Th
 
 The diagram shows the lowest standard deviation of edges and therefore the best mesh quality for the first triangulation method and the square ($\square 1$ and $\square 2$), with scheme 1 having a slightly better value than scheme 2. This shows that the modified placement of the nodes in scheme 2 has no positive effect compared to scheme 1.
 However, from the observations in \cref{fig:tri_triangulations}, it is known that the boundaries are not represented correctly.
-This behaviour does not influence the result because of the chosen metric of uniform relative edge lengths.
+This behavior does not influence the result because of the chosen metric of uniform relative edge lengths.
 Similarly good results can be seen for scheme 2 in the circular parameter domain and the second and third triangulations.
 
 Moreover, it can be seen that certain connections between parameter domain and suited triangulation scheme exist. The square parameter domain works best with the first triangulation method. The second scheme for the parameter mesh on the unit circle works best with the triangulation methods 2 and 3.
