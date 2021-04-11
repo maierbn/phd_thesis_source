@@ -2,22 +2,20 @@
 \section{Usage of CellML Models}\label{sec:usage_cellml}
 
 The CellML description language can be used to describe mathematical models of a wide range of physiological processes. Abitrary systems of differential-algebraic equations (DAE) can be represented.
-We use it for incorporating and exchanging subcellular models that describe the electrophysiology on a muscle fiber and for models of motor neurons or sensory organs.
-The CellML infrastructure is popular in the bioengineering community. The CellML website of the Physiome project hosts over 600 curated CellML models from different areas. Each model can be downloaded in CellML format or converted to various programming languages such as MATLAB, Python and C.
+We use it for incorporating and exchanging subcellular models, which describe the electrophysiology on a muscle fiber, and for models of motor neurons or sensory organs.
+The CellML infrastructure is popular in the bioengineering community. The CellML website of the Physiome project hosts over 600 curated CellML models from different areas. Each model can be downloaded in CellML format or as source code containing the expressions of the equations in various programming languages such as MATLAB, Python and C.
 
-\subsection{Related Software}\label{sec:cellml_related_software}
+\subsection{Integration of CellML in OpenDiHu and Comparison with Other Framework}
 
-Various open source tools exist to create or manipulate CellML models and to solve them and visualize the results \cite{pmid18579471}. A comprehensive list is given on the CellML website \cite{cellmlWebsite}. In the following, we describe some of them that are relevant for our work.
+Mathematically, a CellML model describes the functions $G$ and $H$ of the following DAE:
+\begin{align}\label{eq:cellml_generic_dae}
+  \p{\bfy(t)}{t} &= G\big(t,\bfy(t),\bfh(t),\hat{\bfc},\hat{\bfp}(t)\big), & \bfh(t) &= H\big(\bfy(t),\hat{\bfc},\hat{\bfp}(t)\big).
+\end{align}
+Here, $\bfy$ is the state vector and $\bfh$ is a vector with additional values that are derived from the state vector. The vectors of constants $\hat{\bfc}$ and parameters $\hat{\bfp}$ are prescribed and fixed over time for $\hat{\bfc}$ or varying over time for $\hat{\bfp}$.
+
+Various open source tools exist to create or manipulate CellML models and to solve them and visualize the results \cite{pmid18579471}. A comprehensive list is given on the CellML website \cite{cellmlWebsite} and some of them, which are relevant to our work, are outlined in the following.
 
 There exist two application programming interfaces (APIs), the \emph{CellML API} and the newer \emph{libCellML}, which allow direct access to the structures of the CellML model from, e.g., C++ code \cite{pmid20377909}. 
-
-\emph{OpenCOR} \cite{OpenCOR2015} provides a modeling environment in a graphical user interface, where models can be edited. 
-\Cref{fig:opencor1} shows the interface with the editor on the right. Mathematical equations are described in a declarative language and can be rendered to mathematical notation, as seen in the upper part in \cref{fig:opencor1}. OpenCOR automatically transfers the equations to the XML-based MathML syntax and integrates them in the XML-based CellML description.
-OpenCOR can also be used to solve the system of DAEs using implicit solvers such as backward differentiation formulas. \Cref{fig:opencor2} shows the interface that lists all variables with their current values on the left and a visualization of the result, in this case an action potiental, on the right.
-
-OpenCOR also provides command line functionality to convert CellML files into C code. Because OpenCOR is robust and well established in the bioengineering modeling community, we decide to use it in OpenDiHu. The installation procedure of OpenDiHu downloads and installs OpenCOR automatically.
-
-During execution of a simulation, our framework parses the C code of CellML models, compiles a shared library and executes the functions, all at runtime. Thus, the CellML model can be directly given as a C file. Otherwise, if the model file is in XML format, it is assummed to be a CellML description and automatically converted to the required C code using the OpenCOR command line interface.
 
 \begin{figure}%
   \centering%
@@ -38,28 +36,18 @@ During execution of a simulation, our framework parses the C code of CellML mode
   \label{fig:opencor}%
 \end{figure}%
 
-If a CellML model should be manually simulated in the OpenCOR graphical user interface with time-varying input signals, these signals have to be hard-coded in the model, e.g., as a piecewise defined function. This is acceptable for getting insight into the models, but counteracts the idea of modular models that can be shared and recombined. 
-As a remedy, we allow simulations of CellML models with configurable time-varying input signals in OpenDiHu without the need to change the CellML description.
+\emph{OpenCOR} \cite{OpenCOR2015} provides a modeling environment in a graphical user interface, where models can be edited. 
+\Cref{fig:opencor1} shows the interface with the editor on the right. Mathematical equations are described in a declarative language and can be rendered to mathematical notation, as seen in the upper part in \cref{fig:opencor1}. OpenCOR automatically transfers the equations to the XML-based MathML syntax and integrates them in the XML-based CellML description.
+OpenCOR can also be used to solve the system of DAEs using implicit solvers such as backward differentiation formulas. The solver parameters can be adjusted and the solver can be started from the graphical user interface. \Cref{fig:opencor2} shows the interface that lists all variables with their current values on the left and a visualization of the result, in this case an action potiental, on the right.
 
-CellML models are limited to single-cell systems of DAEs and are not designed for PDEs that, e.g., involve multiple instances of a DAE system on a given geometry. Thus, the monodomain equation cannot be solved with OpenCOR and a multi-scale software framework is needed for this task.
+OpenCOR also provides command line functionality to convert CellML files into C code. This generated C code can evaluate all model equations but not solve the DAE system. Because OpenCOR is robust and well established in the bioengineering modeling community, we decide to use it in OpenDiHu. The installation procedure of OpenDiHu downloads and installs OpenCOR automatically.
 
-Among the software frameworks that can solve the monodomain equation with the subcellular part in CellML format are Chaste and OpenCMISS Iron.
-Chaste \cite{ChasteCellML2015} also uses the approach of first converting a CellML description into C++ code using the tool \emph{PyCml} \cite{Cooper2006}. Chaste features adaptive timestepping solvers such as the \emph{CVODE} solver from the \emph{SUNDIALS} package \cite{cohen1996cvode} and infers analytic Jacobians from the model equations. The CellML support of Chaste targets \say{automated use} by automatically infering standard variable names, e.g., for membrane voltage and stimulation current.
-In OpenDiHu, this step of identifying the CellML variables to be connected to the coupled solvers is done manually, but can be achieved in a clear way with the Python settings script. Another difference in OpenDiHu is that all computational code is guaranteed to invoke vector instructions, i.e., following the single-instruction multiple data (SIMD) paradigm, whereas Chaste only relies on the optimization behavior of the Intel compiler, which is not guaranteed to be optimal, e.g., for non-Intel hardware.
+During execution of a simulation, our framework parses the C code of CellML models, compiles a shared library and executes the functions, all at runtime. Thus, the CellML model can be directly given as a C file. Otherwise, if the model file is in XML format, it is assumed to be a CellML description and automatically converted to the required C code using the OpenCOR command line interface.
 
-Another software framework with CellML support is the computational core \emph{Iron} from the OpenCMISS package. It relies on the CellML API and also requires manual connections of CellML variables to the solver code. These variable mappings have to be hardcoded in the main Fortran program (if the Python wrappers are not used) and are compiled into the program. One issue in Iron is the non-optimal memory layout which prohibits vectorization. 
+If a CellML model is manually simulated in the OpenCOR graphical user interface with time-varying input signals, these signals have to be hard-coded in the model, e.g., as a piecewise defined function. This is acceptable for getting insight into the models, but counteracts the idea of modular models that can be shared and recombined. 
+As a remedy, we design our framework in a way that simulations of CellML models with configurable time-varying input signals are possible without the need to change the CellML description.
 
-OpenCMISS implements the explicit forward Euler scheme or allows to use the backward differentiation formula (BDF) schemes with adaptive order of convergence of SUNDIALS. Recently, an implementation of the second order explicit Heun scheme was added by Aaron Krämer. Accuracy and runtimes were investigated for Euler, Heun and BDF solvers for the subcellular model within the monodomain equation. Because of the operator splitting scheme, only very small timespans have to be solved by those solvers, which does not redeem the overhead of advanced schemes such as the BDF solver, ultimately yielding the best performance for the Heun solver. Based on these investigations, we choose to implement the forward Euler and Heun schemes for the solution of CellML models in OpenDiHu.
-
-\subsection{Integration of CellML in OpenDiHu}
-
-Mathematically, a CellML model describes the functions $G$ and $H$ of the following DAE:
-\begin{align*}
-  \p{\bfy(t)}{t} &= G\big(t,\bfy(t),\bfh(t),\hat{\bfc},\hat{\bfp}(t)\big), & \bfh(t) &= H\big(\bfy(t),\hat{\bfc},\hat{\bfp}(t)\big).
-\end{align*}
-Here, $\bfy$ is the state vector and $\bfh$ is a vector with additional values that are derived from the state vector. Vectors of constants $\hat{\bfc}$ and parameters $\hat{\bfp}$ are prescribed and fixed over time for $\hat{\bfc}$ or varying over time for $\hat{\bfp}$.
-
-These quantities have different names in the software that was mentioned in \cref{sec:cellml_related_software}. The symbols and their names in OpenCOR, OpenCMISS and our choices in OpenDiHu are listed in \cref{tab:cellml_names}, together with information how their values are determined. 
+CellML models are limited to single-cell systems of DAEs and are not designed for PDEs that, e.g., involve multiple instances of a DAE system on a given geometry. Thus, the monodomain equation cannot be solved with OpenCOR and a multi-scale software framework is needed for this task. Two such frameworks with CellML support, which were described in the introduction in \cref{sec:intro_related_software}, are Chaste and OpenCMISS Iron. In the following, we relate and compare the approaches of CellML integration in OpenDiHu and these existing frameworks.
 
 \begin{table}
   \centering%
@@ -80,6 +68,8 @@ These quantities have different names in the software that was mentioned in \cre
   \label{tab:cellml_names}%
 \end{table}
 
+The variables in the generic DAE in \cref{eq:cellml_generic_dae} have different names in the different software packages. \Cref{tab:cellml_names} compares the symbols and their names in OpenCOR, OpenCMISS in OpenDiHu and summarized how their values are determined. 
+
 All three software packages have the concept of \code{state} and \code{rate} vectors, where the states $\bfy$ are the input and the rates $\partial\bfy/\partial t$ are the output of the CellML formulas. Similarly, the constants $\hat{\bfc}$ are always a set of predefined values that are fixed during the computations.
 
 The algebraic formulas lead to the values in $\bfh$, independently of the timestepping scheme. These algebraic values can be considered as the resulting quantities of interest of the model and are typically written to output files or transferred to coupled solvers.
@@ -90,6 +80,7 @@ In OpenDiHu, any constant or algebraic variable in a CellML model can be convert
 OpenCMISS uses a similar concept, where some of the algebraics in the CellML description can be declared as \code{WANTED} to be read by the framework. Some of the constants can be declared as \code{KNOWN} such that OpenCMISS sets their values from other computations within OpenCMISS. (Assigning new values to algebraics as in OpenDiHu is not possible.) Because the terms \code{WANTED} and \code{KNOWN} can be ambiguous if either seen from within the CellML model or from the framework, we decide to use the terms \code{algebraics} and \code{parameters} instead.
 
 The last two columns of \cref{tab:cellml_names} summarize the purpose of the different quantities. The CellML description defines formulas for the states, rates and algebraics. Rates and algebraics are directly calculated by the code that is generated from the CellML model, the vector of states is then computed from the vector of rates by the timestepping scheme. The initial values of the states are either explicitely specified in the OpenDiHu settings, e.g., to allow different values for different instances of a model. Or, if this specification is omitted,  the initial values are set according to the specification in the CellML file. The parameter values always have to be specified in the Python settings. By definition, the constants cannot be set from OpenDiHu, but are given in the CellML model. If the value of a constant should be specified from the settings, the variable should instead be configured to be a parameter.
+
 
 From a computational point of view, a CellML model computes the following function in terms of the introduced variable names:
 \begin{equation}
@@ -107,9 +98,20 @@ In the fiber based electrophysiology model, CellML is needed to formulate the re
 \end{align}
 The \code{states} vector in \cref{eq:cellml_generic} includes both $V_m$ and $\bfy$ in \cref{eq:monodomain_2}. In consequence, the computed \code{rates} contain $\partial V_m/\partial t$ and $\partial\bfy/\partial t$. The right hand side of \cref{eq:cellml_generic}, i.e., the \code{cellml} function calculates the term $(-1/C_m \cdot I_\text{ion})$, which is the reaction part of the monodomain equation in \cref{eq:monodomain_2}. Thus, the CellML computation can be directly used in the operator splitting approach in \cref{sec:discretization_monodomain}.
 
+For the solution of CellML models, OpenCMISS implements the explicit forward Euler scheme or allows to use the backward differentiation formula (BDF) schemes with adaptive order of convergence of SUNDIALS. Recently, an implementation of the second order explicit Heun scheme was added by Aaron Krämer. Accuracy and runtimes were investigated for Euler, Heun and BDF solvers for the subcellular model within the monodomain equation. Because of the operator splitting scheme, only very small timespans have to be solved by those solvers, which does not redeem the overhead of advanced schemes such as the BDF solver, ultimately yielding the best performance for the Heun solver. Based on these investigations, we choose to implement the forward Euler and Heun schemes for the solution of CellML models in OpenDiHu.
+
+% comparison to Chaste
+The following differences exist between the approaches to support CellML models in Chaste, OpenCMISS Iron and OpenDiHu:
+Chaste tries to automatically determine the CellML variable names of standard quantities such as the membrane voltage and the stimulation current. This requires potentially less user intervention when CellML models are exchanged.
+In OpenDiHu, the step of identifying the CellML variables to be connected to the coupled solvers is done manually to give the user complete control over the setup. It can be achieved in a clear way with the Python settings script. Another difference in OpenDiHu is that all computational code is guaranteed to invoke vector instructions, i.e., following the single-instruction multiple data (SIMD) paradigm. Chaste only relies on the optimization behavior of the Intel compiler, which is not guaranteed to be optimal, e.g., for non-Intel hardware.
+
+% comparison to Iron
+The computational core Iron from the OpenCMISS package employs the CellML API and also requires manual connections of CellML variables to the solver code. These variable mappings have to be hardcoded in the main Fortran program (if the Python wrappers are not used) and are compiled into the program. Thus, a CellML model is a fixed part of a compiled simulation program. In contrast, OpenDiHu allows to configure the CellML model at runtime.
+Another difference in the implementation is that Iron uses a non-optimal memory layout for the state vector, which prohibits vectorization and slows down the solution compared to OpenDiHu.
+
 \subsection{Mapping of CellML Variables to Slots and Parameters}
 
-Preparing the OpenDiHu solver for use with a CellML model consists of the two steps of adjusting the C++ template parameters and setting up the variable mappings in the Python settings. The two C++ template parameters have to be set to the sizes of the state vector $\bfy$ and the algebraics vector $\bfh$. The code snipped in \cref{fig:example_shorten_cellml} belongs to the example program under \code{examples/electrophysiology/cellml/shorten}, which solves a single-cell CellML model:
+Preparing the OpenDiHu solver for use with a CellML model consists of the two steps of adjusting the C++ template parameters and setting up the variable mappings in the Python settings. The two C++ template parameters have to be set to the sizes of the state vector $\bfy$ and the algebraics vector $\bfh$. The code snipped in \cref{fig:example_shorten_cellml} belongs to the example program in \code{examples/electrophysiology/cellml/shorten}, which solves a single-cell CellML model:
 \begin{figure}[H]
 \centering
 \begin{framed}
@@ -126,7 +128,7 @@ In this case, the model contains 56 states and 71 algebraics. The reason that th
 
 If the given numbers are not matching the variables in the CellML file, appropriate warnings or errors are generated, containing the correct C++ code to be copied to the C++ file. If the numbers are too high, the solver still works correctly, however, some memory and computation time is wasted for the excess variables.
 
-The other step is configuring the connections between the CellML computation and input data or coupled solvers. This involves defining a \code{mappings} parameter. \Cref{fig:example_mapping} shows such a definition for the multidomain example with fat layer and contraction model that was presented in \cref{sec:exemplary_usage_2}.
+The other step is configuring the connections between the CellML computation and input data or coupled solvers. This involves defining a \code{mappings} parameter. \Cref{fig:example_mapping} shows such a definition for the multidomain example with fat layer and a contraction model, which was presented in \cref{sec:exemplary_usage_2}.
 
 \begin{figure}
 \centering
@@ -156,12 +158,12 @@ The \code{mappings} define which CellML constants or algebraics are treated as p
 The initial values for these parameters are given in line \ref{alg:5.12}, which sets the stimulation current to zero and the fiber stretch to one.
 
 The second information in the \code{mappings} parameter is which variables from the CellML model are exposed to coupled solvers in OpenDiHu. This happens by defining connector slots that can be connected between the solvers as shown in \cref{fig:example_multidomain_solver_structure}.
-Three slots are defined in lines \ref{alg:5.7} to \ref{alg:5.9} with slot names \code{`vm`}, \code{`stress`} and \code{`lambda`}. The corresponding CellML variables are again specified by their model component name and name. 
+Three slots are defined in lines \ref{alg:5.7} to \ref{alg:5.9} with slot names \code{`vm`}, \code{`stress`} and \code{`lambda`}. The corresponding CellML variables are again specified by their model component name and their own name. 
 
 CellML variables of all three different types are connected in the example. The membrane voltage $V_m$ in slot \code{`vm`} is part of the state vector $\bfy$. In this example, it is used in a bidirectional coupling with the diffusion solver. The second slot, \code{`stress`}, connects to the activation parameter $\gamma$, which is part of the algebraic vector $\bfh$. It is an output of the model. The slot \code{`lambda`} refers to a constant in the CellML description, which has been transformed to a parameter in line \ref{alg:5.4}. It is used as an  input and the received values at this slots are moved to the corresponding locations in the CellML formulation.
 
 
-\subsection{Consistent Units in CellML Models and the Multi-Scale Framework}
+\subsection{Consistent Physical Units in CellML Models and the Multi-Scale Framework}
 
 The variables in a CellML model describe physical quantities. CellML handles their physical units and computes the appropriate conversions when combining model components within a CellML description.
 For the integration of a CellML model in external solvers such as OpenDiHu, we have to take care that the units are consistent.
@@ -176,16 +178,16 @@ The subcellular models that we use are formulated with the following units for l
 \end{align*}
 These basic units also fix derived units such as \SI{1}{\kilo\hertz} for frequencies and \SI{1}{\milli\volt} for voltages. For example, the membrane capacitance $C_m$ has to be specified in units \SI{1}{\micro\farad\per\square\centi\meter} and the stimulation current $I_\text{stim}$ in the units \SI{1}{\micro\ampere\per\square\centi\meter}.
 
-With this system of units, values are in a similar scale when computing subcellular models. However, these units are less suitable for organ-scale computations, as the derived mass and density units are \SI{1e-14}{\kilogram} and \SI{1e-8}{\kilogram\per\meter\cubed} and the derived force and stress units are \SI{1e-10}{\newton} and \SI{1e-6}{\pascal}. For the dynamic solid mechanics model where these quantities play a role, we use the following different system of units:
+With this system of units, values are in a similar scale when computing subcellular models. However, these units are less suitable for organ-scale computations, as the derived mass and density units are \SI{1e-14}{\kilogram} and \SI{1e-8}{\kilogram\per\meter\cubed} and the derived force and stress units are \SI{1e-10}{\newton} and \SI{1e-6}{\pascal}. For the dynamic solid mechanics model, where these quantities play a role, we use the following different system of units:
 \begin{align*}
    \SI{1}{\centi\meter} &= \SI{1e-2}{\meter}, &
    \SI{1}{\milli\second} &= \SI{1e-3}{\second}, &
    \SI{1}{\newton}.
 \end{align*}
-The length and time scales are identical to the subcellular model and allow for consistent coupling. The coupling of active stresses from the subcellular model to the solid mechanics model uses the unit-less activation parameter $\gamma \in [0,1]$, which is transferred to stress units by multiplying with a maximum active stress value in the solid mechanics model.
+The length and time scales are identical to the subcellular model and allow for consistent coupling. The coupling of active stresses from the subcellular model to the solid mechanics model uses the unit-less activation parameter $\gamma \in [0,1]$, which is transferred to stress units by multiplication with a maximum active stress value in the solid mechanics model.
 
 Derived units in the solid mechanics system of units are \SI{1e2}{\kilogram\per\meter\cubed} for the density, \SI{1e4}{\meter\per\square\second} for the acceleration and $\SI{1}{\newton\per\square\centi\meter} = \SI{10}{\kilo\pascal}$ for the stress. The values of material parameters and boundary conditions have to be given with respect to these units.
-The units allow for smaller values in the solid mechanics computation than the unit system of the subcellular model. Moreover, it is  convenient to specify forces directly in terms of \SI{1}{\newton}.
+The units allow for smaller values in the solid mechanics computation than in the unit system of the subcellular model. Moreover, it is  convenient to specify forces directly in terms of \SI{1}{\newton}.
 
 % # Fixed units in cellMl models:
 % # These define the unit system.
@@ -231,13 +233,13 @@ The units allow for smaller values in the solid mechanics computation than the u
 \subsection{Specification of Stimulation Times Using Callback Functions}\label{sec:stimulation_times_callbacks}
 
 A muscle fiber is activated by impulse trains that are generated from a motor neuron and stimulate the fiber at its neuromuscular junction. At the synaptic terminal, neurotransmitters are released and open certain ion channels, which results in depolarization of the muscle fiber membrane.
-This process can either be modeled by adding an external stimulation current $I_\text{stim}$ through the dedicated ion channels or by directly prescribing the transmembrane voltage $V_m$ to reflect the resulting depolarized state. The first approach is more accurate as it also describes the depolarization process at the stimulated parts of the fiber. The electric \say{far field} some nodes away from the stimulation point, however, is the same for both approaches.
+This process can either be modeled by adding an external stimulation current $I_\text{stim}$ through the dedicated ion channels or by directly prescribing the transmembrane voltage $V_m$ to reflect the resulting depolarized state. The first approach is more accurate as it also describes the depolarization process at the stimulated parts of the fiber. The electric \say{far field} away from the stimulation point, however, is the same for both approaches.
 
-In OpenDiHu, it is possible to configure either approach. Setting the stimulation current is more involved as the actual value of  $I_\text{stim}$ has to be chosen depending on the mesh width. Furthermore, multiple adjacent nodes have to be stimulated such that electric current that is added to the system balances with the amount that is carried away by the diffusion term. The nonlinear subcellular model fails to compute a valid solution if too much current is present. With too little current, the membrane potential stays below the activation threshold and no action potential is triggered. 
+In OpenDiHu, it is possible to configure either approach. Setting the stimulation current is more involved as the actual value of  $I_\text{stim}$ has to be chosen depending on the mesh width. Furthermore, multiple adjacent nodes have to be stimulated such that the electric current that is added to the system balances with the amount that is carried away by the diffusion term. The nonlinear subcellular model fails to compute a valid solution, if too much current is present. With too little current, the membrane potential stays below the activation threshold and no action potential is triggered. 
 
-Prescribing the transmembrane voltage to a value above the depolarization threshold at multiple adjacent nodes leads to an action potential independent of the mesh width. However, a suitable value for the prescribed voltage has also to be chosen in accordance with the employed subcellular model.
+Prescribing the transmembrane voltage to a value above the depolarization threshold at multiple adjacent nodes leads to equivalent action potentials independent of the mesh width. However, a suitable value for the prescribed voltage also has to be chosen in accordance with the employed subcellular model.
 
-The stimulation current $I_\text{stim}$ is a CellML parameter and the transmembrane voltage $V_m$ corresponds to a state in the CellML model. The values of both parameters and states can be adjusted during the simulation. This feature makes use of callback functions in the Python settings. A callback is a user defined function that gets called in regular intervals during the simulation, receives various information about the current state of the simulation and can alter some values such as the states vector $\bfy(t)$ or the parameters vector $\hat{\bfp}(t)$.
+The stimulation current $I_\text{stim}$ is a CellML parameter and the transmembrane voltage $V_m$ corresponds to a state in the CellML model. The values of both parameters and states can be adjusted during the simulation. This feature is implemented by means of callback functions in the Python settings. A callback is a user defined function that gets called in regular intervals during the simulation, receives various information about the current state of the simulation and can alter some values such as the states vector $\bfy(t)$ or the parameters vector $\hat{\bfp}(t)$.
 
 \begin{figure}
 \centering
@@ -298,19 +300,19 @@ The stimulation current $I_\text{stim}$ is a CellML parameter and the transmembr
 \label{fig:example_callback_functions}%
 \end{figure}
 
-\Cref{fig:example_callback_functions} defines two such callback functions used in the fiber based electrophysiology model to add electric stimulation to the monodomain model. Either suffices to implement the stimulation. The function \code{set_specific_parameters} in line \ref{alg:6.3} and the function \code{set_specific_states} in line \ref{alg:6.15} both receive simular information from the simulation as their function arguments: the total number \code{n_nodes_global} of nodes in the current fiber, the current integer timestep number \code{time_step_no} and the corresponding floating-point number \code{current_time} of the current simulation time, and the number \code{fiber_no} that identifies the current fiber.
+\Cref{fig:example_callback_functions} defines two such callback functions used in the fiber based electrophysiology model to add electric stimulation to the monodomain model. Either suffices to implement the stimulation. The function \code{set_specific_parameters} in line \ref{alg:6.3} and the function \code{set_specific_states} in line \ref{alg:6.15} both receive simular information from the simulation as their function arguments: the total number \code{n_nodes_global} of nodes in the current fiber, the current integer timestep number \code{time_step_no}, the corresponding floating-point number \code{current_time} of the current simulation time, and the number \code{fiber_no} that identifies the current fiber.
 
-The variables \code{parameters} and \code{states} are the output of the callback function that alter the parameter and state values, respectively. Both callbacks determine if the current fiber should be stimulated at the current time, in lines \ref{alg:6.6} and \ref{alg:6.18}.
+The variables \code{parameters} and \code{states} are the output of the callback functions that alter the parameter and state values, respectively. Both callbacks determine, whether the current fiber should be stimulated at the current time, in lines \ref{alg:6.6} and \ref{alg:6.18}.
 If yes, the parameter or state at the center point of the fiber, computed in lines \ref{alg:6.11} and \ref{alg:6.19}, gets changed accordingly. In the real scenario, three adjacent points get stimulated instead of a single point.
 
-Because the conversion of transferred data between the Python code and the C++ code costs some runtime, the number of transferred values is reduced to a minimum. Only the parameters and states that should be changed are indicated in the \code{parameters} and \code{states} variables in lines \ref{alg:6.12} and \ref{alg:6.20}. These variables are Python dictionaries, i.e. key-value pairs. The key is a tuple of three items: First, the global coordinates $(x,y,z)$ of the node where the parameter or state change is applied. In case of a 1D fiber mesh, this is only a single coordinate. Second, the dof index on this node. This is different from zero only for Hermite ansatz functions, which have multiple dofs per node. And third, the index of the parameter or state that should be set. Parameter 0 corresponds to the stimulation current as defined in line \ref{alg:5.3} of \cref{fig:example_mapping} and state 0 corresponds to the transmembrane voltage $V_m$. The new value to set is the value of the key-value pair.
+Because the conversion of transferred data between the Python code and the C++ code costs some runtime, the number of transferred values is reduced to a minimum. Only the parameters and states that should be changed are indicated in the \code{parameters} and \code{states} variables in lines \ref{alg:6.12} and \ref{alg:6.20}. These variables are Python dictionaries, i.e., key-value pairs. The key is a tuple of three items: First, the global coordinates $(x,y,z)$ of the node where the parameter or state change is applied. In case of a 1D fiber mesh, this is only a single coordinate. Second, the dof index on this node. This is different from zero only for Hermite ansatz functions, which have multiple dofs per node. And third, the index of the parameter or state that should be set. Parameter 0 corresponds to the stimulation current as defined in line \ref{alg:5.3} of \cref{fig:example_mapping}, and state 0 corresponds to the transmembrane voltage $V_m$. The new value to set is the value of the key-value pair.
 
-The comparison of the two callbacks functions shows one difference: In the callback for the parameters, the stimulation current is set to zero when there is no stimulation, in the callback for the states, nothing is done during this time. The reason for this is that the state values will be continuously updated from the rates by the timestepping scheme, whereas the parameters keep their values until they are changed from the callback. This has consequences on the times when the callback functions have to be called from the simulation, which are described in the following.
+The comparison of the two callbacks functions shows one difference: In the callback for the parameters, the stimulation current is set to zero when there is no stimulation. In the callback for the states, nothing is done during this time. The reason for this is that the state values will be continuously updated from the rates by the timestepping scheme, whereas the parameters keep their values until they are changed from the callback. This has consequences on the times at which the callback functions have to be called from the simulation, which are described in the following.
 
-Invoking the Python interpreter on a callback requires some time. Calling the callback after every small timestep of the simulation is, thus, not performant. We model stimulation of a fiber by a piecewise constant function with two possible values for on and off.
-In the approach that sets the stimulation current, the callback \code{set_specific_parameters} has to be called at the onset and end of every stimulation spike. If the approach with the prescribed membrane voltage is used, the callback \code{set_specific_states} has to be called after every stimulation onset in every subsequent timestep until the stimulation is over.
+Invoking the Python interpreter on a callback requires some time. Calling the callback after every small timestep of the simulation is, thus, not performant. We model the stimulation of a fiber by a piecewise constant function with two possible values for on and off.
+In the approach that sets the stimulation current, the callback \code{set_specific_parameters} has to be called at the onset and at the end of every stimulation spike. If the approach with the prescribed membrane voltage is used, the callback \code{set_specific_states} has to be called after every stimulation onset in every subsequent timestep until the stimulation is over.
 
-The requirements for both approaches can be satisfied by defining a small constant interval of timesteps after which the callback functions are invoked. This call interval can be specified in the \code{config} dictionary of the Python file in \cref{fig:example_callback_functions} , which is shown as excerpts from line \ref{alg:6.22} onwards. The \code{config} variable references the callback functions in lines \ref{alg:6.28} and \ref{alg:6.33} and the parameters for the call interval in the next lines. Note that this configuration is only shown for demonstration, a real configuration should either specify the states callback or the parameters callback function, not both.
+The requirements for both approaches can be satisfied by defining a small constant interval of timesteps after which the callback functions are invoked. This call interval can be specified in the \code{config} dictionary of the Python file in \cref{fig:example_callback_functions} , which is shown in excerpts from line \ref{alg:6.22} onwards. The \code{config} variable references the callback functions in lines \ref{alg:6.28} and \ref{alg:6.33} and the parameters for the call interval in the next lines. Note that this configuration is only shown for demonstration, a real configuration should either specify the states callback or the parameters callback function, not both.
 
 Line \ref{alg:6.34} in \cref{fig:example_callback_functions} shows how the call interval can be computed to correspond to a given stimulation frequency \code{stimulation_frequency}, given the timestep width \code{dt_0D}. The prefactor of two occurs because the callback would be called twice per timestep in the Strang splitting scheme.
 
@@ -326,9 +328,9 @@ Real impulse trains from the motor neuron pool typically follow a base frequency
 Their meaning is illustrated in \cref{fig:stimulation_times}. \code{CallEnableBegin} specifies the time when the callback should be called for the first time. Then, it is called with a frequency that is additively composed of the base frequency given by \code{CallFrequency} and one entry of the parameter \code{FrequencyJitter}. This parameter is a ring buffer of relative factors by which the regular time span between subsequent firing events is prolonged. For example, if \code{FrequencyJitter} contains the list \code{[0.1,-0.2,0.0]}, the time span $T_{01}$ between the first two firing events is \SI{10}{\percent} longer than according to the base frequency $f$, the next timespan $T_{12}$ is \SI{20}{\percent} shorter and the next time span $T_{23}$ exactly equals the inverse base frequency, $T_{23} = 1/f$. Subsequently, the scheme repeats. Typically, this parameter is set to a randomly generated list with a large number of entries.
 After each onset of a stimulation, the \code{setSpecificStatesCallInterval} function is called repeatedly in every subsequent timestep for a time span given by \code{RepeatAfterFirstCall}. 
 
-In the fiber based electrophysiology example, every fiber has their own instance of the Python settings and it is possible to specify different parameter values for different fibers or motor units, e.g., to set a different beginning time of the stimulations. The fibers can be distinguished by the last parameter of the callbacks, which receives the custom value that is defined by the \code{`additionalArgument`} parameter in line \ref{alg:6.43}. In the given example, the current fiber number is used here, but any other Python variable is possible.
+In the fiber based electrophysiology example, every fiber has its own instance of the Python settings, and it is possible to specify different parameter values for different fibers or motor units, e.g., to set a different beginning time of the stimulations. The fibers can be distinguished by the last parameter of the callbacks, which receives the custom value that is defined by the \code{`additionalArgument`} parameter in line \ref{alg:6.43}. In the given example, the current fiber number is used here, but any other Python variable is possible.
 
-\Cref{fig:firing_times_ramp} shows a scenario, where different parameters are set for different MUs. The figure shows the firing times of fibers grouped to 20 MUs that are activated in a ramp in the first $t=\SI{19}{\second}$. The base frequency decreases from \SI{23.92}{\hertz} to \SI{7.66}{\hertz} for MUs 1 to 20, which reproduces a scenario in literature \cite{Klotz2020}. The frequency jitter parameter is a list of 100 randomly chosen values between \SI{-10}{\percent} and \SI[retain-explicit-plus]{+10}{\percent}. The \code{CallEnableBegin} parameter enables the stimulation of the next MU every second.
+\Cref{fig:firing_times_ramp} shows a scenario, where different parameters are set for different MUs. The figure shows the firing times of fibers grouped to 20 MUs, which are activated in a ramp in the first $t=\SI{19}{\second}$. The base frequency decreases from \SI{23.92}{\hertz} to \SI{7.66}{\hertz} for MUs 1 to 20, which reproduces a scenario in literature \cite{Klotz2020}. The frequency jitter parameter is a list of 100 randomly chosen values between \SI{-10}{\percent} and \SI[retain-explicit-plus]{+10}{\percent}. The \code{CallEnableBegin} parameter enables the stimulation of the next MU every second.
 
 \begin{figure}%
   \centering%
@@ -337,7 +339,7 @@ In the fiber based electrophysiology example, every fiber has their own instance
   \label{fig:firing_times_ramp}%
 \end{figure}%
 
-Similar to the two presented callbacks, which set parameter and states, a third callback \code{handle_result} can be defined as given in line \ref{alg:6.41} of \cref{fig:example_callback_functions}. This callback function gets called in a fixed interval specified by \code{`handleResultCallInterval`}. It receives the complete vectors of states $\bfy$ and intermediates $\bfh$ and can be used to perform custom postprocessing or to output custom data files from the Python script.
+Similar to the two presented callbacks, which set parameters and states, a third callback \code{handle_result} can be defined as given in line \ref{alg:6.41} of \cref{fig:example_callback_functions}. This callback function gets called in a fixed interval specified by \code{`handleResultCallInterval`}. It receives the complete vectors of states $\bfy$ and intermediates $\bfh$ and can be used to perform custom postprocessing or to output custom data files from the Python script.
 
 In summary, variables of CellML models can be coupled to other solvers. Their parameters and values can be adjusted from the settings file. Callback functions are used to alter values during the simulation. This flexibility comes at the runtime cost of invoking the Python interpreter, therefore the times when to call the callback functions have to be specified appropriately. Special methods exist to model steady stimulation with frequency jitter, which occurs in typical neural stimulation of muscle fibers.
 
@@ -348,7 +350,7 @@ After the simulation program completes, the computed results can be visualized u
 As mentioned in the previous sections, output writers are used to generate output files in various formats. The formats of the output writers and additional options are configured in the Python settings under the parameter \code{OutputWriter}. The following formats are supported:\code{`ParaView`}, \code{`ExFile`}, \code{`PythonFile`}, \code{`PythonCallback`} and\break\code{`MegaMol`}.
 The corresponding output can be visualized and postprocessed using different tools, which will be presented in the following. We use simulation results of a fiber-based electrophysiology scenario with 49 1D fibers and a 3D muscle mesh to showcase the different output data formats.
 
-\subsection{Output of VTK Files for the Use With ParaView}
+\subsection{Output of VTK Files for the Use with ParaView}
 The canonical way to visualize simulation results computed by OpenDiHu is to use the software ParaView \cite{paraview}. 
 The required output file formats are defined by the Visualization Toolkit (VTK) specification \cite{vtk}. Depending on the mesh type in OpenDiHu, different file types are generated:
 \emph{RectilinearGrid} files (with file ending \code{.vtr}) for the output of \say{regular fixed} meshes that represent a cartesian grid,
@@ -359,24 +361,24 @@ ParaView can be used to load and visualize all of these file types.
 
 All of these files are XML based and their payload data can be configured to be either written in ASCII representation or in Base64 encoding. Base64 encoding also translates the raw data into ASCII characters. The data stream is split into pieces of 6 bits, which are each represented by an 8-bit-ASCII character. Thus, the required memory is $4/3$ of the raw data. Compared to a full ASCII representation containing the digits of all numerical values, this leads to a significant reduction of file sizes.
 
-The VTK file format specifies parallel file output, where each process writes its local data to a separate file and one additional master file references the pieces in all files. This parallel file output scheme is implemented in OpenDiHu. However, it can lead to an impractical large number of small output files for high degrees of parallelism. 
+The VTK file format specifies parallel file output, where each process writes its local data to a separate file and one additional master file references the pieces in all files. This parallel file output scheme is implemented in OpenDiHu. However, it can lead to an impractically large number of small output files for high degrees of parallelism. 
 
-Therefore, we additionally implement a second approach, where non-parallel VTK files that contain the whole dataset are written. The same type of output files is generated during serial and parallel execution of the program. 
+Therefore, we additionally implement a second approach, where non-parallel VTK files, which contain the whole dataset, are written. The same type of output files is generated during serial and parallel execution of the program. 
 Writing the data to such a file is done using the parallel output capabilities of MPI. The respective MPI functions allow to collectively write data to the same file from different processes at different locations in the file. For parallel execution, every process only writes its own local data and no communication of the payload data to a master process is necessary. 
 
-Because the byte boundaries in a Base64 encoded data stream coincide with multiples of 8 bits only every three bytes, the processes that write neighboring parts in the output file have to coordinate the bit offsets of their data streams. For this, a small amount of data has to be communicated between these processes, however, the cost of this communication is negligible.
+Because the byte boundaries in a Base64 encoded data stream coincide with multiples of 8 bits only every three bytes, the processes that write neighboring parts in the output file have to coordinate the bit offsets of their data streams. For this, a small amount of data has to be communicated between these processes. However, the cost of this communication is negligible.
 
 With this improved output scheme, one file is generated per mesh and output timestep of the simulation. The frequency of output timesteps can be configured in the Python settings.
-It is also possible and useful to combine all 1D fiber meshes into a single output file per timestep, to reduce the number of output files.
+It is also possible and useful to combine all 1D fiber meshes into a single output file per timestep to reduce the number of output files.
 
-Different meshes can be written with different frequency. For example, for a simulation of fiber based electrophysiology with EMG signals it is reasonable to output the comprehensive dataset of all fibers less frequently than the smaller dataset of EMG signals on the 2D skin surface. To associate the output files with the correct times, a timestamp of the current simulation time is added to every file. Furthermore, partitioning information is added, i.e., which part of the mesh is computed by which process.
+Different meshes can be written with different frequency. For example, for a simulation of fiber based electrophysiology with EMG signals, it is reasonable to output the comprehensive dataset of all fibers less frequently than the smaller dataset of EMG signals on the 2D skin surface. To associate the output files with the correct times, a timestamp of the current simulation time is added to every file. Furthermore, partitioning information is added, i.e., which part of the mesh is computed by which process.
 
 To synchronize output files of different meshes with different output frequencies in the visualization tool, additional \emph{series files} (with file ending \code{.series}) are automatically created for every mesh. Such a file references all available output files of a mesh with their simulation times in JSON format. These files can be opened in ParaView to get a time-series of the simulation result.
 
 Using the series files is also convenient, if the simulation is run in a directory, where old simulation results from previous runs exist. Because the series files are updated every timestep and only reference the newly created files, opening these files in ParaView only visualizes newly created simulation output, in contrast to opening a whole directory, which would potentially also load old results.
 
 \subsection{Visualization With ParaView}
-ParaView allows various manipulations and types of visualization of the loaded data. \Cref{fig:paraview_output} shows the ParaView window with simulation data of a fiber-based electrophysiology scenario. The loaded data is organized in a tree of datasets with applied filters, which can be seen in the \say{Pipeline Browser} in the top left. The center view shows a visualization of the muscle fibers and the 3D mesh at simulation time $t=\SI{89.6}{\milli\second}$. An animation of the transient data can be shown by using the playback controls in the top bar.
+ParaView allows various manipulations and types of visualization of the loaded data. \Cref{fig:paraview_output} shows the ParaView window with simulation data of a fiber-based electrophysiology scenario. The loaded data are organized in a tree of datasets with applied filters, which can be seen in the \say{Pipeline Browser} in the top left. The center view shows a visualization of the muscle fibers and the 3D mesh at simulation time $t=\SI{89.6}{\milli\second}$. An animation of the transient data can be shown by using the playback controls in the top bar.
 
 \begin{figure}%
   \centering%
@@ -389,17 +391,17 @@ The visualization in the center top view displays the membrane voltage $V_m$ at 
 
 The view on the bottom left depicts the extra-cellular potential $\phi_e$ on the 3D mesh. The view on the bottom right shows a plot of the value of $\phi_e$ along a horizontal line on the surface of the muscle.
 
-It can be seen that three fibers near the surface are activated and that the action potentials effect the EMG value given by $\phi_e$ on the surface.
+It can be seen that three fibers near the surface are activated, and that the action potentials effect the EMG value given by $\phi_e$ on the surface.
 
 For larger datasets, a head-less render server of ParaView also can be run in parallel on a remote server and the graphical user interface shown in \cref{fig:paraview_output} can be used as the client to interactively control the visualization.
 
-ParaView also supports raytracing using the OSPRay raytracing engine. With raytracing, more advanced lighting and the computation of shadows is possible.
+ParaView also supports raytracing using the OSPRay raytracing engine. With raytracing, more advanced lighting and the computation of shadows are possible.
 
-\subsection{ExFiles and Visualization With CMGUI}
+\subsection{ExFiles and Visualization with CMGUI}
 
 Another option in OpenDiHu is to output files in the \say{ExFile} format. This format originates from the software environment of OpenCMISS. Output of results in simulations with OpenCMISS Iron relies on this type of files. The visualization toolbox of OpenCMISS Zinc is able to create various visualizations of the data given in this format. The program \emph{CMGUI} provides a graphical user interface to visualize the data.
 
-The output files consists of corresponding \code{.exelem} and \code{.exnode} files containing information at element and node levels, respectively. The mesh is assumed to be unstructured and, thus, the information which nodes correspond to a particular element has to be explicitely stored. It is stored in the \code{.exelem} file. The payload data is contained in the \code{.exnode} file. The file format supports parallel output to separate files, however only serial output is supported in OpenDiHu.
+The output consists of corresponding \code{.exelem} and \code{.exnode} files containing information at element and node level, respectively. The mesh is assumed to be unstructured and, thus, the information which nodes correspond to a particular element has to be explicitely stored. It is stored in the \code{.exelem} file. The payload data are contained in the \code{.exnode} file. The file format supports parallel output to separate files. However, only serial output is supported in OpenDiHu.
 ExFiles are ASCII-based and, thus, only usable up to a certain problem size.
 
 An advantage of the \say{ExFile} format is that also higher order elements can be represented. The visualization tools are capable of representing the geometric data accordingly, e.g., it is possible to visualize the correct shape of cubic Hermite 3D hexahedral elements. In contrast, ParaView only visualizes linear elements and linearly interpolates the data between the nodes of an element.
@@ -409,15 +411,15 @@ In the graphical user interface, the \code{.exelem} and \code{.exnode} files can
 
 For larger datasets, these manual adjustments are tedious. For example, for a dataset with 49 fibers, the user would have to load 49 \code{.exelem} and 49 \code{.exnode} files one by one. Instead, the Perl scripting interface of CMGUI can be used. Every command in the GUI corresponds to a Perl command and CMGUI can load and execute those commands from a given Perl script.
 
-OpenDiHu automatically creates such Perl scripts. The generated script for a mesh loads all generated output files into CMGUI, adds a  corresponding visualization depending on the mesh dimensionality and opens the required CMGUI windows such that the data is immediately visible. This is an improvement to OpenCMISS Iron, where all steps have to be done manually. By using the generated the Perl script, less expert knowledge on the usage of CMGUI is required and it is also possible to visualize datasets with a large number of fibers.
+OpenDiHu automatically creates such Perl scripts. The generated script for a mesh loads all generated output files into CMGUI, adds a  corresponding visualization depending on the mesh dimensionality and opens the required CMGUI windows such that the data are immediately visible. This is an improvement to OpenCMISS Iron, where all steps have to be done manually. By using the generated Perl script, less expert knowledge on the usage of CMGUI is required and it is also possible to visualize datasets with a large number of fibers.
 
-\Cref{fig:cmgui_output1} shows two windows of CMGUI. In \cref{fig:current_configuration_1}, the main graphics window can be seen with a visualization of 49 muscle fibers. The membrane potential is visualized by varying colors and action potentials can be seen on three of the shown fibers. Similar to ParaView, the transient data can be animated by using the controls at the bottom.
+\Cref{fig:cmgui_output1} shows two windows of CMGUI. In \cref{fig:current_configuration_1}, the main graphics window can be seen with a visualization of 49 muscle fibers. The membrane potential is visualized by varying colors, and action potentials can be seen on three of the shown fibers. Similar to ParaView, the transient data can be animated by using the controls at the bottom.
 \Cref{fig:cmgui_spectrum} shows the spectrum editor, where the color scheme can be adjusted to the range of the loaded data.
 
 The other Perl script besides the one used in \cref{fig:cmgui_output1} to visualize the muscle fibers addresses the 3D mesh of the muscle.
 \Cref{fig:cmgui_output2} shows the graphics windows with the resulting visualizations of this dataset. In \cref{fig:cmgui_emg}, the extracellular potential $\phi_e$ is visualized on the muscle surface. The visualization contains the colored 3D representation for the mesh and a 1D representation of the mesh consisting of white tubes.
 
-\Cref{fig:cmgui_phie} demonstrates the feature of visualizing nodal data using glyphs. The $V_m$ values at every node are represented by colored circles with a radius that corresponds the value. With this representation, it is possible to also show the data inside the muscle volume.
+\Cref{fig:cmgui_phie} demonstrates the feature of visualizing nodal data using glyphs. The $V_m$ values at every node are represented by colored circles with a radius that corresponds to the value. With this representation, it is possible to also show the data inside the muscle volume.
 
 \begin{figure}%
   \centering%
@@ -456,12 +458,12 @@ The other Perl script besides the one used in \cref{fig:cmgui_output1} to visual
 \end{figure}%
 
 \subsection{Python Output Files}
-Another option in OpenDiHu is to output data in a Python-friendly format that can easily be parsed from within a python script.
+Another option in OpenDiHu is to output data in a Python-friendly format, which can easily be parsed from within a python script.
 The data can then be used, e.g., for error analysis or to convert them to other custom formats.
 
-If the format \code{PythonFile} is specified in the output writer, the data gets written to output files. If the format \code{PythonCallback} is specified, the same data is passed to a callback function and can directly be used in the Python settings script during the running simulation. 
+If the format \code{PythonFile} is specified in the output writer, the data get written to output files. If the format \code{PythonCallback} is specified, the same data are passed to a callback function and can directly be used in the Python settings script during the running simulation. 
 
-For output, the data are organized in a Python dictionary. The output files either contain the plain Python code of this dictionary or a binary representation obtained by the \emph{pickle} package of Python. In parallel execution, every process writes its own file containing the data of the corresponding subdomain. OpenDiHu provides a Python module to parse these output files. The data representation, whether the data is stored in binary or in human-readable format and whether it is composed of multiple files resulting from parallel execution is abstracted and transparent in the call to this module.
+For output, the data are organized in a Python dictionary. The output files either contain the plain Python code of this dictionary or a binary representation obtained by the \emph{pickle} package of Python. In parallel execution, every process writes its own file containing the data of the corresponding subdomain. OpenDiHu provides a Python module to parse these output files. The data representation, whether the data are stored in binary or in human-readable format and whether it is composed of multiple files resulting from parallel execution is abstracted and transparent in the call to this module.
 
 The utility program \code{plot} can be used to quickly visualize the simulation results in such python output files. It creates plots and animations of 1D and 2D structured meshes and chooses different layouts for the type of data, e.g, a plot over time for single-cell CellML models or an animation with multiple plots for subcellular models with multiple ion channels. This script is useful mainly for 1D and 2D toy problems, such as the Laplace, Poisson and Diffusion problems.
 
@@ -474,10 +476,10 @@ The utility program \code{plot} can be used to quickly visualize the simulation 
   \label{fig:python_output}%
 \end{figure}%
 
-\subsection{ADIOS output files and MegMol}
+\subsection{ADIOS output files and MegaMol}
 Another output format is the binary-pack file format defined by the Adaptable Input Output System library (ADIOS2). This type of output is selected by the OpenDiHu output writers for the \code{`MegaMol`} format. ADIOS2 provides a framework for high-performance computing data management \cite{adios2}. ADIOS2 manages self-describing data that allows rapid metadata extraction also from large data sets.
 
-Output files in this format can be loaded in the visualization software MegaMol by experts. MegaMol has been successfully used together with OpenDiHu to implement in-situ visualization where OpenDiHu shares the computed simulation data with MegaMol using the ADIOS2 format and triggers updates of the visualization by sending asynchronous messages to MegaMol during the runtime of the simulation. As both OpenDiHu and MegaMol can run in parallel, the partitioned data needs to be merged from all processes only at the stage of rendering the visualization image. For highly parallel runs on supercomputers, the local data that is generated by the OpenDiHu processes on the same compute node can be shared in memory with one instance of MegaMol per compute node. Then, all MegaMol instances collectively render the resulting visualization. This approach bypasses the costly file output operation on the highly distributed file system of a supercomputer.
+Output files in this format can be loaded into the visualization software MegaMol by experts. MegaMol has been successfully used together with OpenDiHu to implement in-situ visualization, where OpenDiHu shares the computed simulation data with MegaMol using the ADIOS2 format and triggers updates of the visualization by sending asynchronous messages to MegaMol during the runtime of the simulation. As both OpenDiHu and MegaMol can run in parallel, the partitioned data needs to be merged from all processes only at the stage of rendering the visualization image. For highly parallel runs on supercomputers, the local data that are generated by the OpenDiHu processes on the same compute node can be shared in memory with one instance of MegaMol per compute node. Then, all MegaMol instances collectively render the resulting visualization. This approach bypasses the costly file output operation on the highly distributed file system of a supercomputer.
 
 \begin{figure}
 \centering

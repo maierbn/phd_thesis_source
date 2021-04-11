@@ -92,13 +92,13 @@ The strain expression given in \cref{eq:green_lagrange_u} can be linearized by n
 \end{align}
 It can be used together with linear material models to derive a completely linear model.
 
-\subsection{Stress Measures}
+\subsection{Stress Metrics}
 
-Continuum mechanical models establish equations for the unknown displacement function $\bfu$ and its evolution in time via relations between stresses and strains. In the following, we introduce the required stress measures.
+Continuum mechanical models establish equations for the unknown displacement function $\bfu$ and its evolution in time via relations between stresses and strains. In the following, we introduce the required stress metrics.
 
 % stress measures 
 The Cauchy stress tensor $\bfsigma$ results from Euler's cut principle: we consider the mechanical action on an arbitrary, virtual cut out of the body in current configuration. The contact forces on the cut surface at a point $\bfx$ are described by the traction force $\bft$.
-The traction vector acts on the current configuration and is a function of the position $\bfx \in \Omega_t$ and the local orientation of the cut given by the normal vector $\bfn$. Cauchy's theorem states that this relation is linear and the corresponding factors define the second order stress tensor $\bfsigma$ as follows:
+The traction vector acts on the current configuration and is a function of the position $\bfx \in \Omega_t$ and the local orientation of the cut given by the normal vector $\bfn$. Cauchy's theorem states that this relation is linear and can be described by the second order Cauchy stress  tensor $\bfsigma$:
 \begin{align}\label{eq:cauchy_theorem}
   \bft = \bfsigma \cdot \bfn.
 \end{align}
@@ -142,7 +142,7 @@ The Cauchy stress $\bfsigma$ is completely defined in the Eulerian setting. It i
 % ---
 \subsection{Overview of the Physical Relations}
 
-The previously introduced quantities are linked together by various relations, which are summarized in the digram in \cref{fig:tonti_diagram}. The goal is to find the relationship between given forces (top left in \cref{fig:tonti_diagram}) and the resulting deformation of the body described by the displacements (top right in \cref{fig:tonti_diagram}).
+The previously introduced quantities are linked together by various relations, which are summarized in the diagram in \cref{fig:tonti_diagram}. The goal is to find the relationship between given forces (top left in \cref{fig:tonti_diagram}) and the resulting deformation of the body described by the displacements (top right in \cref{fig:tonti_diagram}).
 Prescribed external traction forces $\bfT$ and external or inertial body forces $\bfB$ act on the body and result in stresses $\bfS$ satisfying the \emph{equilibrium} relation. A \emph{material law} connects stresses $\bfS$ and strains $\bfE$. The \emph{kinematics} of the body determine the relationship between displacements $\bfu$ and strains $\bfE$. Geometric Dirichlet boundary conditions prescribe displacements and Neumann boundary conditions such as traction forces contribute to the stress field. 
 
 Whereas the equilibrium relation is linear, the material and kinematic descriptions can both be chosen to be linear or nonlinear. 

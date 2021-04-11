@@ -1,0 +1,27 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {american}{}
+\contentsline {chapter}{\numberline {1}Results}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Basic equations, Laplace, Poisson, Diffusion etc.}{1}{section.0.1}
+\contentsline {section}{\numberline {1.2}Linear Mechanics}{1}{section.0.2}
+\contentsline {section}{\numberline {1.3}Nonlinear mechanics, tendon material}{1}{section.0.3}
+\contentsline {section}{\numberline {1.4}FEBio adapter, validation}{1}{section.0.4}
+\contentsline {section}{\numberline {1.5}Application: Subcellular Models}{2}{section.0.5}
+\contentsline {section}{\numberline {1.6}Application: Only Fibers, Monodomain}{2}{section.0.6}
+\contentsline {section}{\numberline {1.7}Application: Motoneuron with fibers}{3}{section.0.7}
+\contentsline {section}{\numberline {1.8}Application: Rosenfalck, artifical muscle geometry}{3}{section.0.8}
+\contentsline {section}{\numberline {1.9}Application: Simulation of Monodomain Fibers with EMG}{3}{section.0.9}
+\contentsline {section}{\numberline {1.10}Fiber Based Electrophysiology}{3}{section.0.10}
+\contentsline {subsection}{\numberline {1.10.1}Overview of the EMG Simulation}{3}{subsection.0.10.1}
+\contentsline {subsection}{\numberline {1.10.2}Effects of Single Motor Units on the Electromyography Signal}{5}{subsection.0.10.2}
+\contentsline {subsection}{\numberline {1.10.3}Effects of the Fat Layer on the Electromyography Signal}{10}{subsection.0.10.3}
+\contentsline {subsection}{\numberline {1.10.4}Effects of the Mesh Width on the Electromyography Signal}{12}{subsection.0.10.4}
+\contentsline {subsection}{\numberline {1.10.5}Simulation of EMG electrodes}{18}{subsection.0.10.5}
+\contentsline {subsection}{\numberline {1.10.6}Decomposition of Surface EMG Signals}{19}{subsection.0.10.6}
+\contentsline {section}{\numberline {1.11}Application: Static bidomain}{30}{section.0.11}
+\contentsline {section}{\numberline {1.12}Application: Multidomain}{30}{section.0.12}
+\contentsline {section}{\numberline {1.13}Application: Linear mechanics with artifical electrophysiology}{32}{section.0.13}
+\contentsline {section}{\numberline {1.14}Application: Fibers and Muscle contraction, no-precice}{32}{section.0.14}
+\contentsline {section}{\numberline {1.15}Application: Fibers and Muscle contraction, with tendons precice}{34}{section.0.15}
+\contentsline {section}{\numberline {1.16}Application: Neuromuscular system with Spindles and Prestretch}{34}{section.0.16}
+\contentsline {section}{\numberline {1.17}Application: Neuromuscular system with More Sensor Organs}{38}{section.0.17}

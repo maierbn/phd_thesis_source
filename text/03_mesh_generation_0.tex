@@ -1,4 +1,5 @@
 
+\chapter{Generation of Meshes for the Multiscale Models}\label{sec:generation_of_meshes_for_multiscale}
 Multiscale models of skeletal muscles describe phenomena on different length scales and combine them into a single description. The phenomena are modeled by different sets of equations which need individual discretizations and solvers. For that, various geometrical meshes describing different physical domains are required.
 
 The discretization considered in this work involves three-dimensional (3D) and one-dimensional (1D) meshes.
@@ -576,7 +577,7 @@ The resulting grid of points on the biceps surface is visualized in \cref{fig:se
   \begin{subfigure}[t]{0.4\textwidth}%
     \centering%
     \includegraphics[height=9cm]{images/fiber_creation/serial_alg_8_orange.png}%
-    \caption{3D elements formed by connecting the slices in line \ref{1.5} in \cref{alg:serial_algorithm_1}.}%
+    \caption{3D elements formed by connecting the slices in line \ref{alg:1.5} in \cref{alg:serial_algorithm_1}.}%
     \label{fig:serial_alg_8}%
   \end{subfigure}
   \caption{Steps of the serial algorithm for 3D mesh generation, \cref{alg:serial_algorithm_1}, executed directly on the surface mesh of the biceps muscle (not the B-spline surface).}%

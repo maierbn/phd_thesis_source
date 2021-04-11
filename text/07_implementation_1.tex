@@ -12,8 +12,7 @@ All these fundamental considerations potentially depend on each other and requir
 Thus, it is often difficult to port existing, isolated solver software that was designed for serial or moderately parallel execution to efficiently fit into a highly-parallel, multi-scale solution framework. To not (re-)create this kind of isolated solvers for individual model components, we focus on their parallel design from the ground up in the current and following sections.
 
 In this section, we introduce algorithms for the generation of parallel partitioned meshes, which are fundamental ingredients to all our solvers. \Cref{sec:algorithm_for_partitioning_and_sampling,sec:partitioning_requirements} set the scene and define our requirements for well-behaved parallelized meshes. \Cref{sec:partitioning_alg1,sec:partitioning_alg2} give details on the implemented algorithms and \cref{sec:partitioning_user_options} addresses the configuration for the user. \Cref{sec:partitioning_results} concludes by comparing the resulting partitionings for different parameters.
-
-Afterwards, \cref{sec:parallel_partitioning_for_fiber_based,sec:parallel_solver_multidomain} TODO present dedicated parallel solvers for various parts of the multi-scale model. Sections (TODO: reference) describe structures that are needed for the interplay of the individual model components.
+The subsequent sections present the parallel solvers for various parts of the multi-scale model.
 
 
 %\subsection{Algorithm for Partitioning and Sampling the 3D Mesh}\label{sec:algorithm_for_partitioning_and_sampling}
@@ -399,7 +398,7 @@ Instead of individual nodes on the fiber mesh, our implementation treats SIMD ve
 
 After the details on the parallel partitioning and solvers for the fiber based electrophysiology model have been discussed in \cref{sec:parallel_partitioning_and_sampling_of_the,sec:parallel_partitioning_for_fiber_based}, we now consider the multidomain based model of electrophysiology, which includes electric conduction in the body fat layer. The class for the implicit solver within the operator splitting is the \code{MultidomainWithFatSolver} class, which has been introduced in \cref{sec:exemplary_usage_2}.
 
-\subsection{Construction and Partitioning of the Mesh}
+\subsection{Construction and Partitioning of the Mesh}\label{sec:construction_and_partitioning_of_the_mesh}
 
 The mesh used in this solver is a composite mesh of type \code{Mesh::CompositeOfDimension<D>}, as introduced in \cref{sec:composite_meshes}. \Cref{fig:structured_grid_n_nodes} shows the layout how the mesh of the body fat domain $\Omega_B$ is connected with the mesh of the muscle domain $\Omega_M$. The muscle and body meshes have $N_x^\text{el} \times N_y^\text{el} \times N_z^\text{el}$ and $(N_x^\text{el}+ N_y^\text{el}) \times N_\text{fat}^\text{el} \times N_z^\text{el}$ elements, respectively. Only the muscle mesh has been generated from medical imaging data by the pipline given in \cref{sec:generation_of_meshes_for_multiscale}. The fat mesh is created on top of the muscle mesh geometry and has to use the same number of elements as the muscle mesh for compatibility in the composite mesh. Only the physical thickness of the adipose tissue layer and the corresponding number $N_\text{fat}^\text{el}$ of elements in radial direction have to be specified.  (The mesh generation step is implemented in the script \code{create_fat_layer.py}.) 
 

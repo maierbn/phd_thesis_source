@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  1 APR 2021 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  12 APR 2021 00:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3876,34 +3876,40 @@ Package biblatex Info: ... file 'german.lbx' found.
 File: german.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 )) (./doc.aux
 
-LaTeX Warning: Label `fig:harmonic_map_solution' multiply defined.
+LaTeX Warning: Label `fig:emg277' multiply defined.
 
 
-LaTeX Warning: Label `fig:harmonic_map_solution@cref' multiply defined.
+LaTeX Warning: Label `fig:emg277@cref' multiply defined.
 
 
-LaTeX Warning: Label `eq:mechanics_dynamic' multiply defined.
+LaTeX Warning: Label `sub@fig:emg277' multiply defined.
 
 
-LaTeX Warning: Label `eq:mechanics_dynamic@cref' multiply defined.
+LaTeX Warning: Label `sub@fig:emg277@cref' multiply defined.
 
 
-LaTeX Warning: Label `sec:usage' multiply defined.
+LaTeX Warning: Label `fig:emg277' multiply defined.
 
 
-LaTeX Warning: Label `sec:usage@cref' multiply defined.
+LaTeX Warning: Label `fig:emg277@cref' multiply defined.
 
 
-LaTeX Warning: Label `fig:current_configuration_1' multiply defined.
+LaTeX Warning: Label `sub@fig:emg277' multiply defined.
 
 
-LaTeX Warning: Label `fig:current_configuration_1@cref' multiply defined.
+LaTeX Warning: Label `sub@fig:emg277@cref' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:current_configuration_1' multiply defined.
+LaTeX Warning: Label `fig:emg277' multiply defined.
 
 
-LaTeX Warning: Label `sub@fig:current_configuration_1@cref' multiply defined.
+LaTeX Warning: Label `fig:emg277@cref' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:emg277' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:emg277@cref' multiply defined.
 
 
 LaTeX Warning: Label `fig:multidomain_mesh' multiply defined.
@@ -3912,12 +3918,6 @@ LaTeX Warning: Label `fig:multidomain_mesh' multiply defined.
 LaTeX Warning: Label `fig:multidomain_mesh@cref' multiply defined.
 
 
-LaTeX Warning: Label `fig:multidomain_mesh' multiply defined.
-
-
-LaTeX Warning: Label `fig:multidomain_mesh@cref' multiply defined.
-
-
 LaTeX Warning: Label `fig:16_hodgkin_huxley_gpu' multiply defined.
 
 
@@ -3928,36 +3928,6 @@ LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:2_multidomain' multiply defined.
-
-
-LaTeX Warning: Label `fig:2_multidomain@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2_multidomain' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2_multidomain@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:2_fibers' multiply defined.
-
-
-LaTeX Warning: Label `fig:2_fibers@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2_fibers' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:2_fibers@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:multidomain_fibers' multiply defined.
-
-
-LaTeX Warning: Label `fig:multidomain_fibers@cref' multiply defined.
 
 
 LaTeX Warning: Label `fig:neuromuscular_schematic' multiply defined.
@@ -3976,60 +3946,6 @@ LaTeX Warning: Label `fig:neuromuscular_schematic' multiply defined.
 
 
 LaTeX Warning: Label `fig:neuromuscular_schematic@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_gpu' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu_gpu' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:roofline' multiply defined.
-
-
-LaTeX Warning: Label `fig:roofline@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_gpu' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_gpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_cpu' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:16_hodgkin_huxley_cpu@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu_gpu' multiply defined.
-
-
-LaTeX Warning: Label `fig:16_hodgkin_huxley_cpu_gpu@cref' multiply defined.
 
 )
 \openout1 = `doc.aux'.
@@ -4247,15 +4163,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'doc.bbl' found.
- (./doc.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                ghadam2020modeling
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (./doc.bbl)
 Package biblatex Info: Reference section=0 on input line 19.
 Package biblatex Info: Reference segment=0 on input line 19.
 
@@ -4403,77 +4311,76 @@ LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
 
 Package tocbasic Info: character protrusion at toc deactivated on input line 29
 .
-LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 29.
+LaTeX Font Info:    Calculating math sizes for size <9.5> on input line 30.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 8.36005pt on input line 29.
+(Font)              scaled to size 8.36005pt on input line 30.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 5.85199pt on input line 29.
+(Font)              scaled to size 5.85199pt on input line 30.
 LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 4.18002pt on input line 29.
+(Font)              scaled to size 4.18002pt on input line 30.
 
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 29.
+(Font)              size <9> substituted on input line 30.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 6.384pt on input line 29.
+(Font)              scaled to size 6.384pt on input line 30.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 4.56003pt on input line 29.
+(Font)              scaled to size 4.56003pt on input line 30.
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <9.5> not available
-(Font)              size <9> substituted on input line 29.
+(Font)              size <9> substituted on input line 30.
 
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 9.12006pt on input line 29.
+(Font)              scaled to size 9.12006pt on input line 30.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 
 
-] [2] [3] [4
+] [2
 
 
-]
-(./01_introduction.tex
+] (./08_results_0.tex
 chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -4490,52 +4397,328 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface .
 
-[1
+) (./08_results_1.tex
+<images/results/application/fibers_0.png, id=80, 1396.21625pt x 803.0pt>
+File: images/results/application/fibers_0.png Graphic file (type png)
+<use images/results/application/fibers_0.png>
+Package pdftex.def Info: images/results/application/fibers_0.png  used on input
+ line 11.
+(pdftex.def)             Requested size: 441.01775pt x 253.64474pt.
+<images/results/application/fibers_1.png, id=82, 2792.4325pt x 1606.0pt>
+File: images/results/application/fibers_1.png Graphic file (type png)
+<use images/results/application/fibers_1.png>
+Package pdftex.def Info: images/results/application/fibers_1.png  used on input
+ line 12.
+(pdftex.def)             Requested size: 441.01775pt x 253.63249pt.
+<images/results/application/fibers_2.png, id=83, 2792.4325pt x 1606.0pt>
+File: images/results/application/fibers_2.png Graphic file (type png)
+<use images/results/application/fibers_2.png>
+Package pdftex.def Info: images/results/application/fibers_2.png  used on input
+ line 13.
+(pdftex.def)             Requested size: 441.01775pt x 253.63249pt.
+
+Overfull \hbox (882.03549pt too wide) in paragraph at lines 11--14
+ [][][][] 
+ []
 
 
-] [2]
-<images/introduction/hierarchical_structure.pdf, id=234, 543.82709pt x 387.0271
-3pt>
-File: images/introduction/hierarchical_structure.pdf Graphic file (type pdf)
-<use images/introduction/hierarchical_structure.pdf>
-Package pdftex.def Info: images/introduction/hierarchical_structure.pdf  used o
-n input line 48.
-(pdftex.def)             Requested size: 220.50887pt x 156.92819pt.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./images/results/application/fibers_0.png> <./images/results/application/f
+ibers_1.png> <./images/results/application/fibers_2.png>]
+<images/results/application/full_muscle_emg_raytrace_1_small.png, id=103, 1003.
+75pt x 1364.09625pt>
+File: images/results/application/full_muscle_emg_raytrace_1_small.png Graphic f
+ile (type png)
+<use images/results/application/full_muscle_emg_raytrace_1_small.png>
+Package pdftex.def Info: images/results/application/full_muscle_emg_raytrace_1_
+small.png  used on input line 36.
+(pdftex.def)             Requested size: 264.61333pt x 359.61049pt.
+LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 45.
+
+
+LaTeX Warning: Reference `eq:monodomain' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Reference `eq:bidomain1' on page 1 undefined on input line 46.
+
+[3]
+<images/results/application/fibers_4.png, id=119, 2792.4325pt x 1606.0pt>
+File: images/results/application/fibers_4.png Graphic file (type png)
+<use images/results/application/fibers_4.png>
+Package pdftex.def Info: images/results/application/fibers_4.png  used on input
+ line 51.
+(pdftex.def)             Requested size: 441.01775pt x 253.63249pt.
+
+
+LaTeX Warning: Reference `sec:generation_of_meshes_for_multiscale' on page 1 un
+defined on input line 56.
+
+[4 <./images/results/application/full_muscle_emg_raytrace_1_small.png>]
+
+LaTeX Warning: Reference `sec:muscle_fibers_and_motor_units' on page 1 undefine
+d on input line 67.
+
+[5 <./images/results/application/fibers_4.png>]
+<images/results/application/MU_fibre_distribution_37x37_20c_txt_fiber_distribut
+ion_.pdf, id=140, 462.52798pt x 202.356pt>
+File: images/results/application/MU_fibre_distribution_37x37_20c_txt_fiber_dist
+ribution_.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_37x37_20c_txt_fiber_distr
+ibution_.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_37x37
+_20c_txt_fiber_distribution_.pdf  used on input line 77.
+(pdftex.def)             Requested size: 264.61333pt x 115.7733pt.
+<images/results/application/MU_fibre_distribution_37x37_20c_txt_2d_fiber_distri
+bution_.pdf, id=141, 539.21916pt x 405.33267pt>
+File: images/results/application/MU_fibre_distribution_37x37_20c_txt_2d_fiber_d
+istribution_.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_37x37_20c_txt_2d_fiber_di
+stribution_.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_37x37
+_20c_txt_2d_fiber_distribution_.pdf  used on input line 83.
+(pdftex.def)             Requested size: 264.61333pt x 198.9178pt.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 57.
+(Font)              scaled to size 7.68005pt on input line 91.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 57.
- [3 <./images/introduction/hierarchical_structure.pdf>]
-<images/introduction/action_potentials.png, id=367, 545.03625pt x 364.36125pt>
-File: images/introduction/action_potentials.png Graphic file (type png)
-<use images/introduction/action_potentials.png>
-Package pdftex.def Info: images/introduction/action_potentials.png  used on inp
-ut line 62.
-(pdftex.def)             Requested size: 264.61333pt x 176.8929pt.
- [4 <./images/introduction/action_potentials.png>]
+(Font)              scaled to size 4.80003pt on input line 91.
+LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
+(Font)              scaled to size 5.76004pt on input line 93.
+ [6 <./images/results/application/MU_fibre_distribution_37x37_20c_txt_fiber_dis
+tribution_.pdf> <./images/results/application/MU_fibre_distribution_37x37_20c_t
+xt_2d_fiber_distribution_.pdf
 
-Package scrlayer-scrpage Warning: \headheight to low.
-(scrlayer-scrpage)                At least 29.78392pt needed,
-(scrlayer-scrpage)                but only 21.98557pt found.
-(scrlayer-scrpage)                I'll enlarge \headheight, for further
-(scrlayer-scrpage)                processing, but you should do this yourself,
-(scrlayer-scrpage)                e.g., setting geometry's option
-(scrlayer-scrpage)                `head=29.78392pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
-00.
+pdfTeX warning: pdflatex (file ./images/results/application/MU_fibre_distributi
+on_37x37_20c_txt_2d_fiber_distribution_.pdf): PDF inclusion: multiple pdfs with
+ page group included in a single page
+>]
+LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
+(Font)              scaled to size 9.63605pt on input line 96.
+ [7]
+<images/results/application/mu01a.png, id=4358, 1409.265pt x 980.66376pt>
+File: images/results/application/mu01a.png Graphic file (type png)
+<use images/results/application/mu01a.png>
+Package pdftex.def Info: images/results/application/mu01a.png  used on input li
+ne 114.
+(pdftex.def)             Requested size: 308.71107pt x 214.81894pt.
+LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
+(Font)              scaled to size 10.51207pt on input line 115.
+<images/results/application/mu01b.png, id=4359, 645.41125pt x 1392.20125pt>
+File: images/results/application/mu01b.png Graphic file (type png)
+<use images/results/application/mu01b.png>
+Package pdftex.def Info: images/results/application/mu01b.png  used on input li
+ne 120.
+(pdftex.def)             Requested size: 110.25443pt x 237.81822pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+[][][]|[]\T1/mdbch/m/n/10.95 (+10) Resulting sur-face
+ []
+
+<images/results/application/mu20a.png, id=4360, 1409.265pt x 980.66376pt>
+File: images/results/application/mu20a.png Graphic file (type png)
+<use images/results/application/mu20a.png>
+Package pdftex.def Info: images/results/application/mu20a.png  used on input li
+ne 133.
+(pdftex.def)             Requested size: 308.71107pt x 214.81894pt.
+<images/results/application/mu20b.png, id=4361, 645.41125pt x 1392.20125pt>
+File: images/results/application/mu20b.png Graphic file (type png)
+<use images/results/application/mu20b.png>
+Package pdftex.def Info: images/results/application/mu20b.png  used on input li
+ne 139.
+(pdftex.def)             Requested size: 110.25443pt x 237.81822pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--140
+[][][]|[]\T1/mdbch/m/n/10.95 (+10) Resulting sur-face
+ []
 
 
-Overfull \vbox (7.79836pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./images/results/application/mu01a.png> <./images/results/application/mu01
+b.png>]
+[9 <./images/results/application/mu20a.png> <./images/results/application/mu20b
+.png>]
+<images/results/application/fibers_emg_mesh_no_fat.png, id=4390, 775.89874pt x 
+751.80875pt>
+File: images/results/application/fibers_emg_mesh_no_fat.png Graphic file (type 
+png)
+<use images/results/application/fibers_emg_mesh_no_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_mesh_no_fat.png 
+ used on input line 222.
+(pdftex.def)             Requested size: 132.30666pt x 128.19583pt.
+<images/results/application/fibers_emg_mesh_thin_fat.png, id=4391, 803.0pt x 76
+0.8425pt>
+File: images/results/application/fibers_emg_mesh_thin_fat.png Graphic file (typ
+e png)
+<use images/results/application/fibers_emg_mesh_thin_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_mesh_thin_fat.pn
+g  used on input line 228.
+(pdftex.def)             Requested size: 132.30666pt x 125.35945pt.
+<images/results/application/fibers_emg_mesh_thick_fat.png, id=4392, 945.5325pt 
+x 805.0075pt>
+File: images/results/application/fibers_emg_mesh_thick_fat.png Graphic file (ty
+pe png)
+<use images/results/application/fibers_emg_mesh_thick_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_mesh_thick_fat.p
+ng  used on input line 234.
+(pdftex.def)             Requested size: 132.30666pt x 112.63885pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--235
+[][][]|[]\T1/mdbch/m/n/10.95 (+10) Muscle with thick fat
+ []
+
+[10 <./images/results/application/fibers_emg_mesh_no_fat.png> <./images/results
+/application/fibers_emg_mesh_thin_fat.png> <./images/results/application/fibers
+_emg_mesh_thick_fat.png>]
+<images/results/application/fibers_emg_no_fat.png, id=4407, 781.92125pt x 1310.
+8975pt>
+File: images/results/application/fibers_emg_no_fat.png Graphic file (type png)
+<use images/results/application/fibers_emg_no_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_no_fat.png  used
+ on input line 254.
+(pdftex.def)             Requested size: 158.76665pt x 266.17538pt.
+<images/results/application/fibers_emg_thin_fat.png, id=4408, 531.9875pt x 1313
+.90875pt>
+File: images/results/application/fibers_emg_thin_fat.png Graphic file (type png
+)
+<use images/results/application/fibers_emg_thin_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_thin_fat.png  us
+ed on input line 260.
+(pdftex.def)             Requested size: 110.25443pt x 272.30019pt.
+<images/results/application/fibers_emg_thick_fat.png, id=4409, 611.28375pt x 13
+32.98pt>
+File: images/results/application/fibers_emg_thick_fat.png Graphic file (type pn
+g)
+<use images/results/application/fibers_emg_thick_fat.png>
+Package pdftex.def Info: images/results/application/fibers_emg_thick_fat.png  u
+sed on input line 266.
+(pdftex.def)             Requested size: 123.48442pt x 269.25577pt.
+Package mdframed Info: mdframed works in twoside mode on input line 274.
+
+Overfull \hbox (6.24458pt too wide) in paragraph at lines 275--276
+[][][][][][][][][][] \T1/mdbch/m/n/12 (-10) and [][][][][][][][][][][][][][][][
+][][] with
+ []
+
+[11 <./images/results/application/fibers_emg_no_fat.png> <./images/results/appl
+ication/fibers_emg_thin_fat.png> <./images/results/application/fibers_emg_thick
+_fat.png>]
+<images/results/application/MU_fibre_distribution_523x523_100mus_txt_mu_positio
+ns.pdf, id=4429, 312.01796pt x 291.45401pt>
+File: images/results/application/MU_fibre_distribution_523x523_100mus_txt_mu_po
+sitions.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_523x523_100mus_txt_mu_pos
+itions.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_523x5
+23_100mus_txt_mu_positions.pdf  used on input line 292.
+(pdftex.def)             Requested size: 220.50887pt x 205.97318pt.
 
 
-[5]
-LaTeX Font Info:    Try loading font information for TS1+mdbch on input line 10
-3.
- (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
+LaTeX Warning: Reference `sec:muscle_fibers_and_motor_units' on page 1 undefine
+d on input line 298.
+
+<images/results/application/MU_fibre_distribution_13x13_100mus_txt_fiber_distri
+bution.pdf, id=4431, 409.95012pt x 197.4246pt>
+File: images/results/application/MU_fibre_distribution_13x13_100mus_txt_fiber_d
+istribution.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_13x13_100mus_txt_fiber_di
+stribution.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_13x13
+_100mus_txt_fiber_distribution.pdf  used on input line 306.
+(pdftex.def)             Requested size: 198.45663pt x 95.57307pt.
+<images/results/application/MU_fibre_distribution_37x37_100mus_txt_fiber_distri
+bution.pdf, id=4432, 418.88977pt x 197.4246pt>
+File: images/results/application/MU_fibre_distribution_37x37_100mus_txt_fiber_d
+istribution.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_37x37_100mus_txt_fiber_di
+stribution.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_37x37
+_100mus_txt_fiber_distribution.pdf  used on input line 312.
+(pdftex.def)             Requested size: 198.45663pt x 93.53363pt.
+<images/results/application/MU_fibre_distribution_187x187_100mus_txt_fiber_dist
+ribution.pdf, id=4433, 427.82942pt x 197.4246pt>
+File: images/results/application/MU_fibre_distribution_187x187_100mus_txt_fiber
+_distribution.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_187x187_100mus_txt_fiber_
+distribution.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_187x1
+87_100mus_txt_fiber_distribution.pdf  used on input line 318.
+(pdftex.def)             Requested size: 198.45663pt x 91.57855pt.
+<images/results/application/MU_fibre_distribution_523x523_100mus_txt_fiber_dist
+ribution.pdf, id=4434, 436.76906pt x 197.4246pt>
+File: images/results/application/MU_fibre_distribution_523x523_100mus_txt_fiber
+_distribution.pdf Graphic file (type pdf)
+<use images/results/application/MU_fibre_distribution_523x523_100mus_txt_fiber_
+distribution.pdf>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_523x5
+23_100mus_txt_fiber_distribution.pdf  used on input line 324.
+(pdftex.def)             Requested size: 198.45663pt x 89.7048pt.
+[12 <./images/results/application/MU_fibre_distribution_523x523_100mus_txt_mu_p
+ositions.pdf>]
+<images/results/application/MU_fibre_distribution_523x523_100mus_txt_0_2d_fiber
+_distribution_.png, id=4762, 530.4618pt x 392.4261pt>
+File: images/results/application/MU_fibre_distribution_523x523_100mus_txt_0_2d_
+fiber_distribution_.png Graphic file (type png)
+<use images/results/application/MU_fibre_distribution_523x523_100mus_txt_0_2d_f
+iber_distribution_.png>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_523x5
+23_100mus_txt_0_2d_fiber_distribution_.png  used on input line 341.
+(pdftex.def)             Requested size: 207.27887pt x 153.33896pt.
+LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
+(Font)              scaled to size 10.51207pt on input line 342.
+
+
+LaTeX Warning: Reference `sec:muscle_fibers_and_motor_units' on page 1 undefine
+d on input line 342.
+
+
+LaTeX Warning: Reference `sec:muscle_fibers_and_motor_units' on page 1 undefine
+d on input line 342.
+
+<images/results/application/MU_fibre_distribution_523x523_100mus_txt_2d_fiber_d
+istribution_.png, id=4763, 529.7391pt x 383.7537pt>
+File: images/results/application/MU_fibre_distribution_523x523_100mus_txt_2d_fi
+ber_distribution_.png Graphic file (type png)
+<use images/results/application/MU_fibre_distribution_523x523_100mus_txt_2d_fib
+er_distribution_.png>
+Package pdftex.def Info: images/results/application/MU_fibre_distribution_523x5
+23_100mus_txt_2d_fiber_distribution_.png  used on input line 347.
+(pdftex.def)             Requested size: 207.27887pt x 150.1552pt.
+
+LaTeX Warning: Reference `sec:muscle_fibers_and_motor_units' on page 1 undefine
+d on input line 355.
+
+
+Overfull \hbox (0.95601pt too wide) in paragraph at lines 362--376
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for TS1+mdbch on input line 38
+1.
+(/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 103.
+(Font)              scaled to size 11.52008pt on input line 381.
 Package microtype Info: Character `texttwelveudash ' is missing
 (microtype)             in font `TS1/mdbch/m/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -4557,70 +4740,540 @@ Package microtype Info: Character `texttildelow ' is missing
 Package microtype Info: Character `textcelsius ' is missing
 (microtype)             in font `TS1/mdbch/m/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 103.
+ [13 <./images/results/application/MU_fibre_distribution_13x13_100mus_txt_fiber
+_distribution.pdf> <./images/results/application/MU_fibre_distribution_37x37_10
+0mus_txt_fiber_distribution.pdf
 
-[6] [7] [8]
-LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 167.
- [9] [10] [11]
-<images/introduction/model_scheme_overview.pdf, id=599, 1625.54544pt x 456.2259
-4pt>
-File: images/introduction/model_scheme_overview.pdf Graphic file (type pdf)
-<use images/introduction/model_scheme_overview.pdf>
-Package pdftex.def Info: images/introduction/model_scheme_overview.pdf  used on
- input line 207.
-(pdftex.def)             Requested size: 441.01775pt x 123.77437pt.
- [12 <./images/introduction/model_scheme_overview.pdf>] [13] [14]
-<images/introduction/partitioning_names.png, id=831, 864.22874pt x 1074.0125pt>
+pdfTeX warning: pdflatex (file ./images/results/application/MU_fibre_distributi
+on_37x37_100mus_txt_fiber_distribution.pdf): PDF inclusion: multiple pdfs with 
+page group included in a single page
+> <./images/results/application/MU_fibre_distribution_187x187_100mus_txt_fiber_
+distribution.pdf
 
-File: images/introduction/partitioning_names.png Graphic file (type png)
-<use images/introduction/partitioning_names.png>
-Package pdftex.def Info: images/introduction/partitioning_names.png  used on in
-put line 255.
-(pdftex.def)             Requested size: 213.89388pt x 265.81482pt.
-<images/introduction/full_muscle_emg.png, id=832, 2680.0125pt x 2904.8525pt>
-File: images/introduction/full_muscle_emg.png Graphic file (type png)
-<use images/introduction/full_muscle_emg.png>
-Package pdftex.def Info: images/introduction/full_muscle_emg.png  used on input
- line 262.
-(pdftex.def)             Requested size: 218.30162pt x 236.60376pt.
-LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `T1/GoMono-TLF/m/n' will be
-(Font)              scaled to size 9.63605pt on input line 263.
-LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
-LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 263.
+pdfTeX warning: pdflatex (file ./images/results/application/MU_fibre_distributi
+on_187x187_100mus_txt_fiber_distribution.pdf): PDF inclusion: multiple pdfs wit
+h page group included in a single page
+> <./images/results/application/MU_fibre_distribution_523x523_100mus_txt_fiber_
+distribution.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/MU_fibre_distributi
+on_523x523_100mus_txt_fiber_distribution.pdf): PDF inclusion: multiple pdfs wit
+h page group included in a single page
+>] [14 <./images/results/application/MU_fibre_distribution_523x523_100mus_txt_0
+_2d_fiber_distribution_.png> <./images/results/application/MU_fibre_distributio
+n_523x523_100mus_txt_2d_fiber_distribution_.png>] [15]
+<images/results/application/emg37.png, id=6051, 340.27126pt x 1562.83875pt>
+File: images/results/application/emg37.png Graphic file (type png)
+<use images/results/application/emg37.png>
+Package pdftex.def Info: images/results/application/emg37.png  used on input li
+ne 404.
+(pdftex.def)             Requested size: 74.3355pt x 341.43306pt.
+<images/results/application/emg67.png, id=6052, 340.27126pt x 1562.83875pt>
+File: images/results/application/emg67.png Graphic file (type png)
+<use images/results/application/emg67.png>
+Package pdftex.def Info: images/results/application/emg67.png  used on input li
+ne 410.
+(pdftex.def)             Requested size: 74.3355pt x 341.43306pt.
+<images/results/application/emg109.png, id=6053, 340.27126pt x 1562.83875pt>
+File: images/results/application/emg109.png Graphic file (type png)
+<use images/results/application/emg109.png>
+Package pdftex.def Info: images/results/application/emg109.png  used on input l
+ine 416.
+(pdftex.def)             Requested size: 74.3355pt x 341.43306pt.
+<images/results/application/emg187.png, id=6054, 690.58pt x 1606.0pt>
+File: images/results/application/emg187.png Graphic file (type png)
+<use images/results/application/emg187.png>
+Package pdftex.def Info: images/results/application/emg187.png  used on input l
+ine 422.
+(pdftex.def)             Requested size: 146.81743pt x 341.43306pt.
+<images/results/application/emg277.png, id=6055, 557.08125pt x 1540.75626pt>
+File: images/results/application/emg277.png Graphic file (type png)
+<use images/results/application/emg277.png>
+Package pdftex.def Info: images/results/application/emg277.png  used on input l
+ine 435.
+(pdftex.def)             Requested size: 128.5935pt x 355.65944pt.
+<images/results/application/emg523.pdf, id=6056, 566.78676pt x 1555.48058pt>
+File: images/results/application/emg523.pdf Graphic file (type pdf)
+<use images/results/application/emg523.pdf>
+Package pdftex.def Info: images/results/application/emg523.pdf  used on input l
+ine 441.
+(pdftex.def)             Requested size: 129.58849pt x 355.65944pt.
+<images/results/application/emg523-1.pdf, id=6057, 523.62556pt x 1183.08932pt>
+File: images/results/application/emg523-1.pdf Graphic file (type pdf)
+<use images/results/application/emg523-1.pdf>
+Package pdftex.def Info: images/results/application/emg523-1.pdf  used on input
+ line 449.
+(pdftex.def)             Requested size: 96.96509pt x 219.08621pt.
+<images/results/application/emg523-2.png, id=6058, 690.58pt x 1569.865pt>
+File: images/results/application/emg523-2.png Graphic file (type png)
+<use images/results/application/emg523-2.png>
+Package pdftex.def Info: images/results/application/emg523-2.png  used on input
+ line 455.
+(pdftex.def)             Requested size: 96.37495pt x 219.08621pt.
+
+Overfull \hbox (21.8806pt too wide) in paragraph at lines 433--460
+[]$[]$ $[]$  $[]$ 
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 668.
+LaTeX Font Info:    Font shape `T1/GoMono-TLF/b/n' will be
+(Font)              scaled to size 9.63605pt on input line 674.
+[16 <./images/results/application/emg37.png> <./images/results/application/emg6
+7.png> <./images/results/application/emg109.png> <./images/results/application/
+emg187.png>]
+Package mdframed Info: Not enough space on this page on input line 676.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-[16 <./images/introduction/partitioning_names.png> <./images/introduction/full_
-muscle_emg.png>]) (./02_comparative_study.tex [17] [18
+ [17 <./images/results/application/emg277.png> <./images/results/application/em
+g523.pdf> <./images/results/application/emg523-1.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/emg523-1.pdf): PDF 
+inclusion: multiple pdfs with page group included in a single page
+> <./images/results/application/emg523-2.png>]
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 11.52008pt on input line 688.
+<images/results/application/fibers_fat_emg2.png, id=6105, 1693.32625pt x 1277.7
+7374pt>
+File: images/results/application/fibers_fat_emg2.png Graphic file (type png)
+<use images/results/application/fibers_fat_emg2.png>
+Package pdftex.def Info: images/results/application/fibers_fat_emg2.png  used o
+n input line 692.
+(pdftex.def)             Requested size: 308.71107pt x 232.93343pt.
+ [18]
+<images/results/application/emg_video_37.png, id=6118, 803.0pt x 1006.76125pt>
+File: images/results/application/emg_video_37.png Graphic file (type png)
+<use images/results/application/emg_video_37.png>
+Package pdftex.def Info: images/results/application/emg_video_37.png  used on i
+nput line 706.
+(pdftex.def)             Requested size: 264.61333pt x 331.75601pt.
+<images/results/application/emg_video_plot.pdf, id=6119, 318.28188pt x 647.8123
+2pt>
+File: images/results/application/emg_video_plot.pdf Graphic file (type pdf)
+<use images/results/application/emg_video_plot.pdf>
+Package pdftex.def Info: images/results/application/emg_video_plot.pdf  used on
+ input line 712.
+(pdftex.def)             Requested size: 167.58888pt x 341.1148pt.
+ [19 <./images/results/application/fibers_fat_emg2.png>]
+Overfull \hbox (7.15013pt too wide) in paragraph at lines 727--728
+[]\T1/mdbch/m/n/12 (-10) In our sim-u-la-tion, the lo-ca-tion of the neu-ro-mus
+-cu-lar junc-tions is cho-sen pseudo-randomly
+ []
+
+<images/results/application/emg_video_37_junctions.png, id=6127, 1606.0pt x 698
+.61pt>
+File: images/results/application/emg_video_37_junctions.png Graphic file (type 
+png)
+<use images/results/application/emg_video_37_junctions.png>
+Package pdftex.def Info: images/results/application/emg_video_37_junctions.png 
+ used on input line 731.
+(pdftex.def)             Requested size: 374.86777pt x 163.06474pt.
+[20 <./images/results/application/emg_video_37.png> <./images/results/applicati
+on/emg_video_plot.pdf>]
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 742.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 742.
+
+LaTeX Font Info:    Font shape `OML/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `OML/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `OML/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+LaTeX Font Info:    Font shape `MDA/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `MDA/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `MDA/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+LaTeX Font Info:    Font shape `MDB/mdbch/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 742.
+LaTeX Font Info:    Font shape `MDB/mdbch/b/n' will be
+(Font)              scaled to size 7.68005pt on input line 742.
+LaTeX Font Info:    Font shape `MDB/mdbch/b/n' will be
+(Font)              scaled to size 5.76004pt on input line 742.
+[21 <./images/results/application/emg_video_37_junctions.png>]
+<images/results/application/emg_20mus-50s-old2.pdf, id=7321, 729.72754pt x 384.
+61299pt>
+File: images/results/application/emg_20mus-50s-old2.pdf Graphic file (type pdf)
+
+<use images/results/application/emg_20mus-50s-old2.pdf>
+Package pdftex.def Info: images/results/application/emg_20mus-50s-old2.pdf  use
+d on input line 760.
+(pdftex.def)             Requested size: 441.01775pt x 232.44215pt.
+<images/results/application/oldmus2.pdf, id=7324, 423.36186pt x 197.4246pt>
+File: images/results/application/oldmus2.pdf Graphic file (type pdf)
+<use images/results/application/oldmus2.pdf>
+Package pdftex.def Info: images/results/application/oldmus2.pdf  used on input 
+line 773.
+(pdftex.def)             Requested size: 198.45663pt x 92.54555pt.
+<images/results/application/oldmus1.pdf, id=7325, 539.1288pt x 405.25055pt>
+File: images/results/application/oldmus1.pdf Graphic file (type pdf)
+<use images/results/application/oldmus1.pdf>
+Package pdftex.def Info: images/results/application/oldmus1.pdf  used on input 
+line 779.
+(pdftex.def)             Requested size: 198.45663pt x 149.17358pt.
+<images/results/application/newmus1.pdf, id=7328, 423.36186pt x 197.4246pt>
+File: images/results/application/newmus1.pdf Graphic file (type pdf)
+<use images/results/application/newmus1.pdf>
+Package pdftex.def Info: images/results/application/newmus1.pdf  used on input 
+line 793.
+(pdftex.def)             Requested size: 198.45663pt x 92.54555pt.
+<images/results/application/newmus3.pdf, id=7331, 539.03893pt x 405.16846pt>
+File: images/results/application/newmus3.pdf Graphic file (type pdf)
+<use images/results/application/newmus3.pdf>
+Package pdftex.def Info: images/results/application/newmus3.pdf  used on input 
+line 799.
+(pdftex.def)             Requested size: 198.45663pt x 149.16809pt.
+
+
+LaTeX Warning: Reference `sec:method1_assignment' on page 1 undefined on input 
+line 807.
+
+[22] [23 <./images/results/application/emg_20mus-50s-old2.pdf> <./images/result
+s/application/oldmus2.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/oldmus2.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+> <./images/results/application/oldmus1.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/oldmus1.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>]
+<images/results/application/emg_20mus-40s_new3.pdf, id=22011, 732.4226pt x 388.
+92886pt>
+File: images/results/application/emg_20mus-40s_new3.pdf Graphic file (type pdf)
+
+<use images/results/application/emg_20mus-40s_new3.pdf>
+Package pdftex.def Info: images/results/application/emg_20mus-40s_new3.pdf  use
+d on input line 817.
+(pdftex.def)             Requested size: 441.01775pt x 234.18994pt.
+ [24 <./images/results/application/newmus1.pdf> <./images/results/application/n
+ewmus3.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/newmus3.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>]
+<images/results/application/emg_20mus-40s_new-noshift2.pdf, id=26318, 361.15056
+pt x 194.11545pt>
+File: images/results/application/emg_20mus-40s_new-noshift2.pdf Graphic file (t
+ype pdf)
+<use images/results/application/emg_20mus-40s_new-noshift2.pdf>
+Package pdftex.def Info: images/results/application/emg_20mus-40s_new-noshift2.
+pdf  used on input line 837.
+(pdftex.def)             Requested size: 207.27887pt x 111.41113pt.
+<images/results/application/emg_20mus-40s_new-shift2.pdf, id=26319, 361.15056pt
+ x 194.11545pt>
+File: images/results/application/emg_20mus-40s_new-shift2.pdf Graphic file (typ
+e pdf)
+<use images/results/application/emg_20mus-40s_new-shift2.pdf>
+Package pdftex.def Info: images/results/application/emg_20mus-40s_new-shift2.pd
+f  used on input line 844.
+(pdftex.def)             Requested size: 207.27887pt x 111.41113pt.
+ [25 <./images/results/application/emg_20mus-40s_new3.pdf>] [26 <./images/resul
+ts/application/emg_20mus-40s_new-noshift2.pdf> <./images/results/application/em
+g_20mus-40s_new-shift2.pdf
+
+pdfTeX warning: pdflatex (file ./images/results/application/emg_20mus-40s_new-s
+hift2.pdf): PDF inclusion: multiple pdfs with page group included in a single p
+age
+>] [27]
+<images/results/application/gru2.pdf, id=74029, 867.24pt x 307.87021pt>
+File: images/results/application/gru2.pdf Graphic file (type pdf)
+<use images/results/application/gru2.pdf>
+Package pdftex.def Info: images/results/application/gru2.pdf  used on input lin
+e 905.
+(pdftex.def)             Requested size: 441.01775pt x 156.56075pt.
+ [28]
+<images/results/application/multidomain_fr0_cropped.png, id=74038, 1429.34pt x 
+1065.9825pt>
+File: images/results/application/multidomain_fr0_cropped.png Graphic file (type
+ png)
+<use images/results/application/multidomain_fr0_cropped.png>
+Package pdftex.def Info: images/results/application/multidomain_fr0_cropped.png
+  used on input line 1060.
+(pdftex.def)             Requested size: 101.43219pt x 75.63486pt.
+<images/results/application/multidomain_fr1_cropped.png, id=74039, 1429.34pt x 
+1065.9825pt>
+File: images/results/application/multidomain_fr1_cropped.png Graphic file (type
+ png)
+<use images/results/application/multidomain_fr1_cropped.png>
+Package pdftex.def Info: images/results/application/multidomain_fr1_cropped.png
+  used on input line 1067.
+(pdftex.def)             Requested size: 101.43219pt x 75.63486pt.
+<images/results/application/multidomain_fr2_cropped.png, id=74040, 1429.34pt x 
+1065.9825pt>
+File: images/results/application/multidomain_fr2_cropped.png Graphic file (type
+ png)
+<use images/results/application/multidomain_fr2_cropped.png>
+Package pdftex.def Info: images/results/application/multidomain_fr2_cropped.png
+  used on input line 1074.
+(pdftex.def)             Requested size: 101.43219pt x 75.63486pt.
+<images/results/application/multidomain_fr3_cropped.png, id=74041, 1429.34pt x 
+1065.9825pt>
+File: images/results/application/multidomain_fr3_cropped.png Graphic file (type
+ png)
+<use images/results/application/multidomain_fr3_cropped.png>
+Package pdftex.def Info: images/results/application/multidomain_fr3_cropped.png
+  used on input line 1081.
+(pdftex.def)             Requested size: 101.43219pt x 75.63486pt.
+ [29 <./images/results/application/gru2.pdf>]
+<images/results/application/multidomain_mesh.png, id=74128, 2732.2075pt x 1549.
+79pt>
+File: images/results/application/multidomain_mesh.png Graphic file (type png)
+<use images/results/application/multidomain_mesh.png>
+Package pdftex.def Info: images/results/application/multidomain_mesh.png  used 
+on input line 1091.
+(pdftex.def)             Requested size: 441.01775pt x 250.14706pt.
+<images/results/application/multidomain_Vm0_1.png, id=74129, 2732.2075pt x 1489
+.565pt>
+File: images/results/application/multidomain_Vm0_1.png Graphic file (type png)
+<use images/results/application/multidomain_Vm0_1.png>
+Package pdftex.def Info: images/results/application/multidomain_Vm0_1.png  used
+ on input line 1103.
+(pdftex.def)             Requested size: 441.01775pt x 240.42633pt.
+<images/results/application/multidomain_Vm2_phi_b.png, id=74130, 2732.2075pt x 
+1489.565pt>
+File: images/results/application/multidomain_Vm2_phi_b.png Graphic file (type p
+ng)
+<use images/results/application/multidomain_Vm2_phi_b.png>
+Package pdftex.def Info: images/results/application/multidomain_Vm2_phi_b.png  
+used on input line 1109.
+(pdftex.def)             Requested size: 441.01775pt x 240.42633pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30 <./images/results/application/multidomain_fr0_cropped.png> <./images/resul
+ts/application/multidomain_fr1_cropped.png> <./images/results/application/multi
+domain_fr2_cropped.png> <./images/results/application/multidomain_fr3_cropped.p
+ng> <./images/results/application/multidomain_mesh.png>]
+<images/results/application/2_multidomain.png, id=74145, 462.528pt x 346.896pt>
+
+File: images/results/application/2_multidomain.png Graphic file (type png)
+<use images/results/application/2_multidomain.png>
+Package pdftex.def Info: images/results/application/2_multidomain.png  used on 
+input line 1122.
+(pdftex.def)             Requested size: 211.68663pt x 158.76422pt.
+<images/results/application/2_fibers.png, id=74146, 462.528pt x 346.896pt>
+File: images/results/application/2_fibers.png Graphic file (type png)
+<use images/results/application/2_fibers.png>
+Package pdftex.def Info: images/results/application/2_fibers.png  used on input
+ line 1129.
+(pdftex.def)             Requested size: 211.68663pt x 158.76422pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31 <./images/results/application/multidomain_Vm0_1.png> <./images/results/app
+lication/multidomain_Vm2_phi_b.png>]
+<images/results/application/fibers_muscle_contraction_quantities.png, id=74156,
+ 1053.1847pt x 449.42906pt>
+File: images/results/application/fibers_muscle_contraction_quantities.png Graph
+ic file (type png)
+<use images/results/application/fibers_muscle_contraction_quantities.png>
+Package pdftex.def Info: images/results/application/fibers_muscle_contraction_q
+uantities.png  used on input line 1147.
+(pdftex.def)             Requested size: 220.50887pt x 94.09485pt.
+<images/results/application/neuromuscular_muscle_contraction_traction.png, id=7
+4157, 4601.19pt x 5331.92pt>
+File: images/results/application/neuromuscular_muscle_contraction_traction.png 
+Graphic file (type png)
+<use images/results/application/neuromuscular_muscle_contraction_traction.png>
+Package pdftex.def Info: images/results/application/neuromuscular_muscle_contra
+ction_traction.png  used on input line 1156.
+(pdftex.def)             Requested size: 220.50887pt x 255.46552pt.
+<images/results/application/neuromuscular_prestretch2c.png, id=74158, 1108.14pt
+ x 1606.0pt>
+File: images/results/application/neuromuscular_prestretch2c.png Graphic file (t
+ype png)
+<use images/results/application/neuromuscular_prestretch2c.png>
+Package pdftex.def Info: images/results/application/neuromuscular_prestretch2c.
+png  used on input line 1167.
+(pdftex.def)             Requested size: 220.50887pt x 319.57695pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32 <./images/results/application/2_multidomain.png> <./images/results/applica
+tion/2_fibers.png> <./images/results/application/fibers_muscle_contraction_quan
+tities.png (PNG copy)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33 <./images/results/application/neuromuscular_muscle_contraction_traction.pn
+g>]
+<images/results/application/neuromuscular_contraction0.png, id=74175, 2792.4325
+pt x 1606.0pt>
+File: images/results/application/neuromuscular_contraction0.png Graphic file (t
+ype png)
+<use images/results/application/neuromuscular_contraction0.png>
+Package pdftex.def Info: images/results/application/neuromuscular_contraction0.
+png  used on input line 1175.
+(pdftex.def)             Requested size: 441.01775pt x 253.63249pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34 <./images/results/application/neuromuscular_prestretch2c.png (PNG copy)>]
+<images/results/application/schematic_spindles.pdf, id=74181, 207.89252pt x 232
+.61835pt>
+File: images/results/application/schematic_spindles.pdf Graphic file (type pdf)
+
+<use images/results/application/schematic_spindles.pdf>
+Package pdftex.def Info: images/results/application/schematic_spindles.pdf  use
+d on input line 1184.
+(pdftex.def)             Requested size: 441.01775pt x 493.51057pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [35 <./images/results/application/neuromuscular_contraction0.png>]
+<images/results/application/neuromuscular_spindle_out.png, id=74189, 867.24pt x
+ 433.62pt>
+File: images/results/application/neuromuscular_spindle_out.png Graphic file (ty
+pe png)
+<use images/results/application/neuromuscular_spindle_out.png>
+Package pdftex.def Info: images/results/application/neuromuscular_spindle_out.p
+ng  used on input line 1192.
+(pdftex.def)             Requested size: 441.01775pt x 220.50809pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36 <./images/results/application/schematic_spindles.pdf>]
+<images/results/application/neuromuscular_schematic.pdf, id=74210, 383.6251pt x
+ 335.56458pt>
+File: images/results/application/neuromuscular_schematic.pdf Graphic file (type
+ pdf)
+<use images/results/application/neuromuscular_schematic.pdf>
+Package pdftex.def Info: images/results/application/neuromuscular_schematic.pdf
+  used on input line 1203.
+(pdftex.def)             Requested size: 441.01775pt x 385.79385pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <./images/results/application/neuromuscular_spindle_out.png>]
+<images/results/application/neuromuscular_mileusnic_out0.png, id=74217, 867.24p
+t x 578.16pt>
+File: images/results/application/neuromuscular_mileusnic_out0.png Graphic file 
+(type png)
+<use images/results/application/neuromuscular_mileusnic_out0.png>
+Package pdftex.def Info: images/results/application/neuromuscular_mileusnic_out
+0.png  used on input line 1211.
+(pdftex.def)             Requested size: 441.01775pt x 294.01079pt.
+<images/results/application/neuromuscular_mileusnic_out1.png, id=74218, 867.24p
+t x 578.16pt>
+File: images/results/application/neuromuscular_mileusnic_out1.png Graphic file 
+(type png)
+<use images/results/application/neuromuscular_mileusnic_out1.png>
+Package pdftex.def Info: images/results/application/neuromuscular_mileusnic_out
+1.png  used on input line 1212.
+(pdftex.def)             Requested size: 441.01775pt x 294.01079pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38 <./images/results/application/neuromuscular_schematic.pdf>]) [39 <./images
+/results/application/neuromuscular_mileusnic_out0.png> <./images/results/applic
+ation/neuromuscular_mileusnic_out1.png>] [40
 
 
 ]
-chapter 2.
-[19]pdfTeX warning (ext4): destination with the same identifier (name{section.0
-.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.18 \section{Introduction}
-                            [20] [21] [22]
-<images/summer_school_study/schematitc.pdf, id=939, 358.86191pt x 224.77673pt>
-File: images/summer_school_study/schematitc.pdf Graphic file (type pdf)
-<use images/summer_school_study/schematitc.pdf>
-Package pdftex.def Info: images/summer_school_study/schematitc.pdf  used on inp
-ut line 85.
-(pdftex.def)             Requested size: 352.81554pt x 220.99994pt.
- [23 <./images/summer_school_study/schemati
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 10.51207pt on input line 223.
+LaTeX Font Info:    Font shape `T1/mdbch/m/fsc' will be
+(Font)              scaled to size 10.51207pt on input line 223.
+
+Overfull \hbox (32.21326pt too wide) in paragraph at lines 226--226
+\T1/mdbch/m/n/10.95 (-10) 349, \T1/mdbch/m/fsc/10.95/100ls (-10) issn\T1/mdbch/
+m/n/10.95 (-10) : 1617-7940, [][]$\T1/GoMono-TLF/m/n/8 doi : 10 . 1007 / s10237
+-[]019-[]01214-[]5$[][]\T1/mdbch/m/n/10.95 (-10) , [][]$\T1/GoMono-TLF/m/n/8 ht
+tps : / / doi . org / 10 . 1007 / s10237-[]019-[]01214-[]5$[][] 
+ []
+
+
+Overfull \hbox (12.00055pt too wide) in paragraph at lines 226--226
+\T1/mdbch/m/n/10.95 (-10) 1403, [][]$\T1/GoMono-TLF/m/n/8 doi : 10 . 1152 / jap
+pl . 1984 . 57 . 5 . 1399$[][]\T1/mdbch/m/n/10.95 (-10) , eprint: [][]$\T1/GoMo
+no-TLF/m/n/10.95 https : / / doi . org / 10 . 1152 / jappl . 1984 .
+ []
+
+
+AED: lastpage setting LastPage
+[41]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
+ (./doc.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 233.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package logreq Info: Writing requests to 'doc.run.xml'.
+\openout1 = `doc.run.xml'.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 233.
+ ) 
+Here is how much of TeX's memory you used:
+ 62005 strings out of 492982
+ 1241193 string characters out of 6134895
+ 1816587 words of memory out of 5000000
+ 63939 multiletter control sequences out of 15000+600000
+ 700789 words of font info for 436 fonts, out of 8000000 for 9000
+ 1145 hyphenation exceptions out of 8191
+ 66i,22n,84p,10411b,2194s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/gofonts/go_t66sex.enc}{/usr/sh
+are/texlive/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/share/texmf/fonts
+/enc/dvips/tex-gyre/q-ec.enc}</usr/share/texlive/texmf-dist/fonts/type1/bh/gofo
+nts/GoMono-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/bh/gofonts/GoMon
+o-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchb8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chbi7m.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7m.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8c.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/mathdesign/mdbch/md-chrma.pf
+b></usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/font
+s/type1/public/tex-gyre/qhvr.pfb>
+Output written on doc.pdf (43 pages, 67170394 bytes).
+PDF statistics:
+ 74413 PDF objects out of 79402 (max. 8388607)
+ 49290 compressed objects within 493 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 84024 words of extra memory for PDF output out of 89155 (max. 10000000)
+

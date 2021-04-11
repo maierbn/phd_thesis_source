@@ -150,12 +150,13 @@ EMG signals of activated muscles can be computed by volume conductor models \cit
 
 We combine existing multi-scale models of electrophysiology, muscle contraction and generation of EMG with different subcellular models and electrophysiology formulations as well as motor neuron and afferent feedback models to form a novel, comprehensive multi-scale modeling framework for the neuromuscular system. We solve these models using numerically efficient schemes that are implemented in our unified simulation software environment named OpenDiHu.
  
-\subsection{Related Software}
+\subsection{Related Software}\label{sec:intro_related_software}
 Few software packages exist in the open source world that can be used for comprehensive multi-scale modeling of the neuromuscular system. In the following, CellML, OpenCMISS, Chaste, FEBio and the generic frameworks OpenFOAM and FEniCS will be briefly evaluated.
 
 A useful and widespread technology for biochemical models is CellML \cite{Cellml2003,Lloyd2004}. The open standard CellML language allows to define differential-algebraic equations with physical units. It can be used to develop mathematical descriptions of biophysical processes such as subcellular or neuron models. The description language has also been used for broader applications, e.g., for constitutive material laws. 
 
-CellML provides an online repository where mathematical models and metadata such as figures and related publications are collected. The models can be downloaded as code in various formats and programming languages. Existing models can be combined into new models in a hierarchical manner. Dedicated modeling environments for CellML models exist. As an example, OpenCOR \cite{OpenCOR2015} can be used to edit, simulate and visualize CellML models.
+CellML provides an online repository where mathematical models and metadata such as figures and related publications are collected. The models can be downloaded as code in various formats and programming languages. Existing models can be combined into new models in a hierarchical manner. Dedicated modeling environments for CellML models exist. As an example, OpenCOR \cite{OpenCOR2015} can be used to edit, simulate and visualize CellML models. Moreover, application programming interfaces (APIs) exist, which provide low level access to models in CellML format and allow software frameworks to integrate CellML functionality.
+Among the software frameworks with CellML support are OpenCMISS and Chaste.
 
 OpenCMISS (Continuum Mechanics, Imaging, Signal processing and System identification) \cite{Bradley2011} provides a set of open source libraries and applications for modeling and visualization of bioengineering problems. The frameworks allows to use CellML models \cite{Nickerson2014}.
 OpenCMISS Iron, the computational engine, can solve Finite Element models, discretized also with higher order elements and using cartesian or curvilinear coordinates. For example, the ventricles of the heart were modelled with a low number of cubic Hermite elements in a prolate spheroidal coordinate frame \cite{smith2004multiscale}.
@@ -166,7 +167,10 @@ The library is programmed largely in the Fortran-90 standard, wrappers for the P
 The development of OpenCMISS Iron started in 2005 as a rewrite of the computational modeling tool CMISS, whose history dates back to 1980. It is part of the Physiome Project, an international collaborative open-source effort to provide a public domain framework for computational physiology \cite{Hunter2004}.
 OpenCMISS has been used for multi-scale modeling of the lungs and heart \cite{smith2004multiscale}, vascular and thermoregulatory system \cite{ladd2016open,ghadam2020modeling} and skeletal muscle \cite{Heidlauf2013}. 
 
+% Chaste
 The "Cancer, Heart, and Soft Tissue Environment`` (Chaste) is an open source C++ library targeted at simulations of physiology and biology in general \cite{Chaste2013}. The code development is driven by cardiac electrophysiology and cancer growth simulations but the framework is also capable of solving  ordinary and partial differential equations from other fields. This involves solvers for CellML models, which have been used to simulate cellular cardiac electrophysiology \cite{ChasteCellML2015}.
+
+Chaste \cite{ChasteCellML2015} also uses the approach of first converting a CellML description into C++ code using the tool \emph{PyCml} \cite{Cooper2006}. Chaste features adaptive timestepping solvers such as the \emph{CVODE} solver from the \emph{SUNDIALS} package \cite{cohen1996cvode} and infers analytic Jacobians from the model equations. The CellML support of Chaste targets \say{automated use} by automatically infering standard variable names, e.g., for membrane voltage and stimulation current.
 
 While cardiac and skeletal muscle tissue are similar with respect to their multi-scale structure, significant differences exist regarding electrophysiology and recruitment of MUs. On cardiac tissue, propagation of action potentials occurs uniformly on a three-dimensional domain whereas in the skeletal muscle a multitude of electrically isolated one-dimensional muscle fibers are recruited independently.
 Thus, significant development efforts are needed to transform a cardiac simulation into a simulation of skeletal muscles.

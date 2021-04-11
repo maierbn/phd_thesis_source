@@ -355,16 +355,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="107.90441"
-     inkscape:cy="52.999002"
+     inkscape:cx="122.81512"
+     inkscape:cy="31.570431"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-global="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="220"
+     inkscape:window-y="1080"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -441,26 +441,15 @@
          id="tspan1660">CallEnableBegin</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="57.329319"
-       y="59.687794"
-       id="text1704"><tspan
-         sodipodi:role="line"
-         id="tspan1702"
-         x="57.329319"
-         y="59.687794"
-         style="fill:#ff7f0e;fill-opacity:1;stroke-width:0.26458332px">CallFrequency</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="71.78849"
+       x="72.938011"
        y="59.706844"
        id="text1708"><tspan
          sodipodi:role="line"
          id="tspan1706"
-         x="71.78849"
+         x="72.938011"
          y="59.706844"
-         style="fill:#ffcc00;fill-opacity:1;stroke-width:0.26458332px">+ FrequencyJitter[i]</tspan></text>
+         style="fill:#ffcc00;fill-opacity:1;stroke-width:0.26458332px">⋅ (1+FrequencyJitter[i])</tspan></text>
     <rect
        style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1710"
@@ -605,5 +594,16 @@
          x="65.335152"
          id="tspan2704"
          sodipodi:role="line">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, ';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="55.329319"
+       y="59.687794"
+       id="text1704"><tspan
+         sodipodi:role="line"
+         id="tspan1702"
+         x="55.329319"
+         y="59.687794"
+         style="fill:#ff7f0e;fill-opacity:1;stroke-width:0.26458332px">1 / CallFrequency</tspan></text>
   </g>
 </svg>
