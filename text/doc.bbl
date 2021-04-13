@@ -19,6 +19,156 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
+    \entry{sycl}{manual}{}
+      \list{organization}{1}{%
+        {Khronos Group Inc.}%
+      }
+      \field{labelalpha}{19}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{number}{Version 1.2.1}
+      \field{title}{{SYCL Specification, SYCL integrates OpenCL devices with modern C++}}
+      \field{year}{2019}
+    \endentry
+    \entry{mumps2001}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5a3c83eb2849395a1594b00aace6f57e}{%
+           family={Amestoy},
+           familyi={A\bibinitperiod},
+           given={Patrick\bibnamedelima R.},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=8dea8491f777d9ecf0e0f929a72184e7}{%
+           family={Duff},
+           familyi={D\bibinitperiod},
+           given={Iain\bibnamedelima S.},
+           giveni={I\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=631ef5b7953417104c88df29c4a9312d}{%
+           family={L'Excellent},
+           familyi={L\bibinitperiod},
+           given={Jean-Yves},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=9639b91236d646486486b7a3387c5f22}{%
+           family={Koster},
+           familyi={K\bibinitperiod},
+           given={Jacko},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{fullhash}{c1ced244d2d0e6bf31a6ec345f10064a}
+      \strng{bibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorbibnamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authornamehash}{70b91f653a3ed2fe7b3afdde431f72d6}
+      \strng{authorfullhash}{c1ced244d2d0e6bf31a6ec345f10064a}
+      \field{labelalpha}{Ame01}
+      \field{sortinit}{A}
+      \field{sortinithash}{d77c7cdd82ff690d4c3ef13216f92f0b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Matrix Analysis and Applications}
+      \field{number}{1}
+      \field{title}{A Fully Asynchronous Multifrontal Solver Using Distributed Dynamic Scheduling}
+      \field{volume}{23}
+      \field{year}{2001}
+      \field{pages}{15\bibrangedash 41}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1137/S0895479899358194
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/S0895479899358194
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/S0895479899358194
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/S0895479899358194
+      \endverb
+    \endentry
+    \entry{Bradley:2018:EDB}{article}{}
+      \name{author}{12}{}{%
+        {{hash=c3aa3389a825ceec44b9e8d604b715a0}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={Chris\bibnamedelima P.},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=c151691bf5116c5524d9126440f27128}{%
+           family={Emamy},
+           familyi={E\bibinitperiod},
+           given={Nehzat},
+           giveni={N\bibinitperiod}}}%
+        {{hash=2340a4b90c94edfaf3df6c480da4885b}{%
+           family={Ertl},
+           familyi={E\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=9b1368937b66f16357ffb19693df33c4}{%
+           family={G{ö}ddeke},
+           familyi={G\bibinitperiod},
+           given={Dominik},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1d5c58e37680b6ab5b57bf184a205cf3}{%
+           family={Hessenthaler},
+           familyi={H\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7ddb0969ee770c35433f3ea832487a33}{%
+           family={Klotz},
+           familyi={K\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=5dc8918a8b45159bbca4c4dd97b7ea7d}{%
+           family={Kr{ä}mer},
+           familyi={K\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b93b2e88ae8ddf4a65eecd22c2b1897a}{%
+           family={Krone},
+           familyi={K\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d94a4e531c626bc3d5b67f710b993249}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
+           family={Mehl},
+           familyi={M\bibinitperiod},
+           given={Miriam},
+           giveni={M\bibinitperiod}}}%
+        {{hash=916e293756520db39949b406218f3903}{%
+           family={Tobias},
+           familyi={T\bibinitperiod},
+           given={Rau},
+           giveni={R\bibinitperiod}}}%
+        {{hash=568bedcf02451e212a37a40a973f6945}{%
+           family={R{ö}hrle},
+           familyi={R\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{785270d6ea4cabe05637481f466db20c}
+      \strng{fullhash}{e4b140cc932825244103b279df2fa9f4}
+      \strng{bibnamehash}{785270d6ea4cabe05637481f466db20c}
+      \strng{authorbibnamehash}{785270d6ea4cabe05637481f466db20c}
+      \strng{authornamehash}{785270d6ea4cabe05637481f466db20c}
+      \strng{authorfullhash}{e4b140cc932825244103b279df2fa9f4}
+      \field{labelalpha}{Bra18}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Physiology}
+      \field{number}{816}
+      \field{title}{Enabling Detailed, Biophysics-Based Skeletal Muscle Models on {HPC} Systems}
+      \field{volume}{9}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.3389/fphys.2018.00816
+      \endverb
+    \endentry
     \entry{Clarke2021}{article}{}
       \name{author}{9}{}{%
         {{hash=4f029c8aa76e1ad79fb25c9eaeb73245}{%
@@ -133,6 +283,84 @@
       \field{year}{1955}
       \field{pages}{127\bibrangedash 142}
       \range{pages}{16}
+    \endentry
+    \entry{Heidlauf2013}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a62949e649f9c2137d057064b2c2f290}{%
+           family={Heidlauf},
+           familyi={H\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a610a46138685fc369bc27137ca60f58}{%
+           family={R{ö}hrle},
+           familyi={R\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Hindawi Publishing Corporation}%
+      }
+      \strng{namehash}{cd610a279ef7f93d03943b703f63badf}
+      \strng{fullhash}{cd610a279ef7f93d03943b703f63badf}
+      \strng{bibnamehash}{cd610a279ef7f93d03943b703f63badf}
+      \strng{authorbibnamehash}{cd610a279ef7f93d03943b703f63badf}
+      \strng{authornamehash}{cd610a279ef7f93d03943b703f63badf}
+      \strng{authorfullhash}{cd610a279ef7f93d03943b703f63badf}
+      \field{labelalpha}{Hei13}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational and Mathematical Methods in Medicine}
+      \field{title}{Modeling the Chemoelectromechanical Behavior of Skeletal Muscle Using the Parallel Open-Source Software Library OpenCMISS}
+      \field{volume}{2013}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1155/2013/517287
+      \endverb
+      \verb{file}
+      \verb :/home/heidlauf/Desktop/old_Desktop/Heidlauf_Roehrle_2013/Computational_and_Mathematical_Methods_in_Medicine/517287.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1155/2013/517287
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1155/2013/517287
+      \endverb
+    \endentry
+    \entry{Hodgkin1952}{article}{}
+      \name{author}{2}{}{%
+        {{hash=380378d55a343a5bcffc8c323d8ca4b8}{%
+           family={Hodgkin},
+           familyi={H\bibinitperiod},
+           given={A.\bibnamedelimi L.},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=9a6704d0bf7a4ab9213d4e7e5c16cf18}{%
+           family={Huxley},
+           familyi={H\bibinitperiod},
+           given={A.\bibnamedelimi F.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{fullhash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{bibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authorbibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
+      \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
+      \field{labelalpha}{Hod52}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Physiology}
+      \field{number}{4}
+      \field{title}{A quantitative description of membrane current and its application to conduction and excitation in nerve.}
+      \field{volume}{117}
+      \field{year}{1952}
+      \field{pages}{500\bibrangedash 544}
+      \range{pages}{45}
     \endentry
     \entry{Holobar2007b}{article}{}
       \name{author}{2}{}{%
@@ -266,6 +494,50 @@
       \field{month}{06}
       \field{title}{DEMUSETOOL-A TOOL FOR DECOMPOSITION OF MULTICHANNEL SURFACE ELECTROMYOGRAMS}
       \field{year}{2008}
+    \endentry
+    \entry{euclid}{article}{}
+      \name{author}{2}{}{%
+        {{hash=39e70ac4da11dbb71798b69c493757af}{%
+           family={Hysom},
+           familyi={H\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=62b3bab4bd35abc88588eab9242d55dc}{%
+           family={Pothen},
+           familyi={P\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d89a522ca9c758e6fa544ff37df09892}
+      \strng{fullhash}{d89a522ca9c758e6fa544ff37df09892}
+      \strng{bibnamehash}{d89a522ca9c758e6fa544ff37df09892}
+      \strng{authorbibnamehash}{d89a522ca9c758e6fa544ff37df09892}
+      \strng{authornamehash}{d89a522ca9c758e6fa544ff37df09892}
+      \strng{authorfullhash}{d89a522ca9c758e6fa544ff37df09892}
+      \field{labelalpha}{Hys01}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Scientific Computing}
+      \field{number}{6}
+      \field{title}{A Scalable Parallel Algorithm for Incomplete Factor Preconditioning}
+      \field{volume}{22}
+      \field{year}{2001}
+      \field{pages}{2194\bibrangedash 2215}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1137/S1064827500376193
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/S1064827500376193
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/S1064827500376193
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/S1064827500376193
+      \endverb
     \endentry
     \entry{Klotz2020}{article}{}
       \name{author}{4}{}{%
@@ -448,6 +720,178 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1152/jappl.1984.57.5.1399
+      \endverb
+    \endentry
+    \entry{Maier2019}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=d94a4e531c626bc3d5b67f710b993249}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c151691bf5116c5524d9126440f27128}{%
+           family={Emamy},
+           familyi={E\bibinitperiod},
+           given={Nehzat},
+           giveni={N\bibinitperiod}}}%
+        {{hash=09dfe0cd929ab7582a1ea753341c7920}{%
+           family={Kr{ä}mer},
+           familyi={K\bibinitperiod},
+           given={Aaron\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
+           family={Mehl},
+           familyi={M\bibinitperiod},
+           given={Miriam},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4107dc102e5af7439ea9d3d579f59f57}
+      \strng{fullhash}{d2d754222f57ea04723ba207fd94ad3f}
+      \strng{bibnamehash}{4107dc102e5af7439ea9d3d579f59f57}
+      \strng{authorbibnamehash}{4107dc102e5af7439ea9d3d579f59f57}
+      \strng{authornamehash}{4107dc102e5af7439ea9d3d579f59f57}
+      \strng{authorfullhash}{d2d754222f57ea04723ba207fd94ad3f}
+      \field{labelalpha}{Mai19}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{COUPLED PROBLEMS 2019}
+      \field{title}{Highly Parallel Multi-Physics Simulation of Muscular Activation and {EMG}}
+      \field{year}{2019}
+      \field{pages}{610\bibrangedash 621}
+      \range{pages}{12}
+    \endentry
+    \entry{Shorten2007}{article}{}
+      \name{author}{4}{}{%
+        {{hash=32069ec248c7818ee64e400c990874ea}{%
+           family={Shorten},
+           familyi={S\bibinitperiod},
+           given={P.\bibnamedelimi R.},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=42ee635d5ee282bfc03a7ccb9386f281}{%
+           family={O'Callaghan},
+           familyi={O\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5c5494d03d60cd95d6c22c96ec9b4d18}{%
+           family={Davidson},
+           familyi={D\bibinitperiod},
+           given={J.\bibnamedelimi B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5418419c500b7b84f0b7ddf40506be44}{%
+           family={Soboleva},
+           familyi={S\bibinitperiod},
+           given={T.\bibnamedelimi K.},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a37bb943cb6b948a9d90ccf3f38ccfa}
+      \strng{fullhash}{8a6acc30467453b682d1222e7c4662f6}
+      \strng{bibnamehash}{5a37bb943cb6b948a9d90ccf3f38ccfa}
+      \strng{authorbibnamehash}{5a37bb943cb6b948a9d90ccf3f38ccfa}
+      \strng{authornamehash}{5a37bb943cb6b948a9d90ccf3f38ccfa}
+      \strng{authorfullhash}{8a6acc30467453b682d1222e7c4662f6}
+      \field{labelalpha}{Sho07}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extraalpha}{1}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The ability for muscle to repeatedly generate force is limited by fatigue. The cellular mechanisms behind muscle fatigue are complex and potentially include breakdown at many points along the excitation–contraction pathway. In this paper we construct a mathematical model of the skeletal muscle excitation–contraction pathway based on the cellular biochemical events that link excitation to contraction. The model includes descriptions of membrane voltage, calcium cycling and crossbridge dynamics and was parameterised and validated using the response characteristics of mouse skeletal muscle to a range of electrical stimuli. This model was used to uncover the complexities of skeletal muscle fatigue. We also parameterised our model to describe force kinetics in fast and slow twitch fibre types, which have a number of biochemical and biophysical differences. How these differences interact to generate different force/fatigue responses in fast- and slow- twitch fibres is not well understood and we used our modelling approach to bring new insights to this relationship.}
+      \field{journaltitle}{Journal of Muscle Research and Cell Motility}
+      \field{number}{6}
+      \field{title}{A mathematical model of fatigue in skeletal muscle force contraction}
+      \field{volume}{28}
+      \field{year}{2007}
+      \field{pages}{293\bibrangedash 313}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1007\%2Fs10974-007-9125-6
+      \endverb
+      \verb{file}
+      \verb :papers/Shorten07 A mathematical model of fatigue in skeletal muscle force contration.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1007\%2Fs10974-007-9125-6
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1007%5C%2Fs10974-007-9125-6
+      \endverb
+      \keyw{Potassium; Fibre type; Fast-twitch; Slow-twitch; Phosphate; Calcium}
+    \endentry
+    \entry{shorten2007mathematical}{article}{}
+      \name{author}{4}{}{%
+        {{hash=74084280e77e3e95d9c292fec145166b}{%
+           family={Shorten},
+           familyi={S\bibinitperiod},
+           given={Paul\bibnamedelima R},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=e479889dec0d1fc74ddeaa457e4a9402}{%
+           family={O’Callaghan},
+           familyi={O\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=fbab189879c832f78b1e05bc9bcbfb1e}{%
+           family={Davidson},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelima B},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=e24242a105da8f006e023d72fd0e58dc}{%
+           family={Soboleva},
+           familyi={S\bibinitperiod},
+           given={Tanya\bibnamedelima K},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{65fbbc7e33b92b944000a1dccabd7d3a}
+      \strng{fullhash}{a529462ff20fc81a238cfc93869ac1cd}
+      \strng{bibnamehash}{65fbbc7e33b92b944000a1dccabd7d3a}
+      \strng{authorbibnamehash}{65fbbc7e33b92b944000a1dccabd7d3a}
+      \strng{authornamehash}{65fbbc7e33b92b944000a1dccabd7d3a}
+      \strng{authorfullhash}{a529462ff20fc81a238cfc93869ac1cd}
+      \field{labelalpha}{Sho07}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of muscle research and cell motility}
+      \field{number}{6}
+      \field{title}{A mathematical model of fatigue in skeletal muscle force contraction}
+      \field{volume}{28}
+      \field{year}{2007}
+      \field{pages}{293\bibrangedash 313}
+      \range{pages}{21}
+    \endentry
+    \entry{ert}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=614a4f2dc653576b963a39eb7e79d6b7}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Charlene},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \strng{fullhash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \strng{bibnamehash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \strng{authorbibnamehash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \strng{authornamehash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \strng{authorfullhash}{614a4f2dc653576b963a39eb7e79d6b7}
+      \field{labelalpha}{Yan20}
+      \field{sortinit}{Y}
+      \field{sortinithash}{b8d711a035f7be9840c721c82920477e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://crd.lbl.gov/departments/computer-science/par/research/roofline/software/ert/}
+      \field{title}{{Empirical Roofline Tool (ERT)}}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://crd.lbl.gov/departments/computer-science/par/research/roofline/software/ert/
+      \endverb
+      \verb{url}
+      \verb https://crd.lbl.gov/departments/computer-science/par/research/roofline/software/ert/
       \endverb
     \endentry
   \enddatalist

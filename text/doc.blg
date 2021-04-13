@@ -1,19 +1,18 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
 [0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[53] biber:313> INFO - === Mo Apr 12, 2021, 00:16:44
-[91] Biber.pm:371> INFO - Reading 'doc.bcf'
-[212] Biber.pm:857> INFO - Found 9 citekeys in bib section 0
-[239] Biber.pm:3981> INFO - Processing section 0
-[258] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
-[308] bibtex.pm:1468> INFO - LaTeX decoding ...
-[1018] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
-[1044] Utils.pm:169> WARN - Duplicate entry key: 'Kretz2015' in file './references.bib', skipping ...
-[1150] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KdPKNEx4Y9/references.bib_25830.utf8, line 1519, warning: 96 characters of junk seen at toplevel
-[1150] Utils.pm:169> WARN - BibTeX subsystem: /tmp/KdPKNEx4Y9/references.bib_25830.utf8, line 2919, warning: 3 characters of junk seen at toplevel
-[1169] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1169] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1169] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[1169] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[1186] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
-[1192] bbl.pm:720> INFO - Output to doc.bbl
-[1192] Biber.pm:110> INFO - WARNINGS: 3
+[46] biber:313> INFO - === Mi Apr 14, 2021, 01:38:00
+[80] Biber.pm:371> INFO - Reading 'doc.bcf'
+[176] Biber.pm:857> INFO - Found 19 citekeys in bib section 0
+[193] Biber.pm:3981> INFO - Processing section 0
+[211] Biber.pm:4154> INFO - Looking for bibtex format file './references.bib' for section 0
+[247] bibtex.pm:1468> INFO - LaTeX decoding ...
+[745] bibtex.pm:1294> INFO - Found BibTeX data source './references.bib'
+[769] Utils.pm:169> WARN - Duplicate entry key: 'Kretz2015' in file './references.bib', skipping ...
+[940] Utils.pm:169> WARN - BibTeX subsystem: /tmp/IEoNIgFBuu/references.bib_15055.utf8, line 2949, warning: 3 characters of junk seen at toplevel
+[1001] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1001] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1001] Biber.pm:3809> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1001] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[1052] bbl.pm:617> INFO - Writing 'doc.bbl' with encoding 'UTF-8'
+[1063] bbl.pm:720> INFO - Output to doc.bbl
+[1063] Biber.pm:110> INFO - WARNINGS: 2

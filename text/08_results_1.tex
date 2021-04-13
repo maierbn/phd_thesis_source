@@ -1,9 +1,13 @@
 
+% ==================
+%\iffalse
+% =-------------------
+
 % --------------------------------
 % application
-\section{Application: Subcellular Models}
+\section{Simulation of Activated Muscle Fibers}
 %-----
-\section{Application: Only Fibers, Monodomain}
+\subsection{Computation of Subcellular Models}
 
 % fibers mesh
 \begin{figure}[H]
@@ -15,17 +19,21 @@
   \label{fig:multidomain_mesh}%
 \end{figure}
 
-%-----
-\section{Application: Motoneuron with fibers}
-%-----
-\section{Application: Rosenfalck, artifical muscle geometry}
-%-----
-\section{Application: Simulation of Monodomain Fibers with EMG}
+\subsection{Solver for the Monodomain Equation}
 
+\subsection{Artificial Fiber Geometries}
+
+Rosenfalck model, artifical muscle geometry
+
+%-----
+
+% --------
+%\fi
+% f==============
 \section{Fiber Based Electrophysiology}
 
 In this section, we consider surface EMG signals on the upper arm by simulating the activation of the biceps brachii muscle.
-\Cref{sec:overview_emg_simulation} introduces the considered domains and meshes and gives an overview of the simulation.
+In \cref{sec:overview_emg_simulation}, we introduce the setting of the simulation and present an examplary scenario to compute EMG signals.
 Subsequently, we simulate various scenarios to investigate the effects of different model and numerical parameters on the resulting EMG signal. \Cref{sec:simfiber_mu} considers the effects of single motor units, \cref{sec:simfiber_fat} considers the fat layer and \cref{sec:effects_of_the_mesh_width_emg} shows effects of the mesh width. Then, \cref{sec:simfiber_electrodes} presents a way to simulate realistic EMG electrodes and \cref{sec:simfiber_decomposition} deals with the decomposition of EMG signals.
 
 \subsection{Overview of the EMG Simulation}\label{sec:overview_emg_simulation}
@@ -38,7 +46,7 @@ Subsequently, we simulate various scenarios to investigate the effects of differ
   \label{fig:full_muscle_emg_raytrace_1}%
 \end{figure}
 
-\Cref{fig:full_muscle_emg_raytrace_1} shows the setting of the biceps muscle and the tendons, which attach to the skeleton near the shoulder and to the ulna bone in the forearm. For the simulation of EMG, we only consider the muscle belly of the biceps muscle. The image \cref{fig:full_muscle_emg_raytrace_1} shows muscle fibers inside the muscle, which run in longitudinal direction from the tendon at one end to the other tendon. The image also visualizes the results of an EMG simulation. The fibers are colored according to their transmembrane potential $V_m$ and show some propagating action potentials. 
+\Cref{fig:full_muscle_emg_raytrace_1} shows the setting of the biceps muscle and the tendons, which attach to the skeleton near the shoulder and to the ulna bone in the forearm. For the simulation of EMG, we only consider the muscle belly of the biceps muscle. The image \cref{fig:full_muscle_emg_raytrace_1} shows muscle fibers inside the muscle, which run in longitudinal direction between the tendons at both ends. The image also visualizes the results of an EMG simulation. The fibers are colored according to the transmembrane potential $V_m$. On some fibers, action potentials can be seen.
 
 The surface of the muscle is colored by the electric extracellular potential $\phi_e$. In a reasonable approximation, the value of $\phi_e$ corresponds to the measured EMG signals on the skin surface. More realistic scenarios additionally consider volume conduction in a layer of adipose tissue on top of the muscle.
 
@@ -53,11 +61,47 @@ After fixed numbers of timesteps, we map the membrane voltage $V_m$ from the 1D 
   \label{fig:fibers_4}%
 \end{figure}
 
-\Cref{fig:fibers_4} shows a close-up view of the active muscle fibers and the resulting EMG signals on the upper surface, which are identical to \cref{fig:full_muscle_emg_raytrace_1}. The scenario considers 1369 muscle fibers. It can be seen that they are approximately equally spaced as a result of the meshing algorithms described in \cref{sec:generation_of_meshes_for_multiscale}.
+\Cref{fig:fibers_4} shows a close-up view of the active muscle fibers and the resulting EMG signals on the upper surface, which are identical to \cref{fig:full_muscle_emg_raytrace_1}. The scenario considers 961 muscle fibers, each described by a 1D mesh of 1481 nodes. It can be seen that they are approximately equally spaced as a result of the meshing algorithms described in \cref{sec:generation_of_meshes_for_multiscale}.
 
-The figure also shows the mesh of the muscle surface, which is colored according to the extracellular potential $\phi_e$. It can be seen that the values correlate with the activation state of the underlying fibers. At the two blue colored regions at the surface near the left and right ends of the muscle, the $\phi_e$ value is close to its minimum, while the majority of fibers exhibits its maximum positive $V_m$ value. Towards the center of the muscle, the value of $\phi_e$ increases to its maximum, which reflects the hyperpolarization of the muscle fibers behind the propagating action potentials, i.e., the overshoot of the membrane voltage before it reapproaches the equilibrium level.
+\Cref{fig:fibers_4} also shows the mesh of the muscle surface, which is colored according to the extracellular potential $\phi_e$. It can be seen that the values correlate with the activation state of the underlying fibers. At the two blue colored regions at the surface near the left and right ends of the muscle, the $\phi_e$ value is close to its minimum, while the majority of fibers exhibits its maximum positive $V_m$ value. Towards the center of the muscle, the value of $\phi_e$ increases to its maximum, which reflects the hyperpolarization of the muscle fibers behind the propagating action potentials, i.e., the overshoot of the membrane voltage before it reapproaches the equilibrium level.
 
 The lower left corner in \cref{fig:fibers_4} shows the coordinate frame that is used in all simulations. The $z$ axis is approximately  directed in fiber direction, the $x$ and $y$ axes are oriented in transverse direction and describe cross-sectional planes of the muscle.
+
+The scenario uses the subcellular model of Hudgkin and Huxley \cite{Hodgkin1952}. The shown image corresponds to the simulation time of $t=\SI{200}{\milli\second}$. The simulation also considers a body fat mesh layer on top of the muscle, which is not visualized in \cref{fig:fibers_4}.
+
+We run the simulation with 128 processes on a two-socket shared-memory node comprising two AMD EPYC 7742 64-core processors with \SI{2.87}{\giga\hertz} clock frequency and \SI{1.96}{\tebi\byte} RAM. The total runtime for a simulation end time of one second is \SI{8}{\hour} \SI{38}{\minute}.
+%runtime: 8:37:44.43 on ipvs-epyc2
+
+% scenario_name: 20mus_fibers,  n_subdomains: 4 1 32,  n_ranks: 128,  end_time: 1000.0
+% dt_0D:           2.5e-03, diffusion_solver_type:      cg                                                                                                                                      
+% dt_1D:           6.3e-04, potential_flow_solver_type: gmres                 
+% dt_splitting:    2.5e-03, emg_solver_type:            cg, emg_initial_guess_nonzero: False
+% dt_3D:           5.0e-01, paraview_output: True                                   
+% output_timestep: 1.0e+00  stimulation_frequency: 0.1 1/ms = 100.0 Hz                                                                                                                          
+% fast_monodomain_solver_optimizations: True, use_vc: True                                                                                                                                      
+% fiber_file:              /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_31x31fibers.bin
+% fat_mesh_file:           /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_31x31fibers.bin_fat.bin
+% cellml_file:             /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/hodgkin_huxley_1952.c
+% fiber_distribution_file: MU_fiber_distribution_31x31_10mus.txt
+% firing_times_file:       /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/MU_firing_times_always.txt
+% ********************************************************************************
+% prefactor: sigma_eff/(Am*Cm) = 0.0132 = 3.828 / (500.0*0.58)
+% n fibers:              961 (31 x 31)
+% n points per fiber:    1481, sampled by stride 2 to 74
+% 128 ranks, partitioning: x4 x y1 x z32
+% 31 x 31 = 961 fibers, per partition: 7 x 31 = 217
+% per fiber: 1D mesh    nodes global: 1481, local: 60
+%   sampling 3D mesh with stride 2 x 2 x 20 (local_sampling_stride_z: 1)
+%     linear 3D mesh    nodes global: 16 x 16 x 74 = 18944, local: 4 x 16 x 3 = 192
+%     linear 3D mesh elements global: 15 x 15 x 73 = 16425, local: 4 x 15 x 3 = 180
+% number of degrees of freedom:
+%                     1D fiber:       1481  (per process: 60)
+%             0D-1D monodomain:       5924  (per process: 240)
+%  all fibers 0D-1D monodomain:    5692964  (per process: 52080)
+%                  3D bidomain:      18944  (per process: 192)
+%                        total:    5711908  (per process: 52272)
+%     fat mesh, n points total:    6882 (31 x 3 x 74), (per process: 4 x 3 x 3 = 36)
+
 
 \subsection{Effects of Single Motor Units on the Electromyography Signal}\label{sec:simfiber_mu}
 
@@ -282,6 +326,7 @@ This effect has implications for experimental studies, where the EMG recordings 
   \end{lstlisting}
 \end{reproduce}
 
+
 \subsection{Effects of the Mesh Width on the Electromyography Signal}\label{sec:effects_of_the_mesh_width_emg}
 
 Next, we compare the simulated EMG signal for different numbers of fibers and resolutions of the 3D mesh. We consider a scenario with 100 MUs and increase the spatial resolution and the number of processes that execute the computation on the supercomputer Hawk at the High Performance Computing Center Stuttgart.
@@ -396,36 +441,49 @@ The resulting electric potentials in \cref{fig:emg_hpc} exhibit different region
 Dark colored strong signals can be seen, which mainly correspond to fibers that are located directly underneath the shown muscle surface.
 Apart from these strong signals, also weaker artifacts occur, which are shown in yellow and orange colors. They result from the superposition of several fibers of the same or different MUs. The number of recognizable weak signals is higher for the simulations with higher numbers of fibers and finer mesh resolution.
 
+The four scenarios in \cref{fig:emg_hpc} share the material parameters, territory centers and relative size distributions of the 100 MU and the activation scheme. However, the location of the neuromuscular junctions is determined randomly and varies between the scenarios. Therefore, the resulting EMG signals are not refined images of each other.  However, a similarity of activated regions on a coarse scale can be observed in all scenarios.
+
 % results for different mesh widths
 \begin{figure}
   \centering%
   \begin{subfigure}[t]{0.19\textwidth}%
     \centering%
     \includegraphics[height=12cm]{images/results/application/emg37.png}%
-    \caption{$1369$ fibers}%
+    \caption{$1369$ fibers.}%
     \label{fig:emg37}%
   \end{subfigure} \,
   \begin{subfigure}[t]{0.19\textwidth}%
     \centering%
     \includegraphics[height=12cm]{images/results/application/emg67.png}%
-    \caption{$4489$ fibers}%
+    \caption{$4489$ fibers.}%
     \label{fig:emg67}%
   \end{subfigure}  \,
   \begin{subfigure}[t]{0.19\textwidth}%
     \centering%
     \includegraphics[height=12cm]{images/results/application/emg109.png}%
-    \caption{$\num{11881}$ fibers}%
+    \caption{$\num{11881}$ fibers.}%
     \label{fig:emg109}%
   \end{subfigure}    \,
   \begin{subfigure}[t]{0.35\textwidth}%
     \centering%
     \includegraphics[height=12cm]{images/results/application/emg187.png}%
-    \caption{$\num{34969}$ fibers}%
+    \caption{$\num{34969}$ fibers.}%
     \label{fig:emg187}%
   \end{subfigure}   
-  \caption{Simulated surface EMG signals for different numbers of fibers and different mesh widths of the 3D mesh.}%
+  \caption{Simulated surface EMG signals for different numbers of fibers and different mesh widths of the 3D mesh, see \cref{tab:emg_study_parameters} for details. The same color coding of the EMG signal $\phi_e$ is used in the four scenarios.}%
   \label{fig:emg_hpc}%
 \end{figure}%
+
+\Cref{fig:emg_hpc2} shows two more scenarios with large numbers of fibers at times of $t\approx \SI{1}{\s}$ and $t\approx \SI{0.4}{\s}$. The scenario in \cref{fig:emg277} simulates approximately \num{76e3} fibers, which is in the order of a third of the realistic number of fibers in the biceps muscle. 
+This scenario can also be interpreted as only activating a third of the available fibers in the muscle, resulting in the respective lower percentage of maximum voluntary contraction force.
+
+\Cref{fig:emg273529b} shows the scenario where a realistic number of \num{273e3} fibers was simulated. The computational effort for these two scenarios can only be tackled with High Performance Computing. The last two rows of \cref{tab:emg_study_parameters} show that 121 respectively 421 compute nodes were used for the computations.
+
+\Cref{fig:emg273529c,fig:emg273529d} present details of the simulated surface EMG of the scenario in \cref{fig:emg273529b}. The cut outs are indicated by the red boxes in \cref{fig:emg273529b,fig:emg273529c}. \Cref{fig:emg273529d} also visualizes the elements of the 2D and 3D meshes. In both scenarios of \cref{fig:emg_hpc2}, the 3D mesh is as finely resolved in $z$ direction (vertical in \cref{fig:emg273529d}) as the muscle fibers. In transversal direction (horizontal in \cref{fig:emg273529d}), the element sizes are twice as large as the spacing between the fibers. 
+
+The right side of \cref{fig:emg273529d} shows two almost aligned action potentials that propagate towards the top of the image. The upper action potential originates from a fiber that is located at the center between the element boundaries. Its electric potential is distributed to two adjacent nodes on the surface mesh, having the same activated values.
+In contrast, the lower action potential results from a fiber that is directly located on the element boundaries. It can be seen that the activation on the surface decays rapidly in transverse (horizontal) direction, as the neighbor elements already almost exhibit the same electric potential as the background level. This underlines the importance to use finely resolved meshes to accurately represent surface EMG signals.
+
 
 % results for different mesh widths
 \begin{figure}
@@ -433,31 +491,31 @@ Apart from these strong signals, also weaker artifacts occur, which are shown in
   \begin{subfigure}{0.30\textwidth}%
     \centering%
     \includegraphics[height=125mm]{images/results/application/emg277.png}%
-    \caption{\num{76729} fibers}%
+    \caption{\num{76729} fibers.}%
     \label{fig:emg277}%
   \end{subfigure}\,
   \begin{subfigure}{0.30\textwidth}%
     \centering%
     \includegraphics[height=125mm]{images/results/application/emg523.pdf}%
-    \caption{\num{273529} fibers}%
-    \label{fig:emg277}%
+    \caption{\num{273529} fibers.}%
+    \label{fig:emg273529b}%
   \end{subfigure}\hspace{-1cm}
   \begin{minipage}{0.5\textwidth}
     \vspace{48mm}
     \begin{subfigure}[t]{0.5\textwidth}%
       \centering%
       \includegraphics[height=77mm]{images/results/application/emg523-1.pdf}%
-      \caption{\num{273529} fibers}%
-      \label{fig:emg277}%
+      \caption{Detail view.}%
+      \label{fig:emg273529c}%
     \end{subfigure}\hspace{-5mm}
     \begin{subfigure}[t]{0.49\textwidth}%
       \centering%
       \includegraphics[height=77mm]{images/results/application/emg523-2.png}%
-      \caption{\num{273529} fibers}%
-      \label{fig:emg277}%
+      \caption{Detail view.}%
+      \label{fig:emg273529d}%
     \end{subfigure}
   \end{minipage}
-  \caption{Simulated surface EMG signals for different numbers of fibers and different mesh widths of the 3D mesh, continued from \cref{fig:emg_hpc}}%
+  \caption{Simulated surface EMG signals with realistic fiber counts, continued from \cref{fig:emg_hpc}. Figure (a) shows a scenario with \num{76729} fibers, which is approximately a third of the realistic number for the biceps muscle. Figures (b)-(d) show the result with a realistic number of \num{273529} fibers. (c) shows a detail view of (b) indicated by the outer red box. (d) shows another zoomed in view of (b) and (c), also indicated by the red boxes.}%
   \label{fig:emg_hpc2}%
 \end{figure}%
 
@@ -665,7 +723,7 @@ Apart from these strong signals, also weaker artifacts occur, which are shown in
 %                       total:    8177102  (per process: 54567)
 %
 
-\begin{reproduce}
+\begin{reproduce_no_break}
   Use the following commands to run the EMG simulation of the biceps muscle with fat layer and electrodes:
   \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
     cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_fat_emg/build_release
@@ -673,7 +731,7 @@ Apart from these strong signals, also weaker artifacts occur, which are shown in
     cd out/50mus
     plot_emg.py ./electrodes.csv ./stimulation.log 25900 26000    # plot the result, here for time span 25.9s - 26s
   \end{lstlisting}
-\end{reproduce}
+\end{reproduce_no_break}
 
 \subsection{Simulation of EMG electrodes}\label{sec:simfiber_electrodes}
 % fibers_fat_emg with electrodes
@@ -716,6 +774,9 @@ The diagram enables experts to visually identify propagating action potentials f
   \caption{Simulation of surface EMG using electrodes.}%
   \label{fig:emg_video}%
 \end{figure}
+
+
+
 
 \subsection{Decomposition of Surface EMG Signals}\label{sec:simfiber_decomposition}
 
@@ -814,7 +875,7 @@ Two further scenario were simulated with the same parameters as the first scenar
 % new 20MUs scenario
 \begin{figure}
   \centering%
-  \includegraphics[width=\textwidth]{images/results/application/emg_20mus-40s_new3.pdf}%
+  \includegraphics[width=\textwidth]{images/results/application/emg_20mus-40s_new3.png}% .pdf
   \caption{Activation pattern for the second scenario with 20 MUs. The activation times used in the simulation are shown as black markers, the recovered activation pulses of the EMG decomposition algorithm are shown as red markers.}%
   \label{fig:emg_20mus-40s_new}%
 \end{figure}
@@ -1041,15 +1102,18 @@ A proof-of-concept implementation of GRU networks showed promising performance f
 %  MU 87 from matlab: FP: 209, TP: 93, FN: 48 -> RoA: 0.26571428571428574
 % 
 % 
-%\fi  % end of \section{Fiber Based Electrophysiology}
 
 % t=100ms
 
+% ==================
+%\iffalse
+begin unfinished text
+% =-------------------
+%-----
 
-%-----
-\section{Application: Static bidomain}
-%-----
-\section{Application: Multidomain}
+begin unfinished text
+
+\section{Solver for the Multidomain Model}
 
 
 % multidomain fr factors
@@ -1136,9 +1200,12 @@ A proof-of-concept implementation of GRU networks showed promising performance f
 
 
 %-----
-\section{Application: Linear mechanics with artifical electrophysiology}
+
+\section{Electrophysiology and Coupled Solid Mechanics}
 %-----
-\section{Application: Fibers and Muscle contraction, no-precice}
+\subsection{Linear Mechanics with artifical electrophysiology}
+%-----
+\subsection{Fiber Based Electrophysiology and Muscle Contraction}
 %-----
 
 % prestretch
@@ -1148,7 +1215,6 @@ A proof-of-concept implementation of GRU networks showed promising performance f
   \caption{prestretch}%
   \label{fig:prestrech1b}%
 \end{figure}%
-\section{Application: Fibers and Muscle contraction, with tendons precice}
 
 % muscle contraction
 \begin{figure}
@@ -1157,9 +1223,20 @@ A proof-of-concept implementation of GRU networks showed promising performance f
   \caption{solver structure}%
   \label{fig:neuromuscular_muscle_contraction_traction}%
 \end{figure}%
+%-----
+\subsection{Coupling with preCICE}
+%-----
+\subsection{With tendons preCICE}
 
 %-----
-\section{Application: Neuromuscular system with Spindles and Prestretch}
+\subsection{Multidomain and Muscle Contraction}
+
+%-----
+\section{Simulations of the Neuromuscular System}
+%-----
+\subsection{Simulation of Motoneurons With Fiber Based Electrophysiology}
+%-----
+\subsection{Neuromuscular system with Spindles and Prestretch}
 
 % prestretch
 \begin{figure}[H]
@@ -1195,7 +1272,7 @@ A proof-of-concept implementation of GRU networks showed promising performance f
 \end{figure}
 
 %-----
-\section{Application: Neuromuscular system with More Sensor Organs}\label{sec:application_neuromuscular_system_more}
+\subsection{Neuromuscular system with More Sensor Organs}\label{sec:application_neuromuscular_system_more}
 
 % data flow Golgi tendon organs
 \begin{figure}[H]
@@ -1214,3 +1291,7 @@ A proof-of-concept implementation of GRU networks showed promising performance f
   \label{fig:neuromuscular_schematic}%
 \end{figure}
 
+% ----------
+%\fi
+end unfinished text
+% ===========f

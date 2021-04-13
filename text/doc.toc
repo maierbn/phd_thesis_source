@@ -1,27 +1,59 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {american}{}
-\contentsline {chapter}{\numberline {1}Results}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Basic equations, Laplace, Poisson, Diffusion etc.}{1}{section.0.1}
-\contentsline {section}{\numberline {1.2}Linear Mechanics}{1}{section.0.2}
-\contentsline {section}{\numberline {1.3}Nonlinear mechanics, tendon material}{1}{section.0.3}
-\contentsline {section}{\numberline {1.4}FEBio adapter, validation}{1}{section.0.4}
-\contentsline {section}{\numberline {1.5}Application: Subcellular Models}{2}{section.0.5}
-\contentsline {section}{\numberline {1.6}Application: Only Fibers, Monodomain}{2}{section.0.6}
-\contentsline {section}{\numberline {1.7}Application: Motoneuron with fibers}{3}{section.0.7}
-\contentsline {section}{\numberline {1.8}Application: Rosenfalck, artifical muscle geometry}{3}{section.0.8}
-\contentsline {section}{\numberline {1.9}Application: Simulation of Monodomain Fibers with EMG}{3}{section.0.9}
-\contentsline {section}{\numberline {1.10}Fiber Based Electrophysiology}{3}{section.0.10}
-\contentsline {subsection}{\numberline {1.10.1}Overview of the EMG Simulation}{3}{subsection.0.10.1}
-\contentsline {subsection}{\numberline {1.10.2}Effects of Single Motor Units on the Electromyography Signal}{5}{subsection.0.10.2}
-\contentsline {subsection}{\numberline {1.10.3}Effects of the Fat Layer on the Electromyography Signal}{10}{subsection.0.10.3}
-\contentsline {subsection}{\numberline {1.10.4}Effects of the Mesh Width on the Electromyography Signal}{12}{subsection.0.10.4}
-\contentsline {subsection}{\numberline {1.10.5}Simulation of EMG electrodes}{18}{subsection.0.10.5}
-\contentsline {subsection}{\numberline {1.10.6}Decomposition of Surface EMG Signals}{19}{subsection.0.10.6}
-\contentsline {section}{\numberline {1.11}Application: Static bidomain}{30}{section.0.11}
-\contentsline {section}{\numberline {1.12}Application: Multidomain}{30}{section.0.12}
-\contentsline {section}{\numberline {1.13}Application: Linear mechanics with artifical electrophysiology}{32}{section.0.13}
-\contentsline {section}{\numberline {1.14}Application: Fibers and Muscle contraction, no-precice}{32}{section.0.14}
-\contentsline {section}{\numberline {1.15}Application: Fibers and Muscle contraction, with tendons precice}{34}{section.0.15}
-\contentsline {section}{\numberline {1.16}Application: Neuromuscular system with Spindles and Prestretch}{34}{section.0.16}
-\contentsline {section}{\numberline {1.17}Application: Neuromuscular system with More Sensor Organs}{38}{section.0.17}
+\contentsline {chapter}{\numberline {1}Results and Discussion}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Introduction}{1}{section.0.1}
+\contentsline {section}{\numberline {1.2}Solid Mechanics Solver}{2}{section.0.2}
+\contentsline {subsection}{\numberline {1.2.1}Linear Mechanics}{2}{subsection.0.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Nonlinear mechanics, tendon material}{2}{subsection.0.2.2}
+\contentsline {subsection}{\numberline {1.2.3}FEBio adapter, validation of solid mechanics implementation}{2}{subsection.0.2.3}
+\contentsline {section}{\numberline {1.3}Simulation of Activated Muscle Fibers}{2}{section.0.3}
+\contentsline {subsection}{\numberline {1.3.1}Computation of Subcellular Models}{2}{subsection.0.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Solver for the Monodomain Equation}{3}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Artificial Fiber Geometries}{3}{subsection.0.3.3}
+\contentsline {section}{\numberline {1.4}Fiber Based Electrophysiology}{3}{section.0.4}
+\contentsline {subsection}{\numberline {1.4.1}Overview of the EMG Simulation}{3}{subsection.0.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Effects of Single Motor Units on the Electromyography Signal}{6}{subsection.0.4.2}
+\contentsline {subsection}{\numberline {1.4.3}Effects of the Fat Layer on the Electromyography Signal}{10}{subsection.0.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Effects of the Mesh Width on the Electromyography Signal}{13}{subsection.0.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Simulation of EMG electrodes}{20}{subsection.0.4.5}
+\contentsline {subsection}{\numberline {1.4.6}Decomposition of Surface EMG Signals}{22}{subsection.0.4.6}
+\contentsline {section}{\numberline {1.5}Solver for the Multidomain Model}{32}{section.0.5}
+\contentsline {section}{\numberline {1.6}Electrophysiology and Coupled Solid Mechanics}{35}{section.0.6}
+\contentsline {subsection}{\numberline {1.6.1}Linear Mechanics with artifical electrophysiology}{35}{subsection.0.6.1}
+\contentsline {subsection}{\numberline {1.6.2}Fiber Based Electrophysiology and Muscle Contraction}{35}{subsection.0.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Coupling with preCICE}{37}{subsection.0.6.3}
+\contentsline {subsection}{\numberline {1.6.4}With tendons preCICE}{37}{subsection.0.6.4}
+\contentsline {subsection}{\numberline {1.6.5}Multidomain and Muscle Contraction}{37}{subsection.0.6.5}
+\contentsline {section}{\numberline {1.7}Simulations of the Neuromuscular System}{37}{section.0.7}
+\contentsline {subsection}{\numberline {1.7.1}Simulation of Motoneurons With Fiber Based Electrophysiology}{37}{subsection.0.7.1}
+\contentsline {subsection}{\numberline {1.7.2}Neuromuscular system with Spindles and Prestretch}{37}{subsection.0.7.2}
+\contentsline {subsection}{\numberline {1.7.3}Neuromuscular system with More Sensor Organs}{41}{subsection.0.7.3}
+\contentsline {section}{\numberline {1.8}Performance Studies with OpenCMISS Iron}{43}{section.0.8}
+\contentsline {subsection}{\numberline {1.8.1}Numeric Improvements}{43}{subsection.0.8.1}
+\contentsline {subsection}{\numberline {1.8.2}Parallel Partitioning Strategies}{47}{subsection.0.8.2}
+\contentsline {subsection}{\numberline {1.8.3}Weak Scaling Study and Memory Consumption}{49}{subsection.0.8.3}
+\contentsline {section}{\numberline {1.9}Performance Studies of the Electrophysiology Solver in OpenDiHu}{53}{section.0.9}
+\contentsline {subsection}{\numberline {1.9.1}Evaluation of Compiler Optimizations}{53}{subsection.0.9.1}
+\contentsline {subsection}{\numberline {1.9.2}Evaluation of Code Generator Optimizations}{55}{subsection.0.9.2}
+\contentsline {section}{\numberline {1.10}Parallel Strong Scaling and Comparison with OpenCMISS Iron}{62}{section.0.10}
+\contentsline {subsection}{\numberline {1.10.1}Evaluation of Runtimes}{62}{subsection.0.10.1}
+\contentsline {subsection}{\numberline {1.10.2}Roofline Model}{65}{subsection.0.10.2}
+\contentsline {section}{\numberline {1.11}Performance Measurements on the GPU}{67}{section.0.11}
+\contentsline {subsection}{\numberline {1.11.1}Strong Scaling with the GPU for the Hodgkin-Huxley Model}{68}{subsection.0.11.1}
+\contentsline {subsection}{\numberline {1.11.2}Evaluation of Hybrid CPU and GPU Computation for the Shorten Model}{70}{subsection.0.11.2}
+\contentsline {subsection}{\numberline {1.11.3}Conclusion}{70}{subsection.0.11.3}
+\contentsline {section}{\numberline {1.12}Parallel Scaling of the EMG model in High Performance Computing}{73}{section.0.12}
+\contentsline {subsection}{\numberline {1.12.1}Weak Scaling of the Fiber Based Electrophysiology Model}{73}{subsection.0.12.1}
+\contentsline {subsection}{\numberline {1.12.2}Weak Scaling of the 1D Solver and MPI Rank Placement}{76}{subsection.0.12.2}
+\contentsline {section}{\numberline {1.13}Performance Studies of the Solid Mechanics Solver}{78}{section.0.13}
+\contentsline {section}{\numberline {1.14}Studies of Numeric Properties}{78}{section.0.14}
+\contentsline {section}{\numberline {1.15}Effect of the Mesh Width on the Action Potential Propagation Velocity}{78}{section.0.15}
+\contentsline {subsection}{\numberline {1.15.1}Linear Solvers for the Multidomain Problem}{80}{subsection.0.15.1}
+\contentsline {section}{\numberline {1.16}Parallel in Time master thesis}{81}{section.0.16}
+\contentsline {section}{\numberline {1.17}Output file sizes}{81}{section.0.17}
+\contentsline {section}{\numberline {1.18}dx-dt dependencies}{81}{section.0.18}
+\contentsline {section}{\numberline {1.19}Load balancing bachelor thesis}{81}{section.0.19}
+\contentsline {section}{\numberline {1.20}Application of opendihu within the field of robotics}{82}{section.0.20}
+\contentsline {chapter}{\numberline {2}Conclusion and Future Work}{83}{chapter.2}
+\contentsline {section}{\numberline {2.1}Future Work}{83}{section.0.1}

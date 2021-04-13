@@ -670,7 +670,7 @@ In the example, only two processes generate and compile the code. All four proce
 
 The generated shared libraries contain machine-code to compute the functions $G(\bfy)$ and $H(\bfy)$. They are loaded into the simulation program and executed by the \code{CellmlAdapter} class with the corresponding values, as indicated in \cref{fig:cellml_scheme}. Furthermore, the \code{Cellml}\code{Adapter} uses the previously inferred vector of initial values to initialize the state vector before the first timestep. Also the \code{FastMonodomainSolver} class presented in \cref{sec:improved_parallel_solver_for_fiber_based}, which efficiently solves the monodomain equation makes use of the code generator and the shared libraries to execute the subcellular model.
 
-\subsection{Optimizations in the Generated Code}
+\subsection{Optimizations in the Generated Code}\label{sec:optimizations_in_the_generated}
 
 The code generator can be configured to employ various types of optimizations in the generated code. These optimizations can be selected in the settings by the parameter \code{`optimizationType`}.
 
@@ -789,9 +789,17 @@ Similar to the \code{`simd`} optimization type, the \code{`vc`} optimization typ
 
 The SoVA memory layout is very similar to SoA, the only difference is that in SoVA, entries are always accessed in multiples of the SIMD vector length $\mathcal{W}_T$. The advantage of SoVA is that the array indices are given by the sum of a constant offset with the loop index, whereas with the AoVS layout, a multiplication is required for every access.
 
-AoVS resembles more the AoS layout. Its advantage over SoVA is that the complete state vector $\bfy$ for any model instance is located closer in memory. As the total computation iterates over model instances, the accessed memory is more coherent than for the same iteration scheme with the AoVS layout. This possibly leads to more cache hits, however for set-associative caches, the effect is reduced. Due to the complexity of today's cache architectures, only measurements can decide which of the two memory layouts lead to a faster execution. Our measurements show that the AoVS layout leads to \SI{2}{\percent} shorter runtimes than the SoVA memory layout and, thus, is the preferred choice.
+AoVS resembles more the AoS layout. Its advantage over SoVA is that the complete state vector $\bfy$ for any model instance is located closer in memory. As the total computation iterates over model instances, the accessed memory is more coherent than for the same iteration scheme with the AoVS layout. This possibly leads to more cache hits, however for set-associative caches, the effect is reduced. Due to the complexity of today's cache architectures, only measurements can decide which of the two memory layouts lead to a faster execution. Our measurements show that the SoVA layout leads to \SI{2}{\percent} shorter runtimes than the AoVS memory layout and, thus, is the preferred choice.
 
-%
+% hodgkin huxley
+%   vc-sova 216.6 s
+%   vc-aovs 217.3 s
+
+% shorten
+%   vc-sova 6873.6 s
+%   vc-aovs 7000.3 s
+
+% other run:
 %                     subdomains        user  total comp.         0D         1D  bidomain  duration_init     write       mem    n
 % scenarioName nRanks                                                                                                            
 % vc           18      [3, 2, 3]  186.429444   183.516278  45.524128  95.482744  2.693811       3.053507  1.707781  0.224 GB   18
