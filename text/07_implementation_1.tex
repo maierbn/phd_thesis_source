@@ -482,7 +482,7 @@ However, to be able to apply the multitude of PETSc solvers to this linear syste
   \label{fig:original_reordered_matrix}%
 \end{figure}%
 
-\subsection{Properties of a Diagonal Block-Matrix for the Preconditioner}
+\subsection{Properties of a Diagonal Block-Matrix for the Preconditioner}\label{sec:multidomain_diagonal_matrix}
 With the reordered matrix, the linear system can now be solved using almost any preconditioner and linear solver of the PETSc framework. 
 For the construction of the preconditioner $\mathcal{P}$ with left preconditioning matrix $P=\mathcal{P}(A)$, we can either use the system matrix $A$ or provide a different matrix $A'$. The preconditioned linear system $P^{-1}A$ should have a smaller condition number than $A$ and, thus, solving the preconditioned system iteratively should be significantly faster than the original $A$ system.
 

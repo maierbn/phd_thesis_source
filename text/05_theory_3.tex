@@ -30,9 +30,9 @@ The vectors contain the degrees of freedom of a Finite Element discretization. T
 
 Often, it is easier to write the equations in component form. Indices $a,b,c,\dots$ are used to specify a dimension index in $\{1,\dots,d\}$. The letters $L,M \in \{1,\dots,N\}$ denote indices over degrees of freedom in a mesh with $N$ nodes. The Einstein sum convention is used where repeated indices implicitly indicate summation, except when the indices are in parantheses.
 Thus, the right hand side $\bff$ of \cref{eq:linearized_helper1b} with ansatz functions $\phi^L$ and the degrees of freedom $δu_a^L$ of $δ\bfu$ can be written as:
-\begin{align*}
+\begin{align}\label{eq:linearized_mechanics_rhs}
   \bff_a = \ds\int_{∂\Omega} t_{(a)}\,δu_{(a)}^L\,\phi^L \,\d \bfx.
-\end{align*}
+\end{align}
 
 By combining the kinematic relation between displacements $\bfu$ and linearized strains $\bfeps$ in \cref{eq:linearized_helper3}, the material relation between $\bfeps$ and the stress $\bfsigma$ in \cref{eq:linearized_helper2}, the equilibrium relation between $\bfsigma$ and the right hand side vector $\bff$ in \cref{eq:linearized_helper1b} and after discretizing displacements and virtual displacements, we get the following linear matrix equation:
 \begin{align}\label{eq:linearized_helper4}

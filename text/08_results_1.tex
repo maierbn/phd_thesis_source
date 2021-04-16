@@ -5,31 +5,97 @@
 
 % --------------------------------
 % application
-\section{Simulation of Activated Muscle Fibers}
-%-----
-\subsection{Computation of Subcellular Models}
+\section{Simulation of CellML Models}
+The subcellular models used in the multi-scale model are given in CellML description and can be solved in OpenDiHu using the \code{CellmlAdapter} class.
+In the following, we show simulation results of the most commonly used CellML models in this work.
 
-% fibers mesh
-\begin{figure}[H]
+\subsection{Simulation of Subcellular Models}
+First, we consider a single instance of the subcellular model of Shorten et al. \cite{Shorten2007}. We solve the model with Heun's method with a timestep width of $\dt_\text{0D} = \num{1e-5}$. A stimulation current of $I_\text{stim}=\SI{40}{\micro\ampere\per\square\centi\meter}$ is applied during the time range $[\SI{5}{\ms},\SI{5.1}{\ms}]$. \Cref{fig:shorten_over_time} shows the resulting values of the membrane voltage $V_m$ over time in the upper plot and the temporal evolution of all other variables in the lower plot.
+%\footnote{Note that the purpose of the lower plot in \cref{fig:shorten_over_time} is not to identify the individual variables, but to give an overview impression of the activation dynamics.}.
+
+% Shorten over time
+\begin{figure}
   \centering%
-  \includegraphics[width=\textwidth]{images/results/application/fibers_0.png}%
-  \includegraphics[width=\textwidth]{images/results/application/fibers_1.png}%
-  \includegraphics[width=\textwidth]{images/results/application/fibers_2.png}%
-  \caption{fibers mesh}%
-  \label{fig:multidomain_mesh}%
-\end{figure}
+  \includegraphics[width=0.8\textwidth]{images/results/basic/shorten_over_time.pdf}%
+  \caption{Simulation of the Shorten subcellular model over time $t$ in milliseconds. The cell is stimulated at $t=\SI{5}{\ms}$. The upper plot shows the membrane voltage $V_m$, the lower plot show all other variables, some of which are listed in the legend on the right.}%
+  \label{fig:shorten_over_time}%
+\end{figure}%
 
-\subsection{Solver for the Monodomain Equation}
+In the upper plot, the depolarization and repolarization of the membrane can be seen upon the stimulation at $t=\SI{5}{\ms}$, exhibiting the characteristic action potential shape. The membrane voltage $V_m$ reaches its equilibrium value again at approximately $\SI{5}{\ms}$ after the stimulation. 
+The lower plot in \cref{fig:shorten_over_time} shows longer durations for several other variables to return to the equilibrium state. As a consequence, the generated force or active stress of the sarcomeres, indicated by the thick red line in \cref{fig:shorten_over_time}, does not directly decrease after the stimulation is over. For frequent stimulation patterns, the force level would show a smooth progression over time.
 
-\subsection{Artificial Fiber Geometries}
+The propagation of the action potentials of the Shorten subcellular model can be simulated with the monodomain equation (\cref{eq:monodomain}). \Cref{fig:shorten_03_50} shows according simulation results on a 1D muscle fiber mesh with length \SI{1}{\cm}, discretized to 100 elements. The muscle fiber is stimulated at its center at $t=0$. The upper plot in \cref{fig:shorten_03_50} displays the membrane voltage $V_m$ at time $t=\SI{3.5}{\ms}$. Two action potentials, which move towards both ends of the fiber can be identified. The lower plot shows all other variables, normalized to the value range $[-1,1]$. At the outer ends of the fiber, the variables are still in equilibrium, whereas towards the center, their values change dynamically as the action potentials propagate. 
 
-Rosenfalck model, artifical muscle geometry
+% Shorten over mesh
+\begin{figure}
+  \centering%
+  \includegraphics[width=0.8\textwidth]{images/results/basic/shorten_03_50.png}%
+  \caption{Simulation of action potential propagation on a 1D mesh with the Shorten subcellular model. The upper plots shows the membrane voltage $V_m$ at time $t=\SI{3.5}{\ms}$ over the fiber along the $x$ axis. The lower plot shows all other variables of the model.}%
+  \label{fig:shorten_03_50}%
+\end{figure}%
 
+\Cref{fig:hodgkin_huxley_over_mesh} shows analogous results for a simulation with the subcellular model of Hodgkin and Huxley \cite{Hodgkin1952}. Two action potentials can be seen  at time $t=\SI{4.25}{\ms}$ on a fiber mesh with 200 nodes and of \SI{2}{\cm} length. The system state is fully described by the values of the four variables that are plotted in \cref{fig:hodgkin_huxley_over_mesh}.
+
+% Hodgkin_Huxley over mesh
+\begin{figure}
+  \centering%
+  \includegraphics[width=0.9\textwidth]{images/results/basic/hodgkin_huxley_over_mesh.png}%
+  \caption{Simulation of action potential propagation on a 1D mesh with the Hodgkin-Huxley subcellular model for time $t=\SI{4.25}{\ms}$, analogous to \cref{fig:shorten_03_50}.}%
+  \label{fig:hodgkin_huxley_over_mesh}%
+\end{figure}%
+
+\begin{reproduce_no_break}
+  The simulation of a single instance of the Shorten model and the plot of \cref{fig:shorten_over_time} can be obtained as follows:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/cellml/shorten/build_release
+    ./cellml ../settings_cellml.py
+    cd out && plot
+  \end{lstlisting}
+  The simulation of the monodomain equation for the Shorten model shown in \cref{fig:shorten_03_50} can be executed and visualized as follows: 
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/monodomain/new_slow_TK_2014_12_08/build_release
+    ./shorten_implicit ../settings_new_slow_TK_2014_12_08.py
+    cd out && plot
+  \end{lstlisting}
+\end{reproduce_no_break}
+
+\subsection{Simulation of Motoneuron Models}
+
+If an activation model with a pool of motor neurons is considered in the neuromuscular multi-scale model, the transient behavior of motor neurons has to be simulated as well. In our simulations, we use the motor neuron model of Cisi and Kohn \cite{Cisi2008}. The drive parameter of the model is set to a constant value of \SI{0.01}{\volt\per\second}. In consequence, the motor neuron fires with a frequency that depends on the input drive, which in the presented scenario is approximately \SI{25}{\hertz}.
+
+\Cref{fig:motoneuron_plot} shows the evolution of the different variables of the model over time. Six firing times can be identified. 
+
+% Motoneuron over time
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/results/basic/motoneuron_plot.pdf}%
+  \caption{Simulation of the motor neuron model of Cisi and Kohn \cite{Cisi2008} for a constant input drive of  \SI{0.01}{\volt\per\second}. The evolution of all variables of the model is plotted over time $t$ in milliseconds.}%
+  \label{fig:motoneuron_plot}%
+\end{figure}%
+
+To connect the motor neuron with the fibers of the MU in the simulation, we stimulate the muscle fibers whenever the $V_s$ value of the motor neuron reaches a certain threshold. It is possible to configure a pool of several motor neurons with different model parameters and different input drive values. Each motor neuron can be connected to a different set of fibers, according to the MU to fiber association. In result, the MUs get physiologically activated according to the different firing frequencies of the motor neurons.
+
+In summary, we showed simulations of the 0D subcellular models of Shorten et al. and Hodgkin and Huxley, simulations of these models together with the 1D conduction model in the monodomain equation, and a simulation of motor neurons. All of these models are given in CellML description and can be further combined with other parts of the multi-scale model, e.g., to simulate surface EMG signals.
+
+\begin{reproduce_no_break}
+  The simulation and visualization for \cref{fig:motoneuron_plot} can be executed with the following commands:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/monodomain/motoneuron_cisi_kohn/build_release
+    ./motoneuron_cisi_kohn ../settings_motoneuron_cisi_kohn.py
+    cd out && plot motoneuron*
+  \end{lstlisting}
+  This simulation also computes the monodomain equation one muscle fiber that gets activated whenever the motor neuron fires.
+\end{reproduce_no_break}
 %-----
 
 % --------
 %\fi
 % f==============
+
+% ==================
+\iffalse
+% =-------------------
+
 \section{Fiber Based Electrophysiology}
 
 In this section, we consider surface EMG signals on the upper arm by simulating the activation of the biceps brachii muscle.
@@ -1105,13 +1171,72 @@ A proof-of-concept implementation of GRU networks showed promising performance f
 
 % t=100ms
 
+% ----------
+\fi
+% ===========f
+
 % ==================
 %\iffalse
-begin unfinished text
 % =-------------------
-%-----
 
-begin unfinished text
+\subsection{Simuation of Electrophysiology with a Phenomenological Fiber Model}
+
+Instead of the previously presented numeric model of action potential propagation on the muscle fibers, the respective physiological process can also be described with a phenomenological approach.
+
+The model formulated by Rosenfalck \cite{Rosenfalck1969} describes the action potential shape on a 1D domain by the following function:
+%
+\begin{align*}
+  G(z) = \begin{cases}
+    96\,z^3\,\exp(-z) - 9 & \text{for } z \geq 0\\[4mm]
+    -90  & \text{for } z < 0
+  \end{cases}  
+\end{align*}
+
+\begin{figure}
+  \centering%
+  \includegraphics[width=0.6\textwidth]{images/results/application/rosenfalck_function.pdf}%
+  \caption{Analytic model of an action potential shape by Rosenfalck.}%
+  \label{fig:rosenfalck_function}%
+\end{figure}
+\Cref{fig:rosenfalck_function} shows the graph of the function. The resulting value of $G$ specifies the membrane voltage in millivolts. The coordinate $z=x+v\,t$ depends on the distance $x$ to the neuromuscular junction on the fiber, the conduction velocity $v$ and the time $t$ after the last stimulation. In our simulation, we use the proposed propagation velocity of \SI{4}{\meter\per\second}.
+
+The advantage of using an analytic model is its fast calculation runtime compared with the numeric model. On the downside, such a model cannot accurately describe saturation effects in tetanic stimulations or the action potential shape changing properties of more advanced subcellular models.
+
+One use case of the Rosenfalck model is to study the effect of muscle fiber arrangements in a muscle volume on the surface EMG signal. In this case, the exact time-varying shapes of the motor unit action potentials are less important than the location and orientation of the fibers.
+We provide an example in OpenDiHu, which uses the Rosenfalck model on multiple muscle fibers that are embedded in a 3D domain. As in the previous sections, the 3D bidomain model given by \cref{eq:bidomain1} is coupled to the fibers and used to simulate EMG recordings on the surface. 
+
+In addition to the simplified model of action potential propagation, we use a simplified description of the muscle geometry. \Cref{fig:custom_geometry} shows the artifical geometry, which is constructed by rotating a transformed sine curve around the $z$ axis. 
+The program embeds the fibers automatically inside the volume and orients them according to predefined spherical coordinates describing the orientation. These angles and the number and spacings between the fibers can be adjusted in the Python settings script of the simulation.
+
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/results/application/custom_geometry.png}%
+  \caption{Simulation of an artifical muscle geometry with a phenomenological model of action potential propagation. The upper image shows the muscle fiber, colored according to the transmembrane potential $V_m$. The lower images shows the extracellular potential $\phi_e$ on the surface.
+  This scenario can be computed very fast and can, e.g., be useful to investigate the effects of different fiber orientations.}%
+  \label{fig:custom_geometry}%
+\end{figure}
+
+\Cref{fig:custom_geometry} shows the location of the fibers inside the artificial muscle belly and a simulation result of muscular activity  at $t=\SI{15}{\ms}$. The resulting EMG signal can be seen on the surface.
+This simulation scenario provides means to quickly study electrophysiology and generation of EMG for a generic muscle. Solving the model only consists of evaluations of the Rosenfalck function and repeated computation of the 3D model, but no further costly computations of numeric electrophysiology models. Moreover, no mesh file has to be generated and loaded, which simplifies the handling of the scenario.
+
+\begin{reproduce_no_break}
+  The simulation in \cref{fig:custom_geometry} can be started as follows.
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/analytical_fibers_emg/build_release
+    ./analytical_fibers_emg ../settings_analytical_fibers_emg_custom_geometry.py geometry_round.py
+  \end{lstlisting}
+  The options can be set in the \code{variables/geometry_round.py} settings file. Other artifical geometries are available by using other scripts under \code{variables}.
+\end{reproduce_no_break}
+
+\subsection{Conclusion}
+
+TODO
+
+
+
+% ==================
+\iffalse
+% =-------------------
 
 \section{Solver for the Multidomain Model}
 
@@ -1203,8 +1328,6 @@ begin unfinished text
 
 \section{Electrophysiology and Coupled Solid Mechanics}
 %-----
-\subsection{Linear Mechanics with artifical electrophysiology}
-%-----
 \subsection{Fiber Based Electrophysiology and Muscle Contraction}
 %-----
 
@@ -1234,7 +1357,7 @@ begin unfinished text
 %-----
 \section{Simulations of the Neuromuscular System}
 %-----
-\subsection{Simulation of Motoneurons With Fiber Based Electrophysiology}
+%\subsection{Simulation of Motoneurons With Fiber Based Electrophysiology}
 %-----
 \subsection{Neuromuscular system with Spindles and Prestretch}
 
@@ -1292,6 +1415,5 @@ begin unfinished text
 \end{figure}
 
 % ----------
-%\fi
-end unfinished text
+\fi
 % ===========f

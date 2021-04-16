@@ -310,9 +310,9 @@ The decoupled form is available with $\Psi_\text{vol}$ and $\Psi_\text{iso}$, th
 \subsection{The Nonlinear Material Model for Muscle Contraction}\label{sec:material_nonlinear_model}
 
 In the muscle contraction model of \cite{Heidlauf2013}, the strain energy function is additively composed of two passive terms, one isotropic, one anisotropic, and one additional active term:
-\begin{align*}
+\begin{align}\label{eq:transiso_mooney_rivlin}
   \Psi(\bfC) = \Psi_\text{isotropic}(I_1,I_2) + \Psi_\text{anisotropic}(\lambda_f) + \Psi_\text{active}(\gamma).
-\end{align*}
+\end{align}
 The isotropic term $\Psi_\text{isotropic}$ is formulated in terms of the strain invariants $I_1=\tr(\bfC)$ and $I_2=\big(\tr(\bfC)^2 - \tr(\bfC^2)\big)/2$. The anisotropic term $\Psi_\text{anisotropic}$ depends on the fiber stretch $\lambda_f$. The active term $\Psi_\text{active}$ yields the active stress that results from muscular activation, which is described by the activation parameter $\gamma$.
 %Note the missing dependency on the third invariant $I_3$, which is constant because of the enforced incompressibility.
 
