@@ -1,6 +1,6 @@
 
 % ==============
-\iffalse
+%\iffalse
 % --------------
 %-----
 \section{Parallel Scaling of the EMG Model Using High Performance Computing}
@@ -123,7 +123,7 @@ If no such measures are taken, the default placement of MPI ranks on the compute
 Thus, it is important to properly handle MPI rank placement on compute clusters with multiple compute nodes. In consequence, we also configured rank placement on the supercomputer Hawk accordingly in all our studies on this system.
 
 % ------------
-\fi
+%\fi
 % f===========
 
 
@@ -273,7 +273,7 @@ Next, we perform numeric studies to evaluate mesh resolutions and linear solvers
 \Cref{sec:action_potential_velocity} addresses the mesh width of the 1D problem. Then, \cref{sec:multidomain_solvers} evaluates different numerical solver choices for the multidomain model.
 
 % ==============
-\iffalse
+%\iffalse
 % --------------
 \subsection{Effect of the Mesh Width on the Action Potential Propagation Velocity}\label{sec:action_potential_velocity}
 
@@ -438,15 +438,18 @@ no
 no
 
 \chapter{Conclusion and Future Work}\label{sec:conclusion_and_future_work}
+% Röhrle2012: TA 12 elements, MU association
+% Heidlauf2013: 400 fibers, TA, OpenCMISS, mechanics
 
 \section{Future Work}\label{sec:future_work}
  
 % more timestepping methods: CVODE (https://computing.llnl.gov/projects/sundials/cvode), imex
 % different parallelisation where not all ranks have to be involved (for multidomain) -> this feature already exists for the fibers with multipleInstances
 % more numeric tests on exp function? no
-
+% multidomain: compute 3D problem as 1D problem, or adaptive computation of the parts of the fr factors
+% multidomain: evaluate number of fibers and multidomain mesh width and number of MUs
 
 % ------------
-\fi
+%\fi
 % f===========
 

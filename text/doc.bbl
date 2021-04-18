@@ -19,99 +19,73 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
-    \entry{Cisi2008}{article}{}
-      \name{author}{2}{}{%
-        {{hash=2da8f1d76514effefb3998f9377f10eb}{%
-           family={Cisi},
-           familyi={C\bibinitperiod},
-           given={Rogerio\bibnamedelima RL},
-           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=90fe5ecedd72ef208657a02973bda8a3}{%
-           family={Kohn},
-           familyi={K\bibinitperiod},
-           given={Andre\bibnamedelima F},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+    \entry{precice}{article}{}
+      \name{author}{7}{}{%
+        {{hash=26eafa3a34098b617e2a5381e1d2e42c}{%
+           family={Bungartz},
+           familyi={B\bibinitperiod},
+           given={Hans-Joachim},
+           giveni={H\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=f00cf71d273a55215642cdbd03ce6e48}{%
+           family={Lindner},
+           familyi={L\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=d3d9bcce952061700df6d9dd87ecfb01}{%
+           family={Gatzhammer},
+           familyi={G\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bf695f24c7e028e713eb53f02c28c2cf}{%
+           family={Mehl},
+           familyi={M\bibinitperiod},
+           given={Miriam},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a9e3cd19308531620502019b677d1135}{%
+           family={Scheufele},
+           familyi={S\bibinitperiod},
+           given={Klaudius},
+           giveni={K\bibinitperiod}}}%
+        {{hash=060b92f49fee312546012e5375925f6c}{%
+           family={Shukaev},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=96492da40bafc5224b4ca48bed84b96a}{%
+           family={Uekermann},
+           familyi={U\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{fullhash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{bibnamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authorbibnamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authornamehash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \strng{authorfullhash}{15bf00ed77b37bdd44d4bcc6ef96dc0f}
-      \field{labelalpha}{Cis08}
-      \field{sortinit}{C}
-      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \strng{namehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{fullhash}{3b6a2df2cf7f394a01813ffa34a44fad}
+      \strng{bibnamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authorbibnamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authornamehash}{5a10c4de4ef58b585fc2cb70b83b05e2}
+      \strng{authorfullhash}{3b6a2df2cf7f394a01813ffa34a44fad}
+      \field{labelalpha}{Bun16}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of computational neuroscience}
-      \field{number}{3}
-      \field{title}{Simulation system of spinal cord motor nuclei and associated nerves and muscles, in a Web-based architecture}
-      \field{volume}{25}
-      \field{year}{2008}
-      \field{pages}{520\bibrangedash 542}
-      \range{pages}{23}
-    \endentry
-    \entry{Hodgkin1952}{article}{}
-      \name{author}{2}{}{%
-        {{hash=380378d55a343a5bcffc8c323d8ca4b8}{%
-           family={Hodgkin},
-           familyi={H\bibinitperiod},
-           given={A.\bibnamedelimi L.},
-           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=9a6704d0bf7a4ab9213d4e7e5c16cf18}{%
-           family={Huxley},
-           familyi={H\bibinitperiod},
-           given={A.\bibnamedelimi F.},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \strng{namehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{fullhash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{bibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authorbibnamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authornamehash}{88db3d39042b8b85cc3995279a3c52c8}
-      \strng{authorfullhash}{88db3d39042b8b85cc3995279a3c52c8}
-      \field{labelalpha}{Hod52}
-      \field{sortinit}{H}
-      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{The Journal of Physiology}
-      \field{number}{4}
-      \field{title}{A quantitative description of membrane current and its application to conduction and excitation in nerve.}
-      \field{volume}{117}
-      \field{year}{1952}
-      \field{pages}{500\bibrangedash 544}
-      \range{pages}{45}
-    \endentry
-    \entry{Rosenfalck1969}{article}{}
-      \name{author}{1}{}{%
-        {{hash=34d69b9a20ca21651f2f12989f499eb2}{%
-           family={Rosenfalck},
-           familyi={R\bibinitperiod},
-           given={Poul},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{34d69b9a20ca21651f2f12989f499eb2}
-      \strng{fullhash}{34d69b9a20ca21651f2f12989f499eb2}
-      \strng{bibnamehash}{34d69b9a20ca21651f2f12989f499eb2}
-      \strng{authorbibnamehash}{34d69b9a20ca21651f2f12989f499eb2}
-      \strng{authornamehash}{34d69b9a20ca21651f2f12989f499eb2}
-      \strng{authorfullhash}{34d69b9a20ca21651f2f12989f499eb2}
-      \field{labelalpha}{Ros69}
-      \field{sortinit}{R}
-      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0302-2994}
-      \field{journaltitle}{Acta Physiologica Scandinavica. Supplementum}
-      \field{title}{Intra-and extracellular potential fields of active nerve and muscle fibres: A physico-mathematical analysis of different models}
-      \field{volume}{321}
-      \field{year}{1969}
-      \field{pages}{1\bibrangedash 168}
-      \range{pages}{168}
+      \field{issn}{0045-7930}
+      \field{journaltitle}{Computers \& Fluids}
+      \field{note}{Advances in Fluid-Structure Interaction}
+      \field{title}{preCICE -- A fully parallel library for multi-physics surface coupling}
+      \field{volume}{141}
+      \field{year}{2016}
+      \field{pages}{250\bibrangedash 258}
+      \range{pages}{9}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.compfluid.2016.04.003
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0045793016300974
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0045793016300974
+      \endverb
+      \keyw{Partitioned multi-physics,Strong coupling,Non-matching grids,Inter-code communication,Quasi-Newton,Radial basis functions,High performance computing}
     \endentry
     \entry{Shorten2007}{article}{}
       \name{author}{4}{}{%

@@ -1,0 +1,693 @@
+
+
+% ==================
+\iffalse
+% =-------------------
+
+\section{Solver for the Multidomain Model}\label{sec:solver_multidomain_model}
+
+The multidomain model is an alternative to the fiber based electrophysiology model discussed in the last section.
+As introduced in \cref{sec:multidomain_model}, it does not explicitly resolve muscle fibers but considers activity in the muscle domain in a homogenized view.
+On every point in the 3D muscle mesh, separate values $V_m^k$ of the transmembrane potential exist for every MU $k \in \{1,\dots,N_\text{MU}\}$, in addition to the value $\phi_e$ for the extracellular electric potential. 
+The computational domain considers the muscle volume $\Omega_M$ and the body domain $\Omega_B$, which contains the adipose tissue on top of the muscle.
+To solve the multidomain model, a large linear system has to be solved in every timestep, as described in \cref{sec:discretization_body_domain}.
+
+In the following, \cref{sec:multidomain_components} discusses the model setup for a scenario with four MUs. \Cref{sec:multidomain_simulation_emg} demonstrates a larger simulation scenario with 25 MUs, which can be used to simulate surface EMG signals. We discuss differences between the multidomain approach and the fiber based electrophysiology model in \cref{sec:multidomain_differences}.
+
+\subsection{Components of the Computational Model}\label{sec:multidomain_components}
+
+In the following, we consider a multidomain simulation with muscle and body fat domains and four MUs. We use a linear muscle mesh with $16 \times 16 \times 74 = \num{18944}$ elements and a fat mesh with $32 \times 4 \times 74 = \num{9472}$ elements, which are partitioned to 128 subdomains for 128 processes. 
+
+The scenario uses the following electric conduction tensors $\bfsigma_i$ and $\bfsigma_e$ for the intra-cellular domain and the extracellular domain, respectively:
+\begin{align}\label{eq:multidomain_isotropic_e}
+  \bfsigma_i &= \mat{
+  8.93 & 0 & 0\\
+  0& 0& 0\\
+  0& 0& 0}\SI{}{\milli\siemens\per\centi\meter}, &  \bfsigma_e &= \mat{6.7 & 0 & 0\\
+        0& 6.7& 0\\
+        0& 0& 6.7}\SI{}{\milli\siemens\per\centi\meter}.
+\end{align}
+%
+In this scenario, we use the subcellular model of Hodgkin and Huxley \cite{Hodgkin1952} and solved it using Heun's method. We discretize the multidomain equations using the Crank Nicolson scheme with $\theta=\frac12$.
+We solve the resulting linear system of equations by a GMRES solver with the parallel incomplete LU factorization preconditioner \emph{Euclid} \cite{euclid} from the HYPRE package \cite{falgout2002hypre}. A tight residual norm tolerance of \num{1e-15} is used in the abortion criterion of the GMRES solver. Such a low tolerance is required, as for higher tolerances, spurious artificial stimulations can be observed. Timestep widths of $\dt_\text{0D}=\dt_\text{multidomain}=\dt_\text{splitting}=\SI{1e-3}{\ms}$ are used. 
+The computation for a simulation end time of $t_\text{end}=\SI{20}{\ms}$ in this scenario takes approximately \SI{27}{\min}.
+
+%MU  0 around fiber 864, fr_max: 0.050, stddev: 0.10, r: 40.0 μm, Cm: 0.6 uF/cm^2, tstart: 0.000 s, f: 24.000 Hz
+%MU  1 around fiber 343, fr_max: 0.061, stddev: 0.12, r: 40.7 μm, Cm: 0.6 uF/cm^2, tstart: 0.010 s, f: 22.937 Hz
+%MU  2 around fiber 265, fr_max: 0.072, stddev: 0.14, r: 41.3 μm, Cm: 0.6 uF/cm^2, tstart: 0.020 s, f: 21.895 Hz
+
+%scenario_name: 4mus,  n_subdomains: 4 1 32,  n_ranks: 128,  end_time: 20
+%dt_0D:           1e-03    multidomain solver:         1000 it. of gmres (10000 it. of gmres), lumped mass matrix: False, initial guess: previous solution
+%dt_multidomain:  1e-03    multidomain preconditioner: euclid (euclid), symmetric precond.: True
+%dt_splitting:    1e-03    theta: 1.0, solver tolerances, abs: 1e-15, rel: 1e-15
+%fiber_file:              /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_33x33fibers.bin
+%fat_mesh_file:           /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_33x33fibers.bin_fat.bin
+%cellml_file:             /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/hodgkin_huxley_1952.c
+%firing_times_file:       /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/MU_firing_times_always.txt
+%********************************************************************************
+%128 ranks, partitioning: x4 x y1 x z32
+  %sampling 3D mesh with stride 2 x 2 x 20
+    %linear 3D mesh    nodes global: 17 x 17 x 75 = 21675, local: 4 x 17 x 3 = 204
+    %linear 3D mesh elements global: 16 x 16 x 74 = 18944, local: 4 x 16 x 3 = 192
+    %fat mesh, n points total:    12375 (33 x 5 x 75), (per process: 4 x 5 x 3 = 60)
+       
+In the multidomain model, we have to specify which point in the 3D mesh belongs to which MU to which extent. This is achieved by the relative occupancy factors $f_r^{k}$ for MU $k$.
+In our implementation, the occupancy factors are computed by Python code in the settings file of the simulation. For every MU $k$, a fiber is specified, which is considered the center for the MU territory. The occupancy factors $f_r^k(x,y,z)$  in every muscle cross-section with fixed $z$ coordinate are defined by a radial function $f(|(x,y)^\top|/d(z))$, which reaches a configurable maximum value at the location of the specified fiber. The argument of the radial function is scaled by the diameter $d(z)$ of the muscle at the considered cross section. The factor $f_r^k(x,y,z)$ is constant in longitudinal direction $z$ of the muscle. Before the computation, all factors $f_r$ are equally scaled such that the maximum of their sum is equal to one:%
+\begin{align*}
+  \max\limits_{(x,y,z)\in\Omega_M} \sum_{k=1}^{N_\text{MU}} f_r^k(x,y,z) = 1.
+\end{align*}
+
+% multidomain fr factors
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{0.23\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_fr0_cropped.png}%
+    \caption{$f_r^1$}%
+    \label{fig:fr0}%
+  \end{subfigure}
+  \,
+  \begin{subfigure}[t]{0.23\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_fr1_cropped.png}%
+    \caption{$f_r^2$}%
+    \label{fig:fr1}%
+  \end{subfigure}
+  \,
+  \begin{subfigure}[t]{0.23\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_fr2_cropped.png}%
+    \caption{$f_r^3$}%
+    \label{fig:fr2}%
+  \end{subfigure}
+  \,
+  \begin{subfigure}[t]{0.23\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_fr3_cropped.png}%
+    \caption{$f_r^4$}%
+    \label{fig:fr3}%
+  \end{subfigure}
+  \caption{Simulation of electrophysiology with the multidomain model: Value of the occupancy factors $f_r^k$ for MUs 1 to 4. The color coding encodes the maximum value by red color and the decreasing value along the radius by increased transparency and the color transition to blue color. The locations where the factor vanishes, $f_r^k=0$, correspond to full transparency.}%
+  \label{fig:multidomain_fr}%
+\end{figure}%
+
+\Cref{fig:multidomain_fr} shows the MU occupancy factors for the four MUs in this scenario. It can be seen that the individual MU territories only occupy a small fraction of the muscle domain and are centered around the fibers in longitudinal direction of the muscle.
+
+Results of the simulation at $t=\SI{14}{\ms}$ are given in \cref{fig:multidomain_4mus}. In the considered scenario, the first and second MU are stimulated at $t=\SI{0}{\ms}$ and $t=\SI{10}{\ms}$, respectively. At the time of the displayed images, MUs 3 and 4 have not yet been stimulated. 
+Upon stimulation, the membrane voltage $V_m$ gets prescribed for one timestep to a value of $\SI{20}{\milli\volt}$ at the stimulated nodes in the mesh of the respective MU. In this scenario, the stimulated nodes are located at the middle of the muscle in longitudinal direction in three adjacent cross sectional layers of mesh elements.
+
+The upper two images in \cref{fig:multidomain_4mus} show the locations of the propagated action potential fronts at $t=\SI{14}{\ms}$ for MU 1 and MU 2, given by the values of $V_m^k$. While the action potentials span the entire cross section of the muscle domain, they contribute to the EMG value only scaled with their occupancy factors $f_r^k$.
+
+% multidomain Vm MUs
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_mu1.png}\\[4mm]
+  \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_mu2.png}\\[4mm]
+  \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_mu3.png}\\[4mm]
+  \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_mu4.png}%
+  \caption{Simulation of electrophysiology with the multidomain model: Transmembrane potential $V_m^k$ of MUs 1 to 4 at $t=\SI{14}{\ms}$.}%
+  \label{fig:multidomain_4mus}%
+\end{figure}%
+
+As the $V_m^k$ values of all MUs $k\in \{1,\dots,N_\text{MU}\}$ are strongly coupled, the active MUs, MU 1 and MU 2, influence the $V_m^k$ scalar fields of the inactive MUs, MU 3 and MU 4. The lower two images in \cref{fig:multidomain_4mus} show the computational domain of the muscle with several layers of elements of the 3D mesh removed. 
+It can be seen that, at some regions in the interior of the domain, the values of $V_m^3$ and $V_m^4$ correspond to the negated value of $V_m^2$ with a smaller absolute value. Note the different color scales for $V_m^1$ and $V_m^3,V_m^4$ in these images.
+
+\Cref{fig:multidomain_4mus_body} shows the values of the extracellular potential $\phi_e$ on the muscle domain. The contributions from the two active MUs can be seen. 
+\Cref{fig:multidomain_4mus_phi_e_points} gives an impression of the used mesh and shows the value of $\phi_e$ for all nodes. It can be seen that the $\phi_e$ values span a larger value range in the interior of the domain than on the boundary, as previously shown in \cref{fig:multidomain_4mus_body}. Correspondingly, the color coding in \cref{fig:multidomain_4mus_phi_e_points} uses a larger range than in \cref{fig:multidomain_4mus_body}.
+
+In \cref{fig:multidomain_4mus_emg}, the EMG values $\phi_b$ can be seen on the surface of the fat layer or body mesh. The effect of the body domain is revealed by comparing the electric potential on the boundary of the muscle mesh in \cref{fig:multidomain_4mus_body} with the values in \cref{fig:multidomain_4mus_emg}. The signal gets spatially smoothed by the fat layer.
+
+
+% multidomain phi_e
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_body.png}%
+    \caption{Extracellular potential $\phi_e$ on the boundary of the muscle domain.}%
+    \label{fig:multidomain_4mus_body}%
+  \end{subfigure} \\
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_phi_e_points.png}%
+    \caption{Extracellular potential $\phi_e$ on points of the 3D muscle mesh.}%
+    \label{fig:multidomain_4mus_phi_e_points}%
+  \end{subfigure} \\
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{images/results/application/multidomain_4mus_emg.png}%
+    \caption{EMG signal $\phi_b$ on the boundary of the body fat domain. The comparison with (a) shows the effect of the fat layer.}%
+    \label{fig:multidomain_4mus_emg}%
+  \end{subfigure}
+  \caption{Simulation of electrophysiology with the multidomain model: Simulation results at $t=\SI{14}{\ms}$ for a scenario with 4 MUs.}%
+  \label{fig:multidomain_4mus_2}%
+\end{figure}%
+
+
+
+\subsection{Simulation of EMG Signals}\label{sec:multidomain_simulation_emg}
+
+In the second scenario, we simulate 25 MUs that are activated at random times within the first \SI{20}{\ms}. We use a mesh with $12 \times 12 \times 74 = \num{10656}$ elements in the muscle domain and $24 \times 4 \times 74 = 7104$ elements in the body domain. Compared with the mesh in the previous scenario, the spatial resolution in radial direction is chosen slightly coarser, to speed up the computation.
+The other model parameters, discretization schemes and solvers are chosen as before.
+
+In this scenario, the stimulated nodes are no longer located at the middle of the muscle, but randomly varied by up to \SI{10}{\percent} of the muscle length using a uniform distribution. This approach to model the neuromuscular junctions is also used for the fiber based electrophysiology. 
+\Cref{fig:multidomain_25mus_snapshot} shows the membrane voltage $V_m^1$ of MU 1 shortly after the MU has been activated. Because of the different locations of the stimulated points, no uniform action potential \say{front} is seen as in \cref{fig:multidomain_4mus}, instead a characteristic MU action potential forms. 
+
+The spike of depolarized membrane voltage of every stimulated point propagates along the fiber direction and additionally diffuses in the transverse direction. This yields cone-like structures of lower $V_m$ values, as can be seen in \cref{fig:multidomain_25mus_snapshot}. The reason for the transverse propagation is the electric conduction in the extracellular space governed by the isotropic $\bfsigma_e$ given in \cref{eq:multidomain_isotropic_e}, which is strongly coupled to the directed action potential propagation within every MU compartment.
+
+The resulting EMG values $\phi_e$ on the muscle boundary and $\phi_b$ on the skin surface are given in \cref{fig:multidomain_25mus2_emg} and \cref{fig:multidomain_25mus2_body}, respectively. The fat layer again smooths out the signal, as observed in the last section and in \cref{sec:simfiber_fat} for the fiber based electrophysiology model.
+
+The two blue vertical stripes in \cref{fig:multidomain_25mus2_emg} of a lower $\phi_e$ value correspond to the action potentials of multiple MUs at the respective location. It can be seen that the resulting EMG signal varies more in longitudinal direction than in transverse direction. This can be explained by the MU territories, which are chosen broadly in this scenario.
+
+A comparison with EMG simulations using the fiber based model, e.g. comparing \cref{fig:emg273529b} with \cref{fig:multidomain_25mus2_emg}, shows that the multidomain approach yields less sharp artifacts in the 2D EMG signal on the muscle boundary than the fiber based method. In the fiber based model, the action potentials of individual fibers are visible in the signal. In the multidomain model, the electric potentials within a MU are continuous in transverse direction due to the bidirectional coupling to the electric conduction in the extracellular space.
+
+% multidomain Vm MU
+% multidomain phi_e
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=9cm]{images/results/application/multidomain_25mus_snapshot.png}%
+    \caption{Transmembrane voltage $V_m^1$ of the first MU.}%
+    \label{fig:multidomain_25mus_snapshot}%
+  \end{subfigure} \\[4mm]
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=10cm]{images/results/application/multidomain_25mus2_emg.png}%
+    \caption{Extracellular potential $\phi_e$ on the 3D muscle mesh.}%
+    \label{fig:multidomain_25mus2_emg}%
+  \end{subfigure} \\[4mm]
+  \begin{subfigure}[t]{\textwidth}%
+    \centering%
+    \includegraphics[width=10cm]{images/results/application/multidomain_25mus2_body.png}%
+    \caption{EMG signal $\phi_b$ on the body fat domain.}%
+    \label{fig:multidomain_25mus2_body}%
+  \end{subfigure}
+  \caption{Simulation of electrophysiology with the multidomain model: Simulation results at $t=\SI{20}{\ms}$ for a scenario with 25 MUs.}%
+  \label{fig:multidomain_25mus2}%
+\end{figure}%
+
+
+\subsection{Comparison of the Fiber Based Electrophysiology Model and the Multidomain Model}\label{sec:multidomain_differences}
+
+EMG signals on the upper arm can be simulated by both the fiber based electrophysiology model, as demonstrated in \cref{sec:results_fiber_based_electrophysiology} and by the multidomain model, as shown in the previous sections. The two approaches have several similarities and differences.
+
+Both model approaches have in common that they are based on biophysical principles. They both involve a detailed subcellular model, which describes the biochemical processes on the muscle fiber membranes. The subcellular model is solved on discrete points in the 3D domain and the model instances are coupled to a description of electric volume conduction in the muscle domain and the body fat layer.  Both the fiber based approach and the multidomain model are, thus, multi-scale descriptions. 
+
+Both models also resolve the physiological structure of muscle activity given by multiple MUs. Action potential propagation is computed separately for different MUs. In a comprehensive simulation of the neuromuscular system, motor neuron models can be coupled to drive the activation of the MUs.
+
+The two domains of the electrically active muscle tissue and the passive layer of skin and adipose tissue are also considered in both modeling approaches. In the fiber based approach, electric volume conduction is described by the 3D bidomain equation \cref{eq:bidomain1} for the muscle domain and a strongly coupled 3D Laplace equation \cref{eq:body} for the body domain.
+The multidomain approach for electric volume conduction generalizes the bidomain model and yields the bidomain equation as a special case, if only one MU is considered. The Laplace equation for the body domain is coupled in the same way as in the fiber based model. In summary, both approaches are very similar regarding the 3D electric conduction part.
+
+The major difference between the models is that the multidomain approach considers only 3D domains, whereas the fiber based approach resolves individual 1D muscle fibers. Another difference lies in the coupling between the model components. For the fiber based approach, action potential propagation on the 1D fibers is unidirectionally coupled to the 3D volume conduction part of the model. In the multidomain model, all components are bidirectionally coupled. This allows, e.g., to simulate externally applied stimulations by active electrodes on the skin surface. The effects of the external currents on the electric potentials in the 3D muscle volume and down to the 0D subcellular behavior can only be described accurately by the multidomain approach.
+
+Other differences between the two model approaches exist in terms of the computational properties of their solvers. In the fiber based approach, action potential propagation can be computed independently for all muscle fibers, which allows for a tremendous performance gain by parallelization for large problem sizes. For example, \cref{sec:effects_of_the_mesh_width_emg} presents the simulation of \num{270000} muscle fibers with \num{27000} compute cores.
+In the multidomain approach, on the other hand, a large linear system of equations has to be solved in every timesteps. This can also be parallelized, but requires communication between the involved processes, which limits the parallel scalability for large problem sizes.
+
+In the multidomain model, the computational effort increases, in good approximation, linearly with both the number of MUs and the number of nodes in the mesh. In the fiber based approach, the amount of computational work mainly corresponds to the number of fibers, not the number of MUs. 
+The 3D problem and, thus, the mesh width of the 3D mesh, typically plays a minor role in the total runtime for the fiber based approach, as the 3D problem is only solved according to the desired EMG sampling frequency. In the multidomain approach, no separate timestep widths can be chosen for the computations of the extracellular and body domain electric potentials, $\phi_e$ and $\phi_b$, as they are computed by the same linear system of equations.
+
+For example, the computation of \SI{24}{\ms} of the multidomain scenario in \cref{sec:multidomain_simulation_emg} with 25 MUs and 126 processes has a runtime of approximately $\SI{106}{\min}$. The fiber based approach with the same 3D mesh and the same parallel partitioning with 126 processes has a total runtime of \SI{6}{\s} for 169 fibers or \SI{20}{\s} for 1369 fibers. A scenario with 169 fibers leads to a fiber spacing that corresponds to the 3D mesh width in the multidomain scenario.
+Note that only the computation of the fiber based approach is highly optimized and a better performance of the multidomain solver could be achieved in future work.
+
+As a result, if the simplifications of an unidirectional coupling of the extracellular potential $\phi_e$ from the muscle fibers to the 3D volume can be tolerated, the fiber based approach should be used, as it exhibits significantly lower runtimes. The fiber based approach is (considering the current implementation) the only possible choice for scenarios with at least two of the three requirements (i) long simulation time spans in the range of seconds, (ii) large number of MUs in the range of multiple dozens, and (iii) finely resolved 3D meshes in the range of several $\num{1e6}$ degrees of freedom.
+ 
+The multidomain approach, on the other hand, can describe phenomena that are not accurately captured by the fiber based model, as described earlier.
+Moreover, the multidomain model is potentially easier to handle for more irregular geometries, where only a structured 3D mesh and no physiologically oriented fibers are given. Another advantage of the multidomain approach is its ability to fine tune the MU territories. 
+The multidomain model can also possibly simulate a given MU distribution with the same accuracy with less 3D points than the fiber based approach. However, investigations in this direction are subject of future research.
+If large runtimes are not an issue, the multidomain approach can be used to yield more physically accurate results than the fiber based approach, ultimately advancing the approach to describe the neuromuscular system as detailed and accurate as possible.
+
+
+% common
+%   biophysically based, MUs, subcellular models
+%   3D bidomain in both
+
+% differences
+%   coupling uni->bi
+%   computation
+
+
+% fibers and multidomain
+%\begin{figure}[H]
+%  \centering%
+%  \begin{subfigure}[t]{0.48\textwidth}%
+%    \centering%
+%    \includegraphics[width=\textwidth]{images/results/application/2_multidomain.png}%
+%    \caption{Multidomain}%
+%    \label{fig:2_multidomain}%
+%  \end{subfigure}
+%  \quad
+%  \begin{subfigure}[t]{0.48\textwidth}%
+%    \centering%
+%    \includegraphics[width=\textwidth]{images/results/application/2_fibers.png}%
+%    \caption{Fibers}%
+%    \label{fig:2_fibers}%
+%  \end{subfigure}   
+%  \caption{Fibers and Multidomain}%
+%  \label{fig:multidomain_fibers}%
+%\end{figure}%
+
+
+\begin{reproduce_no_break}
+  The two simulations in this section with 4 respective 25 MUs, which are visualized in \cref{fig:multidomain_4mus,fig:multidomain_4mus_2,fig:multidomain_25mus2} can be executed by the following commands:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/multidomain/multidomain_with_fat/build_release
+    mpirun -n 128 multidomain_with_fat ../settings_multidomain_with_fat.py 4mus.py --n_subdomains 8 1 16
+    mpirun -n 126 ./multidomain_with_fat_emg ../settings_multidomain_with_fat.py all_active.py --n_subdomains 6 1 21
+  \end{lstlisting}
+  For other available numbers of processes, the subdomains at the end of the commands have to be adjusted.
+\end{reproduce_no_break}
+
+% ----------------
+\fi
+% =================
+
+%-----
+% ==================
+%\iffalse
+% =-------------------
+%-----
+
+\section{Coupled Electrophysiology and Solid Mechanics}
+
+Next, we coupled the electrophysiology models given by the fiber based model presented in \cref{sec:results_fiber_based_electrophysiology} or the multidomain model presented in \cref{sec:solver_multidomain_model} with a model of solid mechanics. The solver for nonlinear hyperelasticity was demonstrated in \cref{sec:solver_solid_mechanics} in simulations of the passive behavior of muscle tissue. The goal in the current section is to simulate the contraction of active muscle tissue.
+
+\subsection{Fiber Based Electrophysiology and Muscle Contraction}
+%-----
+
+In the first scenario, we couple the fiber based electrophysiology solver with the solid mechanics model and, thus, simulate muscle contraction.
+We use the subcellular model of Shorten et al. \cite{Shorten2007}, which computes the microscopic activation parameter $\gamma \in [0,1]$. The parameter is mapped and homogenized from the 0D subcellular points to the 3D mesh to obtain $\bar{\gamma}$. In the macroscopic 3D mechanics description, the factor is multplied with a maximum active stress parameter and a force-velocity characteristic, as described in \cref{sec:material_nonlinear_model}.
+The 3D mechanics model updates the geometry of the 3D domain and transfers the fiber stretch $\lambda_f$ and the contraction velocity $\dot{\lambda}_f$ back to the subcellular model.
+
+We simulate a scenario with 169 fibers, which are associated with 15 MUs. This association is generated by method 1 in \cref{sec:method1_assignment}.
+The MUs are subsequently activated in a ramp in the first $\SI{1.4}{\s}$. 
+
+The muscle geometry is fixed at its lower end and no external forces are considered in this scenario. The dynamic formulation with the transversely isotropic Mooney-Rivlin material is used, as described in \cref{sec:material_nonlinear_model}.
+The 3D muscle mesh contains $2 \times 3 \times 18 = 108$ quadratic elements with 1295 nodes in total and a partitioning for four processes is used. Time step widths of $\dt_\text{0D} = \dt_\text{1D} = \dt_\text{splitting} = \SI{1e-4}{\ms}$ and $\dt_\text{3D}=\SI{1}{\ms}$ are used. The numeric solvers and other settings of the electrophysiology and contraction parts are used as described in \cref{sec:simfiber_mu,sec:effects_of_the_mesh_width_emg} and \cref{sec:comparison_linear_nonlinear}.
+
+% normal muscle contraction
+%0/4 : This is opendihu 1.2, built Apr 16 2021, C++ 201402, GCC 10.2.0, current time: 2021/4/17 19:56:16, hostname: ipvs-epyc1, n ranks: 4
+%0/4 : Open MPI v3.1.6, package: Open MPI maierbn@ipvs-epyc1 Distribution, ident: 3.1.6, repo rev: v3.1.6, Mar 18, 2020
+%0/4 : File "../settings_biceps_contraction.py" loaded.
+%0/4 : ---------------------------------------- begin python output ----------------------------------------
+%Loading variables from "15mus.py".
+%scenario_name: 15mus,  n_subdomains: 2 1 2,  n_ranks: 4,  end_time: 4000.0
+%dt_0D:           1e-04, diffusion_solver_type:      cg
+%dt_1D:           1e-04, potential_flow_solver_type: gmres
+%dt_splitting:    1e-04, emg_solver_type:            cg, emg_initial_guess_nonzero: False
+%dt_3D:           1e+00, paraview_output: True
+%output_timestep: 1e+00  stimulation_frequency: 0.1 1/ms = 100.0 Hz
+%fast_monodomain_solver_optimizations: True, use_analytic_jacobian: True, use_vc: True
+%fiber_file:              ../../../../input/left_biceps_brachii_13x13fibers.bin
+%fat_mesh_file:           ../../../../input/left_biceps_brachii_13x13fibers.bin_fat.bin
+%cellml_file:             ../../../../input/new_slow_TK_2014_12_08.c
+%fiber_distribution_file: ../../../../input/MU_fibre_distribution_15MUs_13x13fibers.txt
+%firing_times_file:       ../../../../input/MU_firing_times_always.txt
+%********************************************************************************
+%prefactor: sigma_eff/(Am*Cm) = 0.0132 = 3.828 / (500.0*0.58)
+%diffusion solver type: cg
+%n fibers:              169 (13 x 13), sampled by stride 2 x 2
+%n points per fiber:    1481, sampled by stride 40
+%4 ranks, partitioning: x2 x y1 x z2
+%13 x 13 = 169 fibers, per partition: 6 x 12 = 72
+%per fiber: 1D mesh    nodes global: 1481, local: 760
+  %sampling 3D mesh with stride 2 x 2 x 40 
+ %quadratic 3D mesh    nodes global: 5 x 7 x 37 = 1295, local: 2 x 7 x 18 = 252
+ %quadratic 3D mesh elements global: 2 x 3 x 18 = 108, local: 1 x 3 x 9 = 27
+%number of degrees of freedom:
+                    %1D fiber:       1481  (per process: 760)
+            %0D-1D monodomain:      82936  (per process: 42560)
+ %all fibers 0D-1D monodomain:   14016184  (per process: 3064320)
+                 %3D bidomain:       1295  (per process: 252)
+                       %total:   14017479  (per process: 3064572)
+
+% contraction fibers
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{0.3\textwidth}%
+    \centering%
+    \includegraphics[height=9cm]{images/results/application/contraction_fibers_044.png}%
+    \caption{}%
+    \label{fig:contraction_fibers_044}%
+  \end{subfigure} \,
+  \begin{subfigure}[t]{0.18\textwidth}%
+    \centering%
+    \includegraphics[height=9cm]{images/results/application/contraction_fibers_844b.png}%
+    \caption{}%
+    \label{fig:contraction_fibers_844b}%
+  \end{subfigure}\,
+  \begin{subfigure}[t]{0.25\textwidth}%
+    \centering%
+    \includegraphics[height=9cm]{images/results/application/contraction_fibers_1684b.png}%
+    \caption{}%
+    \label{fig:contraction_fibers_1684b}%
+  \end{subfigure}\,
+  \begin{subfigure}[t]{0.2\textwidth}%
+    \centering%
+    \includegraphics[height=9cm]{images/results/application/contraction_fibers_2084b.png}%
+    \caption{}%
+    \label{fig:contraction_fibers_2084b}%
+  \end{subfigure}
+  \caption{Simulation of fiber based electrophysiology and muscle contraction: Activation of the fibers and overall deformation at various timesteps.}%
+  \label{fig:contraction_fibers_1}%
+\end{figure}%
+
+\Cref{fig:contraction_fibers_1} shows the fibers of the contracting muscle at four different timesteps between $t=\SI{44}{\ms}$ and $t=\SI{2.084}{\s}$. The fibers are colored according to the resulting activation parameter $\gamma$, which is a measure for the generated force on the sarcomere level. Between $t=\SI{44}{\ms}$ and $t=\SI{844}{\ms}$, shown in \cref{fig:contraction_fibers_044,fig:contraction_fibers_844b}, the smallest MUs are activated, which is this example are mainly located at the left side such that the muscle domain initially bends slightly to the left. As more MUs become active at $t=\SI{1684}{\ms}$ and depicted in \cref{fig:contraction_fibers_1684b}, the deformation increases and the bending direction is reversed. However, the fibers at the left side still in \cref{fig:contraction_fibers_1684b} have the highest value of $\gamma$, as they have been stimulated most often at that time.
+At $t=\SI{1684}{\ms}$, visualized in \cref{fig:contraction_fibers_2084b}, almost all fibers show a maximum $\gamma$ value near to one.
+
+% contracted state
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=77mm]{images/results/application/contraction_fibers.png}%
+    \caption{Action potentials given by the membrane voltage $V_m$ of the muscle fibers.}%
+    \label{fig:contraction_fibers}%
+  \end{subfigure}\,
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=8cm]{images/results/application/contraction_lambda.png}%
+    \caption{Stretch parameter $\lambda$ of the deformed 3D muscle domain (red mesh) in comparison to the reference configuration (yellow mesh).}%
+    \label{fig:contraction_lambda}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=8cm]{images/results/application/contraction_active_stress.png}%
+    \caption{Value of the active second Piola-Kirchhoff stress.}%
+    \label{fig:contraction_active_stress}%
+  \end{subfigure}
+  \caption{Simulation of fiber based electrophysiology and muscle contraction: Simulation results at $t=\SI{2084}{\ms}$.}%
+  \label{fig:contraction_at_end}%
+\end{figure}%
+
+In \cref{fig:contraction_at_end}, several quantities are given at the simulation end time of $t=\SI{2084}{\ms}$. \Cref{fig:contraction_fibers} shows the transmembrane voltage $V_m$ on the muscle fibers. Action potentials can be seen on almost all fibers as the whole muscle is activated at this time in the scenario. \Cref{fig:contraction_lambda} shows a comparison between the reference configuration given by the yellow mesh and the current configuration given by the red mesh. The muscle domain is colored according to the stretch $\lambda$, which has a nearly constant value of $\lambda \approx \SI{85}{\percent}$ at the end time of this scenario. A similar visualization is given in \cref{fig:contraction_active_stress} for the active stress in the muscle.
+
+Because of the high level of activation and the corresponding active stress distribution in the muscle, our mechanics solver only converges up to the shown simulation time of \SI{2084}{\ms} in this scenario, which aims at demonstrating the amount of contraction of a fully activated muscle. Other scenarios, where the activation is applied more slowly reach longer simulation times.
+
+The presented scenario showed that a fully activated biceps muscle contracted to about \SI{85}{\percent} of its original length. However, in reality, larger contractions are possible. In the shown scenario, the muscle was initially in a stress free configuration. More realistic scenarios can incorporate pretension forces, where the undeformed reference configuration is subject to a constant stress level in the muscle's direction of the line of action. This is considered in the next scenario.
+
+% muscle contraction
+%\begin{figure}
+%  \centering%
+%  \includegraphics[width=0.5\textwidth]{images/results/application/neuromuscular_muscle_contraction_traction.png}%
+ % \caption{contraction traction}%
+%  \label{fig:neuromuscular_muscle_contraction_traction}%
+%\end{figure}%
+
+\begin{reproduce_no_break}
+  The simulation can be run as follows:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_contraction/no_precice/build_release
+    mpirun -n 4 ./biceps_contraction ../settings_biceps_contraction.py ramp.py
+  \end{lstlisting}
+\end{reproduce_no_break}
+
+\subsection{Simulation of Prestress}
+% compressing muscle by external force does not work -> need activation 
+
+To obtain more realistic muscle contraction ranges, the goal is to have a nonzero constant prestress in the undeformed configuration of the muscle. 
+In our solid mechanics formulation, the reference configuration always has zero stress. Thus, we construct a separate reference configuration of a shorter muscle geometry and extend this configuration to the original muscle length by applying external forces. The resulting configuration resembles the original muscle geometry and has the desired prestress characteristics.
+
+The detailed steps of this algorithm are visualized in \cref{fig:neuromuscular_prestretch} and are described in the following.
+We begin with the given geometry of the muscle with body fat layer, which is shown as black wireframe mesh in \cref{fig:neuromuscular_prestretch_1}. In a first static simulation step, a constant active stress $\alpha_\text{pre}\,S_\text{max,active}$ is prescribed in the entire muscle volume. The resulting muscle deformation is computed, using the usual nonlinear hyperelastic muscle material. $S_\text{max,active}$ refers to the maximum active stress value as used in the mechanics model described in \cref{eq:active_stress_term}. The result of this first step is a shortened muscle with the same volume as the original geometry. \Cref{fig:neuromuscular_prestretch} shows the result by the yellow volume for $\alpha_\text{pre}=0.3$. It can be seen that the length of the muscle has shortened by approximately \SI{13}{\percent}.
+
+In the next step, we use the computed geometry as new stress-free reference configuration and extend the muscle again by applying a constant surface load $F_\text{pre}$ on the lower face pointing to the bottom. This step is again simulated by solving a static problem. The result is a similar muscle geometry as the original one, and contains prestress according to the applied force. The muscle volume is exactly preserved due to the incompressible material formulation. \Cref{fig:neuromuscular_prestretch_2} shows the starting point for the second step by the black wireframe mesh and the resulting geometry for a total applied for of $F_\text{pre}=\SI{30}{\newton}$ by the red volume. The comparison of the original, black mesh in \cref{fig:neuromuscular_prestretch_1} with the red volume in \cref{fig:neuromuscular_prestretch_2} shows a good match of the geometry.
+For the subsequent dynamic simulations of, e.g., muscle contraction, the surface load has to be constanly applied. It corresponds to the tendon forces and the loads of the musculoskeletal system that act on the muscle.
+
+The active stress parameter $\alpha_\text{pre}$ and the corresponding preload force $F_\text{pre}$ can be chosen according to the desired amount of prestress. However, the higher these values are chosen, the more difficult is it for the nonlinear solid mechanics solvers to converge to a solution. Especially for irregular or large mechanics meshes, a lower stress factor of, e.g., $\alpha_\text{pre}=0.1$ has to be chosen. To improve convergence, we apply the load in the second step of the algorithm incrementally by several load steps. To yield better convergence properties, it also helps to reduce the number of unknows and increase the mesh width in the mechanics problem, as this improves the conditioning of the problem. 
+ 
+% contracted state
+\begin{figure}
+  \centering%
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[height=12cm]{images/results/application/neuromuscular_prestretch_1.png}%
+    \caption{In the first step, the original mesh (black wireframe) is contracted by an artifical active stress $\alpha_\text{pre}\,S_\text{max,active}$ to yield a shortened muscle (yellow mesh).}%
+    \label{fig:neuromuscular_prestretch_1}%
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\textwidth}%
+    \centering%
+    \includegraphics[height=12cm]{images/results/application/neuromuscular_prestretch_2.png}%
+    \caption{In the second step, the mesh is extended again by an external surface load. The black wireframe corresponds to the yellow volume in (a), the red volume is the resulting geometry.}%
+    \label{fig:neuromuscular_prestretch_2}%
+  \end{subfigure}
+  \hfill
+  \caption{Simulation of biceps muscle contraction with prestress: The two steps of the algorithm to generate a reference geometry with prestress, shown with the geometry of the tendons for reference.}%
+  \label{fig:neuromuscular_prestretch}%
+\end{figure}%
+
+
+\subsection{Coupling of the Multidomain Model and Solid Mechanics Model with Prestress}
+
+Both the fiber based electrophysiology model and the multidomain model can be coupled with the nonlinear solid mechanics model to simulate muscle contraction. In the following, we present a scenario that uses the prestress algorithm of the last section and couples the multidomain and mechanics models to simulate surface EMG signals on the skin surface over a contracting muscle.
+
+We choose $\alpha_\text{pre}=0.1$ and and apply the prestretch force $F_\text{pre}=\SI{10}{\newton}$ in three load steps. The multidomain model considers 5 MUs with stimulation frequencies between \SI{7}{\hertz} and \SI{24}{\hertz} and a 3D mesh of $8 \times 8 \times 28 = 1792$ elements. We execute the simulation with four processes. All other parameters and settings of the multidomain model and the solid mechanics model, which are not explicitly mentioned in the following are chosen the same as in \cref{sec:multidomain_components} and \cref{sec:comparison_linear_nonlinear}.
+
+For the mechanics model, we use a coarser mesh than for the discretization of the multidomain model. Furthermore, we need quadratic elements instead of linear elements. The Python implementation of the settings script contains functionality to create the mechanics mesh by subsample the multidomain mesh with specified factors. In this scenario, we set these factors for the $x$, $y$ and $z$ directions to 0.7, 0.7, and 0.3, respectively. In result, we get a quadratic meshes with $5 \times 7 \times 9 = 315$ elements for the muscle and $5 \times 1 \times 4 = 20$  elements for the body fat domain. \Cref{fig:multidomain_prestretch5} visualizes all meshes used in this scenario: The orange muscle mesh and the red body mesh are used for the multidomain model, and the yellow mesh is used for the solid mechanics model.
+
+\Cref{fig:multidomain_prestretch6,fig:multidomain_prestretch2} depict results of the simulation at time $t=\SI{920}{\milli\second}$. 
+\Cref{fig:multidomain_prestretch6} shows the reference geometry after applying the prestress by the yellow wireframe. The muscle is colored by the second Piola-Kirchhoff stress. During the dynamic simulation, the muscle elastically moves slightly to the left and right, as it is only fixed at its bottom side in \cref{fig:multidomain_prestretch}. This explains the stress distribution at the snapshot in \cref{fig:multidomain_prestretch6}, where higher stresses occur at the right side.
+
+\Cref{fig:multidomain_prestretch2} shows the electric potential $\phi_b$ of the body domain by the green color scale on the left of the image. The visible part of the fat layer shows two action potentials visualized by the two dark green stripes.
+
+Moreover, \cref{fig:multidomain_prestretch2} displays the total active stress in the interior of the muscle by the color scale that ranges from blue to red color. In the multidomain model, the total active stress $\bfS_\text{active}$ is calculated by a weighted sum over the values $\bfS_\text{active}^k$ of the MU compartments, scaled by the occupancy factors $f_r^k$ (cf. \cref{sec:multidomain_model}):
+\begin{align*}
+  \bfS_\text{active} = \sum\limits_{k=1}^{N_\text{MU}} f_r^k\,\bfS_\text{active}^k.
+\end{align*}
+
+
+The muscle domain is cut open such that interior distribution at the cut plane can be seen. The image shows two regions of higher active stress which run vertically through the muscle, given by red color. They depend on the location of the MUs in this scenario. The legend shows that the active stress inside the muscle is below $\SI{0.4}{\newton\per\centi\meter\squared}$, while the maximum active stress parameter is chosen as $\SI{7.3}{\newton\per\centi\meter\squared}$. The low activation level is a result of the chosen MU recruitment. In result, the muscle only slightly contractions, as shown in \cref{fig:multidomain_prestretch6}.
+
+%0/4 : This is opendihu 1.2, built Apr 17 2021, C++ 201402, GCC 10.2.0, current time: 2021/4/18 17:13:03, hostname: ipvs-epyc1, n ranks: 4            
+%0/4 : Open MPI v3.1.6, package: Open MPI maierbn@ipvs-epyc1 Distribution, ident: 3.1.6, repo rev: v3.1.6, Mar 18, 2020
+%0/4 : File "../settings_multidomain_prestretch.py" loaded.                                     
+%0/4 : ---------------------------------------- begin python output ----------------------------------------                                                                                   
+%Loading variables from "multidomain.py".                                                                                                                                                      
+%scenario_name: multidomain,  n_subdomains: 2 1 2,  n_ranks: 4,  end_time: 4000.0                                                                                                              
+%dt_0D:           1e-03    multidomain solver:         gmres, lumped mass matrix: False                                                                                                        
+%dt_multidomain:  1e-03    multidomain preconditioner: euclid, symmetric precond.: True
+%dt_splitting:    1e-03    theta: 1.0, solver tolerances, abs: 1e-15, rel: 1e-15
+%dt_elasticity:   1e+00    elasticity solver: lu, preconditioner: none
+%fiber_file:              /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_9x9fibers.bin
+%fat_mesh_file:           /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/left_biceps_brachii_9x9fibers.bin_fat.bin
+%cellml_file:             /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/hodgkin_huxley-razumova.cellml
+%firing_times_file:       /data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/MU_firing_times_always.txt
+%********************************************************************************
+%4 ranks, partitioning: x2 x y1 x z2
+  %sampling 3D mesh with stride 1 x 1 x 50 
+    %linear 3D mesh    nodes global: 9 x 9 x 29 = 2349, local: 4 x 9 x 14 = 504
+    %linear 3D mesh elements global: 8 x 8 x 28 = 1792, local: 4 x 8 x 14 = 448
+ %quadratic 3D mesh    nodes global: 9 x 9 x 29 = 2349, local: 4 x 9 x 14 = 504
+ %quadratic 3D mesh elements global: 4 x 4 x 14 = 224, local: 2 x 4 x 7 = 56
+    %fat mesh, n points total:    2465 (17 x 5 x 29), (per process: 4 x 5 x 14 = 280)
+   %sub-sampling 3D elasticity mesh with factors 0.7, 0.7, 0.3 
+   %elasticity quadratic 3D meshes:
+   %muscle:             nodes global: 5 x 7 x 9 = 315, local: 2 x 7 x 4 = 56
+          %quadratic elements global: 2 x 3 x 4 = 24, local: 1 x 1 x 2 = 2
+   %fat and skin layer: nodes global: 11 x 3 x 9 = 297, local: 2 x 3 x 4 = 24
+          %quadratic elements global: 5 x 1 x 4 = 20, local: 1 x 1 x 2 = 2
+
+%Debugging output about compartment firing: Taking input from file "/data/scratch/sgs/maierbn/opendihu/examples/electrophysiology/input/MU_firing_times_always.txt"
+%First stimulation times
+    %Time  MU compartments
+    %0.00   0 [0]
+    %0.00   1 [1]
+    %0.00   2 [2]
+    %0.00   3 [3]
+%stimulated MUs: 4, not stimulated MUs: 0
+%duration of assembling this list: 0.000 s
+
+%Load relative factors, f_r, from file "compartments_relative_factors.left_biceps_brachii_9x9fibers.bin.5_mus_stride_1x1x50_partitioning_2x1x2"
+%MU 0, maximum fr: 0.1999999999999993
+%MU 1, maximum fr: 0.4426237526712864
+%MU 2, maximum fr: 0.6900999803960008
+%MU 3, maximum fr: 0.9425257326752092
+%MU 4, maximum fr: 1.1999999999999993
+
+
+% multidomain prestretch
+\begin{figure}
+  \centering%
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=87mm]{images/results/application/multidomain_prestretch5.png}%
+    \caption{Multidomain meshes of the muscle domain (orange) and body fat domain (red) and the coarser mesh used for the solid mechanics model (yellow).}%
+    \label{fig:multidomain_prestretch5}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=95mm]{images/results/application/multidomain_prestretch6.png}%
+    \caption{Reference configuration (yellow mesh) and current configuration of the muscle colored according to the distribution of the second Piola-Kirchhoff stress.}%
+    \label{fig:multidomain_prestretch6}%
+  \end{subfigure}\qquad
+  \begin{subfigure}[t]{0.31\textwidth}%
+    \centering%
+    \includegraphics[height=87mm]{images/results/application/multidomain_prestretch2.png}%
+    \caption{Electric potential $\phi_b$ in the body domain (green color scale, in millivolts) and active stress in the interior of the muscle (blue-red color scale, in \SI{}{\newton\per\centi\meter\squared}).}%
+    \label{fig:multidomain_prestretch2}%
+  \end{subfigure}
+  \hfill
+  \caption{Simulation of muscle contraction. Used meshes and simulation results at $t=\SI{920}{\ms}$ of a scenario of the multidomain electrophysiology model coupled to the solid mechanics model.}%
+  \label{fig:multidomain_prestretch}%
+\end{figure}%
+
+
+
+% prestretch
+%\begin{figure}
+%  \centering%
+%  \includegraphics[width=0.5\textwidth]{images/results/application/fibers_muscle_contraction_quantities.png}%
+%  \caption{prestretch}%
+%  \label{fig:prestrech1b}%
+%\end{figure}%
+
+\begin{reproduce_no_break}
+  The simulation can be run with the following commands. Instead of four processes also other numbers are possible. A lot of parameters can be fine-tuned in the \code{../variables/multidomain.py} settings file.
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/multidomain/multidomain_prestretch/build_release
+    mpirun -n 4 ./multidomain_prestretch ../settings_multidomain_prestretch.py multidomain.py
+  \end{lstlisting}
+\end{reproduce_no_break}
+
+%-----
+\subsection{Coupling of Solid Mechanics Models using the Software preCICE}
+
+One problem of solid mechanics models with low mesh resolutions is the limited amount of parallelism of the scenario. The domain can only be partitioned to so many subdomains as there are elements in the 3D mechanics mesh. While this is not an issue for small scale simulations like the ones shown in the previous sections, it prohibits exploitation of High Performance Computing resources, e.g., if a large number of muscle fibers is considered as in \cref{sec:effects_of_the_mesh_width_emg}.
+
+The reason for the limited parallelism lies in the partitioning scheme, where every node in the 3D domain corresponds to the subdomain of exactly one process, regardless of the mesh. Thus, OpenDiHu does not allow to partition, e.g., the finely resolved 1D muscle fiber meshes differently than the coarse 3D mechanics mesh or the 3D multidomain mesh. However, the restriction can be circumvented by using multiple OpenDiHu programs with different partitioning schemes and by performing the data transfer between the meshes using external coupling software.
+
+We provide support for the black-box solver coupling library preCICE \cite{precice}. This open source library allows to map data between different meshes, can communicate values between subdomains that reside on different processors, and implements implicit numerical coupling schemes with quasi-Newton methods. The implementation is known to scale well on small-scale clusters and supercomputers.
+The preCICE library targets a minimally-invasive approach, where the user application implements a preCICE adapter. Multiple, potentially different solver codes can then be numerically coupled and solve indvidual parts of a common simulation. Moreover, an active and growing community exists and open source adapters are available for several popular solvers. 
+
+This makes the library suited for our use case. We provide two different types of preCICE adapters, one for surface coupling of 2D meshes and one for volume coupling of 3D meshes. These adapters integrate with the structure of nested solvers in OpenDiHu and can be positioned anywhere in the solver tree (cf. \cref{fig:solver_tree_multidomain_spindles}). The meshes and variables to expose to preCICE can be configured in the settings file.
+In the following, we present an example using volume coupling adapters. The next section presents a simulation that uses surface coupling.
+
+We simulate muscle contraction and surface EMG of the biceps muscle using the fiber based electrophysiology model. To run the computation on an 18-core Intel Core i9-10980XE processor, we want to compute the electrophysiology model using 16 processes and the mechanics model using 2 processes. The data mapping between the differently partitioned 3D meshes is performed by preCICE.
+
+\Cref{fig:precice_muscle_force} shows the scheme of used meshes and exchanged variables in this simulation. Two different OpenDiHu programs are executed at the same time, given by the gray boxes. The left program solves the electric conduction problem, given by the bidomain equation \cref{eq:bidomain1}, on the 3D domain and the action potential propagation model, given by the monodomain equation \cref{eq:monodomain}, on a large number of 1D muscle fiber meshes. The 3D and 1D meshes in this program are correspondingly partitioned to 16 subdomains in total for 16 processes.
+\Cref{fig:precice_muscle_force} visualizes the meshes and their partitioning the colored inset images. TODO
+
+% precice coupling scheme
+\begin{figure}
+  \centering%
+  \def\svgwidth{0.9\textwidth}
+  \input{images/results/application/precice_scheme1.pdf_tex}%
+  \caption{preCICE}%
+  \label{fig:precice_muscle_force}%
+\end{figure}
+
+
+
+\begin{reproduce_no_break}
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/fibers_contraction/with_precice_volume_coupling/build_release
+    ./muscle_contraction ../settings_muscle_contraction.py ramp.py
+    mpirun -n 16 ./fibers_with_3d ../settings_fibers_with_3d.py ramp.py
+  \end{lstlisting}
+\end{reproduce_no_break}
+
+%-----
+\subsection{With tendons preCICE}
+
+
+% contracted state
+\begin{figure}
+  \centering%
+  \begin{subfigure}[t]{0.34\textwidth}%
+    \centering%
+    \includegraphics[height=97mm]{images/results/application/precice_activated_muscles1.png}%
+    \caption{}%
+    \label{fig:precice_activated_muscles_1}%
+  \end{subfigure}\,
+  \begin{subfigure}[t]{0.28\textwidth}%
+    \centering%
+    \includegraphics[height=97mm]{images/results/application/precice_activated_muscles2.png}%
+    \caption{}%
+    \label{fig:precice_activated_muscles_2}%
+  \end{subfigure}
+  \begin{subfigure}[t]{0.28\textwidth}%
+    \centering%
+    \includegraphics[height=97mm]{images/results/application/precice_activated_muscles3.png}%
+    \caption{}%
+    \label{fig:precice_activated_muscles_3}%
+  \end{subfigure}
+  \caption{Coupled simulation of muscles and tendons.}%
+  \label{fig:precice_muscle_force}%
+\end{figure}%
+
+% muscle force
+\begin{figure}[H]
+  \centering%
+  \includegraphics[width=0.7\textwidth]{images/results/application/precice_muscle_force.pdf}%
+  \caption{Muscles}%
+  \label{fig:precice_muscle_force}%
+\end{figure}
+
+%-----
+%\subsection{Multidomain and Muscle Contraction}
+
+% ----------
+%\fi
+% ===========f
+
+% ==================
+%\iffalse
+% =-------------------
+
+%-----
+\section{Simulations of the Neuromuscular System}
+%-----
+%\subsection{Simulation of Motoneurons With Fiber Based Electrophysiology}
+%-----
+\subsection{Neuromuscular system with Spindles and Prestretch}
+
+
+% data flow of spindles
+%\begin{figure}
+%  \centering%
+%  \includegraphics[width=\textwidth]{images/results/application/schematic_spindles.pdf}%
+%  \caption{Data flow of simulation with spindles and motor neurons schematic spindles}%
+%  \label{fig:neuromuscular_schematic}%
+%\end{figure}
+%
+%% results
+%\begin{figure}
+%  \centering%
+%  \includegraphics[width=\textwidth]{images/results/application/neuromuscular_spindle_out.png}%
+%  \caption{Activation data of sensors and neurons. neuromuscular spindle out}%
+%  \label{fig:neuromuscular_schematic}%
+%\end{figure}
+
+% image of contracting muscle
+\begin{figure}
+  \centering%
+  \includegraphics[width=\textwidth]{images/results/application/neuromuscular_contraction0.png}%
+  \caption{Reference and current configuration. neuromuscular contraction0}%
+  \label{fig:neuromuscular_contraction0}%
+\end{figure}
+
+%-----
+\subsection{Neuromuscular system with More Sensor Organs}\label{sec:application_neuromuscular_system_more}
+
+% data flow Golgi tendon organs
+%\begin{figure}[H]
+%  \centering%
+%  \includegraphics[width=\textwidth]{images/results/application/neuromuscular_schematic.pdf}%
+%  \caption{Data flow of simulation with spindles, Golgi tendon organs and motor neurons}%
+%  \label{fig:neuromuscular_schematic}%
+%\end{figure}
+%
+%% results
+%\begin{figure}[H]
+%  \centering%
+%  \includegraphics[width=\textwidth]{images/results/application/neuromuscular_mileusnic_out0.png}\\
+%  \includegraphics[width=\textwidth]{images/results/application/neuromuscular_mileusnic_out1.png}\\
+%  \caption{Activation data of sensors and neurons}%
+%  \label{fig:neuromuscular_schematic}%
+%\end{figure}
+%
+% --------
+%\fi
+% f==============
