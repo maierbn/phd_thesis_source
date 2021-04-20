@@ -6,7 +6,7 @@
 % ==============
 %\iffalse
 % --------------
-\section{Parallel Strong Scaling and Comparison with OpenCMISS Iron}
+\section{Parallel Strong Scaling and Comparison with OpenCMISS Iron}\label{sec:parallel_strong_scaling_opencmiss}
 
 After the performance of different optimization types has been evaluated for a scenario with a single number of MPI processes in the last section, we now conduct a strong scaling study with the optimization type \code{fast-vc-apx-e}, which was found to be the most performant, and compare the runtimes to the reference software OpenCMISS Iron.
 
@@ -182,7 +182,7 @@ Furthermore, the measurements with lower process counts can also be assessed wit
 
 
 %-----
-\section{Performance Measurements on the GPU}
+\section{Performance Measurements on the GPU}\label{sec:performance_gpu}
 
 In the previous two sections, measurements were made on a GPU, which produced worse results than the CPU code. The used GPU was a NVIDIA GeForce RTX 3080, a high-end consumer graphics card, which mainly targets graphics rendering perfomance using single-precision operations. The ratio between double-precision and single-precision performance is 1:64. However, single-precision calculations were found to not yield a stable subcellular model solver, as the precision is too low. 
 % quadro: https://www.techpowerup.com/gpu-specs/quadro-gp100.c2994

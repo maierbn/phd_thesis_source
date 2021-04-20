@@ -5,10 +5,21 @@
 %\section{Strang Splitting}
 %-----
 
-\section{Performance Studies with OpenCMISS Iron}
+\chapter{Performance Analysis}\label{sec:performance_analysis}
 
-Next, we study the performance of the software by evaluating runtimes and parallel scalability for different solvers.
-We begin with OpenCMISS Iron as the baseline solver, which also implements parts of the multi-scale model considered in this work. The work of \cite{Heidlauf2013} describes the implementation of the fiber based electrophysiology model coupled to a quasi-static hyperelastic material model with OpenCMISS. The implementation is parallelized for a hardcoded number of four processes and serves as the baseline code for the following studies.
+In this chapter, we measure the performance of all implemented solvers and evaluate the different actions that were carried out to improve their runtimes and memory characteristics.
+We consider the performance of instruction-level parallelism, evaluate parallelization strategies for shared and distributed memory parallelism, offloading to a GPU, and hybrid CPU-GPU  approaches. We measure weak and strong parallel scaling from using small distributed-memory systems up to the large supercomputers Hazel Hen and Hawk at the High Performance Computing Center Stuttgart. Furthermore, we consider the numerical scaling behavior of several solvers.
+
+\Cref{sec:performance_opencmiss_iron} presents numerical studies and improvements in the baseline software OpenCMISS. The numeric properties found in this section are later also used in simulations with OpenDiHu. \Cref{sec:performance_studies_of_the_e} evaluates the runtime performance and various optimization options for the electrophysiology solver in OpenDiHu. The best found optimizations are then compared to the OpenCMISS baseline solver in \cref{sec:parallel_strong_scaling_opencmiss}.
+\Cref{sec:performance_gpu} addresses the computation on the GPU and compares the performance with the CPU computations.
+\Cref{sec:hpc_emg} conducts parallel weak scaling studies on supercomputers.
+\Cref{sec:performance_solid_mechanics} evaluates options and corresponding speedups in the solver of the mechanics model.
+\Cref{sec:numerical_studies} conducts numerical studies for the fiber based electrophysiology model and evaluates different solvers for the multidomain model.
+
+\section{Performance Studies with OpenCMISS Iron}\label{sec:performance_opencmiss_iron}
+
+%In this section, we study the performance of the software by evaluating runtimes and parallel scalability for different solvers.
+We begin with performance studies on OpenCMISS Iron as the baseline solver, which also implements parts of the multi-scale model considered in this work. The work of \cite{Heidlauf2013} describes the implementation of the fiber based electrophysiology model coupled to a quasi-static hyperelastic material model with OpenCMISS. The implementation is parallelized for a hardcoded number of four processes and serves as the baseline code for the following studies.
 
 We improved the performance of this solver for the multi-scale model by two actions: First, we evaluated and optimized the employed numeric schemes. Second, we implemented parallel partitioning for an arbitrary number of processes and evaluated different parallelization strategies.
 These changes were directly implemented in the OpenCMISS code. The improvements were also presented in a publication \cite{Bradley:2018:EDB}. In the following sections, \cref{sec:opencmiss_numeric_improvements,sec:opencmiss_parallel_partitioning}, we describe the numeric improvements and the parallel partitioning strategies. In \cref{sec:opencmiss_memory}, we discuss the parallel weak scaling and memory consumption properties.

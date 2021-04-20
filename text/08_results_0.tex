@@ -1,11 +1,15 @@
-\chapter{Results and Discussion}\label{sec:results}
+\chapter{Numerical Results and Discussion}\label{sec:results}
 
+After various numerical models and methods for biophysical simulations of the neuromuscular system were described in the previous chapters, the remainder of this work deals with their application and discusses the newly obtained insights.
+The current chapter presents numerical results and demonstrates the use of OpenDiHu for all major components of the multi-scale models. 
+
+\Cref{sec:poisson_diffusion} begins with the simulation of toy problems such as Poisson and diffusion equations, which are used as building blocks for the more advanced simulations. Subsequently, dedicated solvers for the solid mechanics problem, the CellML models, the fiber based electrophysiology and the multidomain model are presented in \cref{sec:solver_solid_mechanics,sec:results_cellml_models,sec:results_fiber_based_electrophysiology,sec:solver_multidomain_model}. Finally, \cref{sec:coupled_electrophysiology_and_solid_mechanics} combines the fiber based electrophysiology model and the multidomain model with the solid mechanics solver to yield a comprehensive multi-physics simulation of muscle contraction.
 
 % ==================
 %\iffalse
 % =-------------------
 
-\section{Poisson and Diffusion Solvers}
+\section{Solution of Poisson and Diffusion Problems}\label{sec:poisson_diffusion}
 
 Setting up a composite multi-scale simulation where multiple equations are coupled requires a profound understanding of the model components. 
 Thus, it can help to first simulate isolated models. We provide simple examples with our software, such as Laplace and Diffusion problems, as prototypes for elliptic and parabolic partial differential equations. The examples with analytic solutions are also used to validate the basic finite element solvers.
@@ -33,7 +37,7 @@ A 3D Laplace problem is also part of the multi-scale model and describes volume 
     \label{fig:laplace_composite_1}%
   \end{subfigure}
   \caption{Exemplary problems that can be solved with OpenDiHu and are part of the multi-scale problem.}%
-  \label{fig:diffusion}%
+  \label{fig:poisson_laplace_composite_1}%
 \end{figure}%
 
 The third presented example solves the 2D diffusion equation $\partial u/\partial t - \div(\bfsigma\,\grad u) = 0$ with homogeneous Neumann boundary conditions. The equation can be interpreted as a transient electric conduction problem. As shown in \cref{fig:diffusion1}, the initial charge distribution is $u=1$ in a rectangle in the inner of the domain and $u=0$ everywhere else. The anisotropic conduction tensor $\bfsigma$ is constant in the domain and set to %
@@ -80,7 +84,7 @@ A linear mesh with $40\times 40$ elements is used. \Cref{fig:diffusion2} shows t
 \end{reproduce_no_break}
 
 %-----
-\section{Solid Mechanics Solver}\label{sec:solver_solid_mechanics}
+\section{Simulation of Solid Mechanics Models}\label{sec:solver_solid_mechanics}
 
 Next, we demonstrate the solid mechanics solvers, which can be used to compute muscle contraction. In this section, we focus on the passive material behavior.
 As described in \cref{sec:material_linear_model,sec:material_modeling}, the mechanics equations can be computed in linearized or in nonlinear form within OpenDiHu.

@@ -5,7 +5,7 @@
 
 % --------------------------------
 % application
-\section{Simulation of CellML Models}
+\section{Simulation of CellML Models}\label{sec:results_cellml_models}
 The subcellular models used in the multi-scale model are given in CellML description and can be solved in OpenDiHu using the \code{CellmlAdapter} class.
 In the following, we show simulation results of the most commonly used CellML models in this work.
 
@@ -96,7 +96,10 @@ In summary, we showed simulations of the 0D subcellular models of Shorten et al.
 %\iffalse
 % =-------------------
 
-\section{Fiber Based Electrophysiology}\label{sec:results_fiber_based_electrophysiology}
+\section{Simulation of Fiber Based Electrophysiology}\label{sec:results_fiber_based_electrophysiology}
+% ==================
+%\iffalse
+% =-------------------
 
 In this section, we consider surface EMG signals on the upper arm by simulating the activation of the biceps brachii muscle. We use the fiber based multi-scale model consisting of 1D action potential propagation on muscle fibers, potentially involving a 0D subcellular model, and the 3D bidomain model.
 In \cref{sec:overview_emg_simulation}, we introduce the setting of the simulation and present an examplary scenario to compute EMG signals.
@@ -397,7 +400,14 @@ This effect has implications for experimental studies, where the EMG recordings 
 
 \subsection{Effects of the Mesh Width on the Electromyography Signal}\label{sec:effects_of_the_mesh_width_emg}
 
-Next, we compare the simulated EMG signal for different numbers of fibers and resolutions of the 3D mesh. We consider a scenario with 100 MUs and increase the spatial resolution and the number of processes that execute the computation on the supercomputer Hawk at the High Performance Computing Center Stuttgart.
+% Hier herausarbeiten, dass das eine sehr wichtige Frage für Deine Arbeit ist, quasi die Rechtfertigung, dass man hohe Auflösungen braucht oder: Ziel der Arbeit war unter anderem, hetauszufinden, wieviel qualitativ und quantitativ neue Effekte sichtbar werden, wenn die Auflösung hoch genug ist. 
+% Evtl. sollte man hier auch nochmal erwähnen, wie viele Fasern ein durchschittlicher Bizeps in der Realität hat?
+
+One goal of our simulation studies is to evaluate the required mesh width and the necessary number of fibers to obtain accurate simulation results of surface EMG signals.
+Experimental studies reveal a large variation in the number of muscle fibers in a real biceps brachii muscle. MacDougall et al. estimate in vivo numbers for elite and intermediate bodybuilders and untrained control subjects and find comparable numbers for these groups \cite{MacDougall1984}. They determine $278.5 \pm 60.7 \times \num{1e3}$ muscle fibers for the group untrained subjects.
+Thus, we simulate scenarios with different 3D mesh resolutions and numbers of fibers up to the realistic number of \num{273529}. By comparing the obtained simulation results, we can determine if certain effects are only visible for high resolutions.
+
+We consider a scenario with 100 MUs and increase the spatial resolution and the number of processes that execute the computation on the supercomputer Hawk at the High Performance Computing Center Stuttgart. Each compute node consists of two two AMD EPYC 7742 processors with 64 cores each, a clock frequency of \SI{2.25}{\giga\hertz} and \SI{256}{\giga\byte} memory per node.
 
 % fibers mesh
 \begin{figure}
@@ -407,7 +417,7 @@ Next, we compare the simulated EMG signal for different numbers of fibers and re
   \label{fig:MU_fibre_distribution_523x523_100mus_txt_mu_positions}%
 \end{figure}
 
-We compute scenarios with between \num{1369} and \num{273529} fibers. The specified number of 100 MUs have to be assigned to these numbers of fibers for each scenario.
+Our simulated scenarios consider between \num{1369} and \num{273529} fibers. The specified number of 100 MUs has to be assigned to these numbers of fibers for each scenario.
 We use the method 1a of the algorithm described in \cref{sec:muscle_fibers_and_motor_units}. The MU territories are centered around quasi-randomly generated center points, as shown in \cref{fig:MU_fibre_distribution_523x523_100mus_txt_mu_positions}. It can be seen that the MU territory center points are homogeneously distributed in space.
 
 
@@ -438,14 +448,14 @@ We use the method 1a of the algorithm described in \cref{sec:muscle_fibers_and_m
     \caption{Size distribution for $523\times 523 = \num{273529}$ fibers.}%
     \label{fig:mus_523}%
   \end{subfigure}   
-  \caption{Distribution of the sizes of the 100 MUs in the scenarios with different number of fibers.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; Distribution of the sizes of the 100 MUs in the scenarios with different number of fibers.}%
   \label{fig:mu_sizes_100mus}%
 \end{figure}%
 
 
 For every fiber, the algorithm assigns a MU with a close center point with higher probability than a MU whose center is located further away. The total number of fibers per MU is progressing exponentially for the MUs from 1 to 100. The progression is described by an exponential function with basis $1.02$. \Cref{fig:mu_sizes_100mus} shows the MU size distributions for four scenarios with increasing numbers of fibers from \num{169} to \num{273529}. For 169 fibers in \cref{fig:mus_13}, not all 100 MUs get associated with a fiber. Further, it can be seen that the error of the actual size distribution to the exponential function decreases with increasing number of fibers. For the largest scenario in \cref{fig:mus_523}, the MU sizes range from 602 to 6097 fibers.
 
-The number of approximately $\num{3e6}$ fibers in the largest scenario matches the realistic number in a biceps muscle \cite{MacDougall1984}. The number of MUs can be higher in reality, e.g., by a factor of 5 \cite{Feinstein1955,MacIntosh2006}. Thus, the modeled MUs in this scenario can be seen as a combination of multiple real MUs. Especially the smallest MUs, which in reality can consists of only some dozens of fibers, are lumped by the first few MUs in our scenario. We restrict the number of MUs to 100 to be able to simulate the same problem also with smaller resolutions, e.g., with only 169 fibers.
+The number of approximately $\num{3e6}$ fibers in the largest scenario matches the realistic number in a biceps muscle \cite{MacDougall1984}. The number of MUs can be higher in reality, approximately by a factor of 5 \cite{Feinstein1955,MacIntosh2006}. Thus, the modeled MUs in this scenario can be seen as a combination of multiple real MUs. Especially the smallest MUs, which in reality can consists of only some dozens of fibers, are lumped by the first few MUs in our scenario. We restrict the number of MUs to 100 to be able to simulate the same problem also with smaller resolutions, e.g., with only 169 fibers.
 
 \begin{figure}
   \centering%
@@ -461,13 +471,13 @@ The number of approximately $\num{3e6}$ fibers in the largest scenario matches t
     \caption{The resulting assignments of MUs to fibers after four parts similar to (a) have been combined, here only shown for six MUs.}%
     \label{fig:mu_assignment_total}%
   \end{subfigure} 
-  \caption{Association of MUs to the fibers. The square domain corresponds to a cross-section in the muscle, every colored point is one fiber and the color corresponds to the MU. }%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; association of MUs to the fibers. The square domain corresponds to a cross-section in the muscle, every colored point is one fiber, and the color corresponds to the MU. }%
   \label{fig:mu_assignment_100}%
 \end{figure}%
 
-As described in \cref{sec:muscle_fibers_and_motor_units}, the MU assignment algorithm asserts that neighboring fibers are part of different MUs by splitting the assignment problem for the given set of fibers into four smaller problems and then interleaving the results of the four parts. \Cref{fig:mu_assignment_part0} shows the first such part, where 25 MUs are associated to a subset of the fibers for the largest scenario with \num{273529} fibers. It can be seen that the three visualized MUs are largely clustered around their MU territory centers.
+As described in \cref{sec:muscle_fibers_and_motor_units}, the MU assignment algorithm ensures that neighboring fibers are part of different MUs, by splitting the assignment problem for the given set of fibers into four smaller problems and then interleaving the results of the four parts. \Cref{fig:mu_assignment_part0} shows the first of these four parts, where 25 MUs are associated to a subset of the fibers for the largest scenario with \num{273529} fibers. It can be seen that the three visualized MUs are largely clustered around their MU territory centers.
 
-The final association of fibers and MUs is given in \cref{fig:mu_assignment_total}. Six selected MUs are shown of which the first, MU 1, corresponds to the first MU in \cref{fig:mu_assignment_part0}. The figure shows that the fibers, especially the ones of the larger MUs, are distributed far across the muscle. Comparing the smallest MU, MU 1, with the largest MU, MU 100, gives an impression of the MU size differences in this scenario.
+The final association of fibers and MUs is given in \cref{fig:mu_assignment_total}. Six selected MUs are shown, of which the first, MU 1, corresponds to the first MU in \cref{fig:mu_assignment_part0}. The figure shows that the fibers, especially the ones of the larger MUs, are distributed far across the muscle. Comparing the smallest MU, MU 1, with the largest MU, MU 100, gives an impression of the MU size differences in this scenario.
 
 
 \begin{table}
@@ -486,26 +496,26 @@ The final association of fibers and MUs is given in \cref{fig:mu_assignment_tota
     $523^2=\num{273529}$ & 2     & 1  & $262 \times 1481$  & \num{101661}\,k  & \num{1620}\,M  & \num{26912} & 421\\ % 29x29x32
     \hline
   \end{tabular}
-  \caption{Fiber based EMG simulation for the upper arm (biceps) model; Parameters of spatial discretization and parallel partitioning for the EMG study. The 3D stride refers to the stride with which the 3D mesh is generated from the 0D points. The 2D surface is the output of the EMG and corresponds to one face of the 3D mesh.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; Parameters of spatial discretization and parallel partitioning. The 3D stride refers to the stride with which the 3D mesh is generated from the 0D points. The 2D surface is the output of the EMG and corresponds to one face of the 3D mesh.}%
   \label{tab:emg_study_parameters}%
 \end{table}
 
 The numeric parameters of the simulations are the same as in the last section. The scenario is computed for a simulation time span of $\SI{1}{\s}$. The MUs are activated in a ramp every $\SI{2}{\ms}$ such that all MUs are active after $\SI{200}{\ms}$. The fiber radius
-and the stimulation frequency for the MUs are exponentially distributed with basis $1.02$, similar to the MU size. The fiber radius increases from \SI{40}{\micro\meter} to \SI{55}{\micro\meter} and the stimulation frequency decreases from \SI{24}{\hertz} to \SI{7}{\hertz} for MUs 1 to 100. A random frequency jitter of \SI{10}{\percent} is assumed.
+and the stimulation frequency for the MUs are exponentially distributed with basis $1.02$, similar to the MU size. The fiber radius increases from \SI{40}{\micro\meter} to \SI{55}{\micro\meter}, and the stimulation frequency decreases from \SI{24}{\hertz} to \SI{7}{\hertz} for MUs 1 to 100. A random frequency jitter of \SI{10}{\percent} is assumed.
 
-The surface to volume ratio $A_m$ of the membrane is determined by assuming a cylindrical shape and can be computed from the fiber radius $r$ by $A_m = 2/r$ \cite{Klotz2020}. We model \SI{70}{\percent} slow twitch and \SI{30}{\percent} fast twitch fibers. Accordingly, the membrane capacitance $C_m$ is set to $C_m = \SI{0.58}{\micro\farad\per\centi\meter\squared}$ for the 70 smallest MUs and to $C_m = \SI{1}{\micro\farad\per\centi\meter\squared}$ for the 30 largest MUs.
+The surface to volume ratio $A_m$ of the membrane is determined by assuming a cylindrical shape and can be computed from the fiber radius $r$ as $A_m = 2/r$ \cite{Klotz2020}. We model \SI{70}{\percent} slow twitch and \SI{30}{\percent} fast twitch fibers. Accordingly, the membrane capacitance $C_m$ is set to $C_m = \SI{0.58}{\micro\farad\per\centi\meter\squared}$ for the 70 smallest MUs and to $C_m = \SI{1}{\micro\farad\per\centi\meter\squared}$ for the 30 largest MUs.
 
-\Cref{tab:emg_study_parameters} lists the spatial discretization and parallel partitioning parameters. The first column shows the number of fibers. Their number increases, however, the mesh resolution of every 1D fiber mesh stays constant at 1480 elements per fiber. The stride that defines the 3D mesh is given in the second and third columns. The stride in radial direction of the muscle, i.e., in the $x$ and $y$ coordinate directions, stays constant. Because the fiber density increases, the 3D mesh is refined accordingly. The stride along the fibers, i.e., in $z$ direction is reduced such that the mesh widths of the 3D mesh in all three coordinate directions remain balanced.
+\Cref{tab:emg_study_parameters} lists the spatial discretization and parallel partitioning parameters. The first column shows the number of fibers. Their number increases, however, the mesh resolution of every 1D fiber mesh stays constant at 1480 elements per fiber. The stride that defines the 3D mesh is given in the second and third columns. The stride in radial direction of the muscle, i.e., in the $x$ and $y$ coordinate directions, stays constant. Because the fiber density increases, the 3D mesh is refined accordingly. The stride along the fibers, i.e., in $z$ direction is reduced, such that the mesh widths of the 3D mesh in all three coordinate directions remain balanced.
 
 The resulting EMG recordings of each simulation are described by 2D meshes, which contain the values of the 3D muscle meshes without fat layer on the surface at one side of the muscle.  The fourth column in \cref{tab:emg_study_parameters} lists the dimensions of these surface meshes. 
 
 The next two columns list the number of dofs in the 3D mesh and the number of dofs in all fibers. For these scenarios, it is not practical to output the 3D mesh or the 1D fiber meshes in regular time intervals, because this would produce large amounts of data that could hardly be processed. Instead, we only output the 2D surface mesh in the ParaView format every \SI{10}{\milli\second}.
 
-The last two columns in \cref{tab:emg_study_parameters} show the numbers of processes and compute nodes that are used on Hawk. One compute nodes contains 128 physical cores and always four cores share a $\SI{16}{\mebi\byte}$ level three (L3) cache. However, we decide to use only 64 cores per compute node, i.e., two cores per L3 cache, because measurements showed that this reduces the overall computation times more than is lost by the decreased parallelism of not using all physical cores on a compute node. For example, the total computation time of this scenario with a timespan of $\SI{1}{\s}$ is $\SI{2}{\hour} \SI{20}{\minute}$ for the scenario with \num{76729} fibers and 7744 processes.
+The last two columns in \cref{tab:emg_study_parameters} show the numbers of processes and compute nodes that are used on Hawk. One compute node contains 128 physical cores, four cores share a $\SI{16}{\mebi\byte}$ level three (L3) cache. However, we decide to use only 64 cores per compute node, i.e., two cores per L3 cache, because measurements showed that this reduces the overall computation times more than it increases the runtime due to the decreased parallelism. The total computation time of this scenario with a timespan of $\SI{1}{\s}$ is $\SI{2}{\hour}$ $\SI{20}{\minute}$ for the scenario with \num{76729} fibers and 7744 processes.
 
 \Cref{fig:emg_hpc,fig:emg_hpc2} show the resulting surface EMG signals for different resolutions. The color visualizes the value of the extracellular potential $\phi_e$ according to the shown color bar. Because of sign conventions in the definitions of the electric potentials, the spikes in the EMG signals, which result from the action potentials, are negative.
 
-The resulting electric potentials in \cref{fig:emg_hpc} exhibit different regions of higher activation that move over time from the center of the muscle towards its ends. The size of these regions at time ${t=\SI{179.5}{\ms}}$ decreases from \cref{fig:emg37} to \cref{fig:emg187} as the mesh width decreases. 
+The resulting electric potential in \cref{fig:emg_hpc} exhibits different regions of higher activation that move over time from the center of the muscle towards its ends. The size of these regions at time ${t=\SI{179.5}{\ms}}$ decreases from \cref{fig:emg37} to \cref{fig:emg187} as the mesh width decreases. 
 Dark colored strong signals can be seen, which mainly correspond to fibers that are located directly underneath the shown muscle surface.
 Apart from these strong signals, also weaker artifacts occur, which are shown in yellow and orange colors. They result from the superposition of several fibers of the same or different MUs. The number of recognizable weak signals is higher for the simulations with higher numbers of fibers and finer mesh resolution.
 
@@ -538,14 +548,14 @@ The four scenarios in \cref{fig:emg_hpc} share the material parameters, territor
     \caption{$\num{34969}$ fibers.}%
     \label{fig:emg187}%
   \end{subfigure}   
-  \caption{Simulated surface EMG signals for different numbers of fibers and different mesh widths of the 3D mesh, see \cref{tab:emg_study_parameters} for details. The same color coding of the EMG signal $\phi_e$ is used in the four scenarios.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; simulated surface EMG signals for different numbers of fibers and different mesh widths of the 3D mesh, see \cref{tab:emg_study_parameters} for details. The same color coding of the EMG signal $\phi_e$ is used in the four scenarios.}%
   \label{fig:emg_hpc}%
 \end{figure}%
 
-\Cref{fig:emg_hpc2} shows two more scenarios with large numbers of fibers at times of $t\approx \SI{1}{\s}$ and $t\approx \SI{0.4}{\s}$. The scenario in \cref{fig:emg277} simulates approximately \num{76e3} fibers, which is in the order of a third of the realistic number of fibers in the biceps muscle. 
+\Cref{fig:emg_hpc2} shows two more scenarios with a large number of fibers at times of $t\approx \SI{1}{\s}$ and $t\approx \SI{0.4}{\s}$. The scenario in \cref{fig:emg277} simulates approximately \num{76e3} fibers, which is in the order of a third of the realistic number of fibers in the biceps muscle. 
 This scenario can also be interpreted as only activating a third of the available fibers in the muscle, resulting in the respective lower percentage of maximum voluntary contraction force.
 
-\Cref{fig:emg273529b} shows the scenario where a realistic number of \num{273e3} fibers was simulated. The computational effort for these two scenarios can only be tackled with High Performance Computing. The last two rows of \cref{tab:emg_study_parameters} show that 121 respectively 421 compute nodes were used for the computations.
+\Cref{fig:emg273529b} shows the scenario where a realistic number of \num{273e3} fibers was simulated. The computational effort for these two scenarios can only be tackled with High Performance Computing. The last two rows of \cref{tab:emg_study_parameters} show that 121 and 421, repectively, compute nodes were used for the computations.
 
 \Cref{fig:emg273529c,fig:emg273529d} present details of the simulated surface EMG of the scenario in \cref{fig:emg273529b}. The cut outs are indicated by the red boxes in \cref{fig:emg273529b,fig:emg273529c}. \Cref{fig:emg273529d} also visualizes the elements of the 2D and 3D meshes. In both scenarios of \cref{fig:emg_hpc2}, the 3D mesh is as finely resolved in $z$ direction (vertical in \cref{fig:emg273529d}) as the muscle fibers. In transversal direction (horizontal in \cref{fig:emg273529d}), the element sizes are twice as large as the spacing between the fibers. 
 
@@ -583,7 +593,7 @@ In contrast, the lower action potential results from a fiber that is directly lo
       \label{fig:emg273529d}%
     \end{subfigure}
   \end{minipage}
-  \caption{Simulated surface EMG signals with realistic fiber counts, continued from \cref{fig:emg_hpc}. Figure (a) shows a scenario with \num{76729} fibers, which is approximately a third of the realistic number for the biceps muscle. Figures (b)-(d) show the result with a realistic number of \num{273529} fibers. (c) shows a detail view of (b) indicated by the outer red box. (d) shows another zoomed in view of (b) and (c), also indicated by the red boxes.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; simulated surface EMG signals with realistic fiber counts, continued from \cref{fig:emg_hpc}. Figure (a) shows a scenario with \num{76729} fibers, which is approximately a third of the realistic number for the biceps muscle. Figures (b)-(d) show the result with a realistic number of \num{273529} fibers. (c) shows a detail view of (b) indicated by the outer red box. (d) shows another zoomed in view of (b) and (c), also indicated by the red boxes.}%
   \label{fig:emg_hpc2}%
 \end{figure}%
 
@@ -809,18 +819,18 @@ For some applications such as the evaluation of EMG decomposition algorithms, it
 
 One possiblity would be to extract nodal values from the simulated surface meshes to simulate electrodes. However, the distance between the nodes in the mesh is not constant in the whole mesh, whereas EMG electrode arrays have fixed inter electrode spacings. We, therefore, follow a different approach and allow to directly specify a grid of electrodes close to the muscle surface. These points are then mapped onto the surface of the muscle and the respective values are calculated by evaluating the finite element interpolant at the respective locations.
 
-In OpenDiHu, a 2D grid of surface electrodes can be defined in the Python settings file by specifying the grid parameters and inter electrode distances. In result, the simulation distributes the electrodes to the processes according to the parallel partitioning of the 3D mesh, evaluates the computed EMG values at the respective locations and outputs them in a single text file of comma separated values.
+In OpenDiHu, a 2D grid of surface electrodes can be defined in the Python settings file by specifying the grid parameters and inter electrode distances. As a result, the simulation distributes the electrodes to the processes according to the parallel partitioning of the 3D mesh, evaluates the computed EMG values at the respective locations and outputs them in a single text file of comma separated values.
 
-\Cref{fig:fibers_fat_emg2_electrodes} shows simulation results of the fiber based electrophysiology model with 49 fibers, fat layer and an array of $12\times 32$ electrodes. The electrodes are visualized as spheres. The muscle fibers below the fat layer are colored according to the transmembrane voltage $V_m$. Of the fat layer only the upper surface is shown and colored according to the extracellular potential $\phi_e$. The EMG electrodes capture the values of the scalar field $\phi_e$ at their locations. The color coding for the electrodes has a different \emph{EMG} color scale to make the resulting signals more distinguishable. Two activated bands across the muscle surface can be seen, which are also present in the electrode values.
+\Cref{fig:fibers_fat_emg2_electrodes} shows simulation results of the fiber based electrophysiology model with 49 fibers, fat layer and an array of $12\times 32$ electrodes. The electrodes are visualized as spheres. The muscle fibers below the fat layer are colored according to the transmembrane voltage $V_m$. Only the upper surface of the fat layer is shown and colored according to the extracellular potential $\phi_e$. The EMG electrodes capture the values of the scalar field $\phi_e$ at their locations. The color coding for the electrodes has a different \emph{EMG} color scale to make the resulting signals more distinguishable. Two activated bands across the muscle surface can be seen, which are also present in the electrode values.
 
 \begin{figure}
   \centering%
   \includegraphics[width=0.7\textwidth]{images/results/application/fibers_fat_emg2.png}%
-  \caption{Simulation of surface EMG and capturing electrodes. The scenario contains 49 muscle fibers, a fat layer of which only the surface is shown and a grid of $12 \times 32$ equidistant electrodes.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; simulation of surface EMG and capturing electrodes. The scenario contains 49 muscle fibers, a fat layer, of which only the surface is shown, and a grid of $12 \times 32$ equidistant electrodes.}%
   \label{fig:fibers_fat_emg2_electrodes}%
 \end{figure}
 
-To visually evaluate the simulated EMG signals at the electrodes, OpenDiHu provides utilities to create the visualizations shown in \cref{fig:emg_video}. \Cref{fig:emg_video_37} shows a still image from an animation. On the upper right, the grid of electrodes is displayed. The EMG signal at the electrodes is given by the colored tiles and changes over time. At the bottom of the image, the activation times of the MUs are visualized. Every horizontal line corresponds to one MU. The colored markers indicate when the respective MU fires. As the shown example visualizes data for \SI{40}{\s}, the individual firing times are not distinguishable. In the animation, a vertical bar moves over the time axis and indicates the current simulation time. The picture displays the EMG values at time $t=\SI{25.975}{\s}$. The upper left of the image shows a text with static information about the dataset, containing the electrode grid size, the inter electrode distance (IED), the end time, the sampling frequency of the electrodes, i.e., the frequency with which the computed EMG signals values are stored to the output file, and the number of MUs.
+To visually evaluate the simulated EMG signals at the electrodes, OpenDiHu provides utilities to create the visualizations shown in \cref{fig:emg_video}. \Cref{fig:emg_video_37} shows a single frame from an animation. On the upper right, the grid of electrodes is displayed. The EMG signal at the electrodes is given by the colored tiles and changes over time. At the bottom of the image, the activation times of the MUs are visualized. Every horizontal line corresponds to one MU. The colored markers indicate when the respective MU fires. As the shown example visualizes data for \SI{40}{\s}, the individual firing times are not distinguishable. In the animation, a vertical bar moves over the time axis and indicates the current simulation time. The picture displays the EMG values at time $t=\SI{25.975}{\s}$. The upper left of the image shows a text with static information about the dataset, containing the electrode grid size, the inter electrode distance (IED), the end time, the sampling frequency of the electrodes, i.e., the frequency with which the computed EMG signals values are stored to the output file, and the number of MUs.
 
 \Cref{fig:emg_video_plot} shows another, static visualization of simulated EMG data. The diagram contains boxes for all electrodes in the $12\times 32$ grid. The value of the EMG signal is plotted over time in every box for the respective electrode. \Cref{fig:emg_video_plot} visualizes the data of \cref{fig:emg_video_37} for the time interval $[\SI{25.9}{\s},\SI{26}{\s}]$.
 The diagram enables experts to visually identify propagating action potentials from the tile columns. The propagation velocity of the action potentials can be estimated from the time shift of matching spikes in vertically adjacent boxes.
@@ -830,7 +840,7 @@ The diagram enables experts to visually identify propagating action potentials f
   \begin{subfigure}[t]{0.6\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/results/application/emg_video_37.png}%
-    \caption{fibers mesh}%
+    \caption{Snapshot of an animation of the simulation results that can be generated with the utility of OpenDiHu. The top part visualizes the current values of the EMG electrodes at time $t=\SI{25.975}{\s}$. The bottom part shows the MU activation ramp, each colored line shows to the firing time range of one MU.}%
     \label{fig:emg_video_37}%
   \end{subfigure}  \,
   \begin{subfigure}[t]{0.38\textwidth}%
@@ -839,7 +849,7 @@ The diagram enables experts to visually identify propagating action potentials f
     \caption{Surface EMG at $12 \times 32$ electrodes in the time range $[\SI{25.9}{\s},\SI{26}{\s}]$.}%
     \label{fig:emg_video_plot}%
   \end{subfigure}
-  \caption{Simulation of surface EMG using electrodes.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; results of surface EMG obtained at simulated electrodes.}%
   \label{fig:emg_video}%
 \end{figure}
 
@@ -851,28 +861,34 @@ The diagram enables experts to visually identify propagating action potentials f
 Surface EMG recordings are a valuable tool to gain insights into the neuromuscular system. They are used, e.g., for the diagnosis of muscular disorders and in clinical studies that aim to advance biomedical understanding.
 
 % why, how are EMG signals generated -> fig
-As described earlier, the EMG signals on the skin surface originate from the activated muscle fibers. Effects from volume conduction of action potentials on all muscle fibers are superpositioned and contribute to the EMG signal. The scaling of the contributions to the overall signal depends on several factors, such as the distance of the fibers to the skin surface. As all fibers in the same MU get activated simultaneously, each MU`s contribution shows a characteristic \say{shape} in the resulting surface EMG signal. This shape is influenced by the number and location of the muscle fibers relative to the electrodes and the location of the neuromuscular junctions.
+As described earlier, the EMG signals on the skin surface originate from the activated muscle fibers. Effects from volume conduction of action potentials on all muscle fibers are superpositioned and contribute to the EMG signal. The scaling of the contributions to the overall signal depends on several factors such as the distance of the fibers to the skin surface. As all fibers in the same MU get activated simultaneously, each MU`s contribution shows a characteristic \say{shape} in the resulting surface EMG signal. This shape is influenced by the number and location of the muscle fibers relative to the electrodes and the location of the neuromuscular junctions.
 
 In our simulation, the location of the neuromuscular junctions is chosen pseudo-randomly (but deterministic) during initialization in the central \SI{10}{\percent} of every muscle fiber. \Cref{fig:emg_video_37_junctions} shows the state of a simulation with $1369$ fibers at $t=\SI{1}{\ms}$, where all fibers have been activated at $t=\SI{0}{\ms}$. The color coding indicates the potential $V_m$ of the membrane, which at the shown time has only depolarized near the locations of the neuromuscular junctions.
 
 \begin{figure}
   \centering%
   \includegraphics[width=0.85\textwidth]{images/results/application/emg_video_37_junctions.png}%
-  \caption{A simulation result that reveals the locations of the neuromuscular junctions. The figure depicts 1369 fibers after $\SI{1}{\ms}$ that have initially been stimulated at the neuromuscular junction. The color coding corresponds to the membrane potential $V_m$, which has a positive value near the points of stimulation.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; a simulation result that reveals the locations of the neuromuscular junctions. The figure depicts 1369 fibers after $\SI{1}{\ms}$, which have initially been stimulated at the neuromuscular junction. The color coding corresponds to the membrane potential $V_m$, which has a positive value near the points of stimulation.}%
   \label{fig:emg_video_37_junctions}%
 \end{figure}
 
 % gCKC method
-Methods exist that seek to decompose the surface EMG signal into the contributions of the individual MUs. One popular method is \emph{Gradient Convolution Kernel Compensation} (gCKC) \cite{Holobar2007b,Holobar2007}, which, in the following, will be outlined and then applied on simulated data.
+% Evtl. auch hier in 1-2 Sätzen etwas ausholen, warum man das macht: Die Simulationsdaten enthalten alle Informationen über die tatsächlich dem simulierten EMG-Signal zugrunde liegende Stimulation. Man kann sie also nutzen, um die decomposition methods zu validieren.
+Methods exist that seek to decompose the surface EMG signal into the contributions of the individual MUs. Given a surface EMG recording, such methods output a number of recovered MUs and their firing times.
+In our simulation studies, all relevant information is available that determines the EMG signal resulting from MU activity: the location of the fibers and their association to MUs, the positions of the neuromuscular junctions and the innervation pulses for each MU.
+Thus, our simulation can be used to validate and evaluate EMG decomposition methods.
 
-Most decomposition methods, including the gCKC algorithm, assume that the EMG signal at an electrode is composed of the convolutional mixture of $N$ filters of the MU activity. 
-The activity of each MU $k\in \{1,\dots,N\}$ is described by the innervation pulse trains that activate the fibers of MU $k$, given as a point process of neural inputs at stimulation times $\varphi_r$. The source signal $s_k$ in the muscle that represents the effect of MU $k$ is described as a filter over these neural drives, $s_k(t) = \sum_r\delta(t - \varphi_r)$, where $\delta$ is the dirac delta function.
+One popular EMG decomposition method is \emph{Gradient Convolution Kernel Compensation} (gCKC) \cite{Holobar2007b,Holobar2007}, which, in the following, will be outlined and then applied on simulated data.
 
-The vector of observed EMG values $\bfx \in \R^m$ at a time $t$ is composed of the temporal convolution over $L$ time-shifted sources $\bfs$ and a term $\bfomega$ of additive Gaussion noise:
+Most decomposition methods, including the gCKC algorithm, assume that the EMG signal at an electrode is composed of the convolutional mixture of the activity of $N$ MUs.
+The activity of each MU $k\in \{1,\dots,N\}$ is described by the innervation pulse trains, which activate the fibers of MU $k$, given as a point process of neural inputs at stimulation times $\varphi_r$. The source signal $s_k$ in the muscle, which represents the effect of MU $k$ is described as a spike $s_k(t) = \sum_r\delta(t - \varphi_r)$, where $\delta$ is the dirac delta function.
+
+The vector of observed EMG value $\bfx \in \R^m$ at a time $t$ is composed of the temporal convolution over $L$ time-shifted sources $\bfs$ and a term $\bfomega$ of additive Gaussion noise:
 \begin{align*}
   \bfx(t) = \s{l=0}{L-1}\bfH(l)\,\bfs(t-l) + \bfomega(t).
 \end{align*}
-Here, $\bfH$ is the $m\times n$ mixing matrix for $m$ observations and $n$ MU sources and $\bfs = (s_k)_{1,\dots,n}$ is the vector of source signals. The sum over $L$ previous values in this convolutive mixture can be reformulated by moving the summation into the matrix-vector product. The dimensions of the matrix $\bfH$ and the vector $\bfs$ are extended accordingly. Inversion of the extended mixture matrix yields the separation vectors, with which the innervation pulse trains $\varphi_r$ of the MUs can be recovered from the recorded EMG signals $\bfx$. The gCKC algorithm performs the inversion indirectly by solving a derived optimization problem using a gradient descent scheme.
+Here, $\bfH$ is the $m\times n$ mixing matrix for $m$ observations and $n$ MU sources and $\bfs = (s_k)_{1,\dots,n}$ is the vector of source signals. The sum over $L$ previous values in this convolutive mixture can be reformulated by moving the summation into the matrix-vector product. The dimensions of the matrix $\bfH$ and the vector $\bfs$ are extended accordingly. 
+An optimzation problem yields the separation vectors, with which the innervation pulse trains $\varphi_r$ of the MUs can be recovered from the recorded EMG signals $\bfx$. The gCKC algorithm determines the inverse effect of applying the unknown mixing matrix by solving a derived optimization problem using a gradient descent scheme.
 
 The gCKC decomposition algorithm is implemented in the DEMUSE software, a commercial, MATLAB based tool that allows automatic and semi-automatic EMG decomposition \cite{demuse}. In collaboration with Lena Lehmann from the \emph{Institute of Signal Processing and System Theory} and the \emph{Institute for Modelling and Simulation of Biomechanical Systems}, we evaluated the performance of gCKC decomposition on simulated surface EMG signals.
 
@@ -881,13 +897,15 @@ We simulate fiber-based electrophysiology scenarios with fat layer and 1369 fibe
 
 \Cref{fig:emg_20mus-50s-old2} shows the firing times of the 20 MUs in the first \SI{10}{\second}. The different MUs are initially activated every \SI{100}{\ms} to generate the shown \say{ramp} activation pattern, which later helps to identify the recovered MUs from the decomposition.  From $t=\SI{1.8}{\second}$ on, all MUs fire with their respective constant frequency, subject to jitter values of $\SI{10}{\percent}$.
 
-In this first scenario, the gCKC decomposition algorithm was applied on the first $t=\SI{40}{\second}$ of simulated EMG data. The preconfigured algorithm in DEMUSE was used without manual intervention. While the simulated EMG recording consisted of an electrode grid of $12 \times 32$ fibers, only a rectangular subset of $5\times 13$ channels at the lower center of the grid was used for the decomposition to mimic a realistic electrode array size. The DEMUSE software discarded four of these 65 channels as being invalid.
+In this first scenario, the gCKC decomposition algorithm was applied on the first $t=\SI{40}{\second}$ of simulated EMG data. The preconfigured algorithm in DEMUSE was used without manual intervention. While the simulated EMG recording consisted of an electrode grid of $12 \times 32$ fibers, only a rectangular subset of $5\times 13$ channels at the lower center of the grid was used for the decomposition to mimic a realistic electrode array size. 
+
+In reality, some of the recorded channels may measure invalid data due to inappropriate surface contact of the electrodes, noisy signals at the particular measurement location or other experimental difficulties. The DEMUSE tool can automatically detects such channels and discard the corresponding data from the decomposition scheme. Despite our simulation does not contain invalid channels, the DEMUSE software discarded four of the 65 simulated channels.
 
 % old 20MUs scenario
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/application/emg_20mus-50s-old2.pdf}%
-  \caption{Match of EMG decomposition results with simulated data. The firing pattern over time for the 20 MUs in the simulation is shown by black markers. The recovered firing times of the gradient convolution kernel compensation algorithm are given by the red markers. The algorithm detected the four MUs 16, 18, 19 and 20.}%
+  \caption{Validation experiment for EMG decomposition based on fiber-based simulations of the biceps bracchii muscle: Match of EMG decomposition results with simulated data. The true firing pattern over time for the 20 MUs in the simulation is shown by black markers. The recovered firing times of the gradient convolution kernel compensation algorithm are given by the red markers. The algorithm detected the four MUs 16, 18, 19 and 20.}%
   \label{fig:emg_20mus-50s-old2}%
 \end{figure}
 
@@ -909,7 +927,7 @@ The recovered MUs were identified in the set of simulated MUs by matching the  a
     \caption{Spatial location of the fibers of the four MUs that were recovered by the EMG decomposition algorithm, indicated by different colors. The territory center points of the MUs used in the generation algorithm are indicated by black dots. The yellow background area corresponds to other MUs, which were not detected.}%
     \label{fig:oldmus_2d}%
   \end{subfigure}
-  \caption{Association of the fibers with motor units for the first scenario with 20 MUs, given in \cref{fig:emg_20mus-50s-old2}.}%
+  \caption{Validation experiment for EMG decomposition based on fiber-based simulations of the biceps bracchii muscle: Association of the fibers with motor units for the first scenario with 20 MUs, given in \cref{fig:emg_20mus-50s-old2}.}%
   \label{fig:oldmus}%
 \end{figure}
 
@@ -929,7 +947,7 @@ The recovered MUs were identified in the set of simulated MUs by matching the  a
     \caption{Spatial fiber arrangement of the MUs that were detected by the EMG decomposition algorithm, with their center points given by black dots.}%3
     \label{fig:newmus_2d}%
   \end{subfigure} 
-  \caption{Association of the fibers with motor units for the second scenario with 20 MUs, given in \cref{fig:emg_20mus-40s_new}.}%
+  \caption{Validation experiment for EMG decomposition based on fiber-based simulations of the biceps bracchii muscle: Association of the fibers with motor units for the second scenario with 20 MUs, given in \cref{fig:emg_20mus-40s_new}.}%
   \label{fig:newmus}%
 \end{figure}
 
@@ -938,23 +956,23 @@ In this scenario, the association of fibers with MUs followed an exponential MU 
 \Cref{fig:oldmus_2d} depicts the location of the four MUs that were detected by DEMUSE. The detected MUs have the indices 16, 18, 19 and 20 and correspond to four of the five largest MUs. It can be seen that MUs 18 to 20 are located mainly in the upper half of the muscle cross-section, in proximity to the electrode array at the top of the diagram.
 The MU with the most fibers, MU 20, was detected by the decomposition algorithm even though it is located at the lower left of diagram at a large distance to the skin surface.
 
-Two further scenario were simulated with the same parameters as the first scenario in \cref{fig:emg_20mus-50s-old2}, but instead with 50 and 100 MUs. In these datasets, DEMUSE was able to detect 8 and 12 MUs, which corresponds to \SI{16}{\percent} and \SI{12}{\percent}. 
+Two further scenarios were simulated with the same parameters as the first scenario in \cref{fig:emg_20mus-50s-old2}, but instead with 50 and 100 MUs. In these datasets, DEMUSE was able to detect 8 and 12 MUs, which corresponds to \SI{16}{\percent} and \SI{12}{\percent}. 
 
 % new 20MUs scenario
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/application/emg_20mus-40s_new3.png}% .pdf
-  \caption{Activation pattern for the second scenario with 20 MUs. The activation times used in the simulation are shown as black markers, the recovered activation pulses of the EMG decomposition algorithm are shown as red markers.}%
+  \caption{Validation experiment for EMG decomposition based on fiber-based simulations of the biceps bracchii muscle: Activation pattern for the second scenario with 20 MUs. The activation times used in the simulation are shown as black markers, the recovered activation pulses of the EMG decomposition algorithm are shown as red markers.}%
   \label{fig:emg_20mus-40s_new}%
 \end{figure}
 
 Moreover, another scenario with 20 MUs was computed, but the fat layer was varied to have a thickness of only \SI{2}{\mm} instead of \SI{1}{\cm}. In addition, the association scheme between MUs and fibers was changed to the one shown in \cref{fig:newmus}. The exponential distribution of MU sizes only varied between 42 and 102 fibers per MU, corresponding to a basis in the exponential function of approximately $1.05$ instead of $1.2$.
 
 \Cref{fig:emg_20mus-40s_new} shows the results of the EMG decomposition with the gCKC algorithm for this second scenario with 20 MUs. DEMUSE successfully decomposed the signal into 13 MUs, corresponding to \SI{65}{\percent} of the 20 simulated MUs. DEMUSE also determined two additional MUs, which we do not consider part of the set of successfully recovered MUs. The first dataset only consists of ten innervation pulses, and the second pulse train contains high frequency oscillations.
-In this scenario, the software marked only one EMG recording channel as invalid, which means that more data was considered by the decomposition algorithm than in the first scenario with 20 MUs.
+In this scenario, the software marked only one EMG recording channel as invalid, which means that more data were considered by the decomposition algorithm than in the first scenario with 20 MUs.
 
 Similar to the previously presented scenario, the larger MUs were detected with a higher probability than the smaller MUs. In this scenario, the eight largest MUs were successfully found. 
-\Cref{fig:newmus_2d} shows the spatial arrangement of the detected MUs. The area of the muscle cross section that is occupied by undetected MUs is again distributed more distantly to the skin surface at the upper boundary. However, the recovered MUs 1 and 14 are nevertheless located at the lower boundary, i.e., in the most distant area from the EMG electrodes. 
+\Cref{fig:newmus_2d} shows the spatial arrangement of the detected MUs. The area of the muscle cross section that is occupied by undetected MUs is again located more distantly to the skin surface at the upper boundary. However, the recovered MUs 1 and 14 are nevertheless located at the lower boundary, i.e., in the most distant area from the EMG electrodes. 
 
 %-----
 
@@ -964,7 +982,7 @@ Similar to the previously presented scenario, the larger MUs were detected with 
   \begin{subfigure}[t]{0.47\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/results/application/emg_20mus-40s_new-noshift2.pdf}%
-    \caption{Original data where a constant time shift between the simulated (black) and recovered (red) markes can be seen, especially for MUs 16 and 18.}%
+    \caption{Original data, where a constant time shift between the simulated (black) and recovered (red) markes can be seen, especially for MUs 16 and 18.}%
     \label{fig:newmus_nocorrection}%
   \end{subfigure}
   \hfill
@@ -974,11 +992,11 @@ Similar to the previously presented scenario, the larger MUs were detected with 
     \caption{Same data as in (a) with applied time offset correction. The applied time shifts for MUs 16 and 18 are \SI{-12.9}{\ms} and \SI{-24.9}{\ms}, respectively.}%
     \label{fig:newmus_withcorrection}%
   \end{subfigure}
-  \caption{Excerpts of the detected firing times of MUs 14 to 18 in the second scenario with 20MUs. The stimulation times of the simulation are given by black markers, the recovered times are visualized by red crosses.}%
+  \caption{Validation experiment for EMG decomposition based on fiber-based simulations of the biceps bracchii muscle: Excerpts of the detected firing times of MUs 14 to 18 in the second scenario with 20MUs. The stimulation times of the simulation are given by black markers, the recovered times are visualized by red crosses.}%
   \label{fig:newmus_shifting}%
 \end{figure}
 
-Next, we evaluate the quality of the innervation pulse trains that were recovered by the gCKC algorithm in our scenarios. We compare the stimulation times calculated by DEMUSE with the stimulation times of the simulation. \Cref{fig:newmus_nocorrection} shows an excerpt of the detected pulse trains of the second scenario with 20 MUs in \cref{fig:emg_20mus-40s_new}, where the gCKC algorithm recovered 13 MUs.  We observe for some MUs that the recovered stimulation times are consistently shifted in time. This effect is especially visible for MUs 16 and 18. 
+Next, we evaluate the quality of the innervation pulse trains that were recovered by the gCKC algorithm in our scenarios. We compare the stimulation times calculated by DEMUSE with the stimulation times of the simulation. \Cref{fig:newmus_nocorrection} shows an excerpt of the detected pulse trains of the second scenario with 20 MUs in \cref{fig:emg_20mus-40s_new}, where the gCKC algorithm recovered 13 MUs.  For same MUs, we observe that the recovered stimulation times are consistently shifted in time. This effect is especially visible for MUs 16 and 18. 
 
 The reference times given by the black markers in \cref{fig:newmus_nocorrection} correspond to the times when the fibers were stimulated in the simulation in OpenDiHu. The detected MU activations in DEMUSE, however, correspond to the times when the MU action potential shapes in the EMG recording reached their maximum.
 Moreover, the exact times when particular MUs reach particular EMG electrodes  depend on the distance of the electrodes to the innervation points of the MUs. The further the electrodes are away from the neuromuscular junctions along the muscle, the higher is the delay of the recorded spikes to the corresponding innervation pulses. Thus, the constant time shifts in the pulses detected by the gCKC algorithm are valid and have to be accounted for in the evaluation of the decomposition performance.
@@ -992,7 +1010,7 @@ We correct for these time shifts by adding constant time offsets $\Delta t_k$ to
 \end{align*}
 \Cref{fig:newmus_withcorrection} shows that the recovered pulses now match the simulated data very well. The non-matching pulses are clearly false positive detections.
 
-To compare the recovered MU times between the scenarios, we evaluate metrics such as the rate of agreement. The MU firing times in the simulation serve as the ground truth to which we compare the recovered MU times. We identify true positive (TP), false positive (FP) and false negative (FN) recovered pulses, depending on whether a matching time to a recovered pulse can or cannot be found in the simulation data within a tolerance of $\eps=\SI{5}{\ms}$. The rate of agreement (RoA) between the gCKC algorithm output and the ground truth data is then computed by%
+To compare the recovered MU times between the scenarios, we evaluate metrics such as the rate of agreement. The MU firing times in the simulation serve as the ground truth, to which we compare the recovered MU times. We identify true positive (TP), false positive (FP) and false negative (FN) recovered pulses, depending on whether a matching time to a recovered pulse can or cannot be found in the simulation data within a tolerance of $\eps=\SI{5}{\ms}$. The rate of agreement (RoA) between the gCKC algorithm output and the ground truth data is then computed by%
 \begin{align*}
   \textrm{RoA}  = \dfrac{\textrm{TP}}{\textrm{TP} + \textrm{FP} + \textrm{FN}}.
 \end{align*}
@@ -1007,8 +1025,8 @@ In the second scenario with 20 MUS presented in \cref{fig:emg_20mus-40s_new}, al
  
  %MU 9 from matlab: FP: 191, TP: 321, FN: 42 -> RoA: 0.5794223826714802
  
-While the gCKC algorithm can be used for EMG decomposition of previously recorded signals in a controlled environment, it is less suited for real-time applications such as human-machine interfaces (HMI). The separation vectors that decompose the electrode signals and infer the MU innervation pulse trains can be computed in a training phase. 
-However, their application on new data requires a certain history of previously captured signals to calculate the decomposed MU pulses. In consequence, the predictions are delayed, which is usually undesirable in HMI applications. Furthermore, the system is sensitive to noisy data. 
+While the gCKC algorithm can be used for EMG decomposition of previously recorded signals in a controlled environment, it is less suited for real-time applications. The separation vectors that decompose the electrode signals and infer the MU innervation pulse trains can be computed in a training phase. 
+However, their application on new data requires a certain history of previously captured signals to calculate the decomposed MU pulses. As a consequence, the predictions are delayed, which is usually undesirable in real-time applications. Furthermore, the system is sensitive to noisy data. 
 
 A fundamentally different approach to EMG decomposition is the use of sequence-to-sequence learning methods provided by recurrent neural networks. The authors of \cite{Clarke2021} used a gated recurrent unit (GRU) network for this task. The network was trained using the output of the gCKC algorithm and was subsequently able to decompose surface EMG signals into innervation pulse trains. The approach was shown to be robust and to outperform gCKC for low signal-to-noise ratios.
 
@@ -1016,7 +1034,7 @@ To assess, whether our simulations of surface EMG can be used for the supervised
 
 In this project, the EMG decomposition of a GRU network trained with raw innervation pulse trains obtained from the gCKC algorithm, similar to the literature, showed a large number of false positive and false negative predictions.
 However, a different setup using MU labels instead of raw pulse trains showed promising results. 
-Every discrete point in time (according to the EMG sampling frequency) was either associated with the class of the currently active MU or with the background class, when no MU was activated at the time. This classification problem had a large class imbalance, as the background class was active for \SI{86}{\percent} of the timesteps. The issue was mitigated by using class weights. The GRU network was trained with simulation data and yielded per-class rates of agreement of up to \SI{72}{\percent} for the two scenarios with 20 MUs shown in \cref{fig:emg_20mus-50s-old2,fig:emg_20mus-40s_new}. 
+Every discrete point in time (according to the EMG sampling frequency) was either associated with the class of the currently active MU or with the background class, when no MU was activated at the time. This classification problem had a large class imbalance, as the background class was active for \SI{86}{\percent} of the timesteps. The issue was mitigated by using class weights. The GRU network was trained with simulation data and yielded per-class rates of agreement of up to \SI{72}{\percent} for the two scenarios with 20 MUs shown in \cref{fig:emg_20mus-50s-old2,fig:emg_20mus-40s_new}, i.e., with the test data set also generated by our simulation.
 
 \Cref{fig:gru_result} presents an excerpt of the resulting predictions of a GRU network that was trained with simulation results.
 We used the simulation of the second scenario with 20 MUs, which is shown in \cref{fig:emg_20mus-40s_new}. 
@@ -1027,7 +1045,7 @@ The blue markers denote the GRU predictions. Correction of time offsets was perf
 
 \Cref{fig:gru_result} shows the best agreement between the two prediction methods for MU 10 with a RoA of \SI{99.6}{\percent} for the gCKC algorithm and \SI{72.2}{\percent} for the GRU network. In contrast to the gCKC algorithm, the GRU network predicts firings for all MUs. However, the quality is only acceptable for MUs that could also be detected by the gCKC algorithm. For MUs 11 and 12, the RoA for the GRU network is around \SI{30}{\percent}.
 
-In future work, the decomposition performance of the GRU networks could be improved by using different training data. For example, the ramp activation in the training data could be replaced by constant tetanic stimulations or training data where different single MUs are activated at a time could be investigated.
+In future work, the decomposition performance of the GRU networks could be improved by using different training data. For example, the ramp activation in the training data could be replaced by constant tetanic stimulations. Moreover, different network architectures, such as convolutional recurrent neural networks could be investigated.
 
 \begin{figure}
   \centering%
@@ -1059,14 +1077,18 @@ In future work, the decomposition performance of the GRU networks could be impro
 
 In conclusion, the gCKC algorithm is able to decompose artifically generated surface EMG signals. This means that our simulation can be used to evaluate the performance of EMG decomposition algorithms.
 
-The number of detected MUs depends on the relation between MU sizes and on the distance of the MU territories to the electrodes. If the variance of the sizes of the activate MUs is small, such as in \cref{fig:newmus_progression}, also MU are detected that are far away from the electrodes. If, in the opposite case, the sizes of active MUs are distributed over a large range such as in \cref{fig:oldmus_progression}, only the largest MUs are detectable.
+The number of detected MUs depends on the relation between MU sizes and on the distance of the MU territories to the electrodes. If the variance of the sizes of the activated MUs is small, such as in \cref{fig:newmus_progression}, also MUs that are far away from the electrodes are detected. If, in the opposite case, the sizes of active MUs are distributed over a large range such as in \cref{fig:oldmus_progression}, only the largest MUs are detectable.
 
 In addition, the amount of adipose tissue between the electrodes and the muscle influences the number of MUs that can be recovered. In our studies, the performance of EMG decomposition was lower for all scenarios with thicker fat layer than for the scenario with a thin fat layer.
 
 The rate of agreement of the determined pulse trains of the DEMUSE software was above $\SI{95}{\percent}$ in most of the cases. Correspondingly, the rate of false positives was low.
-A time shift between the recovered times and the ground truth data was observed for some pulse trains, however, it can be explained with the delay from first activation to the onset of the EMG signal. As a result, the time shift was corrected for the rate of agreement measurement.
+A time shift between the recovered times and the ground truth data was observed for some pulse trains, which can be explained with the delay from first activation to the onset of the EMG signal. As a result, the time shift was corrected for the rate of agreement measurement.
 
-A proof-of-concept implementation of GRU networks showed promising performance for predicting MU firing times from artifical EMG recordings. In future work, the algorithm has to be refined to be comparative to the gCKC algorithm.
+A proof-of-concept implementation of GRU networks showed promising performance for predicting MU firing times from artifical EMG recordings. 
+The GRU network predicted firing times also for MUs that were not detected by the gCKC algorithm, however the rate of agreement was low for these MUs.
+In future work, the GRU decomposition method has to be refined to be comparative to the gCKC algorithm.
+
+% Satz einfügen, dass die GRU networks immerhin in der Lage waren, mehr MUs als gCKC zu identifizieren, allerdings die firing times nicht sehr gut getroffen wurden.
 
 % new
 %End time: 39.9988, number of motor units: 20, number of fibers: 1369
@@ -1189,36 +1211,36 @@ The model formulated by Rosenfalck \cite{Rosenfalck1969} describes the action po
 %
 \begin{align*}
   G(z) = \begin{cases}
-    96\,z^3\,\exp(-z) - 9 & \text{for } z \geq 0\\[4mm]
-    -90  & \text{for } z < 0
+    96\,z^3\,\exp(-z) - 9 & \text{for } z \geq 0,\\[4mm]
+    -90  & \text{for } z < 0.
   \end{cases}  
 \end{align*}
 
 \begin{figure}
   \centering%
   \includegraphics[width=0.6\textwidth]{images/results/application/rosenfalck_function.pdf}%
-  \caption{Analytic model of an action potential shape by Rosenfalck.}%
+  \caption{Simulation of EMG signals on the upper arm; analytic model by Rosenfalck of an action potential shape on a 1D fiber.}%
   \label{fig:rosenfalck_function}%
 \end{figure}
-\Cref{fig:rosenfalck_function} shows the graph of the function. The resulting value of $G$ specifies the membrane voltage in millivolts. The coordinate $z=x+v\,t$ depends on the distance $x$ to the neuromuscular junction on the fiber, the conduction velocity $v$ and the time $t$ after the last stimulation. In our simulation, we use the proposed propagation velocity of \SI{4}{\meter\per\second}.
+\Cref{fig:rosenfalck_function} shows the graph of this function. The resulting value of $G$ specifies the membrane voltage in millivolts. The coordinate $z=x+v\,t$ depends on the distance $x$ to the neuromuscular junction on the fiber, the conduction velocity $v$ and the time $t$ after the last stimulation. In our simulation, we use the proposed propagation velocity of \SI{4}{\meter\per\second}.
 
-The advantage of using an analytic model is its fast calculation runtime compared with the numeric model. On the downside, such a model cannot accurately describe saturation effects in tetanic stimulations or the action potential shape changing properties of more advanced subcellular models.
+The advantage of using an analytic model is its fast calculation runtime compared with the numeric model. On the downside, such a model cannot accurately describe fatigue effects in tetanic stimulations or the action potential shape changing properties of more advanced subcellular models.
 
-One use case of the Rosenfalck model is to study the effect of muscle fiber arrangements in a muscle volume on the surface EMG signal. In this case, the exact time-varying shapes of the motor unit action potentials are less important than the location and orientation of the fibers.
-We provide an example in OpenDiHu, which uses the Rosenfalck model on multiple muscle fibers that are embedded in a 3D domain. As in the previous sections, the 3D bidomain model given by \cref{eq:bidomain1} is coupled to the fibers and used to simulate EMG recordings on the surface. 
+One use case of such an analytic model is to study the effect of muscle fiber arrangements in a muscle volume on the surface EMG signal. In this case, the exact, possibly time-varying shapes of the motor unit action potentials are less important than the location and orientation of the fibers.
+We provide an examplary scenario in OpenDiHu, which uses the Rosenfalck model on multiple 1D muscle fibers that are embedded in a 3D domain. As in the previous sections, the 3D bidomain model given by \cref{eq:bidomain1} is coupled to the fibers and used to simulate EMG recordings on the surface. 
 
 In addition to the simplified model of action potential propagation, we use a simplified description of the muscle geometry. \Cref{fig:custom_geometry} shows the artifical geometry, which is constructed by rotating a transformed sine curve around the $z$ axis. 
-The program embeds the fibers automatically inside the volume and orients them according to predefined spherical coordinates describing the orientation. These angles and the number and spacings between the fibers can be adjusted in the Python settings script of the simulation.
+Our program embeds the fibers automatically inside the volume and orients them according to specified spherical coordinates. The orientation angles, the number of fibers and the spacings between the fibers can be adjusted in the Python settings script of the simulation.
 
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/application/custom_geometry.png}%
-  \caption{Simulation of an artifical muscle geometry with a phenomenological model of action potential propagation. The upper image shows the muscle fiber, colored according to the transmembrane potential $V_m$. The lower images shows the extracellular potential $\phi_e$ on the surface.
+  \caption{Simulation of EMG signals on the upper arm; artifical muscle geometry with a phenomenological model of action potential propagation. The upper image shows the muscle fibers, colored according to the transmembrane potential $V_m$. The lower image shows the extracellular potential $\phi_e$ on the surface.
   This scenario can be computed very fast and can, e.g., be useful to investigate the effects of different fiber orientations.}%
   \label{fig:custom_geometry}%
 \end{figure}
 
-\Cref{fig:custom_geometry} shows the location of the fibers inside the artificial muscle belly and a simulation result of muscular activity  at $t=\SI{15}{\ms}$. The resulting EMG signal can be seen on the surface.
+\Cref{fig:custom_geometry} shows the location of the fibers inside the artificial muscle belly in the upper image and a simulation result of muscular activity  at $t=\SI{15}{\ms}$ in the lower image. The resulting EMG signal can be seen on the surface.
 This simulation scenario provides means to quickly study electrophysiology and generation of EMG for a generic muscle. Solving the model only consists of evaluations of the Rosenfalck function and repeated computation of the 3D model, but no further costly computations of numeric electrophysiology models. Moreover, no mesh file has to be generated and loaded, which simplifies the handling of the scenario.
 
 \begin{reproduce_no_break}
@@ -1232,5 +1254,8 @@ This simulation scenario provides means to quickly study electrophysiology and g
 
 \subsection{Conclusion}
 
-TODO
+In the present section, surface EMG signals were computed using the fiber based electrophysiology model. We showed, how the qualitative nature of the signals depends on the spatial distribution of the MUs and that the thickness of the body fat layer influences the smoothness of the recorded EMG signals. Furthermore, we investigated the effect of the mesh resolution and the number of fibers in the simulation. The results showed that only a high mesh resolution can resolve the small features in the EMG signal  on the skin surface, which result from fiber action potentials. The number of these features in the result increased with the mesh width and, thus, the two finest discretizations with \num{77e3} \num{274e3} fibers yielded the most accurate results. As a consequence, High Performance Computing simulations are required, if an accurate 2D surface EMG signal should be computed.
 
+Further studies with EMG decomposition algorithms showed another use case of our fiber based surface EMG simulations: They can be used as a validation tool for existing decomposition algorithms and they can serve as a data generator to develop novel, data based decomposition methods. The decomposition software DEMUSE was tested and we quantified the rate of agreement of its predictions with our simulation. Similarly, we evaluated a neural network based approach and compared its performance on the simulated data with the previous method.
+
+%TODO, Ich fände es hier ganz gut, wenn es noch eine kleine Summary von 6.4 gäbe, die wesentlichen Fragen beantwortet: Was kann de faser-basierte Simulation für Einsichten liefern? Lohnt sich die höhere Auflösung? Inwiefern war sie nützlich zur Validierung der Zerlegungsalgorithmen für EMG-Messungen?

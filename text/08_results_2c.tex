@@ -3,7 +3,7 @@
 %\iffalse
 % --------------
 %-----
-\section{Parallel Scaling of the EMG Model Using High Performance Computing}
+\section{Parallel Scaling of the EMG Model Using High Performance Computing}\label{sec:hpc_emg}
 % in opendihu 2021 paper
 
 After the parallel scaling of the multi-scale model has been investigated in moderately parallel scenarios with up to 27 processes in the previous sections, we now study the parallel scalability in High Performance Computing scenarios with larger degrees of parallelism.
@@ -127,9 +127,9 @@ Thus, it is important to properly handle MPI rank placement on compute clusters 
 % f===========
 
 
-\section{Performance Studies of the Solid Mechanics Solver}
+\section{Performance Studies of the Solid Mechanics Solver}\label{sec:performance_solid_mechanics}
 
-TODO read
+(BM TODO read)
 
 Next, we address the performance of the solid mechanics solver. 
 Its runtime in OpenDiHu is given by the call to the nonlinear solver of PETSc. PETSc, in turn, calls two functions in OpenDiHu, which evaluate the nonlinear function to be solved and the Jacobian of the nonlinear function for a given vector of unknowns.
@@ -265,16 +265,15 @@ In summary, the vectorized computation of jacobian matrices can reduce runtimes 
   The scripts to run the studies in this scenario and to create the plots of \cref{fig:numeric_analytic,fig:vectorized_jacobian} are available in the repository at \href{https://github.com/dihu-stuttgart/performance}{github.com/dihu-stuttgart/performance}
   in the directory \code{opendihu/22_solid_mechanics_vectorization}.
 \end{reproduce_no_break}
+% --------------------t
+%\fi
+% ======================
 
 % numeric investigations
-\section{Numerical Studies}
+\section{Numerical Studies}\label{sec:numerical_studies}
 
 Next, we perform numeric studies to evaluate mesh resolutions and linear solvers. 
-\Cref{sec:action_potential_velocity} addresses the mesh width of the 1D problem. Then, \cref{sec:multidomain_solvers} evaluates different numerical solver choices for the multidomain model.
-
-% ==============
-%\iffalse
-% --------------
+\Cref{sec:action_potential_velocity} addresses the mesh width of the 1D problem. \Cref{sec:multidomain_solvers} evaluates different numerical solver choices for the multidomain model.
 \subsection{Effect of the Mesh Width on the Action Potential Propagation Velocity}\label{sec:action_potential_velocity}
 
 The numeric parameters of a simulation scenario, such as mesh widths and timestep widths should be chosen such that the resulting numerical errors are balanced between all model components. In the simulation of activated muscle fibers, the propagation velocity of the action potentials is an important quantity, which also influences the macroscopic outcome of the EMG recordings. Thus, we investigate the effect of numerical parameters on the propagation velocity.
@@ -312,14 +311,22 @@ One issue with comparing propagation velocities on discretized meshes is that th
 As a result, we use a 1D mesh resolution of 100 elements per centimeter for all muscle fibers in all our simulations. For a biceps muscle of \SI{14.8}{\cm} length, this leads to muscle fiber discretizations with 1480 elements and 1481 nodes.
 
 %performance/opendihu/03_dx_dt_dependence
-\begin{figure}
-  \centering%
-  \includegraphics[width=0.8\textwidth]{images/results/studies/hh_cn_error_propagation_velocity_3d.pdf}%
-  \caption{Error of the action potential propagation velocity for varying mesh width and timestep width.}% 
-   \label{fig:hh_cn_error_propagation_velocity_3d}%
-\end{figure}
+%\begin{figure}
+%  \centering%
+%  \includegraphics[width=0.8\textwidth]{images/results/studies/hh_cn_error_propagation_velocity_3d.pdf}%
+%  \caption{Error of the action potential propagation velocity for varying mesh width and timestep width.}% 
+%   \label{fig:hh_cn_error_propagation_velocity_3d}%
+%\end{figure}
+%Remove \cref{fig:hh_cn_error_propagation_velocity_3d} as not so clear.
 
-Remove \cref{fig:hh_cn_error_propagation_velocity_3d} as not so clear.
+\begin{reproduce_no_break}
+  The scripts for this study are available in the repository at \href{https://github.com/dihu-stuttgart/performance}{github.com/dihu-stuttgart/} \href{https://github.com/dihu-stuttgart/performance}{performance} in the directory \code{opendihu/02_propagation_velocity}:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    ./run.sh
+    ./plot_propagation_velocity.py
+  \end{lstlisting}
+\end{reproduce_no_break}
+
 %-----
 \subsection{Linear Solvers for the Multidomain Problem}\label{sec:multidomain_solvers}
 
@@ -332,13 +339,12 @@ Remove \cref{fig:hh_cn_error_propagation_velocity_3d} as not so clear.
   \label{fig:multidomain_solver}%
 \end{figure}
 
-In the next study, we investigate the parallel weak scaling behavior for the multidomain model.
-Our goal is to evaluate different preconditioners for the linear solution of the system of equations and to select the fastest solver-preconditioner combination.
+In the next study, we investigate the parallel weak scaling behavior for the multidomain model. Moreover, we compare the total runtimes for different choices of the preconditioner that is used in the solution of the linear system of equations. Our goal is to select the fastest solver-preconditioner combination to speed up the computation of the multidomain model.
 
 We simulate the multidomain model with fat domain as given in \cref{sec:discretization_body_domain} and with a subcellular model of Shorten et al. \cite{Shorten2007}. 
 The model is discretized by a Strang operator splitting with Heun's method for the subcellular model and an implicit Euler scheme for the multidomain equations. The timestep widths of all schemes are $\dt_\text{0D}=\dt_\text{multidomain}=\dt_\text{splitting}=\SI{5e-4}{\milli\second}$ and an end time of \SI{1e-1}{\milli\second} is used, corresponding to 200 invocations of the linear solver.
 
-We partition the 3D domain of a 3D muscle mesh with \num{50024} nodes and a fat layer mesh with \num{37000} nodes to 24, 36, 48, 60 and 72 subdomains. In a weak scaling setup, we correspondingly simulate 4,6,8,10 and 12 MUs.
+We partition the 3D computational domain, consisting of the muscle mesh with \num{50024} nodes and the fat layer mesh with \num{37000} nodes, to 24, 36, 48, 60 and 72 subdomains. In a weak scaling setup, we correspondingly simulate 4,6,8,10 and 12 MUs.
 As the square-shaped system matrix contains one row of blocks for every MU plus one row of blocks for the fat mesh, the total number of rows scales nonlinearly with the number of MUs. In consequence, the system matrices in the five scenarios contain \num{279720}, \num{379768}, \num{479816}, \num{579864} and \num{679912} rows and columns. Thus, the problem size per process is only approximately constant in this weak scaling study.
 
 % n dofs
@@ -355,8 +361,8 @@ Different preconditioners are applied and the resulting number of GMRES iteratio
 
 For every preconditioner, the preconditioning is either performed using the non-symmetric system matrix (solid lines) or using a symmetric matrix that is obtained by taking all diagonal blocks of the system matrix (dashed lines), as described in \cref{sec:multidomain_diagonal_matrix}.
 
-The reference measurement is given by using the GMRES solver without any preconditioner, given by the blue lines.
-It can be seen in the upper plot of \cref{fig:multidomain_solver} that the maximum number of \num{1e4} iterations is reached. This means that specified tolerance of \num{1e-15} is not achieved in the given number of iterations. A preconditioner is, thus, required to obtain an accurate solution.
+The reference measurement is given by the GMRES solver without any preconditioner, visualized by the blue lines in both plots.
+The upper plot of \cref{fig:multidomain_solver} indicates the maximum number of \num{1e4} iterations for all measurements of the GMRES solver without preconditioner. This means that the specified tolerance of \num{1e-15} is not reached in the given number of iterations. Thus, a preconditioner is required to obtain an accurate solution.
 
 The first examined preconditioner is the block Jacobi scheme.
 A block Jacobi preconditioner divides the system matrix into blocks on the diagonal, yielding smaller problems that can each be solved individually.
@@ -369,13 +375,26 @@ For a model problem $A\,\bfx = \bfb$, where the system matrix $A=D+L+U$ is decom
 \end{align}
 Because of the structure of the block diagonal matrix $D$, the system is decoupled and every process can solve its own linear system of equations using the respective diagonal block as system matrix. If the symmetric option for the system matrix used in the preconditioner is chosen, the matrices $L$ and $U$ vanish and the solution of \cref{eq:jacobi_iteration} is trivial.
 
-Two versions of block Jacobi preconditioner provided by the PETSc library are evaluated.
-The first variant, shown by the orange lines in \cref{fig:multidomain_solver}, employs a GMRES solver to solve the resulting smaller linear systems of equations in \cref{eq:jacobi_iteration}.
-The second variant, shown by the green lines in \cref{fig:multidomain_solver}, uses a SOR (successive over relaxation) solver, i.e., a Gauss-Seidel scheme.
+Two versions of block Jacobi preconditioners provided by the PETSc library are evaluated.
+The first variant, shown by the orange lines in \cref{fig:multidomain_solver}, employs a GMRES solver for the resulting smaller linear systems of equations in \cref{eq:jacobi_iteration}.
+The second variant, shown by the green lines in \cref{fig:multidomain_solver}, uses a SOR (successive over-relaxation) solver, i.e., a Gauss-Seidel scheme.
 
-Another solver is ''Euclid`` \cite{euclid} from the HYPRE package, shown by the red lines in \cref{fig:multidomain_solver}. It is a parallel implementation of incomplete LU factorization using graph partitioning and a two-level ordering strategy.
+The upper plot in \cref{fig:multidomain_solver} shows that the number of GMRES solver iterations is reduced more for the GMRES solver than for the SOR solver, as the constant number of GMRES iterations in the preconditioner yields a better approximation to the solution than the same number of SOR iterations. The lower plot shows a smaller total runtime for the block Jacobi scheme with SOR solver than for the block Jacobi scheme with GMRES solver. This means that the lower runtime of the SOR solver in the preconditioner outweights the larger number of GMRES iterations in the solver, compared to the GMRES preconditioning scheme. For both preconditioners, the total runtime for the variant with the symmetric matrix is lower than for the variant with the full system matrix.
 
-Noch mehr die Löser beschreiben?
+Another solver is \emph{Euclid} \cite{euclid} from the HYPRE package, shown by the red lines in \cref{fig:multidomain_solver}. It is a parallel implementation of incomplete LU factorization using graph partitioning and a two-level ordering strategy.
+
+The plots in \cref{fig:multidomain_solver} show a low number of remaining GMRES iterations after the preconditioner has been applied, similar to the block Jacobi scheme with GMRES solver. However, the total runtime of Euclid is significantly lower than the runtime of the GMRES-block Jacobi scheme. If the symmetric system matrix is used for preconditioning, the total runtime is the lowest of all measured preconditioner combinations.
+
+Regarding the parallel weak scaling, the lower plot in \cref{fig:multidomain_solver} shows overall good scaling properties for all considered preconditioners. The runtimes slightly decrease from the first to the second data points, as the system matrix size per process also slightly decreases. Then, a trend of slightly increasing runtimes in the weak scaling setup can be seen, which indicates that the preconditioners and the GMRES solver perform slightly more computations and communications for larger problem sizes. The accuracy of the preconditioning step is not affected by the overall problem size, as can be seen by the constant numbers of GMRES iterations in the upper plot of \cref{fig:multidomain_solver}.
+
+As a result, we use the combination of Euclid preconditioner and GMRES solver in all solutions of the multidomain model in this work, because this is the fastest of the tested combinations. Apart from the three presented preconditioners, more available choices in the software packages PETSc and HYPRE were tested, but yielded worse performance. These include the \emph{Parallel Incomplete Factorization preconditioner} (PILUT) from the HYPRE package and the combinations of the block Jacobi scheme with an algebraic multigrid method or the Euclid preconditioner for the subproblem. Tests with the parallel algebraic multigrid method \emph{BoomerAMG} from the HYPRE package also showed promising results with even lower total runtimes than the Euclid preconditoner, but suffered occasional long runtimes and divergence in a non-deterministic fashion. However, the full set of possible parameters, such as different coarsening and interpolation options and settings for the smoother have not yet been evaluated and, after fine-tuning, corresponding performance improvements could be possible in future work.
+
+\begin{reproduce_no_break}
+  The script for this study is available in the repository at \href{https://github.com/dihu-stuttgart/performance}{github.com/dihu-stuttgart/} \href{https://github.com/dihu-stuttgart/performance}{performance} in the directory \code{opendihu/07_multidomain_solver}:
+  \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
+    ./run_mu.sh
+  \end{lstlisting}
+\end{reproduce_no_break}
 
 % scenarioName                                                                 nRanks                                                                                                              
 % gmres_bjacobi_dt0.0005_atol1e-15_rtol1e-15_theta1.0_symFalse_lumpFalse_10mus 60      [6, 1, 10]   4444.074833   4472.546500  13.081118   4458.698333     -28.471667    0.0    226.0  0.997 GB  60
@@ -419,35 +438,23 @@ Noch mehr die Löser beschreiben?
 %\iffalse
 % --------------
 %-----
-\section{Parallel in Time master thesis}
-maybe
+%\section{Parallel in Time master thesis}
+%maybe
 %-----
 %-----
-\section{Output file sizes}
-no
+%\section{Output file sizes}
+%no
 %-----
 %\section{Mesh convergence, stochastic with different MU assignments}
 %-----
-\section{dx-dt dependencies} 
-no
+%\section{dx-dt dependencies} 
+%no
 %-----
-\section{Load balancing bachelor thesis}
-no
+%\section{Load balancing bachelor thesis}
+%no
 %-----
-\section{Application of opendihu within the field of robotics} 
-no
-
-\chapter{Conclusion and Future Work}\label{sec:conclusion_and_future_work}
-% Röhrle2012: TA 12 elements, MU association
-% Heidlauf2013: 400 fibers, TA, OpenCMISS, mechanics
-
-\section{Future Work}\label{sec:future_work}
- 
-% more timestepping methods: CVODE (https://computing.llnl.gov/projects/sundials/cvode), imex
-% different parallelisation where not all ranks have to be involved (for multidomain) -> this feature already exists for the fibers with multipleInstances
-% more numeric tests on exp function? no
-% multidomain: compute 3D problem as 1D problem, or adaptive computation of the parts of the fr factors
-% multidomain: evaluate number of fibers and multidomain mesh width and number of MUs
+%\section{Application of opendihu within the field of robotics} 
+%no
 
 % ------------
 %\fi

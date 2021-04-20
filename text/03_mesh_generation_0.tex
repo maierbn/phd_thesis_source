@@ -729,17 +729,17 @@ with the vector $\bfu$ of nodal solution values, the vector $\bff$ of nodal Diri
 By solving \cref{eq:est_fe_system} for $\bfu$, we get the discretized harmonic map $u$.
 The Finite Element formulation and computation for $v$ is analogous and uses the same global stiffness matrices.
 
-\Cref{fig:harmonic_map_solution} visualizes the triangulation of $S_M$ and the solutions $u(\bfx)$ and $v(\bfx)$ for a circular parameter domain $\Omega_P$ and an exemplary muscle slice in the first two plots. The color range from bright yellow to dark violet corresponds to increasing values of $u$ and $v$. It can be seen that the $u$ values increase from left to right whereas the $v$ values increase from bottom to top, corresponding to the horizontal and vertical coordinate axes $y_1$ and $y_2$ of $\Omega_P$.
+\Cref{fig:harmonic_map_solution0} visualizes the triangulation of $S_M$ and the solutions $u(\bfx)$ and $v(\bfx)$ for a circular parameter domain $\Omega_P$ and an exemplary muscle slice in the first two plots. The color range from bright yellow to dark violet corresponds to increasing values of $u$ and $v$. It can be seen that the $u$ values increase from left to right whereas the $v$ values increase from bottom to top, corresponding to the horizontal and vertical coordinate axes $y_1$ and $y_2$ of $\Omega_P$.
 
 
-Applying the computed harmonic map $\bfy(\bfx)$ to the triangulation of the slices results in a triangulation of the parameter domain $\Omega_P$. This is shown in the third plot of \cref{fig:harmonic_map_solution} and in \cref{fig:serial_alg_3}.
+Applying the computed harmonic map $\bfy(\bfx)$ to the triangulation of the slices results in a triangulation of the parameter domain $\Omega_P$. This is shown in the third plot of \cref{fig:harmonic_map_solution0} and in \cref{fig:serial_alg_3}.
 In both figures, the triangulation of the slices was generated using the second triangulation method with the constrained Delaunay triangulation. On the right side of \cref{fig:serial_alg_3}, the image $\bfy(\bfx)$ under the harmonic map of the triangulation in the slices is shown on the unit circle parameter domain.
 
 \begin{figure}%
   \centering%
   \includegraphics[width=\textwidth]{images/fiber_creation/harmonic_map_9b.pdf}%
   \caption{Quality improvement of muscle slice meshes as a basis for 3D mesh generation: Initial triangulations and harmonic map for a slice $S_M$ of the biceps muscle. The first two plots show the solutions of $u$ and $v$ on the slice $S_M$. The third plot shows the image in $\Omega_P$ of the triangulation in $S_M$ under the harmonic map.}%
-  \label{fig:harmonic_map_solution}%
+  \label{fig:harmonic_map_solution0}%
 \end{figure}%
 
 \subsection{Construction of a Regular Grid in the Parameter Domain}

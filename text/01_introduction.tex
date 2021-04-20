@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Introduction}\label{chap:introduction}
 
 %\section{Motivation}
 
@@ -100,7 +100,7 @@ A suitable model usually needs to take into account the multi-scale nature of th
 Multi-scale multi-physics simulations with high resolutions involve high computational loads. The simulated processes on a molecular scale, e.g., in the sarcomere require small timestep widths in the range of microseconds. At the same time, macroscopic quantities such as EMG signals and muscle contraction should be computed, leading to desired overall simulation time spans in the range of seconds.
 Fine three-dimensional (3D) meshes are needed to achieve high spatial resolutions. To resolve individual muscle fibers, additional one-dimensional (1D) fiber meshes are considered.
 
-To account for fine resolutions and a high number of timesteps in an acceptable runtime, the potential of todays and tomorrows computer hardware has to be fully exploited. This requires task-level and instruction-level parallelism. For example, the latest processor of the Intel Core X series (the Intel${}^\text{®}$ Core™ i9-10980XE Extreme Edition Processor), which is listed at a customer price below \SI{1000}[\$]{} contains 18 hardware cores, allowing to run 16 tasks in parallel. It supports Intel${}^\text{®}$ AVX-512, a technology with which eight double precision floating point operations can be executed per instruction. 
+To account for fine resolutions and a high number of timesteps in an acceptable runtime, the potential of todays and tomorrows computer hardware has to be fully exploited. This requires task-level and instruction-level parallelism. For example, the latest processor of the Intel Core X series (the Intel Core i9-10980XE Extreme Edition Processor), which is listed at a customer price below \SI{1000}[\$]{} contains 18 hardware cores, allowing to run 16 tasks in parallel. It supports Intel AVX-512, a technology with which eight double precision floating point operations can be executed per instruction. 
 In a higher price segment it is, e.g., possible to combine two AMD EPYC 7742 server processors into a shared memory compute node with \num{128} cores. Distributed memory clusters allow the combination of almost any number of compute nodes to achieve higher total core counts. The supercomputer Hawk at the High Performance Computing Center Stuttgart combines \num{5632} of the mentioned AMD nodes into an overall cluster of \num{720896} cores.
 
 Thus, a requirement to the simulation software is to be able to run on distributed memory computer systems. This requires efficient data management and a domain decomposition approach where the computational domain is partitioned into one subdomain for each process.
@@ -279,10 +279,23 @@ Some notes for future work can be found in \cref{sec:future_work}
 
 % explain "we"
 The presented findings and conclusions were partly shaped by discussions with various researchers with expertise from different disciplines. Yet, this doctoral thesis lists essentially own contributions, marks collaborative work in the text and indicates others' work by citations.
-Using the pronoun "we``, the author refers to the group of originator, potentially the supervisors and certainly the interested reader.
+Using the pronoun \say{we}, the author refers to the group of originator, potentially the supervisors and certainly the interested reader.
 
 % overview of remainder
-This work is structured as follows. TODO
+The remainder of this work contains the following chapters:
+\Cref{chap:comparative_study} compares two model approaches to simulate upper arm movement. \Cref{sec:generation_of_meshes_for_multiscale} develops algorithms to generate the meshes that are required in the solution of the multi-scale model. \Cref{sec:muscle_fibers_and_motor_units} addresses the assignment of motor units to muscle fibers. \Cref{chap:models_and_discretization} describes all used model equations and their discretization. \Cref{chap:usage} introduces the software OpenDiHu and describes its usage. \Cref{sec:implementation} gives details on the implementation of OpenDiHu. \Cref{sec:results} presents and discusses numerical results. \Cref{sec:performance_analysis} studies the computational performance of the solvers. \Cref{sec:conclusion_and_future_work} concludes the work and gives an outlook to future work.
+
+%\cref{chap:introduction} % #1 introduction
+%\cref{chap:comparative_study} % #2 comparative study
+%\cref{sec:generation_of_meshes_for_multiscale} % #3 generation of  meshes
+%\cref{sec:muscle_fibers_and_motor_units} % #4 motor units
+%\cref{chap:models_and_discretization} % #5 motor units
+%\cref{chap:usage} % #6 usage
+%\cref{sec:implementation}  % #7 implementation
+%\Cref{sec:results} % #8 numerical results and discussion
+%\cref{sec:performance_analysis}  % #9 performance analysis
+%\cref{sec:conclusion_and_future_work} % #10 conclusion
+
 % ---- end ----
 
 
