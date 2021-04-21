@@ -10,7 +10,7 @@
 In this chapter, we measure the performance of all implemented solvers and evaluate the different actions that were carried out to improve their runtimes and memory characteristics.
 We consider the performance of instruction-level parallelism, evaluate parallelization strategies for shared and distributed memory parallelism, offloading to a GPU, and hybrid CPU-GPU  approaches. We measure weak and strong parallel scaling from using small distributed-memory systems up to the large supercomputers Hazel Hen and Hawk at the High Performance Computing Center Stuttgart. Furthermore, we consider the numerical scaling behavior of several solvers.
 
-\Cref{sec:performance_opencmiss_iron} presents numerical studies and improvements in the baseline software OpenCMISS. The numeric properties found in this section are later also used in simulations with OpenDiHu. \Cref{sec:performance_studies_of_the_e} evaluates the runtime performance and various optimization options for the electrophysiology solver in OpenDiHu. The best found optimizations are then compared to the OpenCMISS baseline solver in \cref{sec:parallel_strong_scaling_opencmiss}.
+\Cref{sec:performance_opencmiss_iron} presents numerical studies and improvements in the baseline software OpenCMISS. The numerical properties found in this section are later also used in simulations with OpenDiHu. \Cref{sec:performance_studies_of_the_e} evaluates the runtime performance and various optimization options for the electrophysiology solver in OpenDiHu. The best found optimizations are then compared to the OpenCMISS baseline solver in \cref{sec:parallel_strong_scaling_opencmiss}.
 \Cref{sec:performance_gpu} addresses the computation on the GPU and compares the performance with the CPU computations.
 \Cref{sec:hpc_emg} conducts parallel weak scaling studies on supercomputers.
 \Cref{sec:performance_solid_mechanics} evaluates options and corresponding speedups in the solver of the mechanics model.
@@ -21,40 +21,40 @@ We consider the performance of instruction-level parallelism, evaluate paralleli
 %In this section, we study the performance of the software by evaluating runtimes and parallel scalability for different solvers.
 We begin with performance studies on OpenCMISS Iron as the baseline solver, which also implements parts of the multi-scale model considered in this work. The work of \cite{Heidlauf2013} describes the implementation of the fiber based electrophysiology model coupled to a quasi-static hyperelastic material model with OpenCMISS. The implementation is parallelized for a hardcoded number of four processes and serves as the baseline code for the following studies.
 
-We improved the performance of this solver for the multi-scale model by two actions: First, we evaluated and optimized the employed numeric schemes. Second, we implemented parallel partitioning for an arbitrary number of processes and evaluated different parallelization strategies.
-These changes were directly implemented in the OpenCMISS code. The improvements were also presented in a publication \cite{Bradley:2018:EDB}. In the following sections, \cref{sec:opencmiss_numeric_improvements,sec:opencmiss_parallel_partitioning}, we describe the numeric improvements and the parallel partitioning strategies. In \cref{sec:opencmiss_memory}, we discuss the parallel weak scaling and memory consumption properties.
+We improved the performance of this solver for the multi-scale model by two actions: First, we evaluated and optimized the employed numerical schemes. Second, we implemented parallel partitioning for an arbitrary number of processes and evaluated different parallelization strategies.
+These changes were directly implemented in the OpenCMISS code. The improvements were also presented in a publication \cite{Bradley:2018:EDB}. In the following sections, \cref{sec:opencmiss_numeric_improvements,sec:opencmiss_parallel_partitioning}, we describe the numerical improvements and the parallel partitioning strategies. In \cref{sec:opencmiss_memory}, we discuss parallel weak scaling and memory consumption properties.
 
-\subsection{Numeric Improvements}\label{sec:opencmiss_numeric_improvements}
+\subsection{Numerical Improvements}\label{sec:opencmiss_numeric_improvements}
 
-The first numeric improvement is to replace the GMRES solver, which is used to solve the 1D electric conduction problem on the muscle fibers
+The first numerical improvement is to replace the GMRES solver, which is used to solve the 1D electric conduction problem on the muscle fibers,
 by a faster direct solver. 
 
-As noted in \cref{sec:improved_parallel_solver_for_fiber_based}, the 1D electric conduction problem of the monodomain equation yields a tridiagonal system that can be solved with linear time complexity. The baseline solver code employs the restarted GMRES solver of PETSc, which is the default linear system solver in OpenCMISS Iron, as it is a robust choice for abitrary system matrices. 
+As observed in \cref{sec:improved_parallel_solver_for_fiber_based}, the 1D electric conduction problem of the monodomain equation yields a tridiagonal system that can be solved with linear time complexity. The baseline solver code employs the restarted GMRES solver of PETSc, which is the default linear system solver in OpenCMISS Iron, as it is a robust choice for abitrary system matrices. 
 However, more efficient solvers for symmetric positive definite systems exist such as the conjugate gradient solver. 
-Furthermore, the MUMPS package \cite{mumps2001}, which can be interfaced in PETSc provides a parallel implementation of a direct, multi-frontal linear solver, which is able to exploit banded structures of the system matrix.
+Furthermore, the MUMPS package \cite{mumps2001}, which can be interfaced in PETSc, provides a parallel implementation of a direct, multi-frontal linear solver, which is able to exploit the banded structure of the system matrix.
 
 We study the runtime of these three solvers for different problem sizes of the 1D problem. The monodomain equation is solved on a single muscle fiber and the number of 1D elements is varied from 15 to 2807. The used timestep widths are $\dt_\text{0D}=\SI{1e-4}{\ms}$ and $\dt_\text{1D}=\SI{5e-3}{\ms}$. The end time of the simulation is $\SI{3}{\ms}$, yielding a total of 600 calls to the linear solver in the simulated time. The study is executed on an Intel Xeon E7540 processor with 24 cores, clock frequency of \SI{1064}{\mega\hertz} and \SI{506}{\gibi\byte} RAM.
 
-\Cref{fig:opencmiss_linear_solvers} shows the runtimes of the GMRES, conjugate gradient and direct solvers for this problem in a double-logarithmic plot.
-It can be seen, that, for coarse discretizations with a low number of 1D elements per fiber, the GMRES and conjugate gradient solvers are faster than the direct solver. For finer discretizations, the conjugate gradient solver and the direct solver outperform the GMRES solver. For fibers with more than approximately 500 elements, the direct solver has the lowest runtime. Moreover, the direct solver exhibits an almost linear runtime complexity in terms of the problem size. This indicates that the solver is able to exploit the tridiagonal structure of the system matrix.
+\Cref{fig:opencmiss_linear_solvers} shows the runtimes of GMRES, the conjugate gradient solver and the direct solver for this problem in a double-logarithmic plot.
+It can be seen, that, for coarse discretizations with a low number of 1D elements per fiber, GMRES and the conjugate gradient solver are faster than the direct solver. For finer discretizations, the conjugate gradient solver and the direct solver outperform the GMRES solver. For fibers with more than approximately 500 elements, the direct solver has the lowest runtime. Moreover, the direct solver exhibits an almost linear runtime complexity in terms of the problem size. This indicates that the solver is able to exploit the tridiagonal structure of the system matrix.
 
 % linear solvers plot
 \begin{figure}
   \centering%
   \includegraphics[width=0.9\textwidth]{images/results/studies/opencmiss_linear_solvers.pdf}%
-  \caption{Numeric improvements in OpenCMISS: Runtime evaluation of different linear system solvers for a single muscle fiber with varying spatial resolution.}%
+  \caption{Numerical improvements in OpenCMISS: Runtime evaluation of different linear system solvers for a single muscle fiber with varying spatial resolution.}%
   \label{fig:opencmiss_linear_solvers}%
 \end{figure}%
 
-The second numeric improvement is the exchange of first-order accurate timestepping schemes by second-order schemes. For this exchange, we implemented the Strang operator splitting scheme and use it with the existing Crank-Nicolson implementation in OpenCMISS Iron and the Heun method, which was  implemented by Aaron Krämer.
+The second numerical improvement is the exchange of first-order accurate timestepping schemes by second-order schemes. For this exchange, we implemented the Strang operator splitting scheme and use it with the existing Crank-Nicolson implementation in OpenCMISS Iron and a new implementation of the Heun method by Aaron Krämer.
 
 Numerical studies by Aaron Krämer presented in \cite{Bradley:2018:EDB} show that the relation $K=\dt_\text{1D}/\dt_\text{0D}$ between the timestep width $\dt_\text{1D}$ of the 1D electric conduction problem and the timestep width $\dt_\text{0D}$ of the 0D subcellular model has to be set to $K=2$ and $K=5$ for the Godunov and Strang splitting schemes, respectively, such that the errors of the 0D and 1D subproblems are balanced. To achieve a total error for the membrane potential $V_m$ of approximately \num{8e-2}, we can increase the required splitting timestep width $\dt_\text{splitting}$ from $\SI{5e-4}{\ms}$ for the Godunov splitting to $\SI{4e-3}{\ms}$ for the Strang splitting scheme. This results in a runtime speedup  of approximately 7.5.
 
-To evaluate the total speedup of the described numeric improvements, we compare the runtimes without and with the improvements for a complete simulation of the fiber based electrophysiology model coupled with the elasticity model. A cuboid 3D domain is discretized by $2\times 2\times 2=8$ finite elements for the elasticity model and embeds $6\times 6=36$ 1D fiber meshes. The number of 1D elements per fiber is varied between 576 and \num{239400} to study the scaling behavior of the solvers related to the problem size. The problem is solved in serial to avoid runtime effects introduced by the parallelization.
+To evaluate the total speedup of the described numerical improvements, we compare the runtimes without and with the improvements for a complete simulation of the fiber based electrophysiology model coupled with the elasticity model. A cuboid 3D domain is discretized by $2\times 2\times 2=8$ finite elements for the elasticity model and we embed $6\times 6=36$ 1D fiber meshes. The number of 1D elements per fiber is varied between 576 and \num{239400} to study the scaling behavior of the solvers related to the problem size. The problem is solved in serial to avoid runtime effects introduced by the parallelization.
 
-The baseline implementation uses the Godunov splitting with forward and implicit Euler schemes for the 0D subcellular model and the electric conduction model, respectively. The linear system in the 1D problem is solved by a GMRES solver with relative residuum tolerance of \num{1e-5} and restart after 30 iterations. Timestep widths of $\dt_\text{0D}=\SI{1e-4}{\ms}$ and $\dt_\text{splitting}=\dt_\text{1D}=\SI{5e-4}{\ms}$ are used. The improved scheme uses the Strang operator splitting with Heun and Crank-Nicolson schemes and timestep widths of $\dt_\text{0D}=\SI{2e-3}{\ms}$ and $\dt_\text{splitting}=\dt_\text{1D} = \SI{4e-3}{\ms}$. The direct solver is used for the linear system in the 1D problem.
-The solver for the 3D elasticity problem is the same for both implementations. A Newton scheme with residual tolerance of \num{1e-8} is used
- and coupled to the 0D and 1D solvers with a coupling timestep width of $\dt_\text{3D}=\SI{1}{\ms}$.
+The baseline implementation uses the Godunov splitting with forward and backward Euler schemes for the 0D subcellular model and the electric conduction model, respectively. The linear system in the 1D problem is solved by a GMRES solver with relative residuum tolerance of \num{1e-5} and restart after 30 iterations. Timestep widths of $\dt_\text{0D}=\SI{1e-4}{\ms}$ and $\dt_\text{splitting}=\dt_\text{1D}=\SI{5e-4}{\ms}$ are used. The improved scheme uses the Strang operator splitting with Heun and Crank-Nicolson schemes and timestep widths of $\dt_\text{0D}=\SI{2e-3}{\ms}$ and $\dt_\text{splitting}=\dt_\text{1D} = \SI{4e-3}{\ms}$. The direct solver is used for the linear system in the 1D problem.
+The solver for the 3D elasticity problem is the same for both implementations: A Newton scheme with residual tolerance of \num{1e-8} is used
+ and coupled to the 0D and the 1D solver with a coupling timestep width of $\dt_\text{3D}=\SI{1}{\ms}$.
 
 The present study and the studies in the next section are executed on the supercomputer \emph{Hazel Hen} at the High Performance Computing Center Stuttgart. This Cray XC40 system contains compute nodes with two Intel Haswell E5-2680v3 processors with a base frequency of \SI{2.5}{\giga\hertz}, 12 cores per CPU, 24 cores per compute node and \SI{128}{\giga\byte} RAM per node.
 
@@ -62,7 +62,7 @@ The present study and the studies in the next section are executed on the superc
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/opencmiss_cuboid_serial_scaling_comparison_aggressive.pdf}%
-  \caption{Numeric improvements in OpenCMISS: Study to evaluate the speedup of the improved implementation of the fiber-based electrophysiology and mechanics model in OpenCMISS.}%
+  \caption{Numerical improvements in OpenCMISS: Study to evaluate the speedup of the improved implementation of the fiber based electrophysiology and mechanics model in OpenCMISS.}%
   \label{fig:opencmiss_improvements}%
 \end{figure}%
 % 576.0, 792.0, 1224.0, 1872.0, 2736.0, 4176.0, 6192.0, 9360.0, 14040.0, 21024.0, 31536.0, 47304.0, 70920.0, 106416.0, 159624.0, 239400.0
@@ -73,9 +73,9 @@ The total runtime of the simulation is given by the black lines in the upper plo
 
 The runtimes for almost all problem parts increase linearly for increasing mesh resolution of the 1D fibers. Only the runtime of the 3D problem stays constant, as the 3D mesh is unchanged for the different runs.
 
-Significant runtime improvements of the new implementation compared to the baseline implementation can be seen in the lower plot of   \cref{fig:opencmiss_improvements} for the 0D solver and the 1D solver. The speedups for the 0D solver is constant at approximately 2.5. The speedup resulting from the improved linear system solver in the 1D problem is approximately 6.1 for coarse meshes and increases to 14.7 for the finest mesh. This increase for high mesh resolutions results from the higher runtime of the GMRES solver for large problem sizes in the baseline implementation. The overall speedup is similar to the speedup of the 0D problem, as the 0D solver exhibits the dominant runtime contribution to the overall computation.
+Significant runtime improvements of the new implementation compared to the baseline implementation can be seen in the lower plot of   \cref{fig:opencmiss_improvements} for the 0D solver and the 1D solver. The speedup for the 0D solver is constant at approximately 2.5. The speedup resulting from the improved linear system solver in the 1D problem is approximately 6.1 for coarse meshes and increases to 14.7 for the finest mesh. This increase for high mesh resolutions results from the higher runtime of the GMRES solver for large problem sizes in the baseline implementation. The overall speedup is similar to the speedup of the 0D problem, as the 0D solver exhibits the dominant runtime contribution to the overall computation.
 
-This study shows how numeric investigations can help to reduce the total runtime, in this case by a factor of 2.5. Moreover, the solver of the 0D model has the most potential for improvements that further speed up the computation times.
+This study shows how numerical investigations can help to reduce the total runtime, in this case by a factor of 2.5. Moreover, the solver of the 0D model has the highest potential for improvements that further speed up the computation.
 
 \subsection{Parallel Partitioning Strategies}\label{sec:opencmiss_parallel_partitioning}
 
@@ -100,20 +100,20 @@ Like in OpenDiHu, the 3D mesh can be partitioned to an arbitrary number of $n_x 
     \caption{\say{Cube-like} domain decomposition.}%
     \label{fig:opencmiss_ddcube}%
   \end{subfigure}   
-  \caption{Different parallelization strategies that are implemented in the OpenCMISS model. This figure shows two approaches how the domain can be partitioned to 16 subdomains.}%
+  \caption{Fiber-based electrophysiology and mechanics model in OpenCMISS: Different partitioning strategies for parallelization that have been implemented in OpenCMISS. This figure shows two approaches to partition the domain into 16 subdomains.}%
   \label{fig:opencmiss_dd_annotated}%
 \end{figure}%
 
-\Cref{fig:opencmiss_dd_annotated} shows two exemplary partitionings. If the domain is only partitioned in $x$ and $y$ directions, the individual fibers are not split into multiple subdomains. As a result, we get \say{pillar} subdomains as shown in \cref{fig:opencmiss_ddpillar}. An alternative approach is to subdivide the domain in all three coordinate directions such that the subdomains are approximately cube shaped, as shown in \cref{fig:opencmiss_ddcube}.
+\Cref{fig:opencmiss_dd_annotated} shows two exemplary partitioning approaches. If the domain is only partitioned in $x$ and $y$ direction, the individual fibers are not split into multiple subdomains. As a result, we get \say{pillar} subdomains as shown in \cref{fig:opencmiss_ddpillar}. An alternative approach is to subdivide the domain in all three coordinate directions, such that the subdomains are approximately cuboid, as shown in \cref{fig:opencmiss_ddcube}.
 
 OpenCMISS Iron already provides the functionality to create parallel partitioned, unstructured meshes. However, every mesh has to be partitioned into non-empty subdomains for all processes. Thus, it is not possible to use individual meshes for the 1D fibers.
-In the baseline implementation of the model by \cite{Heidlauf2013}, all 1D fiber meshes are instead realized as a single mesh, whose node positions are set according to the positions of the individual fibers. This facilitates the implementation of the 0D subcellular model solvers and 1D model solvers, as the implementation has to deal with only a single mesh. 
+In the baseline implementation of the model by \cite{Heidlauf2013}, all 1D fiber meshes are however realized as a single mesh, whose node positions are set according to the positions of the individual fibers. This facilitates the implementation of the 0D subcellular model solvers and 1D model solvers, as the implementation has to deal with only a single mesh. 
 
-To allow for an arbitrary partitioning as in \cref{fig:opencmiss_dd_annotated}, we assigned the 1D elements of the single fiber mesh to the same processes as the subdomains of the 3D mesh. Furthermore, we reimplemented the data mapping between the 1D mesh and the 3D mesh, which was hardcoded for four processes.
+To allow for an arbitrary partitioning as in \cref{fig:opencmiss_dd_annotated}, we assigned the 1D elements of the single fiber mesh to the same processes as the corresponding subdomains of the 3D mesh. Furthermore, we reimplemented the data mapping between the 1D mesh and the 3D mesh, which was hardcoded for four processes.
 
 In the following, we investigate the effect of different partitioning strategies on the overall runtime of the solver. The idea is that, for pillar-like partitionings as in \cref{fig:opencmiss_ddpillar}, the 1D problems could potentially be solved faster, as the fibers, which are aligned in $z$-direction, are not subdivided to multiple processes. On the other hand, the partitioning to cubes in \cref{fig:opencmiss_ddcube} requires less communication in the solution of the 3D problem as the cubes minimize the surface of each subdomain and, in consequence, the amount of data to be exchanged. We evaluate how these effects influence the runtimes for the pillar-like partitioning, the cube partitioning and all other possible partitionings specified by numbers of subdomains $n_x \times n_y \times n_z$.
 
-Our test case uses a 3D mesh with $12 \times 12 \times 144$ elements. To reduce the runtime contribution of the 0D/1D electrophysiology problem and the memory consumption of the solver, only two 1D elements per 3D element are included. The numeric parameters are the same as for the improved scenario presented in \cref{fig:opencmiss_improvements}. The simulations are executed on 12 compute nodes of the supercomputer Hazel Hen with 12 processes per node.
+Our test case uses a 3D mesh with $12 \times 12 \times 144$ elements. To reduce the runtime contribution of the 0D/1D electrophysiology problem and the memory consumption of the solver, only two 1D elements per 3D element are included. The numerical parameters are the same as for the improved scenario presented in \cref{fig:opencmiss_improvements}. The simulations are executed on 12 compute nodes of the supercomputer Hazel Hen with 12 processes per node.
 
 We partition the 3D domain to 144 processes using different combinations of $n_x,n_y$ and $n_z$ such that $n_x\,n_y\,n_z=144$. 
 For every partitioning, we compute the average surface area of the boundary of every subdomain. 
@@ -124,49 +124,49 @@ The pillar-like partitioning uses $12 \times 12 \times 1$ subdomains and exhibit
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/opencmiss_partition_shape.png}%
-  \caption{Runtime of the solvers for different partition shapes, from cube partitions on the left to pillar partitions on the right.\protect\footnotemark}%
+  \caption{Fiber-based electrophysiology and mechanics model in OpenCMISS: Runtime of the solvers for different partition shapes, from cube partitions on the left to pillar partitions on the right.\protect\footnotemark}%
   \label{fig:opencmiss_partition_shape}%
 \end{figure}%
 \footnotetext{This figure and the following figures have also been published in \cite{Bradley:2018:EDB} under a creative commons license.}
 
 The plot shows that the runtime of the 3D solver increases approximately linearly with the amount of communication, which is expected.
-The partitioning with the largest average surface area has a runtime that is approximately four times as large as the runtime for the smallest surface area.
+The partitioning with the largest average surface area has a runtime that is approximately four times larger than the runtime for the smallest surface area.
 
-Moreover, the plot shows that the partitioning scheme has no significant influence on the runtime of the 1D solver. The reason is that the implementation does not fully reflect the decoupled nature of the individual problems of the fibers. As noted before, one big linear system has to be solved that contains the degrees of freedom of all fibers. The degrees of freedom are ordered by PETSc such that the nodes within every subdomain are consecutive. If a subdomain contains (parts of) multiple fibers, their degrees of freedom are not necessarily consecutive in the solution vector and communication is required.
+Moreover, the plot shows that the partitioning scheme has no significant influence on the runtime of the 1D solver. The reason is that the implementation does not fully reflect the decoupled nature of the individual problems of the fibers. As noted before, one big linear system has to be solved that contains the degrees of freedom of all fibers. The degrees of freedom are ordered by PETSc, such that the nodes within every subdomain are consecutive. If a subdomain contains (parts of) multiple fibers, the degrees of freedom of a single fiber are not necessarily consecutive in the solution vector and communication is required in the linear solver.
 
 \subsection{Weak Scaling Study and Memory Consumption}\label{sec:opencmiss_memory}
 
-Next, we evaluate the parallel weak scaling properties of the overall solver. We increase the number of elements in the 3D mesh from 1232 to 8640 and the total number of 1D elements in all fibers from \num{14784} to \num{103680}. Correspondingly, the number of processes increases from 24 to 192, such that the amount of work per process stays approximately constant. Each scenario is computed with two different partitioning schemes, once with pillar-like partitioning and once with cubes partitioning. For the exact problem sizes, numbers of cores and numbers of elements in the partitions, we refer to the paper \cite{Bradley:2018:EDB}. 
+Next, we evaluate the parallel weak scaling properties of the overall solver. We increase the number of elements in the 3D mesh from 1232 to 8640 and the total number of 1D elements in all fibers from \num{14784} to \num{103680}. Correspondingly, the number of processes increases from 24 to 192, such that the amount of work per process stays approximately constant. Each scenario is computed with two different partitioning schemes, once with pillar-like partitioning and once with cuboid partitioning. For the exact problem sizes, numbers of cores and numbers of elements in the partitions, we refer to the paper \cite{Bradley:2018:EDB}. 
 
 % weak scaling runtime
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/opencmiss_weak_scaling.png}%
-  \caption{Parallel weak scaling study of a scenario with the pillars and cubes partitionings.}%
+  \caption{Fiber-based electrophysiology and mechanics model in OpenCMISS: Parallel weak scaling study of a scenario with the pillar and cube partitionings.}%
   \label{fig:opencmiss_weak_scaling}%
 \end{figure}
 
-\Cref{fig:opencmiss_weak_scaling} shows the resulting runtimes of the different components of the simulation. It can be seen that the runtime stays approximately the same for all problem sizes. The observable differences in runtime within the same solver, especially for the last two data points, can be explained by slightly different ratios of element counts to process counts, which result from the goal to use the pillars and cubes partitioning schemes while not exceeding the available main memory.
+\Cref{fig:opencmiss_weak_scaling} shows the resulting runtimes of the different components of the simulation. It can be seen that the runtime stays approximately the same for all problem sizes. The observable differences in runtime within the same solver, especially for the last two data points, can be explained by slightly different ratios of element counts to process counts, which result from the goal to use the pillars and cube partitioning schemes while not exceeding the available main memory.
 
-The runtimes of the pillars and cubes partitioning schemes are depicted by dashed and solid lines, respectively. The pillars partitioning exhibits shorter runtimes for the 1D solver and longer runtimes for the 3D solver compared to the cubes partitioning. In total, the runtime is not significantly different for the different partitioning strategies.
+The runtimes of the pillar and cube partitioning schemes are depicted by dashed and solid lines, respectively. The pillar partitioning exhibits shorter runtimes for the 1D solver and longer runtimes for the 3D solver compared to the cube partitioning. In total, the runtime is not significantly different for the different partitioning strategies.
 
 % memory consumption
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/opencmiss_memory.png}%
-  \caption{Memory consumption per process at the end of the simulation corresponding to the weak scaling study of \cref{fig:opencmiss_weak_scaling}}. %% previously published in paper
+  \caption{Fiber-based electrophysiology and mechanics model in OpenCMISS: Memory consumption per process at the end of the simulation corresponding to the weak scaling study of \cref{fig:opencmiss_weak_scaling}} %% previously published in paper
   \label{fig:opencmiss_memory}%
 \end{figure}%
 
-A limiting factor for the construction of weak scaling studies with this implementation is the high memory consumption. \Cref{fig:opencmiss_memory} shows the total memory consumption per process at the end of the runtime of the simulations in \cref{fig:opencmiss_weak_scaling}. The used memory is visualized by purple lines. The dashed line again corresponds to the pillars partitioning and the solid line corresponds to the cubes partitioning. 
-
-As can be seen, the memory consumption per process monotonically increases with the total number of 1D elements. 
-At the same time, however, the number of elements per process stays approximately constant in this weak scaling setting. The last data point is close to the memory limit of $\SI{128}{\giga\byte} / 24 \approx \SI{4.967}{\gibi\byte}$, which is reached when 24 processes are executed on a compute node of the supercomputer Hazel Hen.
+A limiting factor for the construction of weak scaling studies with this implementation is the high memory consumption. \Cref{fig:opencmiss_memory} shows the total memory consumption per process at the end of the runtime of the simulations in \cref{fig:opencmiss_weak_scaling}. The used memory is visualized by purple lines. The dashed line again corresponds to the pillar partitioning and the solid line corresponds to the cube partitioning. 
 
 A difference between the pillar partitions and the cube partitions is the size of the subdomain surfaces and the corresponding size of the ghost layer. \cref{fig:opencmiss_memory} shows the number of 3D ghost elements for the scenarios with cubes and pillars by the black lines. In OpenCMISS, a ghost element on a process is an element that contains ghost nodes, which are owned by a different process. The ghost elements serve as data buffers for communication during the assembly of the finite element matrices, similar to OpenDiHu.
 
-The plot in \cref{fig:opencmiss_memory} shows that the number of ghost elements is higher for the pillar partitioning scheme than for the cubes scheme, as expected. In consequence, the memory consumption per process is also slightly higher for the pillar partitioning.
+The plot in \cref{fig:opencmiss_memory} shows that the number of ghost elements is higher for the pillar partitioning scheme than for the cubes scheme, as expected. As a consequence, the memory consumption per process is also slightly higher for the pillar partitioning.
 However, this effect is negligible compared to the high absolute value of the required memory and does not explain this effect.
+
+As can be seen, the memory consumption per process monotonically increases with the total number of 1D elements. 
+At the same time, however, the number of elements per process stays approximately constant in this weak scaling setting. The last data point is close to the memory limit of $\SI{128}{\giga\byte} / 24 \approx \SI{4.967}{\gibi\byte}$, which is reached when 24 processes are executed on a compute node of the supercomputer Hazel Hen.
 
 The observed large increase in memory consumption results from the organization of parallel partitioned data in OpenCMISS Iron. On every process, global mesh topology information such as mappings between global indexing and local indexing is stored for the element numbers, node numbers and degree of freedom numbers. While this overhead in storage is negligible for moderately parallel scenarios, it counteracts the domain decomposition approach for higher degrees of parallelism. 
 
@@ -200,9 +200,9 @@ In the following sections, we investigate the runtime performance of the solvers
 
 \subsection{Evaluation of Compiler Optimizations}
 
-One difference in the data organization in OpenDiHu compared to OpenCMISS Iron lies in the transposed memory layout for the storage of multiple instances of the 0D subcellular model. If the \code{simd} optimization type in the \code{CellmlAdapter} class is used, the components of the state vector $\bfy$ of all 0D model instances are consecutively stored. This storage order is the SoA memory layout, which was described in \cref{sec:optimizations_in_the_generated}. It enables the compiler to automatically employ SIMD instructions and, thus, exploit instruction-level parallelism.
+One difference in the data organization in OpenDiHu compared to OpenCMISS Iron lies in the transposed memory layout for the storage of multiple instances of the 0D subcellular model. If the \code{simd} optimization type in the \code{CellmlAdapter} class is used, the components of the state vector $\bfy$ of all 0D model instances are stored consecutively. This storage order is the SoA memory layout, which was described in \cref{sec:optimizations_in_the_generated}. It enables the compiler to automatically employ SIMD instructions and, thus, exploit instruction-level parallelism.
 
-We study the auto-vectorization performance of the GNU, Intel and Cray compilers to determine the effect of these SIMD instructions on the total runtimes of the solver. The simulated scenario consists of one muscle fiber mesh with 2400 nodes, on which the monodomain equation \cref{eq:monodomain} is solved. The subcellular model of Shorten et al. \cite{Shorten2007} is used. The used time step widths are $\dt_\text{0D} = \SI{1e-3}{\ms}, \dt_\text{1D} = \dt_\text{splitting} = \SI{3e-3}{\ms}$ and the model is computed up to a simulation end time of $t_\text{end} = \SI{20}{\ms}$.
+We study the auto-vectorization performance of the GNU, Intel and Cray compilers to determine the effect of these SIMD instructions on the total runtimes of the solver. The simulated scenario consists of one muscle fiber mesh with 2400 nodes, on which the monodomain equation \cref{eq:monodomain} is solved. The subcellular model of Shorten et al. \cite{Shorten2007} is used. The used timestep widths are $\dt_\text{0D} = \SI{1e-3}{\ms}, \dt_\text{1D} = \dt_\text{splitting} = \SI{3e-3}{\ms}$, and the model is computed up to a simulation end time of $t_\text{end} = \SI{20}{\ms}$.
 
 We run the study on one compute node of the supercomputer Hazel Hen at the High Performance Computing Center in Stuttgart. This Cray XC40 system contains two 12-core Intel Haswell E-2680v3 CPUs with clock frequency of $\SI{2.5}{\giga\hertz}$ per dual-socket node, yielding 24 processors per compute node and contains \SI{128}{\giga\byte} memory per compute node.
 
@@ -210,22 +210,22 @@ We run the study on one compute node of the supercomputer Hazel Hen at the High 
 \begin{figure}
   \centering%
   \includegraphics[width=0.7\textwidth]{images/results/studies/compilers.pdf}%
-  \caption{Comparison of auto-vectorization in different compilers. Runtime of the 0D and 1D solvers in the fiber based electrophysiology model with \code{simd} optimization type for different compilers and optimization flags.}%
+  \caption{Electrophysiology Solver in OpenDiHu: Comparison of auto-vectorization in different compilers. Runtime of the 0D and 1D solvers in the fiber based electrophysiology model with \code{simd} optimization type for different compilers and optimization flags.}%
   \label{fig:compilers}%
 \end{figure}%
 
 \Cref{fig:compilers} shows the runtime of the 0D and 1D model solvers for the three different compilers with varying optimization flags.
-As expected, the runtime of the 1D solver is not affected by the choice of compiler. The runtime of the 0D solver, however, varies greatly, as the compilers with different optimization flags are able to vectorize the code to a different extent.
+As expected, the runtime of the 1D solver is not affected by the choice of the compiler. The runtime of the 0D solver, however, varies greatly, as the compilers with different optimization flags are able to vectorize the code to a different extent.
 
-For all compilers, the runtime stays approximately constant or decreases when a higher optimization level is chosen. A significant drop to less than half of the runtime is observed when switching from the \code{O1} to the \code{O2} optimization levels in the GNU and Intel compilers. This is mainly the result of the SIMD instructions, which are enabled starting from the \code{O2} levels.
+For all compilers, the runtime decreases when a higher optimization level is chosen. A significant drop to less than half of the runtime is observed when switching from the \code{O1} to the \code{O2} optimization level for the GNU and for the Intel compiler. This is mainly the result of the SIMD instructions, which are enabled starting from the \code{O2} levels.
 The change to the aggressive optimization levels \code{O3}, which enables all available optimizations such as inlining and code transformations does not improve the runtime any further, for all three evaluated compilers. Thus, vectorization is the main driver for good subcellular solver performance.
 
 Another significant decrease in runtime can be observed for the \code{Ofast} optimization flag. For the GNU compiler, the runtime decreases again to less than half of the previous value. For the Intel compiler, the decrease is less prominent with approximately \SI{15}{\percent}. 
 
 The \code{Ofast} level performs optimizations that potentially change the behavior of the code. 
-Especially floating-point arithmetic does no longer comply to the standardization rules of IEEE and ISO. Only finite numbers can be represented and the compiler is allowed to perform transformations in formulas that are mathematically correct, but not in terms of propagating rounding errors. The calculated values are correct as long as no invalid operations such as divisions by zero occur. The precision may decrease or even increase compared to \code{O3}. This is usually not an issue for the given simulations, however, divergence of the numeric solvers is not automatically detectable with \code{Ofast} in our code as no infinity values can be represented.
+Especially floating-point arithmetic does no longer comply to the standardization rules of IEEE and ISO. Only finite numbers can be represented and the compiler is allowed to perform transformations in formulas that are mathematically correct, but not in terms of propagating rounding errors. The calculated values are correct as long as no invalid operations such as divisions by zero occur. The precision may decrease or even increase compared to \code{O3}. This is usually not an issue for the given simulations, however, divergence of the numerical solvers is not automatically detectable with \code{Ofast} in our code as no infinity values can be represented.
 
-The comparison between the compilers shows that the Intel compiler creates faster assembly code than the GNU compiler and the Cray compiler creates faster assembly code than the Intel compiler for the same optimzation levels. The performance of the \code{Ofast} flag is comparable between the GNU and Intel compilers. In total, the Cray compiler yields the best performance on the Cray hardware used in this evaluation. 
+The comparison between the compilers shows that the Intel compiler creates faster assembly code than the GNU compiler, and the Cray compiler creates faster assembly code than the Intel compiler for the same optimzation levels. The performance of the \code{Ofast} flag is comparable between the GNU and the Intel compiler. In total, the Cray compiler yields the best performance on the Cray hardware used in this evaluation. 
 
 The Cray compiler has a \say{whole-program mode}, which collects static information about all compilation units and allows, e.g., application-wide inlining during the linking step. The faster runtime is traded for longer compilation times. In our example, the compilation duration increases from approximately $\SI{10}{\min}$ for the GNU and Intel compilers to over $\SI{2}{\hour}$ for the Cray compiler.
 
@@ -263,7 +263,7 @@ We compare all optimization options for a scenario of a comprehensive surface EM
 The considered scenario solves the monodomain equation \cref{eq:monodomain} on every 1D muscle fiber domain and is coupled to a 3D mesh where the bidomain equation \cref{eq:bidomain1} is solved. No body fat domain is considered in this scenario.
 We simulate 625 muscle fibers with 1481 nodes per fiber mesh and the subcellular model of Hodgkin and Huxley \cite{Hodgkin1952}. This leads to a total number of \num{3702500} degrees of freedom to be solved for the 0D and 1D models.
 We run the code in parallel with 18 processes and a parallel partitioning of the 3D domain into $3 \times 2 \times 3$ subdomains. Thus, every muscle fiber domain is distributed to three different processes.
-The 3D mesh contains 5239 nodes. Timestep widths of $\dt_\text{1D} = \SI{1e-3}{\ms}, \dt_\text{3D} = \dt_\text{splitting} = \SI{3e-3}{\ms}$ and an end time of $t_\text{end} = \SI{10}{\ms}$ are used and file output is disabled for this study.
+The 3D mesh contains 5239 nodes. Timestep widths of $\dt_\text{1D} = \SI{1e-3}{\ms}, \dt_\text{3D} = \dt_\text{splitting} = \SI{3e-3}{\ms}$ and an end time of $t_\text{end} = \SI{10}{\ms}$ are used, and file output is disabled for this study.
 
 We use an Intel Core i9-10980XE processor with 18 cores, base frequency of $\SI{3}{\giga\hertz}$, maximum boost frequency of $\SI{4.8}{\giga\hertz}$, cache sizes of 
 $\SI{24.8}{\mebi\byte}$, $\SI{18}{\mebi\byte}$ and $\SI{576}{\kibi\byte}$ and \SI{31}{\gibi\byte} main memory. This processor is listed in the upper price segment of consumer hardware and can be considered a typical hardware for individual workstations in scientific research.
@@ -272,7 +272,7 @@ $\SI{24.8}{\mebi\byte}$, $\SI{18}{\mebi\byte}$ and $\SI{576}{\kibi\byte}$ and \S
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/fibers_emg_study.pdf}%
-  \caption{Evaluation of various code optimizations for the subcellular model solver. Comparison of runtimes for the 0D, 1D and 3D model solvers with different optimization types in the code generator.}%
+  \caption{Electrophysiology Solver in OpenDiHu: Evaluation of various code optimizations for the subcellular model solver. Comparison of runtimes for the 0D, 1D and 3D model solvers with different optimization types in the code generator.}%
   \label{fig:fibers_emg_study}%
 \end{figure}%
 
@@ -282,7 +282,7 @@ The presented runtimes are averaged over several runs and over all processes per
 The first six bars correspond to the \code{openmp} optimization type, which places OpenMP pragmas in the code and employs thread-based, shared memory parallelism. The scenario \code{openmp-$i$-$j$} refers to $i$ MPI processes in total with $j$ threads on every process. The problem is partitioned into $i$ subdomains and the $j$ OpenMP threads per subdomain simultaneously operate on the shared data structures of the subdomain.
 As a result, in the scenarios \code{openmp-6-3}, \code{openmp-9-2} and \code{openmp-18-1}, 18 threads are executed in total on the processor with 18 physical cores. The other scenarios, \code{openmp-6-6}, \code{openmp-9-4} and \code{openmp-18-2}, employ 36 threads.
 
-It can be seen that each set of two scenarios with the same number $i$ of processes and varying number $j$ of threads, i.e., \code{openmp-6-3} and \code{openmp-6-6}, \code{openmp-9-2} and \code{openmp-9-4}, and \code{openmp-18-1} and \code{openmp-18-2} has similar total runtimes. This shows that runtime is reduced mainly as a result of MPI parallelisation. The distribution of the runtime to the solvers allows further insights. Between the two scenarios with the same number of processes, the runtime of the 0D solver decreases. This is a result of the higher number of OpenMP threads that is used to perform the same amount of work. At the same time, the runtimes of the 1D solvers increase, which is due to the multi-threaded solution of the 1D problem in the solver library PETSc, which we consider as a black box.
+It can be seen that each set of two scenarios with the same number $i$ of processes and varying number $j$ of threads, i.e., \code{openmp-6-3} and \code{openmp-6-6}, \code{openmp-9-2} and \code{openmp-9-4}, and \code{openmp-18-1} and \code{openmp-18-2} has similar total runtimes. This shows that the runtime is reduced mainly as a result of MPI parallelisation. The distribution of the runtime to the solvers allows further insights. Between the two scenarios with the same number of processes, the runtime of the 0D solver decreases. This is a result of the higher number of OpenMP threads that is used to perform the same amount of work. At the same time, the runtimes of the 1D solvers increase, which is due to the multi-threaded solution of the 1D problem in the solver library PETSc, which we consider as a black box.
 %For the last two scenarios, \code{openmp-18-0} and \code{openmp-18-1}, the runtime of the 0D solver shows no further decrease, as the 18-core processor is fully occupied as soon as 18 threads are used.
 
 The effect of OpenMP parallelism on the 1D solver is even higher than on the 0D solver in this example. As the code generator using OpenMP parallelism is only responsible for the 0D problem, the performance of the 1D problem depends only on the partition size and workload defined by the parallel partitioning with $i$ MPI processes. A reduction of the MPI parallelism has more impact on the runtime than the resulting increased parallelism of the 0D solver. Thus, the scenarios with high degrees of OpenMP parallelism, e.g., scenario \code{openmp-6-6}, show a worse performance than the scenarios with higher MPI parallelism, e.g., scenario \code{openmp-18-1}.
@@ -294,9 +294,9 @@ While the \code{simd} scenario relies on the auto-vectorization capabilities of 
 
 The \code{vc-sova} scenario uses the Struct-of-Vectorized-Array (SoVA) memory layout and the barchart shows a slightly lower runtime of the 0D solver compared to the Array-of-Vectorized-Struct (AoVS) memory layout in the \code{vc-aovs} scenario.
 
-The next considered scenario is \code{vc-aovs-apx-e}. It is the same as \code{vc-aovs} except that the exponential function is approximated by $\textrm{exp}^\ast(x)=(1+x/n)^n$ for $n=1024$. The results show that this reduces the runtime of the 0D solver from $\SI{74.24}{\s}$ to \SI{58.02}{\s}, which is a reduction of approximately $\SI{22}{\percent}$.
+The next considered scenario is \code{vc-aovs-apx-e}. It is the same as \code{vc-aovs} except that the exponential function is approximated by $\textrm{exp}^\ast(x)=(1+x/n)^n$ for $n=1024$, as given in \cref{eq:apx-e-function}. The results show that this reduces the runtime of the 0D solver from $\SI{74.24}{\s}$ to \SI{58.02}{\s}, which is a reduction by approximately $\SI{22}{\percent}$.
 
-Instead of generating code only for the 0D subcellular model and solving the 1D subcellular model using a direct solver of PETSc, as in all considered scenarios so far, we can also directly generate combined solver code for the 0D and 1D models and use the Thomas algorithm for the computation of the 1D model. This is done in the \code{fast-vc} scenario and reduces the runtime by a factor of nearly 5. In this approach, the exponential function can also be exchanged by the described approximation. This is done in the \code{fast-vc-apx-e} scenario and further decreases the total runtime to now only $\SI{15.4}{\s}$.
+Instead of generating code only for the 0D subcellular model and solving the 1D subcellular model using a direct solver of PETSc, as in all considered scenarios so far, we can also directly generate combined solver code for the 0D and 1D models and use the Thomas algorithm for the computation of the 1D model. This is done in the \code{fast-vc} scenario and reduces the runtime by a factor of nearly 5. In this approach, the exponential function can also be exchanged by the approximation in \cref{eq:apx-e-function}. This is done in the \code{fast-vc-apx-e} scenario and further decreases the total runtime to now only $\SI{15.4}{\s}$.
 
 The two \code{fast-vc} scenarios demonstrate the performance of the AVX-512 vector instruction set that is available on the used Intel processor. The study shows that its potential is only fully exploited, if the explicit vector instructions are generated in the code, as done in the \code{vc} scenarios.
 
@@ -304,45 +304,45 @@ The solution times for the last two mentioned scenarios can be further reduced i
 
 The last considered optimization type in the code generator is presented in the scenario \code{fast-gpu}. In this scenario, the program is only run with one MPI process. The total computation of the 0D and 1D models is offloaded to a GPU using OpenMP 4.5 pragmas in the generated code. We use the same simulation scenario and CPU hardware for this run as for the other scenarios. The used computer is equipped with a NVIDIA GeForce RTX 3080 GPU with 8704 CUDA-cores, \SI{10}{\giga\byte} of memory and a Thermal Design Power (TDP) of \SI{320}{\watt}. The processing power is \SI{29.77}{\tera\flops} for single precision and \SI{465.1}{\giga\flops} for double precision operations. We use only double precision operations for the computation of the models.
 
-In this scenario, only the total runtime is measured. The bar chart shows a total solver runtime of \SI{396}{\s}, which far slower than the optimized CPU computations. Possible reasons are that the used GPU is targeted at single precision performance and that the employed GPU code by the OpenMP functionality of the GNU compiler is not optimal.
+In this scenario, only the total runtime is measured. The bar chart shows a total solver runtime of \SI{396}{\s}, which is slower than the optimized CPU computations. Possible reasons are that the used GPU is targeted at single precision performance, and that the employed GPU code by the OpenMP functionality of the GNU compiler is not optimal.
 
-In the previously considered example, which uses the Hodgkin and Huxley subcellular model with a state vector $\bfy \in \R^4$, the amount of computational work in the 0D and 1D solvers was in the same range. Other 0D subcellular models exist that have higher workloads. In the next study, we repeat the same measurements as before with the subcellular model of Shorten et al. \cite{shorten2007mathematical}, which has a state vector $\bfy \in \R^{57}$.  Whereas the solver for the model of Hodgkin and Huxley needs to compute 4 ODEs and 9 algebraic equations in every timestep, the solver for the Shorten model computes 57 ODEs and 71 algebraic equations in every timestep.
+In the previously considered example, which uses the Hodgkin and Huxley subcellular model with a state vector $\bfy \in \R^4$, the amount of computational work in the 0D and in the 1D solver was in the same range. Other 0D subcellular models exist that have higher workloads. In the next study, we repeat the same measurements as before with the subcellular model of Shorten et al. \cite{shorten2007mathematical}, which has a state vector $\bfy \in \R^{57}$.  Whereas the solver for the model of Hodgkin and Huxley needs to compute 4 ODEs and 9 algebraic equations in every timestep, the solver for the Shorten model computes 57 ODEs and 71 algebraic equations in every timestep.
 
 As the computational effort to solve one instance of the subcellular model increases, we adjust the simulation scenario for the next study. 
-We use 49 fibers with 1481 nodes each and a 3D mesh with \num{23696} degrees of freedom. The total number of degrees of freedom is \num{4087560}, which is similar to the number \num{3707739} in the previous study. The simulation end time is \SI{3}{\ms}. For this subcellular model, smaller timestep widths of $\dt_\text{splitting}=\dt_\text{1D}=\dt_\text{0D}=\SI{2.5e-05}{\ms}$ and $\dt_\text{3D}=\SI{1e-01}{\ms}$ are used as required to ensure convergence of the solver for this subcellular model.
+We use 49 fibers with 1481 nodes each and a 3D finite element mesh with linear ansatz functions and a total of \num{23696} degrees of freedom. The total number of degrees of freedom in all meshes is \num{4087560}, which is similar to the number \num{3707739} in the previous study. The simulation end time is \SI{3}{\ms}. For this subcellular model, smaller timestep widths of $\dt_\text{splitting}=\dt_\text{1D}=\dt_\text{0D}=\SI{2.5e-05}{\ms}$ and $\dt_\text{3D}=\SI{1e-01}{\ms}$ are used as required to ensure convergence of the solver for this subcellular model.
 
 % fibers_emg performance shorten
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/studies/fibers_emg_study_shorten.pdf}%
-  \caption{Comparison of runtimes for different optimizations in the code generator, for the compute-intense Shorten subcellular model.}%
+  \caption{Electrophysiology Solver in OpenDiHu: Comparison of runtimes for different optimizations in the code generator, for the compute-intense Shorten subcellular model.}%
   \label{fig:fibers_emg_study_shorten}%
 \end{figure}%
 
-\Cref{fig:fibers_emg_study_shorten} shows the resulting runtimes for different scenarios in a bar chart analogous to \cref{fig:fibers_emg_study}. It can be seen that the solver time for the 0D model now dominates the total runtime in all scenarios. In the \code{openmp-$i$-$j$} scenarios, the runtime for the 0D solver decreases as before, if more threads are used in total. Contrary to the previous study, the total runtime profits from this runtime reduction, as the 0D part is significant enough for the total runtime. Another difference to the results of the previous study is that the durations for the 0D model are nearly the same for every combination of number of MPI processes $i$ and number of OpenMP threads $j$. This shows that the overhead of starting the OpenMP threads, which in the previous study was responsible for larger compute times of the 0D models, is now amortized by the larger overall workload.
+\Cref{fig:fibers_emg_study_shorten} shows the resulting runtimes for different scenarios in a bar chart analog to \cref{fig:fibers_emg_study}. It can be seen that the solver time for the 0D model now dominates the total runtime in all scenarios. In the \code{openmp-$i$-$j$} scenarios, the runtime for the 0D solver decreases as before, if more threads are used in total. Contrary to the previous study, the total runtime profits from this runtime reduction, as the 0D part is significant enough for the total runtime. Another difference to the results of the previous study is that the durations for the 0D model are nearly the same for every combination of number of MPI processes $i$ and number of OpenMP threads $j$. This shows that the overhead of starting the OpenMP threads, which in the previous study was responsible for larger compute times of the 0D models, is now amortized by the larger overall workload.
 
-The performance in the \code{simd} scenario is, again, comparable with the \code{openmp-18-1} scenario and shows a slightly smaller runtime due to the missing OpenMP thread initializations.
+The performance in the \code{simd} scenario is, again, comparable to the performance of  the \code{openmp-18-1} scenario and shows a slightly smaller runtime due to the missing OpenMP thread initializations.
 
 A difference to the previous study can be seen for the \code{vc} scenarios. In the present study with the subcellular model of Shorten et al., the runtimes for the \code{vc-sova}, \code{vc-aovs}, and \code{vc-aovs-apx-e} are all higher than for the auto-vectorized scenarios. In contrast, the \code{vc} scenarios showed a large reduction in runtime in the study with the Hodgkin and Huxley subcelluar model. 
 
 This effect originates from the operations required to evaluate the subcellular equations. The Shorten model contains a large number of $\log(x)$ function evaluations. These are especially compute intense and, in addition, not supported in the abstraction layer of the AVX-512 instructions provided by the \emph{std-simd} library. Instead, the library employs their non-vectorized counterparts. The auto-vectorization of the compilers, however, is able to employ the respective vectorized functions, which explains the better performance in the \code{openmp} and \code{simd} scenarios. 
 
-We expect that, in the future, the respective functionality will become available in the \emph{std-simd} library, which would automatically increase the performance for these optimization types. For processors without AVX-512 support but with the AVX2 instruction set, the library \emph{Vc} is used, which supports the respective functions and, thus, yields the expected performance in the \code{vc} scenarios. Whereas AVX-512 has a SIMD lane width of eight double values, AVX2 only supports SIMD lanes with 4 double values.
+We expect that, in the future, the respective functionality will become available in the \emph{std-simd} library, which would automatically increase the performance for these optimization types. For processors without AVX-512 support, but with the AVX2 instruction set, the library \emph{Vc} is used, which supports the respective functions and, thus, yields the expected performance in the \code{vc} scenarios. Whereas AVX-512 has a SIMD lane width of eight double values, AVX2 only supports SIMD lanes with 4 double values.
 
 \begin{figure}
   \centering%
   \includegraphics[width=0.5\textwidth]{images/results/studies/apxlog.pdf}%
-  \caption{Relative error of the piecewise Taylor approximation of the log function as used in the vectorized simulation code.}%
+  \caption{Electrophysiology Solver in OpenDiHu: Relative error of the piecewise Taylor approximation of the log function as used in the vectorized simulation code.}%
   \label{fig:apxlog}%
 \end{figure}%
-To mitigate the effect of the missing $\log(x)$ vectorization, we replace the log function by a numeric approximation, in addition to the approximated exp function. We define the approximated logarithm function $\log^\ast(x)$ by its piecewise Taylor polynomials of sixth order around the points $x=1$, 3 and 9 with discontinuities at the points $x=2$ and $x=6$. \Cref{fig:apxlog} shows the absolute relative error for the range between $0.2$ and 20 which, in this range, is bounded by $0.105$. However, better convergence of the 0D-1D problem is achieved, if the approximated log function $\log^\ast$ is the inverse of the approximated exponential function $\exp^\ast$. Therefore, we apply one Newton iteration of the problem %
+To mitigate the effect of the missing $\log(x)$ vectorization, we replace the log function by a numerical approximation, in addition to the approximated exp function. We define the approximated logarithm function $\log^\ast(x)$ by its piecewise Taylor polynomials of sixth order around the points $x=1$, 3 and 9 with discontinuities at the points $x=2$ and $x=6$. \Cref{fig:apxlog} shows the absolute relative error for the range between $0.2$ and 20 which, in this range, is bounded by $0.105$. However, better convergence of the 0D-1D problem is achieved, if the approximated log function $\log^\ast$ is the inverse of the approximated exponential function $\exp^\ast$. Therefore, we apply one Newton iteration of the problem %
 \begin{align*}
   F(y) = \exp^\ast(y)-x \overset{!}{=} 0  
 \end{align*}
 %
 to the log value $y$ computed by the Taylor approximation. The Newton iteration consists of substracting ${(1 - x/\exp^\ast(x))}$ from the computed result $y$. Thus, it only involves one evaluation of the approximated exponential function.
 
-The scenario \code{fast-vc} in \cref{fig:fibers_emg_study_shorten} generates unified solver code for both 0D and 1D models, but does not include this approximation. The approximated exponential and logarithm functions are included in the scenario \code{fast-vc-apx-e}. As a result, it can be seen that the total runtime is highly reduced compared to the auto-vectorized scenarios.
+The scenario \code{fast-vc} in \cref{fig:fibers_emg_study_shorten} generates unified solver code for both 0D and 1D models, but does not include this approximation. The approximated exponential and logarithm functions are included in the scenario \code{fast-vc-apx-e}. As a result, it can be seen that the total runtime is largely reduced compared to the auto-vectorized scenarios.
 
 
 %Qualitatively, the same observations can be made for the scenarios with either subcellular model.
@@ -494,5 +494,5 @@ The scenario \code{fast-vc} in \cref{fig:fibers_emg_study_shorten} generates uni
 \end{reproduce_no_break}
 
 % ------------
-%\fi
+%
 % f===========

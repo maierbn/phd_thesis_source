@@ -151,8 +151,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="199.38516"
-     inkscape:cy="567.14063"
+     inkscape:cx="-266.75922"
+     inkscape:cy="463.62041"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -161,7 +161,7 @@
      inkscape:snap-grids="true"
      inkscape:snap-to-guides="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="999"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -221,7 +221,14 @@
        x="39.999996"
        y="47" />
     <rect
-       style="opacity:1;fill:#808080;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.26778227;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       y="57"
+       x="50"
+       height="22.72821"
+       width="70"
+       id="rect821"
+       style="opacity:1;fill:#ffeeaa;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.56742108;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:#ffff00;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.26778227;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect815-3-6"
        width="50"
        height="10"
@@ -238,13 +245,6 @@
          x="62.752766"
          y="74.084045"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">CellmlAdapter</tspan></text>
-    <rect
-       y="57"
-       x="50"
-       height="22.72821"
-       width="70"
-       id="rect821"
-       style="opacity:1;fill:none;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.56742108;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -267,64 +267,6 @@
          x="42.774269"
          y="53.96703"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">MultipleInstances (d)</tspan></text>
-    <g
-       id="g1257"
-       transform="translate(0,-5)">
-      <rect
-         y="97"
-         x="40"
-         height="36.08139"
-         width="80"
-         id="rect827-6"
-         style="opacity:1;fill:#b3b3b3;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.54325485;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <rect
-         y="117"
-         x="60"
-         height="10"
-         width="50"
-         id="rect815-3"
-         style="opacity:1;fill:#808080;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.26778227;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <text
-         id="text819-6"
-         y="124.17252"
-         x="62.836102"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px"
-           y="124.17252"
-           x="62.836102"
-           id="tspan817-7"
-           sodipodi:role="line">FEM</tspan></text>
-      <rect
-         style="opacity:1;fill:none;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.56685776;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect821-5"
-         width="70"
-         height="22.405502"
-         x="50"
-         y="107" />
-      <text
-         id="text825-3"
-         y="113.96906"
-         x="51.861431"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px"
-           y="113.96906"
-           x="51.861431"
-           id="tspan823-5"
-           sodipodi:role="line">ImplicitEuler</tspan></text>
-      <text
-         id="text831-2"
-         y="104.74824"
-         x="43.442444"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px"
-           y="104.74824"
-           x="43.442444"
-           id="tspan829-9"
-           sodipodi:role="line">MultipleInstances (d)</tspan></text>
-    </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.61458302px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -337,7 +279,7 @@
          y="43.543526"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">Strang</tspan></text>
     <rect
-       style="opacity:1;fill:#e6e6e6;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.514;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:0.63;fill:#0000ff;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.514;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect928"
        width="110"
        height="40"
@@ -412,5 +354,59 @@
          x="23.263594"
          y="33.921814"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">MultipleInstances (c)</tspan></text>
+    <rect
+       style="opacity:1;fill:#b3b3b3;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.54325485;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect827-6"
+       width="80"
+       height="36.08139"
+       x="40"
+       y="92" />
+    <rect
+       y="102"
+       x="50"
+       height="22.405502"
+       width="70"
+       id="rect821-5"
+       style="opacity:1;fill:#ff0000;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.56685776;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:#800000;fill-opacity:0.49115044;stroke:#000000;stroke-width:0.26778227;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect815-3"
+       width="50"
+       height="10"
+       x="60"
+       y="112" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="62.836102"
+       y="119.17252"
+       id="text819-6"><tspan
+         sodipodi:role="line"
+         id="tspan817-7"
+         x="62.836102"
+         y="119.17252"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">FEM</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="51.861431"
+       y="108.96906"
+       id="text825-3"><tspan
+         sodipodi:role="line"
+         id="tspan823-5"
+         x="51.861431"
+         y="108.96906"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">ImplicitEuler</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.61458349px;line-height:125%;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif, Medium';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52916664px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="43.442444"
+       y="99.748238"
+       id="text831-2"><tspan
+         sodipodi:role="line"
+         id="tspan829-9"
+         x="43.442444"
+         y="99.748238"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.61458349px;font-family:'Univers for UniS 55 Roman';-inkscape-font-specification:'Univers for UniS 55 Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.52916664px">MultipleInstances (d)</tspan></text>
   </g>
 </svg>

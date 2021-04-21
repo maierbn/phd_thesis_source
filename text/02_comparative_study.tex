@@ -2,7 +2,7 @@
 \chapter{Comparative Study: Modeling Upper Arm Movement}\label{chap:comparative_study}
 
 Moving one's upper arms and forearms is an action that is performed unnoticed every day. 
-What seems like a trivial task involves a sophisticated interplay of muscles, tendons, bones and joints. Macroscopic behaviour such as mechanical properties of fibers and tissues as well as microscopic mechanisms such as molecular-scale processes inside biological cells and changes in electric potential across muscle fiber membranes contribute to the overall, versatile human musculoskeletal system.
+What seems like a trivial task involves a sophisticated interplay of muscles, tendons, bones and joints. Macroscopic behavior such as mechanical properties of fibers and tissues as well as microscopic mechanisms such as molecular-scale processes inside biological cells and changes in electric potential across muscle fiber membranes contribute to the overall, versatile human musculoskeletal system.
 
 Understanding this system well allows to use observations to make predictions.
 Using observations and predictions of the musculoskeletal system, we can for example design safe assistive robotic devices.
@@ -156,7 +156,7 @@ The eight experimental trials were split into $n_\text{trials}=7$ experiments to
 The total number $N$ of captured values in the training experiments was large, such that not all points could be used for training of models A and B.
 To reduce the amount of data and, thus, speed up the computation, we selected $n \ll N$ featured values with the assumption that they are representative for the whole data set.
 For every experimental trial, we choose the same fixed number $n_\text{per\_trial}$ of data points.
-Our selection algorithm identifies $n_\text{per\_trial}$ time steps, $t_i, i=1, \dots, n$ such that the summed values of the free calcium concentrations $\gamma_B(t_i) + \gamma_T(t_i)$ for biceps and triceps are evenly distributed along the value range.
+Our selection algorithm identifies $n_\text{per\_trial}$ timesteps, $t_i, i=1, \dots, n$ such that the summed values of the free calcium concentrations $\gamma_B(t_i) + \gamma_T(t_i)$ for biceps and triceps are evenly distributed along the value range.
 This leads to $n = n_\text{trials} \cdot n_\text{per\_trial}$ selected data points.
 
 The set of training data $\mathcal{D} = \mathcal{X} \times \mathcal{Y}$ consists of the $n$ selected vectors of the experimental values that are the input to the system of muscles, $\bfx_i \in \mathcal{X}, i=1,\dots, n$, together with the observed output values, $y_i \in \mathcal{Y}, i=1,\dots,n$.
@@ -235,8 +235,8 @@ During elbow flexion, three muscles are involed: biceps brachii, brachialis and 
 
 Thus, the biophysical model consists of two Hill-type muscle models, for biceps and triceps, respectively. The muscle models are arranged around a hinge joint for the elbow angle. The muscle forces contribute to the torque at the elbow over their respective moment arms.
 
-Hill-type models describe the macroscopic, dynamic mechanical behaviour of an entire muscle along a one-dimensional line of action.
-The behaviour is formulated by phenomenological, mathematical functions that have to be parameterized to fit experimental observations.
+Hill-type models describe the macroscopic, dynamic mechanical behavior of an entire muscle along a one-dimensional line of action.
+The behavior is formulated by phenomenological, mathematical functions that have to be parameterized to fit experimental observations.
 
 %Such models are often used to compute muscle forces in simulations of various movements, e.g. \cite{Siebert2003}, \cite{Kistemaker2006}.
 Multiple variants of Hill-type models exist that use various configurations of mechanical elements to consider different properties and functionalities of the muscle. The original model was proposed in \cite{Hill1938}. It contains a contractile element (CE) and two elastic elements, arranged in series and in parallel to the CE.
@@ -397,7 +397,7 @@ In \cref{eq:opt_3}, the contraction velocities are constrained to the measured v
 By \cref{eq:opt_4}, we bound each of the parameters $\bftheta_B$ and $\bftheta_T$ to a range between half and twice the generic value from literature.
 The lengths of the CEs are constrained by \cref{eq:opt_5} to be positive and smaller than the length of the MTU.
 
-All optimization variables are normalized to improve the numeric conditioning of the optimization problem. 
+All optimization variables are normalized to improve the numerical conditioning of the optimization problem. 
 The parameters $\bftheta_B$ and $\bftheta_T$ are normalized with respect to generic values from literature that were taken from \cite{Gunther2007, Morl2012, Hilltype2014}. The initial values are set to one, which corresponds to the generic literature values.
 The internal states $l_{\CE,B}$ and $l_{\CE,T}$, are normalized with respect to the measured MTU lengths $\hat{l}_{\MTU,B}$ and $\hat{l}_{\MTU,T}$ and initialized with zero.
 
@@ -672,7 +672,7 @@ Regarding the formulation and implementation, model A requires low effort and no
 
 Similar holds for the offline training phase. There are no parameters in model A that have to be tuned manually, which allows a quick start. Conversely, model B requires the appropriate definition of initial values and physiological constraints for the optimization problem. However, this can also be seen as an advantage for model B, as a-priori knowledge can be integrated in such a model.
 
-On the other hand, an advantage of model A is that additional experimental data, e.g., from neighbouring muscles or additional sensors, can easily be added to the model. This is not possible with model B, where the model formulation would have to be changed.
+On the other hand, an advantage of model A is that additional experimental data, e.g., from neighboring muscles or additional sensors, can easily be added to the model. This is not possible with model B, where the model formulation would have to be changed.
 
 Our studies showed that both models were able to predict the levels of torque reasonably. 
 \Cref{fig:nrmse} showed the best score for model A, followed by model B. It was also seen that the generic parametrization of model B does not yield a useful prediction. The same is true for a simplified version of model A, where the elbow torque was used as training input instead of derived quantities from the motion capture system that required a complex preprocessing step.
@@ -682,7 +682,7 @@ Model B allows insight into force-length and force-velocity characteristics of t
 
 In our study, runtimes were low for model A and high for model B in both offline and online phases. However, this is due to our prototypical implementation of model B. For larger data sizes and a more sophisticated implementation, the reverse effect is expected. The runtime complexity for the training phase is better for model B (linear in time) compared to model A (cubic in time). For the online phase, costly integration over data points is needed for model A whereas model B directly provides a differential equation of the system that can be solved efficiently. 
 
-If EMG is used to control an exoskeleton that supports the movement of the limb, it is known that the measured signals are ahead of the intended movement by a small offset. This is a result of the time delay in the neuromusculoskeletal system. This property gives the assistive exoskeleton a small time to predict the intended movement and thereby allows a seamless integration of the artifical device with human control.
+If EMG is used to control an exoskeleton that supports the movement of the limb, it is known that the measured signals are ahead of the intended movement by a small offset. This is a result of the time delay in the neuromusculoskeletal system. This property gives the assistive exoskeleton a small time to predict the intended movement and thereby allows a seamless integration of the artificial device with human control.
 
 When targeted at such a real-time application, both models could be considered to be integrated into the control. Model A better fits the use case of a device that could be (re\nobreakdash-)calibrated by the patient itself. Because of the built-in estimation of prediction quality, compliance and safety could be ensured more easily even for imperfect training.
 Model B would need a controlled environment such as a specialist's laboratory and careful assistence for the calibration process.

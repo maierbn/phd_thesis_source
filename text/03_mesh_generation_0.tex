@@ -1,6 +1,6 @@
 
-\chapter{Generation of Meshes for the Multiscale Models}\label{sec:generation_of_meshes_for_multiscale}
-Multiscale models of skeletal muscles describe phenomena on different length scales and combine them into a single description. The phenomena are modeled by different sets of equations which need individual discretizations and solvers. For that, various geometrical meshes describing different physical domains are required.
+\chapter{Generation of Meshes for the Multi-Scale Models}\label{sec:generation_of_meshes_for_multiscale}
+Multi-scale models of skeletal muscles describe phenomena on different length scales and combine them into a single description. The phenomena are modeled by different sets of equations which need individual discretizations and solvers. For that, various geometrical meshes describing different physical domains are required.
 
 The discretization considered in this work involves three-dimensional (3D) and one-dimensional (1D) meshes.
 As a whole, muscles and tendons are treated as 3D domains. Muscle fascicles and myofibrils are represented by 1D fibers that are embedded in the 3D domain of the muscle.
@@ -26,7 +26,7 @@ Additionally, a number $n_f$ of individual muscle fibers $\Omega_{F,i} \subset \
     \label{fig:fibers_domains}%
 \end{figure}%
 
-For the application of the Finite Element Method (FEM), we create meshes for each of these domains. Formally, a 3D mesh $\Omega_\text{3D}$ is given by a number of 3D elements $\{U_{\text{3D},i}\}_{i=1,\dots,n}$ with $U_{\text{3D},i} \subset \R^3$ such that their disjoint union approximates the domain,
+For the application of the finite element method (FEM), we create meshes for each of these domains. Formally, a 3D mesh $\Omega_\text{3D}$ is given by a number of 3D elements $\{U_{\text{3D},i}\}_{i=1,\dots,n}$ with $U_{\text{3D},i} \subset \R^3$ such that their disjoint union approximates the domain,
 $\dot{\bigcup}_{i=1}^{n} U_{\text{3D},i} \approx \Omega_\text{3D}$. Similar holds for 1D meshes.
 
 The elements are non-overlapping and can be defined by nodes and edges. In the discretizations used here, no hanging nodes are allowed, i.e., at any node all adjacent elements share the node.
@@ -61,7 +61,7 @@ $(i,j,k) \mapsto \iota = k\,n_i\,n_j + j\,n_i + i$.
   \label{fig:quadratic_elements_decomposition}%
 \end{figure}%
 
-The elements of such a mesh can have different numbers of \emph{degrees of freedom (dof)} depending on the desired spatial order of consistency of the Finite Element discretization. The number $n_{\text{dofs,}d\text{D}}$ of dofs in a $d$-dimensional element is computed from the number $n_{\text{dofs,1D}}$ of dofs along one coordinate direction of the element as $n_{\text{dofs,}d\text{D}} = n_{\text{dofs,1D}}^d$.
+The elements of such a mesh can have different numbers of \emph{degrees of freedom (dof)} depending on the desired spatial order of consistency of the finite element discretization. The number $n_{\text{dofs,}d\text{D}}$ of dofs in a $d$-dimensional element is computed from the number $n_{\text{dofs,1D}}$ of dofs along one coordinate direction of the element as $n_{\text{dofs,}d\text{D}} = n_{\text{dofs,1D}}^d$.
 Consequently, linear elements have two dofs in 1D meshes and eight dofs in 3D meshes. Quadratic elements have three dofs in 1D and 27 dofs in 3D.
 
 The dofs are located at the \emph{nodes} of the elements. In linear and quadratic elements, every node corresponds to a single dof. While the nodes form the \say{corners} of linear 3D elements, they are also located on the faces and in the interior of quadratic 3D elements. \Cref{fig:fiber_creation_quadratic_elements} shows a mesh with $2 \times 2 \times 2$ linear 3D elements at the top. The same 27 nodes can be used to define a single quadratic 3D element as shown at the bottom of \cref{fig:fiber_creation_quadratic_elements}. 
@@ -74,14 +74,14 @@ The next sections describe workflows and algorithms to construct 3D meshes for t
 
 \section{Related Work}\label{sec:fiber_meshes_related_works}
 
-Generating volumetric meshes for domains enclosed by a given surface is a task that is frequently needed in computational science. It is a preprocessing step whenever spatially discretized models have to be solved numerically. In consequence, a vast amount of literature has addressed this algorithmic task and various approaches and methods have been proposed. Moreover, numerous software packages that solve this problem exist. Especially tools for Computer Aided Design and Engineering (CAD/CAE) as well as free and commercial preprocessing tools and Finite Element solver software include functionality to generate meshes from given surfaces.
+Generating volumetric meshes for domains enclosed by a given surface is a task that is frequently needed in computational science. It is a preprocessing step whenever spatially discretized models have to be solved numerically. In consequence, a vast amount of literature has addressed this algorithmic task and various approaches and methods have been proposed. Moreover, numerous software packages that solve this problem exist. Especially tools for Computer Aided Design and Engineering (CAD/CAE) as well as free and commercial preprocessing tools and finite element solver software include functionality to generate meshes from given surfaces.
 
-An example from the biomechanical domain is \cite{untaroiu2013finite}. The study develops a Finite Element model of the lower limb of an occupant of a car with the aim to investigate injury scenarios during traffic crashes.
+An example from the biomechanical domain is \cite{untaroiu2013finite}. The study develops a finite element model of the lower limb of an occupant of a car with the aim to investigate injury scenarios during traffic crashes.
 The lower extremity geometry was obtained by computer tomography (CT) and magnetic resonance imaging (MRI) scan data of a 50th percentile male volunteer. Different meshes of bones and ligaments were created using the three tools IA-FEMesh \cite{grosland2009ia}, TrueGrid \cite{TrueGrid} and Hyper-Mesh \cite{Hypermesh} which will be outlined in the following.
 
 \emph{IA-FEMesh} (University of Iowa, Iowa City, USA) is an open source tool to generate hexahedral meshes \cite{grosland2009ia}. It provides an interactive environment where existing geometries can be loaded. In a visualization window, bounding boxes, called blocks, can be positioned such that they contain the whole geometry. A structured grid on the block is then projected onto the surface of the geometry. Multiple blocks can be placed to account for more complex geometries. The resulting surface mesh is improved using Laplacian smoothing which equalizes the edge lengths of the elements.
 The interior nodes are generated using interpolation.
-The result is a structured mesh if only one block is used or an unstructured mesh if multiple blocks are used. Further operations to manage mesh density, visually manipulate the meshes and add material properties, load and boundary conditions are available. The model can be exported in a file format for Finite Element analysis with ABAQUS (Dassault Systèmes, Vélizy-Villacoublay, France) \cite{ABAQUS}.
+The result is a structured mesh if only one block is used or an unstructured mesh if multiple blocks are used. Further operations to manage mesh density, visually manipulate the meshes and add material properties, load and boundary conditions are available. The model can be exported in a file format for finite element analysis with ABAQUS (Dassault Systèmes, Vélizy-Villacoublay, France) \cite{ABAQUS}.
 
 The second tool is \emph{TrueGrid} (XYZScientific Applications, Livermore, USA) \cite{TrueGrid}. It is a commercial toolkit to generate hexahedral meshes. The project was started in the early 1990s as the successor to the even older preprocessor software \emph{INGRID}. Similar to \emph{IA-FEMesh}, a projection method and a multi-block technique are used. Some effort has been put into dealing with holes and sewing together dissimilar blocks.
 
@@ -131,7 +131,7 @@ The approach, used with subsequent smoothing, can produce meshes of good quality
 
 For the whisker weaving method and for some plastering methods, a quadrilateral mesh of the surface is required. Algorithms for creating high quality quadrangulations of closed surfaces exist \cite{dong2005quadrangulating,Kovacs2011Anisotropic,Bessmeltsev2012,Meng2016Consistent}.
 
-Other approaches start with 3D volumetric medical imaging data instead of surfaces. In \cite{Zhang2003,Zhang20053DFiniteElementMeshing}, adaptive tetrahedral and hexahedral meshes are created from volumetric data using octree subdivision. The method avoids hanging nodes and allows a feature sensitive adaptivity. While adaptive meshing methods can reduce the number of elements in the interior of the volume, a problem is that the worst quality elements are generated at the boundary, the location where the solution in a Finite Element study usually is most interesting.
+Other approaches start with 3D volumetric medical imaging data instead of surfaces. In \cite{Zhang2003,Zhang20053DFiniteElementMeshing}, adaptive tetrahedral and hexahedral meshes are created from volumetric data using octree subdivision. The method avoids hanging nodes and allows a feature sensitive adaptivity. While adaptive meshing methods can reduce the number of elements in the interior of the volume, a problem is that the worst quality elements are generated at the boundary, the location where the solution in a finite element study usually is most interesting.
 
 \nocite{Gregson2011}
 
@@ -141,11 +141,11 @@ Multiple reasons make the previously outlined approaches unsuited regarding the 
 
 (ii) The presented methods are designed for hexahedral meshing of arbitrary volumes. Robustness and mesh quality at the same time remain issues that are not completely solved for most of the algorithms. Often, expensive smoothing steps are needed to increase mesh quality.
 
-(iii) In general, either no assumption can be made about orientation or alignment of hexahedra in the interior, or, for the grid-based approach, the elements at the surface have poor quality. Having a mesh that is consistently aligned with, e.g., the main diffusion direction or the preferential direction of the anisotropic material or the muscle fibers can reduce numerical errors in the Finite Element solution.
+(iii) In general, either no assumption can be made about orientation or alignment of hexahedra in the interior, or, for the grid-based approach, the elements at the surface have poor quality. Having a mesh that is consistently aligned with, e.g., the main diffusion direction or the preferential direction of the anisotropic material or the muscle fibers can reduce numerical errors in the finite element solution.
 
-Consequently, a more scenario specific solution is needed that can avoid the mentioned issues. Such solutions can also be found in the literature. An example is \cite{blemker2005three}, where 3D Finite Element models for various complex muscle geometries around the hip are generated from magnetic resonance images. Segmentation and surface mesh generation are performed using the old, unmaintained software \emph{Nuages} (Inria, France) \cite{Nuages}.
+Consequently, a more scenario specific solution is needed that can avoid the mentioned issues. Such solutions can also be found in the literature. An example is \cite{blemker2005three}, where 3D finite element models for various complex muscle geometries around the hip are generated from magnetic resonance images. Segmentation and surface mesh generation are performed using the old, unmaintained software \emph{Nuages} (Inria, France) \cite{Nuages}.
 Then, a 3D hexahendral mesh is generated using TrueGrid. A structured template mesh on a unit square is mapped to the horizontal slices of the muscle geometry that resulted from the segmentation. After mesh smoothing, the slices are connected vertically to form a 3D mesh. 
-Fiber directions are described by Bezier curves in a reference volume and mapped to the muscle geometry using the same mapping. The fiber direction then are used in a transversely-isotropic material formulation. Simulations are performed using the Finite Element solver \emph{Nike3D} (Lawrence Livermore National Lab, Livermore, USA) \cite{Nike3D}.
+Fiber directions are described by Bezier curves in a reference volume and mapped to the muscle geometry using the same mapping. The fiber direction then are used in a transversely-isotropic material formulation. Simulations are performed using the finite element solver \emph{Nike3D} (Lawrence Livermore National Lab, Livermore, USA) \cite{Nike3D}.
 
 We base our work on this study and use a similar mapping from a template mesh to the actual muscle volume. In comparison to \cite{blemker2005three}, we use an improved mapping based on harmonic maps, which potentially leads to better quality meshes on the slices of the muscle. Instead of the unit circle template mesh, we experiment with different reference meshes and evaluate their quality.
 
@@ -239,7 +239,7 @@ Next, the algorithm determines the contours of all regions with marked pixels. T
 
 In the next step, a single contour for each of muscle and bone is obtained in every image. If there are multiple contours per image, the one that is located closest to the upper right corner of the image is selected for the muscle. If all contours in an image are shorter than 20 pixels, this is an indication for bad segmentation quality and the whole image gets discarded. Because of the discarded images the resulting surface description has a lower resolution at the respective locations. This is not a problem as the data is subsequently approximated by a smooth spline surface.
 
-The result is a set of contours for muscle and bone in the cross-sectional planes of the images. Combining these, we get a point cloud in 3D space that approximates the surface of the biceps muscle and the surfaces of the considered bones humerus, ulna and radius. Using these points, a spline surface can be fitted and subsequently triangulated. Resulting surfaces for the biceps and humerus bones are shown in \cref{fig:extraction_result}.
+The result is a set of contours for muscle and bone in the cross sectional planes of the images. Combining these, we get a point cloud in 3D space that approximates the surface of the biceps muscle and the surfaces of the considered bones humerus, ulna and radius. Using these points, a spline surface can be fitted and subsequently triangulated. Resulting surfaces for the biceps and humerus bones are shown in \cref{fig:extraction_result}.
 %
 \begin{figure}%
   \centering%
@@ -259,7 +259,7 @@ The result is a set of contours for muscle and bone in the cross-sectional plane
   \label{fig:extraction_result}%
 \end{figure}%
 
-The runtime for the algorithm applied on a dataset with \num{495} images and circa \num{144e6} pixels in total was \SI{121}{\minute}. The used hardware was a AMD Ryzen 5 1600 processor with 6 cores, 3.2 GHz and \SI{16}{\giga\byte} RAM, of which a maximum of \SI{2}{\giga\byte} was used. Because processing of the images can be done in parallel, the runtime was reduced to approximately half (\SI{62}{\minute}) using 2 threads and to a quarter (\SI{30}{\minute}) using 6 threads.
+The runtime for the algorithm applied on a dataset with \num{495} images and approximately \num{144e6} pixels in total was \SI{121}{\minute}. The used hardware was a AMD Ryzen 5 1600 processor with 6 cores, 3.2 GHz and \SI{16}{\giga\byte} RAM, of which a maximum of \SI{2}{\giga\byte} was used. Because processing of the images can be done in parallel, the runtime was reduced to approximately half (\SI{62}{\minute}) using 2 threads and to a quarter (\SI{30}{\minute}) using 6 threads.
 
 The advantage of the presented algorithm is that the outcome solely depends on the imaging data and, thus, no modeling error by manual approximation of the geometry occurs. For example, the obtained surfaces of biceps and humerus geometrically fit perfectly into each other. Intermediate steps are stored as black and white images. By editing these between the steps of the algorithm, manual tweaking is possible and can be used to increase the quality of the results.
 
@@ -298,7 +298,7 @@ As a result, meshes of individual muscles or the whole human organism can be cre
 \end{figure}%
 
 The mesh width of the meshes obtained using the MAP client was chosen such that the surface fitting yielded good results. The meshes are not necessarily ready for use in a simulation, especially if a  high mesh resolution is desired. 
-Apart from the mesh width also the type of elements can be different than what is needed for a Finite Element simulation. Our goal is to obtain meshes with linear or quadratic Lagrange elements with configurable mesh widths for the specified upper arm muscles, such as the biceps brachii.
+Apart from the mesh width also the type of elements can be different than what is needed for a finite element simulation. Our goal is to obtain meshes with linear or quadratic Lagrange elements with configurable mesh widths for the specified upper arm muscles, such as the biceps brachii.
 
 Therefore, the next step of the workflow, as visualized by the right branch of \cref{fig:scheme_preprocessing}, is to transform the volume mesh into a surface mesh which then can be used as start for further meshing. The further meshing steps are visualized in \cref{fig:biceps_processing}. The start is the Hermite mesh shown in the left-most image.
 
@@ -322,7 +322,7 @@ This algorithm has a quadratic time complexity $\O(n^2)$ in the number of triang
 The result of this operation is a triangulated surface, shown in the third image of \cref{fig:scheme_preprocessing}. The next step is to create a Spline surface of the muscle belly, as shown in the right-most image of \cref{fig:scheme_preprocessing}. This is described in the next two sections.
 
 \subsection{Introduction of Spline Surfaces}\label{sec:nurbs}
-After the surface representation of the muscle has been obtained from either the left or the right branch of the preprocessing workflow in \cref{fig:scheme_preprocessing}, the surface is given by a point cloud or a number of triangles. To remedy eventual outliers or unphysiological sharp edges from the segmentation, a Spline surface is fitted to the data. This leads to a smooth surface representation and later to a better conditioned Finite Element mesh in the simulation. However, this step is optional. It is also possible to directly use the surface triangulation from \cref{sec:surf_extr} for the meshing algorithm described in \cref{sec:ser_alg_meshes}.
+After the surface representation of the muscle has been obtained from either the left or the right branch of the preprocessing workflow in \cref{fig:scheme_preprocessing}, the surface is given by a point cloud or a number of triangles. To remedy eventual outliers or unphysiological sharp edges from the segmentation, a Spline surface is fitted to the data. This leads to a smooth surface representation and later to a better conditioned finite element mesh in the simulation. However, this step is optional. It is also possible to directly use the surface triangulation from \cref{sec:surf_extr} for the meshing algorithm described in \cref{sec:ser_alg_meshes}.
 
 The surfaces use Nonuniform Rational B-splines (NURBS). A NURBS surface is a generalization of a B-spline surface. From a modeling point of view, B-spline surfaces have three advantageous properties.
 First, the B-spline surface can be constructed with given smoothness properties.  
@@ -403,7 +403,7 @@ In order to find a NURBS surface for the given triangulated surface of a muscle,
 
 Then, twelve cross sections are extracted from the surface triangles. As a result, we get twelve horizontal circumferential rings. On each ring, 9 equidistant points are determined. The first point is appended after the last point in every ring, such that in total we obtain a grid of $10 \times 12$ points. 
 
-Then, the least squares surface approximation algorithm by \cite{piegl2012nurbs} is used to fit a NURBS surface to the points. The implementation of the algorithm is given by the NURBS-Python (geomdl) library. Polynomial degrees of $p^{(1)} = 3$ and $p^{(2)}=2$ are used where the first dimension corresponds to the cross-sectional direction of the muscle. The knot multiplicity is chosen as $m=1$ for both coordinate directions. We obtain a two times respective one times continuously differentiable surface in $u$ and $v$ direction. 
+Then, the least squares surface approximation algorithm by \cite{piegl2012nurbs} is used to fit a NURBS surface to the points. The implementation of the algorithm is given by the NURBS-Python (geomdl) library. Polynomial degrees of $p^{(1)} = 3$ and $p^{(2)}=2$ are used where the first dimension corresponds to the cross sectional direction of the muscle. The knot multiplicity is chosen as $m=1$ for both coordinate directions. We obtain a two times respective one times continuously differentiable surface in $u$ and $v$ direction. 
 The resulting NURBS surface and the control polygon are visualized in \cref{fig:biceps_splines_control_points}. Note that the control polygon is different from the grid of points against which the surface is fitted.
 %
 \begin{figure}%
@@ -417,7 +417,7 @@ The resulting NURBS surface and the control polygon are visualized in \cref{fig:
 
 Since no implementation of a fitting algorithm specifically for a tubular NURBS surface with periodicity in tangential direction is available, we develop a different remedy. We modify the point grid that is used for the surface fitting. The series of 9 equidistant points on each ring is replicated twice and the first point is again added as the last point. This leads to a grid of $(3\cdot 9+1) = 28 \times 12$ points which wrap around the muscle volume in cirumferential direction three times. The NURBS surface fitting algorithm is applied on this grid. The resulting NURBS surface also wraps around the muscle three times with the two ends being again not properly fitting to each other. From these three wraps, the middle one is extracted. In the biceps example, this corresponds to restricting the NURBS surface $\bfT(u,v)$ from $(u,v) \in [0,1]^2$ to $(u,v) \in [0.4,0.733]\times [0,1]$.
 
-The result is depicted in \cref{fig:biceps_splines_seam}. The tangents now match very well between the two sides of the NURBS surface. Additionally, the comparison with the inital approach in \cref{fig:biceps_splines_wrong} shows that an artifical bulge at the top of the muscle in the perspective of the visualization is removed. The overall shape of the muscle now looks smoother and more natural. Also, a comparison with the result of the automatic algorithm given in \cref{fig:extraction_result_biceps} shows that the results of our new approach are smoother.
+The result is depicted in \cref{fig:biceps_splines_seam}. The tangents now match very well between the two sides of the NURBS surface. Additionally, the comparison with the inital approach in \cref{fig:biceps_splines_wrong} shows that an artificial bulge at the top of the muscle in the perspective of the visualization is removed. The overall shape of the muscle now looks smoother and more natural. Also, a comparison with the result of the automatic algorithm given in \cref{fig:extraction_result_biceps} shows that the results of our new approach are smoother.
 
 The generated tubular surface has two holes at the top and bottom which prevent it from being an enclosing surface to the muscle belly volume. The borders of these holes each lie in a plane and, thus, the missing surfaces are treated as being planar during the subsequent creation of the 3D meshes.
 
@@ -465,13 +465,13 @@ The steps of a serial algorithm for the generation of a 3D mesh are given in \cr
   \label{alg:serial_algorithm_1}%
 \end{algorithm}%
 
-The idea of the algorithm is to first create 2D meshes with good quality on cross-sectional slices of the muscle volume and then combine them to get a 3D mesh. The algorithm starts with creating the horizontal 2D slices in lines \ref{alg:1.1} and \ref{alg:1.2}. The slices get vertically connected at the end of the algorithm in line \ref{alg:1.5} to create the 3D mesh. This step is visualized in \cref{fig:serial_alg_8}. 
+The idea of the algorithm is to first create 2D meshes with good quality on cross sectional slices of the muscle volume and then combine them to get a 3D mesh. The algorithm starts with creating the horizontal 2D slices in lines \ref{alg:1.1} and \ref{alg:1.2}. The slices get vertically connected at the end of the algorithm in line \ref{alg:1.5} to create the 3D mesh. This step is visualized in \cref{fig:serial_alg_8}. 
 
 Because the goal is to create a hexahedral mesh, the horizontal slices have to consist of quadrilaterals. 
-Decomposing a 2D domain into quadrilaterals is easier for a square or circular shaped domain than for an actual cross-section of the muscle. Therefore, we introduce a separate, square or circular shaped parameter domain for creating the quadrilaterals.
+Decomposing a 2D domain into quadrilaterals is easier for a square or circular shaped domain than for an actual cross section of the muscle. Therefore, we introduce a separate, square or circular shaped parameter domain for creating the quadrilaterals.
 
 \Cref{fig:harmonic_map_solution} outlines the method.
-We start at the upper left of the figure with a triangulation on the cross-sectional slices of the muscle. A mapping from the muscle slices to the parameter space at the right of the figure is computed. We use harmonic maps to ensure a smooth mapping that results in good mesh quality. This first steps corresponds to line \ref{alg:1.3} in \cref{alg:serial_algorithm_1}. Different parameter domains such as unit circle and unit square are considered, as shown in \cref{fig:harmonic_map_solution}. It can also be seen at the upper right that the image of the muscle slice triangulation in the parameter domain is better in the unit circle than in the unit square. Therefore, an investigation of different parameter domains and triangulation schemes is necessary.
+We start at the upper left of the figure with a triangulation on the cross sectional slices of the muscle. A mapping from the muscle slices to the parameter space at the right of the figure is computed. We use harmonic maps to ensure a smooth mapping that results in good mesh quality. This first steps corresponds to line \ref{alg:1.3} in \cref{alg:serial_algorithm_1}. Different parameter domains such as unit circle and unit square are considered, as shown in \cref{fig:harmonic_map_solution}. It can also be seen at the upper right that the image of the muscle slice triangulation in the parameter domain is better in the unit circle than in the unit square. Therefore, an investigation of different parameter domains and triangulation schemes is necessary.
 
 Next, line \ref{alg:1.4} of \cref{alg:serial_algorithm_1} defines a quadrangulation in the parameter space, shown at the lower right of \cref{fig:harmonic_map_solution}. The quadrilateral elements are mapped back to muscle slices where they are needed for the final 3D mesh. An optional smoothing step at the lower left of the figure further improves the mesh quality.
 All steps of the algorithm are described in more detail in the following sections.
@@ -484,7 +484,7 @@ All steps of the algorithm are described in more detail in the following section
 \end{figure}%
 
 \subsection{Slicing of the Geometry}\label{sec:slicing_of_the_geometry}
-The first step in line \ref{alg:1.1} of \cref{alg:serial_algorithm_1} slices the geometry. This means that horizontal \emph{slices} of the cross-sectional area are extracted from the surface mesh. First, the muscle is divided into equidistant positions $z_i, i=1,\dots,n$ along the $z$-axis where the slices are to be extracted. As can be seen in \cref{fig:serial_alg_0}, $n=13$ $z$ coordinates are selected. Next, for every position $z_i$, all surface triangles $T_j$ that intersect the plane $Z_i = \{\bfp=(x,y,z) \mid z=z_i$\} are considered and the intersection lines $P = T_j \cap Z_i$ are computed. The method of computing plane-triangle intersection is described in the following.
+The first step in line \ref{alg:1.1} of \cref{alg:serial_algorithm_1} slices the geometry. This means that horizontal \emph{slices} of the cross sectional area are extracted from the surface mesh. First, the muscle is divided into equidistant positions $z_i, i=1,\dots,n$ along the $z$-axis where the slices are to be extracted. As can be seen in \cref{fig:serial_alg_0}, $n=13$ $z$ coordinates are selected. Next, for every position $z_i$, all surface triangles $T_j$ that intersect the plane $Z_i = \{\bfp=(x,y,z) \mid z=z_i$\} are considered and the intersection lines $P = T_j \cap Z_i$ are computed. The method of computing plane-triangle intersection is described in the following.
 
 Given is a triangle $T$ with points $\bfp^{1},\bfp^2,\bfp^3 ∈ \R^3$ and a value $\hat{z}$, the result is the set of points $P = T ∩ \{\bfp = (\bfp_x,\bfp_y,\bfp_z) \mid \bfp_z=\hat{z}\}$ which corresponds to a line segment $\overline{\bfp^a\bfp^b}$. 
 
@@ -601,7 +601,7 @@ Conforming means that the triangulation uses the given points at the boundary. A
 
 Comparing the result of the second method in \cref{fig:triangulation_1} with the result of the first method in \cref{fig:triangulation_0} shows the better triangulation quality as the triangles all have larger angles.
 
-The third method places one additional point at the center of gravity of the given points. Triangles are constructed by connecting the center point with two adjacent points on the boundary, for all given points. The resulting triangulation resembles a pie chart. For some extreme concave slices, this method also creates triangles that partly lie outside the slice, but this occurs rarely with muscle cross-sections. The advantage of this approach is its simplicity.
+The third method places one additional point at the center of gravity of the given points. Triangles are constructed by connecting the center point with two adjacent points on the boundary, for all given points. The resulting triangulation resembles a pie chart. For some extreme concave slices, this method also creates triangles that partly lie outside the slice, but this occurs rarely with muscle cross sections. The advantage of this approach is its simplicity.
 \Cref{fig:triangulation_2} shows the result for an exemplary slice. In contrast to the first method, the third method creates a valid triangulation despite the concave domain.
 
 \begin{figure}%
@@ -632,7 +632,7 @@ The third method places one additional point at the center of gravity of the giv
 
 \subsection{Harmonic Maps}
 
-Next, harmonic maps are created that allow to smoothly map a given 2D reference mesh onto an actual cross-section of the muscle. The initial application of harmonic maps to meshes used for biomedical simulations is given by \cite{marchandise2010quality} and \cite{Marchandise2_2011}. The authors improve a given, oversampled surface mesh obtained from classical segmentation. This is done by partitioning the surface into multiple mesh partitions of zero genus (i.e., containing no holes) and transforming them to a reference space using harmonic maps. There, controlled remeshing is carried out before the transformation is reversed.
+Next, harmonic maps are created that allow to smoothly map a given 2D reference mesh onto an actual cross section of the muscle. The initial application of harmonic maps to meshes used for biomedical simulations is given by \cite{marchandise2010quality} and \cite{Marchandise2_2011}. The authors improve a given, oversampled surface mesh obtained from classical segmentation. This is done by partitioning the surface into multiple mesh partitions of zero genus (i.e., containing no holes) and transforming them to a reference space using harmonic maps. There, controlled remeshing is carried out before the transformation is reversed.
 
 In our algorithm, harmonic maps are also used for the purpose of generating high quality meshes. In contrast to the literature, the mapping is based on the muscle slices instead of the surface. Also, different parameter domains are investigated.
 
@@ -674,14 +674,14 @@ Corresponding boundary points $\bfx_\text{M,boundary} \in S_M$ and $\bfx_\text{P
 \end{align}
 %
 
-Equations \eqref{eq:def_harmonic_maps} and \eqref{eq:bc_harmonic_maps} describe a boundary value problem of ordinary differential equations for $u$ and $v$. We solve it using the Finite Element Method and the spatial discretization given by the triangulation of the slices.
+Equations \eqref{eq:def_harmonic_maps} and \eqref{eq:bc_harmonic_maps} describe a boundary value problem of ordinary differential equations for $u$ and $v$. We solve it using the finite element method and the spatial discretization given by the triangulation of the slices.
 Depending on the method of triangulation, a different number of degrees of freedom is given. For the first method with the Quickhull algorithm, no degree of freedom is present and no system of equations needs to be solved. Then, the mapping is only a FE interpolation of the boundary mapping.
 For the third method, only one degree of freedom for the center point needs to be computed. The second method has as many degrees of freedom as there are additional points inserted during the Delaunay refinement.
 
 The first step is to compute the prescribed boundary points $\bfx_\text{P,boundary}$ in parameter space. When using the first and third triangulation methods, the boundary points on the slices are  equidistant and therefore the same number of points need to be sampled equidistantly on the boundary $∂\Omega_P$ of the parameter space.
 If the second triangulation method, which potentially adds additional points is used, the same number of points  are created on the boundary $∂\Omega_P$ of the slice as are given on the slice $∂S_M$. The boundary points are created such that the relations of their distances are the same on $∂\Omega_P$ as for the original points on $∂S_M$.
 
-Using the standard procedure of the Finite Element method for $Δu(\bfx) = 0$ on $S_M$ and $u=f(\bfx)$ on $∂S_M$, e.g., as outlined in \cite{Remacle2010}, leads to the weak form with ansatz and test functions $\phi$,
+Using the standard procedure of the finite element method for $Δu(\bfx) = 0$ on $S_M$ and $u=f(\bfx)$ on $∂S_M$, e.g., as outlined in \cite{Remacle2010}, leads to the weak form with ansatz and test functions $\phi$,
 \begin{align}\label{eq:est_fe_w}
     \i{S_M}{} (\nabla u^\top \nabla \phi + \nabla f(\bfx)^\top \nabla \phi) \,\d \bfx = 0 \quad \forall \phi \in \mathcal{H}_0^1.
 \end{align}
@@ -727,7 +727,7 @@ with the vector $\bfu$ of nodal solution values, the vector $\bff$ of nodal Diri
 \end{align*}
 
 By solving \cref{eq:est_fe_system} for $\bfu$, we get the discretized harmonic map $u$.
-The Finite Element formulation and computation for $v$ is analogous and uses the same global stiffness matrices.
+The finite element formulation and computation for $v$ is analog and uses the same global stiffness matrices.
 
 \Cref{fig:harmonic_map_solution0} visualizes the triangulation of $S_M$ and the solutions $u(\bfx)$ and $v(\bfx)$ for a circular parameter domain $\Omega_P$ and an exemplary muscle slice in the first two plots. The color range from bright yellow to dark violet corresponds to increasing values of $u$ and $v$. It can be seen that the $u$ values increase from left to right whereas the $v$ values increase from bottom to top, corresponding to the horizontal and vertical coordinate axes $y_1$ and $y_2$ of $\Omega_P$.
 
@@ -836,14 +836,14 @@ Alternatively, Dirichlet boundary conditions can be specified:
 \end{equation}
 The specification of Dirichlet boundary conditions has the same effect as Neumann boundary conditions and is easier to define. The in and outflows are still orthogonal to the boundary because the prescribed value of $p$ does not vary in the planar boundary.
 
-The boundary value problem given by \cref{eq:fiberest_laplace,eq:fiberest_neumann}  or \cref{eq:fiberest_laplace,eq:fiberest_dirichlet} is discretized by the Finite Element method with linear or quadratic ansatz functions and solved by our software \opendihu{} using the 3D mesh generated from \cref{alg:serial_algorithm_1}. The divergence free gradient field is visualized in \cref{fig:potential_flow}. The gradient values are directly given by the Finite Element discretization. The gradient is elementwise constant for linear ansatz functions and trilinear for quadratic ansatz functions.
+The boundary value problem given by \cref{eq:fiberest_laplace,eq:fiberest_neumann}  or \cref{eq:fiberest_laplace,eq:fiberest_dirichlet} is discretized by the finite element method with linear or quadratic ansatz functions and solved by our software \opendihu{} using the 3D mesh generated from \cref{alg:serial_algorithm_1}. The divergence free gradient field is visualized in \cref{fig:potential_flow}. The gradient values are directly given by the finite element discretization. The gradient is elementwise constant for linear ansatz functions and trilinear for quadratic ansatz functions.
 
-The next step in \cref{alg:serial_algorithm_2} is line \ref{line:2.3}, tracing streamlines through the gradient field. Seed points are selected on the 2D cross-section at the vertical center of the 3D muscle domain. The seed points are sampled regularly on the square or circular parameter domain according to the quadrangulation scheme and then mapped to the respective muscle slice.
+The next step in \cref{alg:serial_algorithm_2} is line \ref{line:2.3}, tracing streamlines through the gradient field. Seed points are selected on the 2D cross section at the vertical center of the 3D muscle domain. The seed points are sampled regularly on the square or circular parameter domain according to the quadrangulation scheme and then mapped to the respective muscle slice.
 Because the 3D mesh was created using harmonic maps, the resulting spacing between the seed points is very uniform.
 
 For the tracing of streamlines, the semi-analytical Pollock's method \cite{Pollock1988} is often used, which was originally developed for fixed 2D finite difference grids. Extensions to irregular 3D grids and for given velocities at nodes instead of fluxes over faces have been formulated \cite{HAEGLAND2007Streamline}. Other, more accurate algorithms exist \cite{cordes1992continuous}, including higher order formulations \cite{juanes2006unified}.
 
-Because modeling muscle fascicles is only a heuristic approach, the generated streamlines do not have to be exceptionally accurate. Therefore, we use a fully numeric method. The streamlines are generated by explicit Euler integration of the gradient vectors in top and bottom direction. A small spatial step width of $h=\num{1e-2}$ is used. Details of the algorithm are given in the next section, \cref{sec:algorithm_for_streamline_tracing}. In line \ref{line:2.4} of \cref{alg:serial_algorithm_2}, all generated streamlines are resampled to obtain the desired widths of the 1D elements.
+Because modeling muscle fascicles is only a heuristic approach, the generated streamlines do not have to be exceptionally accurate. Therefore, we use a fully numerical method. The streamlines are generated by explicit Euler integration of the gradient vectors in top and bottom direction. A small spatial step width of $h=\num{1e-2}$ is used. Details of the algorithm are given in the next section, \cref{sec:algorithm_for_streamline_tracing}. In line \ref{line:2.4} of \cref{alg:serial_algorithm_2}, all generated streamlines are resampled to obtain the desired widths of the 1D elements.
 \Cref{fig:fiber_tracing_streamlines} visualizes the resulting streamlines in the biceps muscle.
 
 \begin{algorithm}
@@ -923,7 +923,7 @@ Another result that can be seen in \cref{fig:tri_triangulations} is the effect o
 The reasons for degenerate triangles in the square parameter domains are not solely the concave muscle slices. Also, the straight sides of the unit square lead to degenerate triangles whenever three boundary points of the same side form a triangle.
 In the example in \cref{fig:tri_triangulations}, this occurs for the square in column (\subref{fig:triu_0}). As can be seen in the triangulated slice in the top row, there are three triangles that are entirely made up of blue boundary points. These triangles get mapped onto the left side of the square parameter domain where they have a vanishing surface area.
 
-The same effect also occurs with the second triangulation method in column (\subref{fig:triu_1}) of \cref{fig:tri_triangulations} where a triangle at the bottom right is comprised of three red boundary points and, therefore, gets mapped to the bottom side of the square. Because of the guaranteed minimum angle in the second triangulation method, this circumstance occurs less often and only for muscle cross-sections where the boundary makes sharp turns, such as the muscle slice in this example. The third triangulation method is guaranteed to avoid this problem as all triangles are connected with the center point.
+The same effect also occurs with the second triangulation method in column (\subref{fig:triu_1}) of \cref{fig:tri_triangulations} where a triangle at the bottom right is comprised of three red boundary points and, therefore, gets mapped to the bottom side of the square. Because of the guaranteed minimum angle in the second triangulation method, this circumstance occurs less often and only for muscle cross sections where the boundary makes sharp turns, such as the muscle slice in this example. The third triangulation method is guaranteed to avoid this problem as all triangles are connected with the center point.
 
 % ------------------
 % parameter space triangulations

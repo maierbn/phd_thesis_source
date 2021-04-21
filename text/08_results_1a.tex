@@ -1,6 +1,6 @@
 
 % ==================
-%\iffalse
+%
 % =-------------------
 
 % --------------------------------
@@ -21,10 +21,10 @@ First, we consider a single instance of the subcellular model of Shorten et al. 
   \label{fig:shorten_over_time}%
 \end{figure}%
 
-In the upper plot, the depolarization and repolarization of the membrane can be seen upon the stimulation at $t=\SI{5}{\ms}$, exhibiting the characteristic action potential shape. The membrane voltage $V_m$ reaches its equilibrium value again at approximately $\SI{5}{\ms}$ after the stimulation. 
+In the upper plot, the depolarization and repolarization of the membrane can be seen upon the stimulation at $t=\SI{5}{\ms}$, exhibiting the characteristic action potential shape. The membrane voltage $V_m$ reaches its equilibrium value approximately $\SI{5}{\ms}$ after the stimulation. 
 The lower plot in \cref{fig:shorten_over_time} shows longer durations for several other variables to return to the equilibrium state. As a consequence, the generated force or active stress of the sarcomeres, indicated by the thick red line in \cref{fig:shorten_over_time}, does not directly decrease after the stimulation is over. For frequent stimulation patterns, the force level would show a smooth progression over time.
 
-The propagation of the action potentials of the Shorten subcellular model can be simulated with the monodomain equation (\cref{eq:monodomain}). \Cref{fig:shorten_03_50} shows according simulation results on a 1D muscle fiber mesh with length \SI{1}{\cm}, discretized to 100 elements. The muscle fiber is stimulated at its center at $t=0$. The upper plot in \cref{fig:shorten_03_50} displays the membrane voltage $V_m$ at time $t=\SI{3.5}{\ms}$. Two action potentials, which move towards both ends of the fiber can be identified. The lower plot shows all other variables, normalized to the value range $[-1,1]$. At the outer ends of the fiber, the variables are still in equilibrium, whereas towards the center, their values change dynamically as the action potentials propagate. 
+The propagation of the action potentials of the Shorten subcellular model can be simulated with the monodomain equation (\cref{eq:monodomain}). \Cref{fig:shorten_03_50} shows simulation results on a 1D muscle fiber mesh with length \SI{1}{\cm}, discretized to 100 elements. The muscle fiber is stimulated at its center at $t=0$. The upper plot in \cref{fig:shorten_03_50} displays the membrane voltage $V_m$ at time $t=\SI{3.5}{\ms}$. Two action potentials, which move towards both ends of the fiber can be identified. The lower plot shows all other variables, normalized to the value range $[-1,1]$. At the outer ends of the fiber, the variables are still in equilibrium, whereas towards the center, their values change dynamically as the action potentials propagate. 
 
 % Shorten over mesh
 \begin{figure}
@@ -34,13 +34,13 @@ The propagation of the action potentials of the Shorten subcellular model can be
   \label{fig:shorten_03_50}%
 \end{figure}%
 
-\Cref{fig:hodgkin_huxley_over_mesh} shows analogous results for a simulation with the subcellular model of Hodgkin and Huxley \cite{Hodgkin1952}. Two action potentials can be seen  at time $t=\SI{4.25}{\ms}$ on a fiber mesh with 200 nodes and of \SI{2}{\cm} length. The system state is fully described by the values of the four variables that are plotted in \cref{fig:hodgkin_huxley_over_mesh}.
+\Cref{fig:hodgkin_huxley_over_mesh} shows analog results for a simulation with the subcellular model of Hodgkin and Huxley \cite{Hodgkin1952}. Two action potentials can be seen  at time $t=\SI{4.25}{\ms}$ on a fiber mesh with 200 nodes and of \SI{2}{\cm} length. The system state is fully described by the values of the four variables that are plotted in \cref{fig:hodgkin_huxley_over_mesh}.
 
 % Hodgkin_Huxley over mesh
 \begin{figure}
   \centering%
   \includegraphics[width=0.9\textwidth]{images/results/basic/hodgkin_huxley_over_mesh.png}%
-  \caption{Simulation of action potential propagation on a 1D mesh with the Hodgkin-Huxley subcellular model for time $t=\SI{4.25}{\ms}$, analogous to \cref{fig:shorten_03_50}.}%
+  \caption{Simulation of action potential propagation on a 1D mesh with the Hodgkin-Huxley subcellular model for time $t=\SI{4.25}{\ms}$, analog to \cref{fig:shorten_03_50}.}%
   \label{fig:hodgkin_huxley_over_mesh}%
 \end{figure}%
 
@@ -61,7 +61,7 @@ The propagation of the action potentials of the Shorten subcellular model can be
 
 \subsection{Simulation of Motoneuron Models}
 
-If an activation model with a pool of motor neurons is considered in the neuromuscular multi-scale model, the transient behavior of motor neurons has to be simulated as well. In our simulations, we use the motor neuron model of Cisi and Kohn \cite{Cisi2008}. The drive parameter of the model is set to a constant value of \SI{0.01}{\volt\per\second}. In consequence, the motor neuron fires with a frequency that depends on the input drive, which in the presented scenario is approximately \SI{25}{\hertz}.
+If an activation model with a pool of motor neurons is considered in the neuromuscular multi-scale model, the transient behavior of motor neurons has to be simulated as well. In our simulations, we use the motor neuron model of Cisi and Kohn \cite{Cisi2008}. The drive parameter of the model is set to a constant value of \SI{0.01}{\volt\per\second}. As a consequence, the motor neuron fires with a frequency that depends on the input drive, which in the presented scenario is approximately \SI{25}{\hertz}.
 
 \Cref{fig:motoneuron_plot} shows the evolution of the different variables of the model over time. Six firing times can be identified. 
 
@@ -73,7 +73,7 @@ If an activation model with a pool of motor neurons is considered in the neuromu
   \label{fig:motoneuron_plot}%
 \end{figure}%
 
-To connect the motor neuron with the fibers of the MU in the simulation, we stimulate the muscle fibers whenever the $V_s$ value of the motor neuron reaches a certain threshold. It is possible to configure a pool of several motor neurons with different model parameters and different input drive values. Each motor neuron can be connected to a different set of fibers, according to the MU to fiber association. In result, the MUs get physiologically activated according to the different firing frequencies of the motor neurons.
+To connect the motor neuron with the fibers of the MU in the simulation, we stimulate the muscle fibers whenever the $V_s$ value of the motor neuron reaches a certain threshold. It is possible to configure a pool of several motor neurons with different model parameters and different input drive values. Each motor neuron can be connected to a different set of fibers, according to the MU to fiber association. As a result, the MUs get physiologically activated according to the different firing frequencies of the motor neurons.
 
 In summary, we showed simulations of the 0D subcellular models of Shorten et al. and Hodgkin and Huxley, simulations of these models together with the 1D conduction model in the monodomain equation, and a simulation of motor neurons. All of these models are given in CellML description and can be further combined with other parts of the multi-scale model, e.g., to simulate surface EMG signals.
 
@@ -84,21 +84,21 @@ In summary, we showed simulations of the 0D subcellular models of Shorten et al.
     ./motoneuron_cisi_kohn ../settings_motoneuron_cisi_kohn.py
     cd out && plot motoneuron*
   \end{lstlisting}
-  This simulation also computes the monodomain equation one muscle fiber that gets activated whenever the motor neuron fires.
+  This simulation also computes the monodomain equation for one muscle fiber that gets activated whenever the motor neuron fires.
 \end{reproduce_no_break}
 %-----
 
 % --------
-%\fi
+%
 % f==============
 
 % ==================
-%\iffalse
+%
 % =-------------------
 
 \section{Simulation of Fiber Based Electrophysiology}\label{sec:results_fiber_based_electrophysiology}
 % ==================
-%\iffalse
+%
 % =-------------------
 
 In this section, we consider surface EMG signals on the upper arm by simulating the activation of the biceps brachii muscle. We use the fiber based multi-scale model consisting of 1D action potential propagation on muscle fibers, potentially involving a 0D subcellular model, and the 3D bidomain model.
@@ -136,7 +136,7 @@ After a fixed number of timesteps, we map the membrane voltage $V_m$ from the 1D
 
 \Cref{fig:fibers_4} also shows the mesh of the muscle surface, which is colored according to the extracellular potential $\phi_e$. It can be seen that the values correlate with the activation state of the underlying fibers. At the two blue colored regions at the surface near the left and right end of the muscle, the $\phi_e$ value is close to its minimum, while the majority of fibers exhibits its maximum positive $V_m$ value. Towards the center of the muscle, the value of $\phi_e$ increases to its maximum, which reflects the hyperpolarization of the muscle fibers behind the propagating action potentials, i.e., the overshoot of the membrane voltage before it reapproaches the equilibrium level.
 
-The lower left corner in \cref{fig:fibers_4} shows the coordinate frame that is used in all simulations. The $z$ axis is approximately  oriented in fiber direction, the $x$ and $y$ axes are oriented in transverse direction and describe cross-sectional planes of the muscle.
+The lower left corner in \cref{fig:fibers_4} shows the coordinate frame that is used in all simulations. The $z$ axis is approximately  oriented in fiber direction, the $x$ and $y$ axes are oriented in transverse direction and describe cross sectional planes of the muscle.
 
 The scenario uses the subcellular model of Hudgkin and Huxley \cite{Hodgkin1952}. The shown image corresponds to the simulation time of $t=\SI{200}{\milli\second}$. The simulation also considers a body fat mesh layer on top of the muscle, which is not visualized in \cref{fig:fibers_4}.
 
@@ -181,7 +181,7 @@ Next, we investigate how the surface EMG signals are influenced by several param
 The first scenario contains 20 MUs that connect to an exponentially increasing number of fibers as shown in \cref{fig:MU_fibre_distribution_37x37_20c_txt_fiber_distribution}. The progression follows the function $y=c\,1.1^x$ for an appropriate constant $c>0$.
 The MU assignment is created using method 1a of the algorithm described in \cref{sec:muscle_fibers_and_motor_units}, where the MU territories are centered around given points, and neighboring fibers are never part of the same MU. 
 
-\Cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution} shows the fibers that are assigned to the smallest and to the largest MU, MU 1 and MU 20. For this visualization, the muscle cross-section is mapped to the large gray square and every colored small square corresponds to one fiber. The purple and red crosses indicate the center of the MU territories for MU 1 and 20, respectively. As a consequence, the fibers of MU 1 are mostly located at the bottom left of the cross-section and the fibers of MU 20 are mostly located in the upper right region of the muscle cross-section.
+\Cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution} shows the fibers that are assigned to the smallest and to the largest MU, MU 1 and MU 20. For this visualization, the muscle cross section is mapped to the large gray square and every colored small square corresponds to one fiber. The purple and red crosses indicate the center of the MU territories for MU 1 and 20, respectively. As a consequence, the fibers of MU 1 are mostly located at the bottom left of the cross section and the fibers of MU 20 are mostly located in the upper right region of the muscle cross section.
 The visualization shows that the fibers of the same MU always have some spacing between them, which is due to the construction of the MU assignment algorithm.
 
 % MU fiber sizes Vm
@@ -216,7 +216,7 @@ The computation of a simulated time span with $t_\text{end}=\SI{100}{\milli\seco
 
 In this scenario, the fibers of MU 1 are stimulated three times within the first $\SI{100}{\milli\second}$ at $\SI{0}{\milli\second}$, $\SI{41.6}{\milli\second}$ and $\SI{83.3}{\milli\second}$.  The innervation zone contains the starting points for the propagating stimulus on every fiber. The scenario positions the neuromuscular junctions randomly with a uniform distribution within the central $\SI{10}{\percent}$ of every muscle fiber. The activated parts of the fibers visible in \cref{fig:mu01a} correspond to the propagated action potentials of the last two stimulations in this scenario.
 
-By comparing the results in \cref{fig:mu01a} with the fiber distribution in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, it can be seen that fibers of MU 1 are located opposite of the outer arm surface, which is at the upper side of the cross-sectional square diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}. The left side of the diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution} corresponds to the lower part of the skin in \cref{fig:mu01a}. This part of the skin is closer to the activated fibers and, thus, the effect on the surface EMG is highest for this region.
+By comparing the results in \cref{fig:mu01a} with the fiber distribution in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, it can be seen that fibers of MU 1 are located opposite of the outer arm surface, which is at the upper side of the cross sectional square diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}. The left side of the diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution} corresponds to the lower part of the skin in \cref{fig:mu01a}. This part of the skin is closer to the activated fibers and, thus, the effect on the surface EMG is highest for this region.
 
 \Cref{fig:mu01b} shows the skin surface as seen from the inside of the arm in \cref{fig:mu01a}. The active region is located at the right side in this image.
 It can be seen that the active region on the skin surface, which results from fibers of the activated MU 1, only spans a small portion of the surface.
@@ -255,7 +255,7 @@ It can be seen that the active region on the skin surface, which results from fi
     \caption{Resulting surface EMG.}%
     \label{fig:mu20b}%
   \end{subfigure}   
-  \caption{Fiber based EMG simulation for the upper arm (biceps) model: Simulation result at $t=\SI{99.5}{\milli\second}$ where only motor unit 20 is activated, analogous to \cref{fig:result_mu1}.}%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model: Simulation result at $t=\SI{99.5}{\milli\second}$ where only motor unit 20 is activated, analog to \cref{fig:result_mu1}.}%
   \label{fig:result_mu20}%
 \end{figure}%
 
@@ -407,7 +407,7 @@ One goal of our simulation studies is to evaluate the required mesh width and th
 Experimental studies reveal a large variation in the number of muscle fibers in a real biceps brachii muscle. MacDougall et al. estimate in vivo numbers for elite and intermediate bodybuilders and untrained control subjects and find comparable numbers for these groups \cite{MacDougall1984}. They determine $278.5 \pm 60.7 \times \num{1e3}$ muscle fibers for the group untrained subjects.
 Thus, we simulate scenarios with different 3D mesh resolutions and numbers of fibers up to the realistic number of \num{273529}. By comparing the obtained simulation results, we can determine if certain effects are only visible for high resolutions.
 
-We consider a scenario with 100 MUs and increase the spatial resolution and the number of processes that execute the computation on the supercomputer Hawk at the High Performance Computing Center Stuttgart. Each compute node consists of two two AMD EPYC 7742 processors with 64 cores each, a clock frequency of \SI{2.25}{\giga\hertz} and \SI{256}{\giga\byte} memory per node.
+We consider a scenario with 100 MUs and increase the spatial resolution and the number of processes that execute the computation on the supercomputer Hawk at the High Performance Computing Center Stuttgart. Each compute node consists of two AMD EPYC 7742 processors with 64 cores each, a clock frequency of \SI{2.25}{\giga\hertz} and \SI{256}{\giga\byte} memory per node.
 
 % fibers mesh
 \begin{figure}
@@ -471,7 +471,7 @@ The number of approximately $\num{3e6}$ fibers in the largest scenario matches t
     \caption{The resulting assignments of MUs to fibers after four parts similar to (a) have been combined, here only shown for six MUs.}%
     \label{fig:mu_assignment_total}%
   \end{subfigure} 
-  \caption{Fiber based EMG simulation for the upper arm (biceps) model; association of MUs to the fibers. The square domain corresponds to a cross-section in the muscle, every colored point is one fiber, and the color corresponds to the MU. }%
+  \caption{Fiber based EMG simulation for the upper arm (biceps) model; association of MUs to the fibers. The square domain corresponds to a cross section in the muscle, every colored point is one fiber, and the color corresponds to the MU. }%
   \label{fig:mu_assignment_100}%
 \end{figure}%
 
@@ -500,7 +500,7 @@ The final association of fibers and MUs is given in \cref{fig:mu_assignment_tota
   \label{tab:emg_study_parameters}%
 \end{table}
 
-The numeric parameters of the simulations are the same as in the last section. The scenario is computed for a simulation time span of $\SI{1}{\s}$. The MUs are activated in a ramp every $\SI{2}{\ms}$ such that all MUs are active after $\SI{200}{\ms}$. The fiber radius
+The numerical parameters of the simulations are the same as in the last section. The scenario is computed for a simulation time span of $\SI{1}{\s}$. The MUs are activated in a ramp every $\SI{2}{\ms}$ such that all MUs are active after $\SI{200}{\ms}$. The fiber radius
 and the stimulation frequency for the MUs are exponentially distributed with basis $1.02$, similar to the MU size. The fiber radius increases from \SI{40}{\micro\meter} to \SI{55}{\micro\meter}, and the stimulation frequency decreases from \SI{24}{\hertz} to \SI{7}{\hertz} for MUs 1 to 100. A random frequency jitter of \SI{10}{\percent} is assumed.
 
 The surface to volume ratio $A_m$ of the membrane is determined by assuming a cylindrical shape and can be computed from the fiber radius $r$ as $A_m = 2/r$ \cite{Klotz2020}. We model \SI{70}{\percent} slow twitch and \SI{30}{\percent} fast twitch fibers. Accordingly, the membrane capacitance $C_m$ is set to $C_m = \SI{0.58}{\micro\farad\per\centi\meter\squared}$ for the 70 smallest MUs and to $C_m = \SI{1}{\micro\farad\per\centi\meter\squared}$ for the 30 largest MUs.
@@ -893,7 +893,7 @@ An optimzation problem yields the separation vectors, with which the innervation
 The gCKC decomposition algorithm is implemented in the DEMUSE software, a commercial, MATLAB based tool that allows automatic and semi-automatic EMG decomposition \cite{demuse}. In collaboration with Lena Lehmann from the \emph{Institute of Signal Processing and System Theory} and the \emph{Institute for Modelling and Simulation of Biomechanical Systems}, we evaluated the performance of gCKC decomposition on simulated surface EMG signals.
 
 % different performance depending on parameters
-We simulate fiber-based electrophysiology scenarios with fat layer and 1369 fibers using the same model parameter as in \cref{sec:effects_of_the_mesh_width_emg}. In the first scenario, a fat layer with thickness of $\SI{1}{\cm}$ is modelled. The simulated EMG signal is sampled in an electrode array with a frequency of $\SI{2}{\kilo\hertz}$ and a grid size of $12 \times 32$ fibers, as shown in \cref{fig:emg_video}.
+We simulate fiber based electrophysiology scenarios with fat layer and 1369 fibers using the same model parameter as in \cref{sec:effects_of_the_mesh_width_emg}. In the first scenario, a fat layer with thickness of $\SI{1}{\cm}$ is modelled. The simulated EMG signal is sampled in an electrode array with a frequency of $\SI{2}{\kilo\hertz}$ and a grid size of $12 \times 32$ fibers, as shown in \cref{fig:emg_video}.
 
 \Cref{fig:emg_20mus-50s-old2} shows the firing times of the 20 MUs in the first \SI{10}{\second}. The different MUs are initially activated every \SI{100}{\ms} to generate the shown \say{ramp} activation pattern, which later helps to identify the recovered MUs from the decomposition.  From $t=\SI{1.8}{\second}$ on, all MUs fire with their respective constant frequency, subject to jitter values of $\SI{10}{\percent}$.
 
@@ -953,7 +953,7 @@ The recovered MUs were identified in the set of simulated MUs by matching the  a
 
 In this scenario, the association of fibers with MUs followed an exponential MU size progression with a basis of approximately $1.2$, as shown in \cref{fig:oldmus_progression}. The smallest MU contained two fibers and the largest MU had 256 fibers. The method 1 described in \cref{sec:method1_assignment} was used to generate the association between fibers and MUs.
 
-\Cref{fig:oldmus_2d} depicts the location of the four MUs that were detected by DEMUSE. The detected MUs have the indices 16, 18, 19 and 20 and correspond to four of the five largest MUs. It can be seen that MUs 18 to 20 are located mainly in the upper half of the muscle cross-section, in proximity to the electrode array at the top of the diagram.
+\Cref{fig:oldmus_2d} depicts the location of the four MUs that were detected by DEMUSE. The detected MUs have the indices 16, 18, 19 and 20 and correspond to four of the five largest MUs. It can be seen that MUs 18 to 20 are located mainly in the upper half of the muscle cross section, in proximity to the electrode array at the top of the diagram.
 The MU with the most fibers, MU 20, was detected by the decomposition algorithm even though it is located at the lower left of diagram at a large distance to the skin surface.
 
 Two further scenarios were simulated with the same parameters as the first scenario in \cref{fig:emg_20mus-50s-old2}, but instead with 50 and 100 MUs. In these datasets, DEMUSE was able to detect 8 and 12 MUs, which corresponds to \SI{16}{\percent} and \SI{12}{\percent}. 
@@ -1075,7 +1075,7 @@ In future work, the decomposition performance of the GRU networks could be impro
  %MU 19 from gru: FP: 65, TP: 53, FN: 51 -> RoA: 0.3136094674556213
  %MU 20 from gru: FP: 71, TP: 18, FN: 56 -> RoA: 0.12413793103448276
 
-In conclusion, the gCKC algorithm is able to decompose artifically generated surface EMG signals. This means that our simulation can be used to evaluate the performance of EMG decomposition algorithms.
+In conclusion, the gCKC algorithm is able to decompose artificially generated surface EMG signals. This means that our simulation can be used to evaluate the performance of EMG decomposition algorithms.
 
 The number of detected MUs depends on the relation between MU sizes and on the distance of the MU territories to the electrodes. If the variance of the sizes of the activated MUs is small, such as in \cref{fig:newmus_progression}, also MUs that are far away from the electrodes are detected. If, in the opposite case, the sizes of active MUs are distributed over a large range such as in \cref{fig:oldmus_progression}, only the largest MUs are detectable.
 
@@ -1084,7 +1084,7 @@ In addition, the amount of adipose tissue between the electrodes and the muscle 
 The rate of agreement of the determined pulse trains of the DEMUSE software was above $\SI{95}{\percent}$ in most of the cases. Correspondingly, the rate of false positives was low.
 A time shift between the recovered times and the ground truth data was observed for some pulse trains, which can be explained with the delay from first activation to the onset of the EMG signal. As a result, the time shift was corrected for the rate of agreement measurement.
 
-A proof-of-concept implementation of GRU networks showed promising performance for predicting MU firing times from artifical EMG recordings. 
+A proof-of-concept implementation of GRU networks showed promising performance for predicting MU firing times from artificial EMG recordings. 
 The GRU network predicted firing times also for MUs that were not detected by the gCKC algorithm, however the rate of agreement was low for these MUs.
 In future work, the GRU decomposition method has to be refined to be comparative to the gCKC algorithm.
 
@@ -1196,16 +1196,16 @@ In future work, the GRU decomposition method has to be refined to be comparative
 % t=100ms
 
 % ----------
-%\fi
+%
 % ===========f
 
 % ==================
-%\iffalse
+%
 % =-------------------
 
 \subsection{Simulation of Electrophysiology with a Phenomenological Fiber Model}\label{sec:sim_rosenfalck}
 
-Instead of the previously presented numeric model of action potential propagation on the muscle fibers, the respective physiological process can also be described with a phenomenological approach.
+Instead of the previously presented numerical model of action potential propagation on the muscle fibers, the respective physiological process can also be described with a phenomenological approach.
 
 The model formulated by Rosenfalck \cite{Rosenfalck1969} describes the action potential shape on a 1D domain by the following function:
 %
@@ -1219,29 +1219,29 @@ The model formulated by Rosenfalck \cite{Rosenfalck1969} describes the action po
 \begin{figure}
   \centering%
   \includegraphics[width=0.6\textwidth]{images/results/application/rosenfalck_function.pdf}%
-  \caption{Simulation of EMG signals on the upper arm; analytic model by Rosenfalck of an action potential shape on a 1D fiber.}%
+  \caption{Phenomological muscle fiber model: analytic model by Rosenfalck of an action potential shape on a 1D fiber.}%
   \label{fig:rosenfalck_function}%
 \end{figure}
 \Cref{fig:rosenfalck_function} shows the graph of this function. The resulting value of $G$ specifies the membrane voltage in millivolts. The coordinate $z=x+v\,t$ depends on the distance $x$ to the neuromuscular junction on the fiber, the conduction velocity $v$ and the time $t$ after the last stimulation. In our simulation, we use the proposed propagation velocity of \SI{4}{\meter\per\second}.
 
-The advantage of using an analytic model is its fast calculation runtime compared with the numeric model. On the downside, such a model cannot accurately describe fatigue effects in tetanic stimulations or the action potential shape changing properties of more advanced subcellular models.
+The advantage of using an analytic model is its fast calculation compared with the runtime of the numerical model. On the downside, such a model cannot accurately describe fatigue effects in tetanic stimulations or the action potential shape changing properties of more advanced subcellular models.
 
-One use case of such an analytic model is to study the effect of muscle fiber arrangements in a muscle volume on the surface EMG signal. In this case, the exact, possibly time-varying shapes of the motor unit action potentials are less important than the location and orientation of the fibers.
+One use case of an analytic model is to study the effect of muscle fiber arrangements in a muscle volume on the surface EMG signal. In this case, the exact, possibly time-varying shapes of the motor unit action potentials are less important than the location and orientation of the fibers.
 We provide an examplary scenario in OpenDiHu, which uses the Rosenfalck model on multiple 1D muscle fibers that are embedded in a 3D domain. As in the previous sections, the 3D bidomain model given by \cref{eq:bidomain1} is coupled to the fibers and used to simulate EMG recordings on the surface. 
 
-In addition to the simplified model of action potential propagation, we use a simplified description of the muscle geometry. \Cref{fig:custom_geometry} shows the artifical geometry, which is constructed by rotating a transformed sine curve around the $z$ axis. 
+In addition to the simplified model of action potential propagation, we use a simplified description of the muscle geometry. \Cref{fig:custom_geometry} shows the artificial geometry, which is constructed by rotating a transformed sine curve around the $z$ axis. 
 Our program embeds the fibers automatically inside the volume and orients them according to specified spherical coordinates. The orientation angles, the number of fibers and the spacings between the fibers can be adjusted in the Python settings script of the simulation.
 
 \begin{figure}
   \centering%
   \includegraphics[width=\textwidth]{images/results/application/custom_geometry.png}%
-  \caption{Simulation of EMG signals on the upper arm; artifical muscle geometry with a phenomenological model of action potential propagation. The upper image shows the muscle fibers, colored according to the transmembrane potential $V_m$. The lower image shows the extracellular potential $\phi_e$ on the surface.
+  \caption{Simulation of EMG signals on the upper arm; artificial muscle geometry with a phenomenological model of action potential propagation. The upper image shows the muscle fibers, colored according to the transmembrane potential $V_m$. The lower image shows the extracellular potential $\phi_e$ on the surface.
   This scenario can be computed very fast and can, e.g., be useful to investigate the effects of different fiber orientations.}%
   \label{fig:custom_geometry}%
 \end{figure}
 
 \Cref{fig:custom_geometry} shows the location of the fibers inside the artificial muscle belly in the upper image and a simulation result of muscular activity  at $t=\SI{15}{\ms}$ in the lower image. The resulting EMG signal can be seen on the surface.
-This simulation scenario provides means to quickly study electrophysiology and generation of EMG for a generic muscle. Solving the model only consists of evaluations of the Rosenfalck function and repeated computation of the 3D model, but no further costly computations of numeric electrophysiology models. Moreover, no mesh file has to be generated and loaded, which simplifies the handling of the scenario.
+This simulation scenario provides means to quickly study electrophysiology and generation of EMG for a generic muscle. Solving the model only consists of evaluations of the Rosenfalck function and repeated computation of the 3D model, but no further costly computations of numerical electrophysiology models. Moreover, no mesh file has to be generated and loaded, which simplifies the handling of the scenario.
 
 \begin{reproduce_no_break}
   The simulation in \cref{fig:custom_geometry} can be started as follows.
@@ -1249,12 +1249,12 @@ This simulation scenario provides means to quickly study electrophysiology and g
     cd $\$$OPENDIHU_HOME/examples/electrophysiology/fibers/analytical_fibers_emg/build_release
     ./analytical_fibers_emg ../settings_analytical_fibers_emg_custom_geometry.py geometry_round.py
   \end{lstlisting}
-  The options can be set in the \code{variables/geometry_round.py} settings file. Other artifical geometries are available by using other scripts under \code{variables}.
+  The options can be set in the \code{variables/geometry_round.py} settings file. Other artificial geometries are available by using other scripts under \code{variables}.
 \end{reproduce_no_break}
 
 \subsection{Conclusion}
 
-In the present section, surface EMG signals were computed using the fiber based electrophysiology model. We showed, how the qualitative nature of the signals depends on the spatial distribution of the MUs and that the thickness of the body fat layer influences the smoothness of the recorded EMG signals. Furthermore, we investigated the effect of the mesh resolution and the number of fibers in the simulation. The results showed that only a high mesh resolution can resolve the small features in the EMG signal  on the skin surface, which result from fiber action potentials. The number of these features in the result increased with the mesh width and, thus, the two finest discretizations with \num{77e3} \num{274e3} fibers yielded the most accurate results. As a consequence, High Performance Computing simulations are required, if an accurate 2D surface EMG signal should be computed.
+In the present section, surface EMG signals were computed using the fiber based electrophysiology model. We showed, how the qualitative nature of the signals depends on the spatial distribution of the MUs, and that the thickness of the body fat layer influences the smoothness of the recorded EMG signals. Furthermore, we investigated the effect of the mesh resolution and the number of fibers in the simulation. The results showed that only a high mesh resolution can resolve the small features in the EMG signal  on the skin surface, which result from fiber action potentials. The number of these features in the result increased with the mesh width and, thus, the two finest discretizations with \num{77e3} \num{274e3} fibers yielded the most accurate results. As a consequence, High Performance Computing simulations are required, if an accurate 2D surface EMG signal should be computed.
 
 Further studies with EMG decomposition algorithms showed another use case of our fiber based surface EMG simulations: They can be used as a validation tool for existing decomposition algorithms and they can serve as a data generator to develop novel, data based decomposition methods. The decomposition software DEMUSE was tested and we quantified the rate of agreement of its predictions with our simulation. Similarly, we evaluated a neural network based approach and compared its performance on the simulated data with the previous method.
 

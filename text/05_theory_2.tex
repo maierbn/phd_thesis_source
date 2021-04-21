@@ -1,6 +1,6 @@
 \section{Discretization of the Electrophysiology Models}\label{sec:discretization}
 
-The partial and ordinary differential equations described in the last section contain spatial and temporal derivatives that have to be discretized to be solved numerically. For temporal derivatives, we use timestepping schemes, for spatial derivatives, we employ the Finite Element Method.
+The partial and ordinary differential equations described in the last section contain spatial and temporal derivatives that have to be discretized to be solved numerically. For temporal derivatives, we use timestepping schemes, for spatial derivatives, we employ the finite element method.
 
 In this section, we describe the discretization of the subcellular and electrophysiology models that were presented in the last section. A description of the discretization of the solid mechanics model follows in \cref{sec:discretization_mechanics}.
 
@@ -113,13 +113,13 @@ Next, the spatial derivatives in the diffusion part $\mathcal{L}_2$ of the split
 
 \subsection{Discretization of the Diffusion and Laplace Equations}\label{sec:discretization_diffusion}
 
-For the spatial discretization, we first derive the Finite Element formulation for a generic parabolic diffusion equation in a domain $\Omega\subset\R^d$ of arbitrary dimensionality $d$. Then, specialization to 1D yields the formulation for the monodomain equation. Considering a 3D domain, the formulation is an important building block for the discretization of the multidomain model. This is shown in more detail in a later section, \cref{sec:discretization_multidomain}
+For the spatial discretization, we first derive the finite element formulation for a generic parabolic diffusion equation in a domain $\Omega\subset\R^d$ of arbitrary dimensionality $d$. Then, specialization to 1D yields the formulation for the monodomain equation. Considering a 3D domain, the formulation is an important building block for the discretization of the multidomain model. This is shown in more detail in a later section, \cref{sec:discretization_multidomain}
 
 We consider the following diffusion problem in the variable $u: \Omega \times [0,t_\text{end}] \to \R$ with Neumann boundary conditions on a part of the boundary $\Gamma_f \subset ∂\Omega$ with normal vector $\bfn$:
 \begin{align*}
   \p{u}{t} &= \div(\bfsigma \grad u), &(\bfsigma\,\grad u) \cdot \bfn &= f \quad \text{on }\Gamma_f, & (\bfsigma\,\grad u) \cdot \bfn &= 0 \quad \text{on } ∂Ω\backslash \Gamma_f.
 \end{align*}
-We discretize the temporal derivative using the Crank-Nicolson scheme as in \cref{eq:crank_nicolson}. Following the procedure of the Galerkin Finite Element formulation with the Hilbert space $H^1_0(\Omega)$ of test functions $\phi$ that are zero on the boundary, we arrive at the following weak form:
+We discretize the temporal derivative using the Crank-Nicolson scheme as in \cref{eq:crank_nicolson}. Following the procedure of the Galerkin finite element formulation with the Hilbert space $H^1_0(\Omega)$ of test functions $\phi$ that are zero on the boundary, we arrive at the following weak form:
 %
 \begin{align*}
   \ds\int_Ω \big(\theta\,∇\cdot(\bfsigma ∇ \bfu^{(i+1)})  + (1-\theta)\,∇\cdot(\bfsigma ∇ u^{(i)})\big)\,\phi \,\d\bfx &&\\
@@ -209,9 +209,9 @@ Both iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_crank_nicol
 The required inversions of the mass matrix cannot be carried out explicitly as the inversion would fill in numerous matrix entries and eliminate the sparse structure. This is not feasible for highly resolved meshes with a large number of degrees of freedom. Instead, \emph{mass lumping} is used, where the mass matrix $\bfM$ is approximated by a diagonal matrix with diagonal entries equal to the row sums in $\bfM$ \cite{Hinton1976}. Thus, multiplication with the inverse mass matrix corresponds to a rescaling of columns by the inverse lumped diagonal entries.
 
 \subsection{Discretization of the Multidomain Model}\label{sec:discretization_multidomain}
-With the prerequisites of temporal discretization in \cref{sec:discretization_monodomain} and the Finite Element formulation of a diffusion equation in \cref{sec:discretization_diffusion}, we can now discretize the multidomain model. Since this has not been previously done in literature using the Finite Element Method, the subsequent derivation is more detailed.
+With the prerequisites of temporal discretization in \cref{sec:discretization_monodomain} and the finite element formulation of a diffusion equation in \cref{sec:discretization_diffusion}, we can now discretize the multidomain model. Since this has not been previously done in literature using the finite element method, the subsequent derivation is more detailed.
 
-The first multidomain equation given in \cref{eq:multidomain1} yields the following form after applying the Finite Element derivation in \cref{eq:diffusion_helper2}:
+The first multidomain equation given in \cref{eq:multidomain1} yields the following form after applying the finite element derivation in \cref{eq:diffusion_helper2}:
 %
 \begin{align}\label{eq:multidomain_discretization_helper_multidomain1}
   \big(\bfK_{\bfsigma_e + \bfsigma_i} + \bfB_{\bfsigma_e + \bfsigma_i}\big)\,\bfphi_{e} +  \s{k=1}{N_\text{MU}} f_r^k \big(\bfK_{\bfsigma_i^k} + \bfB_{\bfsigma_i^k}\big)\,\bfV_m^k = 0.  
@@ -279,7 +279,7 @@ It can be seen that the terms involving $\bfp^k$ cancel out, such that we get:
 If the multidomain description is used without body fat domain, the boundary condition in \cref{eq:multidomain_bc2} is used and the right hand side in \cref{eq:multidomain_discretization_helper4} vanishes. If a body domain is considered, the right hand side interacts with the body domain model, which is considered in the next section.
 
 Adding boundary conditions to the discretization of the second multidomain equation proceeds using \cref{eq:multidomain_discretization_helper_multidomain2,eq:multidomain_discretization_helper_multidomain3}.
-Carrying out the analogous procedure to the first multidomain equation, we plug in \cref{eq:boundary_relation} to yield the matrix equation
+Carrying out the analog procedure to the first multidomain equation, we plug in \cref{eq:boundary_relation} to yield the matrix equation
 \begin{align}\label{eq:multidomain_discretization1}
   \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb
 \end{align}
@@ -306,7 +306,7 @@ In summary, \cref{eq:multidomain_discretization_helper4} with $\bfq=\bfzero$ cou
 \subsection{Discretization of the Multidomain Model for Surface EMG}\label{sec:discretization_body_domain}
 
 To discretize the multidomain model with the electric potential $\phi_b$ in the body domain, we extend the formulation without body domain in \cref{sec:discretization_multidomain}.
-The body domain adds the electric potential $\phi_b$ to the vector of unknowns, for which the system has to be solved. As before, we discretize the field using Finite Element ansatz functions and solve for the vector $\bfphi_b$ of degrees of freedom.
+The body domain adds the electric potential $\phi_b$ to the vector of unknowns, for which the system has to be solved. As before, we discretize the field using finite element ansatz functions and solve for the vector $\bfphi_b$ of degrees of freedom.
 
 The model for $\phi_b$ is the Laplace equation given in \cref{eq:body} with homogeneous Neumann boundary conditions given in \cref{eq:body_domain_bc3}. According to \cref{eq:discretization_laplace}, the discretized equation is given by
 \begin{align}\label{eq:discretized_body}
@@ -341,7 +341,7 @@ We write the discretized and coupled multidomain equations as a linear system of
   \end{array}\right].
 \end{align}
 
-The vector of unknowns consists of the degrees of freedom in the Finite Element formulation at the next timestep $(i+1)$ of the transmembrane voltage $\bfV_m^{k,(i+1)}$, the extracellular potential $\bfphi_{e}^{(i+1)}$, the body potential $\bfphi_{b}^{(i+1)}$, and additionally the flux $\bfq^{(i+1)}$ over the shared boundary $\Gamma_M$ of the muscle and the body domain, which was defined in \cref{eq:definition_q}. For illustration purposes, only one compartment, $k=1$, for one MU, $N_\text{MU}=1$, is considered.
+The vector of unknowns consists of the degrees of freedom in the finite element formulation at the next timestep $(i+1)$ of the transmembrane voltage $\bfV_m^{k,(i+1)}$, the extracellular potential $\bfphi_{e}^{(i+1)}$, the body potential $\bfphi_{b}^{(i+1)}$, and additionally the flux $\bfq^{(i+1)}$ over the shared boundary $\Gamma_M$ of the muscle and the body domain, which was defined in \cref{eq:definition_q}. For illustration purposes, only one compartment, $k=1$, for one MU, $N_\text{MU}=1$, is considered.
 
 We refer to parts of the matrix in \cref{eq:discretized_multidomain_body} as block rows and block columns according to the given block-structure.
 
@@ -412,13 +412,13 @@ Because of the implicit formulation, electric conduction in the intracellular an
 
 The fiber based electrophysiology model consists of multiple independent 1D fiber domains, where the monodomain equation \cref{eq:monodomain} is solved. The transmembrane voltage $V_m$ is then mapped to a 3D mesh of the muscle domain and unidirectionally coupled to the first bidomain equation \cref{eq:bidomain1}. The first bidomain equation is solved for the extracellular potential $\phi_e$ and possibly the electric potential $\phi_b$ in the body fat domain, which corresponds to EMG signals on the skin surface.
 
-The temporal discretization of the monodomain equation was described in \cref{sec:discretization_monodomain}. The diffusion term within the operator splitting requires a spatial discretization for which we use the Finite Element Method. This 1D diffusion equation is given as
+The temporal discretization of the monodomain equation was described in \cref{sec:discretization_monodomain}. The diffusion term within the operator splitting requires a spatial discretization for which we use the finite element method. This 1D diffusion equation is given as
 \begin{align}\label{eq:discretization_diffusion_term}
   \p{V_m}{t} = \dfrac{\sigma_\text{eff}}{A_m\,C_m} \p{V_m}{x}{2}.
 \end{align}
 It can be solved using a timestepping scheme such as the implicit Euler method to obtain time-discrete values $V_m^{(i)}, i=1,2,\dots$ for the transmembrane potential. The discretization leads to the matrix equation given in \cref{eq:diffusion_helper2} and to the variants presented in \cref{sec:mass_lumping} if mass lumping is used. In the stiffness and mass matrices, the anisotropic conduction tensor is replaced by the constant scalar prefactor $c := \sigma_\text{eff}/(A_m\,C_m)$ of the spatial second derivative in \cref{eq:discretization_diffusion_term}.
 
-The first bidomain equation \cref{eq:bidomain1} is a 3D Poisson problem in terms of the unknown extracellular potential $\phi_e$. According to \cref{eq:discretization_laplace}, the Finite Element discretization is given by%
+The first bidomain equation \cref{eq:bidomain1} is a 3D Poisson problem in terms of the unknown extracellular potential $\phi_e$. According to \cref{eq:discretization_laplace}, the finite element discretization is given by%
 \begin{align*}
   \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= - \bfB_{\Gamma_f}\bff + \textbf{rhs},
 \end{align*}
@@ -461,7 +461,7 @@ with the system matrix $\bfA$ for a single fiber given according to \cref{eq:lum
 \end{align*}
 \Cref{eq:discretized_fibers_1} solves the diffusion part of the operator splitting in \cref{eq:monodomain_operator_splitting}. After the values $\bfV_{m}^{j,(i+1)}$ for the timestep $(i+1)$ are computed on the 1D fiber meshes, the homogenized vector $\bfV_{m,3D}^{(i+1)}$ in the 3D mesh of the muscle domain $\Omega_M$ is obtained by the prolongation operation $\bfP$ in \cref{eq:discretized_fibers_2}. The homogenized vector is used in the right hand side of the bidomain model in \cref{eq:discretized_fibers_3}, which computes the discretized extracellular potential $\bfphi_e^{(i+1)}$.
 
-\Cref{eq:discretized_fibers_3} can be extended by adding a body fat layer $\Omega_B$ and the corresponding model for the electric potential $\phi_b^{(i+1)}$. Then, the vector of unknowns contains the degrees of freedom for both $\phi_e^{(i+1)}$ and $\phi_b^{(i+1)}$. The stiffness matrix $\bfK_{\bfsigma_i + \bfsigma_e}$ is obtained by integrating over both meshes in $\Omega_M \cup \Omega_B$. Only in the elements of the Finite Element mesh for $\Omega_B$, the conduction tensors are redefined as $\bfsigma_i = \bfzero$ and $\bfsigma_e = \bfsigma_b$. This sets the right hand side of \cref{eq:discretized_fibers_3} to zero in $\Omega_B$ and the solution $\phi_b$ in harmonic according to the model in \cref{eq:body}. The coupling conditions \cref{eq:body_domain_coupling} between $\phi_e$ and $\phi_b$ and the outer Neumann boundary conditions \cref{eq:body_domain_bc3} for $\phi_b$ are satisfied automatically by this approach.
+\Cref{eq:discretized_fibers_3} can be extended by adding a body fat layer $\Omega_B$ and the corresponding model for the electric potential $\phi_b^{(i+1)}$. Then, the vector of unknowns contains the degrees of freedom for both $\phi_e^{(i+1)}$ and $\phi_b^{(i+1)}$. The stiffness matrix $\bfK_{\bfsigma_i + \bfsigma_e}$ is obtained by integrating over both meshes in $\Omega_M \cup \Omega_B$. Only in the elements of the finite element mesh for $\Omega_B$, the conduction tensors are redefined as $\bfsigma_i = \bfzero$ and $\bfsigma_e = \bfsigma_b$. This sets the right hand side of \cref{eq:discretized_fibers_3} to zero in $\Omega_B$ and the solution $\phi_b$ in harmonic according to the model in \cref{eq:body}. The coupling conditions \cref{eq:body_domain_coupling} between $\phi_e$ and $\phi_b$ and the outer Neumann boundary conditions \cref{eq:body_domain_bc3} for $\phi_b$ are satisfied automatically by this approach.
 
 The comparison between the discretized multidomain model in \cref{eq:discretized_multidomain_body2} with the discretized fiber based model in \cref{eq:discretized_fibers} reveals several differences. Whereas the multidomain description consists of a single coupled linear system for electric conduction in the intracellular, extracellular and body domains, the formulations are only unidirectionally coupled in the fiber based description. While the multidomain model always computes the EMG signals on the skin surface in every timestep, the corresponding model in the fiber based description can be solved with larger timestep widths, using subcycling for the action potential propagation model.
 
@@ -469,8 +469,8 @@ As can be seen in \cref{eq:discretized_fibers_1}, the system matrix is decoupled
 
 \subsection{Summary of Domains and Meshes}
 
-Various Finite Element meshes occur in the formulation of the multi-scale model.
-If the fiber based description is used, the description requires Finite Element meshes for the 1D fiber domains $\Omega_f^j$ for ${j=1,\dots,n}$. Further meshes are needed for the 3D muscle domain $\Omega_M$ and for the 3D body domain $\Omega_B$. The meshes for $\Omega_M$ and $\Omega_B$ share nodes on their common boundary $\Gamma_M$. The fiber meshes are embedded in the muscle domain. Their nodes do not necessarily have to coincide with the nodes of the muscle mesh.
+Various finite element meshes occur in the formulation of the multi-scale model.
+If the fiber based description is used, the description requires finite element meshes for the 1D fiber domains $\Omega_f^j$ for ${j=1,\dots,n}$. Further meshes are needed for the 3D muscle domain $\Omega_M$ and for the 3D body domain $\Omega_B$. The meshes for $\Omega_M$ and $\Omega_B$ share nodes on their common boundary $\Gamma_M$. The fiber meshes are embedded in the muscle domain. Their nodes do not necessarily have to coincide with the nodes of the muscle mesh.
 
 The subcellular model is solved at locations $\Omega_s^i$ for $i=1,\dots,m$. These locations are the nodes of the fiber meshes for the fiber based description and the nodes of the muscle mesh for the multidomain description. We therefore have the inclusion $\Omega_s^i \subset \Omega_f^j \subset \Omega_M$.
 
@@ -478,6 +478,6 @@ For the solid mechanics model, the unified 3D domain $\Omega = \Omega_M \cup \Om
 
 Often, the required accuracy of the electrophysiology model is higher than for the continuum mechanics model, such that differently resolved meshes can be used. To facilitate data mapping, the nodes of the mechanics mesh should be chosen as subset of the nodes of the electrophysiology meshes.
 
-%We spatially discretize the variables in \cref{eq:multi-domain1,eq:multi-domain2,eq:body,eq:bc1,eq:bc2,eq:bc3,eq:monodomain,eq:bidomain,eq:subcellular} using the Finite Element method with linear ansatz functions. The subcellular points $\Omega_s^i$ are placed at the nodes of the muscle domain mesh $\Omega_M$ for the multi-domain model and at the nodes of the fiber domain meshes $\Omega_f^j$ for the fiber based model. The fibers $\Omega_f^j$ are embedded in the muscle domain $\Omega_M$, however, the nodes of their meshes do not necessarily coincide. The nodes on the internal boundary $\Gamma_M$ between $\Omega_M$ and $\Omega_B$ are shared between the meshes of $\Omega_M$ and $\Omega_B$.
+%We spatially discretize the variables in \cref{eq:multi-domain1,eq:multi-domain2,eq:body,eq:bc1,eq:bc2,eq:bc3,eq:monodomain,eq:bidomain,eq:subcellular} using the finite element method with linear ansatz functions. The subcellular points $\Omega_s^i$ are placed at the nodes of the muscle domain mesh $\Omega_M$ for the multi-domain model and at the nodes of the fiber domain meshes $\Omega_f^j$ for the fiber based model. The fibers $\Omega_f^j$ are embedded in the muscle domain $\Omega_M$, however, the nodes of their meshes do not necessarily coincide. The nodes on the internal boundary $\Gamma_M$ between $\Omega_M$ and $\Omega_B$ are shared between the meshes of $\Omega_M$ and $\Omega_B$.
 
 % ---

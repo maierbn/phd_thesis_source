@@ -1,11 +1,11 @@
 
 \section{Discretization and Solution Approach for the Solid Mechanics Model}\label{sec:discretization_mechanics}
 
-After the formulation of linear and nonlinear models for solid mechanics in \cref{sec:model_muscle_contraction}, this section discusses their discretization and derives Finite Element formulations for the linearized model and the nonlinear model, both static and dynamic.
-We also describe the algorithms used to obtain a numeric solution.
+After the formulation of linear and nonlinear models for solid mechanics in \cref{sec:model_muscle_contraction}, this section discusses their discretization and derives finite element formulations for the linearized model and the nonlinear model, both static and dynamic.
+We also describe the algorithms used to obtain a numerical solution.
 
 The implementation of a solver for generic hyperelastic descriptions is an interdisciplinary endeavour, if parallel execution is exploited and the model is integrated in a multi-scale biomechanics model.
-Therefore, we give a comprehensive derivation of the formulas used to numerically solve the equations matching the implementation in OpenDiHu, such that the implementation is also comprehensible for readers that are not specialized in the field of continuum mechanics. More details on Finite Element discretizations for solid mechanics models can be found in the literature \cite{zienkiewicz1977finite,SUSSMAN1987357,zienkiewicz2005finite}.
+Therefore, we give a comprehensive derivation of the formulas used to numerically solve the equations matching the implementation in OpenDiHu, such that the implementation is also comprehensible for readers that are not specialized in the field of continuum mechanics. More details on finite element discretizations for solid mechanics models can be found in the literature \cite{zienkiewicz1977finite,SUSSMAN1987357,zienkiewicz2005finite}.
 
 % ---x---
 \subsection{Discretization of the Linear Model}\label{sec:linearized_mechanics_model}
@@ -26,7 +26,7 @@ In summary, \cref{eq:linearized_helper1} is equivalent to the following equilibr
 \begin{align}
   \ds\int_\Omega \bfsigma(\bfu) : δ\bfeps\,\d\bfx &= \ds\int_{∂\Omega} \bft : δ\bfu\,\d \bfx &&\forall δ\bfu \in H^1_0(\Omega).\label{eq:linearized_helper1b}
 \end{align}
-The vectors contain the degrees of freedom of a Finite Element discretization. The operator \say{:} denotes the component-wise product. 
+The vectors contain the degrees of freedom of a finite element discretization. The operator \say{:} denotes the component-wise product. 
 
 Often, it is easier to write the equations in component form. Indices $a,b,c,\dots$ are used to specify a dimension index in $\{1,\dots,d\}$. The letters $L,M \in \{1,\dots,N\}$ denote indices over degrees of freedom in a mesh with $N$ nodes. The Einstein sum convention is used where repeated indices implicitly indicate summation, except when the indices are in parantheses.
 Thus, the right hand side $\bff$ of \cref{eq:linearized_helper1b} with ansatz functions $\phi^L$ and the degrees of freedom $δu_a^L$ of $δ\bfu$ can be written as:
@@ -63,7 +63,7 @@ Next, we discuss the discretization of the nonlinear solid mechanics model, whic
 We begin with the discretization of a static, incompressible problem, where no velocities have to be considered.
 The discretization is extended to the dynamic model in \cref{sec:solver_dynamic_hyperelasticity_fe_model}.
 
-%In \cref{sec:linearized_mechanics_model}, the ingredients of a solid mechanics model derivation consisting of equilibrium, material and kinematic equations were outlined and used to derive a linearized description. For the nonlinear model, the material equations were discussed in \cref{sec:material_modeling} and the stress and elasticity tensors were derived in \cref{sec:stress_and_elasticity}. This section uses these building blocks and presents the full derivation for the generic hyperelastic Finite Element model.
+%In \cref{sec:linearized_mechanics_model}, the ingredients of a solid mechanics model derivation consisting of equilibrium, material and kinematic equations were outlined and used to derive a linearized description. For the nonlinear model, the material equations were discussed in \cref{sec:material_modeling} and the stress and elasticity tensors were derived in \cref{sec:stress_and_elasticity}. This section uses these building blocks and presents the full derivation for the generic hyperelastic finite element model.
 As described in \cref{sec:assumptions_and_model_equations}, the equilibrium equation can be formulated in terms of the \emph{Hellinger-Reissner energy functional} $\Pi_L(\bfu,p) = \Pi_\text{int}(\bfu,p) + \Pi_\text{ext}(\bfu)$
 given in \cref{eq:hellinger_reissner}.
 It consists of the external energy functional, given in \cref{eq:pi_ext} as
@@ -159,7 +159,7 @@ The resulting nonlinear system of equations is given as follows:
 
 \subsection{Computation of the Stress Tensor and the Elasticity Tensor}\label{sec:stress_and_elasticity}
 
-In the Newton solver, we need to compute the stress tensor $\bfS$ and its derivative $\C$, called the elasticity tensor, given the current displacement field $\bfu$. The relations are defined by the material model given by the strain energy function. This sections presents the algorithm how to obtain the values of $\bfS$ and $\C$ from the displacements $\bfu$. While the derivation is formulated in terms of the displacement function $\bfu$, it is also valid for the Finite Element discretization, i.e., using the vector $\hat{\bfu}$  of degrees of freedom instead.
+In the Newton solver, we need to compute the stress tensor $\bfS$ and its derivative $\C$, called the elasticity tensor, given the current displacement field $\bfu$. The relations are defined by the material model given by the strain energy function. This sections presents the algorithm how to obtain the values of $\bfS$ and $\C$ from the displacements $\bfu$. While the derivation is formulated in terms of the displacement function $\bfu$, it is also valid for the finite element discretization, i.e., using the vector $\hat{\bfu}$  of degrees of freedom instead.
 
 Following \cref{eq:material_model_helper1}, the second Piola-Kirchhoff stress $\bfS$ is given by a the derivative of the strain energy function $\Psi$ with respect to $\bfC$.
 For the representation using the invariants, the chain rule has to be used:%
@@ -288,7 +288,7 @@ The upper right part equals the transposed lower left block such that the system
 % dynamic hyperelasticity (6.9.2)
 
 
-The dynamic model is given by the system of nonlinear equations in \cref{eq:mechanics_dynamic}. In addition to the spatial discretization with Finite Elements, we need to discretize the temporal derivatives of the displacement field $\bfu$ and the velocity field $\bfv$.
+The dynamic model is given by the system of nonlinear equations in \cref{eq:mechanics_dynamic}. In addition to the spatial discretization with finite elements, we need to discretize the temporal derivatives of the displacement field $\bfu$ and the velocity field $\bfv$.
 The time derivatives are discretized to timesteps $t=i\cdot \dt$ with an implicit Euler scheme:
 \begin{align*}
   \dot{\bfu} &\leadsto \dfrac1{\dt}(\bfu^{(i+1)} - \bfu^{(i)}), & \dot{\bfv} &\leadsto \dfrac1{\dt}(\bfv^{(i+1)} - \bfv^{(i)}).
@@ -332,7 +332,7 @@ The other non-zero entries are given by
 
 Note that in the dynamic problem, the system matrix is unsymmetric. It would be symmetric if the entries $\bfl_{δ\bfu,Δ\bfv}$ and $\bfl_{δ\bfv,Δ\bfu}^\top$ were be the same. This would be the case for a density of one, $\rho_0 = 1$, and if the term $\int_{\Omega} \phi_{b}^M \phi_{a}^L \,\d V$ would be replaced by $\delta_{ab}\delta^{LM}$. The second condition means that a lumped mass matrix would be used where the diagonal entries are set to the row sums of the original matrix.
 
-We discretize the Finite Element solution in space by \emph{Taylor-Hood} elements. This type of element uses quadratic ansatz functions $\phi$ for the displacements and velocities and linear ansatz functions $\psi$ for the Lagrange multiplier or hydrostatic pressure $p$ on a 3D hexahedral mesh. This choice was proven to exhibit no locking \cite{zienkiewicz2005finite}. Locking is a phenomenon of degraded convergence of the Finite Element method for solid mechanics problems and occurs for improper discretization schemes.
+We discretize the finite element solution in space by \emph{Taylor-Hood} elements. This type of element uses quadratic ansatz functions $\phi$ for the displacements and velocities and linear ansatz functions $\psi$ for the Lagrange multiplier or hydrostatic pressure $p$ on a 3D hexahedral mesh. This choice was proven to exhibit no locking \cite{zienkiewicz2005finite}. Locking is a phenomenon of degraded convergence of the finite element method for solid mechanics problems and occurs for improper discretization schemes.
 
 For a compressible material, the incompressibility constraint which is the last equation in the systems \cref{eq:mechanics_static_system} or \cref{eq:mechanics_dynamic} is removed. Instead of solving for the pressure $p$ as a Lagrange multiplier, the value is given by the constitutive model as described in \cref{sec:material_modeling}. In consequence, the system matrix of the linear system of equations that is solved in the Newton iterations has a smaller size for compressible materials.
 
@@ -346,7 +346,7 @@ Moreover, the size varies depending on whether the static or the dynamic problem
 
 In any case, the mechanics model can be linked to the subcellular model by defining the active stress as given in \cref{eq:active_stress_term}. Since the active stress does not depend directly on the passive behavior, the active stress term can be added as a constant to the passive stress term. This constant also has no influence on the jacobian matrix $\bfJ$. As the subcellular model depends on the fiber stretch $\lambda_f = \sqrt{I_4}$, there is a feedback loop between the subcellular and the solid mechanics model.
 
-Details on the connection to the subcellular model as well as details on the numeric solution schemes are given in \cref{sec:solid_mechanics_solver}.
+Details on the connection to the subcellular model as well as details on the numerical solution schemes are given in \cref{sec:solid_mechanics_solver}.
 
 %, including the solver schemes, how initial values are chosen and measures to speed up convergence such as load stepping are discussed in the implementation and result sections.
 %To speed up the computation, the initial guess of the vector of unknowns in every timestep is linearly extrapolated from the two previous timesteps.

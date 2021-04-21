@@ -198,7 +198,7 @@ Using the second bidomain equation, \cref{eq:bidomain2}, we get the expression
   \div\big(\sigma_\text{eff} \,\grad(V_m)\big) = A_m\big(C_m\,\p{V_m}{t} + I_\text{ion}(V_m,\bfy)\big) \quad \text{on }\Omega_f^j.
 \end{align*}
 %
-The effective conductivity $\sigma_\text{eff}$ combines the intra and extracellular conductivities, $\sigma_i$ and $\sigma_e$, analogous to a parallel circuit:
+The effective conductivity $\sigma_\text{eff}$ combines the intra and extracellular conductivities, $\sigma_i$ and $\sigma_e$, analog to a parallel circuit:
 \begin{align*}
   \sigma_\text{eff} := \sigma_i \parallel \sigma_e = \dfrac{\sigma_i\,\sigma_e}{\sigma_i + \sigma_e}.
 \end{align*}
@@ -237,7 +237,7 @@ The multidomain model is an alternative approach to the description based on the
 
 The multidomain equations generalize the two bidomain equations and allow to take into account multiple MUs by defining a separate intracellular space for each MU. Thus, at every spatial point $\bfx \in \Omega_M$ one extracellular and  $N_\text{MU}$ intracellular domains or compartments coexist, where $N_\text{MU}$ is the number of MUs. As before, the extracellular domain has the electric potential $\phi_e$ and  conductivity tensor $\bfsigma_e$. For each compartment $k = 1, \dots, N_\text{MU}$, a separate electric potential $\phi_i^k$, transmembrane voltage $V_m^k = \phi_i^k-\phi_e$, conductivity tensor $\bfsigma_i^k$, surface to volume ratio of the membrane $A_m^k$ and membrane capacitance $C_m^k$ are defined.
 
-Analogous to the fibers of a MU that exhibit different densities at different locations in the muscle, each compartment occupies different locations within the domain to a different extent. This is described by the relative occupancy factor $f_r^k: \Omega_M \to [0,1]$ for MU $k$. The factors have different values in the domain according to the presence of the MU at the respective location. At every point, their sum is one, $\sum_{k=1}^{N_\text{MU}} f_r^k = 1$, if all MUs should be considered or less than one if the effect of remainder MUs that will not be activated in the simulation scenario is neglected.
+Analog to the fibers of a MU that exhibit different densities at different locations in the muscle, each compartment occupies different locations within the domain to a different extent. This is described by the relative occupancy factor $f_r^k: \Omega_M \to [0,1]$ for MU $k$. The factors have different values in the domain according to the presence of the MU at the respective location. At every point, their sum is one, $\sum_{k=1}^{N_\text{MU}} f_r^k = 1$, if all MUs should be considered or less than one if the effect of remainder MUs that will not be activated in the simulation scenario is neglected.
 
 The first multidomain equation is similar to the first bidomain equation \cref{eq:bidomain1} and balances the current flow between the extracellular space and the weighted sum of all intracellular spaces:%
 \begin{align}\label{eq:multidomain_helper1}

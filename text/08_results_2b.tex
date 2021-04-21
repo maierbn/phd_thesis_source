@@ -4,7 +4,7 @@
 
 
 % ==============
-%\iffalse
+%
 % --------------
 \section{Parallel Strong Scaling and Comparison with OpenCMISS Iron}\label{sec:parallel_strong_scaling_opencmiss}
 
@@ -14,21 +14,21 @@ After the performance of different optimization types has been evaluated for a s
 For a fair comparison, we take care to exactly compute the same scenario with both software packages. The simulated scenario uses the same model as in the previous section: fiber based electrophysiology with the monodomain model given by \cref{eq:monodomain} on every muscle fiber, including the 1D electric conduction along the fibers and the 0D subcellular model of Shorten et al. \cite{Shorten2007}. The fibers are coupled with the bidomain equation in \cref{eq:bidomain1}, which is solved on the 3D domain to yield the EMG signals. No fat layer is considered in this study, as this feature is not available in our OpenCMISS implementation.
 
 The simulated scenario contains 81 fibers with \num{1480} elements each, a coarse 3D mesh with \num{775} nodes and \num{6718591} degrees of freedom in total. 
-We use our improved OpenCMISS setup, which is discussed in \cref{sec:opencmiss_numeric_improvements} and employs the second order numerical time stepping schemes and the improved linear solvers:
+We use our improved OpenCMISS setup, which is discussed in \cref{sec:opencmiss_numeric_improvements} and employs the second order numerical timestepping schemes and the improved linear solvers:
 The monodomain model is solved using a Strang operator splitting with Crank-Nicolson and Heun's methods. A conjugate-gradient solver is used for the linear system of the bidomain equation.
 
 We use timestep widths of $\dt_\text{0D}=\SI{1e-4}{\milli\second}$, $\dt_\text{1D}=\dt_\text{splitting}=\SI{5e-4}{\milli\second}$, $\dt_\text{3D}=\SI{1e-1}{\milli\second}$ and a simulation end time of $t_\text{end}=\SI{2}{\milli\second}$. 
-During this time, the resulting values are written to output files 20 times after every $\SI{0.1}{\milli\second}$. 
+During this time, the resulting values are written to output files after every $\SI{0.1}{\milli\second}$. 
 The fibers are assigned to 10 MUs that are activated in a ramp every $\SI{0.2}{\milli\second}$ from $t=\SI{0}{\milli\second}$ to $t=\SI{1.8}{\milli\second}$.
 
 Within the strong scaling study, the same scenario is computed with different numbers of processes, ranging from one to 18 in this case. We use the cubes partitioning strategies presented in \cref{sec:opencmiss_parallel_partitioning} in both OpenCMISS and OpenDiHu.
 The study is executed on the same Intel Core i9-10980XE processor as the studies in the previous section.
 We measure the total user time of the simulation program, which includes the runtimes for initialization, computation of system matrices and the duration of file output. However, the majority of the runtime in this scenario is spent in the numerical solvers.
 
-In the OpenDiHu program, we use the setup corresponding to the \code{fast-vc-apx-e} scenario in the last section with enabled approximation of log and exp functions. We measure the runtime of two variants. The first variant computes all subcellular models and performs the same work as the OpenCMISS Iron implementation. In the second variant, the adaptive computation described in \cref{sec:adaptive_computation_for_fiber_based} is enabled, which only computes fibers that have been activated and the subcellular models that are not in equilibrium. For the chosen ramp activation pattern of the MUs, the second variant computes only approximately half of the subcellular model instances.
+In OpenDiHu, we use the setup corresponding to the \code{fast-vc-apx-e} scenario in the last section with enabled approximation of log and exp functions. We measure the runtime of two variants. The first variant computes all subcellular models and performs the same work as the OpenCMISS Iron implementation. In the second variant, the adaptive computation described in \cref{sec:adaptive_computation_for_fiber_based} is enabled, which only computes fibers that have been activated and the subcellular models that are not in equilibrium. For the chosen ramp activation pattern of the MUs, the second variant computes approximately only half of the subcellular model instances.
 
 % weak scaling runtime
-\begin{figure}[H]
+\begin{figure}
   \centering%
   \begin{subfigure}[t]{0.49\textwidth}%
     \centering%
@@ -45,19 +45,19 @@ In the OpenDiHu program, we use the setup corresponding to the \code{fast-vc-apx
     \caption{Memory consumption per process at the end of the program.}%
     \label{fig:0_strong_scaling_memory}%
   \end{subfigure}   
-  \caption{Strong scaling study of fiber based electrophysiology and comparison between the implementations of OpenDiHu and OpenCMISS Iron. The same scenario is solved with both software packages and for increasing numbers of processes from one to 18.}%
+  \caption{Electrophysiology Solver in OpenDiHu: Strong scaling study of fiber based electrophysiology and comparison between the implementations of OpenDiHu and OpenCMISS Iron. The same scenario is solved with both software packages and for increasing numbers of processes from one to 18.}%
   \label{fig:0_strong_scaling}%
 \end{figure}%
 
 \Cref{fig:0_strong_scaling_runtime} shows the resulting runtimes in this study. It can be seen that the runtime decreases monotonically for higher numbers of processes for all three tested simulations. The OpenDiHu implementation exhibits lower runtimes for all numbers of processes. The reduction in runtime between OpenCMISS Iron and the first OpenDiHu variant is given by a factor of approximately 100 with a maximum factor of 186 for 4 processes. In addition, the second OpenDiHu variant approximately halves the runtimes as expected, because only half of the subcellular models are computed.
 
-In summary, the improvements to the EMG simulation software that are described in this work include the numeric improvements in \cref{sec:opencmiss_numeric_improvements} with a speedup of 2.5, the software improvements with a speedup of over 100 and a measured maximum of 186, and the algorithmic improvement of adaptive 0D model computations, whose speedup factor is scenario dependent. In the present study, the two latter factors, i.e., the speedup between the improved OpenCMISS Iron software and the OpenDiHu scenario with adaptive computation, give a combined maximum speedup of 363 for the measurement with two processes.
+In summary, the improvements to the EMG simulation software, which are described in this work, include the numerical improvements in \cref{sec:opencmiss_numeric_improvements} with a speedup of 2.5, the software improvements with a speedup of over 100 and a measured maximum of 186, and the algorithmic improvement of adaptive 0D model computations, whose speedup factor is scenario dependent. In the present study, the two latter factors, i.e., the speedup between the improved OpenCMISS Iron software and the OpenDiHu scenario with adaptive computation, give a combined maximum speedup of 363 for the measurement with two processes.
 
 Moreover, the computation of this study was also carried out with the \code{gpu} optimization type in OpenDiHu, using the same GPU as in the last section. One process was started on the CPU, which offloaded the computational work of the 0D and 1D problems to the GPU. However, the GPU memory was not sufficient for the computation of all 81 fibers. Therefore, we only compute one fiber, but keep the rest of the simulation scenario equal to the other measurements. The req square in \cref{fig:0_strong_scaling_runtime} shows the measured runtime multiplied by the factor 81 for compensation. As in the studies of the previous section, the computation on the GPU has higher runtimes than the computation on the CPU.
 
-As the memory consumption was a limiting factor for parallelism in OpenCMISS Iron as shown in \cref{sec:opencmiss_memory}, we also measure the memory consumption per process at the end of the simulation in both software frameworks. \Cref{fig:0_strong_scaling_memory} shows the result for OpenCMISS and OpenDiHu. The two variants of OpenDiHu have the same memory consumption characteristics, as the only difference between the variant is that the computation of certain subcellular models is switched on or off. 
+As the memory consumption was a limiting factor for parallelism in OpenCMISS Iron as shown in \cref{sec:opencmiss_memory}, we also measure the memory consumption per process at the end of the simulation in both software frameworks. \Cref{fig:0_strong_scaling_memory} shows the result for OpenCMISS and OpenDiHu. The two variants of OpenDiHu have the same memory consumption characteristics, as the only difference between the variants is that the computation of certain subcellular models is switched on or off. 
 
-It can be seen that the increased parallelism leads to a reduction of the used memory per process in both softwares. OpenDiHu approaches a saturation value of $\SI{200}{\mebi\byte}$ for eight and more processes. For OpenCMISS, the memory consumption is higher, but reduces more quickly also for higher numbers of processes. However, the relation between the two curves increases from a value of $\SI{6.168}{\gibi\byte} : \SI{1.078}{\gibi\byte} GB = 5.7$ for one process to $\SI{2.054}{\gibi\byte} : \SI{0.202}{\gibi\byte} = 10.2$ for 18 processes.
+It can be seen that the increased parallelism leads to a reduction of the used memory per process in both softwares. OpenDiHu approaches a saturation value of $\SI{200}{\mebi\byte}$ for eight and more processes. For OpenCMISS, the memory consumption is higher, but reduces more quickly also for higher numbers of processes. However, the relation between the two curves increases from a value of $\SI{6.168}{\gibi\byte} : \SI{1.078}{\gibi\byte} = 5.7$ for one process to $\SI{2.054}{\gibi\byte} : \SI{0.202}{\gibi\byte} = 10.2$ for 18 processes.
 
 As a result, this study shows a large memory efficiency improvement in OpenDiHu compared with the OpenCMISS Iron software. For OpenCMISS, the memory scaling in this parallel strong scaling scenario is not as bad as in the parallel weak scaling considered in \cref{fig:opencmiss_memory} in \cref{sec:opencmiss_memory}. However, the total memory for all processes still increases to approximately $18 \cdot \SI{2.054}{\gibi\byte} \approx \SI{37}{\gibi\byte}$, which is higher than the main memory capacity of the used processor.
 
@@ -65,26 +65,26 @@ As a result, this study shows a large memory efficiency improvement in OpenDiHu 
 \begin{figure}[H]
   \centering%
   \includegraphics[width=0.8\textwidth]{images/results/studies/0_roofline.pdf}%
-  \caption{Roofline model of the strong scaling study. The blue, green and orange data points correspond to the runs of the OpenCMISS and OpenDiHu variants, as given in \cref{fig:0_strong_scaling_runtime}.}%
+  \caption{Electrophysiology model in OpenDiHu: Roofline model of the strong scaling study. The blue, green and orange data points correspond to the runs of the OpenCMISS and OpenDiHu variants, as given in \cref{fig:0_strong_scaling_runtime}.}%
   \label{fig:0_roofline}%
 \end{figure}%
 
 \subsection{Roofline Model}\label{sec:roofline_model}
 To further investigate the computational behavior, we also present the performance measurements of the solvers in a roofline model. 
-\Cref{fig:0_roofline} shows the resulting diagram with the data points of all CPU runs in strong scaling study of \cref{fig:0_strong_scaling_runtime}. The $x$ axis shows the computational intensity of the simulation, which is measured in double-precision floating-point operations (FLOP) per byte of data that is transferred between the CPU and the main memory and caches. The $y$ axis measures the performance in GFLOPs per second. The highest possible performance is given by the peak performance of the processor, which is $P_\text{max} = \SI{715}{\giga\flop\per\second}$ in this case. Furthermore, the performance is limited by the amount of payload data that can be transferred to the CPU over the memory bus. The memory bandwidths of the L1, L2 and L3 caches and the main memory (DRAM) correspond to the shown diagonals in \cref{fig:0_roofline} and form the \say{roofline} of the model.
+\Cref{fig:0_roofline} shows the resulting diagram with the data points of all CPU runs in the strong scaling study of \cref{fig:0_strong_scaling_runtime}. The $x$ axis shows the computational intensity of the simulation, which is measured in double-precision floating-point operations (FLOP) per byte of data that are transferred between the CPU and the main memory and caches. The $y$ axis measures the performance in GFLOPs per second. The highest possible performance is given by the peak performance of the processor, which is $P_\text{max} = \SI{715}{\giga\flop\per\second}$ in this case. Furthermore, the performance is limited by the amount of payload data that can be transferred to the CPU over the memory bus. The memory bandwidths of the L1, L2 and L3 caches and the main memory (DRAM) correspond to the shown diagonals in \cref{fig:0_roofline} and form the \say{roofline} of the model.
 
 We measured the memory bandwidths of the Caches and the peak performance using the Empirical Roofline Tool \cite{ert}. The main memory bandwidth was retrieved from the processors' documentation.
 
 To locate the simulation runs of the study in the roofline model, we used hardware counters to count floating point instructions and memory access operations.
-For the runs with OpenCMISS Iron and OpenDiHu, we started the hardware counters \SI{90}{\second}, respectively \SI{15}{\second} after the begin of the simulation such that the initialization phase was not included in the measured data. The counters were kept active for 15, 30 and 60 seconds, depending on the expected runtimes of the different runs. The counted numbers of events were then divided by the acquisition time to yield the required rates of memory bandwith and floating-point performance.
+For the runs with OpenCMISS Iron and OpenDiHu, we started the hardware counters \SI{90}{\second}, respectively \SI{15}{\second} after the beginning of the simulation, such that the initialization phase was not included in the measured data. The counters were kept active for 15, 30 and 60 seconds, depending on the expected runtimes of the different runs. The counted numbers of events were then divided by the acquisition time to yield the required rates of memory bandwith and floating-point performance.
 
 \Cref{fig:0_roofline} shows the measured points in the roofline model corresponding to the curves in \cref{fig:0_strong_scaling_runtime}. All data points are located at the right hand side of the memory bandwidth limits, which indicates that the simulation is compute bound. 
 The highest computational intensity and performance are both achieved by the OpenDiHu variant given in orange color, which computes all fibers and subcellular models regardless of their activation state. The values for the adaptive variant given in green color are lower, as less computations are performed and a higher portion of the runtime and compute power is spent on determining which subcellular model has to be computed. The two metrics are lowest for the OpenCMISS runs given in blue color.
 
-The roofline diagram shows the data points for all parallel runs and the number of processes is noted in the plot. The run with 18 processes is the most meaningful, as this means that the whole processor is employed. The largest performance for the OpenDiHu run in orange color has a value of \SI{180.157}{\giga\flop\per\second} which corresponds to \SI{25.2}{\percent} of the peak performance. Qualitatively speaking, this is a very good value. The rated \SI{100}{\percent} of peak performance for processors are practically unreachable. For example, the peak performance assumes only fused multiply add operations and requires a power management that maximized the employment of the boost clock frequency in the processor. These conditions are not fulfilled in our computations of realistic models and scenarios.
+The roofline diagram shows the data points for all parallel runs and the number of processes is noted in the plot. The run with 18 processes is the most meaningful, as this means that the whole processor is employed. The largest performance for the OpenDiHu run in orange color has a value of \SI{180.157}{\giga\flop\per\second} which corresponds to \SI{25.2}{\percent} of the peak performance and is a very good value. The rated \SI{100}{\percent} of peak performance for processors are practically unreachable. For example, the peak performance assumes only fused multiply add operations and requires a power management that maximizes the employment of the boost clock frequency in the processor. These conditions are not fulfilled in our computations of realistic models and scenarios.
 The performance values of the runs with 18 processes for the green and blue data points are \SI{13.9}{\percent} and \SI{6.0}{\percent}, respectively. 
 
-Furthermore, the measurements with lower process counts can also be assessed with a scaled down peak performance according to the fraction of used cores. However, this assessment is slightly off, as, e.g., the frequency boost can constantly activate for a processor that only does computations on a single core. The performance for the OpenDiHu run with one process given by the orange point is \SI{11.966}{\giga\flop\per\second}, which corresponds to \SI{30.1}{\percent} of the fractional peak performance of $\SI{715}{\giga\flop\per\second}/18 = \SI{39.7}{\giga\flop\per\second}$.
+Furthermore, the measurements with lower process counts can also be assessed with a scaled down peak performance according to the fraction of used cores. However, this assessment is slightly off, as, e.g., the CPU can use a higher clock frequency, if only the heat dissipation of one active core has to be compensated. The performance for the OpenDiHu run with one process given by the orange point is \SI{11.966}{\giga\flop\per\second}, which corresponds to \SI{30.1}{\percent} of the fractional peak performance of $\SI{715}{\giga\flop\per\second}/18 = \SI{39.7}{\giga\flop\per\second}$.
 
 % Crank-Nicolson
 % scenario_name: vc-1-ws,  n_subdomains: 1 1 1,  n_ranks: 1,  end_time: 2.0 
@@ -184,16 +184,16 @@ Furthermore, the measurements with lower process counts can also be assessed wit
 %-----
 \section{Performance Measurements on the GPU}\label{sec:performance_gpu}
 
-In the previous two sections, measurements were made on a GPU, which produced worse results than the CPU code. The used GPU was a NVIDIA GeForce RTX 3080, a high-end consumer graphics card, which mainly targets graphics rendering perfomance using single-precision operations. The ratio between double-precision and single-precision performance is 1:64. However, single-precision calculations were found to not yield a stable subcellular model solver, as the precision is too low. 
+In the previous two sections, measurements were made on a GPU, which produced worse results than the CPU code. The used GPU was an NVIDIA GeForce RTX 3080, a high-end consumer graphics card, which mainly targets graphics rendering perfomance using single-precision operations. The ratio between double-precision and single-precision performance is 1:64. However, single-precision calculations were found to not yield a stable subcellular model solver, as the precision is too low. 
 % quadro: https://www.techpowerup.com/gpu-specs/quadro-gp100.c2994
 % RTX: https://www.techpowerup.com/gpu-specs/geforce-rtx-3080.c3621
 
-In this section, we conduct two studies, where the first study uses the same GPU hardware as before. The second study is executed on a NVIDIA Quadro GP100 GPU, which has a double-precision to single-precision performance ratio of 1:2.
+In this section, we conduct two studies, where the first study uses the same GPU hardware as before. The second study is executed on an NVIDIA Quadro GP100 GPU, which has a double-precision to single-precision performance ratio of 1:2.
 The rated double-precision performance of the Quadro card is \SI{5.168}{\tera\flops}, which is ten times higher than the value of \SI{465.1}{\giga\flops} for the GeForce card. 
 
 The CPU hardware connected with the Quadro card contains a dual-socket CPU with two 12-core Intel Xeon Silver 4116 processors with \SI{2.1}{\giga\hertz} base frequency and \SI{3}{\giga\hertz} maximum turbo frequency, yielding a total core count of 24, and being equipped with main memory of \SI{188}{\gibi\byte}. 
 
-Computational hardware can be compared by its average thermal design power dissipation (TDP). For the studies in the previous two sections, the TDP values for the used CPU and GPU were \SI{165}{\watt} and \SI{320}{\watt}. For the second study in the current section, the values for CPU and GPU are $2\cdot \SI{85}{\watt} = \SI{170}{\watt}$ and \SI{235}{\watt}. This indicates that the employed hardware is in a comparable electrical power range, however the GPU is more specialized for our double-precision needs.
+Computational hardware can be compared by its average thermal design power dissipation (TDP). For the studies in the previous two sections, the TDP values for the used CPU and GPU were \SI{165}{\watt} and \SI{320}{\watt}. For the second study in the current section, the values for CPU and GPU are $2\cdot \SI{85}{\watt} = \SI{170}{\watt}$ and \SI{235}{\watt}. This indicates that the employed hardware is in a comparable electrical power range. However, the GPU is more specialized for our double-precision needs.
 
 \subsection{Strong Scaling with the GPU for the Hodgkin-Huxley Model}\label{sec:strong_scaling_gpu_hodgkin_huxley}
 
@@ -202,14 +202,14 @@ we now additionally consider parallelism on the CPU.
 
 The first study compares the strong scaling with and without GPU acceleration. The runs with GPU acceleration partition the computational domain as usual to multiple subdomains, which are handled by dedicated processes on the CPU. The solution of the 0D and 1D models is performed on the GPU, and every process independently transfers its part of the computational work to the same GPU. The 3D model is fully solved using MPI parallelism on the CPU. We compare this setup with a pure CPU based strong scaling study.
 
-The scenario solves the fiber-based electrophysiology model without fat layer with 169 fiber meshes of 1480 elements each and a 3D mesh with 1984 elements. The subcellular model of Hodgkin and Huxley \cite{Hodgkin1952} is used. The computation uses the same numeric parameters as in the first study in \cref{sec:evaluation_of_code_gen}, a 3D solver timestep of $\dt_\text{3D}=\SI{4e-01}{\ms}$ and a simulation end time of $\SI{10}{\ms}$. Moreover, the setup equals the settings of the \code{fast-vc} and \code{fast-gpu} scenarios in \cref{sec:evaluation_of_code_gen}.
+The scenario solves the fiber based electrophysiology model without fat layer with 169 fiber meshes of 1480 elements each and a 3D mesh with 1984 elements. The subcellular model of Hodgkin and Huxley \cite{Hodgkin1952} is used. The computation uses the same numerical parameters as in the first study in \cref{sec:evaluation_of_code_gen}, a 3D solver timestep of $\dt_\text{3D}=\SI{4e-01}{\ms}$ and a simulation end time of $\SI{10}{\ms}$. Moreover, the setup equals the settings of the \code{fast-vc} and \code{fast-gpu} scenarios in \cref{sec:evaluation_of_code_gen}.
 
 \begin{figure}%
   \centering%
   \begin{subfigure}[t]{0.45\textwidth}%
     \centering%
     \includegraphics[height=52mm]{images/results/studies/16_hodgkin_huxley_gpu.pdf}%
-    \caption{Study where every process on the CPU offloads the 0D and 1D model computations to the GPU.}%
+    \caption{Study, where every process on the CPU offloads the 0D and 1D model computations to the GPU.}%
     \label{fig:16_hodgkin_huxley_gpu}%
   \end{subfigure}
   \,
@@ -219,20 +219,22 @@ The scenario solves the fiber-based electrophysiology model without fat layer wi
     \caption{CPU-only study.}%
     \label{fig:16_hodgkin_huxley_cpu}%
   \end{subfigure}   
-  \caption{Strong scaling study with and without GPU usage. A scenario with 169 fibers and the subcellular model of Hodgkin and Huxley is simulated.}%
+  \caption{Electrophysiology model in OpenDiHu: Strong scaling study with and without GPU usage. A scenario with 169 fibers and the subcellular model of Hodgkin and Huxley is simulated. The vertical bars indicate the standard deviation of the runtimes in the set of measurements, which consists of multiple runs and the values of all processors in every run.}%
   \label{fig:16_hodgkin_huxley_cpu_gpu}%
 \end{figure}%
 
 \Cref{fig:16_hodgkin_huxley_cpu_gpu} presents the results for the two studies with and without GPU usage. \Cref{fig:16_hodgkin_huxley_cpu} shows the runtimes of different parts in the simulation of the CPU-only strong scaling study. It can be seen that the 0D computations account for most of the runtime, followed by the 1D computations. The 0D computations involve the solution of the Hodgkin-Huxley subcellular model. The 1D computations consists of solving 1D problems in serial using the Thomas algorithm. The 3D solver time is negligible as the 3D problem is only solved every \num{13333} timesteps. The 3D solution is only required right before the VTK file output step for the EMG values. This step occurs every $\SI{0.4}{\ms}$, which corresponds to an EMG sampling frequency of \SI{2.5}{\kilo\hertz}.
 The runtimes for initialization and the file output itself are also very low compared with the runtimes of the computations.
 
-\Cref{fig:16_hodgkin_huxley_cpu} shows that the total runtime decreases with higher process counts in this strong scaling study. The parallel efficiency $E_p = T_1/(T_p\,p)$ reaches $E_p=\SI{65.2}{\percent}$ for $p=18$ processes. The plot shows that the 0D and 1D solvers and the VTK file output have good strong scaling properties, whereas the initialization and the solution of the 3D model contain serial code portions that prohibit optimal scaling.
+\Cref{fig:16_hodgkin_huxley_cpu} shows that the total runtime decreases with higher process counts in this strong scaling study. The parallel efficiency $E_p = T_1/(T_p\,p)$ reaches $E_p=\SI{65.2}{\percent}$ for $p=18$ processes. We observe that the 0D and the 1D solver and the VTK file output have good strong scaling properties, whereas the initialization and the solution of the 3D model contain serial code portions that prohibit optimal scaling.
 
-\Cref{fig:16_hodgkin_huxley_gpu} shows the analoguous study, where the 0D and 1D computations are offloaded to the GPU. The runtimes of these individual model parts are not explicitely measured, only the total runtime is known.
+\Cref{fig:16_hodgkin_huxley_gpu} shows the analog study, where the 0D and 1D computations are offloaded to the GPU. The runtimes of these individual model parts are not explicitely measured, only the total runtime is known.
 
 The plot shows an increasing total runtime for higher CPU parallelism. 
 The runtimes for initialization, file output and the 3D solver are equal to the CPU-only study.
-The increasing total runtime shows that the GPU is better at solving the complete 0D and 1D problems given by one CPU process than the case where the same computation is split to several parts and provided by different MPI processes. The benefit of using multiple CPU processes to interface the GPU in this study is, thus, only that the VTK output functionality gets parallelized. However, this effect is negligible.
+The increasing total runtime shows that the GPU is better at solving the complete 0D and 1D problems 
+given by one CPU process than at the same computation, but split to several parts and provided by different MPI processes. 
+The benefit of using multiple CPU processes to interface the GPU in this study is, thus, only that the VTK output functionality gets parallelized. However, this effect is negligible.
 
 An absolute comparison between the runtimes in \cref{fig:16_hodgkin_huxley_gpu} and \cref{fig:16_hodgkin_huxley_cpu} also reveals that the scenarios for one to 18 processes using the GPU have 4.8 to 181 times longer total runtimes. In this study, the memory transfer between the CPU and the GPU has a low influence on the total runtime, as this transfer only happens before and after the 3D model is solved. The measured runtimes, therefore, correspond to the computation on the GPU.
 
@@ -280,11 +282,11 @@ Thus, we follow a hybrid approach. We parallelize the scenario to 27 processes o
 \begin{figure}
   \centering%
   \includegraphics[width=0.9\textwidth]{images/results/studies/gpu_parallelization.png}%
-  \caption{Partitioning of the 169 fibers to 27 processes used in the runtime study with hybrid CPU-GPU usage. The image also shows the resulting EMG signals $\phi_e$ on the muscle surface.}%
+  \caption{Electrophysiology solver in OpenDiHu: Partitioning of the 169 fibers to 27 processes used in the runtime study with hybrid CPU-GPU usage. The image also shows the resulting EMG signals $\phi_e$ on the muscle surface.}%
   \label{fig:gpu_parallelization}%
 \end{figure}
 
-The scenario and the numeric parameters are the same as described for the study with the Shorten model in \cref{sec:evaluation_of_code_gen}. 49 muscle fibers are used and parallelized to $3\times 3\times 3=27$ subdomains. \Cref{fig:gpu_parallelization} visualizes the partitioning of the fibers by different colors and the EMG values $\phi_e$ on the muscle surface at the simulation end time of $t_\text{end}=\SI{10}{\ms}$.
+The scenario and the numerical parameters are the same as described for the study with the Shorten model in \cref{sec:evaluation_of_code_gen}. 49 muscle fibers are used and parallelized to $3\times 3\times 3=27$ subdomains. \Cref{fig:gpu_parallelization} visualizes the partitioning of the fibers by different colors and the EMG values $\phi_e$ on the muscle surface at the simulation end time of $t_\text{end}=\SI{10}{\ms}$.
 
 \Cref{fig:17_shorten_gpu} visualizes the runtimes of two runs. The first bar only employs the CPU and provides the reference for the measured runtimes. The second bar corresponds to the hybrid run, where one process employs the GPU. The 0D and 1D solver runtimes in the second bar are averaged over the CPU computations. The total runtime involves both the CPU and the GPU computations.
 It can be seen that the total runtime given by the total bar heights is higher for the hybrid run. In the hybrid runs, the CPU processes have to wait at the synchronization point in the solution of the 3D problem until the GPU process has completed the 0D/1D computations.
@@ -292,7 +294,7 @@ It can be seen that the total runtime given by the total bar heights is higher f
 \begin{figure}
   \centering%
   \includegraphics[width=0.6\textwidth]{images/results/studies/17_shorten_gpu.pdf}%
-  \caption{Runtime study for a CPU-only computation and a hybrid parallelization that employs both the CPU and the GPU. The compute-intense subcellular model of Shorten et al. is simulated.}%
+  \caption{Electrophysiology model in OpenDiHu: Runtime study for a CPU-only computation and a hybrid parallelization that employs both the CPU and the GPU. For the hybrid approach, one of the 27 partitions was computed on the GPU. The compute-intense subcellular model of Shorten et al. is simulated.}%
   \label{fig:17_shorten_gpu}%
 \end{figure}
 
@@ -303,9 +305,9 @@ Several scenarios with computations of the 0D subcellular and 1D electric conduc
 In \cref{sec:strong_scaling_runtimes_opencmiss_opendihu}, the computation on the GPU with the Shorten subcellular model was measured for one fiber.
 \Cref{sec:strong_scaling_gpu_hodgkin_huxley} conducted a strong scaling study with the Hodgkin-Huxley model on 169 fibers and \cref{sec:evaluation_hybrid} evaluated a hyprid approach, where the Shorten model on different fibers was computed on the GPU and the CPU at the same time. This last study used a GPU with higher double-precision performance than the previous studies.
 
-In all of these studies, the GPU computations could not compete with their CPU counterparts. The GPU implementation of the models relied on target-specific CUDA code, which was automatically generated by the OpenMP 4.5 pragmas produced by the code generator in OpenDiHu. The CPU computations used highly optimized CPU code with explicit vector instructions, an approach that is close to optimal as shown by the roofline model in \cref{sec:roofline_model}. Thus, the comparison considers different levels of optimization. We cannot conclude in general that the GPU is less suited to solve the the fiber-based electrophysiology models than the CPU. However, the GPU support in OpenMP is not competitive with our optimized CPU implementation.
+In all of these studies, the GPU computations could not compete with their CPU counterparts. The GPU implementation of the models relied on target-specific CUDA code, which was automatically generated by the OpenMP 4.5 pragmas produced by the code generator in OpenDiHu. The CPU computations used highly optimized CPU code with explicit vector instructions, an approach that is close to optimal as shown by the roofline model in \cref{sec:roofline_model}. Thus, the comparison considers different levels of optimization. We cannot conclude in general that the GPU is less suited to solve the the fiber based electrophysiology models than the CPU. However, the GPU support in OpenMP is not competitive with our optimized CPU implementation.
 
-The required GPU support of OpenMP in the GNU compiler is functional to the extend needed in our studies only since GCC version 11, which, at the time of writing, is still experimental and not yet released. Further performance gains can be expected in the future as compiler development advances. One problem is also the high memory requirements for the subcellular models, which only allow a certain number of subcellular model instances to be computed on given hardware. It is also not clear, if the high memory consumption is also an artifact of the compiler and will reduce with later compiler versions.
+The required GPU support of OpenMP in the GNU compiler is functional to the extend needed in our studies only since GCC version 11, which, at the time of writing, is still experimental and not yet released. Further performance gains can be expected in the future as compiler development advances. One problem is also the high memory requirement for the subcellular models, which only allows a certain number of subcellular model instances to be computed on the given hardware. It is also not clear, whether the high memory consumption is also an artifact of the compiler and will reduce with later compiler versions.
 
 Despite the lower performance, it was shown that OpenDiHu can be used to solve the monodomain equation \cref{eq:monodomain} with different subcellular models on the GPU. Switching between the CPU and GPU variants can be accomplished by only changing the \code{optimizationType} parameter between \code{`vc`} and \code{`gpu`}. Hybrid strategies, where some processes use \code{`vc`} and others \code{`gpu`}, have been demonstated.
 
@@ -329,5 +331,5 @@ Examples are to directly use the CUDA programming language or the C++ based abst
 
 
 % ------------
-%\fi
+%
 % f===========
