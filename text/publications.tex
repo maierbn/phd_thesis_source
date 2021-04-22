@@ -1,3 +1,25 @@
+% prepare publications for bibtex
+
+\addtocategory{own}{Bradley:2018:EDB}
+\addtocategory{own}{Maier2019}
+\addtocategory{own}{Maier2021}
+\addtocategory{own}{summerschool2019}
+
+\addtocategory{own_other}{maier_benjamin_2021_4705945}
+\addtocategory{own_other}{opendihu}
+
+\addtocategory{own_submitted}{MaierSubmitted}
+
+\nocite{Bradley:2018:EDB}
+\nocite{Maier2019}
+\nocite{Maier2021}
+\nocite{summerschool2019}
+\nocite{maier_benjamin_2021_4705945}
+\nocite{opendihu}
+\nocite{MaierSubmitted}
+% ------------------------------------------------
+
+%\thispagestyle{empty} % remove number
 
 % this alters "before" spacing (the second length argument) to 0
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
@@ -12,29 +34,23 @@
 %\vspace{-1cm}
 
 % ---------------------------------------
+% peer reviewed
 \section*{\vspace{-5mm}Peer-reviewed Publications}
 \vspace{-5mm}
-\addtocategory{own}{Bradley:2018:EDB}
-\addtocategory{own}{Maier2019}
-\addtocategory{own}{Maier2021}
-\addtocategory{own}{summerschool2019}
-
-\addtocategory{own_other}{maier_benjamin_2021_4705945}
-\addtocategory{own_other}{opendihu}
-
-\addtocategory{own_submitted}{MaierSubmitted}
-
-\nocite{*}
 \printbibliography[category=own,heading=none,title=]
 
 % ---------------------------------------
+% submitted
 \section*{\vspace{-5mm}Submitted Publications}
 \vspace{-5mm}
 \printbibliography[category=own_submitted,heading=none,title=]
 
 % ---------------------------------------
+% other publications
 \section*{\vspace{-5mm}Other Publications}
 \vspace{-5mm}
 The most recent release of the OpenDiHu software and the packaged data that are needed to reproduce the results in this work, containing, e.g., mesh files and CellML models, can be found with the following DOIs:
 
 \printbibliography[category=own_other,heading=none,title=]
+
+%\thispagestyle{empty} % remove number

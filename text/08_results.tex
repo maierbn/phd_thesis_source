@@ -26,7 +26,7 @@
 \iffalse
 
 In the following section, we simulate EMG signals on the upper arm.
-The simulation domain consists of the biceps brachii muscle, adipose tissue and the skin surface. We consider the multi-scale model of fiber based electrophysiology, where the monodomain equation \cref{eq:monodomain} is solved on several independent 1D muscle fibers. The membrane voltage $V_m$ is mapped from the 1D meshes to the 3D mesh. The static bidomain equation \cref{eq:bidomain1} is subsequentlty solved on the muscle and fat domains at fixed timesteps of the simulation.
+The simulation domain consists of the biceps brachii muscle, adipose tissue and the skin surface. We consider the multi-scale model of fiber based electrophysiology, where the monodomain equation \cref{eq:monodomain} is solved on several independent 1D muscle fibers. The membrane voltage $V_m$ is mapped from the 1D meshes to the 3D mesh. The static bidomain equation \cref{eq:bidomain1} is subsequently solved on the muscle and fat domains at fixed timesteps of the simulation.
 
 We simulate various scenarios to investigate the effects of different model and numerical parameters on the resulting EMG signal. \Cref{sec:simfiber_mu} considers the effects of single motor units, \cref{sec:simfiber_fat} considers the fat layer and \cref{sec:effects_of_the_mesh_width_emg} shows effects of the mesh width. Then, \cref{sec:simfiber_electrodes} presents a way to simulate realistic EMG electrodes and \cref{sec:simfiber_decomposition} deals with the decomposition of EMG signals.
 
@@ -113,7 +113,7 @@ It can be seen that the active region on the skin surface, which results from fi
   \label{fig:result_mu20}%
 \end{figure}%
 
-\Cref{fig:result_mu20} shows the analoguous scenario that activates MU 20 instead of MU 1 is shown. \Cref{fig:mu20a} shows that, now, more fibers are activated as MU 20 is larger than MU 1. According to the MU layout in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, the active fibers are also located closer to the skin surface. This layout results in a stronger EMG signal compared to the previous scenario. 
+\Cref{fig:result_mu20} shows the analog scenario that activates MU 20 instead of MU 1 is shown. \Cref{fig:mu20a} shows that, now, more fibers are activated as MU 20 is larger than MU 1. According to the MU layout in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, the active fibers are also located closer to the skin surface. This layout results in a stronger EMG signal compared to the previous scenario. 
 
 The color coding in the two scenarios in \cref{fig:result_mu1,fig:result_mu20} is identical and it can be seen that the absolute value of the extracellular potential $\phi_e$ is larger in the scenario of MU 20. For the scenario with MU 1 in \cref{fig:result_mu1}, the value range of the extracellular potential $\phi_e$ is $[\SI{-0.473}{\milli\volt}, \SI{0.204}{\milli\volt}]$. For the scenario with MU 20 in \cref{fig:result_mu20}, it is $[\SI{-0.834}{\milli\volt}, \SI{0.579}{\milli\volt}]$, which is more than double the range.
 

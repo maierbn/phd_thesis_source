@@ -1,5 +1,5 @@
 [0] Config.pm:302> INFO - This is Biber 2.9
-[0] Config.pm:305> INFO - Logfile is 'doc.blg'
-[29] biber:313> INFO - === Mo Apr 19, 2021, 05:59:02
-[46] Utils.pm:185> ERROR - doc.bcf is malformed, last biblatex run probably failed. Deleted doc.bbl
-[46] Biber.pm:114> INFO - ERRORS: 1
+[1] Config.pm:305> INFO - Logfile is 'doc.blg'
+[42] biber:313> INFO - === Do Apr 22, 2021, 01:05:04
+[78] Biber.pm:371> INFO - Reading 'doc.bcf'
+[158] Utils.pm:169> WARN - No data sources defined!
