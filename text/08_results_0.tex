@@ -14,11 +14,11 @@ The current chapter presents numerical results and demonstrates the use of OpenD
 Setting up a composite multi-scale simulation, where multiple equations are coupled, requires a profound understanding of the model components. 
 Thus, it can help to first simulate isolated models. We provide simple examples with our software, such as Laplace and Diffusion problems, as prototypes for elliptic and parabolic partial differential equations. The examples with analytic solutions are also used to validate the basic finite element solvers.
 
-In this section, we showcase three of these simple problems. First, we consider the 1D Poisson problem $u''(x) = f$ on $\Omega=[0,1]$ with Dirichlet boundary conditions $u(0)=0$ and $u(1)=1$ and right hand side $f(x)=6\,x$. The analytic solution is $y(x)=x^3$. \Cref{fig:poisson} shows the analytic solution and the results of the finite element computation with linear and quadratic ansatz functions for two elements. Both linear and quadratic finite element solutions cannot exactly represent the cubic function, however, yield the best possible approximation. 
+In this section, we showcase three of these simple problems. First, we consider the 1D Poisson problem $u''(x) = f$ on $\Omega=[0,1]$ with Dirichlet boundary conditions $u(0)=0$ and $u(1)=1$ and right-hand side $f(x)=6\,x$. The analytic solution is $y(x)=x^3$. \Cref{fig:poisson} shows the analytic solution and the results of the finite element computation with linear and quadratic ansatz functions for two elements. Both linear and quadratic finite element solutions cannot exactly represent the cubic function, however, yield the best possible approximation. 
 The first bidomain equation given in \cref{eq:bidomain1} is a 3D version of this Poisson problem and is needed in the multi-domain model to simulate EMG signals on the muscle surface.
 
 The second example is a 2D Laplace problem $c(x)\,\Delta u(x) = 0$. The solution is given in \cref{fig:laplace_composite_1} and can be interpreted as a static electric potential field. 
-The discretization uses quadratic Lagrange ansatz functions and is composed of two joined rectangular parts, each given by a structured mesh. The conductivity is set as $c=1$ in the left part and as $c=2$ in the right part. Dirichlet boundary conditions prescribe the electric potential at the five upper points in the right mesh to $u = -1$ and at the center of the right mesh as $u=1$. In addition, Neumann boundary conditions $\partial u / \partial \bfn = -1$ corresponding to an outward electric current are set on the left boundary of the left mesh with the normal vector $\bfn$ pointing to the left. \Cref{fig:laplace_composite_1} visualizes the values of the degrees of freedom of the right hand side contribution of the Neumann boundary conditions by the arrows. 
+The discretization uses quadratic Lagrange ansatz functions and is composed of two joined rectangular parts, each given by a structured mesh. The conductivity is set as $c=1$ in the left part and as $c=2$ in the right part. Dirichlet boundary conditions prescribe the electric potential at the five upper points in the right mesh to $u = -1$ and at the center of the right mesh as $u=1$. In addition, Neumann boundary conditions $\partial u / \partial \bfn = -1$ corresponding to an outward electric current are set on the left boundary of the left mesh with the normal vector $\bfn$ pointing to the left. \Cref{fig:laplace_composite_1} visualizes the values of the degrees of freedom of the right-hand side contribution of the Neumann boundary conditions by the arrows. 
 A 3D Laplace problem is also part of the multi-scale model and describes volume conduction in the adipose tissue domain as formulated in \cref{eq:body}.
 
 % poisson - laplace
@@ -99,7 +99,7 @@ We solve two scenarios with the same geometry and boundary conditions but differ
 
 The second scenario uses the incompressible transversely isotropic hyperelastic muscle material based on the Mooney-Rivlin description without active stress, which is defined in \cref{sec:material_nonlinear_model}. The material parameters are set to the values given \cite{Heidlauf2016}.
 
-\Cref{fig:lin_nonlin_muscle_mechanics} shows the geometric setup of the model. We discretize the biceps geometry by a 3D mesh with 252  elements, , quadratic finite element ansatz functions,  and a total of $13 \times 13 \times 15 = 2535$ nodes.
+\Cref{fig:lin_nonlin_muscle_mechanics} shows the geometric setup of the model. We discretize the biceps geometry by a 3D mesh with 252  elements, quadratic finite element ansatz functions,  and a total of $13 \times 13 \times 15 = 2535$ nodes.
 The linearized material model uses this mesh to construct the stiffness matrix and to solve the linear system.
 For the nonlinear model, an additional coarser linear mesh is constructed, and linear-quadratic Taylor-Hood elements are used for the discretization. 
 
@@ -116,7 +116,7 @@ The nonlinear model uses increasing load steps as described in \cref{sec:converg
   \begin{subfigure}[t]{0.4\textwidth}%
     \centering%
     \includegraphics[height=12cm]{images/results/basic/lin_nonlin_muscle_mechanics_b.png}%
-    \caption{Solution of the linear model. The arrows at the top visualize the (negated) right hand side of the finite element formulation, with the absolute values indicated by the arrow lengths and color. The surface of the muscle mesh is colored according to the values of the displacements.}%
+    \caption{Solution of the linear model. The arrows at the top visualize the (negated) right-hand side of the finite element formulation, with the absolute values indicated by the arrow lengths and color. The surface of the muscle mesh is colored according to the values of the displacements.}%
     \label{fig:lin_nonlin_muscle_mechanics_b}%
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.4\textwidth}%
@@ -132,9 +132,9 @@ The nonlinear model uses increasing load steps as described in \cref{sec:converg
 
 The results of the linear and nonlinear models are shown in \cref{fig:lin_nonlin_muscle_mechanics_b,fig:lin_nonlin_muscle_mechanics_a}. 
 In both images, the identical reference configuration is given by the yellow wireframe and the deformed muscle is given by the solid body with colored mesh. 
-The deformed body in the linear model in \cref{fig:lin_nonlin_muscle_mechanics_b} is colored according to the resulting vector of unknowns, which contains the displacements.  Arrows on the upper end of the geometry indicate the negative right hand side of the linear system as formulated in \cref{eq:linearized_mechanics_rhs}. The arrows correspond to the applied Neumann boundary conditions in the weak form of the finite element formulation and point in the direction of the applied surface load.
+The deformed body in the linear model in \cref{fig:lin_nonlin_muscle_mechanics_b} is colored according to the resulting vector of unknowns, which contains the displacements.  Arrows on the upper end of the geometry indicate the negative right-hand side of the linear system as formulated in \cref{eq:linearized_mechanics_rhs}. The arrows correspond to the applied Neumann boundary conditions in the weak form of the finite element formulation and point in the direction of the applied surface load.
 
-In the visualization of the nonlinear model in \cref{fig:lin_nonlin_muscle_mechanics_a}, the deformed muscle body is colored according to the second Piola-Kirchhoff (PK2) stress. It can be seen that the stress is highest at the bottom bearing and at the top end, where the muscle cross section is smaller. The arrows visualize the traction forces $\bft$ on virtual horizontal cuts. As a result, the arrows that can be seen on top of the muscle geometry correspond to the applied external force, and the arrows at the bottom indicate the forces on the bearing.
+In the visualization of the nonlinear model in \cref{fig:lin_nonlin_muscle_mechanics_a}, the deformed muscle body is colored according to the second Piola-Kirchhoff (PK2) stress. It can be seen that the stress is highest at the bottom bearing and at the top end, where the muscle cross-section is smaller. The arrows visualize the traction forces $\bft$ on virtual horizontal cuts. As a result, the arrows that can be seen on top of the muscle geometry correspond to the applied external force, and the arrows at the bottom indicate the forces on the bearing.
 
 A comparison of the two obtained results from the linear and nonlinear models shows a qualitatively different outcome. With the linear model, the muscle bends to the left, whereas, with the nonlinear model, it bends to the right. This effect is a result of the different material behavior. The linear model is isotropic and the deformation follows the direction of the applied force, which points to the upper left. The nonlinear model has an anisotropy and is stiffer in fiber direction. As a consequence, the muscle deforms less in longitudinal direction and therefore moves to the right.
 Thus, the material models influence the bending direction in this scenario.
@@ -153,7 +153,7 @@ The slopes of the two curves are qualitatively different, which is a result of t
   \label{fig:linear_nonlinear_displacements}%
 \end{figure}
 
-The two presented studies show that a linear isotropic material model can give significantly different results than a more accurate nonlinear transversly isotropic model. Therefore, simulations of muscle contraction that target high accuracy should use the according nonlinear models. Nevertheless, both approaches are implemented and can be used with OpenDiHu.
+The two presented studies show that a linear isotropic material model can give significantly different results than a more accurate nonlinear transversely isotropic model. Therefore, simulations of muscle contraction that target high accuracy should use the according nonlinear models. Nevertheless, both approaches are implemented and can be used with OpenDiHu.
 
 \begin{reproduce_no_break}
   The two simulations for \cref{fig:lin_nonlin_muscle_mechanics} can be run as follows:
@@ -208,7 +208,7 @@ We use an incompressible and isotropic Mooney-Rivlin material with parameters $c
 expressed by the strain energy functions $\Psi$, $\Psi_\text{iso}$ and $\Psi_\text{vol}$ introduced in the modeling chapter in \cref{sec:material_modeling}:
 
 \begin{enumerate}[label=(\roman*)]
-\item the \say{fully incompressible}, mixed $u$-$p$ formulation, which ensures incompressiblity using the Lagrange multipliers,
+\item the \say{fully incompressible}, mixed $u$-$p$ formulation, which ensures incompressibility using the Lagrange multipliers,
 \begin{align}
     \Psi_\text{iso}(\bar{I}_1,\bar{I}_2) &= c_1\,(\bar{I}_1 - 3) + c_2\,(\bar{I}_2 - 3), \quad J=1, \label{eq:validation_incompressible}
 \end{align}
@@ -235,7 +235,7 @@ expressed by the strain energy functions $\Psi$, $\Psi_\text{iso}$ and $\Psi_\te
 \end{subequations}
 \end{enumerate}
 %
-For the three nearly incompressible descriptions in \cref{eq:validation_1b,eq:validation_1c,eq:validation_1d}, we set the incompressiblity parameter to $\kappa=\num{1e3}$.
+For the three nearly incompressible descriptions in \cref{eq:validation_1b,eq:validation_1c,eq:validation_1d}, we set the incompressibility parameter to $\kappa=\num{1e3}$.
 
 We compare the resulting normal stress value $S_{33}$ in $z$-direction of the second Piola-Kirchhoff stress tensor $\bfS$ for all formulations listed in \crefrange{eq:validation_incompressible}{eq:validation_1d}. For the tensile test, this stress value is constant throughout the domain. \Cref{fig:validation_tensile_test} shows the computed stresses over the computed strain values.
 It can be seen that the three formulations in OpenDiHu yield approximately the same results as the reference solution given by FEBio over the whole range of applied forces.
@@ -254,7 +254,7 @@ As the previous tensile test only validates stress and strain in one direction, 
 \begin{figure}
   \centering%
   \includegraphics[width=0.7\textwidth]{images/results/basic/validation_shear_test.pdf}%
-  \caption{Solid mechanics solver validation:Results of the shear test validation experiment. The values of the second Piola Kirchhoff tensor computed by OpenDiHu (solid lines) and FEBio (dotted lines) closely match.}%
+  \caption{Solid mechanics solver validation:Results of the shear test validation experiment. The values of the second Piola-Kirchhoff tensor computed by OpenDiHu (solid lines) and FEBio (dotted lines) closely match.}%
   \label{fig:validation_shear_test}%
 \end{figure}
 
@@ -303,7 +303,7 @@ Similarly, the upper tendons in \cref{fig:dynamic_mooney_rivlin_7} are fixed at 
 
 In summary, this section demonstrated the capabilities of the solid mechanics solvers in OpenDiHu. \Cref{sec:comparison_linear_nonlinear,sec:simulation_hyperelastic_tendon} simulated extension of the biceps muscle and tendons due to external forces. The comparison of results from a linear and a nonlinear model showed that a linear isotropic material cannot always accurately predict the behavior of muscle tissue and, thus, a nonlinear model is required. The validation experiments in \cref{sec:validation_nonlinear} demonstrated that OpenDiHu correctly computes deformation and stresses of incompressible materials.
 
-The solid mechanics solvers can also be coupled to solvers of electrophysiology to simulate muscle contraction resulting from the spatially heterogenous activation and considering the neuronal stimulation dynamics. Moreover, coupled simulations of the muscle and tendons are possible. Such simulations are described in \cref{sec:fiber_based_contraction} and \cref{sec:surface_coupling_contraction}, respectively.
+The solid mechanics solvers can also be coupled to solvers of electrophysiology to simulate muscle contraction resulting from the spatially heterogeneous activation and considering the neuronal stimulation dynamics. Moreover, coupled simulations of the muscle and tendons are possible. Such simulations are described in \cref{sec:fiber_based_contraction} and \cref{sec:surface_coupling_contraction}, respectively.
 
 % ------------
 %

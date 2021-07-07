@@ -8,11 +8,11 @@ We begin with the discretization in time in \cref{sec:discretization_monodomain}
 
 \subsection{Discretization of the Monodomain Model}\label{sec:discretization_monodomain}
 
-Electrophysiology models typically consists of a reaction-diffusion equation. The diffusion term describes the electric conduction in the tissue and the reaction term includes the subcellular model. In our model, the monodomain equation  \cref{eq:monodomain} used in the fiber based description and the second multidomain equation \cref{eq:multidomain2} are equations of this type.
+Electrophysiology models typically consist of a reaction-diffusion equation. The diffusion term describes the electric conduction in the tissue and the reaction term includes the subcellular model. In our model, the monodomain equation  \cref{eq:monodomain} used in the fiber based description and the second multidomain equation \cref{eq:multidomain2} are equations of this type.
 
 This type of partial differential equation is often solved using operator splitting schemes. A first order operator splitting scheme is Godunov splitting \cite{Godunov2003}. It was used for the solution of the chemo-electro-mechanical model in \cite{Roehrle2012}. In addition to Godunov splitting, we also employ the second order accurate Strang splitting scheme \cite{Strang1968}.
 
-In the following, the application of these two schemes is illustrated for the monodomain equation \cref{eq:monodomain}. The right hand sides of the diffusion and reaction terms are denoted in short as $\mathcal{L}_1$ and $\mathcal{L}_2$:%
+In the following, the application of these two schemes is illustrated for the monodomain equation \cref{eq:monodomain}. The right-hand sides of the diffusion and reaction terms are denoted in short as $\mathcal{L}_1$ and $\mathcal{L}_2$:%
 \begin{align*}
   \mathcal{L}_1(V_m) := \dfrac{1}{A_m\,C_m} \sigma_\text{eff}\dfrac{\partial^2 V_m}{\partial x^2}, &&
   \mathcal{L}_2(V_m) := -\dfrac{1}{C_m} I_\text{ion}(V_m,\bfy).
@@ -25,7 +25,7 @@ Then, the monodomain equation takes the form:
 \end{align}
 
 A timestepping scheme is constructed that starts with a given initial value $V_m^{(0)}$ and computes solution values $V_m^{(i)}$ at discrete points in time $t^{(i)} = i\cdot\dt$ with a fixed timestep width $\dt$.
-Godunov splitting proceeds by alternatingly performing steps in the two directions of the right hand sides $\mathcal{L}_1$ and $\mathcal{L}_2$. In the first substep per iteration, an intermediate value $V_m^{\ast}$ is calculated, which is used as starting point for the second substep. Each of the substeps are performed using independent timestepping scheme, e.g., the explicit Euler scheme:
+Godunov splitting proceeds by alternatingly performing steps in the two directions of the right-hand sides $\mathcal{L}_1$ and $\mathcal{L}_2$. In the first substep per iteration, an intermediate value $V_m^{\ast}$ is calculated, which is used as starting point for the second substep. Each of the substeps are performed using independent timestepping scheme, e.g., the explicit Euler scheme:
 %
 \begin{subequations}\label{eq:monodomain_godunov}
   \begin{align}
@@ -139,7 +139,7 @@ This iteration step can be written in matrix notation in terms of the vectors of
 \begin{align*}
   \bfA\,\bfu^{(i+1)} = \bfb(\bfu^{(i)}).
 \end{align*}
-The system matrix $\bfA$ and the right hand side $\bfb$ are given by:
+The system matrix $\bfA$ and the right-hand side $\bfb$ are given by:
 \begin{align*}
   \bfA &= \theta\,(\bfK_{\bfsigma} + \bfB_{\bfsigma}) -\dfrac{1}{\dt}\bfM, &
   \bfb &= \big((\theta-1)\,(\bfK_{\bfsigma} + \bfB_{\bfsigma}) - \dfrac{1}{\dt} \bfM \big)\,\bfu^{(i)}.
@@ -158,7 +158,7 @@ Plugging this into \cref{eq:diffusion_helper1} yields the following equation in 
 \begin{align}\label{eq:diffusion_helper2}
   \tilde{\bfA}\,\bfu^{(i+1)} = \tilde{\bfb}(\bfu^{(i)}),  
 \end{align}
-with the system matrix $\tilde{\bfA}$ and right hand side $\tilde{\bfb}$: 
+with the system matrix $\tilde{\bfA}$ and right-hand side $\tilde{\bfb}$: 
 \begin{align*}
   \tilde{\bfA} &= \theta\,\bfK_{\bfsigma} -\dfrac{1}{\dt}\bfM, &
     \tilde{\bfb} &= \big((\theta-1)\,\bfK_{\bfsigma} - \dfrac{1}{\dt} \bfM \big)\,\bfu^{(i)} - \bfB_{\Gamma_f}\,\big(\theta\,\bff^{(i+1)} + (1-\theta)\,\bff^{(i)}\big),
@@ -182,14 +182,14 @@ By specializing the formulation in \cref{eq:diffusion_helper2} accordingly, we o
 \begin{align*}
   (\bfK_\bfI + \bfB_\bfI)\,\bfu = \bfzero
 \end{align*}
-for the case without boundary condition (set $\bfB_\bfI$ to zero to assume homogenous Neumann boundaries) or
+for the case without boundary condition (set $\bfB_\bfI$ to zero to assume homogeneous Neumann boundaries) or
 \begin{align}\label{eq:discretization_laplace}
   \bfK_\bfI\,\bfu = -\bfB_{\Gamma_f}\,\bff
 \end{align}
 to include the formulated Neumann boundary condition.
 
 \subsection{Using Mass Lumping for Implicit Timestepping}\label{sec:mass_lumping}
-Implicit timestepping schemes such as implicit Euler or the Crank-Nicoloson scheme for $\theta=\frac12$ need to solve a linear equation in every timestep.
+Implicit timestepping schemes such as implicit Euler or the Crank-Nicolson scheme for $\theta=\frac12$ need to solve a linear equation in every timestep.
 Assuming homogeneous Neumann boundary conditions for simplicity, the iteration step of the canonical Crank-Nicolson scheme follows from \cref{eq:diffusion_helper2}:
 \begin{subequations}\label{eq:lumping_crank_nicolson}
   \begin{align}
@@ -204,9 +204,9 @@ For the implicit Euler method, we obtain:%
     \Leftrightarrow \quad (\bfI - \dt\,\bfM^{-1}\bfK)\,\bfu^{(i+1)}&= \,\bfu^{(i)}.\label{eq:lumping_implicit_euler_2}
   \end{align}
 \end{subequations}
-Both iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_crank_nicolson_2} and in \cref{eq:lumping_implicit_euler_1,eq:lumping_implicit_euler} are equivalent, as the second equation follows from the first one by left multiplication of $(-\dt \bfM^{-1})$. In the second equations, the matrices to be multiplied are created by a sum of the unity matrix $\bfI$ and another matrix term that is scaled by the potentially small timestep width $\dt$. For the implicit Euler in \cref{eq:lumping_implicit_euler_2}, the matrix on the right hand side even reduces to the identity matrix. This is preferred over the first iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_implicit_euler_1} as it leads to better conditioned matrix-vector multiplications.
+Both iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_crank_nicolson_2} and in \cref{eq:lumping_implicit_euler_1,eq:lumping_implicit_euler} are equivalent, as the second equation follows from the first one by left multiplication of $(-\dt \bfM^{-1})$. In the second equations, the matrices to be multiplied are created by a sum of the unity matrix $\bfI$ and another matrix term that is scaled by the potentially small timestep width $\dt$. For the implicit Euler in \cref{eq:lumping_implicit_euler_2}, the matrix on the right-hand side even reduces to the identity matrix. This is preferred over the first iteration steps in \cref{eq:lumping_crank_nicolson_1,eq:lumping_implicit_euler_1} as it leads to better conditioned matrix-vector multiplications.
 
-The required inversions of the mass matrix cannot be carried out explicitly as the inversion would fill in numerous matrix entries and eliminate the sparse structure. This is not feasible for highly resolved meshes with a large number of degrees of freedom. Instead, \emph{mass lumping} is used, where the mass matrix $\bfM$ is approximated by a diagonal matrix with diagonal entries equal to the row sums in $\bfM$ \cite{Hinton1976}. Thus, multiplication with the inverse mass matrix corresponds to a rescaling of columns by the inverse lumped diagonal entries.
+The required inversions of the mass matrix cannot be carried out explicitly as the inversion would fill in numerous matrix entries and eliminate the sparse structure. This is not feasible for highly resolved meshes with many degrees of freedom. Instead, \emph{mass lumping} is used, where the mass matrix $\bfM$ is approximated by a diagonal matrix with diagonal entries equal to the row sums in $\bfM$ \cite{Hinton1976}. Thus, multiplication with the inverse mass matrix corresponds to a rescaling of columns by the inverse lumped diagonal entries.
 
 \subsection{Discretization of the Multidomain Model}\label{sec:discretization_multidomain}
 With the prerequisites of temporal discretization in \cref{sec:discretization_monodomain} and the finite element formulation of a diffusion equation in \cref{sec:discretization_diffusion}, we can now discretize the multidomain model. Since this has not been previously done in literature using the finite element method, the subsequent derivation is more detailed.
@@ -224,7 +224,7 @@ The diffusion part of the second multidomain equation, \cref{eq:multidomain2}, d
   \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb,  
 \end{align}
 %
-with the $1 \times 2$ block system matrix $\bfA$ and right hand side vector $\bfb$ given by:%
+with the $1 \times 2$ block system matrix $\bfA$ and right-hand side vector $\bfb$ given by:%
 \begin{subequations}\label{eq:multidomain_discretization_helper_multidomain3}
 \begin{align}
    \bfA &= \matt{
@@ -276,7 +276,7 @@ It can be seen that the terms involving $\bfp^k$ cancel out, such that we get:
     \bfK_{\bfsigma_e + \bfsigma_i}\,\bfphi_{e} + \s{k=1}{N_\text{MU}} f_r^k \bfK_{\bfsigma_i^k}\,\bfV_m^k = -\bfB_{\Gamma_M}\,\bfq.
 \end{align}
 
-If the multidomain description is used without body fat domain, the boundary condition in \cref{eq:multidomain_bc2} is used and the right hand side in \cref{eq:multidomain_discretization_helper4} vanishes. If a body domain is considered, the right hand side interacts with the body domain model, which is considered in the next section.
+If the multidomain description is used without body fat domain, the boundary condition in \cref{eq:multidomain_bc2} is used and the right-hand side in \cref{eq:multidomain_discretization_helper4} vanishes. If a body domain is considered, the right-hand side interacts with the body domain model, which is considered in the next section.
 
 Adding boundary conditions to the discretization of the second multidomain equation proceeds using \cref{eq:multidomain_discretization_helper_multidomain2,eq:multidomain_discretization_helper_multidomain3}.
 Carrying out the analog procedure to the first multidomain equation, we plug in \cref{eq:boundary_relation} to yield the matrix equation
@@ -284,7 +284,7 @@ Carrying out the analog procedure to the first multidomain equation, we plug in 
   \bfA\,\mat{\bfV_m^{k,(i+1)}\\ \bfphi_{e}^{(i+1)}} = \bfb
 \end{align}
 %
-with system matrix $\bfA$ and right hand side vector $\bfb$ given by
+with system matrix $\bfA$ and right-hand side vector $\bfb$ given by
 %
 \begin{align}
  \bfA &= \matt{
@@ -345,7 +345,7 @@ The vector of unknowns consists of the degrees of freedom in the finite element 
 
 We refer to parts of the matrix in \cref{eq:discretized_multidomain_body} as block rows and block columns according to the given block-structure.
 
-The first block row in the matrix equation is given by the discretized second multidomain equation. Following \cref{eq:multidomain_discretization2,eq:multidomain_discretization3}, the matrices and the right hand side are given by
+The first block row in the matrix equation is given by the discretized second multidomain equation. Following \cref{eq:multidomain_discretization2,eq:multidomain_discretization3}, the matrices and the right-hand side are given by
 \begin{align*}
   &\bfA^k_{V_m,V_m} = \dfrac{\theta}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k} -\dfrac{1}{\dt}\bfM, \qquad
   \bfB^k_{V_m,\phi_e} = \dfrac{\theta}{A_m^k\,C_m^k}\bfK_{\bfsigma_i^k},\\[4mm]
@@ -354,7 +354,7 @@ The first block row in the matrix equation is given by the discretized second mu
 \end{align*}
 %
 
-The second block row describes the first multidomain equation that was derived in \cref{eq:multidomain_discretization_helper4}. The flux term $\bfq$ has been brought to the left hand side and is incorporated by the boundary matrix $\bfB_{\Gamma_M}$ defined in \cref{eq:definition_boundary_matrix}. The other matrices are formulated as follows:
+The second block row describes the first multidomain equation that was derived in \cref{eq:multidomain_discretization_helper4}. The flux term $\bfq$ has been brought to the left-hand side and is incorporated by the boundary matrix $\bfB_{\Gamma_M}$ defined in \cref{eq:definition_boundary_matrix}. The other matrices are formulated as follows:
 %
 \begin{align*}
   \bfB_{\phi_e,V_m}^k &= f_r^k \bfK_{\bfsigma_i^k}, & 
@@ -362,7 +362,7 @@ The second block row describes the first multidomain equation that was derived i
 \end{align*}
 %
 
-The third block row is the formulation of the harmonic body potential $\phi_b$ and the matrix $\bfC_{\phi_b,\phi_b}$ equals the system matrix $\bfK_{\bfsigma_b}$ in \cref{eq:discretized_body}. The coupling condition on the flux $q$ in  \cref{eq:body_domain_bc2} is accounted for by including the boundary matrix $\bfB_{\Gamma_M}$ in the last column. The minus sign comes from the fact that the outward normal vector on $\Gamma_M$ as the boundary of $\Omega_B$ is has the opposite direction to the normal vector on $\Gamma_M$ that is used for the models in the muscle domain $\Omega_M$. Using the helper variable $\bfq^{(i+1)}$, the second and third row of \cref{eq:discretized_multidomain_body} are coupled according to the prescribed condition in \cref{eq:body_domain_bc2}.
+The third block row is the formulation of the harmonic body potential $\phi_b$ and the matrix $\bfC_{\phi_b,\phi_b}$ equals the system matrix $\bfK_{\bfsigma_b}$ in \cref{eq:discretized_body}. The coupling condition on the flux $q$ in  \cref{eq:body_domain_bc2} is accounted for by including the boundary matrix $\bfB_{\Gamma_M}$ in the last column. The minus sign comes from the fact that the outward normal vector on $\Gamma_M$ as the boundary of $\Omega_B$ has the opposite direction to the normal vector on $\Gamma_M$ that is used for the models in the muscle domain $\Omega_M$. Using the helper variable $\bfq^{(i+1)}$, the second and third row of \cref{eq:discretized_multidomain_body} are coupled according to the prescribed condition in \cref{eq:body_domain_bc2}.
 
 The other coupling condition, \cref{eq:body_domain_bc1}, is accounted for by the last block row in \cref{eq:discretized_body}. The degrees of freedom for the extracellular potential $\bfphi_e^{(i+1)}$ and the body potential $\bfphi_b^{(i+1)}$ have equal values on the boundary $\Gamma_M$. The matrices $\bfI_{\Gamma_M,\phi_e}$ and $\bfI_{\Gamma_M,\phi_b}$ are identity matrices that only have nonzero entries on the diagonal for the boundary degrees of freedom in the meshes of muscle domain and body domain, respectively.
 
@@ -394,7 +394,7 @@ As a result, we obtain the following system, which is formulated for a generic n
   \end{array}\right].
 \end{align}
 
-Formally, the elimination step is carried out by adding the equations of the third block row in \cref{eq:discretized_multidomain_body}, that correspond to the boundary degrees of freedom on $\Gamma_M$, to the corresponding equations of the same degreres of freedom in the second block row. This eliminates the last block column, which corresponds to $\bfq^{(i+1)}$. Next, the duplicate boundary degrees of freedom, that appear in both the $\Omega_M$ and $\Omega_B$ meshes, get unified. The corresponding matrix columns in the third block column are removed. To preserve the entries in the third block row, they are added in the sub matrix of block row three and block column two.
+Formally, the elimination step is carried out by adding the equations of the third block row in \cref{eq:discretized_multidomain_body}, that correspond to the boundary degrees of freedom on $\Gamma_M$, to the corresponding equations of the same degrees of freedom in the second block row. This eliminates the last block column, which corresponds to $\bfq^{(i+1)}$. Next, the duplicate boundary degrees of freedom, that appear in both the $\Omega_M$ and $\Omega_B$ meshes, get unified. The corresponding matrix columns in the third block column are removed. To preserve the entries in the third block row, they are added in the sub matrix of block row three and block column two.
 
 Now considering the updated matrix equation in \cref{eq:discretized_multidomain_body2}, all sub blocks are equal to \cref{eq:discretized_multidomain_body}, except for the former matrix $\bfC_{\phi_b,\phi_b}$ and the new matrices $\bfD$ and $\bfE$. The new matrix $\tilde{\bfC}_{\phi_b,\phi_b}$ is obtained from $\bfC_{\phi_b,\phi_b}$ by removing all rows and columns of boundary degrees of freedom. The removed entries are contained in the new matrices $\bfD$ and $\bfE$.
 
@@ -404,7 +404,7 @@ The size of the system matrix in \cref{eq:discretized_multidomain_body2} equals 
 
 The first $N_\text{MU}$ block rows in \cref{eq:discretized_multidomain_body2} contain the second multidomain equation for every MU. The second-to-last block row contains the first multidomain equation and the last block row  contains the body fat layer model.
 
-Because of the implicit formulation, electric conduction in the intracellular and extracellular space and the body domain are bidirectionlly coupled. Therefore, the model can be used to simulate the effects of natural activation in the muscle on EMG signals on the skin surface as well as the reverse effect of external stimulation on the surface on the electrophysiology.
+Because of the implicit formulation, electric conduction in the intracellular and extracellular space and the body domain are bidirectionally coupled. Therefore, the model can be used to simulate the effects of natural activation in the muscle on EMG signals on the skin surface as well as the reverse effect of external stimulation on the surface on the electrophysiology.
 
 \subsection{Discretization of the Fiber Based Electrophysiology Model}
 
@@ -422,7 +422,7 @@ The first bidomain equation \cref{eq:bidomain1} is a 3D Poisson problem in terms
 \begin{align*}
   \bfK_{\bfsigma_i + \bfsigma_e} \bfphi_e^{(i+1)} &= - \bfB_{\Gamma_f}\bff + \textbf{rhs},
 \end{align*}
-where the right hand side $\textbf{rhs}$ of the Poisson problem is the transmembrane flow and is given by
+where the right-hand side $\textbf{rhs}$ of the Poisson problem is the transmembrane flow and is given by
 \begin{align}\label{eq:static_bidomain_rhs}
   \textbf{rhs} &= -\bfK_{\bfsigma_i} \bfV_{m,3D}^{(i+1)}.
 \end{align}
@@ -459,13 +459,13 @@ with the system matrix $\bfA$ for a single fiber given according to \cref{eq:lum
 \begin{align*}
   \bfA &= \bfI - \dt\,\bfM_c^{-1}\bfK_c.
 \end{align*}
-\Cref{eq:discretized_fibers_1} solves the diffusion part of the operator splitting in \cref{eq:monodomain_operator_splitting}. After the values $\bfV_{m}^{j,(i+1)}$ for the timestep $(i+1)$ are computed on the 1D fiber meshes, the homogenized vector $\bfV_{m,3D}^{(i+1)}$ in the 3D mesh of the muscle domain $\Omega_M$ is obtained by the prolongation operation $\bfP$ in \cref{eq:discretized_fibers_2}. The homogenized vector is used in the right hand side of the bidomain model in \cref{eq:discretized_fibers_3}, which computes the discretized extracellular potential $\bfphi_e^{(i+1)}$.
+\Cref{eq:discretized_fibers_1} solves the diffusion part of the operator splitting in \cref{eq:monodomain_operator_splitting}. After the values $\bfV_{m}^{j,(i+1)}$ for the timestep $(i+1)$ are computed on the 1D fiber meshes, the homogenized vector $\bfV_{m,3D}^{(i+1)}$ in the 3D mesh of the muscle domain $\Omega_M$ is obtained by the prolongation operation $\bfP$ in \cref{eq:discretized_fibers_2}. The homogenized vector is used in the right-hand side of the bidomain model in \cref{eq:discretized_fibers_3}, which computes the discretized extracellular potential $\bfphi_e^{(i+1)}$.
 
-\Cref{eq:discretized_fibers_3} can be extended by adding a body fat layer $\Omega_B$ and the corresponding model for the electric potential $\phi_b^{(i+1)}$. Then, the vector of unknowns contains the degrees of freedom for both $\phi_e^{(i+1)}$ and $\phi_b^{(i+1)}$. The stiffness matrix $\bfK_{\bfsigma_i + \bfsigma_e}$ is obtained by integrating over both meshes in $\Omega_M \cup \Omega_B$. Only in the elements of the finite element mesh for $\Omega_B$, the conduction tensors are redefined as $\bfsigma_i = \bfzero$ and $\bfsigma_e = \bfsigma_b$. This sets the right hand side of \cref{eq:discretized_fibers_3} to zero in $\Omega_B$ and the solution $\phi_b$ in harmonic according to the model in \cref{eq:body}. The coupling conditions \cref{eq:body_domain_coupling} between $\phi_e$ and $\phi_b$ and the outer Neumann boundary conditions \cref{eq:body_domain_bc3} for $\phi_b$ are satisfied automatically by this approach.
+\Cref{eq:discretized_fibers_3} can be extended by adding a body fat layer $\Omega_B$ and the corresponding model for the electric potential $\phi_b^{(i+1)}$. Then, the vector of unknowns contains the degrees of freedom for both $\phi_e^{(i+1)}$ and $\phi_b^{(i+1)}$. The stiffness matrix $\bfK_{\bfsigma_i + \bfsigma_e}$ is obtained by integrating over both meshes in $\Omega_M \cup \Omega_B$. Only in the elements of the finite element mesh for $\Omega_B$, the conduction tensors are redefined as $\bfsigma_i = \bfzero$ and $\bfsigma_e = \bfsigma_b$. This sets the right-hand side of \cref{eq:discretized_fibers_3} to zero in $\Omega_B$ and the solution $\phi_b$ in harmonic according to the model in \cref{eq:body}. The coupling conditions \cref{eq:body_domain_coupling} between $\phi_e$ and $\phi_b$ and the outer Neumann boundary conditions \cref{eq:body_domain_bc3} for $\phi_b$ are satisfied automatically by this approach.
 
 The comparison between the discretized multidomain model in \cref{eq:discretized_multidomain_body2} with the discretized fiber based model in \cref{eq:discretized_fibers} reveals several differences. Whereas the multidomain description consists of a single coupled linear system for electric conduction in the intracellular, extracellular and body domains, the formulations are only unidirectionally coupled in the fiber based description. While the multidomain model always computes the EMG signals on the skin surface in every timestep, the corresponding model in the fiber based description can be solved with larger timestep widths, using subcycling for the action potential propagation model.
 
-As can be seen in \cref{eq:discretized_fibers_1}, the system matrix is decoupled and contains independent problems for every fiber. This is an advantage compared to the multidomain model, where a system describing the whole muscle domain has to be solved. On the downside, separate representations of the transmembrane voltage $V_m$ exist in the fiber based description. The representation in the 3D mesh has to be computed by interpolation from the representation on the fibers. The multidomain description has a single vector of degrees of freedom for $V_m$ with less entries than in the fiber-based description.
+As can be seen in \cref{eq:discretized_fibers_1}, the system matrix is decoupled and contains independent problems for every fiber. This is an advantage compared to the multidomain model, where a system describing the whole muscle domain has to be solved. On the downside, separate representations of the transmembrane voltage $V_m$ exist in the fiber based description. The representation in the 3D mesh has to be computed by interpolation from the representation on the fibers. The multidomain description has a single vector of degrees of freedom for $V_m$ with fewer entries than in the fiber-based description.
 
 \subsection{Summary of Domains and Meshes}
 
@@ -474,7 +474,7 @@ If the fiber based description is used, the description requires finite element 
 
 The subcellular model is solved at locations $\Omega_s^i$ for $i=1,\dots,m$. These locations are the nodes of the fiber meshes for the fiber based description and the nodes of the muscle mesh for the multidomain description. We therefore have the inclusion $\Omega_s^i \subset \Omega_f^j \subset \Omega_M$.
 
-For the solid mechanics model, the unified 3D domain $\Omega = \Omega_M \cup \Omega_B$ is used. The mesh for the continuum mechanics formulation can be different from the meshes used for the electrophysiology model. In fact, the continuum mechanics mesh has special requirements in order to yield a consistent formulation. Our implementation uses two overlayed meshes of quadratic and linear hexahedral elements for displacements and the hydrostatic pressure. 
+For the solid mechanics model, the unified 3D domain $\Omega = \Omega_M \cup \Omega_B$ is used. The mesh for the continuum mechanics formulation can be different from the meshes used for the electrophysiology model. In fact, the continuum mechanics mesh has special requirements in order to yield a consistent formulation. Our implementation uses two overlaid meshes of quadratic and linear hexahedral elements for displacements and the hydrostatic pressure. 
 
 Often, the required accuracy of the electrophysiology model is higher than for the continuum mechanics model, such that differently resolved meshes can be used. To facilitate data mapping, the nodes of the mechanics mesh should be chosen as subset of the nodes of the electrophysiology meshes.
 

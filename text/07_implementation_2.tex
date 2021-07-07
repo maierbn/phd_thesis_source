@@ -10,7 +10,7 @@ After the implementation of various solvers for specific parts of the multi-doma
 
 Data mapping between meshes is required in scenarios that involve both a finely resolved 3D mesh for the electrophysiology model and a coarse 3D mesh for the solid mechanics model. Moreover, data are mapped between the 3D muscle mesh and the embedded 1D fiber meshes in the fiber based electrophysiology model. In these two cases, the mapping has to be carried out in both directions between the involved meshes. The operation can be characterized as \emph{volume mapping}.
 
-We implement a generic mapping scheme between two meshes of any dimensionality and with any relative orientation with repect to each other. 
+We implement a generic mapping scheme between two meshes of any dimensionality and with any relative orientation with respect to each other. 
 Given is a finite element interpolant on a \emph{source} mesh, defined by the dof values at the nodes. The goal is to set the dof values of the \emph{target} mesh, such that the error between the finite element representations on the common domain of source and target mesh is as low as possible. By using the ansatz functions of the target mesh, the constructed mapping has the same order of accuracy as the target mesh interpolant. For a linear target mesh, the mapping operation is second order accurate, for a quadratic target mesh, the mapping operation is third order accurate.
 
 The considered source and target meshes are possibly partitioned. In order to perform the data mapping directly between two such meshes without communication between the processes, the partitioning of the volumes would have to be identical. However, this is not practical for different meshes and would disallow different orientations of source and target meshes. The only way to allow such a mapping is to consider either the source or the target mesh as a point cloud and construct the mapping between individual points and a mesh.
@@ -131,14 +131,14 @@ Here, $\phi_i$ for $i=1,\dots,n_\text{dofs}$, are the nodal ansatz functions of 
 
 The computation of the element coordinates $\bfxi$ from the world coordinates $\bfx$ consists of inverting the mapping in \cref{eq:mapping_parameter_world}. In the following, several approaches are presented to perform this inversion for different mesh types.
 
-For meshes of type \code{StructuredRegularFixedOfDimension<D>}, the inversion can be performed analytically. The mesh is a cartesian grids with a fixed mesh width $h$. For quadratic elements, $h$ denotes the side length of an element, not the distance between adjacent nodes.
+For meshes of type \code{StructuredRegularFixedOfDimension<D>}, the inversion can be performed analytically. The mesh is a Cartesian grid with a fixed mesh width $h$. For quadratic elements, $h$ denotes the side length of an element, not the distance between adjacent nodes.
 The computation of the element coordinates $\bfxi$ for the point $\bfx$ uses the position $\bfx^1$ of the first node and is given by:
 \begin{align*}
   \bfxi = (\bfx - \bfx^1) / h.
 \end{align*}
 This formula is also used for 1D meshes of any type.
 
-For non-cartesian 2D meshes with linear ansatz functions, i.e., meshes of type \code{Struc}\code{tured}\code{DeformableOfDimension<2>}, the inversion of the mapping from element to world coordinate frame in \cref{eq:mapping_parameter_world} can also be done analytically. We consider this problem in a generic way, where both the point $\bfx$ and the nodes $\bfx^1$ to $\bfx^4$ of the 2D element are embedded in 3D space, $\bfx,\bfx^1,\dots,\bfx^4 \in \R^3$. The computation determines the element coordinates $(\xi_1,\xi_2)$ of the projection of $\bfx$ onto the plane of the triangle $(\bfx^1,\bfx^2,\bfx^3)$. 
+For non-Cartesian 2D meshes with linear ansatz functions, i.e., meshes of type \code{Struc}\code{tured}\code{DeformableOfDimension<2>}, the inversion of the mapping from element to world coordinate frame in \cref{eq:mapping_parameter_world} can also be done analytically. We consider this problem in a generic way, where both the point $\bfx$ and the nodes $\bfx^1$ to $\bfx^4$ of the 2D element are embedded in 3D space, $\bfx,\bfx^1,\dots,\bfx^4 \in \R^3$. The computation determines the element coordinates $(\xi_1,\xi_2)$ of the projection of $\bfx$ onto the plane of the triangle $(\bfx^1,\bfx^2,\bfx^3)$. 
 
 This functionality is used for specifying electrodes on the skin surface. The electrode positions are specified as a 2D grid in 3D space above the muscle. The mapping automatically projects the points of this grid onto the surface of the 3D mesh. \Cref{fig:electrodes} shows such a use case. A simulation of surface EMG is shown, the coloring corresponds to the potential $\phi_b$ in millivolts in the body domain. A grid of electrode points, visualized by spheres, is mapped onto the surface of the muscle mesh and simulates electrode patches that capture high density surface EMG.
 
@@ -167,11 +167,11 @@ A hexahedral element can be subdivided into five simplex elements.
 Four outer simplex elements share their faces with parts of the hexahedral's surface. One interior simplex element only touches the hexahedron surface by its edges. 
 
 In each of the four outer simplex elements, we define a coordinate system $(\xi_1,\xi_2,\xi_3)$ with the origin located at a corner of the hexahedron. 
-In these elements, the coordinates $\bfxi$ for the point $\bfx$ can be computed  using the ansatz in \cref{eq:simplex_ansatz}. The computed coordinate values can be transformed to the hexahedral coordinate system by applying the appropriate mirror operations $\xi \mapsto (1-\xi)$ on some of the coordinates. Using the average values of the hexahedral coordinates resulting from all four outer simplex elements gives a good approximation for the correct hexahedral element coordinates $\bfxi$ of the point $\bfx$.
+In these elements, the coordinates $\bfxi$ for the point $\bfx$ can be computed  using the ansatz in \cref{eq:simplex_ansatz}. The computed coordinate values can be transformed to the hexahedral coordinate system by applying the appropriate mirror operations $\xi \mapsto (1-\xi)$ on some coordinates. Using the average values of the hexahedral coordinates resulting from all four outer simplex elements gives a good approximation for the correct hexahedral element coordinates $\bfxi$ of the point $\bfx$.
 
 To obtain the correct element coordinates, these approximate values are used as initial guess in a Newton scheme, which subsequently tries to find the root of $\bfr = (\bfxi - \bfx(\bfxi))$ and, thus, invert the mapping in \cref{eq:mapping_parameter_world}. 
 
-Runtime measurements have shown that the lower number of Newton iterations resulting from the heuristic with the four simplex elements to compute an initial guess outweights the additional runtime for the heuristic and, in total, leads to a faster computation.
+Runtime measurements have shown that the lower number of Newton iterations resulting from the heuristic with the four simplex elements to compute an initial guess outweighs the additional runtime for the heuristic and, in total, leads to a faster computation.
 
 The Newton scheme uses the inverse Jacobian matrix of the mapping in \cref{eq:mapping_parameter_world}. If the residual norm $\Vert\bfr\Vert_2$ cannot not be brought under the threshold of \num{1e-8} in 16 iterations, this indicates that the problem of inverting the Jacobian is badly conditioned and the Jacobian has a large numerical error. In this case, the optimization is restarted using the derivative-free Nelder-Mead algorithm.
 
@@ -192,7 +192,7 @@ As mentioned in the last section, the Newton scheme that solves the inverse prob
 If the conditioning is too bad and the computed inverse Jacobian has a large numerical error, the Newton scheme fails to find a solution in the given maximum number of iterations and the Nelder-Mead algorithm is used instead. This algorithm usually succeeds. However, it requires significantly more compute time than the Newton scheme. The case where the Nelder-Mead algorithm is needed, however, only occurs for a small number of elements and only in highly-resolved meshes.
 
 \Cref{fig:condition_number2} shows the condition number of the Jacobian matrix of the mapping from element to world coordinates per element. The condition number is numerically approximated using the \emph{von Mises} power iteration algorithm to obtain the largest eigenvalue of the Jacobian and its inverse.
-It can be seen in \cref{fig:condition_number7x7} that the elements with the highest condition number are located along longitudinal lines on the outer surface of the muscle mesh. Two such lines exist on both sides of the muscle. The cross sectional mesh at the top of the muscle shows that the elements along these lines have large interior angles at the respective positions. 
+It can be seen in \cref{fig:condition_number7x7} that the elements with the highest condition number are located along longitudinal lines on the outer surface of the muscle mesh. Two such lines exist on both sides of the muscle. The cross-sectional mesh at the top of the muscle shows that the elements along these lines have large interior angles at the respective positions. 
 
 % condition number 7x7
 \begin{figure}%
@@ -215,7 +215,7 @@ It can be seen in \cref{fig:condition_number7x7} that the elements with the high
 
 \Cref{fig:condition_number9x9} shows the same information for a different mesh with $9\times 9$ fibers instead of the subset of $7\times 7$ fibers in \cref{fig:condition_number7x7}. In \cref{fig:condition_number9x9}, the outer surface of the muscle mesh is smoother and the interior angle of the elements along the respective longitudinal lines is even closer to \SI{180}{\degree}. Thus, the resulting maximum condition number has a higher value of \num{30.2} compared to \num{4.48} in the example of \cref{fig:condition_number7x7}.
 
-Another effect can be seen in the visualization in \cref{fig:condition_number7x7}. The muscle mesh was generated from the fiber data with sampling strides of two in the cross sectional directions. As a consequence, the nodes of the 3D mesh are part of every second fiber. This results in some outer fibers being located outside the domain of the 3D mesh. Such a case can be seen for the upper-most fiber in \cref{fig:condition_number7x7}. 
+Another effect can be seen in the visualization in \cref{fig:condition_number7x7}. The muscle mesh was generated from the fiber data with sampling strides of two in the cross-sectional directions. As a consequence, the nodes of the 3D mesh are part of every second fiber. This results in some outer fibers being located outside the domain of the 3D mesh. Such a case can be seen for the upper-most fiber in \cref{fig:condition_number7x7}. 
 
 To also involve such fibers in the computation, we enable data mapping between the 3D mesh and fibers that are outside but close to the 3D mesh. We add a tolerance parameter $\xi_\text{tolerance}$ to the implementation that specifies, how far outside the mesh fibers can be located to still be included in the mapping. On the element level, a point is considered to be part of an element, if its element coordinates $(\xi_1,\xi_2,\xi_3)$ are no further than $\xi_\text{tolerance}$ off the element domain, i.e., for %
 \begin{align*}

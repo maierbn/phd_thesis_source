@@ -101,6 +101,22 @@ author = {Benjamin Maier and Miriam Mehl},
   doi       = {10.1371/journal.pone.0077576},
 }
 
+@article{Bradley2011,
+	title = {OpenCMISS: A multi-physics \& multi-scale computational infrastructure for the VPH/Physiome project},
+	journal = {Progress in Biophysics and Molecular Biology},
+	volume = {107},
+	number = {1},
+	pages = {32-47},
+	year = {2011},
+	note = {Experimental and Computational Model Interactions in Bio-Research: State of the Art},
+	issn = {0079-6107},
+	doi = {https://doi.org/10.1016/j.pbiomolbio.2011.06.015},
+	url = {https://www.sciencedirect.com/science/article/pii/S0079610711000629},
+	author = {Chris Bradley and Andy Bowery and Randall Britten and Vincent Budelmann and Oscar Camara and Richard Christie and Andrew Cookson and Alejandro F. Frangi and Thiranja Babarenda Gamage and Thomas Heidlauf and Sebastian Krittian and David Ladd and Caton Little and Kumar Mithraratne and Martyn Nash and David Nickerson and Poul Nielsen and Øyvind Nordbø and Stig Omholt and Ali Pashaei and David Paterson and Vijayaraghavan Rajagopal and Adam Reeve and Oliver Röhrle and Soroush Safaei and Rafael Sebastián and Martin Steghöfer and Tim Wu and Ting Yu and Heye Zhang and Peter Hunter},
+	keywords = {Computational modelling software, Multi-scale, Multi-physics, Physiome project},
+abstract = {The VPH/Physiome Project is developing the model encoding standards CellML (cellml.org) and FieldML (fieldml.org) as well as web-accessible model repositories based on these standards (models.physiome.org). Freely available open source computational modelling software is also being developed to solve the partial differential equations described by the models and to visualise results. The OpenCMISS code (opencmiss.org), described here, has been developed by the authors over the last six years to replace the CMISS code that has supported a number of organ system Physiome projects. OpenCMISS is designed to encompass multiple sets of physical equations and to link subcellular and tissue-level biophysical processes into organ-level processes. In the Heart Physiome project, for example, the large deformation mechanics of the myocardial wall need to be coupled to both ventricular flow and embedded coronary flow, and the reaction–diffusion equations that govern the propagation of electrical waves through myocardial tissue need to be coupled with equations that describe the ion channel currents that flow through the cardiac cell membranes. In this paper we discuss the design principles and distributed memory architecture behind the OpenCMISS code. We also discuss the design of the interfaces that link the sets of physical equations across common boundaries (such as fluid-structure coupling), or between spatial fields over the same domain (such as coupled electromechanics), and the concepts behind CellML and FieldML that are embodied in the OpenCMISS data structures. We show how all of these provide a flexible infrastructure for combining models developed across the VPH/Physiome community.}
+}
+
 @Article{Hodgkin1952,
   author  = {Hodgkin, A. L. and Huxley, A. F.},
   title   = {A quantitative description of membrane current and its application to conduction and excitation in nerve.},
@@ -1004,6 +1020,20 @@ keywords = "Space-filling curves"
   Volume                   = {206}
 }
 
+
+@article{VanLoocke2006,
+  title = {A validated model of passive muscle in compression},
+  journal = {Journal of Biomechanics},
+  volume = {39},
+  number = {16},
+  pages = {2999-3009},
+  year = {2006},
+  issn = {0021-9290},
+  doi = {https://doi.org/10.1016/j.jbiomech.2005.10.016},
+  author = {M. VanLoocke and C.G. Lyons and C.K. Simms},
+  keywords = {Skeletal muscle, Passive properties, Compressive behaviour, Transversely isotropic model}
+}
+
 @Article{Blemker2005a,
   Title                    = {A 3{D} model of muscle reveals the causes of nonuniform strains in the biceps brachii},
   Author                   = {Blemker, S. S. and Pinsky, P. M. and Delp, S. L.},
@@ -1246,10 +1276,10 @@ year = {1969}
   issn = {0021-9290},
   doi = {https://doi.org/10.1016/j.jbiomech.2012.08.023},
   url = {https://www.sciencedirect.com/science/article/pii/S002192901200471X},
-  author = {Markus Böl and Roland Kruse and Alexander E. Ehret and Kay Leichsenring and Tobias Siebert},
+  author = {Markus B{\"o}l and Roland Kruse and Alexander E. Ehret and Kay Leichsenring and Tobias Siebert},
   keywords = {Rabbit soleus muscle, Parameter identification, Optical measurements, Passive muscle properties, Static friction coefficient},
   abstract = {Due to the increasing developments in modelling of biological material, adequate parameter identification techniques are urgently needed. The majority of recent contributions on passive muscle tissue identify material parameters solely by comparing characteristic, compressive stress–stretch curves from experiments and simulation. In doing so, different assumptions concerning e.g. the sample geometry or the degree of friction between the sample and the platens are required. In most cases these assumptions are grossly simplified leading to incorrect material parameters. In order to overcome such oversimplifications, in this paper a more reliable parameter identification technique is presented: we use the inverse finite element method (iFEM) to identify the optimal parameter set by comparison of the compressive stress–stretch response including the realistic geometries of the samples and the presence of friction at the compressed sample faces. Moreover, we judge the quality of the parameter identification by comparing the simulated and experimental deformed shapes of the samples. Besides this, the study includes a comprehensive set of compressive stress–stretch data on rabbit soleus muscle and the determination of static friction coefficients between muscle and PTFE.}
-}
+} 
 
 @article{VanLoocke2008,
   title = {Viscoelastic properties of passive skeletal muscle in compression: Stress-relaxation behaviour and constitutive modelling},
@@ -1260,22 +1290,8 @@ year = {1969}
   year = {2008},
   issn = {0021-9290},
   doi = {https://doi.org/10.1016/j.jbiomech.2008.02.007},
-  author = {M. {Van Loocke} and C.G. Lyons and C.K. Simms},
+  author = {M. VanLoocke and C.G. Lyons and C.K. Simms},
   keywords = {Passive skeletal muscle, Viscoelastic properties, Compression, Stress relaxation, Quasi-linear viscoelastic model}
-}
-
-@article{VanLoocke2006,
-  title = {A validated model of passive muscle in compression},
-  journal = {Journal of Biomechanics},
-  volume = {39},
-  number = {16},
-  pages = {2999-3009},
-  year = {2006},
-  issn = {0021-9290},
-  doi = {https://doi.org/10.1016/j.jbiomech.2005.10.016},
-  url = {https://www.sciencedirect.com/science/article/pii/S0021929005004811},
-  author = {M. {Van Loocke} and C.G. Lyons and C.K. Simms},
-  keywords = {Skeletal muscle, Passive properties, Compressive behaviour, Transversely isotropic model}
 }
 
 @article{Takaza2013,
@@ -1288,8 +1304,7 @@ year = {1969}
   doi = {https://doi.org/10.1016/j.jmbbm.2012.09.001},
   url = {https://www.sciencedirect.com/science/article/pii/S1751616112002457},
   author = {Michael Takaza and Kevin M. Moerman and Juliette Gindre and Garry Lyons and Ciaran K. Simms},
-  keywords = {Muscle fibre tension, Anisotropy, Poisson's ratio, Nonlinear},
-  abstract = {The passive mechanical properties of muscle tissue are important for many biomechanics applications. However, significant gaps remain in our understanding of the three-dimensional tensile response of passive skeletal muscle tissue to applied loading. In particular, the nature of the anisotropy remains unclear and the response to loading at intermediate fibre directions and the Poisson's ratios in tension have not been reported. Accordingly, tensile tests were performed along and perpendicular to the muscle fibre direction as well as at 30°, 45° and 60° to the muscle fibre direction in samples of Longissimus dorsi muscle taken from freshly slaughtered pigs. Strain was measured using an optical non-contact method. The results show the transverse or cross fibre (TT′) direction is broadly linear and is the stiffest (77kPa stress at a stretch of 1.1), but that failure occurs at low stretches (approximately λ=1.15). In contrast the longitudinal or fibre direction (L) is nonlinear and much less stiff (10kPa stress at a stretch of 1.1) but failure occurs at higher stretches (approximatelyλ=1.65). An almost sinusoidal variation in stress response was observed at intermediate angles. The following Poisson's ratios were measured: VLT=VLT′=0.47, VTT′=0.28 and VTL=0.74. These observations have not been previously reported and they contribute significantly to our understanding of the three dimensional deformation response of skeletal muscle tissue.}
+  keywords = {Muscle fibre tension, Anisotropy, Poisson's ratio, Nonlinear}
 }
 
 @Book{MacIntosh2006,
@@ -1737,14 +1752,12 @@ doi = {10.1109/TBME.2016.2630009}
   year = "2014",
   issn = "0021-9290",
   doi = "https://doi.org/10.1016/j.jbiomech.2014.02.009",
-  url = "http://www.sciencedirect.com/science/article/pii/S0021929014001018",
   author = "D.F.B. Haeufle and M. Günther and A. Bayer and S. Schmitt",
   keywords = "Muscle, Model, Serial damping, Eccentric contraction, Force–velocity relation, Multi-body simulation",
-  abstract = "Hill-type muscle models are commonly used in biomechanical simulations to predict passive and active muscle forces. Here, a model is presented which consists of four elements: a contractile element with force–length and force–velocity relations for concentric and eccentric contractions, a parallel elastic element, a series elastic element, and a serial damping element. With this, it combines previously published effects relevant for muscular contraction, i.e. serial damping and eccentric force–velocity relation. The model is exemplarily applied to arm movements. The more realistic representation of the eccentric force–velocity relation results in human-like elbow-joint flexion. The model is provided as ready to use Matlab ® and Simulink ® code."
 }
 
 @Article{Morl2012,
-  author  = {Mörl, Falk and Siebert, Tobias and Schmitt, Syn and Blickhan, Reinhard and Günther, Michael},
+  author  = {M{\"o}rl, Falk and Siebert, Tobias and Schmitt, Syn and Blickhan, Reinhard and G{\"u}nther, Michael},
   journal = {Journal of Mechanics in Medicine and Biology},
   title   = {ELECTRO-MECHANICAL DELAY IN HILL-TYPE MUSCLE MODELS},
   year    = {2012},
@@ -2417,6 +2430,7 @@ abstract = "This paper describes an algorithm to extract adaptive and quality 3D
   year={1996},
   publisher={Wiley Online Library}
 }
+
 @inproceedings{ledoux2008extension,
   title={An extension of the reliable whisker weaving algorithm},
   author={Ledoux, Franck and Weill, Jean-Christophe},

@@ -16,13 +16,13 @@ A pool of motor neurons drives the stimulation of the muscular system in \cref{f
 The axons of each motor neuron innervate the muscle fibers corresponding to the same MU and transmit rate-encoded stimulation signals.
 
 In the muscle tissue, action potentials propagate starting at the neuromuscular junctions and subsequently reach the whole length of the muscle.
-In our multi-scale model, two different formulations are available to describe this phenomenon. The multidomain description (\cref{fig:multi-scale-model} (b1)) models the MUs from a  homogenized 3D perspective. The description with muscle fibers (\cref{fig:multi-scale-model} (b2)) models action potential propagation explicitely with $n$ 1D muscle fibers. 
+In our multi-scale model, two different formulations are available to describe this phenomenon. The multidomain description (\cref{fig:multi-scale-model} (b1)) models the MUs from a  homogenized 3D perspective. The description with muscle fibers (\cref{fig:multi-scale-model} (b2)) models action potential propagation explicitly with $n$ 1D muscle fibers. 
 
 Both of these descriptions of electrophysiology involve a subcellular model (\cref{fig:multi-scale-model} (c)). This model describes the ionic processes involving the fiber membranes and taking place within one half of a sarcomere as the smallest unit to generate muscle forces. A large number $m$ of instances of this model has to be computed. 
 
 In addition to the physiology of the muscle, a layer of body fat and skin on top of the muscle belly can be added to the model. This 3D fat layer (\cref{fig:multi-scale-model} (d)) is used to simulate EMG recordings on the skin surface. The model for the fat layer is unidirectionally coupled with the muscle fiber model (\cref{fig:multi-scale-model} (b2)) or bidirectionally coupled with the multidomain model (\cref{fig:multi-scale-model} (b1)). Using the multidomain model, it is, thus, possible to simulate external stimulation by electrodes on the skin, which is subject to research in neuroprosthetics.
 
-The activated muscle generates force by subcellular proceses on a molecular scale. They are computed on the cellular level by the half-sarcomere model (c). On the macroscopic scale, stresses lead to strains and contraction of the muscle. This effect is described by the muscle contraction model on a 3D domain (\cref{fig:multi-scale-model} (e)). 
+The activated muscle generates force by subcellular processes on a molecular scale. They are computed on the cellular level by the half-sarcomere model (c). On the macroscopic scale, stresses lead to strains and contraction of the muscle. This effect is described by the muscle contraction model on a 3D domain (\cref{fig:multi-scale-model} (e)). 
 The description is coupled with the electrophysiology models (b1),(b2) by the geometry of the contracting muscle and fibers. It is coupled with the subcellular model by the generated active stresses of the half-sarcomere. Displacements and stresses can be computed for the muscle belly itself, but also for the connected body fat layer and for elastic tendons (\cref{fig:multi-scale-model} (f)). Depending on the research questions, the contraction model is either formulated quasi-static or fully dynamic taking into account inertia effects.
 
 Sensory organs such as muscle spindles and Golgi tendon organs sense fiber stretch and contraction velocity (\cref{fig:multi-scale-model} (g)). They are connected with the motor neuron pool by layers of interneurons and modulate the stimulation in \cref{fig:multi-scale-model} (a).
@@ -52,7 +52,7 @@ Significant ions in this process are sodium $(\text{Na}^{+})$ and potassium ions
 Considering a particular point on the fiber, these ions diffuse through ion-specific channels in the membrane.
 The diffusion is driven by an interplay of the ion concentration gradient and the electric field that is caused by action potentials.
 
-Without any electric field imposed by action potentials, the equilibrium state of the diffusion process for sodium and potassium ions is given by their Nernst potentials $E_{\text{Na}^{+}}$ and $E_{\text{K}^{+}}$. These voltage levels depend on logarithmic relations between extra- and intracellular concentrations scaled by constants describing the thermic energy and the number of electrons.
+Without any electric field imposed by action potentials, the equilibrium state of the diffusion process for sodium and potassium ions is given by their Nernst potentials $E_{\text{Na}^{+}}$ and $E_{\text{K}^{+}}$. These voltage levels depend on logarithmic relations between extra- and intracellular concentrations scaled by constants describing the thermal energy and the number of electrons.
 In thermodynamic equilibrium, the membrane voltage is equal to the Nernst potential $E_i$ of the involved ions $i$. 
 At a higher membrane voltage $V_m$, the remainder ($V_m - E_i$) is the part of the electric field that drives the
 ion fluxes and electric currents through the membrane. The currents depend on the conductivity $g_i$ of
@@ -77,13 +77,13 @@ In addition to the ionic current $I_\text{ion}$, an externally driven current $I
 %
 The negative sign of the ionic current $I_\text{ion}$ is in accordance with the definition of the membrane voltage as $V_m=\phi_i-\phi_e$. The external current $I_\text{ext}$ is divided by the surface area $A$ of the stimulating electrode or neuromuscular junction, as the description considers an infinitesimal area on the membrane.
 
-Hodgkin and Huxley suggested that ion channels can be activated and deactivated. This molecular process requires independent \say{gating} particles to move to a new position in order for a channel to be activated. For the potassium channel, four of these independent events have to occur, each modeled by a propability $n$. The resulting probability for the channel to open is, thus, $n^4$. For the sodium channel, three such events are assumed for activation and another one for the deactivation of the channel, described by the propabilities $m$ and $h$, respectively. The values of the probabilities change over time and modulate the conductivities of the ion channels:
+Hodgkin and Huxley suggested that ion channels can be activated and deactivated. This molecular process requires independent \say{gating} particles to move to a new position in order for a channel to be activated. For the potassium channel, four of these independent events have to occur, each modeled by a probability $n$. The resulting probability for the channel to open is, thus, $n^4$. For the sodium channel, three such events are assumed for activation and another one for the deactivation of the channel, described by the probabilities $m$ and $h$, respectively. The values of the probabilities change over time and modulate the conductivities of the ion channels:
 %
 \begin{align*}
   g_{\text{Na}^{+}} &= \bar{g}_{\text{Na}^{+}} \cdot m(t)^3 \cdot h(t), \quad &g_{\text{K}^{+}} &= \bar{g}_{\text{K}^{+}} \cdot n(t)^4.
 \end{align*}
 %
-Here, $\bar{g}_{\text{Na}^{+}}$ and $\bar{g}_{\text{K}^{+}}$ are channel specific constants. The gating variables $n,m$ and $h$ can be interpreted as probabilities for the events to occur or as the amount of occured events related to all available gating particles. 
+Here, $\bar{g}_{\text{Na}^{+}}$ and $\bar{g}_{\text{K}^{+}}$ are channel specific constants. The gating variables $n,m$ and $h$ can be interpreted as probabilities for the events to occur or as the amount of occurred events related to all available gating particles. 
 The evolution of the activation probability $n$ is modeled by the following ordinary differential equation (ODE):%
 \begin{align*}
   \d{n}{t} = \alpha_n(V_m) \cdot (1-n) + \beta_n(V_m) \cdot n,
@@ -100,14 +100,14 @@ which for $t\to \infty$ converges to the equilibrium value $n_\infty := \alpha_n
   \centering%
   \def\svgwidth{0.4\textwidth}
   \input{images/theory/ode_solution.pdf_tex}%
-  \caption{Subcellular model: Graph of the analytic solution (red) of the ordinary differential equation that is part of the activation model of ion channels for constant transmembrane voltage and initial condition $n(0)=0$, given in \cref{eq:subcellular_model_helper0}. The variables $n_\infty$ and $\tau_n$ can be interpreted as the equilibrium value and a characteristic time scale, respectively.}%
+  \caption{Subcellular model: Graph of the analytic solution (red) of the ordinary differential equation that is part of the activation model of ion channels for constant transmembrane voltage and initial condition $n(0)=0$, given in \cref{eq:subcellular_model_helper0}. The variables $n_\infty$ and $\tau_n$ can be interpreted as the equilibrium value and a characteristic timescale, respectively.}%
   \label{fig:ode_solution}%
 \end{figure}
 
 Because the transmembrane voltage $V_m$ changes over time, the ODEs for $n, m$ and $h$ have to be solved numerically. Then, the dependent ionic current $I_\text{ion}$ can be calculated. Thus, the model is a system of differential-algebraic equations (DAE).
 
 The internal states in this model can be combined into a state vector $\bfy = (n,m,h)^\top$. 
-The combined right hand side for all states is formulated as a vector-valued function $G(V_m,\bfy)$.
+The combined right-hand side for all states is formulated as a vector-valued function $G(V_m,\bfy)$.
 In summary, the system of DAEs for the subcellular model on a subcellular domain $\Omega_s$ can be written in the following form:
 \begin{align}
   \dfrac{\partial\bfy}{\partial t} &= G(V_m,\bfy),& I_\text{ion}&=I_\text{ion}(V_m,\bfy) \quad \text{on }\Omega_s\label{eq:subcellular}.
@@ -235,7 +235,7 @@ Another homogeneous Neumann boundary condition on $\phi_e$ as given by \cref{eq:
 
 The multidomain model is an alternative approach to the description based on the monodomain and bidomain equations described in \cref{sec:bidomain_model,sec:monodomain_model}. It was proposed in \cite{Klotz2020} and describes the same physics. However, the muscle fibers are homogenized and all equations are formulated using a single 3D muscle domain $\Omega_M$.
 
-The multidomain equations generalize the two bidomain equations and allow to take into account multiple MUs by defining a separate intracellular space for each MU. Thus, at every spatial point $\bfx \in \Omega_M$ one extracellular and  $N_\text{MU}$ intracellular domains or compartments coexist, where $N_\text{MU}$ is the number of MUs. As before, the extracellular domain has the electric potential $\phi_e$ and  conductivity tensor $\bfsigma_e$. For each compartment $k = 1, \dots, N_\text{MU}$, a separate electric potential $\phi_i^k$, transmembrane voltage $V_m^k = \phi_i^k-\phi_e$, conductivity tensor $\bfsigma_i^k$, surface to volume ratio of the membrane $A_m^k$ and membrane capacitance $C_m^k$ are defined.
+The multidomain equations generalize the two bidomain equations and allow taking into account multiple MUs by defining a separate intracellular space for each MU. Thus, at every spatial point $\bfx \in \Omega_M$ one extracellular and  $N_\text{MU}$ intracellular domains or compartments coexist, where $N_\text{MU}$ is the number of MUs. As before, the extracellular domain has the electric potential $\phi_e$ and  conductivity tensor $\bfsigma_e$. For each compartment $k = 1, \dots, N_\text{MU}$, a separate electric potential $\phi_i^k$, transmembrane voltage $V_m^k = \phi_i^k-\phi_e$, conductivity tensor $\bfsigma_i^k$, surface to volume ratio of the membrane $A_m^k$ and membrane capacitance $C_m^k$ are defined.
 
 Analog to the fibers of a MU that exhibit different densities at different locations in the muscle, each compartment occupies different locations within the domain to a different extent. This is described by the relative occupancy factor $f_r^k: \Omega_M \to [0,1]$ for MU $k$. The factors have different values in the domain according to the presence of the MU at the respective location. At every point, their sum is one, $\sum_{k=1}^{N_\text{MU}} f_r^k = 1$, if all MUs should be considered or less than one if the effect of remainder MUs that will not be activated in the simulation scenario is neglected.
 

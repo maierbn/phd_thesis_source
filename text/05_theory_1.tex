@@ -44,7 +44,7 @@ Capital and small indices refer to reference and current configuration, respecti
 \end{align}
 %
 Here and in the following, the gradient symbol $∇$ refers to differentiation with respect to material coordinates $\bfX$. 
-We assume cartesian coordinates.
+We assume Cartesian coordinates.
 
 % tangent, normal, volume map
 The determinant of the deformation gradient is $J:= \det \bfF>0$. It is positive for any physically valid transformation.
@@ -135,7 +135,7 @@ The first Piola-Kirchhoff stress tensor $\bfP$ measures contact forces in the cu
 %To relate strains and stresses in a material model, the corresponding tensors have to be dual objects. Here, three settings are possible: The Eulerian setting uses the metric $\bfg$ and the dual Kirchhoff stress $J\,\bfsigma$. The two-point setting uses the deformation gradient $\bfF$ and the dual first Piola-Kirchhoff stress $\bfP$. The Lagrangian setting uses the right Cauchy-Green tensor $\bfC$ and the dual second Piola-Kirchhoff stress $\bfS$. 
 %Different matching pairs of strain and stress tensors can be used to describe physical relations. 
 The Lagrangian setting defines the right Cauchy-Green tensor $\bfC$ and the second Piola-Kirchhoff stress tensor $\bfS$.
-We use these quantities in the derivation of the discretized equations, because the Lagrangian formulation is natural for this task and allows to integrate over the non-deforming domain $\Omega_0$.
+We use these quantities in the derivation of the discretized equations, because the Lagrangian formulation is natural for this task and allows integrating over the non-deforming domain $\Omega_0$.
 
 The Cauchy stress $\bfsigma$ is completely defined in the Eulerian setting. It is used to formulate physical balance principles.
 
@@ -246,7 +246,7 @@ The material tensor $\C$ exhibits the following major and minor symmetries:%
 \end{subequations}
 effectively reducing the number of independent entries from 81 to 21 for 3D domains.
 
-To incorporate force generation in the muscle, the stress can be additively composed of a the passive stress $\bfsigma$ and an additional active stress term $\bfsigma_\text{active}$:%
+To incorporate force generation in the muscle, the stress can be additively composed of the passive stress $\bfsigma$ and an additional active stress term $\bfsigma_\text{active}$:%
 \begin{align}\label{eq:active_stress_linear}
   \bfsigma^\text{total} = \bfsigma + \bfsigma^\text{active}.
 \end{align}

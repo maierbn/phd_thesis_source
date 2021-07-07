@@ -25,7 +25,7 @@
 \section{Fiber Based Electrophysiology}
 %\iffalse
 
-In the following section, we simulate EMG signals on the upper arm. The simulation domain consists of the biceps brachii muscle, adipose tissue and the skin surface. We consider the multi-scale model of fiber based electrophysiology, where the monodomain equation \cref{eq:monodomain} is solved on several independent 1D muscle fibers. The membrane voltage $V_m$ is mapped from the 1D meshes to the 3D mesh. The static bidomain equation \cref{eq:bidomain1} is subsequentlty solved on the muscle and fat domains at fixed timesteps of the simulation.
+In the following section, we simulate EMG signals on the upper arm. The simulation domain consists of the biceps brachii muscle, adipose tissue and the skin surface. We consider the multi-scale model of fiber based electrophysiology, where the monodomain equation \cref{eq:monodomain} is solved on several independent 1D muscle fibers. The membrane voltage $V_m$ is mapped from the 1D meshes to the 3D mesh. The static bidomain equation \cref{eq:bidomain1} is subsequently solved on the muscle and fat domains at fixed timesteps of the simulation.
 
 \subsection{Effects of Single Motor Units on the Electromyography Signal}
 
@@ -50,7 +50,7 @@ The visualization shows that the fibers of the same MU always have some spacing 
     \caption{Fibers that belong to motor units 1 and 20.}%
     \label{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}%
   \end{subfigure}
-  \caption{Assignment of the 1369 fibres to 20 motor units used in the simulation scenario for fiber based electrophysiology.}%
+  \caption{Assignment of the 1369 fibers to 20 motor units used in the simulation scenario for fiber based electrophysiology.}%
   \label{fig:MU_fibre_distribution_37x37_20c}%
 \end{figure}%
 
@@ -61,7 +61,7 @@ The timestep widths are $\dt_\text{0D}=\dt_\text{splitting} = \SI{2.5e-3}{\milli
 We compute the linear systems for the initial potential flow problem to estimate fiber directions in the 3D domain and for the bidomain equation, which is solved in every timestep  using a conjugate gradient solver. 
 The program uses the \code{FastMonodomainSolver} class for the electrophysiology model. The Thomas algorithm solves the linear system of the diffusion problem. We use the \code{`vc`} optimization type and employ the scheme to only compute active fibers and the subcellular problems that are not in equilibrium.
 
-The computation of a simulated time span with $t_\text{end}=\SI{100}{\milli\second}$  on a  AMD EPYC 7742 64-core processor with \SI{2492}{\mega\hertz} base frequency and \SI{1.96}{\tera\byte} RAM takes approximately $\SI{100}{\second}$ in the scenario that activates only the smallest MU and $\SI{126}{\second}$ in the scenario that activates only the largest MU.
+The computation of a simulated time span with $t_\text{end}=\SI{100}{\milli\second}$  on an AMD EPYC 7742 64-core processor with \SI{2492}{\mega\hertz} base frequency and \SI{1.96}{\tera\byte} RAM takes approximately $\SI{100}{\second}$ in the scenario that activates only the smallest MU and $\SI{126}{\second}$ in the scenario that activates only the largest MU.
 
 \Cref{fig:result_mu1} shows the result for the scenario of activating the smallest MU, MU 1. In \cref{fig:mu01a}, the surface is shown in the background and colored according to the extracellular potential $\phi_e$, which represents the EMG signal. The muscle volume is not shown, instead, the active parts of the respective fibers are displayed as tubes in the 3D domain. Their color visualizes the value of the transmembrane voltage $V_m$. In every of these small tube segments, the rising and declining shape of an action potential can be observed by the color progression from blue over orange to red for the rising part and back to blue for the declining part.
 
@@ -69,7 +69,7 @@ In this scenario, the fibers of MU 1 are stimulated three times within the first
 
 By comparing the results in \cref{fig:mu01a} with the fiber distribution in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, it can be seen that fibers of MU 1 are located opposite of the muscle surface, which is at the upper side of the cross-sectional square diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}. The left side of the diagram in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution} corresponds to the lower part of the skin in \cref{fig:mu01a}. This part of the skin is closer to the activated fibers and, thus, the effect on the surface EMG is highest for this region.
 
-\Cref{fig:mu01b} shows the skin surface as seen from the back in \cref{fig:mu01a}. The active region is located at the right side in this image.
+\Cref{fig:mu01b} shows the skin surface as seen from the back in \cref{fig:mu01a}. The active region is located on the right-hand side in this image.
 It can be seen that the active region on the skin surface, which results from fibers of the activated MU 1, only spans a small portion of the surface.
 
 % Mu no. 1
@@ -110,9 +110,9 @@ It can be seen that the active region on the skin surface, which results from fi
   \label{fig:result_mu20}%
 \end{figure}%
 
-\Cref{fig:result_mu20} shows the analoguous scenario that activates MU 20 instead of MU 1 is shown. \Cref{fig:mu20a} shows that, now, more fibers are activated as MU 20 is larger than MU 1. According to the MU layout in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, the active fibers are also located closer to the skin surface. This layout results in a stronger EMG signal compared to the previous scenario. 
+\Cref{fig:result_mu20} shows the analogous scenario that activates MU 20 instead of MU 1 is shown. \Cref{fig:mu20a} shows that, now, more fibers are activated as MU 20 is larger than MU 1. According to the MU layout in \cref{fig:MU_fibre_distribution_37x37_20c_txt_2d_fiber_distribution}, the active fibers are also located closer to the skin surface. This layout results in a stronger EMG signal compared to the previous scenario. 
 
-The color coding in the two scenarios in \cref{fig:result_mu1,fig:result_mu20} is identical and it can be seen that the absolute value of the extracellular potential $\phi_e$ is larger in the scenario of MU 20. For the scenario with MU 1 in \cref{fig:result_mu1}, the value range of the extracellular potential $\phi_e$ is $[\SI{-0.473}{\milli\volt}, \SI{0.204}{\milli\volt}]$. For the scenario with MU 20 in \cref{fig:result_mu20}, it is $[\SI{-0.834}{\milli\volt}, \SI{0.579}{\milli\volt}]$, which is more than double the range.
+The color coding in the two scenarios in \cref{fig:result_mu1,fig:result_mu20} is identical, and it can be seen that the absolute value of the extracellular potential $\phi_e$ is larger in the scenario of MU 20. For the scenario with MU 1 in \cref{fig:result_mu1}, the value range of the extracellular potential $\phi_e$ is $[\SI{-0.473}{\milli\volt}, \SI{0.204}{\milli\volt}]$. For the scenario with MU 20 in \cref{fig:result_mu20}, it is $[\SI{-0.834}{\milli\volt}, \SI{0.579}{\milli\volt}]$, which is more than double the range.
 
 \Cref{fig:mu20b} shows the overall EMG signal on the skin surface for MU 20. Compared to the result of MU 1 in \cref{fig:mu01b}, nearly the inverse region is activated. It can, thus, be observed that the EMG signal is highly influenced by the location and size of the MUs. MUs with territories closer to the skin surface have a larger effect on the EMG signals than MUs that are located further away. As seen in \cref{fig:mu01b}, the influence of fibers completely vanishes for more than a certain distance. On the contrary, the effects of several close fibers add up such that large MUs located near the surface have the most impact on the resulting EMG signal.
 
@@ -296,9 +296,9 @@ We use the method 1a of the algorithm described in \cref{sec:muscle_fibers_and_m
 \end{figure}%
 
 
-For every fiber, the algorithm assigns a MU with a close center point with higher probability than a MU whose center is located further away. The total number of fibers per MU is progressing exponentially for the MUs from 1 to 100. The progression is described by an exponential function with basis $1.02$. \Cref{fig:mu_sizes_100mus} shows the MU size distributions for four scenarios with a increasing number of fibers from \num{169} to \num{273529}. For 169 fibers in \cref{fig:mus_13}, not all 100 MUs get associated with a fiber. It can be further seen that the error of the actual size distribution to the exponential function decreases with increasing number of fibers. For the largest scenario in \cref{fig:mus_523} the MU sizes range from 602 to 6097 fibers.
+For every fiber, the algorithm assigns a MU with a close center point with higher probability than a MU whose center is located further away. The total number of fibers per MU is progressing exponentially for the MUs from 1 to 100. The progression is described by an exponential function with basis $1.02$. \Cref{fig:mu_sizes_100mus} shows the MU size distributions for four scenarios with an increasing number of fibers from \num{169} to \num{273529}. For 169 fibers in \cref{fig:mus_13}, not all 100 MUs get associated with a fiber. It can be further seen that the error of the actual size distribution to the exponential function decreases with increasing number of fibers. For the largest scenario in \cref{fig:mus_523} the MU sizes range from 602 to 6097 fibers.
 
-The number of fibers in the largest scenario matches the realistic number in a biceps muscle. The number of MUs can be higher in reality, e.g., by a factor of 5. Thus, the MUs in this scenario can be seen as a combination of multiple real MUs. Especially the smallest MUs, which in reality can consists of only some dozens of fibers are lumped by the first few MUs in our scenario. We restrict the number of MUs to 100 to be able to simulate the same problem also with smaller resolutions such as with 169 fibers.
+The number of fibers in the largest scenario matches the realistic number in a biceps muscle. The number of MUs can be higher in reality, e.g., by a factor of 5. Thus, the MUs in this scenario can be seen as a combination of multiple real MUs. Especially the smallest MUs, which in reality can consist of only some dozens of fibers are lumped by the first few MUs in our scenario. We restrict the number of MUs to 100 to be able to simulate the same problem also with smaller resolutions such as with 169 fibers.
 
 \begin{figure}
   \centering%
@@ -355,7 +355,7 @@ The number of dofs in the 3D mesh and the number of dofs in all fibers are liste
 \Cref{fig:emg_hpc} shows the resulting surface EMG for four different resolutions at $t=\SI{179.5}{\ms}$. The color visualizes the value of the extracellular potential $\phi_e$ according to the shown color bar. Because of sign conventions in the definitions of the electric potentials, the EMG signals that correspond to muscle activation are negative.
 
 The resulting electric potentials in \cref{fig:emg_hpc} exhibit different regions of higher activation that move over time from the center of the muscle towards its ends. The size of these regions decreases from \cref{fig:emg37} to \cref{fig:emg187} as the mesh width decreases. 
-Dark colored strong signals are visible, which mainly correspond to fibers that are directly underneath the shown muscle surface.
+Dark-colored strong signals are visible, which mainly correspond to fibers that are directly underneath the shown muscle surface.
 Apart from these strong signals, also weaker artifacts occur, which are shown in yellow and orange colors. They result from the superposition of several fibers of the same or different MUs. The number of recognizable weak signals is higher for the simulations with higher numbers of fibers and finer mesh resolution.
 
 % results for different mesh widths
@@ -548,7 +548,7 @@ Apart from these strong signals, also weaker artifacts occur, which are shown in
 While the surface EMG simulation results as presented in the last section in \cref{fig:emg_hpc} are suited for insights into the temporal and spatial variation of the electric potential, real experiments are constraint to capture values at the discrete locations of electrodes.
 For some applications, such as the evaluation of EMG decomposition algorithms, it is beneficial to obtain simulated values at electrode locations.
 
-One possiblity would be to extract nodal values from the simulated surface meshes to simulate electrodes. However, the distance between the nodes in the mesh is not constant in the whole mesh, whereas EMG electrode arrays have fixed inter electrode spacings. We, therefore, follow a different approach and allow to directly specify a grid of electrodes close to the muscle surface. These points are then mapped onto the surface of the muscle and the respective values are calculated by evaluating the finite element interpolant at the respective locations.
+One possibility would be to extract nodal values from the simulated surface meshes to simulate electrodes. However, the distance between the nodes in the mesh is not constant in the whole mesh, whereas EMG electrode arrays have a fixed inter electrode spacing. We, therefore, follow a different approach and allow to directly specify a grid of electrodes close to the muscle surface. These points are then mapped onto the surface of the muscle and the respective values are calculated by evaluating the finite element interpolant at the respective locations.
 
 In OpenDiHu, a 2D grid of surface electrodes can be defined in the Python settings file by specifying the grid parameters and inter electrode distances. In result, the simulation distributes the electrodes to the processes according to the parallel partitioning of the 3D mesh, evaluates the computed EMG values at the respective locations and outputs them in a single text file of comma separated values.
 
@@ -589,7 +589,7 @@ This visualization enables to visually identify propagating action potentials fr
 Surface EMG recordings are a valuable tool to gain insights into the neuromuscular system. They are used, e.g., for the diagnosis of muscular disorders and in clinical studies that aim to advance the biomedical understanding.
 
 % why, how are EMG signals generated -> fig
-The EMG signals on the skin surface originate from the activated muscle fibers. Effects from volume conduction of action potentials on all muscle fibers are superpositioned and contribute to the EMG signal according to their distance to the skin surface. As all fibers in the same MU get activated simultaneously, each MU`s contribution shows a characteristic \say{shape} in the resulting surface EMG signal. This shape is influenced by the number and location of the muscle fibers relative to the electrodes and the location of the neuromuscular junctions.
+The EMG signals on the skin surface originate from the activated muscle fibers. Effects from volume conduction of action potentials on all muscle fibers are superpositioned and contribute to the EMG signal according to their distance to the skin surface. As all fibers in the same MU get activated simultaneously, each MU's contribution shows a characteristic \say{shape} in the resulting surface EMG signal. This shape is influenced by the number and location of the muscle fibers relative to the electrodes and the location of the neuromuscular junctions.
 
 In our simulation, the location of the neuromuscular junctions is chosen pseudo-randomly (but deterministic) during initialization in the central \SI{10}{\percent} of every muscle fiber. \Cref{fig:emg_video_37_junctions} shows the state of a simulation with $1369$ fibers at $t=\SI{1}{\ms}$, where all fibers were are activated at $t=\SI{0}{\ms}$. The color coding indicates the transmembrane potential $V_m$, which is only depolarized near the locations of the neuromuscular junctions.
 
@@ -606,7 +606,7 @@ Methods exist that seek to decompose the surface EMG signal into the contributio
 Most decomposition methods, including the gCKC algorithm, assume that the EMG signal at an electrode is composed of the convolutional mixture of $N$ filters of the MU activity. 
 The activity of each MU $k\in \{1,\dots,N\}$ is described by the innervation pulse trains that activate the fibers of MU $k$, i.e., neural inputs at stimulation times $\varphi_r$. The source signal $s_k$ in the muscle that represents the effect of MU $k$ is given as filter over these neural point processes, $s_k(t) = \sum_r\delta(t - \varphi_r)$, where $\delta$ is the dirac delta function.
 
-The vector of observed EMG values $\bfx \in \R^m$ is composed of the temporal convolution over $L$ time-shifted sources $\bfs$ and a term $\bfomega$ of additive Gaussion noise:
+The vector of observed EMG values $\bfx \in \R^m$ is composed of the temporal convolution over $L$ time-shifted sources $\bfs$ and a term $\bfomega$ of additive Gaussian noise:
 \begin{align*}
   \bfx(t) = \s{l=0}{L-1}\bfH(l)\,\bfs(t-l) + \bfomega(t).
 \end{align*}

@@ -4,7 +4,7 @@
 After the formulation of linear and nonlinear models for solid mechanics in \cref{sec:model_muscle_contraction}, this section discusses their discretization and derives finite element formulations for the linearized model and the nonlinear model, both static and dynamic.
 We also describe the algorithms used to obtain a numerical solution.
 
-The implementation of a solver for generic hyperelastic descriptions is an interdisciplinary endeavour, if parallel execution is exploited and the model is integrated in a multi-scale biomechanics model.
+The implementation of a solver for generic hyperelastic descriptions is an interdisciplinary endeavor, if parallel execution is exploited and the model is integrated in a multi-scale biomechanics model.
 Therefore, we give a comprehensive derivation of the formulas used to numerically solve the equations matching the implementation in OpenDiHu, such that the implementation is also comprehensible for readers that are not specialized in the field of continuum mechanics. More details on finite element discretizations for solid mechanics models can be found in the literature \cite{zienkiewicz1977finite,SUSSMAN1987357,zienkiewicz2005finite}.
 
 % ---x---
@@ -28,13 +28,13 @@ In summary, \cref{eq:linearized_helper1} is equivalent to the following equilibr
 \end{align}
 The vectors contain the degrees of freedom of a finite element discretization. The operator \say{:} denotes the component-wise product. 
 
-Often, it is easier to write the equations in component form. Indices $a,b,c,\dots$ are used to specify a dimension index in $\{1,\dots,d\}$. The letters $L,M \in \{1,\dots,N\}$ denote indices over degrees of freedom in a mesh with $N$ nodes. The Einstein sum convention is used where repeated indices implicitly indicate summation, except when the indices are in parantheses.
-Thus, the right hand side $\bff$ of \cref{eq:linearized_helper1b} with ansatz functions $\phi^L$ and the degrees of freedom $δu_a^L$ of $δ\bfu$ can be written as:
+Often, it is easier to write the equations in component form. Indices $a,b,c,\dots$ are used to specify a dimension index in $\{1,\dots,d\}$. The letters $L,M \in \{1,\dots,N\}$ denote indices over degrees of freedom in a mesh with $N$ nodes. The Einstein sum convention is used where repeated indices implicitly indicate summation, except when the indices are in parentheses.
+Thus, the right-hand side $\bff$ of \cref{eq:linearized_helper1b} with ansatz functions $\phi^L$ and the degrees of freedom $δu_a^L$ of $δ\bfu$ can be written as:
 \begin{align}\label{eq:linearized_mechanics_rhs}
   \bff_a = \ds\int_{∂\Omega} t_{(a)}\,δu_{(a)}^L\,\phi^L \,\d \bfx.
 \end{align}
 
-By combining the kinematic relation between displacements $\bfu$ and linearized strains $\bfeps$ in \cref{eq:linearized_helper3}, the material relation between $\bfeps$ and the stress $\bfsigma$ in \cref{eq:linearized_helper2}, the equilibrium relation between $\bfsigma$ and the right hand side vector $\bff$ in \cref{eq:linearized_helper1b} and after discretizing displacements and virtual displacements, we get the following linear matrix equation:
+By combining the kinematic relation between displacements $\bfu$ and linearized strains $\bfeps$ in \cref{eq:linearized_helper3}, the material relation between $\bfeps$ and the stress $\bfsigma$ in \cref{eq:linearized_helper2}, the equilibrium relation between $\bfsigma$ and the right-hand side vector $\bff$ in \cref{eq:linearized_helper1b} and after discretizing displacements and virtual displacements, we get the following linear matrix equation:
 \begin{align}\label{eq:linearized_helper4}
   \bfK\,\bfu = \bff.
 \end{align}
@@ -45,14 +45,14 @@ The stiffness matrix $\bfK$ has rows and columns for every combination of degree
 %
 The resulting model in \cref{eq:linearized_helper4} describes the passive behavior of a body under the linearization assumptions and can be used in an appropriate biomechanical application.
 
-However, for contracting muscle tissue, we also need to incorporate active stresses that are generated at the sarcomeres in the muscle. As described in \cref{eq:active_stress_linear}, an active stress term $\bfsigma^\text{active}$  can be considered. Because this active term is prescribed by the activation dynamics and the subcellular model, it has to appear on the right hand side of the linear model.
+However, for contracting muscle tissue, we also need to incorporate active stresses that are generated at the sarcomeres in the muscle. As described in \cref{eq:active_stress_linear}, an active stress term $\bfsigma^\text{active}$  can be considered. Because this active term is prescribed by the activation dynamics and the subcellular model, it has to appear on the right-hand side of the linear model.
 We add the active stress term $\bfsigma^\text{active}$ to the external virtual work in \cref{eq:linearized_helper1}, yielding the equation:
 \begin{align}\label{eq:linearized_helper5}
   δW_\text{int}(\bfu,δ\bfu) &= \bff + \ds\int_\Omega \bfsigma^\text{active} : δ\bfeps_{-}\,\d\bfx &&\forall δ\bfu \in H^1_0(\Omega).
 \end{align}
 %
 The active stress is associated with compression, i.e., negative virtual strains $δ\bfeps < 0$. Therefore, we use $δ\bfeps_{-}$ which is defined equal to $δ\bfeps$ for $δ\bfeps < 0$ and zero otherwise.
-From \cref{eq:linearized_helper5}, we get the same discretized linear system as in \cref{eq:linearized_helper4}, but with an additional term $\bff^\text{ active}$ in the right hand side that contains the discretized prescribed active stress field $\bfsigma^\text{active}_{ab}(\bfx)$:
+From \cref{eq:linearized_helper5}, we get the same discretized linear system as in \cref{eq:linearized_helper4}, but with an additional term $\bff^\text{ active}$ in the right-hand side that contains the discretized prescribed active stress field $\bfsigma^\text{active}_{ab}(\bfx)$:
 \begin{align}\label{eq:linearized_helper6}
   \bff^\text{ active}_{La} = \ds\int_{Ω}\bfsigma^\text{active}_{ab}(\bfx)\,\p{\phi^L(\bfx)}{x_{b}} \,\d\bfx.
 \end{align}
@@ -159,9 +159,9 @@ The resulting nonlinear system of equations is given as follows:
 
 \subsection{Computation of the Stress Tensor and the Elasticity Tensor}\label{sec:stress_and_elasticity}
 
-In the Newton solver, we need to compute the stress tensor $\bfS$ and its derivative $\C$, called the elasticity tensor, given the current displacement field $\bfu$. The relations are defined by the material model given by the strain energy function. This sections presents the algorithm how to obtain the values of $\bfS$ and $\C$ from the displacements $\bfu$. While the derivation is formulated in terms of the displacement function $\bfu$, it is also valid for the finite element discretization, i.e., using the vector $\hat{\bfu}$  of degrees of freedom instead.
+In the Newton solver, we need to compute the stress tensor $\bfS$ and its derivative $\C$, called the elasticity tensor, given the current displacement field $\bfu$. The relations are defined by the material model given by the strain energy function. This section presents the algorithm how to obtain the values of $\bfS$ and $\C$ from the displacements $\bfu$. While the derivation is formulated in terms of the displacement function $\bfu$, it is also valid for the finite element discretization, i.e., using the vector $\hat{\bfu}$  of degrees of freedom instead.
 
-Following \cref{eq:material_model_helper1}, the second Piola-Kirchhoff stress $\bfS$ is given by a the derivative of the strain energy function $\Psi$ with respect to $\bfC$.
+Following \cref{eq:material_model_helper1}, the second Piola-Kirchhoff stress $\bfS$ is given by the derivative of the strain energy function $\Psi$ with respect to $\bfC$.
 For the representation using the invariants, the chain rule has to be used:%
 \begin{align*}
    \bfS &= 2\,\p{\Psi(\bfC)}{\bfC} = \p{\Psi}{I_a}\p{I_a}{\bfC}.
@@ -257,7 +257,7 @@ The governing nonlinear system of equations is solved by a Newton scheme. We def
   \bfW(\bfz+Δ\bfz) = \bfW(\bfz) + \bfJ\,Δ\bfz + o(\bfz + Δ\bfz),
 \end{align*}
 with the increment $Δ\bfz = (Δ\hat\bfu, Δ\hat{p})$ and the Jacobian matrix $\bfJ = \partial {\bfW}/\partial {\bfz}$.
-Neglecting the sublinear error term $o(z + Δz)$, we can start from an initial guess $\bfz^{(0)}$ and proceed to find the root of $\bfW$ using the the following iterative Newton scheme:%
+Neglecting the sublinear error term $o(z + Δz)$, we can start from an initial guess $\bfz^{(0)}$ and proceed to find the root of $\bfW$ using the following iterative Newton scheme:%
 \begin{subequations}\label{eq:newton_scheme}
   \begin{align}
     \bfJ\,Δ\bfz^{(n)} = -\bfW(\bfz^{(n)}),\label{eq:mechanics_linear_system}\\[4mm]
@@ -271,7 +271,7 @@ Neglecting the sublinear error term $o(z + Δz)$, we can start from an initial g
   =
   \matt{-\bfR_{δ\bfu} \\[2mm] -\bfR_{δp}}.
 \end{align}
-The definition of the right hand sides $\bfR_{δ\bfu} = δW_\text{int} - δW_\text{ext}$ and $\bfR_{δp}=D_{δp}\Pi_L$ is given in \cref{eq:mechanics_static_system}. The system matrix is composed as follows. The upper left part consists of 3 times 3 blocks of submatrices, each with size $N_u \times N_u$ and the entries given by:
+The definition of the right-hand sides $\bfR_{δ\bfu} = δW_\text{int} - δW_\text{ext}$ and $\bfR_{δp}=D_{δp}\Pi_L$ is given in \cref{eq:mechanics_static_system}. The system matrix is composed as follows. The upper left part consists of 3 times 3 blocks of submatrices, each with size $N_u \times N_u$ and the entries given by:
 \begin{align*}
   \bfk_{δ\bfu,Δ\bfu,(L,a),(M,b)} &= \ds\int_\Omega \phi_{(a),B}^L\tilde{k}_{abBD}\phi_{(b),D}^M\,\d V &\text{with}\quad 
   \tilde{k}_{abBD} &= δ_{ab}\,S_{BD} + F_{aA}\,F_{bC}\,\mathbb{C}_{ABCD}.
@@ -330,7 +330,7 @@ The other non-zero entries are given by
   \bfl_{δ\bfv,Δ\bfv,(L,a),(M,b)} &= -\delta_{ab}\,\delta^{LM}.
 \end{align*}
 
-Note that in the dynamic problem, the system matrix is unsymmetric. It would be symmetric if the entries $\bfl_{δ\bfu,Δ\bfv}$ and $\bfl_{δ\bfv,Δ\bfu}^\top$ were be the same. This would be the case for a density of one, $\rho_0 = 1$, and if the term $\int_{\Omega} \phi_{b}^M \phi_{a}^L \,\d V$ would be replaced by $\delta_{ab}\delta^{LM}$. The second condition means that a lumped mass matrix would be used where the diagonal entries are set to the row sums of the original matrix.
+Note that in the dynamic problem, the system matrix is unsymmetric. It would be symmetric if the entries $\bfl_{δ\bfu,Δ\bfv}$ and $\bfl_{δ\bfv,Δ\bfu}^\top$ were the same. This would be the case for a density of one, $\rho_0 = 1$, and if the term $\int_{\Omega} \phi_{b}^M \phi_{a}^L \,\d V$ would be replaced by $\delta_{ab}\delta^{LM}$. The second condition means that a lumped mass matrix would be used where the diagonal entries are set to the row sums of the original matrix.
 
 We discretize the finite element solution in space by \emph{Taylor-Hood} elements. This type of element uses quadratic ansatz functions $\phi$ for the displacements and velocities and linear ansatz functions $\psi$ for the Lagrange multiplier or hydrostatic pressure $p$ on a 3D hexahedral mesh. This choice was proven to exhibit no locking \cite{zienkiewicz2005finite}. Locking is a phenomenon of degraded convergence of the finite element method for solid mechanics problems and occurs for improper discretization schemes.
 
@@ -344,7 +344,7 @@ Moreover, the size varies depending on whether the static or the dynamic problem
 % dynamic incompressible: 3*N_u + 3*N_u + N_p
 
 
-In any case, the mechanics model can be linked to the subcellular model by defining the active stress as given in \cref{eq:active_stress_term}. Since the active stress does not depend directly on the passive behavior, the active stress term can be added as a constant to the passive stress term. This constant also has no influence on the jacobian matrix $\bfJ$. As the subcellular model depends on the fiber stretch $\lambda_f = \sqrt{I_4}$, there is a feedback loop between the subcellular and the solid mechanics model.
+In any case, the mechanics model can be linked to the subcellular model by defining the active stress as given in \cref{eq:active_stress_term}. Since the active stress does not depend directly on the passive behavior, the active stress term can be added as a constant to the passive stress term. This constant also has no influence on the Jacobian matrix $\bfJ$. As the subcellular model depends on the fiber stretch $\lambda_f = \sqrt{I_4}$, there is a feedback loop between the subcellular and the solid mechanics model.
 
 Details on the connection to the subcellular model as well as details on the numerical solution schemes are given in \cref{sec:solid_mechanics_solver}.
 

@@ -21,7 +21,7 @@ At the finest resolution when the recursion terminates, the fiber meshes are fin
 At first, a single process executes all the steps of \cref{alg:parallel_algorithm_1} from lines \ref{line:3.2} to \ref{line:3.11a}. This corresponds to recursion level $\ell=0$. Then, in line \ref{line:3.12}, the procedure is called again and in the first recursion executed by eight processes with eight subdomains. On the $\ell$th recursion level, the number of involved processes and subdomains is $8^\ell$. After a specified maximum recursion depth $\ell_\text{max}$ is reached, all involved processes execute the first branch of the \code{if} statement in line \ref{line:3.8} and generate the final 3D and 1D output meshes in line \ref{line:3.9}.
 
 The steps in \cref{alg:parallel_algorithm_1} are executed concurrently by the involved processes at the respective levels.
-Some of the steps only operate on the locally stored data and, thus, are independent of other processes. Other steps involve communication between processes. Whether an instruction effects only the own domain of the process or involves global communication is denoted in parantheses at the beginning of the lines in \cref{alg:parallel_algorithm_1}.
+Some of the steps only operate on the locally stored data and, thus, are independent of other processes. Other steps involve communication between processes. Whether an instruction effects only the own domain of the process or involves global communication is denoted in parentheses at the beginning of the lines in \cref{alg:parallel_algorithm_1}.
 
 \begin{algorithm}
   \begin{algorithmic}[1]%
@@ -60,7 +60,7 @@ On each recursion level, the existing subdomain boundaries and the new boundarie
 
 As the subdomain boundaries in the interior of the volume refine, so do the outer boundaries given by the surface of the muscle. The given triangulation of the surface is sampled again on each recursion level yielding increasingly fine representations.
 
-At the final recursion level $l_\text{max}$, the muscle is partioned into $8^{l_\text{max}}$ subdomains and a respective fine 3D mesh in the muscle volume exists. Then, the algorithm traces the specified amount of streamlines through the whole mesh to produce 1D meshes for the muscle fibers. By construction of the subdomains, the streamlines enter and leave the subdomains through their top and bottom bounding planes. This allows parallel execution of the final streamline tracing step.
+At the final recursion level $l_\text{max}$, the muscle is partitioned into $8^{l_\text{max}}$ subdomains and a respective fine 3D mesh in the muscle volume exists. Then, the algorithm traces the specified amount of streamlines through the whole mesh to produce 1D meshes for the muscle fibers. By construction of the subdomains, the streamlines enter and leave the subdomains through their top and bottom bounding planes. This allows parallel execution of the final streamline tracing step.
 
 The reason that the algorithm constructs the partitioning iteratively and not once at the beginning using an initial mesh lies in the requirements for parallel streamline tracing. Each subdomain should be able to trace streamlines in longitudinal ($z$) direction of the muscle without communication to their neighbors in $x$ and $y$ directions. To ensure this property, the partitioning involves a small overlap of neighboring subdomains, i.e., a ghost layer. This ghost layer can consist of a lower number of elements if the mesh is iteratively refined than if the partitioning was created directly on a coarser mesh.
 
@@ -98,7 +98,7 @@ A number $(n_\text{el,z}+1)$ of these rings are stacked in $z$ direction to appr
 \end{figure}%
 
 % refine border points
-As the goal on every recursion level is to construct a mesh with half the mesh width of the mesh on the previous level, the given boundary points are refined to twice the amount by inserting new points at the centers between neighboring points. The refinement happends in all three coordinate directions. For the example with $n_\text{el,x}=4$, the resulting grid with the $4\times 8$ refined boundary points is shown in \cref{fig:boundary_grid_2}. In $z$ direction, we get $(2\,n_\text{el,z}+1)$ slices with points.
+As the goal on every recursion level is to construct a mesh with half the mesh width of the mesh on the previous level, the given boundary points are refined to twice the amount by inserting new points at the centers between neighboring points. The refinement happens in all three coordinate directions. For the example with $n_\text{el,x}=4$, the resulting grid with the $4\times 8$ refined boundary points is shown in \cref{fig:boundary_grid_2}. In $z$ direction, we get $(2\,n_\text{el,z}+1)$ slices with points.
 
 % logical structure of new subdomains
 The task in the recursive procedure is now to determine boundaries for eight subdomains. This is achieved by subdividing the given 2D slices into four 2D subdomains each. Additionally, the 3D volume is split at its vertical center. Thus, the upper and lower parts contain four subdomains each. 
@@ -121,7 +121,7 @@ The task in the recursive procedure is now to determine boundaries for eight sub
 % create 3D mesh
 
 After the \code{boundary\_points} variables has been set, the next step of \cref{alg:parallel_algorithm_1} is to construct a 3D mesh in the domain.
-In line \ref{line:3.2} of \cref{alg:parallel_algorithm_1}, the harmonic map  algorithm \cref{alg:serial_algorithm_1} described in \cref{sec:ser_alg_meshes} is called. Its input consists of the boundary points that define the 2D slices of the volume. This means that \cref{alg:serial_algorithm_1} does not need to construct the slice boundary rings from the surface triangulation, instead, the formulation of \cref{alg:serial_algorithm_1} can directly start with line \ref{alg:1.2} to triangulate the slices and then compute the harmonic map. For the harmonic map computation, the second triangulation method is used with a circular reference domain quandrangulated by the second scheme. The result is a set of quadrangulated 2D slices that forms a 3D mesh by vertically connecting the elements of neighbor slices.
+In line \ref{line:3.2} of \cref{alg:parallel_algorithm_1}, the harmonic map  algorithm \cref{alg:serial_algorithm_1} described in \cref{sec:ser_alg_meshes} is called. Its input consists of the boundary points that define the 2D slices of the volume. This means that \cref{alg:serial_algorithm_1} does not need to construct the slice boundary rings from the surface triangulation, instead, the formulation of \cref{alg:serial_algorithm_1} can directly start with line \ref{alg:1.2} to triangulate the slices and then compute the harmonic map. For the harmonic map computation, the second triangulation method is used with a circular reference domain quadrangulated by the second scheme. The result is a set of quadrangulated 2D slices that forms a 3D mesh by vertically connecting the elements of neighbor slices.
 
 % smoothing
 Next, line \ref{line:3.3} of \cref{alg:parallel_algorithm_1} improves the mesh quality of the 2D muscle slices $S_M$ from which the 3D mesh is formed. This action consists of two steps. The first step is to ensure that no self-intersecting or degenerate quadrilaterals exist in the slice. The second step applies Laplacian smoothing to improve the mesh quality of the slice.
@@ -173,7 +173,7 @@ The second step is the smoothing step that improves the mesh quality of the 2D s
 %The order in which the points of the mesh are traversed is changed after every iteration: In the first iteration, the points are traversed starting at the bottom left. In the second iteration, the traversal starts at the top right and moves in opposite direction compared to the first iteration. The third and fourth iterations begin at the bottom right and top left nodes of the mesh. After these four iterations the scheme is repeated. The reason for this change of the traversal is to 
 \Cref{fig:laplace_smoothing} shows the effect of Laplacian smoothing for a slice in a subdomain on the first recursion level. It can be seen how the smoothing equalizes the element side lengths and angles.
 
-However, this smoothing step can invalidate a mesh by introducing overlapping quadrilaterals. An example for this case is given in \cref{fig:laplace_smoothing_0}. The initial mesh in \cref{fig:world_mesh_0} is concave and occurs during recursion level $l=2$. \Cref{fig:world_mesh_improved_0} shows the result of the smoothing, which contains one invalid element. The smoothing operation placed the fourth point of the element that also contains the three boundary points at the concavity outside of the mesh. As a remedy, the smoothing method checks the validity of the adjacent elements before a point is moved. If the move would result in an invalid element, the action is not carried out and the traversal continues with the next point instead.
+However, this smoothing step can invalidate a mesh by introducing overlapping quadrilaterals. An example for this case is given in \cref{fig:laplace_smoothing_0}. The initial mesh in \cref{fig:world_mesh_0} is concave and occurs during recursion level $l=2$. \Cref{fig:world_mesh_improved_0} shows the result of the smoothing, which contains one invalid element. The smoothing operation placed the fourth point of the element that also contains the three boundary points at the concavity outside the mesh. As a remedy, the smoothing method checks the validity of the adjacent elements before a point is moved. If the move results in an invalid element, the action is not carried out and the traversal continues with the next point instead.
 \Cref{fig:world_mesh_improved_1} shows the resulting mesh if this check is enabled. The mesh has slightly different boundaries because the check influenced the behavior already on lower recursion levels.
 
 % smoothing fix
@@ -273,7 +273,7 @@ This can especially be seen at the lower left of the figure (indicated by arrows
 Next, in line \ref{line:3.4} of \cref{alg:parallel_algorithm_1} the Laplace problem gets solved. The same step also occurs in \cref{alg:serial_algorithm_2} and is explained in \cref{sec:generation_of_fiber_meshes}.
 The equation is formulated globally and the discretization uses the existing partitioning. 
 Dirichlet boundary conditions of $p(\bfx) = 0$ and $p(\bfx) = 1$ are prescribed at the bottom and top of the domain, as shown by the spheres in \cref{fig:dirichlet_bc_1}. Alternatively, Neumann boundary conditions can be used.
-A parallel GMRES solver is employed to obtain the solution in a small number of iterations. E.g., for the biceps muscle the a linear system at $l=0$ has 4131 degrees of freedom and 26 iterations are needed to obtain a residual norm below \num{1e-4}. After the solution $p(\bfx)$ is obtained, the gradient field $\nabla p(\bfx)$ is computed. The solution and the gradient directions are visualized in \cref{fig:laplace_1}.
+A parallel GMRES solver is employed to obtain the solution in a few iterations. E.g., for the biceps muscle a linear system at $l=0$ has 4131 degrees of freedom and 26 iterations are needed to obtain a residual norm below \num{1e-4}. After the solution $p(\bfx)$ is obtained, the gradient field $\nabla p(\bfx)$ is computed. The solution and the gradient directions are visualized in \cref{fig:laplace_1}.
 
 \begin{figure}
   \centering
@@ -375,7 +375,7 @@ These are seed points for the new boundaries in the interior of the muscle. Note
 \subsection{Determination of Subdomain Boundaries on the Outer Muscle Surface}
 
 % seed points-3 outer ring
-Next, the boundary points on the outer surface of the muscle are determined for the new partitioning. They are obtained by sampling the circumferential rings of the muscle surface with the resolution required in the current recursion level. In our implementation, this can be done either by sampling the original surface triangulation of the muscle or by directly evaluating the parametric form of the NURBS surface that approximiates the muscle surface.
+Next, the boundary points on the outer surface of the muscle are determined for the new partitioning. They are obtained by sampling the circumferential rings of the muscle surface with the resolution required in the current recursion level. In our implementation, this can be done either by sampling the original surface triangulation of the muscle or by directly evaluating the parametric form of the NURBS surface that approximates the muscle surface.
 
 At recursion level $l=0$, the entire muscle surface is touched by the new subdomains. Thus, when traversing the circumference of the muscle four new subdomains are encountered.
 In consequence, every circumferential ring needs to be split into four quarter parts for the four adjacent subdomains. For each of these new subdomains, the quarter part corresponds to two neighboring sides of the subdomain boundary in \cref{fig:boundary_grid_1}. \Cref{fig:seed_points_to_send_1} also visualizes the two neighboring sides per new subdomain as dark and light portions of the outer boundary. 
@@ -387,7 +387,7 @@ The eight split points are determined by the eight outer streamline points. In \
 After the two sections of the circumferential rings have been determined for all new subdomains, the sections are equidistantly sampled in circumferential direction with $n_\text{el,x}$ elements each to create the outer boundary points for the subdomains. 
 Also in longitudinal direction of the muscle, i.e., the $z$ axis, points are sampled on each streamline and on the outer boundary surface to yield the required number of $n_\text{el,z}$ points per subdomain. The resulting boundary points obtained during recursion level $l=0$ are shown in \cref{fig:fixed_1}.
 
-This method is also required on higher recursion levels $l>0$ in a similar manner. 
+This method is also similarly required on higher recursion levels $l>0$. 
 Then, however, two cases have to be considered separately. The first case involves splitting the muscle surface boundary on one process into two parts, analogously to the described method at $l=0$. The second case involves two neighboring processes that have to agree on the split point of their common part of the outer surface boundary.
 
 In the example at recursion level $l=1$ in \cref{fig:05_corner_streamlines}, the red streamlines are used to split the boundary sides at the outer boundary of the global domain. 
@@ -488,7 +488,7 @@ Only the first subdomain remains on the same process. Every process stores the b
 
 \subsection{Repair of Incomplete Streamlines}\label{sec:repair_of_incomplete_streamlines}
 
-Practical tests have shown that, for irregular muscle geometries, occasionally some of the streamlines generated in lines \ref{line:3.6} and \ref{line:3.9} of \cref{alg:parallel_algorithm_1} can be incomplete. This means that it was not possible to obtain a streamline that runs through the entire subdomain or the entire muscle domain from top to bottom, instead points are missing for some ranges of $z$ values. This can happen if the streamlines leave the subdomains (because the ghost layer width was chosen too small) or due to numerical errors in irregularly shaped elements mainly on high recursion levels where the system matrix is badly conditioned.
+Practical tests have shown that, for irregular muscle geometries, occasionally some streamlines generated in lines \ref{line:3.6} and \ref{line:3.9} of \cref{alg:parallel_algorithm_1} can be incomplete. This means that it was not possible to obtain a streamline that runs through the entire subdomain or the entire muscle domain from top to bottom, instead points are missing for some ranges of $z$ values. This can happen if the streamlines leave the subdomains (because the ghost layer width was chosen too small) or due to numerical errors in irregularly shaped elements mainly on high recursion levels where the system matrix is badly conditioned.
 
 To obtain meaningful results even in these cases, three different repair mechanisms are introduced that interpolate the missing data from valid streamlines. \Cref{fig:fix_invalid} visualizes the cases by examples in a setting of four subdomains with grids of $5 \times 5$ fibers each. The repair mechanisms $\#1$ to $\#3a$ only apply to boundary points. They are executed in line \ref{line:3.6} of the algorithm after the local portions of the streamlines have been traced and before the end points of the streamlines are sent to the neighbor processes below and above that continue the streamline tracing. Mechanismn $\#3b$ and $\#3c$ repair invalid streamlines in the final result and are executed during line \ref{line:3.9} of \cref{alg:parallel_algorithm_1}.
 
@@ -508,15 +508,15 @@ Mechanisms \#3b and \#3c follow the same approach. They are applied to the inter
   \label{fig:fix_invalid}%
 \end{figure}%
 
-\subsection{Postprocessing and Output of the Generated Streamlines}\label{sec:postprocessing_of_the_generated_streamlines}
+\subsection{Post-processing and Output of the Generated Streamlines}\label{sec:postprocessing_of_the_generated_streamlines}
 
 After repairing invalid streamlines, the final result of the algorithm is a grid with $(2\,n_\text{el,x}\,n_x+1) \times (2\,n_\text{el,x}\,n_x+1)$ fibers in the $x$-$y$ plane and a configurable number of points in $z$ direction, where $n_x = 2^{\ell_\text{max}}$ is the number of subdomains per coordinate direction on the last recursion level. 
 
-If a higher number of fibers is desired than is naturally generated by the parallel algorithm, additional fibers can be created by interpolation in the existing grid of fibers, which is parallel partitioned. The implementation of the presented algorithm in \opendihu{} includes this postprocessing functionality as part of the mesh generation program. Alternatively, the step can be applied separately on any binary output file that contains a grid of fibers. 
+If a higher number of fibers is desired than is naturally generated by the parallel algorithm, additional fibers can be created by interpolation in the existing grid of fibers, which is parallel partitioned. The implementation of the presented algorithm in \opendihu{} includes this post-processing functionality as part of the mesh generation program. Alternatively, the step can be applied separately on any binary output file that contains a grid of fibers. 
 
 The action of increasing the number of fibers proceeds as follows. The initial grid contains the fibers that were created from the streamlines, called \emph{key fibers}.
 A specified number $m$ of additional fibers is placed between the key fibers in both $x$ and $y$ coordinate directions.
-The additional fibers together with the key fibers form a grid of fibers in the muscle cross sections with an $m$ times finer mesh width. In the grid of key fibers, every portion bounded by $2 \times 2$ key fibers contains $(2+m)^2 - 4$ additional fine fibers. The total number of fibers depending on $n_x$ and $m$, therefore, is $N=(2\,n_\text{el,x}\,n_x\,(1+m)+1)^2$. Due to construction, this number is always odd. This is a desired property because it yields an even number of elements per coordinate direction and this allows to construct a mesh with quadratic ansatz functions.
+The additional fibers together with the key fibers form a grid of fibers in the muscle cross-sections with an $m$ times finer mesh width. In the grid of key fibers, every portion bounded by $2 \times 2$ key fibers contains $(2+m)^2 - 4$ additional fine fibers. The total number of fibers depending on $n_x$ and $m$, therefore, is $N=(2\,n_\text{el,x}\,n_x\,(1+m)+1)^2$. Due to construction, this number is always odd. This is a desired property because it yields an even number of elements per coordinate direction and this allows to construct a mesh with quadratic ansatz functions.
 
 The new fibers are computed by barycentric interpolation. The location of every new point $\bfp$ is calculated from the nearest points $\bfp_0, \bfp_1, \bfp_2$ and $\bfp_3$ of key fibers in the $x$-$y$ plane, numbered according to  \cref{fig:quads_tris}, by%
 \begin{align}\label{eq:mesh_barycentric_interpolation}
@@ -538,7 +538,7 @@ An advantage of this algorithm is that each process only has to keep the data of
   \begin{subfigure}[t]{0.48\textwidth}%
     \centering%
     \includegraphics[width=\textwidth]{images/parallel_fiber_estimation/left_biceps_brachii_33x33fibers_bin_csv.pdf}%
-    \caption{Mesh points in a $33\times 33$ grid at the center cross section of the biceps muscle.}%
+    \caption{Mesh points in a $33\times 33$ grid at the center cross-section of the biceps muscle.}%
     \label{fig:left_biceps_brachii_33x33fibers_bin_csv}%
   \end{subfigure}
   \quad
@@ -559,7 +559,7 @@ The spacing in $z$ direction between points on a fiber is typically chosen as $\
 
 Every point coordinate is stored in the output file as double precision value with eight bytes. The file contains a header of 72 bytes with descriptive information such as the number of fibers, some parameter values and a time stamp. The total file size therefore can be calculated by $72+N\cdot 1481\cdot 3\cdot 8$ bytes.
 
-Often, the spatial resolution of the 3D mesh does not need to be as high as those of the fibers. The relation of the 3D and 1D mesh widths as well as the number of 1D meshes should be choosen such that the numerical error of the simulation in both domains is balanced.
+Often, the spatial resolution of the 3D mesh does not need to be as high as those of the fibers. The relation of the 3D and 1D mesh widths as well as the number of 1D meshes should be chosen such that the numerical error of the simulation in both domains is balanced.
 In case the 3D mesh should be coarser than the output of the algorithm, we can use only a subset of the points contained in the output file. Then, a stride in $x$, $y$, and $z$ direction is specified in the settings for the simulation. The corresponding coarse grid of points is extracted and used to construct the 3D mesh that is then used for the simulation.
 %The 1D fiber meshes use all given points in the file.
 % When a 3D mesh with a smaller spatial resolution in $x$ and $y$ direction than the number of fibers is used in a simulation together with 1D fiber meshes from the same file, some of the fibers at the outer layer can be located outside of the 3D mesh. A way to avoid this is to not use the outer layer of fibers. 
@@ -807,24 +807,24 @@ Similarly, quadratic ansatz functions (\say{q}) performed better than linear ans
 A higher refinement factor $r$ of the internal mesh was beneficial for the cases with linear ansatz functions. For quadratic ansatz functions, the effect of $r$ is less clear. The study shows that no refinement ($r=1$) is often better in this case.
 The variant without the precomputed gradient field (\say{s}) performed generally better than the variant with gradient field computation (\say{g}).
 
-However, further studies with different recursion depths showed that the effect of some options also depended on the scenario. For a higher recursion depth, Dirichlet boundary conditions turned out to be more robust in the sense that fewer incomplete streamlines occured.
+However, further studies with different recursion depths showed that the effect of some options also depended on the scenario. For a higher recursion depth, Dirichlet boundary conditions turned out to be more robust in the sense that fewer incomplete streamlines occurred.
 %Larger refinement factors led to smaller mesh widths and in consequence to a smaller ghost layer for the streamline tracing, which always has a thickness of one element. Thus, more streamlines left their subdomain and became invalid. Therefore, e.g., a smaller value of $r$ yielded better results for $\ell_\text{max}=2$.
 
 In summary, the quadratic formulation (\say{q}) and the streamline tracing using solution values (\say{s}) could be shown to be better options than their alternatives. For a maximum recursion level $\ell_\text{max}=1$, the best parameter combination among the tested combination was \say{qN1s}. In a separate study for $\ell_\text{max}=2$, the combination \say{qD2s} was found to be as robust as \say{qN1s}.
 %
 
-\subsection{Postprocessing of the Meshes}
+\subsection{Post-processing of the Meshes}
 
-To further improve the mesh quality on every cross section, we apply two more postprocessing steps, one local and one global transformation.
-As can be seen in the cross section of \cref{fig:stl_splines_results}, some rows of elements in the generated mesh have zig-zag lines, and not all elements are equally sized. Furthermore, there are almost degenerate elements with small interior angles. 
+To further improve the mesh quality on every cross-section, we apply two more post-processing steps, one local and one global transformation.
+As can be seen in the cross-section of \cref{fig:stl_splines_results}, some rows of elements in the generated mesh have zigzag lines, and not all elements are equally sized. Furthermore, there are almost degenerate elements with small interior angles. 
 
 Thus, we apply a first, local transformation on the mesh. This operation consists of Laplacian smoothing and randomly deflecting points, where interior element angles are smaller than \SI{20}{\degree}. If such deflections result in invalid self-intersecting elements, the self-intersection is resolved, which potentially again introduces small interior angles. The total transformation consists of 25 iterations of alternatingly applying the smoothing step and the improvement step of small interior angles.
 
-An exemplary resulting mesh after this transformation is shown in \cref{fig:mesh47_a}. It can be seen that all lines in the mesh are smooth and almost straight. At the right center of the shown mesh, the effects of the deflection step, which improves small interior angles, can be seen. However, at the left, top and bottom boundary of the mesh, degenerate elements with small interior angles remain. This is especially true for the four mesh points on the boundary that correspond to the corners of the quadrangulation. At these points, elements are present that have two sides that are part of the mesh boundary, forming an interior angle of almost \SI{180}{\degree}. Three points of these elements are located in an almost straight line. As a consequence, the Laplacian smoothing step moves the fourth point of these elements close to this straight line, which adds another large interior angle and degenerates the element. This effect also occors for interior elements of the mesh that are close to these points on the boundary.
+An exemplary resulting mesh after this transformation is shown in \cref{fig:mesh47_a}. It can be seen that all lines in the mesh are smooth and almost straight. At the right center of the shown mesh, the effects of the deflection step, which improves small interior angles, can be seen. However, at the left, top and bottom boundary of the mesh, degenerate elements with small interior angles remain. This is especially true for the four mesh points on the boundary that correspond to the corners of the quadrangulation. At these points, elements are present that have two sides that are part of the mesh boundary, forming an interior angle of almost \SI{180}{\degree}. Three points of these elements are located in an almost straight line. As a consequence, the Laplacian smoothing step moves the fourth point of these elements close to this straight line, which adds another large interior angle and degenerates the element. This effect also occurs for interior elements of the mesh that are close to these points on the boundary.
 
 \Cref{fig:mesh47_b} shows the detail of the left boundary of the mesh in \cref{fig:mesh47_a}, where this effect can be seen. The area of the elements decreases towards the boundary and the elements get more degenerate in this direction.
 
-As a remedy, we perform the second, global transformation step to counteract this tendency. In this step, most of the points in every cross section of the mesh are translated by a fixed mapping, such that the small elements at the boundary are transformed into elements of better quality.
+As a remedy, we perform the second, global transformation step to counteract this tendency. In this step, most of the points in every cross-section of the mesh are translated by a fixed mapping, such that the small elements at the boundary are transformed into elements of better quality.
 
 % plot of function f(r)
 \begin{figure}
@@ -834,7 +834,7 @@ As a remedy, we perform the second, global transformation step to counteract thi
   \label{fig:extend_mesh_plot}%
 \end{figure}%
 
-Each mesh point on a cross section of the mesh is represented by polar coordinates $(r,\varphi)$. The radius $r$ is transformed according to the function $r_\text{new} = y(r_\text{old})$ that is depicted in the lower plot of \cref{fig:extend_mesh_plot}. This piecewise defined function $f\in \CC^1([0,1]\to [0,1])$ is linear for $x\in [0,s]$ and a polynomial of degree 3 for $x \in [s,1]$. It passes through the yellow point in \cref{fig:extend_mesh_plot}, which in $x$ direction is at the center of the interval $[s,1]$ and in $y$ direction is at fraction $\alpha$ of the shown yellow line.
+Each mesh point on a cross-section of the mesh is represented by polar coordinates $(r,\varphi)$. The radius $r$ is transformed according to the function $r_\text{new} = y(r_\text{old})$ that is depicted in the lower plot of \cref{fig:extend_mesh_plot}. This piecewise defined function $f\in \CC^1([0,1]\to [0,1])$ is linear for $x\in [0,s]$ and a polynomial of degree 3 for $x \in [s,1]$. It passes through the yellow point in \cref{fig:extend_mesh_plot}, which in $x$ direction is at the center of the interval $[s,1]$ and in $y$ direction is at fraction $\alpha$ of the shown yellow line.
 The parameter $\alpha$ controls the extent, to which the mesh is transformed in radial direction. The parameter $s$ specifies the size of a region around the center of the mesh where no transformation occurs. We obtain good results by choosing $s=0.05$ and $\alpha=0.7$. The resulting function takes the form $f(r) = 1.330\,r^3 - 1.463\,r^2 + 1.136\,r - 0.003$.
 
 The first derivative $f'(x)$ of this function is shown in the upper plot of \cref{fig:extend_mesh_plot}. It quantifies the amount of extension or compression of the mesh elements in radial direction. The right side of the plot corresponds to the outer boundary of the mesh. There, the elements are extended, since $f'(r) > 0$. To compensate this extension, the elements have to be compressed towards the interior of the mesh  where $f'(r) < 0$. The range of $r \in [0,s]$ corresponds to the region in the interior of the mesh that is not transformed.
@@ -844,7 +844,7 @@ The points of the mesh are transformed in radial direction by adjusting their co
 \Cref{fig:mesh47_b} shows the mesh of \cref{fig:mesh47_a} after this transformation has been applied. \Cref{fig:mesh47b_} shows the extract of the mesh from the left boundary that corresponds to the same extract of the original mesh in \cref{fig:mesh47a_}.
 It can be seen that the quality of the elements is improved close to the boundary. The area of the rectangles is now approximately equal and no small interior angles occur.
 
-In \cref{fig:mesh_47ab}, the previous and the transformed mesh are overlayed to show the regions that remain unmodified. The unmodified parts form a \say{cross} shape that touches the boundary at the regions where the mesh quality is also good in the original mesh.
+In \cref{fig:mesh_47ab}, the previous and the transformed mesh are overlaid to show the regions that remain unmodified. The unmodified parts form a \say{cross} shape that touches the boundary at the regions where the mesh quality is also good in the original mesh.
 
 % original and transformed mesh
 \begin{figure}
@@ -853,7 +853,7 @@ In \cref{fig:mesh_47ab}, the previous and the transformed mesh are overlayed to 
     \begin{subfigure}[t]{0.30\textwidth}%
       \centering%
       \includegraphics[width=\textwidth]{images/parallel_fiber_estimation/mesh47_a.png}%
-      \caption{Original mesh at the upper-most cross section of the muscle.}%
+      \caption{Original mesh at the upper-most cross-section of the muscle.}%
       \label{fig:mesh47_a}%
     \end{subfigure}
     &
@@ -891,9 +891,9 @@ In \cref{fig:mesh_47ab}, the previous and the transformed mesh are overlayed to 
 %
 \subsection{Usage of the Generated Meshes in Simulations}
 
-In some biomechanical simulations, also a body fat and skin layer ontop of the muscle is considered. In this case, an appropriate mesh is required that is attached to the muscle mesh and seamlessly matches the elements of the muscle mesh. The construction of such a mesh is discussed later in \cref{sec:construction_and_partitioning_of_the_mesh} together with the parallel partitioning.
+In some biomechanical simulations, also a body fat and skin layer on top of the muscle is considered. In this case, an appropriate mesh is required that is attached to the muscle mesh and seamlessly matches the elements of the muscle mesh. The construction of such a mesh is discussed later in \cref{sec:construction_and_partitioning_of_the_mesh} together with the parallel partitioning.
 
-A visualization of such a parallel setting is given in \cref{fig:partitioning_biceps}. Tendons connect the muscle belly of the biceps brachii muscle to the humerus and ulna bones at the top left and bottom, respectively. The muscle mesh consists of fibers that are colored according to a parallel partitioning. In a parallel partitioning, every process contributes calculations only on its associated spatial subdomain to the overall computation. At the right side of the muscle, a layer of adipose tissue is attached to the muscle belly. This layer is needed, if electromyography on the skin surface is simulated. 
+A visualization of such a parallel setting is given in \cref{fig:partitioning_biceps}. Tendons connect the muscle belly of the biceps brachii muscle to the humerus and ulna bones at the top left and bottom, respectively. The muscle mesh consists of fibers that are colored according to a parallel partitioning. In a parallel partitioning, every process contributes calculations only on its associated spatial subdomain to the overall computation. On the right-hand side of the muscle, a layer of adipose tissue is attached to the muscle belly. This layer is needed, if electromyography on the skin surface is simulated. 
 
 % fat layer mesh and partitioning
 \begin{figure}
@@ -903,7 +903,7 @@ A visualization of such a parallel setting is given in \cref{fig:partitioning_bi
   \label{fig:partitioning_biceps}%
 \end{figure}%
 
-\Cref{fig:muscle_meshes_raytrace} shows another use case of various meshes in a multi-scale simulation model. The muscle is cut open for visualization purposes. The figure depicts numerous muscle fibers in the upper part of the muscle belly. The fibers are colored according to simulation results of the electric mebrane potential, which  is responsible for the activation of the muscle. The lower part of the muscle shows elements of the 3D mesh. The coloring corresponds to the electric potential, that is measured during intramuscular electromyography in the interior of the muscle or during surface electrophysiology on the outside of the muscle.
+\Cref{fig:muscle_meshes_raytrace} shows another use case of various meshes in a multi-scale simulation model. The muscle is cut open for visualization purposes. The figure depicts numerous muscle fibers in the upper part of the muscle belly. The fibers are colored according to simulation results of the electric membrane potential, which  is responsible for the activation of the muscle. The lower part of the muscle shows elements of the 3D mesh. The coloring corresponds to the electric potential, that is measured during intramuscular electromyography in the interior of the muscle or during surface electrophysiology on the outside of the muscle.
 
 % 3D and 1D meshes
 \begin{figure}
@@ -947,12 +947,12 @@ A visualization of such a parallel setting is given in \cref{fig:partitioning_bi
   \item[(iv)] create the spline surface representation as explained in \cref{sec:nurbs}, 
   \item[(v)] compile and run the \opendihu{} programs to create the binary files of the 3D mesh and the 1D fibers meshes, the algorithm in \cref{sec:parallel_algorithm} is used, 
   \item[(vi)] adjust the indexing and undo the translation in (iii), \item[(vii)] refine the created meshes of key fibers by different numbers $m$ of fine grid fibers, in total 10 different mesh sizes are created for differently refined simulations, 
-  \item[(viii)] create meshes for the fat layer $\Omega_B$ ontop of the muscle surface, also in 10 different resolutions.
+  \item[(viii)] create meshes for the fat layer $\Omega_B$ on top of the muscle surface, also in 10 different resolutions.
   \end{itemize}
   
   Two scripts are given for the biceps brachii and triceps brachii muscles. They perform all listed steps and also create intermediate output files that can be used to understand the process. Some steps are automatically skipped if the resulting output file already exists from a previous run. This is especially helpful for the removal of the interior triangles from the initial file which takes nearly a full day.
   
-  A third scripts creates three meshes $\Omega_{T,i}$ for the tendons of the biceps muscle, as visualized in \cref{fig:tendon_meshes}. At the bottom, a single tendon mesh is created whereas at the top, two seperate tendons exist. The script involves numerous rotation and cropping operations of the initial surface, before the algorithm of \cref{sec:ser_alg_meshes} is executed. The three output files of the tendon meshes have the same file format as the muscle meshes. The files have the extension \emph{.bin} for \say{binary}. The script \code{examine_bin_fibers.py} can be used to debug the created binary files.
+  A third scripts creates three meshes $\Omega_{T,i}$ for the tendons of the biceps muscle, as visualized in \cref{fig:tendon_meshes}. At the bottom, a single tendon mesh is created whereas at the top, two separate tendons exist. The script involves numerous rotation and cropping operations of the initial surface, before the algorithm of \cref{sec:ser_alg_meshes} is executed. The three output files of the tendon meshes have the same file format as the muscle meshes. The files have the extension \emph{.bin} for \say{binary}. The script \code{examine_bin_fibers.py} can be used to debug the created binary files.
   
   The three scripts can be executed as follows:
   \begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]
@@ -974,11 +974,11 @@ First, an overview of available meshing software and known algorithms in the lit
 
 A workflow was presented to generate a smooth surface triangulation from imaging data. Our base data was the male dataset from the Visible Human Project. Two alternatives within this workflow were presented, where the first alternative executed automatic image segmentation based on morphological operations and the second alternative used semi-automatic segmentation tools from the Physiome project. Then, smooth NURBS surfaces were fitted to the extracted boundaries of the muscle volumes.
 
-Next, a novel algorithm to create structured meshes from a triangulated muscle surface was presented. The algorithm used harmonic maps on 2D slices in combination with regular grids in a parameter space to achieve good mesh quality. A method of computing streamlines in a divergence-free vector field to estimate muscle fibers, which is established in the literature, was used. It allowed to embed 1D meshes for muscle fibers in the created 3D meshes of the muscle. Numerical experiments tested and evaluated different choices of triangulation and quadrangulation schemes for the 2D cross section and reference domains in our algorithm.
+Next, a novel algorithm to create structured meshes from a triangulated muscle surface was presented. The algorithm used harmonic maps on 2D slices in combination with regular grids in a parameter space to achieve good mesh quality. A method of computing streamlines in a divergence-free vector field to estimate muscle fibers, which is established in the literature, was used. It allowed embedding 1D meshes for muscle fibers in the created 3D meshes of the muscle. Numerical experiments tested and evaluated different choices of triangulation and quadrangulation schemes for the 2D cross-section and reference domains in our algorithm.
 
-Next, a parallelized algorithm was introduced that was based on our first, serial algorithm. The algorithm used distributed memory parallelism and provided the same features as the serial algorithm, having the same formats for input and output. The difference was that it constructed a fine, partitioned mesh for streamline tracing that was distributed over all employed processes. Thus, it was possible to create finer meshes using more compute nodes. Differently resolved meshes of the biceps and triceps muscle volumes and muscle fibers were created using this algorithm. The superiority of the parallel algorithm using a higher number of processes compared to the serial execution was explained and demonstrated in a numerical experiment. Several options to fine-tune the algorithm were evaluated. Postprocessing methods were described that improved the mesh quality of the resulting meshes.
+Next, a parallelized algorithm was introduced that was based on our first, serial algorithm. The algorithm used distributed memory parallelism and provided the same features as the serial algorithm, having the same formats for input and output. The difference was that it constructed a fine, partitioned mesh for streamline tracing that was distributed over all employed processes. Thus, it was possible to create finer meshes using more compute nodes. Differently resolved meshes of the biceps and triceps muscle volumes and muscle fibers were created using this algorithm. The superiority of the parallel algorithm using a higher number of processes compared to the serial execution was explained and demonstrated in a numerical experiment. Several options to fine-tune the algorithm were evaluated. Post-processing methods were described that improved the mesh quality of the resulting meshes.
 
-The presented algorithms and their implementation in \opendihu{} are the basis for further computations within this work. They are used to generate structured hexahedral meshes with good mesh quality. These meshes are required for efficient, parallel finite element simulations of various aspects of the neuromuscular system.
+The presented algorithms and their implementation in \opendihu{} are the basis for further computations within this work. They are used to generating structured hexahedral meshes with good mesh quality. These meshes are required for efficient, parallel finite element simulations of various aspects of the neuromuscular system.
 
 The presented algorithms are specialized for fusiform muscles and require the muscle geometry to be oriented along one coordinate axis (the $z$ axis) in order to generate a structured mesh  that comprises planar slices that are normal to that direction.
 The algorithms can also be applied to any tubular surface geometry of more complex muscles and will construct the corresponding structured 3D mesh. The generated 1D fiber meshes, however, are only valid for muscles, where the approach of streamline tracing through the solution of the Laplacian potential flow problem with boundary conditions at the bottom and top ends of the muscle can be applied.
