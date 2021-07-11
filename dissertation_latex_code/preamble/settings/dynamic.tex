@@ -1,0 +1,45 @@
+% ======================================================================
+% Dynamic Commands
+% ======================================================================
+
+% get name of current label (chapter, section, subsection, ...)
+\newcommand*{\currentname}{\@currentlabelname}
+
+% calculate difference between page numbers
+\newcommand*{\pagedifference}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax%
+}
+
+% custom TODO command with warning
+% (all packages that were tried produced problems)
+\newcommand*{\todo}[1]{%
+  \GenericWarning{}{%
+    LaTeX Warning (\thesubsection\space\currentname): TODO "#1"%
+  }%
+  \textcolor{red}{TODO: #1}%
+}
+
+% set up versioning information
+%\luaexec{require("version")}
+
+% convenience commands for title page and watermarks
+\newcommand*{\gitCommitText}[1][]{%
+  \texttt{#1\gitCommitHash}%
+  \ifx\gitTag\empty\else{} (\texttt{#1\gitTag})\fi%
+}
+
+\newcommand*{\compileCounterText}[1][]{%
+  \texttt{#1v\compileCounter}%
+}
+
+% command for checking if file is in \includeonly or not
+\newcommand*{\isincluded}[1]{%
+  \@tempswatrue
+  \if@partsw
+    \@tempswafalse
+    \edef\reserved@b{#1}%
+    \@for\reserved@a:=\@partlist\do
+    {\ifx\reserved@a\reserved@b\@tempswatrue\fi}%
+  \fi
+  \if@tempswa\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+}

@@ -1,0 +1,244 @@
+
+\newcommand{\opendihu}{OpenDiHu}
+\newcommand{\Opendihu}{OpenDiHu}
+
+%%%%%%%%%%%%%%%%   Abkürzungen   %%%%%%%%%%%%%%%%%%
+
+%----------------------Umgebungen----------------------
+\def\beqno{\begin{equation}}
+\def\eeqno{\end{equation}}
+\def\beq{\begin{equation*}}
+\def\eeq{\end{equation*}}
+\def\ba#1{\begin{array}{#1}}
+\def\ea{\end{array}}
+\def\mat#1{\left(\begin{matrix}#1\end{matrix}\right)}
+\def\matt#1{\left[\begin{matrix}#1\end{matrix}\right]}
+%\newcommand{\bs}{\begin{subequations}}
+%\newcommand{\es}{\end{subequations}}
+\newcommand{\bal}{\begin{align}}
+\def\ealll{ \end{align} }
+
+\renewcommand{\emph}[1]{\textit{#1}\/}
+\def\clap#1{\hbox  to  0pt{\hss#1\hss}}                 % für underbrace
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\newcommand{\ub}[2]{\underbrace{#1}_{\mathclap{#2}}}    
+\newcommand{\ds}{\displaystyle}                         % displaystyle
+\renewcommand{\dfrac}[2]{\ds\frac{\ds{#1}}{\ds{#2}}\,}  % nach Bruch Abstand
+%\newcommand{\code}[1]{{\small\lstinline[columns=fixed]!#1!}}
+
+\usepackage{setspace}
+\newcommand{\code}[1]{{\small\lstinline[basicstyle=\small\ttfamily\color{Maroon},breaklines=true,upquote=true]!#1!}}
+\newcommand{\codenobreak}[1]{{\small\lstinline[basicstyle=\small\ttfamily\color{Maroon},breaklines=false,upquote=true]!#1!}}
+\newcommand{\emphcode}[1]{{\small\lstinline[basicstyle=\small\itshape\ttfamily\color{Maroon},breaklines=true]!#1!}}
+\newcommand{\codebox}[1]{\begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]#1\end{lstlisting}}
+
+%\newfloat{algorithm}{ht}{aux0}              % Algorithmus-Umgebung
+%\floatname{algorithm}{Code-Abschnitt}
+\newcommand{\anm}[1]{\textcolor{blue}{#1}}
+\def\bigA{\mathop{\mathrm{A}}}
+
+% -------------
+% Using mdframed, define environment for \begin{reproduce} abcdefgh \end{reproduce}
+\definecolor{Maroon}{HTML}{801010}
+%\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\newcounter{reproduce}[section]
+\newenvironment{reproduce}{%
+  \stepcounter{reproduce}%
+  \mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[anchor=east,rectangle,fill=red!20]
+      {How To Reproduce};},nobreak=false
+  }
+  \mdfsetup{innertopmargin=10pt,linecolor=Maroon!20,nobreak=false,backgroundcolor=Maroon!05,%
+            linewidth=2pt,topline=true,roundcorner=5pt,frametitleaboveskip=\dimexpr-\ht\strutbox\relax,%
+  }
+  \vfill
+  %\begin{minipage}[b]{\linewidth}
+  \begin{mdframed}\relax%
+}
+{
+  \end{mdframed}%
+  %\end{minipage}%
+}
+
+\newenvironment{reproduce_no_break}{%
+  \stepcounter{reproduce}%
+  \mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[anchor=east,rectangle,fill=red!20]
+      {How To Reproduce};},nobreak=true
+  }
+  \mdfsetup{innertopmargin=10pt,linecolor=Maroon!20,nobreak=true,backgroundcolor=Maroon!05,%
+            linewidth=2pt,topline=true,roundcorner=5pt,frametitleaboveskip=\dimexpr-\ht\strutbox\relax,%
+  }
+  \vfill
+  %\begin{minipage}[b]{\linewidth}
+  \begin{mdframed}\relax%
+}
+{
+  \end{mdframed}%
+  %\end{minipage}%
+}
+
+% -------------
+
+
+%----------------------Funktionen, Zeichen----------------------
+\def\det{\hbox{det} \,}
+\def\spn{\hbox{span} \,}
+\def\div{\hbox{div} \,}
+\def\grad{\hbox{grad} \,}
+\def\supp{\hbox{supp} \,}
+\def\cof{\hbox{cof} \,}
+\def\tr{\hbox{tr} \,}
+\def\sym{\hbox{sym} \,}
+\DeclareMathOperator{\spur}{spur}
+\newcommand{\stern}[1] {\overset{*}{#1}}        %Sternchen auf Buchstabe
+\def\tstern{\stern{t}}
+\def\dV{\d V}
+\def\qed{\begin{flushright}$\square$\end{flushright}}
+\def\rpsi{\textcolor{red}{\hat{\psi}}}
+\def\Dcon{\mathcal{D}_{con}}
+\def\Dloc{\mathcal{D}_{loc}}
+\def\D{\mathcal{D}}
+\def\E{\mathbb{E}} % C2 domain of elasticity
+\def\P{\mathcal{P}} % C2 domain of elasticity
+\def\dt{d\noexpand\mkern-3mu t}
+\DeclareSIUnit[number-unit-product = {}]{\flop}{FLOP}   % flops unit for unitx
+\DeclareSIUnit[number-unit-product = {}]{\flops}{FLOPS}   % flops unit for unitx
+\sisetup{retain-unity-mantissa = false}
+
+%----------------------Ableitungen------------------------
+
+%Ableitungen mit \d 
+\makeatletter
+\def\d{\futurelet\next\start@i}\def\start@i{\ifx\next\bgroup\expandafter\abl@\else\expandafter\abl@d\fi}\def\abl@#1{\def\tempa{#1}\futurelet\next\abl@i}\def\abl@i{\ifx\next\bgroup\expandafter\abl@ii\else\expandafter\abl@a\fi}\def\abl@ii#1{\def\tempb{#1}\futurelet\next\abl@iii}\def\abl@iii{\ifx\next\bgroup\expandafter\abl@c\else\expandafter\abl@b\fi}
+\def\abl@d{\mathrm{d}}                                          % keine Argumente
+\def\abl@a{\ds\frac{\mathrm{d}}{\mathrm{d}\tempa}\,}            % 1 Argument \d{x} -> d/dx
+\def\abl@b{\ds\frac{\mathrm{d}\tempa}{\mathrm{d}\tempb}\,}  % 2 Argumente: \d{f}{x} -> df/dx
+\def\abl@c#1{\ds\frac{\mathrm{d}^{#1} {\tempa}}{\mathrm{d} {\tempb}^{#1}}\,}        % 3 Argumente: \d{f}{x}{2} -> d^2f/dx^2
+
+%partielle Ableitungen mit \p
+\def\p{\futurelet\next\startp@i}\def\startp@i{\ifx\next\bgroup\expandafter\pabl@\else\expandafter\pabl@d\fi}\def\pabl@#1{\def\tempa{#1}\futurelet\next\pabl@i}\def\pabl@i{\ifx\next\bgroup\expandafter\pabl@ii\else\expandafter\pabl@a\fi}\def\pabl@ii#1{\def\tempb{#1}\futurelet\next\pabl@iii}\def\pabl@iii{\ifx\next\bgroup\expandafter\pabl@c\else\expandafter\pabl@b\fi}
+\def\pabl@d{\partial}                                           % keine Argumente
+\def\pabl@a{\ds\frac{\partial}{\partial\tempa}\,}           % 1 Argument \d{x} -> d/dx
+\def\pabl@b{\ds\frac{\partial\tempa}{\partial\tempb}\,} % 2 Argumente: \d{f}{x} -> df/dx
+\def\pabl@c#1{\ds\frac{\partial^{#1} {\tempa}}{\partial {\tempb}^{#1}}\,}       % 3 Argumente: \d{f}{x}{2} -> d^2f/dx^2
+\makeatother
+
+%i-ter Ableitungsoperator
+\newcommand{\dd}[2]{\ds\frac{\mathrm{d}^{#2}}{\mathrm{d}{#1}^{#2}}\,}   %\dd{x}{5} -> d^5/dx^5
+\newcommand{\pp}[2]{\ds\frac{\partial^{#2}}{\partial{#1}^{#2}}\,}       %\pp{x}{5} -> d^5/dx^5 (partiell)
+
+%----------------------Buchstaben, Räume----------------------
+\def\eps{\varepsilon}
+\def\N{\mathbb{N}}  %nat. Zahlen
+\def\Z{\mathbb{Z}}  %ganze Zahlen
+\def\Q{\mathbb{Q}}  %rat. Zahlen
+\def\R{\mathbb{R}}  %reelle Zahlen
+\def\C{\mathbb{C}}  %komplexe Zahlen
+\def\P{\mathcal{P}} %Potenzmenge, Polynome
+\def\T{\mathcal{T}} %Triangulierung
+\def\X{\mathcal{T}} %samping point space
+\def\Oe{\overset{..}{O}}    %Menge von 2013_12_04
+\def\DD{\mathcal{D}} % Differentialoperator
+
+\renewcommand{\i}[2]{\ds\int\limits_{#1}^{#2}} %Integral, %TODO_Lorin:das überschreibt "interpolierende" \I, %FIX_Benni: zweimal kleiner Buchstabe (Großbuchstaben sind eher für Räume)
+\renewcommand{\s}[2]{\ds\sum\limits_{#1}^{#2}} %Summe %EDIT_Georg: mit renewcommand hat's nicht compiliert, deshalb jetzt newcommand
+
+
+\renewcommand{\O}{\mathcal{O}}      %O-Notation
+\renewcommand{\o}{o}
+\newcommand{\CC}{\mathcal{C}}       %Raum der stetig diff.baren Fkt
+\renewcommand{\L}{\mathcal{L}}      %Raum der Lebesgue-int.baren Fkt
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Lloc}{\L^1_{\text{loc}}}
+\newcommand{\Cabh}{\mathrm{C}}      %Abhängigkeitskegel
+\newcommand{\Sabh}{\mathrm{S}}      %zum Abhängigkeitskegel gehörendes S
+
+% Maßeinheiten
+\newcommand{\cm}{\,\mathrm{cm}}
+\newcommand{\m}{\,\mathrm{m}}
+\newcommand{\Npcm}{\,\mathrm{N/cm}}
+\newcommand{\Npm}{\,\mathrm{N/m}}
+\newcommand{\Npmm}{\,\mathrm{N/m^2}}
+\newcommand{\NN}{\,\mathrm{N}}
+
+%---------------------fette Buchstaben------------------------
+\newcommand{\bfa}{\textbf{a}}
+\newcommand{\bfb}{\textbf{b}}
+\newcommand{\bfc}{\textbf{c}}
+\newcommand{\bfd}{\textbf{d}}
+\newcommand{\bfe}{\textbf{e}}
+\newcommand{\bff}{\textbf{f}}
+\newcommand{\bfg}{\textbf{g}}
+\newcommand{\bfh}{\textbf{h}}
+\newcommand{\bfi}{\textbf{i}}
+\newcommand{\bfj}{\textbf{j}}
+\newcommand{\bfk}{\textbf{k}}
+\newcommand{\bfl}{\textbf{l}}
+\newcommand{\bfm}{\textbf{m}}
+\newcommand{\bfn}{\textbf{n}}
+\newcommand{\bfo}{\textbf{o}}
+\newcommand{\bfp}{\textbf{p}}
+\newcommand{\bfq}{\textbf{q}}
+\newcommand{\bfr}{\textbf{r}}
+\newcommand{\bfs}{\textbf{s}}
+\newcommand{\bft}{\textbf{t}}
+\newcommand{\bfu}{\textbf{u}}
+\newcommand{\bfv}{\textbf{v}}
+\newcommand{\bfw}{\textbf{w}}
+\newcommand{\bfx}{\textbf{x}}
+\newcommand{\bfy}{\textbf{y}}
+\newcommand{\bfz}{\textbf{z}}
+\newcommand{\bfA}{\textbf{A}}
+\newcommand{\bfB}{\textbf{B}}
+\newcommand{\bfC}{\textbf{C}}
+\newcommand{\bfD}{\textbf{D}}
+\newcommand{\bfE}{\textbf{E}}
+\newcommand{\bfF}{\textbf{F}}
+\newcommand{\bfG}{\textbf{G}}
+\newcommand{\bfH}{\textbf{H}}
+\newcommand{\bfI}{\textbf{I}}
+\newcommand{\bfJ}{\textbf{J}}
+\newcommand{\bfK}{\textbf{K}}
+\newcommand{\bfL}{\textbf{L}}
+\newcommand{\bfM}{\textbf{M}}
+\newcommand{\bfN}{\textbf{N}}
+\newcommand{\bfO}{\textbf{O}}
+\newcommand{\bfP}{\textbf{P}}
+\newcommand{\bfQ}{\textbf{Q}}
+\newcommand{\bfR}{\textbf{R}}
+\newcommand{\bfS}{\textbf{S}}
+\newcommand{\bfT}{\textbf{T}}
+\newcommand{\bfU}{\textbf{U}}
+\newcommand{\bfV}{\textbf{V}}
+\newcommand{\bfW}{\textbf{W}}
+\newcommand{\bfX}{\textbf{X}}
+\newcommand{\bfY}{\textbf{Y}}
+\newcommand{\bfZ}{\textbf{Z}}
+\newcommand{\bfzero}{\textbf{0}}
+
+\newcommand{\bfalpha}{\boldsymbol{\alpha}}
+\newcommand{\bfbeta}{\boldsymbol{\beta}}
+\newcommand{\bfgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfdelta}{\boldsymbol{\delta}}
+\newcommand{\bfeps}{\boldsymbol{\eps}}
+\newcommand{\bftheta}{\boldsymbol{\theta}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bfphi}{\boldsymbol{\phi}}
+\newcommand{\bfvarphi}{\boldsymbol{\varphi}}
+\newcommand{\bfpsi}{\boldsymbol{\psi}}
+\newcommand{\bfsigma}{\boldsymbol{\sigma}}
+\newcommand{\bfPi}{\boldsymbol{\Pi}}
+\newcommand{\bfXi}{\boldsymbol{\Xi}}
+\newcommand{\bfxi}{\boldsymbol{\xi}}
+\newcommand{\bfchi}{\boldsymbol{\chi}}
+\newcommand{\bfChi}{\boldsymbol{\chi}}
+\newcommand{\bfzeta}{\boldsymbol{\zeta}}
+\newcommand{\bfmu}{\boldsymbol{\mu}}
+\newcommand{\bflambda}{\boldsymbol{\lambda}}
+\newcommand{\bfomega}{\boldsymbol{\omega}}

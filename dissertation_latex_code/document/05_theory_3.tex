@@ -1,0 +1,354 @@
+
+\section{Discretization and Solution Approach for the Solid Mechanics Model}\label{sec:discretization_mechanics}
+
+After the formulation of linear and nonlinear models for solid mechanics in \cref{sec:model_muscle_contraction}, this section discusses their discretization and derives finite element formulations for the linearized model and the nonlinear model, both static and dynamic.
+We also describe the algorithms used to obtain a numerical solution.
+
+The implementation of a solver for generic hyperelastic descriptions is an interdisciplinary endeavor, if parallel execution is exploited and the model is integrated in a multi-scale biomechanics model.
+Therefore, we give a comprehensive derivation of the formulas used to numerically solve the equations matching the implementation in OpenDiHu, such that the implementation is also comprehensible for readers that are not specialized in the field of continuum mechanics. More details on finite element discretizations for solid mechanics models can be found in the literature \cite{zienkiewicz1977finite,SUSSMAN1987357,zienkiewicz2005finite}.
+
+% ---x---
+\subsection{Discretization of the Linear Model}\label{sec:linearized_mechanics_model}
+
+In this section, we discuss the linearized and static model. Besides the nonlinear model, our software OpenDiHu also implements the linearized description. The linear model exhibits better numerical properties and can be solved faster than the generic model. Thus, it can serve as a toy problem or can be used for mechanical systems, where the linearization assumptions are valid.
+
+By assuming small strains, we can use the linearized kinematic relation in \cref{eq:linearized_helper3} to express the linear strain tensor $\bfeps$. The material model is Hooke's law formulated in \cref{eq:linearized_helper2}. It relates the strain to the Cauchy stress by $\bfsigma = \C:\bfeps$.
+
+% linear, static and dynamic
+
+Using variational calculus, the system response of external forces and infinitesimal, compatible, virtual displacements $δ\bfu$ is studied. 
+We start with the \emph{principle of virtual work}, which states that in equilibrium the virtual work $δW$ performed by external forces along any virtual displacements $δ\bfu$ is zero. Equivalently, the external virtual work $δW_\text{ext}$ is equal to the internal virtual work $δW_\text{int}$:
+\begin{align}
+  δW_\text{int}(\bfu,δ\bfu) &= δW_\text{ext}(δ\bfu) \qquad && \forall δ\bfu \in H^1_0(\Omega)\label{eq:linearized_helper1}.
+\end{align}
+Here, the external virtual work $δW_\text{ext}$ is given by the product of external forces $\bft$ and the virtual displacements $δ\bfu$ at the same location. The internal virtual work $δW_\text{int}$ is the body's response in terms of stresses $\bfsigma$ and virtual strains $\bfeps$.
+In summary, \cref{eq:linearized_helper1} is equivalent to the following equilibrium equation:
+\begin{align}
+  \ds\int_\Omega \bfsigma(\bfu) : δ\bfeps\,\d\bfx &= \ds\int_{∂\Omega} \bft : δ\bfu\,\d \bfx &&\forall δ\bfu \in H^1_0(\Omega).\label{eq:linearized_helper1b}
+\end{align}
+The vectors contain the degrees of freedom of a finite element discretization. The operator \say{:} denotes the component-wise product. 
+
+Often, it is easier to write the equations in component form. Indices $a,b,c,\dots$ are used to specify a dimension index in $\{1,\dots,d\}$. The letters $L,M \in \{1,\dots,N\}$ denote indices over degrees of freedom in a mesh with $N$ nodes. The Einstein sum convention is used where repeated indices implicitly indicate summation, except when the indices are in parentheses.
+Thus, the right-hand side $\bff$ of \cref{eq:linearized_helper1b} with ansatz functions $\phi^L$ and the degrees of freedom $δu_a^L$ of $δ\bfu$ can be written as:
+\begin{align}\label{eq:linearized_mechanics_rhs}
+  \bff_a = \ds\int_{∂\Omega} t_{(a)}\,δu_{(a)}^L\,\phi^L \,\d \bfx.
+\end{align}
+
+By combining the kinematic relation between displacements $\bfu$ and linearized strains $\bfeps$ in \cref{eq:linearized_helper3}, the material relation between $\bfeps$ and the stress $\bfsigma$ in \cref{eq:linearized_helper2}, the equilibrium relation between $\bfsigma$ and the right-hand side vector $\bff$ in \cref{eq:linearized_helper1b} and after discretizing displacements and virtual displacements, we get the following linear matrix equation:
+\begin{align}\label{eq:linearized_helper4}
+  \bfK\,\bfu = \bff.
+\end{align}
+The stiffness matrix $\bfK$ has rows and columns for every combination of degree of freedom $L,M \in \{1,\dots,N\}$ and dimension indices $a,b \in \{1,2,3\}$. The entries are given by:
+\begin{align*}
+  \bfK_{LaMb} = \ds\int_{\Omega} \mathbb{C}_{adbc}\p{\phi^L(\bfx)}{x_{d}}\p{\phi^M(\bfx)}{x_{c}}\,\d \bfx.
+\end{align*}
+%
+The resulting model in \cref{eq:linearized_helper4} describes the passive behavior of a body under the linearization assumptions and can be used in an appropriate biomechanical application.
+
+However, for contracting muscle tissue, we also need to incorporate active stresses that are generated at the sarcomeres in the muscle. As described in \cref{eq:active_stress_linear}, an active stress term $\bfsigma^\text{active}$  can be considered. Because this active term is prescribed by the activation dynamics and the subcellular model, it has to appear on the right-hand side of the linear model.
+We add the active stress term $\bfsigma^\text{active}$ to the external virtual work in \cref{eq:linearized_helper1}, yielding the equation:
+\begin{align}\label{eq:linearized_helper5}
+  δW_\text{int}(\bfu,δ\bfu) &= \bff + \ds\int_\Omega \bfsigma^\text{active} : δ\bfeps_{-}\,\d\bfx &&\forall δ\bfu \in H^1_0(\Omega).
+\end{align}
+%
+The active stress is associated with compression, i.e., negative virtual strains $δ\bfeps < 0$. Therefore, we use $δ\bfeps_{-}$ which is defined equal to $δ\bfeps$ for $δ\bfeps < 0$ and zero otherwise.
+From \cref{eq:linearized_helper5}, we get the same discretized linear system as in \cref{eq:linearized_helper4}, but with an additional term $\bff^\text{ active}$ in the right-hand side that contains the discretized prescribed active stress field $\bfsigma^\text{active}_{ab}(\bfx)$:
+\begin{align}\label{eq:linearized_helper6}
+  \bff^\text{ active}_{La} = \ds\int_{Ω}\bfsigma^\text{active}_{ab}(\bfx)\,\p{\phi^L(\bfx)}{x_{b}} \,\d\bfx.
+\end{align}
+%
+\subsection{Discretization of the Nonlinear Static Hyperelastic Model}\label{sec:static_hyperelastic_fe_model}
+
+Next, we discuss the discretization of the nonlinear solid mechanics model, which uses the model equations introduced in \cref{sec:model_muscle_contraction}.
+We begin with the discretization of a static, incompressible problem, where no velocities have to be considered.
+The discretization is extended to the dynamic model in \cref{sec:solver_dynamic_hyperelasticity_fe_model}.
+
+%In \cref{sec:linearized_mechanics_model}, the ingredients of a solid mechanics model derivation consisting of equilibrium, material and kinematic equations were outlined and used to derive a linearized description. For the nonlinear model, the material equations were discussed in \cref{sec:material_modeling} and the stress and elasticity tensors were derived in \cref{sec:stress_and_elasticity}. This section uses these building blocks and presents the full derivation for the generic hyperelastic finite element model.
+As described in \cref{sec:assumptions_and_model_equations}, the equilibrium equation can be formulated in terms of the \emph{Hellinger-Reissner energy functional} $\Pi_L(\bfu,p) = \Pi_\text{int}(\bfu,p) + \Pi_\text{ext}(\bfu)$
+given in \cref{eq:hellinger_reissner}.
+It consists of the external energy functional, given in \cref{eq:pi_ext} as
+\begin{align*}
+  \Pi_\text{ext}(\bfu) = -\ds\int_{\Omega_0} \bfB\, \bfu\,\d V - \ds\int_{∂\Omega_0^t}\bar{\bfT}\,\bfu\,\d S,
+\end{align*}
+with body force $\bfB$ and surface traction $\bar{\bfT}$, and of the internal energy functional
+\label{sec:section_with_pi_int}
+\begin{align}\label{eq:mechanics_helper1}
+  \Pi_\text{int}(\bfu,p) = \ds\int_{\Omega_0} \Psi_\text{iso}\big(\bar\bfC(\bfu)\big)\,\d V
+    + \ds\int_{\Omega_0} p\,\big(J(\bfu) - 1\big)\,\d V.
+\end{align}
+%
+Here, $\Psi_\text{iso}$ is the isochoric strain-energy density function introduced in \cref{eq:psi_iso} in terms of the reduced right Cauchy-Green tensor $\bar{\bfC}$ defined in \cref{eq:reduced_fc}.
+The first term in \cref{eq:mechanics_helper1} describes the isochoric elastic response of the material, the second term adds the incompressibility constraint $J=1$ with the Lagrange multiplier $p$. The value of $p$ is computed as part of the model and can be identified as the hydrostatic pressure. Therefore, the second term is interpreted as the elastic response to compression and is included in the internal energy functional $\Pi_\text{int}$.
+
+According to the \emph{principle of stationary potential energy}, the system is in equilibrium, if the potential energy functional is stationary.
+This is the case, if the first variation $δ\Pi_L$ is zero.
+Using the additive structure of $\Pi_L$, we can express the principle of stationarity as
+\begin{subequations}
+  \begin{align}
+    D_{δ\bfu}\Pi_L(\bfu, p) &= D_{δ\bfu}\Pi_\text{int}(\bfu,p) + D_{δ\bfu}\Pi_\text{ext}(\bfu) \overset{!}{=} 0, & \forall δ\bfu  \label{eq:variations_functional_zero_a}\\[4mm]
+    D_{δp}\Pi_L(\bfu, p) &= D_{δp}\Pi_\text{int}(\bfu,p) \overset{!}{=} 0 & \forall δp. \label{eq:variations_functional_zero_b}
+  \end{align}
+\end{subequations}
+The variations of the internal and external energy functionals are defined as
+\begin{align}\label{eq:def_variation}
+  D_{δ\bfu}\Pi(\bfu) &= \d{\eps} \Pi(\bfu + \epsδ\bfu)\big|_{\eps=0}, & 
+  D_{δp}\Pi(p) &= \d{\eps} \Pi(p + \epsδp)\big|_{\eps=0}.
+\end{align}
+They can be identified as the internal and external virtual work,
+\begin{align*}
+  D_{δ\bfu}\Pi_\text{int}(\bfu,p) &= δW_\text{int}, & D_{δ\bfu}\Pi_\text{ext}(\bfu) &= -δW_\text{ext}.
+\end{align*}
+Thus, \cref{eq:variations_functional_zero_a} can be expressed as 
+\begin{align*}
+  δW_\text{int} - δW_\text{ext} &= 0,
+\end{align*}
+which is the form of the equilibrium equation that was used in \cref{eq:linearized_helper1} in the derivation of the linearized model in \cref{sec:linearized_mechanics_model} . The Euler-Lagrange equations corresponding to the variational problem are the local incompressibility constraint and the partial differential equation of balance of momentum presented in \cref{eq:contraction_1,eq:contraction_2}.
+
+Executing the derivative in the definitions of the variations in \cref{eq:def_variation} yields the following terms:
+\begin{align*}
+  &D_{δ\bfu}\Pi_\text{int}(\bfu,p)  = \ds\int_{\Omega_0} \bfS(\bfu,p): δ\bfE(δ\bfu)\,\d V,
+  \qquad D_{δp}\Pi_\text{int}(\bfu,p) =\ds\int_{\Omega_0} \big(J(\bfu) - 1\big)δp\,\d V, \\[4mm]
+  &D_{δ\bfu}\Pi_\text{ext}(\bfu) = -\ds\int_{\Omega_0} \bfB\cdot δ\bfu\,\d V - \ds\int\limits_{∂\Omega^t_0} \bar{\bfT}\cdot δ\bfu\,\d S,
+\end{align*}
+where the variational variables $δp,δ\bfu$ and $δ\bfE$ are the virtual pressure, virtual displacements, and virtual strains.
+
+% discretization
+We discretize the solutions of the functional for the displacements $\bfu(\bfx)$ and pressure $p(\bfx)$ and their variations using different ansatz functions $\phi^L$, $L=1,\dots,N_u$ and $\psi^L$, $L=1,\dots,N_p$:
+\begin{align*}
+   u_a &= \hat{u}_a^L \phi_{(a)}^L, & δu_a &= δ\hat{u}_a^L \phi_{(a)}^L,   & p &= \hat{p}^L \psi^L, & δp &= δ\hat{p}^L \psi^L.
+\end{align*}
+Again, Einstein summation over repeated indices, in this case the index $L$, is used. The displacements function is vector-valued and given by $\bfu(\bfx) = (u_1(\bfx), u_2(\bfx), u_3(\bfx))^\top$. The vectors containing the degrees of freedom are denoted by $\hat{\bfu} = (\hat{u}^L)_{L=1,\dots,N_u}$ and $\hat{\bfp} = (\hat{p}^L)_{L=1,\dots,N_p}$.
+
+The kinematics equation to compute virtual strains from virtual displacements follows from \cref{eq:green_lagrange_u} in Lagrangian description and is given by $δ\bfE = \sym(\bfF^\top ∇\bfu)$. Its discretized form is given as follows, where the subscript comma $\square_{,A}$  indicates the derivative with respect to the indexed coordinate $\bfX_A$:
+\begin{align*}
+  δE_{AB} &= \dfrac12\left(F_{aB}\, \phi_{(a),A}^M + F_{aA}\, \phi_{(a),B}^M\right)δ\hat{u}_{a}^M.
+\end{align*}
+%
+% summarize equations
+In summary, the resulting set of discretized nonlinear equations can be formulated as:
+\begin{align}\label{eq:mechanics_static_system}
+  δW_\text{int}(\bfu,p) - δW_\text{ext} &= 0 \qquad \forall\,δ\bfu, \\[4mm]
+  D_{δp}\Pi_L(\bfu) &= 0 \qquad \forall\,δp,
+\end{align}
+with the following discretized terms:
+\begin{subequations}\label{eq:mechanics_static_system2}
+  \begin{align}
+    δW_\text{int}(\hat{\bfu},\hat{\bfp})  = \ds\int_{\Omega}\dfrac12  S_{AB}(\hat{\bfu},\hat{\bfp})\, \left(F_{aB}\, \phi_{(a),A}^M + F_{aA}\, \phi_{(a),B}^M\right)δ\hat{u}_{a}^M \,\d V,\\[4mm]
+    δW_\text{ext}  = \ds\int_{\Omega} B_a \phi_{(a)}^M\,δ\hat{u}^M_a \,\d V +\ds\int_{∂\Omega}  \bar{T}^L_a\,\phi_{(a)}^L\, \phi_{(a)}^M\,δ\hat{u}^M_a\,\d S, \\[4mm]
+    D_{δp}\Pi_L(\hat{\bfu}) = \ds\int_\Omega \big(J(\hat{\bfu}) - 1\big)\,δp\,\d V .
+  \end{align}
+\end{subequations}
+
+The nonlinear system of equations in \cref{eq:mechanics_static_system,eq:mechanics_static_system2} can now be solved for the unknown vectors  $\hat{\bfu}$ and $\hat{\bfp}$ of degrees of freedom using a Newton scheme.
+
+\subsection{Discretization of the Nonlinear Dynamic Hyperelastic Model}
+
+We extend the discretization of the static model in the last section for the dynamic model.
+The vector of unknowns is extended by a velocity function $\bfv: \Omega_t \to \R^3$. The additional equation $\dot{\bfu} = \bfv$ relates the displacements and the velocity.
+
+As noted in the derivation of the equilibrium equation in \cref{sec:assumptions_and_model_equations}, the body force term $\bfB$ in the external energy functional also includes the inertial forces $\bfB_\text{inertial} = \rho_0\,\dot{\bfv}$ to describe the dynamic behavior.
+
+The resulting nonlinear system of equations is given as follows:
+\begin{subequations}\label{eq:mechanics_dynamic0}
+  \begin{align}
+    δW_\text{int}(\bfu,p) - δW_\text{ext}(\bfv) &= 0 \qquad \forall\,δ\bfu,\label{eq:mechanics_dynamic_system1}\\[4mm]
+    \bfv &= \dot{\bfu},\label{eq:mechanics_dynamic_system2}\\[4mm]
+    D_{δp}\Pi_L(\bfu) &= 0 \qquad \forall\,δp.\label{eq:mechanics_dynamic_system3}
+  \end{align}
+\end{subequations}
+
+\subsection{Computation of the Stress Tensor and the Elasticity Tensor}\label{sec:stress_and_elasticity}
+
+In the Newton solver, we need to compute the stress tensor $\bfS$ and its derivative $\C$, called the elasticity tensor, given the current displacement field $\bfu$. The relations are defined by the material model given by the strain energy function. This section presents the algorithm how to obtain the values of $\bfS$ and $\C$ from the displacements $\bfu$. While the derivation is formulated in terms of the displacement function $\bfu$, it is also valid for the finite element discretization, i.e., using the vector $\hat{\bfu}$  of degrees of freedom instead.
+
+Following \cref{eq:material_model_helper1}, the second Piola-Kirchhoff stress $\bfS$ is given by the derivative of the strain energy function $\Psi$ with respect to $\bfC$.
+For the representation using the invariants, the chain rule has to be used:%
+\begin{align*}
+   \bfS &= 2\,\p{\Psi(\bfC)}{\bfC} = \p{\Psi}{I_a}\p{I_a}{\bfC}.
+\end{align*}
+Using the decoupled form, the resulting stresses are also decoupled as $\bfS = \bfS_\text{vol}+\bfS_\text{iso}$. The volumetric stress $\bfS_\text{vol}$ describes the elastic response to compression, the isochoric stress $\bfS_\text{iso}$ describes the response to the deviatoric deformation. In the following, all steps to compute these stresses are listed. The rationale is to give a condensed reference of the implemented algorithm in OpenDiHu to facilitate further development.
+For the derivation of all intermediate steps, we refer to the literature \cite{holzapfel2000nonlinear}.
+
+At first, the reduced stress tensor $\bar{\bfS}$ that neglects the volumetric change is formulated as:%
+%
+\begin{align*}
+  \bar{\bfS} = 2\p{\Psi_\text{iso}(\bar{I}_1,\bar{I}_2,\bar{I}_4,\bar{I}_5)}{\bar{\bfC}} &= \bar{\gamma}_1\,\bfI + \bar{\gamma}_2\,\bar{\bfC}
+  + \bar{\gamma}_4\, \bfa_0 \otimes \bfa_0 + \bar{\gamma}_5\,(\bfa_0 \otimes \bar{\bfC}\,\bfa_0 + \bfa_0\bar{\bfC}\otimes \bfa_0).
+\end{align*}
+In case of an isotropic material, the terms involving $\bfa_0$ are not needed. The prefactors are given by derivatives of the strain energy function with respect to the reduced invariants:
+%
+\begin{align*}
+  \bar{\gamma}_1 &= 2\left(\p{\Psi_\text{iso}(\bar{I}_1, \bar{I}_2)}{\bar{I}_1} + \bar{I}_1\,\p{\Psi_\text{iso}(\bar{I}_1, \bar{I}_2)}{\bar{I}_2}\right),
+  &\bar{\gamma}_2 &= -2\p{\Psi_\text{iso}(\bar{I}_1, \bar{I}_2)}{\bar{I}_2},
+  &\bar{\gamma}_4 &= 2\p{\Psi_\text{iso}}{\bar{I}_4}\\[4mm]
+  \bar{\gamma}_5 &= 2\p{\Psi_\text{iso}}{\bar{I}_5}
+\end{align*}
+%
+Using the fourth order identity tensor $\mathbb{I}$ and the projection tensor $\mathbb{P}$,%
+\begin{align*}
+  (\mathbb{I})_{abcd} &= \delta_{ac}\,\delta_{bd}, &
+  \mathbb{P} &= \mathbb{I} - \dfrac13 \bfC^{-1} \otimes \bfC,
+\end{align*}
+the stress tensors can finally be computed as
+\begin{align*}
+  \bfS_\text{iso} &= J^{-2/3}\mathbb{P}:\bar{\bfS}, &
+  \bfS_\text{vol} &= J\,p\,\bfC^{-1}, &
+  \bfS &= \bfS_\text{iso} + \bfS_\text{vol}.
+\end{align*}
+In the compressible case including the penalty method, the value of $p$, that is needed for $\bfS_\text{vol}$, is given by the constitutive model as $p = \d \Psi_\text{vol}(J)/\d J$. In the incompressible case, $p$ is the unknown Lagrange multiplier that gets computed as part of the numerical solution. In that case, $p$ has the physical meaning of the hydrostatic pressure.
+
+Using the present algorithm, the stress tensor $\bfS$ can, thus, be computed from derivatives of the strain energy function $\Psi$ and the right Cauchy Green tensor $\bfC$, which can be calculated from the displacement field $\bfu$.
+
+Another important quantity for the numerical solution of the nonlinear system is the fourth order elasticity tensor $\C$, which is defined as
+\begin{align*}
+  \C = 2\p{\bfS(\bfC)}{\bfC} = 4\dfrac{\partial^2 \Psi(\bfC)}{\partial\bfC\partial\bfC}.
+\end{align*}
+It is the derivative of the stress tensor and is required in the Jacobian matrix of an iteration of the nonlinear Newton solver. Like the material tensor in \cref{eq:symmetries}, it shows major and minor symmetries and has 21 independent entries.
+
+Like the stress tensor, the elasticity tensor is also additively composed into a volumetric term $\C_\text{vol}$ and an isochoric term $\C_\text{iso}$. The volumetric term can be computed by:%
+\begin{align*}
+  \mathbb{C}_\text{vol} &= J\,\tilde{p}\,\bfC^{-1} \otimes \bfC^{-1} - 2\,J\,p\,\bfC^{-1} \odot \bfC^{-1}, &
+  \big(\bfC^{-1} \odot \bfC^{-1}\big)_{abcd} &= \dfrac12\big(C^{-1}_{ac}\,C^{-1}_{bd} + C^{-1}_{ad}\,C^{-1}_{bc}\big).
+\end{align*}
+The term includes two pressure variables $\tilde{p}$ and $p$. In the incompressible formulation, both variables equals the Lagrange multiplier $p$. For the compressible formulation, $\tilde{p}$ is derived as $\tilde{p} = p + J\,\d p/\d J$ and $p$ is computed from the volumetric strain energy function as stated above.
+
+The isochoric term $\mathbb{C}_\text{iso}$ of the elasticity tensor follows from the following algorithm listing the quantities to compute:%
+\begin{align*}
+  &\bar{\delta}_1 = 4\left(\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_1\,∂\bar{I}_1} + 2\,\bar{I}_1\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_1\,∂\bar{I}_2} +\dfrac{∂\Psi_\text{iso}}{∂\bar{I}_2} + \bar{I}_1^2\,\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_2\,∂\bar{I}_2}\right), \,
+  \bar{\delta}_2 = -4\left(\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_1\,∂\bar{I}_2} + \bar{I}_1\,\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_2\,∂\bar{I}_2}\right),\\[4mm]
+  &\bar{\delta}_3 = 4\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_2\,∂\bar{I}_2}, \quad
+  \bar{\delta}_4 = -4\dfrac{∂\Psi_\text{iso}}{∂\bar{I}_2}, \quad
+  \bar{\delta}_5 = 4\left(\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_1\,∂\bar{I}_4} +\bar I_1 \dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_2\,∂\bar{I}_4}\right),\\[4mm]
+  &\bar{\delta}_6 = -4\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_2\,∂\bar{I}_4}, \,\,\,\,
+  \bar{\delta}_7 = 4\dfrac{∂^2\Psi_\text{iso}}{∂\bar{I}_4\,∂\bar{I}_4}, \,\,\,\,
+  \mathbb{I}_{abcd} = δ_{ac}\,δ_{bd}, \,\,\,\,
+  \bar{\mathbb{I}}_{abcd} = δ_{ad}\,δ_{bc}, \,\,\,\,
+  \mathbb{S} = (\mathbb{I} + \bar{\mathbb{I}}) / 2, \\[4mm]
+  &\p{\bar I_5}{\bar\bfC} = \bfa_0 \otimes \bar\bfC\,\bfa_0 + \bfa_0\,\bar\bfC \otimes \bfa_0, \quad
+  \dfrac{∂^2\bar{I}_5}{∂\bar{\bfC}∂\bar{\bfC}} = \p{\bar{\bfC}}(\bfa_0 \otimes \bar\bfC\,\bfa_0 + \bfa_0\,\bar\bfC \otimes \bfa_0),
+\end{align*}
+\begin{align*}
+  &\bar{\mathbb{C}} = J^{-4/3}\bigg(\bar{\delta}_1\,\bfI \otimes \bfI + \bar{\delta}_2\,\big(\bfI \otimes \bar{\bfC} + \bar{\bfC} \otimes \bfI\big) + \bar{\delta}_3\bar{\bfC} \otimes \bar{\bfC} + \bar{\delta}_4\,\mathbb{S}
+  +\bar{δ}_5\,(\bfI \otimes \bfa_0 \otimes \bfa_0 + \bfa_0 \otimes \bfa_0 \otimes \bfI)\\[4mm]
+  &\hspace*{1cm} +\bar{δ}_6\,(\bar{\bfC} \otimes \bfa_0 \otimes \bfa_0 + \bfa_0 \otimes \bfa_0 \otimes \bar{\bfC})
+  +\bar{δ}_7\,(\bfa_0 \otimes \bfa_0 \otimes \bfa_0 \otimes \bfa_0) \\[4mm]
+  &\hspace*{1cm} + \bar{δ}_8\,\Big(\bfI \otimes \p{\bar{I}_5}{\bar{\bfC}} + \p{\bar{I}_5}{\bar{\bfC}} \otimes \bfI \Big)
+  + \bar{δ}_9\,\Big(\bar{\bfC} \otimes \p{\bar{I}_5}{\bar{\bfC}} + \p{\bar{I}_5}{\bar{\bfC}} \otimes \bar{\bfC} \Big) + \bar{δ}_{10}\Big(\p{\bar{I}_5}{\bar{\bfC}} \otimes \p{\bar{I}_5}{\bar{\bfC}}\Big) \\[4mm]
+  &\hspace*{1cm}+ \bar{δ}_{11} \Big(\bfa_0 \otimes \bfa_0 \otimes \p{\bar{I}_5}{\bar{\bfC}} + \p{\bar{I}_5}{\bar{\bfC}} \otimes \bfa_0 \otimes \bfa_0 \Big) + \bar{δ}_{12} \dfrac{∂^2\bar{I}_5}{∂\bar{\bfC}∂\bar{\bfC}}\bigg)\\[4mm]
+  &\tilde{\mathbb{P}} = \bfC^{-1} \odot \bfC^{-1} - \dfrac13 \bfC^{-1} \otimes \bfC^{-1} \\[4mm]
+  &\mathbb{C}_\text{iso} = \mathbb{P} : \bar{\mathbb{C}} : \mathbb{P}^\top + \dfrac23 J^{-2/3} \bar{\bfS} : \bfC\,\tilde{\mathbb{P}} - \dfrac23\big(\bfC^{-1}\otimes \bfS_\text{iso} + \bfS_\text{iso}\otimes \bfC^{-1}\big)
+\end{align*}
+Then, $\C = \C_\text{vol} + \C_\text{iso}$ can be calculated.
+%
+%
+
+% invariants: I1-I5
+% transversely isotropic
+% reduced invariants, reduced quantities for compressible materials
+% strain energy function, derivative
+% elasticity tensor
+% -> computation of S and C
+
+\subsection{Nonlinear Solver for the Solid Mechanics Model}\label{sec:solver_static_hyperelastic_fe_model}
+
+% Newton solver
+The governing nonlinear system of equations is solved by a Newton scheme. We define the vector of the unknown degrees of freedom as $(\hat{\bfu},\hat{p}) =: \bfz$. Then, the nonlinear equation takes the general form $\bfW(\bfz) = 0$. By linearization around a value $\bfz$, we get%
+\begin{align*}
+  \bfW(\bfz+Δ\bfz) = \bfW(\bfz) + \bfJ\,Δ\bfz + o(\bfz + Δ\bfz),
+\end{align*}
+with the increment $Δ\bfz = (Δ\hat\bfu, Δ\hat{p})$ and the Jacobian matrix $\bfJ = \partial {\bfW}/\partial {\bfz}$.
+Neglecting the sublinear error term $o(z + Δz)$, we can start from an initial guess $\bfz^{(0)}$ and proceed to find the root of $\bfW$ using the following iterative Newton scheme:%
+\begin{subequations}\label{eq:newton_scheme}
+  \begin{align}
+    \bfJ\,Δ\bfz^{(n)} = -\bfW(\bfz^{(n)}),\label{eq:mechanics_linear_system}\\[4mm]
+    \bfz^{(n+1)} = \bfz^{(n)} + Δ\bfz^{(n)}.
+  \end{align}
+\end{subequations}
+\Cref{eq:mechanics_linear_system} is a linear system of equations with the system matrix given by $\bfJ$, which has to be solved in every iteration step $n$. The linear system of equations can be expressed as follows:
+\begin{align}\label{eq:static_newton_iteration}
+  \matt{\bfk_{δ\bfu,Δ\bfu} & \bfk_{δp,Δ\bfu}^\top \\[2mm]
+  \bfk_{δp,Δ\bfu} & \bfzero} \, \matt{Δ\hat{\bfu} \\[2mm] Δ\hat{p}} 
+  =
+  \matt{-\bfR_{δ\bfu} \\[2mm] -\bfR_{δp}}.
+\end{align}
+The definition of the right-hand sides $\bfR_{δ\bfu} = δW_\text{int} - δW_\text{ext}$ and $\bfR_{δp}=D_{δp}\Pi_L$ is given in \cref{eq:mechanics_static_system}. The system matrix is composed as follows. The upper left part consists of 3 times 3 blocks of submatrices, each with size $N_u \times N_u$ and the entries given by:
+\begin{align*}
+  \bfk_{δ\bfu,Δ\bfu,(L,a),(M,b)} &= \ds\int_\Omega \phi_{(a),B}^L\tilde{k}_{abBD}\phi_{(b),D}^M\,\d V &\text{with}\quad 
+  \tilde{k}_{abBD} &= δ_{ab}\,S_{BD} + F_{aA}\,F_{bC}\,\mathbb{C}_{ABCD}.
+\end{align*}
+Here, $S_{BD}$ and $\mathbb{C}_{ABCD}$ are entries of the second Piola-Kirchhoff stress tensor $\bfS$ and the elasticity tensor $\mathbb{C}$. The computation of these terms uses the description in \cref{sec:stress_and_elasticity}.
+
+The lower left part of the system matrix in \cref{eq:static_newton_iteration} is given by 1 times 3 blocks of submatrices, each with size $N_p \times N_u$ and entries given by:
+\begin{align*}
+  \bfk_{δp,Δ\bfu,L,(M,a)} = \ds\int_\Omega J\,\psi^L\,(F^{-1})_{Ba}\,\phi_{(a),B}^M \,\d V.
+\end{align*}
+The upper right part equals the transposed lower left block such that the system matrix is symmetric. Solving the system in \cref{eq:static_newton_iteration} in every iteration of the Newton scheme in \cref{eq:newton_scheme} converges to the solution of the static solid mechanics problem.
+
+\subsection{Discretization and Solution of the Dynamic Hyperelastic Model}\label{sec:solver_dynamic_hyperelasticity_fe_model}
+% dynamic hyperelasticity (6.9.2)
+
+
+The dynamic model is given by the system of nonlinear equations in \cref{eq:mechanics_dynamic}. In addition to the spatial discretization with finite elements, we need to discretize the temporal derivatives of the displacement field $\bfu$ and the velocity field $\bfv$.
+The time derivatives are discretized to timesteps $t=i\cdot \dt$ with an implicit Euler scheme:
+\begin{align*}
+  \dot{\bfu} &\leadsto \dfrac1{\dt}(\bfu^{(i+1)} - \bfu^{(i)}), & \dot{\bfv} &\leadsto \dfrac1{\dt}(\bfv^{(i+1)} - \bfv^{(i)}).
+\end{align*}
+%
+
+Because of the added inertial body force, the external virtual work now depends on the vector of unknowns.
+In consequence, we split the external virtual work $δW_\text{ext}$ into a dead part $δW_\text{ext,dead}$ that solely depends on external forces and an inertial part:%
+\begin{align*}
+  δW_\text{ext} = δW_\text{ext,dead} + \ds\int_{\Omega} \rho_0\,\dfrac{v^{(i+1),L}_{(a)} - v^{(i),L}_{(a)}}{\dt}\,\phi_{(a)}^L\, \phi_{(a)}^M\,δ\hat{u}^M_a \,\d V = 0.
+\end{align*}
+In summary, the system of equations to proceed from timestep $i$ to $(i+1)$ is given as:
+\begin{subequations}\label{eq:mechanics_dynamic}
+  \begin{align}
+    δW_\text{int}({\bfu^{(i+1)}},p^{(i+1)}) - δW_\text{ext}(\bfv^{(i)},\bfv^{(i+1)}) &= 0 \qquad &&\forall\,δ\bfu,\label{eq:mechanics_dynamic1}\\[4mm]
+    \dfrac1{\dt}(\bfu^{(i+1)} - \bfu^{(i)}) - \bfv^{(i+1)} &= 0,\label{eq:mechanics_dynamic2}\\[4mm]
+    D_{δp}\Pi_L(\bfu^{(i+1)}) &= 0 \qquad &&\forall\,δp.\label{eq:mechanics_dynamic3}
+  \end{align}
+\end{subequations}
+Here, \cref{eq:mechanics_dynamic1} is the principle of virtual work, \cref{eq:mechanics_dynamic2} relates displacements $\bfu$ and velocities $\bfv$ and \cref{eq:mechanics_dynamic3} is the incompressibility constraint.
+
+The system is again solved using the Newton scheme presented in \cref{sec:solver_static_hyperelastic_fe_model}.
+The linear system for each Newton iteration takes the following form:
+\begin{align*}
+  \matt{
+    \bfk_{δ\bfu,Δ\bfu} & \bfl_{δ\bfu,Δ\bfv} & \bfk_{δp,Δ\bfu}^\top \\[2mm]
+    \bfl_{δ\bfv,Δ\bfu} & \bfl_{δ\bfv,Δ\bfv} & \bfzero \\[2mm]
+    \bfk_{δp,Δ\bfu} & \bfzero & \bfzero
+  } \, 
+  \matt{Δ\hat{\bfu} \\[2mm] Δ\hat{\bfv} \\[2mm] Δ\hat{p}} 
+  =
+  \matt{-\bfR_{δ\bfu} \\[2mm] -\bfR_{δ\bfv} \\[2mm] -\bfR_{δp}}.
+\end{align*}
+The entries $\bfk_{δ\bfu,Δ\bfu}$ and $\bfk_{δp,Δ\bfu}$ are the same as in the static case in \cref{eq:static_newton_iteration}.
+The other non-zero entries are given by 
+\begin{align*}
+  \bfl_{δ\bfu,Δ\bfv,(L,a),(M,b)} &= \dfrac1{\dt}\delta_{ab} \ds\int_{\Omega} \rho_0\,\,\phi_{(b)}^M \,\phi_{(a)}^L \,\d V, & 
+  \bfl_{δ\bfv,Δ\bfu,(L,a),(M,b)} &= \dfrac{1}{\dt}\delta_{ab}\,\delta^{LM},\\[4mm]
+  \bfl_{δ\bfv,Δ\bfv,(L,a),(M,b)} &= -\delta_{ab}\,\delta^{LM}.
+\end{align*}
+
+Note that in the dynamic problem, the system matrix is unsymmetric. It would be symmetric if the entries $\bfl_{δ\bfu,Δ\bfv}$ and $\bfl_{δ\bfv,Δ\bfu}^\top$ were the same. This would be the case for a density of one, $\rho_0 = 1$, and if the term $\int_{\Omega} \phi_{b}^M \phi_{a}^L \,\d V$ would be replaced by $\delta_{ab}\delta^{LM}$. The second condition means that a lumped mass matrix would be used where the diagonal entries are set to the row sums of the original matrix.
+
+We discretize the finite element solution in space by \emph{Taylor-Hood} elements. This type of element uses quadratic ansatz functions $\phi$ for the displacements and velocities and linear ansatz functions $\psi$ for the Lagrange multiplier or hydrostatic pressure $p$ on a 3D hexahedral mesh. This choice was proven to exhibit no locking \cite{zienkiewicz2005finite}. Locking is a phenomenon of degraded convergence of the finite element method for solid mechanics problems and occurs for improper discretization schemes.
+
+For a compressible material, the incompressibility constraint which is the last equation in the systems \cref{eq:mechanics_static_system} or \cref{eq:mechanics_dynamic} is removed. Instead of solving for the pressure $p$ as a Lagrange multiplier, the value is given by the constitutive model as described in \cref{sec:material_modeling}. In consequence, the system matrix of the linear system of equations that is solved in the Newton iterations has a smaller size for compressible materials.
+
+Moreover, the size varies depending on whether the static or the dynamic problem given in \cref{sec:solver_static_hyperelastic_fe_model,sec:solver_dynamic_hyperelasticity_fe_model} is solved. Assuming a linear mesh with $N_p$ degrees of freedom and a quadratic mesh with $N_u$ degrees of freedom, the square system matrix has $3\,N_u$ rows and columns for a static compressible formulation, $3\,N_u + N_p$ for a static incompressible formulation, $6\,N_u$ for a dynamic compressible model, and $6\,N_u+N_p$ for a dynamic incompressible model.
+
+% static compressible:    3*N_u
+% static incompressible:  3*N_u + N_p
+% dynamic compressible:   3*N_u + 3*N_u
+% dynamic incompressible: 3*N_u + 3*N_u + N_p
+
+
+In any case, the mechanics model can be linked to the subcellular model by defining the active stress as given in \cref{eq:active_stress_term}. Since the active stress does not depend directly on the passive behavior, the active stress term can be added as a constant to the passive stress term. This constant also has no influence on the Jacobian matrix $\bfJ$. As the subcellular model depends on the fiber stretch $\lambda_f = \sqrt{I_4}$, there is a feedback loop between the subcellular and the solid mechanics model.
+
+Details on the connection to the subcellular model as well as details on the numerical solution schemes are given in \cref{sec:solid_mechanics_solver}.
+
+%, including the solver schemes, how initial values are chosen and measures to speed up convergence such as load stepping are discussed in the implementation and result sections.
+%To speed up the computation, the initial guess of the vector of unknowns in every timestep is linearly extrapolated from the two previous timesteps.
+
+

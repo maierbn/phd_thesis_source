@@ -1,0 +1,57 @@
+
+% this alters "before" spacing (the second length argument) to 0
+%\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+
+\RedeclareSectionCommand[
+  %runin=false,
+  afterindent=false,
+  beforeskip=0pt,
+  afterskip=40pt]{chapter}
+  
+\addchap{Abstract/\foreignlanguage{ngerman}{Kurzzusammenfassung}}
+  
+%\disableornamentsfornextheadingtrue
+\section*{Abstract}
+
+% howto write the abstract
+% Context – provides background for less specialized readers and, so doing, establishes or recalls the importance of the problem.
+The human neuromuscular system consisting of skeletal muscles and neural circuits is a complex system that is not yet fully understood. 
+Surface electromyography (EMG) can be used to study muscle behavior from the outside. 
+Computer simulations with detailed biophysical models provide a non-invasive tool to interpret EMG signals and gain new insights into the system. 
+
+The numerical solution of such multi-scale models imposes high computational work loads, which restricts their application to short simulation time spans or coarse resolutions.
+We tackled this challenge by providing scalable software employing instruction-level and task-level parallelism, suitable numerical methods and efficient data handling. We implemented a comprehensive, state-of-the-art, multi-scale multi-physics model framework that can simulate surface EMG signals and muscle contraction as a result of neuromuscular stimulation.
+
+This work describes the model framework and its numerical discretization, develops new algorithms for mesh generation and parallelization, covers the use and implementation of our software OpenDiHu, and evaluates its computational performance in numerous use cases.
+
+We obtain a speedup of several hundred compared to a baseline solver from the literature and demonstrate, that our distributed-memory parallelization and the use of High Performance Computing resources enables us to simulate muscular surface EMG of the biceps brachii muscle with realistic muscle fiber counts of several hundred thousands. We find that certain model effects are only visible with such high resolution.
+
+In conclusion, our software contributes to more realistic simulations of the neuromuscular system and provides a tool for applied researchers to complement in vivo experiments with in-silico studies. It can serve as a building block to set up comprehensive models for more organs in the musculoskeletal system.
+
+% Need – motivates the audience by stating the difference between the desired and actual situations.
+% Task – states what the authors undertook to address the need, in the first person (we), past tense.
+% Object – clarifies what the paper covers without repeating the task, in the active voice, present tense.
+% Findings – state the main results in a way that both less and more specialized readers find helpful.
+% Conclusion – interprets findings (states the so what) – in this case, all the way to a recommendation.
+% Perspectives – broaden the view with any further needs and tasks.
+
+\begin{otherlanguage}{ngerman}
+  %\disableornamentsfornextheadingtrue
+  \section*{Kurzzusammenfassung}
+   
+  
+Beim neuromuskulären System, bestehend aus Skelettmuskeln und Nervenbahnen, handelt es sich um ein komplexes System, welches noch nicht komplett verstanden ist. Das Muskelverhalten kann von außen durch Oberflächen-Elektromyografie (EMG) untersucht werden. Computersimulationen mit detaillierten, biophysikalischen Modellen stellen eine nichtinvasive Methode dar, um EMG-Signale zu interpretieren und neue Erkenntnisse über das System zu erlangen.
+
+Die numerische Lösung solcher Mehrskalenmodelle erfordert eine große Rechenleistung, sodass die Modelle nur für kurze Simulationszeitspannen oder grobe Auflösungen geeignet sind. 
+Wir lösen dieses Problem durch das Bereitstellen skalierbarer Software, welche Parallelität auf Instruktions- und Taskebene ausnutzt, geeignete numerische Methoden einsetzt und eine  effiziente Datenverarbeitung sicherstellt. Wir setzen ein umfassendes, dem Stand der Wissenschaft entsprechendes Mehrskalen- und Mehrphysik-Modell um, welches Oberflächen-EMG-Signale simuliert und die Kontraktion eines Muskels als Folge neuromuskulärer Stimulation berechnet.
+  
+Diese Arbeit beschreibt das Modell und seine numerische Diskretisierung, entwickelt neue Algorithmen zur Gittererzeugung und Parallelisierung, behandelt die Anwendung und Umsetzung unserer Software OpenDiHu und wertet ihre Berechnungseffizienz in vielen Anwendungsbeispielen aus.
+
+Wir erreichen eine um einen Faktor von mehreren Hundert schnellere Berechnung verglichen mit einem Referenzlöser aus der Literatur. Unsere Parallelisierung für Parallelrechner mit verteiltem Speicher und die Verwendung von Hochleistungsrechnern erlauben es uns, Oberflächen-EMG des Biceps Brachii mit einer realistischen Anzahl an Muskelfasern von mehreren Hunderttausend zu simulieren. Wir stellen fest, dass bestimmte Modelleffekte nur mit solch hoher Auflösung sichtbar werden.
+
+Unsere Software trägt zu realistischeren Simulationen des neuromuskulären Systems bei und stellt ein Werkzeug für die angewandte Wissenschaft zur Verfügung, um In-vivo-Experimente mit In-silico-Studien zu verknüpfen. Sie kann als Baustein zur Erstellung umfassender Modelle für weitere Organe im muskuloskelettalen System dienen.
+  
+\end{otherlanguage}
+
+\cleardoublepage

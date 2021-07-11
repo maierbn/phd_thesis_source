@@ -1,0 +1,369 @@
+
+\usepackage{charter} %Charter fuer englische Texte
+%\linespread{1.05} % Durchschuss für Charter leicht erhöhen
+
+\usepackage[utf8]{inputenc}
+\usepackage{pmboxdraw}
+
+% utf8x is incompatible with biblatex, the following trick is a remedy
+% source: https://tex.stackexchange.com/a/213177
+\input{binhex}
+\makeatletter
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{mathletters}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-3.def}
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{default}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-34.def}
+\makeatother
+
+\usepackage[tbtags,sumlimits,intlimits,namelimits]{amsmath}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{ifpdf}
+\usepackage{color}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{wasysym}  % \ocircle
+\usepackage{makecell}  % \makecell{...\\...} to break in table cell
+\usepackage{textcomp}
+\usepackage{fancyvrb}  % improved verbatim 
+
+
+%\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}  % print
+%\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,pdfpagelabels,plainpages=false]{hyperref}    % web
+%\usepackage{hyperref}    % plain
+\usepackage[top=2.3cm, bottom=3.45cm, left=2.3cm, right=2.3cm]{geometry}
+%\numberwithin{equation}{section}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+%\graphicspath{{images/png/}{images/}}        % Pfad, in dem sich Grafikdateien befinden
+%\usepackage{subfigure}          % Unterbilder, deprecated
+%\usepackage(subfig}
+
+%\usepackage{cite}           % Literatur
+\usepackage{graphicx}       % Bilder in Tabellen
+\usepackage{float}          % eigene Float-Umgebungen, H-Option, um Bilder an der aktuellen Stelle anzuzeigen
+\usepackage{caption}
+\usepackage{subcaption,array}
+%\usepackage{array}
+
+\restylefloat{figure}       % Bilder an der Stelle, wo sie eingebunden werden
+\usepackage{multirow}
+\usepackage{listings}       % Darstellung von Source-Code
+\usepackage{framed}         % Rahmen um Text
+\usepackage{arydshln}       % gestrichelte Linie in Tabelle mit \hdashline
+\usepackage{longtable}     % Tabellen mit automatischen Seitenumbruch
+\usepackage{layouts}        % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth}
+ 
+%\usepackage{ziffer}       % Komma in Dezimalzahlen
+\usepackage{url}          % Links
+%% end old
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{black}{rgb}{0,0,0}
+
+\usepackage[framemethod=TikZ]{mdframed}       % Rahmen um Text und Gleichungen
+
+
+%\usepackage{arydshln}      % gestrichelte Linie in Tabelle mit \hdashline
+\usepackage{dirtytalk}          % \say{...} erzeugt (deutsche) Anführungszeichen
+
+\usepackage{tipa}
+\usepackage{transparent}    % needed for inkscape generated pdf_tex files
+\usepackage{multicol}       % multiple columns
+\usepackage{moreverb}       % verbatimwrite
+\usepackage{verbatimbox}    % \begin{verbbox}
+\usepackage{booktabs}
+\usepackage{morefloats}     % Increase the number of simultaneous LaTeX floats
+\usepackage{enumitem}       % more control oover itemize
+%\usepackage{algorithm2e}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+
+\newsavebox\lstbox
+\mdfdefinestyle{MyFrame}{%
+    innertopmargin=0pt,
+    innerbottommargin=10pt,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt}
+
+\definecolor{darkgreen}{HTML}{009900}
+    
+% settings for algorithm
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {⇐}{{$\leftarrow$}}1
+    {>=}{{$\geq$}}1
+    {~}{{\textasciitilde}}1
+    {`}{\textquotedbl}1,  
+  language=C++,
+  numbers=none,
+  numberstyle=\tiny,
+  xleftmargin=2.0ex, 
+  %basicstyle=\small, %  print  whole  listing  small
+  basicstyle=\small\ttfamily,
+  morekeywords={elif,do,end,then,proc,local,Eingabe,Ausgabe,alignof,loop,each},
+  deletekeywords={new},
+  columns=flexible,   % alignment
+  tabsize=2,    % size of tabs
+  keepspaces,
+  gobble=2,    % remove 2 characters at begin of each line
+  mathescape    % wandle $$ in latex um
+}
+
+% Versuche stärker, Abbildungen dort einzubinden, wo sie definiert wurden
+\renewcommand{\topfraction}{.85}      % Anteil, den floats auf einer Seite von oben her einnehmen dürfen
+\renewcommand{\bottomfraction}{.7}    % Anteil, den floats auf einer Seite von unten her einnehmen dürfen
+\renewcommand{\textfraction}{.15}       % Anteil der Seite, der mind. für Text zur Verfügung steht
+\renewcommand{\floatpagefraction}{.66}  % Anteil der Seite, der belegt sein muss, bevor eine weitere Seite angelegt wird
+\setcounter{topnumber}{9}               % maximale Anzahl floats, die im oberen Bereich der Seite sein dürfen
+\setcounter{bottomnumber}{9}            % maximale Anzahl floats, die im unteren Bereich der Seite sein dürfen
+    
+% language-specific things (hyphenation, ...)
+\usepackage[ngerman,main=american]{babel}
+
+% biblatex package wants to have csquotes (otherwise: warning)
+\usepackage{csquotes}
+
+% lower-case page header
+\usepackage[markcase=upper]{scrlayer-scrpage}
+
+% dummy texts
+\usepackage[math]{blindtext}
+
+% amsmath with improvements
+\usepackage{mathtools}
+
+% math theorems
+%\usepackage{amsthm}
+
+% format math theorems
+\usepackage{thmtools}
+
+% for setting size of text area
+\usepackage{geometry}
+
+% for \luadirect command
+%\usepackage{luacode}
+
+% check mode
+%\iftoggle{checkMode}{
+  % show non-whitelisted hyphenations
+%  \usepackage[mark]{lua-check-hyphen}
+%}{}
+
+% debug mode
+%\iftoggle{debugMode}{
+%  % show boxes, glues, and kerning
+%  \usepackage{lua-visual-debug}
+%}{}
+
+% use GoMono as typewriter font
+\usepackage[
+  % otherwise, bold is not available ("undefined font shape" warnings)
+  type1,
+  % scale to match main font size
+  scale=0.88,
+]{GoMono}
+
+% use TeX Gyre Heros as sans-serif font
+\usepackage{tgheros}
+
+% need T1 font encoding for Charter,
+% otherwise there will be "undefined font shape" warnings
+\usepackage[T1]{fontenc}
+
+% use Bitstream Charter as main font
+\usepackage[bitstream-charter]{mathdesign}
+
+% do not use mathcal of mathdesign, but replace by standard mathcal
+\DeclareSymbolFont{usualmathcal}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{usualmathcal}
+
+
+% micro-typographic adjustments
+\usepackage[
+  % don't deactivate extensions due to document class draft option
+  final,
+  % increase letter spacing in small-caps
+  tracking=smallcaps,
+  % font expansion: don't stretch/shrink lines by more than 1%,
+  % default of 2% looks a bit weird
+  stretch=10,
+  shrink=10,
+]{microtype}
+
+% reference last page of document
+\usepackage{lastpage}
+
+% extract number from page reference
+\usepackage{refcount}
+
+% graphics
+\usepackage{graphicx}
+
+% colors, load colortbl for coloring table rows
+%\usepackage[table]{xcolor}
+
+% contours around text
+\usepackage{contour}
+
+% additional space in table cells
+\usepackage{cellspace}
+
+% custom float captions, subfigures
+\usepackage{subcaption}
+
+% allows to put float caption beside image
+\usepackage{sidecap}
+
+% L, C, R column types for tables
+\usepackage{array}
+
+% X column type for tables (filling rest of line)
+\usepackage{tabularx}
+
+% more beautiful tables
+\usepackage{booktabs}
+
+% table cells spanning multiple rows
+\usepackage{multirow}
+
+% for controlling space in enumerate and itemize
+\usepackage{enumitem}
+
+% disable "Column type for cellspace package moved to 'C'." warning
+% when loading siunitx
+% (this is due to the cellspace package loaded above)
+\usepackage{expl3}
+\ExplSyntaxOn
+\msg_redirect_name:nnn{siunitx}{moved-cellspace-column}{none}
+\ExplSyntaxOff
+
+% consistent style of units and numbers
+\usepackage[binary-units=true]{siunitx}
+
+% watermarks
+\usepackage{everypage}
+
+% rules left of theorems
+%\usepackage[framemethod=tikz]{mdframed}
+
+% drawings
+\usepackage{tikz}
+
+% styling of table of contents
+\usepackage{tocbasic}
+
+% local table of contents (mini TOC)
+\usepackage{etoc}
+
+% wrap text around boxes
+\usepackage{wrapfig}
+
+% initials/dropped captial letters at beginning of chapters
+\usepackage{lettrine}
+
+% inclusion of external PDFs
+\usepackage{pdfpages}
+
+% reference current chapter, section, subsection, ...
+\usepackage{nameref}
+
+% line spacing (one and a half lines)
+\usepackage[onehalfspacing]{setspace}
+
+% filter specific warnings
+%\usepackage{silence}
+
+% patch hard-coded stuff in packages
+\usepackage{regexpatch}
+
+% allow breaking after hyphens in long URLs
+%\usepackage[hyphens]{url}
+
+% PDF links
+\usepackage{hyperref}
+
+\usepackage[all]{hypcap}
+
+% \cref verbessert
+\usepackage[
+  % capitalize names automatically
+  capitalise,
+  % mark all of "Lemma 1" as a link, not only "1"
+  nameinlink,
+  % pass language used in document to enable cleveref in otherlanguage env
+  ngerman,english,
+]{cleveref}
+
+% generate Eqs. instead of Equations
+\crefmultiformat{equation}{#2Eqs.~(#1)#3}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+%\crefrangemultiformat{equation}{#2Eqs.~(#1)#3}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+%\crefrangemultiformat{equation}
+%  {Eqs. #3(#1)#4 to #5(#2)#6}
+%  { and #3(#1)#4 to #5(#2)#6}
+%  {, #3(#1)#4 to #5(#2)#6}
+%  { and #3(#1)#4 to #5(#2)#6}
+
+% algorithms
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+
+% pseudo-code
+\usepackage[noend]{algpseudocode}
+
+% create custom PDF bookmarks
+\usepackage{bookmark}
+
+% old formatting using the titlesec package, which is now obsolete
+%\usepackage{titlesec} % space before chapter head
+%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\renewcommand*{\chapterformat}{\normalfont\large\bfseries Chapter~\thechapter\autodot\enskip}
+%Chapter~\fontsize{60}{68}\selectfont\color{gray} \thechapter\autodot\enskip}
+
+\renewcommand\chapterlinesformat[3]{\ifstr{#2}{}{}{#2\vspace*{5mm}\\*}{\Huge #3}}
+
+
+% BibLaTeX
+\usepackage[
+  % abbreviate author names
+  giveninits=true,
+  % only show years in dates
+  date=year,
+  % use alphabetic style instead of numeric
+  style=alphabetic,
+  % only use first author's name for the style
+  maxalphanames=1,
+]{biblatex}
+
+%\usepackage{scrhack}
+
+% named references
+%\usepackage[
+%  % capitalize names automatically
+%  capitalise,
+%  % mark all of "Lemma 1" as a link, not only "1"
+%  nameinlink,
+%  % pass language used in document to enable cleveref in otherlanguage env
+%  ngerman,english,
+%]{cleveref}

@@ -1,0 +1,241 @@
+\input{header.tex}
+\input{preamble/acronyms}
+
+\graphicspath{
+{images/summer_school_study/png/}
+{images/summer_school_study/}
+{images/summer_school_study/plots/}
+{images/summer_school_study/2018/}
+{images/fiber_creation/}
+{images/parallel_fiber_estimation/}
+{images/motor_unit_assignment/}
+{images/implementation/}
+{images/theory/}
+{images/results/basic}
+{images/results/application}
+{images/results/studies}
+}
+
+\begin{document}
+
+\newcommand{\opendihu}{OpenDiHu}
+\newcommand{\Opendihu}{OpenDiHu}
+
+\frontmatter
+
+%\setcounter{tocdepth}{2}
+\tableofcontents
+%\newpage
+
+\mainmatter
+
+%\input{01_introduction}
+%\input{02_comparative_study}
+
+%%\chapter{Generation of Meshes for the Multiscale Models}\label{sec:generation_of_meshes_for_multiscale}
+%\input{03_mesh_generation_0}
+%\input{03_mesh_generation_1}
+%\input{04_motor_units}
+%\input{05_theory_0}
+%\input{05_theory_1}
+%\input{05_theory_2}
+%\input{05_theory_3}
+
+%\input{06_usage_0}
+%\input{06_usage_1}
+
+%\input{07_implementation_0}
+%\input{07_implementation_1}
+%\input{07_implementation_2}
+
+%\setcounter{page}{1}
+%\input{08_results_0}
+%\input{08_results_1a}
+\input{08_results_1b}
+%\input{08_results_2a}
+%\input{08_results_2b}
+%\input{08_results_2c}
+
+% consistency checks: C++ (groß), finite element method, finite elements (klein)
+% fiber based electrophysiology, (dashes), multi-scale,  cross section, timestep
+% diffusion -> electric conduction,  circa -> approximately, geomerty, Mu, artifical
+% typos: communciation
+
+
+
+%\chapter{Theoretic Foundations in Modeling and Solution for the Neuromuscular System}
+%  - ODES: 0D Hodgkin-Huxley, Shorten
+%  - PDES: general FEM, diffusion, CN
+%  - multi-scale model, Godunov
+%  - EMG model
+%  - multi-domain in FD
+%  - all mechanics
+%\chapter{Extensions the Models}
+% all what I have improved:
+%  - Strang splitting (w/ Aaron)
+%  - multidomain with FEM
+
+%\chapter{Implementation}
+%  - related works, find all other frameworks, CellML
+%  - opendihu from user's perspective
+%  - design choices, code etc.
+%  - CellML code generator
+% ----------------
+
+% \chapter{Formulation of electrophysiology and muscle contraction}
+%    - electrophysiology introduction
+%    \section{State of the art}
+%    - Hodgkin-Huxley, shorten, advanced models, how it gets solved
+%    \section{discretization}
+%    - discretization of electrophysiology, operator splitting
+%    \section{Standard for formulation of models}
+%    - cellml introduction
+%    \section{Bidomain}
+%    - EMG
+%    \section{Multidomain}
+%    - multidomain formulation
+%    \section{Formulation of solid mechanics}
+%    - basics solid mechanics framework, material modeling, 
+%    
+%    \section{Simulation workflow}
+%    - simulation workflow of skeletal muscle
+%  
+% \chapter{Numerics}
+%   \section{Fundamentals of the discretization}
+%    \section{Finite element method}
+%    - basics FEM formulation of Laplace operator and diffusion equation, boundary conditions
+%    \section{Incompressible nonlinear solid mechanics}
+%    - incompressibility, penalty formulation vs. mixed formulation\\
+%    - governing nonlinear eq.\\
+%    - jacobian
+%   \section{Numerical schemes}
+%    \section{time stepping schemes}
+%    \section{linear system solvers}
+%    \section{newton algorithm}
+%  % 
+% \chapter{Simulation software}
+%    \section{State of the art}
+%    - review on bioengineering simulation frameworks 
+%    
+%    \section{OpenCMISS}
+%  - OpenCMISS introduction, iron zinc cmgui, unstructured\\
+%  
+%  - Strang splitting, solvers 1D\\
+%  - improved interpolation\\
+%  - parallelization, issue with 1D \\
+%  - 3D parallelization strategies\\
+%  - design flaws, memory\\
+%    % untergliedern, z.B. schnittstellen parall etc.
+%    \section{The simulation framework \emph{opendihu}}
+%    - modularity of opendihu, concepts (python c++ build system)
+%    \section{Overview of discretization features}
+%    - feature overview, implemented equations, ansatz functions, meshes
+%    \section{Input and output}
+%    - file i/o parallel, i: only local data important for high parallelism, o: paraview
+%    \section{In-situ visualization}
+%    - in-situ
+%    \section{Details on the implementation}
+%    \section{Representation of structured meshes}
+%    \section{Parallel data handling}
+%    - data structures, petsc variables, partitioning, ghost communication
+%    \section{Implementation of boundary conditions}
+%    - Neumann, Dirichlet boundary conditions
+%    \section{Implementation of material formulation and automatic derivation of derivatives}
+%    - implementation of solid mechanics with analytic differentiation
+%    
+%    \section{efficient and configurable data transfer}
+%    - data layout details, efficient transfer of variables between solvers
+%    \section{Mapping between meshes}
+%    - parallel mapping between meshes, invertability of index space represesantion
+%    \section{An efficient solver to the Monodomain equation}    
+%    - cellml code generator and its optimizations - openmp, simd, vc
+%    \section{Details on the partitioning}
+%    - fibers emg structure and partitioning
+%    \section{Parallelization of the multidomain system}
+%    - multidomain parallelization, reordering of matrix
+%    \section{load balancing}
+%    - load balancing on fiber level
+% \chapter{External coupling}
+%    - introduction to external coupling, precice
+%    \section{coupling with FEBio}
+%    \section{coupling with AceFEM}
+%  
+
+%  \chapter{An algorithm for mesh generation}
+%    - introduction, need for fiber and 3d mesh
+%    \section{State of the art}
+%    - literature, laplace potential flow idea
+%    \section{Data preprocessing}
+%    - visual human dataset, methods to extract surface, approximation by spline surfaces
+%    \section{Outline of the algorithm}
+%    - pseudo code
+%    \section{Plane mesh smoothing}
+%    \section{Parallelization}
+%    \section{Generation of fiber meshes}
+%    - generation of muscle mesh, 3D and fibers, also in parallel
+%  
+% \chapter{Simulation scenarios}
+%    \section{Simulation of electromyography with fiber-based formulation}
+%      - scenario static-biceps-emg, composite meshes
+%    \section{Simulation of electromyography with multidomain formulation}
+%    \section{Muscle contraction with fiber-based formulation}
+%      - fibers with contraction
+%    \section{Muscle contraction with multidomain formulation}
+% \chapter{Technical simulation results}
+%    \section{Runtime evaluation}
+%    - results and experiments, runtime, peak performance\\
+%    - monodomain runtime comparison OpenCMISS opendihu
+%    \section{parallel partitioning}
+%    - parallel partitioning and weak scaling, opencmiss and opendihu 
+%    \section{memory consumption}
+%    - memory scaling OpenCMISS
+% \chapter{biomechanical simulation results}
+%    \section{Simulation of fatigue}
+%    - monodomain, hh  shorten, fatigue effects
+%    \section{Simulation of EMG}
+%    - static biceps emg\\
+%    - fibers with contraction\\
+%    - multidomain with fat layer\\
+%    - multidomain with contraction\\
+%
+%\part{Soft tissue robotics}
+%\chapter{...}
+%  - introduction, handling flexible objects, overview of different object types\\
+%  - basics Lagrange formulation of cable\\
+%  - cable with friction on surface\\
+%  - placing cable\\
+%  - peg-in-hole, with sparse grids\\
+%  - simulation of 2d tissue\\
+%  - gripping point estimation\\
+%  
+%  \cite{Maier2021}
+%  
+%\part{Conclusion}
+
+% -------------- Literaturseite --------------------
+\newpage
+
+%\acsetup{pages/display=first,pages/name=true}
+
+% Abbreviations
+%\printacronyms[include-classes=abbrev,name=Abbreviations]
+
+% Nomenclature
+%\printacronyms[include-classes=nomencl,name=Nomenclature]
+
+
+%\bibliography{references}{}
+%\bibliographystyle{abbrv}
+\printbibliography[%
+  % change title
+  title=Bibliography
+]
+
+
+% -------------- Anhang ------------
+%\appendix
+%\input{8_anhang.tex}
+
+\end{document}
+
+%\input{preambule/footer}
