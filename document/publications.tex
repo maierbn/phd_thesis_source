@@ -1,0 +1,77 @@
+% prepare publications for bibtex
+
+\addtocategory{own}{Bradley:2018:EDB}
+\addtocategory{own}{Maier2019}
+\addtocategory{own}{Maier2021}
+\addtocategory{own}{summerschool2019}
+
+\addtocategory{own_forthcoming}{hlrs2020}
+\addtocategory{own_forthcoming}{MaierSubmitted2}
+\addtocategory{own_forthcoming}{MaierSubmitted}
+\addtocategory{own_forthcoming}{hlrs2021}
+
+\addtocategory{own_other}{opendihu}
+\addtocategory{own_other}{maier_benjamin_2021_4705945}
+
+% cite all of these categories
+\nocite{Bradley:2018:EDB}
+\nocite{Maier2019}
+\nocite{Maier2021}
+\nocite{summerschool2019}
+\nocite{hlrs2020}
+\nocite{MaierSubmitted2}
+\nocite{MaierSubmitted}
+\nocite{hlrs2021}
+\nocite{maier_benjamin_2021_4705945}
+\nocite{opendihu}
+% ------------------------------------------------
+
+%\thispagestyle{empty} % remove number
+%\cleartoleftpage
+
+\RedeclareSectionCommand[
+  %runin=false,
+  afterindent=false,
+  beforeskip=-\baselineskip,
+  afterskip=0pt]{chapter}
+  
+%\RedeclareSectionCommand[
+  %%runin=false,
+  %afterindent=false,
+  %beforeskip=0pt, %\baselineskip,
+  %afterskip=1.5\baselineskip]{section}
+  
+\addchap{Publications}
+The following publications discuss various topics that are covered in this thesis.
+
+% ---------------------------------------
+% peer reviewed
+\section*{Peer-Reviewed Publications}
+%\vspace{-5mm}
+\printbibliography[category=own,heading=none,title=]
+
+% ---------------------------------------
+% submitted
+\section*{Forthcoming Publications}
+%\vspace{-5mm}
+\printbibliography[category=own_forthcoming,heading=none,title=]
+
+% ---------------------------------------
+% other publications
+\section*{Source Code and Data}
+%\vspace{-5mm}
+The most recent version of the OpenDiHu software is made available in the GitHub repository at \url{https://github.com/maierbn/opendihu}. 
+The released version and the packaged data that are needed to reproduce the results in this work, containing, e.g., mesh files and CellML models, are given below.
+
+\printbibliography[category=own_other,heading=none,title=]
+
+%\thispagestyle{empty} % remove number
+
+% this changes "before" spacing back to its default of 50pt
+\RedeclareSectionCommand[
+  %runin=false,
+  afterindent=false,
+  beforeskip=50pt,
+  afterskip=40pt]{chapter}
+
+\cleardoublepage

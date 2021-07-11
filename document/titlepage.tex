@@ -1,0 +1,143 @@
+\begin{titlepage}
+  \begin{spacing}{1}
+    \begin{center}
+      \begin{otherlanguage}{ngerman}
+        % no indentation of paragraphs
+        \setlength{\parindent}{0pt}
+        
+        {\bfseries\huge\thetitle\par}
+        
+        \vfill
+        
+        \theapproval
+        
+        \vfill
+        
+        Vorgelegt von
+        
+        {\bfseries\Large\theauthor\par}
+        
+        aus \thebirthplace
+        
+        \vfill
+        
+        \begin{tabular}{ll}
+          Hauptberichterin:&
+          \theadvisor\\[0.5em]
+          Mitberichter:&
+          \theexamineri\\
+          &\theexaminerii\\[1em]
+          \multicolumn{2}{l}{%
+            Tag der mündlichen Prüfung:\quad%
+            \thedefensedate%
+          }
+        \end{tabular}
+        
+        \vfill
+        
+        \includegraphics[width=60mm]{images/logos/logoUniversity.png}
+        
+        \vspace{2em}
+        
+        \theinstitute{} der \theuniversity
+        
+        \vspace{1em}
+        
+        \theyear
+      \end{otherlanguage}
+    \end{center}
+  \end{spacing}
+\end{titlepage}
+
+% don't display page number
+\iffalse
+\thispagestyle{empty}
+
+{%
+  % no indentation of paragraphs
+  \setlength{\parindent}{0pt}%
+  \small
+  
+  \begin{center}
+    \includegraphics[height=15mm]{images/logos/logoUniversityEnglishGray}%
+    
+    \vspace{1em}
+    
+    Submitted to the University of Stuttgart
+  \end{center}
+  
+  \begin{tabular}{ll}
+    \emph{Involved institutions and departments:}%
+    \vspace{0.6mm}\newline%
+    Cluster of Excellence in Simulation Technology%
+    \vspace{0.6mm}\newline%
+    Institute for Parallel and Distributed Systems%
+    \vspace{0.6mm}\newline%
+    Chair of Simulation of Large Systems &
+    \raisebox{-0.4\height}{%
+      \includegraphics[height=15mm]{images/logos/logoSimTechGray}%
+    }%
+    \hspace{5mm}%
+    \raisebox{-0.5\height}{%
+      \includegraphics[height=17mm]{images/logos/logoIPVSGray}%
+    }%
+    \hspace{6mm}%
+    \raisebox{-0.5\height}{%
+      \includegraphics[height=19mm]{images/logos/logoSGSGray}%
+    }
+  \end{tabular}
+  
+  \vfill
+  
+  Emmett Brown\\
+  University of Hill Valley\\
+  151021 Time Travel Drive\\
+  Hill Valley, California\\
+  United States of America
+  
+  \vfill
+  
+  D\,93 (dissertation)
+  
+  \vspace{1em}
+  
+  %Compiled as version \compileCounterText{} on \currentTimeLong{}.\\
+  %Committed as \gitCommitText{} on \gitCommitTimeLong{}.
+  
+  \vspace{1em}
+  
+  Typeset using \LaTeX{} and cover design by the author.
+  
+  Copyright \copyright{} \theyear{} \theauthor{}.
+  
+  \vspace{1em}
+  
+  \hangindent=29mm%
+  \hangafter=0%
+  This work is licensed under the\\
+  \smash{%
+    \rlap{%
+      \hspace*{-29mm}\includegraphics[width=25mm]{images/logos/licenseBadge.png}%
+    }%
+  }%
+  Creative Commons Attribution-ShareAlike 4.0 International License.
+  
+  To view a copy of this license, visit
+  \href{%
+    https://creativecommons.org/licenses/by-sa/4.0/%
+  }{
+    \texttt{https://creativecommons.org/licenses/by-sa/4.0/}%
+  }
+  or send a letter to
+  Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+  
+  \vspace{1em}
+  
+  Although this thesis was written with utmost care,
+  it cannot be ruled out that it contains errors.\\
+  Please send any corrections and mistakes to
+  \href{mailto:thesis@example.com}{\texttt{thesis@example.com}}.
+}
+\fi
+
+%\cleardoublepage

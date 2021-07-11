@@ -1,0 +1,81 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'fix_invalid.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{301.97938469bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.99854497)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{fix_invalid.pdf}}%
+    \put(0.05278635,0.95080344){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}border points\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{fix_invalid.pdf}}%
+    \put(0.09554247,0.52835521){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.14410169,0.52835521){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.18941132,0.52835521){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.23797053,0.52835521){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.09554247,0.41571259){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.14410169,0.41571259){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.18941132,0.41571259){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.23797053,0.41571259){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.67763933,0.2612271){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.72619854,0.2612271){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.77150817,0.2612271){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac23$\end{tabular}}}}%
+    \put(0.82006739,0.2612271){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac13$\end{tabular}}}}%
+    \put(0.74810688,0.15522131){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac12$\end{tabular}}}}%
+    \put(0.74766329,0.04523279){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac12$\end{tabular}}}}%
+    \put(0.84197573,0.15522131){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac12$\end{tabular}}}}%
+    \put(0.84153214,0.04523279){\color[rgb]{0.50196078,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cdot \frac12$\end{tabular}}}}%
+    \put(0.44376634,0.73532688){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\#1\end{tabular}}}}%
+    \put(-0.00062304,0.95175604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\#2\end{tabular}}}}%
+    \put(-0.00151004,0.42753622){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\#3a\end{tabular}}}}%
+    \put(0.92629699,0.31488658){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\#3b\end{tabular}}}}%
+    \put(0.92718402,0.09757038){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\#3c\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
