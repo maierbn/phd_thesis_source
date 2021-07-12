@@ -1,0 +1,1543 @@
+\pdfoutput=1
+% set main document class (KOMA-Script's scrbook)
+%\documentclass[
+%  % align equation numbers left to the equation
+%  leqno,
+%]{scrbook}
+\documentclass[fleqn,reqno,a4paper,parskip=half]{scrbook}
+
+% include packages
+% because of arxiv's requirements, the preamble has to be completely inline
+% -----------------------------
+
+\usepackage{charter} %Charter fuer englische Texte
+%\linespread{1.05} % Durchschuss für Charter leicht erhöhen
+
+\usepackage[utf8]{inputenc}
+\usepackage{pmboxdraw}
+
+% utf8x is incompatible with biblatex, the following trick is a remedy
+% source: https://tex.stackexchange.com/a/213177
+\input{binhex}
+\makeatletter
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{mathletters}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-3.def}
+\def\uc@dclc#1#2#3{%
+  \ifnum\pdfstrcmp{#2}{default}=\z@
+    \begingroup\edef\x{\endgroup
+      \noexpand\DeclareUnicodeCharacter{\hex{#1}}}\x{#3}%
+  \fi
+}
+\input{uni-34.def}
+\makeatother
+
+\usepackage[tbtags,sumlimits,intlimits,namelimits]{amsmath}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{ifpdf}
+\usepackage{color}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{wasysym}  % \ocircle
+\usepackage{makecell}  % \makecell{...\\...} to break in table cell
+\usepackage{textcomp}
+\usepackage{fancyvrb}  % improved verbatim 
+
+
+%\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}  % print
+%\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,pdfpagelabels,plainpages=false]{hyperref}    % web
+%\usepackage{hyperref}    % plain
+\usepackage[top=2.3cm, bottom=3.45cm, left=2.3cm, right=2.3cm]{geometry}
+%\numberwithin{equation}{section}
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+%\graphicspath{{images/png/}{images/}}        % Pfad, in dem sich Grafikdateien befinden
+%\usepackage{subfigure}          % Unterbilder, deprecated
+%\usepackage(subfig}
+
+%\usepackage{cite}           % Literatur
+\usepackage{graphicx}       % Bilder in Tabellen
+\usepackage{float}          % eigene Float-Umgebungen, H-Option, um Bilder an der aktuellen Stelle anzuzeigen
+\usepackage{caption}
+\usepackage{subcaption,array}
+%\usepackage{array}
+
+\restylefloat{figure}       % Bilder an der Stelle, wo sie eingebunden werden
+\usepackage{multirow}
+\usepackage{listings}       % Darstellung von Source-Code
+\usepackage{framed}         % Rahmen um Text
+\usepackage{arydshln}       % gestrichelte Linie in Tabelle mit \hdashline
+\usepackage{longtable}     % Tabellen mit automatischen Seitenumbruch
+\usepackage{layouts}        % textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth}
+ 
+%\usepackage{ziffer}       % Komma in Dezimalzahlen
+\usepackage{url}          % Links
+%% end old
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{black}{rgb}{0,0,0}
+
+\usepackage[framemethod=TikZ]{mdframed}       % Rahmen um Text und Gleichungen
+
+
+%\usepackage{arydshln}      % gestrichelte Linie in Tabelle mit \hdashline
+\usepackage{dirtytalk}          % \say{...} erzeugt (deutsche) Anführungszeichen
+
+\usepackage{tipa}
+\usepackage{transparent}    % needed for inkscape generated pdf_tex files
+\usepackage{multicol}       % multiple columns
+\usepackage{moreverb}       % verbatimwrite
+\usepackage{verbatimbox}    % \begin{verbbox}
+\usepackage{booktabs}
+\usepackage{morefloats}     % Increase the number of simultaneous LaTeX floats
+\usepackage{enumitem}       % more control oover itemize
+%\usepackage{algorithm2e}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+
+\newsavebox\lstbox
+\mdfdefinestyle{MyFrame}{%
+    innertopmargin=0pt,
+    innerbottommargin=10pt,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt}
+
+\definecolor{darkgreen}{HTML}{009900}
+    
+% settings for algorithm
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {⇐}{{$\leftarrow$}}1
+    {>=}{{$\geq$}}1
+    {~}{{\textasciitilde}}1
+    {`}{\textquotedbl}1,  
+  language=C++,
+  numbers=none,
+  numberstyle=\tiny,
+  xleftmargin=2.0ex, 
+  %basicstyle=\small, %  print  whole  listing  small
+  basicstyle=\small\ttfamily,
+  morekeywords={elif,do,end,then,proc,local,Eingabe,Ausgabe,alignof,loop,each},
+  deletekeywords={new},
+  columns=flexible,   % alignment
+  tabsize=2,    % size of tabs
+  keepspaces,
+  gobble=2,    % remove 2 characters at begin of each line
+  mathescape    % wandle $$ in latex um
+}
+
+% Versuche stärker, Abbildungen dort einzubinden, wo sie definiert wurden
+\renewcommand{\topfraction}{.85}      % Anteil, den floats auf einer Seite von oben her einnehmen dürfen
+\renewcommand{\bottomfraction}{.7}    % Anteil, den floats auf einer Seite von unten her einnehmen dürfen
+\renewcommand{\textfraction}{.15}       % Anteil der Seite, der mind. für Text zur Verfügung steht
+\renewcommand{\floatpagefraction}{.66}  % Anteil der Seite, der belegt sein muss, bevor eine weitere Seite angelegt wird
+\setcounter{topnumber}{9}               % maximale Anzahl floats, die im oberen Bereich der Seite sein dürfen
+\setcounter{bottomnumber}{9}            % maximale Anzahl floats, die im unteren Bereich der Seite sein dürfen
+    
+% language-specific things (hyphenation, ...)
+\usepackage[ngerman,main=american]{babel}
+
+% biblatex package wants to have csquotes (otherwise: warning)
+\usepackage{csquotes}
+
+% lower-case page header
+\usepackage[markcase=upper]{scrlayer-scrpage}
+
+% dummy texts
+\usepackage[math]{blindtext}
+
+% amsmath with improvements
+\usepackage{mathtools}
+
+% math theorems
+%\usepackage{amsthm}
+
+% format math theorems
+\usepackage{thmtools}
+
+% for setting size of text area
+\usepackage{geometry}
+
+% for \luadirect command
+%\usepackage{luacode}
+
+% check mode
+%\iftoggle{checkMode}{
+  % show non-whitelisted hyphenations
+%  \usepackage[mark]{lua-check-hyphen}
+%}{}
+
+% debug mode
+%\iftoggle{debugMode}{
+%  % show boxes, glues, and kerning
+%  \usepackage{lua-visual-debug}
+%}{}
+
+% use GoMono as typewriter font
+\usepackage[
+  % otherwise, bold is not available ("undefined font shape" warnings)
+  type1,
+  % scale to match main font size
+  scale=0.88,
+]{GoMono}
+
+% use TeX Gyre Heros as sans-serif font
+\usepackage{tgheros}
+
+% need T1 font encoding for Charter,
+% otherwise there will be "undefined font shape" warnings
+\usepackage[T1]{fontenc}
+
+% use Bitstream Charter as main font
+\usepackage[bitstream-charter]{mathdesign}
+
+% do not use mathcal of mathdesign, but replace by standard mathcal
+\DeclareSymbolFont{usualmathcal}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{usualmathcal}
+
+
+% micro-typographic adjustments
+\usepackage[
+  % don't deactivate extensions due to document class draft option
+  final,
+  % increase letter spacing in small-caps
+  tracking=smallcaps,
+  % font expansion: don't stretch/shrink lines by more than 1%,
+  % default of 2% looks a bit weird
+  stretch=10,
+  shrink=10,
+]{microtype}
+
+% reference last page of document
+\usepackage{lastpage}
+
+% extract number from page reference
+\usepackage{refcount}
+
+% graphics
+\usepackage{graphicx}
+
+% colors, load colortbl for coloring table rows
+%\usepackage[table]{xcolor}
+
+% contours around text
+\usepackage{contour}
+
+% additional space in table cells
+\usepackage{cellspace}
+
+% custom float captions, subfigures
+\usepackage{subcaption}
+
+% allows to put float caption beside image
+\usepackage{sidecap}
+
+% L, C, R column types for tables
+\usepackage{array}
+
+% X column type for tables (filling rest of line)
+\usepackage{tabularx}
+
+% more beautiful tables
+\usepackage{booktabs}
+
+% table cells spanning multiple rows
+\usepackage{multirow}
+
+% for controlling space in enumerate and itemize
+\usepackage{enumitem}
+
+% disable "Column type for cellspace package moved to 'C'." warning
+% when loading siunitx
+% (this is due to the cellspace package loaded above)
+\usepackage{expl3}
+\ExplSyntaxOn
+\msg_redirect_name:nnn{siunitx}{moved-cellspace-column}{none}
+\ExplSyntaxOff
+
+% consistent style of units and numbers
+\usepackage[binary-units=true]{siunitx}
+
+% watermarks
+\usepackage{everypage}
+
+% rules left of theorems
+%\usepackage[framemethod=tikz]{mdframed}
+
+% drawings
+\usepackage{tikz}
+
+% styling of table of contents
+\usepackage{tocbasic}
+
+% local table of contents (mini TOC)
+\usepackage{etoc}
+
+% wrap text around boxes
+\usepackage{wrapfig}
+
+% initials/dropped captial letters at beginning of chapters
+\usepackage{lettrine}
+
+% inclusion of external PDFs
+\usepackage{pdfpages}
+
+% reference current chapter, section, subsection, ...
+\usepackage{nameref}
+
+% line spacing (one and a half lines)
+\usepackage[onehalfspacing]{setspace}
+
+% filter specific warnings
+%\usepackage{silence}
+
+% patch hard-coded stuff in packages
+\usepackage{regexpatch}
+
+% allow breaking after hyphens in long URLs
+%\usepackage[hyphens]{url}
+
+% PDF links
+\usepackage{hyperref}
+
+\usepackage[all]{hypcap}
+
+% \cref verbessert
+\usepackage[
+  % capitalize names automatically
+  capitalise,
+  % mark all of "Lemma 1" as a link, not only "1"
+  nameinlink,
+  % pass language used in document to enable cleveref in otherlanguage env
+  ngerman,english,
+]{cleveref}
+
+% generate Eqs. instead of Equations
+\crefmultiformat{equation}{#2Eqs.~(#1)#3}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+%\crefrangemultiformat{equation}{#2Eqs.~(#1)#3}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+%\crefrangemultiformat{equation}
+%  {Eqs. #3(#1)#4 to #5(#2)#6}
+%  { and #3(#1)#4 to #5(#2)#6}
+%  {, #3(#1)#4 to #5(#2)#6}
+%  { and #3(#1)#4 to #5(#2)#6}
+
+% algorithms
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+
+% pseudo-code
+\usepackage[noend]{algpseudocode}
+
+% create custom PDF bookmarks
+\usepackage{bookmark}
+
+% old formatting using the titlesec package, which is now obsolete
+%\usepackage{titlesec} % space before chapter head
+%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\renewcommand*{\chapterformat}{\normalfont\large\bfseries Chapter~\thechapter\autodot\enskip}
+%Chapter~\fontsize{60}{68}\selectfont\color{gray} \thechapter\autodot\enskip}
+
+\renewcommand\chapterlinesformat[3]{\ifstr{#2}{}{}{#2\vspace*{5mm}\\*}{\Huge #3}}
+
+% analogous to \cleardoublepage but for left page
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+% BibLaTeX
+\usepackage[
+  % abbreviate author names
+  giveninits=true,
+  % only show years in dates
+  date=year,
+  % use alphabetic style instead of numeric
+  style=alphabetic,
+  % only use first author's name for the style
+  maxalphanames=1,
+]{biblatex}
+
+%\usepackage{scrhack}
+
+% named references
+%\usepackage[
+%  % capitalize names automatically
+%  capitalise,
+%  % mark all of "Lemma 1" as a link, not only "1"
+%  nameinlink,
+%  % pass language used in document to enable cleveref in otherlanguage env
+%  ngerman,english,
+%]{cleveref}
+% -------------------------------------------
+% end of packages
+
+% set packages options
+% ======================================================================
+% Meta-Data
+% ======================================================================
+
+% meta-data variables
+\newcommand*{\thetitle}{%
+  Scalable Biophysical Simulations\texorpdfstring{\\}{}
+  of the Neuromuscular System%
+}
+\newcommand*{\theapproval}{%
+  Vom Stuttgarter Zentrum für Simulationswissenschaften (SC SimTech) und\\
+  der Fakultät für Informatik, Elektrotechnik und Informationstechnik\\
+  der Universität Stuttgart zur Erlangung der Würde eines Doktors\\
+  der Naturwissenschaften (Dr.\ rer.\ nat.) genehmigte Abhandlung%
+}
+\newcommand*{\theauthor}{Benjamin Maier}
+\newcommand*{\thebirthplace}{Waiblingen}
+\newcommand*{\thedefensedate}{22. Juni 2021}
+\newcommand*{\thedate}{April 22, 2021}
+\newcommand*{\theyear}{2021}
+\newcommand*{\theuniversity}{Universität Stuttgart}
+\newcommand*{\theinstitute}{Institut für Parallele und Verteilte Systeme}
+\newcommand*{\theadvisor}{Prof.\ Dr.\ Miriam Schulte}
+\newcommand*{\theexamineri}{Prof.\ Dr.\ Hans-Joachim Bungartz}
+\newcommand*{\theexaminerii}{}
+% ======================================================================
+% KOMA-Script and Text Area
+% ======================================================================
+
+% options for KOMA-Script
+\KOMAoptions{
+  % choose font size (PO: should be between 12pt and 14pt)
+  fontsize=12pt,
+  % suppress "very small head height detected" warning
+  DIV=12,
+  % don't end section numbers with period despite appendices
+  numbers=noendperiod,
+  % set linespacing of header and footer to 1.5
+  % (otherwise, the header will "jump" back and forth from normal
+  % pages and pages with single line spacing, e.g., table of contents)
+  onpsinit=\onehalfspacing,
+  % use \section for headings of list of figures/tables/algorithms
+  listof=leveldown,
+}
+
+% binding offset that will be substracted from inner margins
+\newcommand*{\bindingoffset}{10mm}
+
+% set page margins
+\geometry{
+  bindingoffset=\bindingoffset,
+  inner=15mm,
+  outer=30mm,
+  top=20mm,
+  bottom=30mm,
+  includehead=true,
+}
+% ======================================================================
+% Graphics
+% ======================================================================
+
+% location of graphics files
+\graphicspath{{../gfx/}}
+
+\graphicspath{
+{images/summer_school_study/png/}
+{images/summer_school_study/}
+{images/summer_school_study/plots/}
+{images/summer_school_study/2018/}
+{images/fiber_creation/}
+{images/parallel_fiber_estimation/}
+{images/motor_unit_assignment/}
+{images/implementation/}
+{images/theory/}
+{images/results/basic}
+{images/results/application}
+{images/results/studies}
+{images/logos}
+}
+
+% TikZ libraries
+\usetikzlibrary{
+  % arrow types
+  arrows.meta,
+  % coordinate calculations
+  calc,
+  % zig-zag lines
+  decorations.pathmorphing,
+  % curly braces
+  decorations.pathreplacing,
+  % text along paths
+  decorations.text,
+  % color gradients
+  fadings,
+  % shadows
+  shadows,
+}
+
+% set default line width to same as in Matplotlib plots
+% created by helper.figure
+\tikzset{every picture/.style={line width=1pt}}
+
+% set default arrow tip
+\tikzset{>={Stealth[length=5.5pt,width=5.5pt]}}
+
+% draw circle arc around center (standard in TikZ is
+% the specification of the first point on the arc)
+% [draw options] (center) (initial angle:final angle:radius)
+\def\centerarc[#1](#2)(#3:#4:#5){
+  \draw[#1] ($(#2)+({(#5)*cos(#3)},{(#5)*sin(#3)})$) arc (#3:#4:#5);
+}
+
+% width of contours around text with \contour
+\contourlength{1.5pt}
+% ======================================================================
+% Cross-References
+% ======================================================================
+
+% define abbreviated names for cross-references
+\crefname{algorithm}{Alg.}{Algorithms}
+\Crefname{algorithm}{Algorithm}{Algorithms}
+
+\crefname{chapter}{Chap.}{Chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+
+\crefname{corollary}{Cor.}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+
+\crefname{definition}{Def.}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+
+\crefname{equation}{Eq.}{Equations}
+\Crefname{equation}{Equation}{Equations}
+
+\crefname{figure}{Fig.}{Figures}
+\Crefname{figure}{Figure}{Figures}
+
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+
+\crefname{line}{line}{lines}
+\Crefname{line}{Line}{Lines}
+
+\crefname{proposition}{Prop.}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+
+\crefname{section}{Sec.}{Sections}
+\Crefname{section}{Section}{Sections}
+
+\crefname{table}{Tab.}{Tables}
+\Crefname{table}{Table}{Tables}
+
+\crefname{theorem}{Thm.}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+
+% reference theorems with their name appended
+\newcommand*{\thmref}[1]{\hyperlink{#1}{\cref*{#1}~(\nameref*{#1})}}
+\newcommand*{\Thmref}[1]{\hyperlink{#1}{\Cref*{#1}~(\nameref*{#1})}}
+% ======================================================================
+% Tables of Contents, Figures, Tables, Algorithms, and Theorems
+% ======================================================================
+
+% remove indentation for lists of figures and tables
+\DeclareTOCStyleEntry[indent=0em]{tocline}{figure}
+\DeclareTOCStyleEntry[indent=0em]{tocline}{table}
+
+% -- this fails
+% declare algorithm float environment, create list of algorithms,
+% use same formatting as for figures and tables
+%\DeclareNewTOC[
+%  type=algorithm,
+%  name=Algorithm,
+%  listname={List of Algorithms},
+%  float,
+%  floattype=4,
+%  floatpos=tp,
+%  counterwithin=chapter,
+%  tocentrynumwidth=2.3em,
+%  tocentryindent=0em,
+%]{loa}
+
+% create list of theorems,
+% use same formatting as for figures, tables, and algorithms
+% (thmtools's thm-listof.sty is unfortunately a little buggy,
+% as it causes the flip book images to jump; using KOMA-Script for
+% all lists is more consistent and less error-prone)
+\DeclareNewTOC[
+  type=mytheorem,
+  name=Theorem,
+  listname={List of Theorems},
+  tocentrynumwidth=2.3em,
+  tocentryindent=0em,
+]{lop}
+
+% add code that adds the theorem to the *.lop file to hook
+\addtotheorempostheadhook{%
+  \addxcontentsline{lop}{mytheorem}{\csname ll@\thmt@envname\endcsname}%
+}
+
+% use single spacing in
+% tables of contents, figures, tables, algorithms, and theorems
+\AfterTOCHead{\begin{spacing}{1}}
+\AfterStartingTOC{\end{spacing}}
+
+% exclude subsections from table of contents
+\setcounter{tocdepth}{\sectionnumdepth}
+
+% increase space of page numbers
+% (default values of 1.55em and 2.55em are too small for three-digit numbers)
+\renewcommand*{\@pnumwidth}{2em}
+\renewcommand*{\@tocrmarg}{3em}
+% ======================================================================
+% Dictums
+% ======================================================================
+
+% don't use sans-serif font for dictums
+\addtokomafont{dictum}{\rmfamily}
+
+% shortcut for setting the dictum for a chapter
+\newcommand*{\setdictum}[3][0.54\textwidth]{%
+  \setchapterpreamble{%
+    \cleanchapterquote{#1}{#2}{#3}%
+    \chapterheadendvskip%
+  }%
+}
+
+% fancy quotes (taken from cleanthesis.sty, slightly adapted)
+\newcommand*{\hugequote}{%
+  \fontsize{75}{80}\selectfont%
+  \hspace*{-0.6em}\color[rgb]{0.6,0.6,0.6}%
+  \textit{``}%
+  \vskip -0.8em%
+}
+
+\newcommand*{\cleanchapterquote}[3]{%
+  \begin{minipage}{\textwidth}%
+    \begin{flushright}
+      \begin{minipage}{#1}%
+        \begin{flushleft}
+          {\hugequote}\textit{#2}
+        \end{flushleft}
+        \begin{flushright}
+          \small--- #3
+        \end{flushright}
+      \end{minipage}%
+    \end{flushright}
+  \end{minipage}%
+  \bigskip
+}
+% ======================================================================
+% Page Headers and Footers
+% ======================================================================
+
+% all-caps sans-serif page header
+\setkomafont{pageheadfoot}{%
+  \normalfont\normalcolor\sffamily%
+  \fontsize{9.5}{12}\selectfont\lsstyle%
+}
+\setkomafont{pagenumber}{\usekomafont{pageheadfoot}\bfseries}
+
+% move page number to page header
+\clearscrheadfoot
+\lehead[\pagemark]{\pagemark}
+\rehead[]{\headmark}
+\lohead[]{\headmark}
+\rohead[\pagemark]{\pagemark}
+\lefoot[]{}
+\rofoot[]{}
+
+% prepend "Chapter X: " in front of the chapter name in page headers
+\renewcommand*{\chaptermarkformat}{\chapapp{} \thechapter: }
+% ======================================================================
+% Initials
+% ======================================================================
+
+% indent right of initial
+\setlength{\DefaultNindent}{0.5em}
+% use height of upper-case letters for height of initial
+\renewcommand*{\LettrineSecondString}{X}
+% enlarge initial (grows to the top, aligned on baseline of bottom line)
+\renewcommand*{\DefaultLoversize}{0.07}
+% make initial bold
+\renewcommand*{\LettrineFontHook}{\bfseries}
+% don't use small caps for rest of first word, make bold
+\renewcommand*{\LettrineTextFont}{\normalfont\bfseries}
+
+% custom command: \initial[options]{0.5em}{L}{etter}
+% is like \lettrine[options]{L}{etter}, except that the first line
+% is moved to the left by 0.5em
+\newcommand*{\initial}[4][]{%
+  \lettrine[%
+    findent=\dimexpr-#2\relax,%
+    nindent=\dimexpr#2+\DefaultNindent\relax,%
+    #1%
+  ]{#3}{#4}%
+}
+% ======================================================================
+% Tables
+% ======================================================================
+
+% fixed-width column types with left, center, and right alignment
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}%
+}
+\newcolumntype{D}[1]{%
+  >{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}%
+}
+\newcolumntype{R}[1]{%
+  >{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}%
+}
+
+% colors of table lines and rows
+\newcommand*{\tablelinecolor}{mittelblau}
+\newcommand*{\headerrowcolor}{mittelblau!40}
+\newcommand*{\headerrowtextcolor}{black}
+\newcommand*{\oddrowcolor}{mittelblau!10}
+\newcommand*{\evenrowcolor}{mittelblau!20}
+
+% \setnumberoftableheaderrows has to be put before every tabular environment,
+% sets the \rownum counter such that the 1st content row has row number 1
+\newcommand*{\setnumberoftableheaderrows}[1]{%
+  \rowcolors{1}{\oddrowcolor}{\evenrowcolor}%
+  \global\rownum=\numexpr-#1\relax%
+}
+
+% set text color per row, use it like this: \begin{tabular}{=l+l+l+l} ...
+% (a single \color command wouldn't suffice, as tabular cells have
+% their own boxes, i.e., the font color is reset after every cell)
+\newcommand*{\@rowstyle}{}
+\newcommand*{\rowstyle}[1]{\gdef\@rowstyle{#1}\@rowstyle\ignorespaces}
+\newcolumntype{=}{>{\gdef\@rowstyle{}}C}
+\newcolumntype{+}{>{\@rowstyle}C}
+
+% \headerrow has to be put before every tabular header row,
+% sets background and text color
+\newcommand*{\headerrow}{%
+  \rowcolor{\headerrowcolor}%
+  \rowstyle{\color{\headerrowtextcolor}}%
+}
+
+% automatically select header or odd/even row color
+% for the current tabular row
+\newcommand*{\autorowcolor}{%
+  \ifnum\rownum<1%
+    \headerrowcolor%
+  \else%
+    \ifodd\rownum\oddrowcolor\else\evenrowcolor\fi%
+  \fi%
+}
+
+% automatically select header or odd/even row color
+% for the previous tabular row
+\newcommand*{\prevautorowcolor}{%
+  \ifnum\rownum<2%
+    \headerrowcolor%
+  \else%
+    \ifodd\rownum\evenrowcolor\else\oddrowcolor\fi%
+  \fi%
+}
+
+% set thickness of table rules
+\setlength{\heavyrulewidth}{0.10em}
+\setlength{\lightrulewidth}{0.06em}
+
+% like \toprule, except that the space below the rule has the color
+% given in the argument
+\newcommand*{\toprulecustom}[1]{%
+  \arrayrulecolor{\tablelinecolor}%
+  \specialrule{\heavyrulewidth}{\abovetopsep}{0pt}%
+  \arrayrulecolor{#1}%
+  \specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}%
+}
+
+% like \midrule, except that the space above and below the rule has the colors
+% given in the arguments
+\newcommand*{\midrulecustom}[2]{%
+  \arrayrulecolor{#1}%
+  \specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{\tablelinecolor}%
+  \specialrule{\lightrulewidth}{0pt}{0pt}%
+  \arrayrulecolor{#2}%
+  \specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}%
+}
+
+% like \bottomrule, except that the space above the rule has the color
+% given in the argument
+\newcommand*{\bottomrulecustom}[1]{%
+  \arrayrulecolor{#1}%
+  \specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{\tablelinecolor}%
+  \specialrule{\heavyrulewidth}{\belowbottomsep}{0pt}%
+  \arrayrulecolor{black}%
+}
+
+% commands like \toprule, \midrule, and \bottomrule,
+% but automatically guessing the right background colors
+% for the spaces above/below the rules
+\newcommand*{\toprulec}{\toprulecustom{\autorowcolor}}
+\newcommand*{\midrulec}{%
+  \midrulecustom{\prevautorowcolor}{\autorowcolor}%
+}
+\newcommand*{\bottomrulec}{\bottomrulecustom{\prevautorowcolor}}
+% ======================================================================
+% Algorithms
+% ======================================================================
+
+% disable ligatures ("fi" etc.) in monospace font
+\DisableLigatures{encoding=*,family=tt*}
+
+% line number format
+\algrenewcommand{\alglinenumber}[1]{\footnotesize\color{anthrazit}{\texttt{#1}}}
+\algrenewcommand{\algorithmicrequire}{\qquad\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\qquad\textbf{Output:}}
+
+% function name
+\algrenewcommand{\textproc}{}
+
+% bold keywords
+\algnewcommand{\Break}{\textbf{break}}
+\algnewcommand{\Continue}{\textbf{continue}}
+\algnewcommand{\True}{\textbf{true}}
+\algnewcommand{\False}{\textbf{false}}
+\algnewcommand{\Null}{\textbf{null}}
+\algrenewcommand{\algorithmicend}{\textbf{end}}
+\algrenewcommand{\algorithmicdo}{\textbf{do}}
+\algrenewcommand{\algorithmicwhile}{\textbf{while}}
+\algrenewcommand{\algorithmicfor}{\textbf{for}}
+\algrenewcommand{\algorithmicforall}{\textbf{for all}}
+\algrenewcommand{\algorithmicloop}{\textbf{loop}}
+\algrenewcommand{\algorithmicrepeat}{\textbf{repeat}}
+\algrenewcommand{\algorithmicuntil}{\textbf{until}}
+\algrenewcommand{\algorithmicprocedure}{\textbf{procedure}}
+\algrenewcommand{\algorithmicfunction}{\textbf{function}}
+\algrenewcommand{\algorithmicif}{\textbf{if}}
+\algrenewcommand{\algorithmicthen}{\textbf{then}}
+\algrenewcommand{\algorithmicelse}{\textbf{else}}
+\algrenewcommand{\algorithmicreturn}{\textbf{return}}
+\algnewcommand{\algorithmicforever}{\textbf{for ever}}
+\algdef{S}[FOR]{ForEver}{\algorithmicforever\ \algorithmicdo}
+\algnewcommand{\algorithmicgoto}{\textbf{go to}}
+\algnewcommand{\Goto}[1]{\algorithmicgoto\ \cref*{#1}}
+\algnewcommand{\ForOneLine}[2]{%
+  \State\algorithmicfor\ #1\ \algorithmicdo\ #2%
+}
+\algnewcommand{\IfOneLine}[2]{%
+  \State\algorithmicif\ #1\ \algorithmicthen\ #2%
+}
+\algnewcommand{\ElseOneLine}[1]{%
+  \State\algorithmicelse\ #1%
+}
+
+% small monospace font in algorithms
+\g@addto@macro\ALG@beginalgorithmic{\small\ttfamily}
+
+% comment format
+\algrenewcomment[1]{\hfill$\rightsquigarrow$\;{\normalfont\emph{#1}}}
+
+% set indentation to two characters
+\algrenewcommand{\algorithmicindent}{\widthof{AB}}
+
+% make ALG@line.XX counters unique,
+% otherwise hyperlinks to algorithm lines won't work
+% (they will always point to the line with the same number,
+% but in the first algorithm of the thesis)
+\newcounter{algorithmicH}
+\let\oldalgorithmic\algorithmic
+\renewcommand*{\algorithmic}{\stepcounter{algorithmicH}\oldalgorithmic}
+\renewcommand*{\theHALG@line}{ALG@line.\thealgorithmicH.\arabic{ALG@line}}
+% ======================================================================
+% Mathematics
+% ======================================================================
+
+% automatically replace "l" with \ell in math mode
+\mathcode`l="8000
+\begingroup
+\lccode`\~=`\l
+\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
+\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
+\endgroup
+
+% change QED symbol to filled square
+%\renewcommand*{\qedsymbol}{\textcolor{mittelblau}{\blacksquare}}
+
+% redefine own proof environment (prohibits \qedhere)
+%\renewenvironment{proof}[1][Proof]{%
+%  \noindent{\formatcaption{#1}\hspace{1em}}%
+%}{\qed\par}
+
+% siunitx setup
+\sisetup{
+  % reduce space between units
+  inter-unit-product={\hspace{0.03em}},
+  % use fractions for inverse units
+  per-mode=fraction,
+  % use dot for product between number and power of ten
+  exponent-product=\cdot,
+}
+
+% add \permille macro
+\DeclareSIUnit{\permille}{\text{\textperthousand}}
+
+% add \hms command similar to \ang to describe durations
+% (e.g., computation times), use as \hms{1;2;3} ==> 1h 02min 03s
+\ExplSyntaxOn
+\NewDocumentCommand\hms{o>{\SplitArgument{2}{;}}m}{
+  \group_begin:
+  \IfNoValueF{#1}{\keys_set:nn{siunitx}{#1}}
+  \siunitx_hms_output:nnn #2
+  \group_end:
+}
+\cs_new_protected:Npn \siunitx_hms_output:nnn #1#2#3
+{
+  \IfNoValueF{#1}{
+    \tl_if_blank:nF{#1}{
+      \SI{#1}{\hour}
+      \IfNoValueF{#2}{~}
+    }
+  }
+  \IfNoValueF{#2}{
+    \tl_if_blank:nF{#2}{
+      \IfNoValueF{#1}{\tl_if_blank:nF{#1}{\sisetup{minimum-integer-digits=2}}}
+      \SI{#2}{\minute}
+      \IfNoValueF{#3}{~}
+    }
+  }
+  \IfNoValueF{#3}{
+    \tl_if_blank:nF{#3}{
+      \IfNoValueF{#1}{\tl_if_blank:nF{#1}{\sisetup{minimum-integer-digits=2}}}
+      \IfNoValueF{#2}{\tl_if_blank:nF{#2}{\sisetup{minimum-integer-digits=2}}}
+      \SI{#3}{\second}
+    }
+  }
+}
+\ExplSyntaxOff
+
+% make spacing after partial sign smaller
+\edef\partial{\mathchar\number\partial\noexpand\mkern-2mu}
+% ======================================================================
+% Dummy Text
+% ======================================================================
+
+% insert dummy text with TODO, warn for every usage
+\newcommand*{\dummytext}[1][\value{blindtext}]{%
+  \todo{write}
+  \textcolor{gray}{\blindtext[#1]}%
+}
+% ======================================================================
+% Dynamic Commands
+% ======================================================================
+
+% get name of current label (chapter, section, subsection, ...)
+\newcommand*{\currentname}{\@currentlabelname}
+
+% calculate difference between page numbers
+\newcommand*{\pagedifference}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax%
+}
+
+% custom TODO command with warning
+% (all packages that were tried produced problems)
+\newcommand*{\todo}[1]{%
+  \GenericWarning{}{%
+    LaTeX Warning (\thesubsection\space\currentname): TODO "#1"%
+  }%
+  \textcolor{red}{TODO: #1}%
+}
+
+% set up versioning information
+%\luaexec{require("version")}
+
+% convenience commands for title page and watermarks
+\newcommand*{\gitCommitText}[1][]{%
+  \texttt{#1\gitCommitHash}%
+  \ifx\gitTag\empty\else{} (\texttt{#1\gitTag})\fi%
+}
+
+\newcommand*{\compileCounterText}[1][]{%
+  \texttt{#1v\compileCounter}%
+}
+
+% command for checking if file is in \includeonly or not
+\newcommand*{\isincluded}[1]{%
+  \@tempswatrue
+  \if@partsw
+    \@tempswafalse
+    \edef\reserved@b{#1}%
+    \@for\reserved@a:=\@partlist\do
+    {\ifx\reserved@a\reserved@b\@tempswatrue\fi}%
+  \fi
+  \if@tempswa\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+}
+% ======================================================================
+% Text Body
+% ======================================================================
+
+% increase indentation of paragraphs (default: 1em = \quad)
+\setlength{\parindent}{1em}
+
+% prohibit inserting page breaks in footnotes
+\interfootnotelinepenalty=10000
+
+% only display underfull \hbox/\vbox warnings if really, really bad;
+% in a technical text riddled with long inline formulas and narrow
+% sub-captions or side-captions, it's just not possible to avoid all
+% badnesses over 1000
+\hbadness=9999
+\vbadness=9999
+
+% mathdesign's Charter font has some questionable kerning between some
+% capital letters such as F, P, and V and a period (the space between those
+% is far too small); one solution would be to use the charter package for
+% the main text, but that leads a number of other issues (the text size is
+% then larger, and doesn't match the math font size anymore...)
+\newcommand*{\punctfix}[1]{{\hspace{-0.05em}#1}}
+
+% enumerate and itemize spaces
+\setlist{
+  % space between left edge of text area and left edge of paragraphs
+  leftmargin=\parindent,
+  % space between item paragraphs (in addition to \parskip)
+  itemsep=0pt,
+  % space above and below lists
+  topsep=0.5em,
+}
+
+% math version of \settowidth, automatically choosing the right style
+% (textstyle, displaystyle, ...)
+\def\mathsettowidth#1#2{%
+  \setbox\@tempboxa\hbox{$\m@th\mathpalette{}{#2}$}%
+  #1=\wd\@tempboxa%
+  \setbox\@tempboxa\box\voidb@x%
+}
+
+% \halfhphantom works like \hphantom, except that it creates a box
+% that is only half as wide as that of \hphantom
+\newlength{\halfhphantomlength}
+\newcommand*{\halfhphantom}[1]{%
+  \ifmmode%
+    \mathsettowidth{\halfhphantomlength}{#1}%
+  \else%
+    \settowidth{\halfhphantomlength}{#1}%
+  \fi%
+  \setlength{\halfhphantomlength}{\halfhphantomlength/2}%
+  \hspace{\halfhphantomlength}%
+}
+
+% \lefthphantom{abc}{defghij} positions the text "abc" as follows:
+% |abc    |
+%  defghij
+\newcommand*{\lefthphantom}[2]{%
+  \ifmmode\mathrlap{#1}\else\rlap{#1}\fi%
+  \hphantom{#2}%
+}
+
+% \centerhphantom{abc}{defghij} positions the text "abc" as follows:
+% |  abc  |
+%  defghij
+\newcommand*{\centerhphantom}[2]{%
+  \halfhphantom{#2}%
+  \ifmmode\mathclap{#1}\else\clap{#1}\fi%
+  \halfhphantom{#2}%
+}
+
+% \righthphantom{abc}{defghij} positions the text "abc" as follows:
+% |    abc|
+%  defghij
+\newcommand*{\righthphantom}[2]{%
+  \hphantom{#2}%
+  \ifmmode\mathllap{#1}\else\llap{#1}\fi%
+}
+
+% use Oxford comma for multiple references in cleveref
+% (e.g, \cref{fig1,fig2,fig3} => Fig. 1, 2, and 3)
+\newcommand*{\creflastconjunction}{, and\nobreakspace}
+% ======================================================================
+% Colors
+% ======================================================================
+
+% define line colors (mix between MATLAB and matplotlib colors)
+\definecolor{C0}{rgb}{0.000,0.447,0.741}
+\definecolor{C1}{rgb}{0.850,0.325,0.098}
+\definecolor{C2}{rgb}{0.749,0.561,0.102}
+\definecolor{C3}{rgb}{0.494,0.184,0.556}
+\definecolor{C4}{rgb}{0.466,0.674,0.188}
+\definecolor{C5}{rgb}{0.301,0.745,0.933}
+\definecolor{C6}{rgb}{0.635,0.078,0.184}
+\definecolor{C7}{rgb}{0.887,0.465,0.758}
+\definecolor{C8}{rgb}{0.496,0.496,0.496}
+
+% define university CD colors
+\definecolor{anthrazit}{RGB}{62,68,76}
+\definecolor{mittelblau}{RGB}{0,81,158}
+\definecolor{hellblau}{RGB}{0,190,255}
+% ======================================================================
+% PDF Meta-Data and Links
+% ======================================================================
+
+% set up hyperref
+\hypersetup{
+  % set metadata
+  pdftitle={\thetitle},
+  pdfauthor={\theauthor},
+  pdfcreator={LaTeX, KOMA-Script, hyperref},
+  % underline links instead of putting a framed box around them
+  pdfborderstyle={/S/U/W 1},
+  % set link colors
+  citebordercolor=C1,
+  filebordercolor=C1,
+  linkbordercolor=C1,
+  menubordercolor=C1,
+  runbordercolor=C1,
+  urlbordercolor=C0,
+  % prepend bookmarks with section number
+  bookmarksnumbered,
+  % open bookmark tree on start
+  bookmarksopen,
+}
+
+% include parentheses of \eqref in hyperlink
+\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}
+% ======================================================================
+% Bibliography
+% ======================================================================
+
+% location of *.bib file
+\addbibresource{document/references.bib}
+
+% include brackets in \cite hyperlink
+%\DeclareCiteCommand{\cite}{\usebibmacro{prenote}}{%
+%  \usebibmacro{citeindex}%
+ % \printtext[bibhyperref]{\mkbibbrackets{\usebibmacro{cite}}}%
+%}{\multicitedelim}{\usebibmacro{postnote}}
+
+% declare special \multicite command which produces [Abc01; Def02]
+% (instead of [Abc01]; [Def02])
+\DeclareCiteCommand{\cite}[\mkbibbrackets]{\usebibmacro{prenote}}{%
+  \usebibmacro{citeindex}\usebibmacro{cite}%
+}{\multicitedelim}{\usebibmacro{postnote}}
+
+% don't append "+" sign to BibLaTeX citations in alphabetic style
+\renewcommand*{\labelalphaothers}{}
+
+% define custom heading to add bibliography to table of contents
+\defbibheading{myheading}[\bibname]{\addchap{#1}}
+
+% add custom bibliography post note (reset font size)
+\defbibnote{mypostnote}{%
+  \renewcommand*{\texttt}[1]{\oldtexttt{##1}}%
+}
+
+% order entries by last names
+\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{default}{last-first}
+
+% change font size of bibliography
+\renewcommand*{\bibfont}{\small}
+
+% set single line spacing for bibliography
+\renewcommand*{\bibsetup}{\singlespacing}
+
+% separate authors with semicolon, suppress "and" in author names
+\renewcommand*{\multinamedelim}{\addsemicolon\space}
+\renewcommand*{\finalnamedelim}{\addsemicolon\space}
+
+% make names bold
+\renewcommand*{\mkbibnamefamily}[1]{\textbf{#1}}
+
+% insert colon after author names in bibliography
+\renewcommand*{\labelnamepunct}{\addcolon\space}
+
+% separate BibLaTeX units with commas instead of periods
+\renewcommand*{\newunitpunct}{\addcomma\space}
+
+% make paper titles italic, remove quotation marks
+\DeclareFieldFormat[article]{title}{\mkbibemph{#1}}
+\DeclareFieldFormat[article]{journaltitle}{#1}
+\DeclareFieldFormat[article]{issuetitle}{#1}
+\DeclareFieldFormat[article]{issuesubtitle}{#1}
+\DeclareFieldFormat[inbook]{title}{\mkbibemph{#1}}
+\DeclareFieldFormat[inbook]{booktitle}{#1}
+\DeclareFieldFormat[inbook]{maintitle}{#1}
+\DeclareFieldFormat[incollection]{title}{\mkbibemph{#1}}
+\DeclareFieldFormat[incollection]{booktitle}{#1}
+\DeclareFieldFormat[incollection]{maintitle}{#1}
+\DeclareFieldFormat[inproceedings]{title}{\mkbibemph{#1}}
+\DeclareFieldFormat[inproceedings]{booktitle}{#1}
+\DeclareFieldFormat[inproceedings]{maintitle}{#1}
+\DeclareFieldFormat[inreference]{booktitle}{#1}
+\DeclareFieldFormat[inreference]{maintitle}{#1}
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
+\DeclareFieldFormat[unpublished]{title}{\mkbibemph{#1}}
+
+% fix title capitalization to sentence case (all lowercase)
+\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
+
+% .. but don't change journal titles, book titles, and so on
+\newrobustcmd{\MakeTitleCase}[1]{%
+  \ifthenelse{%
+    \ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
+    \OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
+    \OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
+    \OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
+    \OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
+    \OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
+    \OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
+    \OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
+    \OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
+    \OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
+    \OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
+    \OR\ifentrytype{thesis}\OR\ifentrytype{online}%
+  }{%
+    #1%
+  }{%
+    \MakeSentenceCase*{#1}%
+  }%
+}
+
+% suppress "In:" before journal names
+\renewbibmacro*{in:}{}
+
+% don't put parentheses around year for journals
+\renewbibmacro*{issue+date}{%
+  \setunit{\addcomma\space}%
+  \iffieldundef{issue}{%
+    \usebibmacro{date}%
+  }{%
+    \printfield{issue}\setunit*{\addspace}\usebibmacro{date}%
+  }%
+  \newunit%
+}
+
+% reformat and link URLs, DOIs, and ISBNs
+\DeclareFieldFormat{url}{\scriptsize\url{#1}}
+\DeclareFieldFormat{doi}{%
+  \scriptsize%
+  \ifhyperref{%
+    \href{https://doi.org/#1}{\nolinkurl{doi:#1}}%
+  }{\nolinkurl{doi:#1}}%
+}
+\DeclareFieldFormat{isbn}{%
+  \scriptsize%
+  \ifhyperref{%
+    \href{https://www.amazon.com/s/?field-keywords=#1}{\nolinkurl{isbn:#1}}%
+  }{\nolinkurl{isbn:#1}}%
+}
+
+% hide urldate field
+\AtEveryBibitem{\clearfield{urlyear}}
+
+% remove period at end of entries
+\renewcommand*{\finentrypunct}{}
+
+\DeclareBibliographyCategory{own}
+\DeclareBibliographyCategory{own_other}
+\DeclareBibliographyCategory{own_forthcoming}
+% --------------------------------------------------
+
+% define abbreviations
+
+\newcommand{\opendihu}{OpenDiHu}
+\newcommand{\Opendihu}{OpenDiHu}
+
+%%%%%%%%%%%%%%%%   Abkürzungen   %%%%%%%%%%%%%%%%%%
+
+%----------------------Umgebungen----------------------
+\def\beqno{\begin{equation}}
+\def\eeqno{\end{equation}}
+\def\beq{\begin{equation*}}
+\def\eeq{\end{equation*}}
+\def\ba#1{\begin{array}{#1}}
+\def\ea{\end{array}}
+\def\mat#1{\left(\begin{matrix}#1\end{matrix}\right)}
+\def\matt#1{\left[\begin{matrix}#1\end{matrix}\right]}
+%\newcommand{\bs}{\begin{subequations}}
+%\newcommand{\es}{\end{subequations}}
+\newcommand{\bal}{\begin{align}}
+\def\ealll{ \end{align} }
+
+\renewcommand{\emph}[1]{\textit{#1}\/}
+\def\clap#1{\hbox  to  0pt{\hss#1\hss}}                 % für underbrace
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+\newcommand{\ub}[2]{\underbrace{#1}_{\mathclap{#2}}}    
+\newcommand{\ds}{\displaystyle}                         % displaystyle
+\renewcommand{\dfrac}[2]{\ds\frac{\ds{#1}}{\ds{#2}}\,}  % nach Bruch Abstand
+%\newcommand{\code}[1]{{\small\lstinline[columns=fixed]!#1!}}
+
+\usepackage{setspace}
+\newcommand{\code}[1]{{\small\lstinline[basicstyle=\small\ttfamily\color{Maroon},breaklines=true,upquote=true]!#1!}}
+\newcommand{\codenobreak}[1]{{\small\lstinline[basicstyle=\small\ttfamily\color{Maroon},breaklines=false,upquote=true]!#1!}}
+\newcommand{\emphcode}[1]{{\small\lstinline[basicstyle=\small\itshape\ttfamily\color{Maroon},breaklines=true]!#1!}}
+\newcommand{\codebox}[1]{\begin{lstlisting}[columns=fullflexible,breaklines=true,postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}]#1\end{lstlisting}}
+
+%\newfloat{algorithm}{ht}{aux0}              % Algorithmus-Umgebung
+%\floatname{algorithm}{Code-Abschnitt}
+\newcommand{\anm}[1]{\textcolor{blue}{#1}}
+\def\bigA{\mathop{\mathrm{A}}}
+
+% -------------
+% Using mdframed, define environment for \begin{reproduce} abcdefgh \end{reproduce}
+\definecolor{Maroon}{HTML}{801010}
+%\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\newcounter{reproduce}[section]
+\newenvironment{reproduce}{%
+  \stepcounter{reproduce}%
+  \mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[anchor=east,rectangle,fill=red!20]
+      {How To Reproduce};},nobreak=false
+  }
+  \mdfsetup{innertopmargin=10pt,linecolor=Maroon!20,nobreak=false,backgroundcolor=Maroon!05,%
+            linewidth=2pt,topline=true,roundcorner=5pt,frametitleaboveskip=\dimexpr-\ht\strutbox\relax,%
+  }
+  \vfill
+  %\begin{minipage}[b]{\linewidth}
+  \begin{mdframed}\relax%
+}
+{
+  \end{mdframed}%
+  %\end{minipage}%
+}
+
+\newenvironment{reproduce_no_break}{%
+  \stepcounter{reproduce}%
+  \mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[anchor=east,rectangle,fill=red!20]
+      {How To Reproduce};},nobreak=true
+  }
+  \mdfsetup{innertopmargin=10pt,linecolor=Maroon!20,nobreak=true,backgroundcolor=Maroon!05,%
+            linewidth=2pt,topline=true,roundcorner=5pt,frametitleaboveskip=\dimexpr-\ht\strutbox\relax,%
+  }
+  \vfill
+  %\begin{minipage}[b]{\linewidth}
+  \begin{mdframed}\relax%
+}
+{
+  \end{mdframed}%
+  %\end{minipage}%
+}
+
+% -------------
+
+
+%----------------------Funktionen, Zeichen----------------------
+\def\det{\hbox{det} \,}
+\def\spn{\hbox{span} \,}
+\def\div{\hbox{div} \,}
+\def\grad{\hbox{grad} \,}
+\def\supp{\hbox{supp} \,}
+\def\cof{\hbox{cof} \,}
+\def\tr{\hbox{tr} \,}
+\def\sym{\hbox{sym} \,}
+\DeclareMathOperator{\spur}{spur}
+\newcommand{\stern}[1] {\overset{*}{#1}}        %Sternchen auf Buchstabe
+\def\tstern{\stern{t}}
+\def\dV{\d V}
+\def\qed{\begin{flushright}$\square$\end{flushright}}
+\def\rpsi{\textcolor{red}{\hat{\psi}}}
+\def\Dcon{\mathcal{D}_{con}}
+\def\Dloc{\mathcal{D}_{loc}}
+\def\D{\mathcal{D}}
+\def\E{\mathbb{E}} % C2 domain of elasticity
+\def\P{\mathcal{P}} % C2 domain of elasticity
+\def\dt{d\noexpand\mkern-3mu t}
+\DeclareSIUnit[number-unit-product = {}]{\flop}{FLOP}   % flops unit for unitx
+\DeclareSIUnit[number-unit-product = {}]{\flops}{FLOPS}   % flops unit for unitx
+\sisetup{retain-unity-mantissa = false}
+
+%----------------------Ableitungen------------------------
+
+%Ableitungen mit \d 
+\makeatletter
+\def\d{\futurelet\next\start@i}\def\start@i{\ifx\next\bgroup\expandafter\abl@\else\expandafter\abl@d\fi}\def\abl@#1{\def\tempa{#1}\futurelet\next\abl@i}\def\abl@i{\ifx\next\bgroup\expandafter\abl@ii\else\expandafter\abl@a\fi}\def\abl@ii#1{\def\tempb{#1}\futurelet\next\abl@iii}\def\abl@iii{\ifx\next\bgroup\expandafter\abl@c\else\expandafter\abl@b\fi}
+\def\abl@d{\mathrm{d}}                                          % keine Argumente
+\def\abl@a{\ds\frac{\mathrm{d}}{\mathrm{d}\tempa}\,}            % 1 Argument \d{x} -> d/dx
+\def\abl@b{\ds\frac{\mathrm{d}\tempa}{\mathrm{d}\tempb}\,}  % 2 Argumente: \d{f}{x} -> df/dx
+\def\abl@c#1{\ds\frac{\mathrm{d}^{#1} {\tempa}}{\mathrm{d} {\tempb}^{#1}}\,}        % 3 Argumente: \d{f}{x}{2} -> d^2f/dx^2
+
+%partielle Ableitungen mit \p
+\def\p{\futurelet\next\startp@i}\def\startp@i{\ifx\next\bgroup\expandafter\pabl@\else\expandafter\pabl@d\fi}\def\pabl@#1{\def\tempa{#1}\futurelet\next\pabl@i}\def\pabl@i{\ifx\next\bgroup\expandafter\pabl@ii\else\expandafter\pabl@a\fi}\def\pabl@ii#1{\def\tempb{#1}\futurelet\next\pabl@iii}\def\pabl@iii{\ifx\next\bgroup\expandafter\pabl@c\else\expandafter\pabl@b\fi}
+\def\pabl@d{\partial}                                           % keine Argumente
+\def\pabl@a{\ds\frac{\partial}{\partial\tempa}\,}           % 1 Argument \d{x} -> d/dx
+\def\pabl@b{\ds\frac{\partial\tempa}{\partial\tempb}\,} % 2 Argumente: \d{f}{x} -> df/dx
+\def\pabl@c#1{\ds\frac{\partial^{#1} {\tempa}}{\partial {\tempb}^{#1}}\,}       % 3 Argumente: \d{f}{x}{2} -> d^2f/dx^2
+\makeatother
+
+%i-ter Ableitungsoperator
+\newcommand{\dd}[2]{\ds\frac{\mathrm{d}^{#2}}{\mathrm{d}{#1}^{#2}}\,}   %\dd{x}{5} -> d^5/dx^5
+\newcommand{\pp}[2]{\ds\frac{\partial^{#2}}{\partial{#1}^{#2}}\,}       %\pp{x}{5} -> d^5/dx^5 (partiell)
+
+%----------------------Buchstaben, Räume----------------------
+\def\eps{\varepsilon}
+\def\N{\mathbb{N}}  %nat. Zahlen
+\def\Z{\mathbb{Z}}  %ganze Zahlen
+\def\Q{\mathbb{Q}}  %rat. Zahlen
+\def\R{\mathbb{R}}  %reelle Zahlen
+\def\C{\mathbb{C}}  %komplexe Zahlen
+\def\P{\mathcal{P}} %Potenzmenge, Polynome
+\def\T{\mathcal{T}} %Triangulierung
+\def\X{\mathcal{T}} %samping point space
+\def\Oe{\overset{..}{O}}    %Menge von 2013_12_04
+\def\DD{\mathcal{D}} % Differentialoperator
+
+\renewcommand{\i}[2]{\ds\int\limits_{#1}^{#2}} %Integral, %TODO_Lorin:das überschreibt "interpolierende" \I, %FIX_Benni: zweimal kleiner Buchstabe (Großbuchstaben sind eher für Räume)
+\renewcommand{\s}[2]{\ds\sum\limits_{#1}^{#2}} %Summe %EDIT_Georg: mit renewcommand hat's nicht compiliert, deshalb jetzt newcommand
+
+
+\renewcommand{\O}{\mathcal{O}}      %O-Notation
+\renewcommand{\o}{o}
+\newcommand{\CC}{\mathcal{C}}       %Raum der stetig diff.baren Fkt
+\renewcommand{\L}{\mathcal{L}}      %Raum der Lebesgue-int.baren Fkt
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Lloc}{\L^1_{\text{loc}}}
+\newcommand{\Cabh}{\mathrm{C}}      %Abhängigkeitskegel
+\newcommand{\Sabh}{\mathrm{S}}      %zum Abhängigkeitskegel gehörendes S
+
+% Maßeinheiten
+\newcommand{\cm}{\,\mathrm{cm}}
+\newcommand{\m}{\,\mathrm{m}}
+\newcommand{\Npcm}{\,\mathrm{N/cm}}
+\newcommand{\Npm}{\,\mathrm{N/m}}
+\newcommand{\Npmm}{\,\mathrm{N/m^2}}
+\newcommand{\NN}{\,\mathrm{N}}
+
+%---------------------fette Buchstaben------------------------
+\newcommand{\bfa}{\textbf{a}}
+\newcommand{\bfb}{\textbf{b}}
+\newcommand{\bfc}{\textbf{c}}
+\newcommand{\bfd}{\textbf{d}}
+\newcommand{\bfe}{\textbf{e}}
+\newcommand{\bff}{\textbf{f}}
+\newcommand{\bfg}{\textbf{g}}
+\newcommand{\bfh}{\textbf{h}}
+\newcommand{\bfi}{\textbf{i}}
+\newcommand{\bfj}{\textbf{j}}
+\newcommand{\bfk}{\textbf{k}}
+\newcommand{\bfl}{\textbf{l}}
+\newcommand{\bfm}{\textbf{m}}
+\newcommand{\bfn}{\textbf{n}}
+\newcommand{\bfo}{\textbf{o}}
+\newcommand{\bfp}{\textbf{p}}
+\newcommand{\bfq}{\textbf{q}}
+\newcommand{\bfr}{\textbf{r}}
+\newcommand{\bfs}{\textbf{s}}
+\newcommand{\bft}{\textbf{t}}
+\newcommand{\bfu}{\textbf{u}}
+\newcommand{\bfv}{\textbf{v}}
+\newcommand{\bfw}{\textbf{w}}
+\newcommand{\bfx}{\textbf{x}}
+\newcommand{\bfy}{\textbf{y}}
+\newcommand{\bfz}{\textbf{z}}
+\newcommand{\bfA}{\textbf{A}}
+\newcommand{\bfB}{\textbf{B}}
+\newcommand{\bfC}{\textbf{C}}
+\newcommand{\bfD}{\textbf{D}}
+\newcommand{\bfE}{\textbf{E}}
+\newcommand{\bfF}{\textbf{F}}
+\newcommand{\bfG}{\textbf{G}}
+\newcommand{\bfH}{\textbf{H}}
+\newcommand{\bfI}{\textbf{I}}
+\newcommand{\bfJ}{\textbf{J}}
+\newcommand{\bfK}{\textbf{K}}
+\newcommand{\bfL}{\textbf{L}}
+\newcommand{\bfM}{\textbf{M}}
+\newcommand{\bfN}{\textbf{N}}
+\newcommand{\bfO}{\textbf{O}}
+\newcommand{\bfP}{\textbf{P}}
+\newcommand{\bfQ}{\textbf{Q}}
+\newcommand{\bfR}{\textbf{R}}
+\newcommand{\bfS}{\textbf{S}}
+\newcommand{\bfT}{\textbf{T}}
+\newcommand{\bfU}{\textbf{U}}
+\newcommand{\bfV}{\textbf{V}}
+\newcommand{\bfW}{\textbf{W}}
+\newcommand{\bfX}{\textbf{X}}
+\newcommand{\bfY}{\textbf{Y}}
+\newcommand{\bfZ}{\textbf{Z}}
+\newcommand{\bfzero}{\textbf{0}}
+
+\newcommand{\bfalpha}{\boldsymbol{\alpha}}
+\newcommand{\bfbeta}{\boldsymbol{\beta}}
+\newcommand{\bfgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfdelta}{\boldsymbol{\delta}}
+\newcommand{\bfeps}{\boldsymbol{\eps}}
+\newcommand{\bftheta}{\boldsymbol{\theta}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bfphi}{\boldsymbol{\phi}}
+\newcommand{\bfvarphi}{\boldsymbol{\varphi}}
+\newcommand{\bfpsi}{\boldsymbol{\psi}}
+\newcommand{\bfsigma}{\boldsymbol{\sigma}}
+\newcommand{\bfPi}{\boldsymbol{\Pi}}
+\newcommand{\bfXi}{\boldsymbol{\Xi}}
+\newcommand{\bfxi}{\boldsymbol{\xi}}
+\newcommand{\bfchi}{\boldsymbol{\chi}}
+\newcommand{\bfChi}{\boldsymbol{\chi}}
+\newcommand{\bfzeta}{\boldsymbol{\zeta}}
+\newcommand{\bfmu}{\boldsymbol{\mu}}
+\newcommand{\bflambda}{\boldsymbol{\lambda}}
+\newcommand{\bfomega}{\boldsymbol{\omega}}
+
+
+\begin{document}
+\frontmatter
+
+% title page
+\input{document/titlepage}
+
+% table of contents, create bookmark
+\input{document/contents}
+  
+% abstract
+\input{document/abstract}
+
+% publication list
+\input{document/publications}
+    
+\mainmatter
+% chapters
+\input{document/01_introduction}
+\input{document/02_comparative_study}
+
+\input{document/03_mesh_generation_0}
+\input{document/03_mesh_generation_1}
+\input{document/04_motor_units}
+\input{document/05_theory_0}
+\input{document/05_theory_1}
+\input{document/05_theory_2}
+\input{document/05_theory_3}
+
+\input{document/06_usage_0}
+\input{document/06_usage_1}
+
+\input{document/07_implementation_0}
+\input{document/07_implementation_1}
+\input{document/07_implementation_2}
+
+
+\input{document/08_results_0}
+\input{document/08_results_1a}
+\input{document/08_results_1b}
+\input{document/08_results_2a}
+\input{document/08_results_2b}
+\input{document/08_results_2c}
+\input{document/09_conclusion}
+  
+% bibliography
+\input{document/bibliography}
+
+\end{document}
