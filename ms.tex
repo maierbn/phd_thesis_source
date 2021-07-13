@@ -596,8 +596,8 @@
 
 % increase space of page numbers
 % (default values of 1.55em and 2.55em are too small for three-digit numbers)
-\renewcommand*{\@pnumwidth}{2em}
-\renewcommand*{\@tocrmarg}{3em}
+%\renewcommand*{\@pnumwidth}{2em}
+%\renewcommand*{\@tocrmarg}{3em}
 % ======================================================================
 % Dictums
 % ======================================================================
@@ -715,10 +715,10 @@
 % set text color per row, use it like this: \begin{tabular}{=l+l+l+l} ...
 % (a single \color command wouldn't suffice, as tabular cells have
 % their own boxes, i.e., the font color is reset after every cell)
-\newcommand*{\@rowstyle}{}
-\newcommand*{\rowstyle}[1]{\gdef\@rowstyle{#1}\@rowstyle\ignorespaces}
-\newcolumntype{=}{>{\gdef\@rowstyle{}}C}
-\newcolumntype{+}{>{\@rowstyle}C}
+%\newcommand*{\@rowstyle}{}
+%\newcommand*{\rowstyle}[1]{\gdef\@rowstyle{#1}\@rowstyle\ignorespaces}
+%\newcolumntype{=}{>{\gdef\@rowstyle{}}C}
+%\newcolumntype{+}{>{\@rowstyle}C}
 
 % \headerrow has to be put before every tabular header row,
 % sets background and text color
@@ -841,7 +841,7 @@
 }
 
 % small monospace font in algorithms
-\g@addto@macro\ALG@beginalgorithmic{\small\ttfamily}
+%\g@addto@macro\ALG@beginalgorithmic{\small\ttfamily}
 
 % comment format
 \algrenewcomment[1]{\hfill$\rightsquigarrow$\;{\normalfont\emph{#1}}}
@@ -856,18 +856,18 @@
 \newcounter{algorithmicH}
 \let\oldalgorithmic\algorithmic
 \renewcommand*{\algorithmic}{\stepcounter{algorithmicH}\oldalgorithmic}
-\renewcommand*{\theHALG@line}{ALG@line.\thealgorithmicH.\arabic{ALG@line}}
+%\renewcommand*{\theHALG@line}{ALG@line.\thealgorithmicH.\arabic{ALG@line}}
 % ======================================================================
 % Mathematics
 % ======================================================================
 
 % automatically replace "l" with \ell in math mode
-\mathcode`l="8000
-\begingroup
-\lccode`\~=`\l
-\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
-\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
-\endgroup
+%\mathcode`l="8000
+%\begingroup
+%\lccode`\~=`\l
+%\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
+%\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
+%\endgroup
 
 % change QED symbol to filled square
 %\renewcommand*{\qedsymbol}{\textcolor{mittelblau}{\blacksquare}}
@@ -940,7 +940,7 @@
 % ======================================================================
 
 % get name of current label (chapter, section, subsection, ...)
-\newcommand*{\currentname}{\@currentlabelname}
+%\newcommand*{\currentname}{\@currentlabelname}
 
 % calculate difference between page numbers
 \newcommand*{\pagedifference}[2]{%
@@ -970,16 +970,16 @@
 }
 
 % command for checking if file is in \includeonly or not
-\newcommand*{\isincluded}[1]{%
-  \@tempswatrue
-  \if@partsw
-    \@tempswafalse
-    \edef\reserved@b{#1}%
-    \@for\reserved@a:=\@partlist\do
-    {\ifx\reserved@a\reserved@b\@tempswatrue\fi}%
-  \fi
-  \if@tempswa\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
-}
+%\newcommand*{\isincluded}[1]{%
+%  \@tempswatrue
+%  \if@partsw
+%    \@tempswafalse
+%    \edef\reserved@b{#1}%
+%    \@for\reserved@a:=\@partlist\do
+%    {\ifx\reserved@a\reserved@b\@tempswatrue\fi}%
+%  \fi
+%  \if@tempswa\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+%}
 % ======================================================================
 % Text Body
 % ======================================================================
@@ -1016,11 +1016,11 @@
 
 % math version of \settowidth, automatically choosing the right style
 % (textstyle, displaystyle, ...)
-\def\mathsettowidth#1#2{%
-  \setbox\@tempboxa\hbox{$\m@th\mathpalette{}{#2}$}%
-  #1=\wd\@tempboxa%
-  \setbox\@tempboxa\box\voidb@x%
-}
+%\def\mathsettowidth#1#2{%
+%  \setbox\@tempboxa\hbox{$\m@th\mathpalette{}{#2}$}%
+%  #1=\wd\@tempboxa%
+%  \setbox\@tempboxa\box\voidb@x%
+%}
 
 % \halfhphantom works like \hphantom, except that it creates a box
 % that is only half as wide as that of \hphantom
@@ -1108,7 +1108,7 @@
 }
 
 % include parentheses of \eqref in hyperlink
-\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}
+%\renewcommand*{\eqref}[1]{\hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}}
 % ======================================================================
 % Bibliography
 % ======================================================================
