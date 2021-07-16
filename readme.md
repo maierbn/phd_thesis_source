@@ -3,7 +3,6 @@
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue)][license]
 [![Download PDF on arXiv](https://img.shields.io/badge/download%20PDF-on%20arXiv-brightgreen)][arxiv]
 
-[![CC BY 4.0][cc-by-image]][cc-by]
 This repo contains the L<sup>A</sup>T<sub>E</sub>X code of the dissertation of Benjamin Maier.
 The defence took place in June 2021 at the University of Stuttgart, Germany.
 
