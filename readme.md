@@ -4,6 +4,8 @@
 [![Download PDF on arXiv](https://img.shields.io/badge/download%20PDF-on%20arXiv-brightgreen)][arxiv]
 
 This repo contains the L<sup>A</sup>T<sub>E</sub>X code of the dissertation of Benjamin Maier.
+The code builds upon the (unofficial) [Uni Stuttgart PhD thesis template](https://github.com/valentjn/uni-stuttgart-phdthesis-template) of Julian Valentin ([@valentjn](https://github.com/valentjn)).
+
 The defence took place in June 2021 at the University of Stuttgart, Germany.
 
 The thesis and its source code, including, e.g., the figures and images, are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)][license], which allows sharing and adaption with appropriate credit.
